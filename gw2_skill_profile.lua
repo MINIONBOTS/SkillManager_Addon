@@ -45,7 +45,7 @@ function sm_skill_profile:Save()
 			-- Saving the essential data for actionlist
 			copy.actionlist = {}
 			for orderid,v in pairs(self.actionlist) do 							
-				copy.actionlist[orderid] = {id = v.id, type = v.type}
+				copy.actionlist[orderid] = v:Save()
 			end
 			-- Saving the essential data for skillsets
 			copy.skillsets = {}
@@ -56,6 +56,7 @@ function sm_skill_profile:Save()
 					copy.skillsets[i].skills[id] = { slot = s.slot , minrange = s.minrange or 0, maxrange = s.maxrange or 0, radius = s.radius or 0,  power = s.power or 0, flip_level = s.flip_level or 0}
 				end				
 			end
+						
 			
 			FileSave(self.filepath.."\\"..self.filename..".sm", copy)
 			self:AfterSave()
@@ -248,12 +249,13 @@ function sm_skill_profile:PreSave()
 	self.selectedskillset = nil
 	self.lasttick = nil
 	self.context = nil
-	
+	self.dragid = nil
+	self.dropid = nil
+	self.dropidhover = nil
 end
 function sm_skill_profile:AfterSave()
 	self.menucodechanged = true
 	self.actioneditoropen = true
-	
 end
 
 -- Renders the profile template into the SM "main" window
@@ -312,10 +314,12 @@ function sm_skill_profile:Render()
 
 -- Skill List
 		GUI:Text(GetString("Action List:"))
+		if ( GUI:IsItemHovered() ) then GUI:SetTooltip(GetString("Click and drag actions to switch places. Action List is a Priority List!")) end
 		local wx,wy = GUI:GetContentRegionAvail()
 		if ( wy < 200 ) then wy = 200 end -- minumum of 200 y size
 		GUI:BeginChild("##actionlistgrp",wx-10,wy)
 		local imgsize = 25
+		local hoveringaction
 		GUI:PushStyleVar(GUI.StyleVar_ItemSpacing, 0, 4)
 		GUI:PushStyleVar(GUI.StyleVar_FramePadding, 0, 0)		
 		for k,v in pairs(self.actionlist) do
@@ -327,12 +331,13 @@ function sm_skill_profile:Render()
 			local labelx,labely = GUI:GetCursorScreenPos()
 			local label
 			local recx,recy,recw,rech
+			
 			if ( self.selectedactionid == k ) then	
-				size = 45 
-				GUI:PushStyleColor(GUI.Col_Button,1.0,0.75,0.0,0.7)
+				size = 45							
 				GUI:PushStyleColor(GUI.Col_ButtonHovered,1.0,0.75,0.0,0.8)
 				GUI:PushStyleColor(GUI.Col_ButtonActive,1.0,0.75,0.0,0.9)
 				GUI:PushStyleColor(GUI.Col_Text,1.0,1.0,1.0,1.0)
+				GUI:PushStyleColor(GUI.Col_Button,1.0,0.75,0.0,0.7)
 				colorset = true
 				labelx = labelx + 55
 				labely = labely + size/3
@@ -345,13 +350,13 @@ function sm_skill_profile:Render()
 				end
 				
 			elseif ( skill ) then
-				if ( skill.cooldownmax and skill.cooldownmax > 0 and skill.cooldown and skill.cooldown > 0) then
+				if ( skill.cooldownmax and skill.cooldownmax > 0 and skill.cooldown and skill.cooldown > 0 ) then
 					cd = (100 - math.round(skill.cooldown*100 / skill.cooldownmax, 0))
-					local r,g,b = GUI:ColorConvertHSVtoRGB( cd*0.0045, 0.706, 0.63)
-					GUI:PushStyleColor(GUI.Col_Button,r, g, b, 0.7)
+					local r,g,b = GUI:ColorConvertHSVtoRGB( cd*0.0045, 0.706, 0.63)					
 					GUI:PushStyleColor(GUI.Col_ButtonHovered,r, g, b, 0.8)
 					GUI:PushStyleColor(GUI.Col_ButtonActive,r, g, b, 0.9)
 					GUI:PushStyleColor(GUI.Col_Text,1.0,1.0,1.0,1.0)
+					GUI:PushStyleColor(GUI.Col_Button,r, g, b, 0.7)
 					colorset = true
 					recx = labelx recy = labely recw = labelx+GUI:GetContentRegionAvail()-10 rech = labely+size
 					labelx = labelx + 35
@@ -361,10 +366,10 @@ function sm_skill_profile:Render()
 				else
 					local currentspell = Player:GetCurrentlyCastedSpell()					
 					if ( currentspell == GW2.SKILLBARSLOT["Slot_" .. skill.slot] and self.currentskills[skill.slot] and  self.currentskills[skill.slot].skillid == v.id) then						
-						GUI:PushStyleColor(GUI.Col_Button,0.18,1.0,0.0,0.7)
 						GUI:PushStyleColor(GUI.Col_ButtonHovered,0.18,1.0,0.0,0.8)
 						GUI:PushStyleColor(GUI.Col_ButtonActive,0.18,1.0,0.0,0.9)
 						GUI:PushStyleColor(GUI.Col_Text,1.0,1.0,1.0,1.0)
+						GUI:PushStyleColor(GUI.Col_Button,0.18,1.0,0.0,0.7)
 						colorset = true	
 						labelx = labelx + 35
 						labely = labely + size/4
@@ -391,6 +396,15 @@ function sm_skill_profile:Render()
 			GUI:ImageButton("##actionlistentry"..tostring(k), texture,size,size)
 			GUI:SameLine()
 			local width = cd~=nil and (GUI:GetContentRegionAvail()-10)/100*cd or  (GUI:GetContentRegionAvail()-10)
+			-- Apply drag n drop color
+			if ( self.dragid ) then
+				if ( self.dragid == k ) then
+					GUI:PushStyleColor(GUI.Col_Button,1.0,0.75,0.0,0.5)
+				elseif ( self.dropidhover and self.dropidhover == k ) then
+					GUI:PushStyleColor(GUI.Col_Button,1.0,0.75,0.0,0.6)
+				end
+			end
+
 			if ( GUI:Button("##actionlistentrybar"..tostring(k),width,size) ) then
 				if ( self.selectedactionid and self.actionlist[self.selectedactionid] ) then self.actionlist[self.selectedactionid].editing = nil end
 				self.selectedskillset = nil
@@ -399,6 +413,22 @@ function sm_skill_profile:Render()
 				self.actionlist[self.selectedactionid].deletecount = nil
 			end	
 			if ( colorset ) then GUI:PopStyleColor(4) end
+			if ( self.dragid and (self.dragid == k or self.dropidhover and self.dropidhover == k )) then GUI:PopStyleColor() end
+			
+			if ( GUI:IsItemHoveredRect() ) then
+				hoveringaction = true				
+			end
+			-- Drag n Drop to switch places
+			if ( GUI:IsItemClicked() ) then
+				self.dragid = k
+			elseif ( self.dragid and self.dragid ~= k and GUI:IsItemHoveredRect() ) then
+				self.dropidhover = k
+				if ( GUI:IsMouseReleased(0) ) then
+					self.dropid = k
+				end
+			end
+			
+	
 			-- Draw label
 			if ( recx ) then
 				GUI:AddRect( recx, recy, recw, rech, GUI:ColorConvertFloat4ToU32(1.0,1.0,1.0,0.2))
@@ -406,6 +436,22 @@ function sm_skill_profile:Render()
 			GUI:AddText( labelx, labely, GUI:ColorConvertFloat4ToU32(1.0,1.0,1.0,0.80), label)	
 		end
 		GUI:PopStyleVar(2)
+		
+		-- When moving the mouse outside the window while dragging actions around
+		if ( (self.dragid or self.dropidhover) and (hoveringaction == nil and not GUI:IsWindowHovered())) then
+			self.dragid = nil
+			self.dropidhover = nil
+		end
+		
+		-- Apply Drag n Drop
+		if ( self.dragid and self.dropid ) then
+			local tmp = self.actionlist[self.dragid]
+			self.actionlist[self.dragid] = self.actionlist[self.dropid]
+			self.actionlist[self.dropid] = tmp
+			self.dragid = nil
+			self.dropid = nil
+			self.dropidhover = nil
+		end
 		
 		-- Render 'empty' skill slot on the bottom to add new entries
 		local nextid = table.size(self.actionlist) + 1
@@ -427,7 +473,7 @@ function sm_skill_profile:Render()
 			GUI:SetNextWindowPos( x+w+5, y, GUI.SetCond_Always)
 			GUI:SetNextWindowSize(w,h,GUI.SetCond_Appearing)
 			local visible
-			self.actioneditoropen,visible = GUI:Begin(GetString("Action Editor").."##mlsm", self.actioneditoropen, GUI.WindowFlags_NoSavedSettings+GUI.WindowFlags_AlwaysAutoResize)
+			self.actioneditoropen,visible = GUI:Begin(GetString("Action Editor").."##mlsma", self.actioneditoropen, GUI.WindowFlags_NoSavedSettings+GUI.WindowFlags_AlwaysAutoResize+GUI.WindowFlags_NoCollapse)
 
 		-- A new action/skill ID needs to be selected
 			if (self.actionlist[self.selectedactionid].editing) then
@@ -458,7 +504,7 @@ function sm_skill_profile:Render()
 		end
 		
 		GUI:TreePop()
-	end	
+	end
 end
 
 -- Show the SkillSet Editor and Skill Selector
@@ -964,10 +1010,60 @@ end
 sm_action.id = 0
 -- Default Class ctor
 function sm_action:initialize(data)
-	if ( not data ) then data = {} end
-	self.id = data.id or 0
-	self.type = data.type or nil
-	self.conditions = data.conditions or {}
+	if ( not data ) then 
+		self.id = 0
+		self.type = nil
+		self.conditions = {}
+	else
+		self:Load(data)
+	end
+end
+-- Saves all action data into a table and returns that for saving
+function sm_action:Save()
+	local data = {}
+	data.id = self.id
+	data.type = self.type
+	data.conditions = {}
+	data.conditioncode = self.conditioncode
+	if ( table.valid(self.conditions) ) then
+		for i,or_group in pairs(self.conditions) do			
+			for k,v in pairs(or_group) do
+				if ( type(v) == "table") then
+					if ( not data.conditions[i] ) then data.conditions[i] = {} end
+					data.conditions[i][k] = v:Save()
+				end				
+			end
+		end
+	end
+	return data
+end
+-- Loads the action from a former saved data table
+function sm_action:Load(data)	
+	self.id = data.id
+	self.type = data.type
+	self.conditions = {}
+	self.conditioncode = data.conditioncode
+	if ( table.valid(data.conditions) ) then		
+		for i,or_group in pairs(data.conditions) do			
+			self.conditions[i] = {}	-- create the "OR" group			
+			for k,v in pairs(or_group) do
+				if ( string.valid(v.class) ) then
+					local condtemplate = SkillManager:GetCondition(v.class)				
+					if ( condtemplate ) then
+						local condition = condtemplate:new()	
+						condition:Load(v)					
+						self.conditions[i][k] = condition
+					else
+						ml_error("[SkillManager] - Unable To Load Condition, condition class not registered in SkillManager: "..tostring(v.class))
+					end
+						
+				else
+					ml_error("[SkillManager] - Unable To Load Condition, Invalid Condition Class on skill ID "..tostring(data.id))
+				end
+			end			
+		end
+	end
+	return data
 end
 
 -- Renders the Action Info, Details, Editor etc.
@@ -982,8 +1078,8 @@ function sm_action:Render(profile)
 	self.type, changed = GUI:Combo("##smac1",self.type or 1, { [1] = GetString("Cast Skill"), [2] = GetString("Swap Weapons") })
 	GUI:PopItemWidth()
 	if ( changed ) then modified = true end	
-	GUI:SameLine(500)
-	
+		
+	GUI:SameLine(599)	
 	local highlighted
 	if ( self.deletecount ) then
 		GUI:PushStyleColor(GUI.Col_Button,1.0,0.75,0.0,0.7)
@@ -1012,7 +1108,7 @@ end
 
 -- Fills the Action Editor window with the data for the type "Cast Skill"
 function sm_action:RenderCastSkill(profile)
-				
+	local modified
 	GUI:Columns(2)
 	GUI:SetColumnOffset(1,60)
 	local  txt = GetStartupPath() .. "\\GUI\\UI_Textures"
@@ -1052,75 +1148,126 @@ function sm_action:RenderCastSkill(profile)
 		end
 	
 	end
-	GUI:Columns(1)
-	
+	GUI:Columns(1)	
 	GUI:Separator()
-	GUI:Text(GetString("Conditions:"))
-	GUI:BeginChild("##actioncondigrp", 500,300)
-	if ( table.size(self.conditions) > 0 ) then
-		for k,v in pairs(self.conditions) do
-			if (v:Render(k)) then modified = true end
-			GUI:SameLine(470)
-			local highlighted
-			if ( v.deletecount ) then
-				GUI:PushStyleColor(GUI.Col_Button,1.0,0.75,0.0,0.7)
-				GUI:PushStyleColor(GUI.Col_ButtonHovered,1.0,0.75,0.0,0.8)
-				GUI:PushStyleColor(GUI.Col_ButtonActive,1.0,0.75,0.0,0.9)
-				GUI:PushStyleColor(GUI.Col_Text,1.0,1.0,1.0,1.0)
-				highlighted = true
-			end	
-			if ( GUI:ImageButton("##actiondelcondi"..tostring(k),profile.texturepath.."\\w_delete.png",15,15)) then
-				v.deletecount = v.deletecount ~= nil and 2 or 1
-				if ( v.deletecount == 2 ) then
-					self.conditions[k] = nil
-					modified = true					
-				end
-			end
-			if ( highlighted ) then GUI:PopStyleColor(4) end
-		end
-	end
-	-- Add New Condition Button 
-	if ( self.addnew ) then
-		local conditions = SkillManager:GetConditions()
-		if ( table.valid(conditions)) then
-			local combolist = {}
-			local i = 1
-			for k,v in pairs(conditions) do
-				combolist[i] = GetString(tostring(v))
-				i = i+1
-			end
-			self.addnew = GUI:Combo("##addcondinew",self.addnew, combolist)
-			if ( combolist[self.addnew]) then
-				GUI:SameLine()
-				if (GUI:Button(GetString("Add").."##addnewcond", 50,20)) then
-					for k,v in pairs(conditions) do						
-						self.addnew = self.addnew-1
-						if ( self.addnew == 0 ) then
-							local newcond = v:new()
-							table.insert(self.conditions, newcond)
-							self.addnew = nil
-						end
-					end					
-				end
-			end
-		else
-			GUI:Text("ERROR: NO CONDITIONS REGISTERED IN THE SKILLMANAGER")
-		end
-	elseif ( GUI:Button("+##addcondi", 25,25) ) then 
-		self.addnew = 1		
-	end
+	GUI:Spacing()
 	
+	GUI:Text(GetString("Cast if:"))	if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("Cast this Skill if..." )) end
+	GUI:BeginChild("##actioncondigrp", 625,300)
+	if ( table.size(self.conditions) > 0 ) then
+		for idx,or_group in pairs(self.conditions) do
+			for k,v in pairs(or_group) do
+				if ( type(v) == "table") then
+					if (v:Render(tostring(idx)..tostring(k))) then modified = true end
+					GUI:SameLine(590)
+					local highlighted
+					if ( v.deletecount ) then
+						GUI:PushStyleColor(GUI.Col_Button,1.0,0.75,0.0,0.7)
+						GUI:PushStyleColor(GUI.Col_ButtonHovered,1.0,0.75,0.0,0.8)
+						GUI:PushStyleColor(GUI.Col_ButtonActive,1.0,0.75,0.0,0.9)
+						GUI:PushStyleColor(GUI.Col_Text,1.0,1.0,1.0,1.0)
+						highlighted = true
+					end	
+					if ( GUI:ImageButton("##actiondelcondi"..tostring(idx)..""..tostring(k),profile.texturepath.."\\w_delete.png",15,15)) then
+						v.deletecount = v.deletecount ~= nil and 2 or 1
+						if ( v.deletecount == 2 ) then
+							self.conditions[idx][k] = nil
+							if ( table.size(self.conditions[idx]) == 0) then
+								self.conditions[idx] = nil
+							end
+							modified = true
+						end
+					end
+					if ( highlighted ) then GUI:PopStyleColor(4) end
+				end
+			end
+			
+						
+			-- Add New Condition Button
+			if ( or_group.addnew ) then
+				local conditions = SkillManager:GetConditions()
+				if ( table.valid(conditions)) then
+					local combolist = {}
+					local i = 1
+					for k,v in pairs(conditions) do
+						combolist[i] = GetString(tostring(v))
+						i = i+1
+					end
+					or_group.addnew = GUI:Combo("##addcondinew",or_group.addnew, combolist)
+					if ( combolist[or_group.addnew]) then
+						GUI:SameLine()
+						if (GUI:Button(GetString("Add").."##addnewcond"..tostring(idx), 50,20)) then
+							for k,v in pairs(conditions) do						
+								or_group.addnew = or_group.addnew-1
+								if ( or_group.addnew == 0 ) then
+									local newcond = v:new()
+									table.insert(self.conditions[idx], newcond)
+									or_group.addnew = nil
+									modified = true
+									break
+								end
+							end					
+						end
+					end
+				else
+					GUI:Text("ERROR: NO CONDITIONS REGISTERED IN THE SKILLMANAGER")
+				end
+			elseif ( GUI:Button(GetString("+ AND").."##addcondi"..tostring(idx), 60,20)) then 
+				self.conditions[idx].addnew = 1
+			end
+			
+			if ( idx < #self.conditions ) then
+				GUI:Text(GetString("OR Cast if:"))
+			end
+		end
+				
+		-- Add a new OR Group:
+		GUI:Spacing()
+		if (GUI:Button(GetString("+ OR").."##addcondOR"..tostring(idx), 60,20)) then
+			local newgroup = { addnew = 1, }
+			table.insert(self.conditions,newgroup)
+		end
+		
+	else
+		if (GUI:Button(GetString("+ Add New Condition").."##addcondOR2", 150,20)) then
+			local newgroup = { addnew = 1, }
+			table.insert(self.conditions,newgroup)
+		end
+	end
+		
 	GUI:EndChild()
 	
-
-	GUI:Text("CONDITION EDITOR WINDOW HERE")
-	
+	GUI:Spacing()
+	GUI:Spacing()
 	GUI:Separator()
 	
-
+	local _,maxy = GUI:GetContentRegionAvail()
+	GUI:SetNextTreeNodeOpened(false,GUI.SetCond_Once)
+	if ( GUI:TreeNode(GetString("CUSTOM CONDITION CODE EDITOR")) ) then			
+		if ( GUI:IsItemHovered() ) then GUI:SetTooltip(GetString("Write you own Lua code, when to cast this skill. Must return 'true' or 'false'!")) end
+		local maxx,_ = GUI:GetContentRegionAvail()
+		local changed = false
+		self.conditioncode, changed = GUI:InputTextEditor( "##smactioncodeeditor", self.conditioncode or GetString("-- Always return 'true' when the skill can be cast, else return 'false' \n").. "return true", maxx, math.max(maxy/2,300) , GUI.InputTextFlags_AllowTabInput)
+		if ( changed ) then self.conditioncodechanged = true modified = true end
+		if ( self.conditioncodechanged ) then
+			GUI:PushStyleColor(GUI.Col_Button,1.0,0.75,0.0,0.7)
+			GUI:PushStyleColor(GUI.Col_ButtonHovered,1.0,0.75,0.0,0.8)
+			GUI:PushStyleColor(GUI.Col_ButtonActive,1.0,0.75,0.0,0.9)
+			GUI:PushStyleColor(GUI.Col_Text,1.0,1.0,1.0,1.0)
+			if ( GUI:Button(GetString("Save Changes"),maxx,20) ) then				
+				self.conditioncodechanged = nil
+				profile:Save()
+			end				
+			GUI:PopStyleColor(4)
+		end
+		GUI:PushItemWidth(600)
+		GUI:Dummy(600,1)
+		GUI:PopItemWidth()
+		GUI:TreePop()
+	end
+	GUI:Separator()
 	
-	
-	return false
+	return modified
 end
 
 
