@@ -448,6 +448,8 @@ function sm_skill_profile:Render()
 			local tmp = self.actionlist[self.dragid]
 			self.actionlist[self.dragid] = self.actionlist[self.dropid]
 			self.actionlist[self.dropid] = tmp
+			-- don't flip skill when it is being edited
+			if ( self.selectedactionid and self.actionlist[self.selectedactionid] ) then self.selectedactionid = self.dropid end
 			self.dragid = nil
 			self.dropid = nil
 			self.dropidhover = nil
