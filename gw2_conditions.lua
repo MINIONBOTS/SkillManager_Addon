@@ -133,12 +133,12 @@ sm_condition_power.operators = { [1] = "<", [2] = "<=", [3] = "==", [4] = ">=", 
 function sm_condition_power:initialize()
 	self.operator = 1
 	self.value = 100
-	d("[SkillManager] - New Health Condition created")	
+	d("[SkillManager] - New Power Condition created")	
 end
 -- Save  the condition data into a table and returns that
 function sm_condition_power:Save()
 	local data = {}
-	data.class = 'Health'	-- required, saves the own "class Name"
+	data.class = 'Power'	-- required, saves the own "class Name"
 	data.operator = self.operator
 	data.value = self.value
 	return data
