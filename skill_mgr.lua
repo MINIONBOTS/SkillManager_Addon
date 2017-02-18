@@ -228,6 +228,15 @@ function ml_skill_mgr.Draw(event,ticks)
 end
 RegisterEventHandler("Gameloop.Draw", ml_skill_mgr.Draw)
 
+function ml_skill_mgr:Cast( targetid )
+	if ( ml_skill_mgr.profile) then
+		return ml_skill_mgr.profile:Cast(targetid)
+	else
+		ml_error("[SkillManager] - No SkillManager Profile loaded.")
+	end
+	return false
+end
+
 _G["SkillManager"] = {}
 function SkillManager:RegisterProfileTemplate( template ) ml_skill_mgr.ProfileTemplate = template end -- just for internal usage, to get an instance / link to the local sm_skill_profile.lua
 function SkillManager:SetProfileFolder( folderpath ) ml_skill_mgr:SetProfileFolder( folderpath ) end
@@ -239,3 +248,8 @@ function SkillManager:GetSkillData() return ml_skill_mgr.skilldata end
 function SkillManager:AddCondition(class) ml_skill_mgr.conditions[tostring(class)] = class end
 function SkillManager:GetCondition(classname) if (ml_skill_mgr.conditions[classname]) then return ml_skill_mgr.conditions[classname] end end
 function SkillManager:GetConditions() return ml_skill_mgr.conditions end
+function SkillManager:Cast(targetid) return ml_skill_mgr:Cast( targetid ) end
+
+function gw2_skill_manager:Use(targetid)
+	return ml_skill_mgr:Cast( targetid )
+end

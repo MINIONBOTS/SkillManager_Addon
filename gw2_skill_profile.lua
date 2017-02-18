@@ -199,7 +199,7 @@ sm_skill_profile.slotnames = {
 	[15] = GetString(" F3"),
 	[16] = GetString(" F4"),
 	[17] = GetString(" F5"),
-	[18] = GetString(""),
+	[18] = GetString("S1"),
 }
 
 sm_skill_profile.professions = { 
@@ -230,13 +230,13 @@ function sm_skill_profile:GetSkillsetName(w,t)
 	elseif ( t == 2 ) then back = GetString("Water")
 	elseif ( t == 3 ) then back = GetString("Air")
 	elseif ( t == 4 ) then back = GetString("Earth")
-	elseif ( t == 5 ) then back = GetString("DeathShroud")
+	elseif ( t == 6 ) then back = GetString("DeathShroud")
 	elseif ( t == 9 ) then back = GetString("DeathShroud")
 	elseif ( t == 10 ) then back = GetString("Astral")
-	elseif ( t == 12 ) then back = GetString("Assassin")
-	elseif ( t == 13) then back = GetString("Dwarf")
-	elseif ( t == 14 ) then back = GetString("Deamon")
-	elseif ( t == 16 ) then back = GetString("Centaur")
+	elseif ( t == 13 ) then back = GetString("Assassin")
+	elseif ( t == 14) then back = GetString("Dwarf")
+	elseif ( t == 15 ) then back = GetString("Deamon")
+	elseif ( t == 17 ) then back = GetString("Centaur")
 	end
 	return front.." "..back
 end
@@ -322,12 +322,21 @@ function sm_skill_profile:Render()
 		local imgsize = 25
 		local hoveringaction
 		GUI:PushStyleVar(GUI.StyleVar_ItemSpacing, 0, 4)
-		GUI:PushStyleVar(GUI.StyleVar_FramePadding, 0, 0)		
+		GUI:PushStyleVar(GUI.StyleVar_FramePadding, 0, 0)
+		-- CanCast() ->Evaluate is using 2 args, player and target which are saved on the profile
+		if (not self.player) then self.player = Player end
+		if (not self.target) then self.target = Player:GetTarget() end
+		if (not self.set) then self.set = self:GetCurrentSkillSet() end
+		
 		for k,v in pairs(self.actionlist) do
 			local size = imgsize
-			local skill = self:GetSkill(v.sequence[1].id) -- TODO: FIX ME PROPER
-			local texture = skill ~= nil and self.texturecache.."\\default.png" or self.texturecache.."\\blank.png"			
-			local cd
+			local skills = {}
+			local skillsets = {}
+			for q,w in pairs(v.sequence) do
+				skills[q], skillsets[q] = self:GetSkill(w.id)
+			end
+			local texture = skills[1] ~= nil and self.texturecache.."\\default.png" or self.texturecache.."\\blank.png"			
+			local cd = 0
 			local colorset
 			local labelx,labely = GUI:GetCursorScreenPos()
 			local label
@@ -342,31 +351,22 @@ function sm_skill_profile:Render()
 				colorset = true
 				labelx = labelx + 55
 				labely = labely + size/3
-				if ( skill ) then
-					label = skill.name
-				elseif ( v.sequence[1].id > 0 ) then
-					label = "[Missing Skill Data ID: "..tostring(v.sequence[1].id)	
-				else
-					label = "[Empty Action]"
+				label = v.name
+				
+				for q,s in pairs(v.sequence) do
+					if ( not skills[q] ) then
+						if ( s.id > 0 ) then
+							label = "[Missing Skill Data ID: "..tostring(s.id)	
+						else
+							label = "[Empty Action]"
+						end
+					end
 				end
 				
-			elseif ( skill ) then
-				if ( skill.cooldownmax and skill.cooldownmax > 0 and skill.cooldown and skill.cooldown > 0 ) then
-					cd = (100 - math.round(skill.cooldown*100 / skill.cooldownmax, 0))
-					local r,g,b = GUI:ColorConvertHSVtoRGB( cd*0.0045, 0.706, 0.63)					
-					GUI:PushStyleColor(GUI.Col_ButtonHovered,r, g, b, 0.8)
-					GUI:PushStyleColor(GUI.Col_ButtonActive,r, g, b, 0.9)
-					GUI:PushStyleColor(GUI.Col_Text,1.0,1.0,1.0,1.0)
-					GUI:PushStyleColor(GUI.Col_Button,r, g, b, 0.7)
-					colorset = true
-					recx = labelx recy = labely recw = labelx+GUI:GetContentRegionAvail()-10 rech = labely+size
-					labelx = labelx + 35
-					labely = labely + size/4
-					label = skill.name.." ("..tostring(cd).."%)"					
-				
-				else
-					local currentspell = Player:GetCurrentlyCastedSpell()					
-					if ( currentspell == GW2.SKILLBARSLOT["Slot_" .. skill.slot] and self.currentskills[skill.slot] and  self.currentskills[skill.slot].skillid == v.sequence[1].id) then						
+			elseif ( #skills > 0 ) then				
+				local currenltycast				
+				for q,s in pairs(skills) do
+					if ( self.currentaction == k and self.currentactionsequence == q ) then
 						GUI:PushStyleColor(GUI.Col_ButtonHovered,0.18,1.0,0.0,0.8)
 						GUI:PushStyleColor(GUI.Col_ButtonActive,0.18,1.0,0.0,0.9)
 						GUI:PushStyleColor(GUI.Col_Text,1.0,1.0,1.0,1.0)
@@ -374,13 +374,54 @@ function sm_skill_profile:Render()
 						colorset = true	
 						labelx = labelx + 35
 						labely = labely + size/4
-						label = skill.name.." ("..GetString("Casting")..")"
+						if ( q > 1 ) then
+							label = v.name.." ("..GetString("Active ")..tostring(q).." / "..tostring(#skills)..")"
+						else
+							label = v.name.." ("..GetString("Active")..")"
+						end
+						currenltycast = true
+						break
+					end
+				end
 						
+				if ( not currenltycast ) then
+					local count = 0
+					for q,s in pairs(skills) do
+						if ( s.cooldownmax and s.cooldownmax > 0 ) then 
+							if ( s.cooldown and s.cooldown > 0 ) then
+								cd = cd + (100 - math.round(s.cooldown*100 / s.cooldownmax, 0))
+							else
+								cd = cd + 100
+							end
+							count = count + 1
+						end
+					end
+					if ( count > 0 ) then 	cd = math.round(cd / count,0) end
+					
+					if ( count > 0 and cd ~= 100 ) then					
+						local r,g,b = GUI:ColorConvertHSVtoRGB( cd*0.0045, 0.706, 0.63)					
+						GUI:PushStyleColor(GUI.Col_ButtonHovered,r, g, b, 0.8)
+						GUI:PushStyleColor(GUI.Col_ButtonActive,r, g, b, 0.9)
+						GUI:PushStyleColor(GUI.Col_Text,1.0,1.0,1.0,1.0)
+						GUI:PushStyleColor(GUI.Col_Button,r, g, b, 0.7)
+						colorset = true
+						recx = labelx
+						recy = labely 
+						recw = labelx+GUI:GetContentRegionAvail()-10 
+						rech = labely+size
+						labelx = labelx + 35
+						labely = labely + size/4
+						label = v.name.." ("..tostring(cd).."%)"					
+					
 					else
 						labelx = labelx + 35
 						labely = labely + size/4
-						label = skill.name
-					end					
+						if (#skills > 1) then
+							label = v.name .." (".. tostring(#skills)..")"
+						else
+							label = v.name
+						end
+					end				
 				end
 				
 			elseif ( v.sequence[1].id > 0 ) then
@@ -393,10 +434,20 @@ function sm_skill_profile:Render()
 				label = "[Empty Action]"				
 			end
 			
-			
-			GUI:ImageButton("##actionlistentry"..tostring(k), texture,size,size)
+			local cancast = true
+			for q,s in pairs(skills) do
+				if ( not skillsets[q] or ( s.cooldown and s.cooldown > 0) or not v:CanCastSkill(self, skillsets[q], q)) then
+					cancast = false
+					break
+				end
+			end
+			if ( cancast ) then
+				GUI:ImageButton("##actionlistentry"..tostring(k), texture,size,size)
+			else
+				GUI:ImageButton("##actionlistentry"..tostring(k), texture,size,size,0,0,1,1,-1, 0,0,0,0,  1,1, 1, 0.4) -- last 4 numbers are rgba
+			end
 			GUI:SameLine()
-			local width = cd~=nil and (GUI:GetContentRegionAvail()-10)/100*cd or  (GUI:GetContentRegionAvail()-10)
+			local width = cd~=0 and (GUI:GetContentRegionAvail()-10)/100*cd or  (GUI:GetContentRegionAvail()-10)
 			-- Apply drag n drop color
 			if ( self.dragid ) then
 				if ( self.dragid == k ) then
@@ -434,9 +485,14 @@ function sm_skill_profile:Render()
 			if ( recx ) then
 				GUI:AddRect( recx, recy, recw, rech, GUI:ColorConvertFloat4ToU32(1.0,1.0,1.0,0.2))
 			end
+						
 			GUI:AddText( labelx, labely, GUI:ColorConvertFloat4ToU32(1.0,1.0,1.0,0.80), label)	
 		end
 		GUI:PopStyleVar(2)
+		
+		self.player = nil
+		self.target = nil
+		self.set = nil
 		
 		-- When moving the mouse outside the window while dragging actions around
 		if ( (self.dragid or self.dropidhover) and (hoveringaction == nil and not GUI:IsWindowHovered())) then
@@ -500,7 +556,6 @@ function sm_skill_profile:Render()
 				self.actioneditoropen = nil
 			end
 		end
-		
 		GUI:TreePop()
 	end
 end
@@ -747,7 +802,8 @@ function sm_skill_profile:RenderSkillSetEditor(currentaction)
 							GUI:PushStyleColor(GUI.Col_ButtonHovered,1.0,0.75,0.0,0.9)
 							GUI:PushStyleColor(GUI.Col_ButtonActive,1.0,0.75,0.0,1.0)
 						end
-						if ( GUI:ImageButton(skill.name, sm_skill_profile.texturecache.."\\default.png", 30,30) ) then self.selectedskill = skill.id end if (GUI:IsItemHovered()) then GUI:SetTooltip( skill.name ) end						
+						
+						if ( GUI:ImageButton(skill.name.."##"..tostring(i), sm_skill_profile.texturecache.."\\default.png", 30,30) ) then self.selectedskill = skill.id end if (GUI:IsItemHovered()) then GUI:SetTooltip( skill.name ) end						
 						if ( highlight ) then GUI:PopStyleColor(3) end
 						-- Right click - Context Menu Spawn
 						
@@ -890,6 +946,20 @@ function sm_skill_profile:GetCurrentSkillsetData()
 			end
 		end
 	end
+	--[[-- Add one more custom skill for "weapon swap"
+	local ws = Player:GetCurrentWeaponSet()
+	if ( ws == 4 or ws == 5 ) then
+		result[2] = {
+			id = 2,
+			skillid = 2,
+			slot = 18,
+			flip_level = 0,
+			slot_name = "None",
+			type = "0",
+			weapon_type = "0",
+			name = GetString("Swap Weapons"),
+		}
+	end--]]
 	return result
 end
 
@@ -918,7 +988,7 @@ end
 function sm_skill_profile:GetSkill(id)
 	for k,v in pairs(self.skillsets) do
 		if (v.skills[id]) then
-			return v.skills[id]			
+			return v.skills[id], v
 		end
 	end
 end
@@ -1020,6 +1090,7 @@ function sm_action:Save()
 	data.sequence = {}
 	local idx = 1
 	for a,s in pairs ( self.sequence ) do
+		s.conditioncodefunc = nil
 		data.sequence[idx] = { id = s.id, conditioncode = s.conditioncode, conditions = {}, }		
 		if ( table.valid(s.conditions) ) then
 			for i,or_group in pairs(s.conditions) do			
@@ -1032,7 +1103,7 @@ function sm_action:Save()
 			end
 		end
 		idx = idx + 1
-	end
+	end	
 	return data
 end
 -- Loads the action from a former saved data table
@@ -1133,7 +1204,7 @@ function sm_action:Render(profile)
 		
 	-- Skill Sequence Buttons
 		GUI:Text(GetString("Skill Sequence:"))
-		if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("Add multiple skills to create a Combo. Skills are cast from 'Left' to 'Right'!")) end
+		if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("Add multiple skills to create a Combo. Skills are cast in order from 'Left' to 'Right'!")) end
 		local neededheight = math.max(40, math.ceil(#self.sequence / 11)*40 )
 		GUI:BeginChild("##actionsequence", 600,neededheight)
 		local count = 1
@@ -1202,7 +1273,7 @@ function sm_action:Render(profile)
 			GUI:SetColumnOffset(1,60)
 			GUI:SetColumnOffset(2,375)
 			GUI:Dummy(30,10)
-			local skill = profile:GetSkill(self.sequence[self.selectedskill].id)		
+			local skill, set = profile:GetSkill(self.sequence[self.selectedskill].id)
 			if ( skill ) then
 				if ( GUI:ImageButton("##sm"..tostring(i), sm_skill_profile.texturecache.."\\default.png",40,40) ) then				
 					self.editskill = self.selectedskill
@@ -1234,7 +1305,11 @@ function sm_action:Render(profile)
 						GUI:BulletText(GetString("Cooldown:")) GUI:SameLine(125) GUI:Text(" 0 / "..tostring(skill.cooldownmax))
 					end
 				end
-			
+				GUI:BulletText(GetString("Skill Set:")) GUI:SameLine(125) GUI:Text(tostring(set.name))
+				local currentset = profile:GetCurrentSkillSet()
+				if ( currentset ) then
+					GUI:BulletText(GetString("Current Set:")) GUI:SameLine(125) GUI:Text(tostring(currentset.id).."-"..tostring(currentset.name))
+				end
 			end
 			GUI:Columns(1)	
 			GUI:Separator()
@@ -1363,6 +1438,274 @@ function sm_action:Render(profile)
 	
 	return modified
 end
+
+
+-- Checks if a skill of the sequence can be cast by evaluating all conditions
+function sm_action:CanCastSkill(profile, skillset, sequenceid)
+	if ( self.sequence[sequenceid] ~= nil ) then
+		-- Check if we need to swap sets and if that is possible			
+		if ( not profile:GetSwitchSkillSetSlot(skillset))  then
+			return false
+		end
+		
+		
+		-- Evaluate custom code first
+		local skill = self.sequence[sequenceid]
+		if ( skill.conditioncode ) then
+			if ( not skill.conditioncodefunc ) then
+				local execstring = 'return function(self, context) '..skill.conditioncode..' end'
+				local func = loadstring(execstring)
+				if ( func ) then
+					func()(skill, profile.context)
+					skill.conditioncodefunc = func	
+				else				
+					ml_error("[SkillManager] - Custom Condition Code Editor compilation error in Action ".. tostring(self.name ~= "" and self.name or "").." at skill "..tostring(sequenceid))
+					assert(loadstring(execstring)) -- print out the actual error
+				end
+			end
+			
+			if ( skill.conditioncodefunc and not skill.conditioncodefunc()(skill, profile.context) ) then 
+				return false
+			end
+		end
+		
+		-- Go through all Conditions
+		if ( #skill.conditions > 0 ) then
+			for i,or_group in pairs( skill.conditions ) do
+				-- Either of the or_groups needs to be true for the skill to be castable
+				local cancast = true
+				for k,v in pairs(or_group) do
+					if ( type(v) == "table") then
+						if ( not v:Evaluate(profile.player, profile.target) ) then
+							cancast = false
+							break
+						end
+					end
+				end
+				if ( cancast ) then	return true end
+			end
+			return false
+		end
+		return true -- in case there is only custom condition code or no code at all
+	end
+	return false
+end
+
+-- Returns the slot to be case in order to swap to the wanted skillset that contains the action we want to cast
+function sm_skill_profile:GetSwitchSkillSetSlot(targetskillset)
+	if ( targetskillset.name ~= self.set.name ) then -- The action to be checked is on a different skillset than what we currently have
+			
+		-- Can we switch to that new set by swapping weapons ?
+		if ( targetskillset.activateskillid == 2 	-- target set can be activated by swapping weapons
+				and ( Player:CanSwapWeaponSet() or Player:GetCurrentWeaponSet() == 2 ) -- we can swap weapons or player is engi and has a bundle equipped
+				and (((string.starts(targetskillset.id,"4_") or string.starts(targetskillset.id,"5_")) and self.player.swimming == 0)	-- target set is W1 / W2 and we are on land
+					or((string.starts(targetskillset.id,"0_") or string.starts(targetskillset.id,"1_")) and self.player.swimming == 1)))	then-- or taget set is Aqua1/2 and we are under water						
+			return 2
+				
+		else
+			-- Check if the activateskillid of the targetskillset is on our current skillset and can be cast, so we can swap to that set
+			for sid, sk in pairs (self.currentskills) do				
+				if ( sk.skillid == targetskillset.activateskillid ) then -- find the slot of the activate skill
+					local skilldata = self:GetSkill(targetskillset.activateskillid)						
+					if ( skilldata and (not skilldata.cooldown or skilldata.cooldown == 0) ) then
+						return skilldata.slot
+					end
+				end
+			end
+			
+			-- not sure if that is needed, so far only necro shroud would use it, but that can as well be fixed by setting a combo skill before one of the other shroud skills,  to swap out of it
+			--[[ check if the targetskillset is weapon1 or weapon2 set, assuming that activateskillid == 2 is ONLY used by these two sets, in that case, deactivating the current set should bring us to w1 or w2
+			if ( self.set.deactivateskillid and self.set.deactivateskillid > 2 
+				and (((string.starts(targetskillset.id,"4_") or string.starts(targetskillset.id,"5_")) and self.player.swimming == 0)	-- target set is W1 / W2 and we are on land
+				or((string.starts(targetskillset.id,"0_") or string.starts(targetskillset.id,"1_")) and self.player.swimming == 1)))	then-- or taget set is Aqua1/2 and we are under water		
+				
+				-- Check if the deactivateskillid of the targetskillset is on our current skillset and can be cast, so we can swap to that set
+				for sid, sk in pairs (self.currentskills) do				
+					if ( sk.skillid == self.set.deactivateskillid ) then -- find the slot of the activate skill
+						local skilldata = self:GetSkill(self.set.deactivateskillid)						
+						if ( skilldata and (not skilldata.cooldown or skilldata.cooldown == 0) ) then
+							return skilldata.slot
+						end
+					end
+				end
+				return 
+				 
+			end--]]
+			
+		end
+		return false
+	end
+	return 1
+end
+
+-- Matches the skillset stuff to find out which set we are currently having active
+function sm_skill_profile:GetCurrentSkillSet()
+	local w = Player:GetCurrentWeaponSet()
+	local t = Player:GetTransformID()
+	local id = tostring(w).."_"..tostring(t)
+	
+	for k,v in pairs(self.skillsets) do
+		if ( v.id == id ) then
+			if ( w == 2 ) then
+				-- Engi has several 2_0 skillset IDs, need to check additionally for deactivation skill
+				if ( v.deactivateskillid and v.deactivateskillid > 2 ) then -- 1 is "Automatic", 2 is "Swap Weapons"
+					for sid, skill in pairs (v.skills) do
+						if ( sid == v.deactivateskillid ) then -- find the slot of the deactivate skill
+							if ( self.currentskills and self.currentskills[skill.slot] and self.currentskills[skill.slot].skillid == v.deactivateskillid ) then
+								return v
+							end
+						end
+					end
+				else
+					ml_error("[SkillManager] - Skillset "..v.name.." requires a valid Deactivation Skill!")
+				end
+			else
+				return v
+			end
+		end
+	end
+	return self.skillsets[1]
+end
+
+-- Gets "next" skill that can be cast.
+function sm_skill_profile:GetNextSkillForCasting()
+	-- We casted an action before, check if this action is a sequence and pick the next skill if possible
+	if ( self.currentaction ) then
+		self.currentactionsequence = self.currentactionsequence + 1 
+		local action = self.actionlist[self.currentaction]
+		if ( action.sequence[self.currentactionsequence] ) then
+			local skilldata, skillset = self:GetSkill(action.sequence[self.currentactionsequence].id)
+			if ( skilldata and (not skilldata.cooldown or skilldata.cooldown == 0) and action:CanCastSkill(self, skillset, self.currentactionsequence)) then
+				return true
+			end
+		end
+	end
+	
+	-- We need a new action which we can cast
+	for k,action in pairs(self.actionlist) do
+		-- check if all skills in an action sequence can be cast, before selecting it ... this has some limitations obviously in the cancast conditions...
+		local cancast = true
+		for i,skill in pairs(action.sequence) do
+			local skilldata, skillset = self:GetSkill(skill.id)
+			if ( not skilldata or ( skilldata.cooldown and skilldata.cooldown > 0) or not action:CanCastSkill(self, skillset, i)) then				
+				cancast = nil
+			end			
+		end
+		if ( cancast ) then
+			self.currentaction = k
+			self.currentactionsequence = 1
+			return true
+		end
+	end
+	self.currentaction = nil
+	self.currentactionsequence = nil	
+end
+
+
+-- Casting
+function sm_skill_profile:Cast(targetid)
+	local target = CharacterList:Get(targetid) or GadgetList:Get(targetid) --or AgentList:Get(targetid)
+	if ( target ) then
+		self.pp_castinfo = Player.castinfo
+		self.player = Player
+		self.target = target
+		self.set = self:GetCurrentSkillSet()
+		
+		-- Setting a "current action to cast"
+		if ( not self.currentaction ) then self:GetNextSkillForCasting() end
+		
+		if ( self.currentaction ) then
+			local action = self.actionlist[self.currentaction]
+			if ( not action ) then 
+				-- someone deleted an action from the list
+				self.currentaction = nil
+				self.currentactionsequence = nil	
+				return false
+			end
+			local skilldata, skillset = self:GetSkill(action.sequence[self.currentactionsequence].id)		
+			if ( skilldata ) then
+				
+				-- Make sure we can still cast the spell that we picked earlier, if somethign changed and we cannot cast it, get a new skill instead
+				if (( not skilldata.cooldown or skilldata.cooldown == 0) and not action:CanCastSkill(self, skillset, self.currentactionsequence)) then					
+					self.currentaction = nil
+					self.currentactionsequence = nil	
+					if (self:GetNextSkillForCasting() ) then	-- get a new spell
+						action = self.actionlist[self.currentaction]
+						skilldata, skillset = self:GetSkill(action.sequence[self.currentactionsequence].id)								
+					else
+						return false
+					end
+				end
+				
+				-- If skill is already on CD, or if it is a spammable skill and our lastskillid is showing we cast it, get the next skill in the sequence OR a new action
+				if ( (skilldata.cooldown and skilldata.cooldown ~= 0) or (skilldata.cooldownmax and skilldata.cooldownmax == 0 and self.pp_castinfo.lastskillid == skilldata.id)) then
+					if (self:GetNextSkillForCasting() ) then-- get a new / next skill
+						action = self.actionlist[self.currentaction]
+						skilldata, skillset = self:GetSkill(action.sequence[self.currentactionsequence].id)								
+					else
+						return false
+					end
+				end
+				
+				
+				-- We are not casting the skill yet,...trying to do so ...
+				if (skilldata and (not skilldata.cooldown or skilldata.cooldown == 0) and (self.pp_castinfo.skillid ~= skilldata.id or (skilldata.slot == 1 and skilldata.cooldownmax and skilldata.cooldownmax == 0))) then
+					-- Ensure the correct Weapon Set
+					local switchslot = self:GetSwitchSkillSetSlot(skillset) 
+					if ( switchslot == 2 ) then
+						-- swap weapons
+						Player:SwapWeaponSet()
+						d("Swapping weaponset..")
+						return true
+					elseif ( switchslot > 2 ) then
+						-- cast spell to swap sets
+						Player:CastSpell(GW2.SKILLBARSLOT["Slot_" .. switchslot])
+						d("Swapping weaponset to "..tostring(switchslot))
+						return true
+					end
+					
+					-- Cast
+					local pos = target.pos
+					local castresult
+					if (skilldata.groundtargeted) then
+						-- extend cast position by radius if the target is slightly outside
+						-- 5% extra range
+						-- increasing height slightly -> extra range
+						-- calc in radius -> extra range
+						if (target.ischaracter) then
+							castresult = Player:CastSpell(GW2.SKILLBARSLOT["Slot_" .. skilldata.slot] , pos.x, pos.y, pos.z)
+						elseif (target.isgadget) then
+							if (skilldata.isprojectile) then
+								castresult = Player:CastSpell(GW2.SKILLBARSLOT["Slot_" .. skilldata.slot] , pos.x, pos.y, pos.z)
+							else
+								castresult = Player:CastSpell(GW2.SKILLBARSLOT["Slot_" .. skilldata.slot] , pos.x, pos.y, (pos.z - target.height))
+							end
+						end
+					else
+						castresult = Player:CastSpell(GW2.SKILLBARSLOT["Slot_" .. skilldata.slot] , target.id)
+					end
+				
+					if ( castresult ) then
+						d("Casting: "..skilldata.name)
+						return true
+					end
+								
+				end
+			else
+				ml_error("[SkillManager] - Invalid Skilldata for casting, ID : "..tostring(action.sequence[self.currentactionsequence].id))
+			end
+		end
+		self.player = nil
+		self.target = nil
+		self.set = nil
+	end
+	return false
+end
+
+
+
+
+
 
 
 

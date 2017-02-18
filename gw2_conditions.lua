@@ -60,7 +60,7 @@ end
 function sm_condition_hp:Evaluate(...)	-- Player, Target, ... others	
 	if ( arg[1] ~= nil) then
 		-- This Health Check is set to check HP on a Target, check if we have one, else return false
-		if ( self.target == 2 and arg[1] == nil ) then return false end
+		if ( self.target == 2 and arg[2] == nil ) then return false end
 				
 		local hp
 		if ( self.target == 1 ) then 
