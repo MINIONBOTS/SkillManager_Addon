@@ -690,8 +690,8 @@ function sm_skill_profile:RenderSkillSetEditor(currentaction)
 		
 		else
 			-- Other Sets
-			if ( GUI:ImageButton("##smrefresh",sm_skill_profile.texturepath.."\\change.png",35,35) or self.skillsets[self.selectedskillset].id == "") then								
-				self.skillsets[self.selectedskillset].id = tostring(Player:GetCurrentWeaponSet()).."_"..tostring(Player:GetTransformID())				
+			if ( GUI:ImageButton("##smrefresh",sm_skill_profile.texturepath.."\\change.png",35,35) or self.skillsets[self.selectedskillset].id == "") then
+				self.skillsets[self.selectedskillset].id = tostring(Player:GetCurrentWeaponSet()).."_"..tostring(Player:GetTransformID())
 				-- Get a default (better) name for the set, trying to find the skill 1 . weapontype
 				if ( table.size(currentskills) > 0 ) then
 					local skill
@@ -701,8 +701,13 @@ function sm_skill_profile:RenderSkillSetEditor(currentaction)
 							break
 						end
 					end
-					if ( skill and string.contains(self.skillsets[self.selectedskillset].name,"Set_") and skill.weapon_type and skill.weapon_type ~= "None") then	-- give the set a proper name
-						self.skillsets[self.selectedskillset].name = skill.weapon_type
+					if ( skill ) then
+						if ( string.contains(self.skillsets[self.selectedskillset].name,"Set_") and skill.weapon_type and skill.weapon_type ~= "None") then	-- give the set a proper name
+							self.skillsets[self.selectedskillset].name = skill.weapon_type
+						end
+						if ( Player:GetCurrentWeaponSet() == 2 and SkillManager:GetPlayerProfession() == 3) then -- allkits have the same id ...making it unique
+							self.skillsets[self.selectedskillset].id = self.skillsets[self.selectedskillset].id.."_"..tostring(skill.id)
+						end
 					end
 				end
 				modified = true
@@ -887,6 +892,15 @@ function sm_skill_profile:RenderSkillSetEditor(currentaction)
 					self.selectedskillset = nil					
 					return -2
 				end
+			else
+				GUI:Separator()
+				GUI:Spacing()
+				GUI:Dummy(50,10)
+				local width = GUI:GetContentRegionAvailWidth()
+				GUI:SameLine((width/3)-40)
+				if ( GUI:Button(GetString("Cancel"), 80,35) ) then
+					return -1
+				end				
 			end
 		end
 	end
@@ -1543,10 +1557,15 @@ function sm_skill_profile:GetCurrentSkillSet()
 	local w = Player:GetCurrentWeaponSet()
 	local t = Player:GetTransformID()
 	local id = tostring(w).."_"..tostring(t)
+	if ( w == 2 and SkillManager:GetPlayerProfession() == 3) then -- engi bundles have all id 2, use additionally skill1 id to seperat them
+		if ( self.currentskills and self.currentskills[1] ) then
+			id = id.."_"..tostring(self.currentskills[1].skillid)
+		end
+	end
 	
 	for k,v in pairs(self.skillsets) do
 		if ( v.id == id ) then
-			if ( w == 2 ) then
+			--[[if ( w == 2 ) then
 				-- Engi has several 2_0 skillset IDs, need to check additionally for deactivation skill
 				if ( v.deactivateskillid and v.deactivateskillid > 2 ) then -- 1 is "Automatic", 2 is "Swap Weapons"
 					for sid, skill in pairs (v.skills) do
@@ -1556,12 +1575,13 @@ function sm_skill_profile:GetCurrentSkillSet()
 							end
 						end
 					end
-				else
+				elseif ( #v.skills > 0 ) then
 					ml_error("[SkillManager] - Skillset "..v.name.." requires a valid Deactivation Skill!")
 				end
 			else
 				return v
-			end
+			end	]]	
+			return v			
 		end
 	end
 	return self.skillsets[1]
