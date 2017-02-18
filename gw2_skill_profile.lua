@@ -20,6 +20,7 @@ sm_skill_profile.texturecache = GetLuaModsPath() .. "\\SkillManager\\Cache"
 sm_skill_profile.actionlist = {}				-- The priority list used for casting, holding all skills / combos in order 1 - n
 sm_skill_profile.currentskills = {}			-- Holds a copy of the "live data" of the player skills
 sm_skill_profile.cooldownlist = {}			-- Another internal list to know which skills were on cd
+sm_skill_profile.skilldata = {}				-- Additional Skill Data from the API
 
 
 -- These 2 needs to be set before the profile can be loaded / saved. Pass the 3rd arg for private addon handling
@@ -232,7 +233,7 @@ function sm_skill_profile:GetSkillsetName(w,t)
 	elseif ( t == 4 ) then back = GetString("Earth")
 	elseif ( t == 6 ) then back = GetString("DeathShroud")
 	elseif ( t == 9 ) then back = GetString("DeathShroud")
-	elseif ( t == 10 ) then back = GetString("Astral")
+	elseif ( t == 11 ) then back = GetString("Astral")
 	elseif ( t == 13 ) then back = GetString("Assassin")
 	elseif ( t == 14) then back = GetString("Dwarf")
 	elseif ( t == 15 ) then back = GetString("Deamon")
@@ -909,7 +910,7 @@ end
 
 -- Grabs a "snapshot" of the current skills the player has and extends each entry with additional data from the "gw2_skill_data.lua" table.
 function sm_skill_profile:GetCurrentSkillsetData()
-	local skilldb = SkillManager:GetSkillData()
+	local skilldb = self.skilldata
 	local result = {}			-- Holds all skills of the current set, key is skillID
 	for i = 1, ml_global_information.MAX_SKILLBAR_SLOTS-1 do	-- 1 to 19
 		local skill = Player:GetSpellInfo(GW2.SKILLBARSLOT["Slot_" .. i])
@@ -979,7 +980,7 @@ end
 
 -- Gets the additional skilldata from the gw2_skiull.data file and returns that
 function sm_skill_profile:GetSkillDataByID( skillid )
-	local skilldb = SkillManager:GetSkillData()
+	local skilldb = self.skilldata
 	if (skilldb) then		
 		local data = skilldb[skillid]
 		if ( data ) then
@@ -1723,13 +1724,14 @@ function sm_skill_profile:Cast(targetid)
 end
 
 
-
-
-
-
-
-
-
+-- To load the additional skill data
+function sm_skill_profile.Init()
+	sm_skill_profile.skilldata = FileLoad(GetStartupPath()  .. "\\LuaMods\\SkillManager\\gw2_skill_data.lua")
+	if ( not table.valid(sm_skill_profile.skilldata) ) then
+		ml_error("[SkillManager] - Failed to load Skill Data!")
+	end
+end
+RegisterEventHandler("Module.Initalize",sm_skill_profile.Init)
 
 -- Register this template in the SM Mgr
 SkillManager:RegisterProfileTemplate( sm_skill_profile )

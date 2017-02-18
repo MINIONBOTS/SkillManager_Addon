@@ -14,7 +14,6 @@ ml_skill_mgr.open = true
 ml_skill_mgr.profilelist = {}			-- Holds all registered SM profiles
 ml_skill_mgr.profile = nil				-- The currently selected SM profile
 ml_skill_mgr.texturepath = GetStartupPath() .. "\\GUI\\UI_Textures"
-ml_skill_mgr.skilldata = nil			-- Holds additional static skill data for usage in the sm_skill_profile
 ml_skill_mgr.conditions = {}			-- Holds registered conditions classes which are used in the condition builder/editor for the "cast if ..." check per skill
 
 -- Extend this or overwrite this for other games through SkillManager:GetPlayerProfession( getter func )	
@@ -243,8 +242,6 @@ function SkillManager:SetProfileFolder( folderpath ) ml_skill_mgr:SetProfileFold
 function SkillManager:RegisterProfile( folderpath, filename, modfunc, context) return ml_skill_mgr:RegisterProfile( folderpath, filename, modfunc, context ) end
 function SkillManager:GetPlayerProfession()	return ml_skill_mgr.GetPlayerProfession() end
 function SkillManager:RenderMainMenuCode() if ( ml_skill_mgr.profile ) then ml_skill_mgr.profile:RenderMainMenu() end end	-- renders the UI code of the SM profile
-function SkillManager:SetSkillData( data ) ml_skill_mgr.skilldata = data end	-- to set a table which contains more skilldata
-function SkillManager:GetSkillData() return ml_skill_mgr.skilldata end
 function SkillManager:AddCondition(class) ml_skill_mgr.conditions[tostring(class)] = class end
 function SkillManager:GetCondition(classname) if (ml_skill_mgr.conditions[classname]) then return ml_skill_mgr.conditions[classname] end end
 function SkillManager:GetConditions() return ml_skill_mgr.conditions end
