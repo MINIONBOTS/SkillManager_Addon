@@ -248,5 +248,7 @@ function SkillManager:GetConditions() return ml_skill_mgr.conditions end
 function SkillManager:Cast(targetid) return ml_skill_mgr:Cast( targetid ) end
 
 function gw2_skill_manager:Use(targetid)
-	return ml_skill_mgr:Cast( targetid )
+	if ( BehaviorManager:Running() ) then
+		ml_skill_mgr:Cast( targetid )
+	end
 end
