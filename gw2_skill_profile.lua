@@ -30,6 +30,7 @@ function sm_skill_profile:initialize(filepath, filename, modulefunctions, custom
 	self.modulefunctions = modulefunctions
 	self.context = customcontext or {}	
 	self.profession = profession or SkillManager:GetPlayerProfession()
+	self.activeskillrange = 154
 end
 
 -- Saving this Profile
@@ -165,7 +166,7 @@ function sm_skill_profile:RenderMainMenu()
 			local execstring = 'return function(self, context) '..self.mainmenucode..' end'
 			local func = loadstring(execstring)
 			if ( func ) then
-				func()(self, context)
+				func()(self, self.context)
 				self.menucodechanged = nil
 				self.menucodefunc = func	
 			else				
@@ -214,35 +215,6 @@ sm_skill_profile.professions = {
 	[8] = GetString("Necromancer"), 
 	[9] = GetString("Revenant"), 
 	}
-
--- Default list of skill set names 
-function sm_skill_profile:GetSkillsetName(w,t) 
-	local front = ""
-	if ( w == 0 ) then front = GetString("Aqua1")
-	elseif ( w == 1 ) then	front = GetString("Aqua2")
-	elseif ( w == 2 ) then	front = GetString("Kit")
-	elseif ( w == 3 ) then	front = GetString("Avatar")
-	elseif ( w == 4 ) then	front = GetString("Weapon1")
-	elseif ( w == 5 ) then	front = GetString("Weapon2")	
-	end
-	
-	local back = ""
-	if ( t == 1 ) then back = GetString("Fire")
-	elseif ( t == 2 ) then back = GetString("Water")
-	elseif ( t == 3 ) then back = GetString("Air")
-	elseif ( t == 4 ) then back = GetString("Earth")
-	elseif ( t == 6 ) then back = GetString("DeathShroud")
-	elseif ( t == 9 ) then back = GetString("DeathShroud")
-	elseif ( t == 10 ) then back = GetString("Druid")
-	elseif ( t == 11 ) then back = GetString("Astral")
-	elseif ( t == 12 ) then back = GetString("Dragon")
-	elseif ( t == 13 ) then back = GetString("Assassin")
-	elseif ( t == 14) then back = GetString("Dwarf")
-	elseif ( t == 15 ) then back = GetString("Deamon")
-	elseif ( t == 17 ) then back = GetString("Centaur")
-	end
-	return front.." "..back
-end
 	
 -- Resets all kinds of "modified" toggle vars, after saving. Enforces "reloading" of all codeeditor text.
 function sm_skill_profile:PreSave()
@@ -256,10 +228,12 @@ function sm_skill_profile:PreSave()
 	self.dragid = nil
 	self.dropid = nil
 	self.dropidhover = nil
+	self.activeskillrange = nil
 end
 function sm_skill_profile:AfterSave()
 	self.menucodechanged = true
 	self.actioneditoropen = true
+	self.activeskillrange = 154
 end
 
 -- Renders the profile template into the SM "main" window
@@ -271,7 +245,7 @@ function sm_skill_profile:Render()
 		GUI:Text(GetString("Custom Name:")) if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("Give the Profile a custom name (The filename will not change!).")) end
 		GUI:SameLine(120)
 		local changed 	
-		self.name,changed = GUI:InputText("##smp1",self.name)
+		self.name,changed = GUI:InputText("##smp1",self.name or self.filename)
 		if ( changed ) then self.modified = true end
 		
 		GUI:AlignFirstTextHeightToWidgets()
@@ -281,7 +255,11 @@ function sm_skill_profile:Render()
 		if ( changed ) then self.modified = true end
 		GUI:PopItemWidth()
 		GUI:Separator()
-		
+-- DEBUG 
+
+		GUI:Text("DEBUG: activeskillrange  : "..tostring(self.activeskillrange))
+		GUI:Text("DEBUG: maxattackrange  : "..tostring(ml_global_information.AttackRange))
+
 -- Main Menu UI CodeEditor
 		local _,maxy = GUI:GetContentRegionAvail()
 		GUI:SetNextTreeNodeOpened(false,GUI.SetCond_Once)
@@ -327,6 +305,7 @@ function sm_skill_profile:Render()
 		GUI:PushStyleVar(GUI.StyleVar_ItemSpacing, 0, 4)
 		GUI:PushStyleVar(GUI.StyleVar_FramePadding, 0, 0)
 		-- CanCast() ->Evaluate is using 2 args, player and target which are saved on the profile
+		if (not self.pp_castinfo) then self.pp_castinfo = Player.castinfo end
 		if (not self.player) then self.player = Player end
 		if (not self.target) then self.target = Player:GetTarget() end
 		if (not self.sets) then self.sets = self:GetCurrentSkillSets() end
@@ -369,7 +348,7 @@ function sm_skill_profile:Render()
 			elseif ( #skills > 0 ) then				
 				local currenltycast				
 				for q,s in pairs(skills) do
-					if ( self.currentaction == k and self.currentactionsequence == q ) then
+					if ( self.currentaction == k and self.currentactionsequence == q and self.pp_castinfo.skillid ~= 0 ) then
 						GUI:PushStyleColor(GUI.Col_ButtonHovered,0.18,1.0,0.0,0.8)
 						GUI:PushStyleColor(GUI.Col_ButtonActive,0.18,1.0,0.0,0.9)
 						GUI:PushStyleColor(GUI.Col_Text,1.0,1.0,1.0,1.0)
@@ -494,6 +473,7 @@ function sm_skill_profile:Render()
 		end
 		GUI:PopStyleVar(2)
 		
+		self.pp_castinfo = nil
 		self.player = nil
 		self.target = nil
 		self.sets = nil
@@ -644,13 +624,13 @@ function sm_skill_profile:RenderSkillSetEditor(currentaction)
 		GUI:Text(GetString("Set Name:")) if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("Give this Skillset a name.")) end
 		GUI:SameLine(120)
 		local	changed
-		self.selectedskillset.name, changed = GUI:InputText("##smp1",self.selectedskillset.name)
+		self.selectedskillset.name, changed = GUI:InputText("##smp3",self.selectedskillset.name)
 		if ( changed ) then modified = true end
 		
 		GUI:AlignFirstTextHeightToWidgets()
 		GUI:Text(GetString("Set ID:")) if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("Internal Skillset ID.")) end
 		GUI:SameLine(120)
-		self.selectedskillset.id = GUI:InputText("##smp2",self.selectedskillset.id,GUI.InputTextFlags_ReadOnly)		
+		self.selectedskillset.id = GUI:InputText("##smp4",self.selectedskillset.id,GUI.InputTextFlags_ReadOnly)		
 		
 		GUI:NextColumn()
 		
@@ -1089,6 +1069,7 @@ function sm_skill_profile:Update(gametick)
 	if ( not self.lasttick or gametick - self.lasttick > 50 ) then
 		self.lasttick = gametick
 		self.currentskills = {}
+		self.activeskillrange = 154
 		
 		-- Use the current gamedata to update the skillset data
 		for i = 1, ml_global_information.MAX_SKILLBAR_SLOTS-1 do	-- 1 to 19
@@ -1103,6 +1084,9 @@ function sm_skill_profile:Update(gametick)
 					if ( setskill.slot >= 7 and setskill.slot <=9 ) then
 						setskill.slot = i
 					end
+											
+					self.activeskillrange = (setskill.maxrange > 0 and setskill.maxrange > self.activeskillrange and setskill.maxrange or self.activeskillrange)
+					self.activeskillrange = (setskill.radius > 0 and setskill.radius > self.activeskillrange and setskill.radius or self.activeskillrange)
 				end
 			end
 		end
@@ -1128,6 +1112,8 @@ function sm_skill_profile:Update(gametick)
 				table.remove(self.cooldownlist,id)
 			end		
 		end
+		
+		ml_global_information.AttackRange = self.activeskillrange
 	end
 end
 
@@ -1158,7 +1144,7 @@ end
 -- Default Class ctor
 function sm_action:initialize(data)
 	if ( not data ) then		
-		self.sequence = { [1] = {id = 0, conditions = {} }}
+		self.sequence = { [1] = {id = 0, settings = {}, conditions = {} }}
 	else
 		self:Load(data)
 	end
@@ -1171,7 +1157,7 @@ function sm_action:Save()
 	local idx = 1
 	for a,s in pairs ( self.sequence ) do
 		s.conditioncodefunc = nil
-		data.sequence[idx] = { id = s.id, conditioncode = s.conditioncode, conditions = {}, }		
+		data.sequence[idx] = { id = s.id, settings = s.settings, conditioncode = s.conditioncode, conditions = {}, }		
 		if ( table.valid(s.conditions) ) then
 			for i,or_group in pairs(s.conditions) do			
 				for k,v in pairs(or_group) do
@@ -1193,6 +1179,7 @@ function sm_action:Load(data)
 	for a,s in pairs ( data.sequence ) do
 		self.sequence[a] = {}
 		self.sequence[a].id = s.id
+		self.sequence[a].settings = s.settings or {}
 		self.sequence[a].conditioncode = s.conditioncode
 		self.sequence[a].conditions = {}		
 		if ( table.valid(s.conditions) ) then		
@@ -1365,7 +1352,7 @@ function sm_action:Render(profile)
 			end
 			if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("Change the Skill.")) end
 			
-			if ( skill ) then		
+			if ( skill ) then
 				GUI:NextColumn()
 			
 				GUI:BulletText(GetString("Name:")) GUI:SameLine(125) GUI:Text(skill.name)
@@ -1392,129 +1379,145 @@ function sm_action:Render(profile)
 						GUI:BulletText(GetString("Current Sets: ")) GUI:SameLine(125) GUI:Text(tostring(currentset.name))
 					end
 				end
-			end
-			GUI:Columns(1)	
-			GUI:Separator()
 			
-			GUI:Spacing()
-	
-	-- Condition Builder
-			GUI:Text(GetString("Cast if:"))	if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("Cast this Skill if..." )) end
-			GUI:BeginChild("##actioncondigrp", 625,300)
-			if ( table.size(self.sequence[self.selectedskill].conditions) > 0 ) then
-				for idx,or_group in pairs(self.sequence[self.selectedskill].conditions) do
-					for k,v in pairs(or_group) do
-						if ( type(v) == "table") then
-							if (v:Render(tostring(idx)..tostring(k))) then modified = true end
-							GUI:SameLine(590)
-							local highlighted
-							if ( v.deletecount ) then
-								GUI:PushStyleColor(GUI.Col_Button,1.0,0.75,0.0,0.7)
-								GUI:PushStyleColor(GUI.Col_ButtonHovered,1.0,0.75,0.0,0.8)
-								GUI:PushStyleColor(GUI.Col_ButtonActive,1.0,0.75,0.0,0.9)
-								GUI:PushStyleColor(GUI.Col_Text,1.0,1.0,1.0,1.0)
-								highlighted = true
-							end	
-							if ( GUI:ImageButton("##actiondelcondi"..tostring(idx)..""..tostring(k),profile.texturepath.."\\w_delete.png",15,15)) then
-								v.deletecount = v.deletecount ~= nil and 2 or 1
-								if ( v.deletecount == 2 ) then
-									self.sequence[self.selectedskill].conditions[idx][k] = nil
-									if ( table.size(self.sequence[self.selectedskill].conditions[idx]) == 0) then
-										self.sequence[self.selectedskill].conditions[idx] = nil
-									end
-									modified = true
-								end
-							end
-							if ( highlighted ) then GUI:PopStyleColor(4) end
-						end
-					end
-					
+				GUI:Columns(1)
+				GUI:Separator()
+		-- Skill Settings
+				GUI:Text(GetString("Skill Settings:"))	if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("Special Settings for this Skill" )) end
+				local changed
+				self.sequence[self.selectedskill].settings.setsattackrange, changed = GUI:Checkbox( GetString("Sets Attackrange"), self.sequence[self.selectedskill].settings.setsattackrange or false) if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("If Enabled, the 'MaxRange' of the Skill defines the Attackrange of the bot." )) end if (changed) then modified = true end
+				GUI:SameLine(200)
+				self.sequence[self.selectedskill].settings.nolos, changed = GUI:Checkbox( GetString("No Line of Sight"), self.sequence[self.selectedskill].settings.nolos or false) if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("If Enabled, the line of sight to the target will not be checked when casting." )) end if (changed) then modified = true end
+				GUI:SameLine(400)
+				self.sequence[self.selectedskill].settings.stopmovement, changed = GUI:Checkbox( GetString("Stop Movement"), self.sequence[self.selectedskill].settings.stopmovement or false) if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("If Enabled, the bot movement will be stopped while casting the skill." )) end if (changed) then modified = true end
+				self.sequence[self.selectedskill].settings.castonplayer, changed = GUI:Checkbox( GetString("Cast on Player"), self.sequence[self.selectedskill].settings.castonplayer or false) if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("If Enabled, the Skill will be cast on the Player and not on the Target." )) end if (changed) then modified = true end
+				GUI:SameLine(200)
+				self.sequence[self.selectedskill].settings.castslow, changed = GUI:Checkbox( GetString("Cast Slow"), self.sequence[self.selectedskill].settings.castslow or false) if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("If Enabled, the Skill will be cast slower and not skipped." )) end if (changed) then modified = true end
+				GUI:SameLine(400)
+				self.sequence[self.selectedskill].settings.isprojectile, changed = GUI:Checkbox( GetString("Is Projectile"), self.sequence[self.selectedskill].settings.isprojectile or false) if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("Enable this only if the Skill cannot be cast on some objects." )) end if (changed) then modified = true end				
 								
-					-- Add New Condition Button
-					if ( or_group.addnew ) then
-						local conditions = SkillManager:GetConditions()
-						if ( table.valid(conditions)) then
-							local combolist = {}
-							local i = 1
-							for k,v in pairs(conditions) do
-								combolist[i] = GetString(tostring(v))
-								i = i+1
-							end
-							or_group.addnew = GUI:Combo("##addcondinew",or_group.addnew, combolist)
-							if ( combolist[or_group.addnew]) then
-								GUI:SameLine()
-								if (GUI:Button(GetString("Add").."##addnewcond"..tostring(idx), 50,20)) then
-									for k,v in pairs(conditions) do						
-										or_group.addnew = or_group.addnew-1
-										if ( or_group.addnew == 0 ) then
-											local newcond = v:new()
-											table.insert(self.sequence[self.selectedskill].conditions[idx], newcond)
-											or_group.addnew = nil
-											modified = true
-											break
+				
+				GUI:Separator()
+				
+				GUI:Spacing()
+		
+		-- Condition Builder
+				GUI:Text(GetString("Cast if:"))	if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("Cast this Skill if..." )) end
+				GUI:BeginChild("##actioncondigrp", 625,300)
+				if ( table.size(self.sequence[self.selectedskill].conditions) > 0 ) then
+					for idx,or_group in pairs(self.sequence[self.selectedskill].conditions) do
+						for k,v in pairs(or_group) do
+							if ( type(v) == "table") then
+								if (v:Render(tostring(idx)..tostring(k))) then modified = true end
+								GUI:SameLine(590)
+								local highlighted
+								if ( v.deletecount ) then
+									GUI:PushStyleColor(GUI.Col_Button,1.0,0.75,0.0,0.7)
+									GUI:PushStyleColor(GUI.Col_ButtonHovered,1.0,0.75,0.0,0.8)
+									GUI:PushStyleColor(GUI.Col_ButtonActive,1.0,0.75,0.0,0.9)
+									GUI:PushStyleColor(GUI.Col_Text,1.0,1.0,1.0,1.0)
+									highlighted = true
+								end	
+								if ( GUI:ImageButton("##actiondelcondi"..tostring(idx)..""..tostring(k),profile.texturepath.."\\w_delete.png",15,15)) then
+									v.deletecount = v.deletecount ~= nil and 2 or 1
+									if ( v.deletecount == 2 ) then
+										self.sequence[self.selectedskill].conditions[idx][k] = nil
+										if ( table.size(self.sequence[self.selectedskill].conditions[idx]) == 0) then
+											self.sequence[self.selectedskill].conditions[idx] = nil
 										end
-									end					
+										modified = true
+									end
 								end
+								if ( highlighted ) then GUI:PopStyleColor(4) end
 							end
-						else
-							GUI:Text("ERROR: NO CONDITIONS REGISTERED IN THE SKILLMANAGER")
 						end
-					elseif ( GUI:Button(GetString("+ AND").."##addcondi"..tostring(idx), 60,20)) then 
-						self.sequence[self.selectedskill].conditions[idx].addnew = 1
+						
+									
+						-- Add New Condition Button
+						if ( or_group.addnew ) then
+							local conditions = SkillManager:GetConditions()
+							if ( table.valid(conditions)) then
+								local combolist = {}
+								local i = 1
+								for k,v in pairs(conditions) do
+									combolist[i] = GetString(tostring(v))
+									i = i+1
+								end
+								or_group.addnew = GUI:Combo("##addcondinew",or_group.addnew, combolist)
+								if ( combolist[or_group.addnew]) then
+									GUI:SameLine()
+									if (GUI:Button(GetString("Add").."##addnewcond"..tostring(idx), 50,20)) then
+										for k,v in pairs(conditions) do						
+											or_group.addnew = or_group.addnew-1
+											if ( or_group.addnew == 0 ) then
+												local newcond = v:new()
+												table.insert(self.sequence[self.selectedskill].conditions[idx], newcond)
+												or_group.addnew = nil
+												modified = true
+												break
+											end
+										end					
+									end
+								end
+							else
+								GUI:Text("ERROR: NO CONDITIONS REGISTERED IN THE SKILLMANAGER")
+							end
+						elseif ( GUI:Button(GetString("+ AND").."##addcondi"..tostring(idx), 60,20)) then 
+							self.sequence[self.selectedskill].conditions[idx].addnew = 1
+						end
+						
+						if ( idx < #self.sequence[self.selectedskill].conditions ) then
+							GUI:Text(GetString("OR Cast if:"))
+						end
+					end
+							
+					-- Add a new OR Group:
+					GUI:Spacing()
+					if (GUI:Button(GetString("+ OR").."##addcondOR"..tostring(idx), 60,20)) then
+						local newgroup = { addnew = 1, }
+						table.insert(self.sequence[self.selectedskill].conditions,newgroup)
 					end
 					
-					if ( idx < #self.sequence[self.selectedskill].conditions ) then
-						GUI:Text(GetString("OR Cast if:"))
+				else
+					if (GUI:Button(GetString("+ Add New Condition").."##addcondOR2", 150,20)) then
+						local newgroup = { addnew = 1, }
+						table.insert(self.sequence[self.selectedskill].conditions,newgroup)
 					end
 				end
-						
-				-- Add a new OR Group:
+					
+				GUI:EndChild()
+				
 				GUI:Spacing()
-				if (GUI:Button(GetString("+ OR").."##addcondOR"..tostring(idx), 60,20)) then
-					local newgroup = { addnew = 1, }
-					table.insert(self.sequence[self.selectedskill].conditions,newgroup)
+				GUI:Spacing()
+				GUI:Separator()
+		
+		-- Custom Condition editor
+				local _,maxy = GUI:GetContentRegionAvail()
+				GUI:SetNextTreeNodeOpened(false,GUI.SetCond_Once)
+				if ( GUI:TreeNode(GetString("CUSTOM CONDITION CODE EDITOR")) ) then			
+					if ( GUI:IsItemHovered() ) then GUI:SetTooltip(GetString("Write you own Lua code, when to cast this skill. Must return 'true' or 'false'!")) end
+					local maxx,_ = GUI:GetContentRegionAvail()
+					local changed = false
+					self.sequence[self.selectedskill].conditioncode, changed = GUI:InputTextEditor( "##smactioncodeeditor", self.sequence[self.selectedskill].conditioncode or GetString("-- Return 'true' when the skill can be cast, else return 'false'. Use the 'context' table to share data between all skills.\nreturn true"), maxx, math.max(maxy/2,300) , GUI.InputTextFlags_AllowTabInput)
+					if ( changed ) then self.sequence[self.selectedskill].conditioncodechanged = true modified = true end
+					if ( self.sequence[self.selectedskill].conditioncodechanged ) then
+						GUI:PushStyleColor(GUI.Col_Button,1.0,0.75,0.0,0.7)
+						GUI:PushStyleColor(GUI.Col_ButtonHovered,1.0,0.75,0.0,0.8)
+						GUI:PushStyleColor(GUI.Col_ButtonActive,1.0,0.75,0.0,0.9)
+						GUI:PushStyleColor(GUI.Col_Text,1.0,1.0,1.0,1.0)
+						if ( GUI:Button(GetString("Save Changes"),maxx,20) ) then
+							self.sequence[self.selectedskill].conditioncodechanged = nil
+							profile:Save()
+						end				
+						GUI:PopStyleColor(4)
+					end
+					GUI:PushItemWidth(600)
+					GUI:Dummy(600,1)
+					GUI:PopItemWidth()
+					GUI:TreePop()
 				end
-				
-			else
-				if (GUI:Button(GetString("+ Add New Condition").."##addcondOR2", 150,20)) then
-					local newgroup = { addnew = 1, }
-					table.insert(self.sequence[self.selectedskill].conditions,newgroup)
-				end
+				GUI:Separator()
 			end
-				
-			GUI:EndChild()
-			
-			GUI:Spacing()
-			GUI:Spacing()
-			GUI:Separator()
-	
-	-- Custom Condition editor
-			local _,maxy = GUI:GetContentRegionAvail()
-			GUI:SetNextTreeNodeOpened(false,GUI.SetCond_Once)
-			if ( GUI:TreeNode(GetString("CUSTOM CONDITION CODE EDITOR")) ) then			
-				if ( GUI:IsItemHovered() ) then GUI:SetTooltip(GetString("Write you own Lua code, when to cast this skill. Must return 'true' or 'false'!")) end
-				local maxx,_ = GUI:GetContentRegionAvail()
-				local changed = false
-				self.sequence[self.selectedskill].conditioncode, changed = GUI:InputTextEditor( "##smactioncodeeditor", self.sequence[self.selectedskill].conditioncode or GetString("-- Always return 'true' when the skill can be cast, else return 'false' \n").. "return true", maxx, math.max(maxy/2,300) , GUI.InputTextFlags_AllowTabInput)
-				if ( changed ) then self.sequence[self.selectedskill].conditioncodechanged = true modified = true end
-				if ( self.sequence[self.selectedskill].conditioncodechanged ) then
-					GUI:PushStyleColor(GUI.Col_Button,1.0,0.75,0.0,0.7)
-					GUI:PushStyleColor(GUI.Col_ButtonHovered,1.0,0.75,0.0,0.8)
-					GUI:PushStyleColor(GUI.Col_ButtonActive,1.0,0.75,0.0,0.9)
-					GUI:PushStyleColor(GUI.Col_Text,1.0,1.0,1.0,1.0)
-					if ( GUI:Button(GetString("Save Changes"),maxx,20) ) then				
-						self.sequence[self.selectedskill].conditioncodechanged = nil
-						profile:Save()
-					end				
-					GUI:PopStyleColor(4)
-				end
-				GUI:PushItemWidth(600)
-				GUI:Dummy(600,1)
-				GUI:PopItemWidth()
-				GUI:TreePop()
-			end
-			GUI:Separator()
-			
 		end
 	end
 	
@@ -1539,6 +1542,13 @@ function sm_action:CanCastSkill(profile, targetskillset, sequenceid)
 		end
 		
 		local skill = self.sequence[sequenceid]
+		if ( not skill ) then 
+			return false
+		end
+		
+		-- Basic Settings
+		if ( not skill.settings.castonplayer and not profile.target ) then return false end 
+		if ( not skill.settings.nolos and not profile.target.los) then return false end
 		
 		-- Evaluate custom code first		
 		if ( skill.conditioncode ) then
@@ -1816,107 +1826,112 @@ end
 -- Casting
 function sm_skill_profile:Cast(targetid)
 	local target = CharacterList:Get(targetid) or GadgetList:Get(targetid) --or AgentList:Get(targetid)
-	if ( target ) then
-		self.pp_castinfo = Player.castinfo
-		self.player = Player
-		self.target = target
-		self.sets = self:GetCurrentSkillSets()
+	
+	self.pp_castinfo = Player.castinfo
+	self.player = Player
+	self.target = target
+	self.sets = self:GetCurrentSkillSets()
 		
-		-- Setting a "current action to cast"
-		if ( not self.currentaction ) then self:GetNextSkillForCasting() end
-		
-		if ( self.currentaction ) then
-			local action = self.actionlist[self.currentaction]
-			if ( not action ) then 
-				-- someone deleted an action from the list
+	-- Setting a "current action to cast"
+	if ( not self.currentaction ) then self:GetNextSkillForCasting() end
+	
+	if ( self.currentaction ) then
+		local action = self.actionlist[self.currentaction]
+		if ( not action ) then 
+			-- someone deleted an action from the list
+			self.currentaction = nil
+			self.currentactionsequence = nil	
+			return false
+		end
+		local skilldata, skillset = self:GetSkill(action.sequence[self.currentactionsequence].id)		
+		if ( skilldata ) then
+			
+			-- Make sure we can still cast the spell that we picked earlier, if somethign changed and we cannot cast it, get a new skill instead
+			if (( not skilldata.cooldown or skilldata.cooldown == 0) and not self.pp_castinfo.skillid == skilldata.id and not action:CanCastSkill(self, skillset, self.currentactionsequence)) then					
 				self.currentaction = nil
 				self.currentactionsequence = nil	
-				return false
+				if (self:GetNextSkillForCasting() ) then	-- get a new spell
+					action = self.actionlist[self.currentaction]
+					skilldata, skillset = self:GetSkill(action.sequence[self.currentactionsequence].id)								
+				else
+					return false
+				end
 			end
-			local skilldata, skillset = self:GetSkill(action.sequence[self.currentactionsequence].id)		
-			if ( skilldata ) then
-				
-				-- Make sure we can still cast the spell that we picked earlier, if somethign changed and we cannot cast it, get a new skill instead
-				if (( not skilldata.cooldown or skilldata.cooldown == 0) and not self.pp_castinfo.skillid == skilldata.id and not action:CanCastSkill(self, skillset, self.currentactionsequence)) then					
-					d("A")
-					self.currentaction = nil
-					self.currentactionsequence = nil	
-					if (self:GetNextSkillForCasting() ) then	-- get a new spell
-						action = self.actionlist[self.currentaction]
-						skilldata, skillset = self:GetSkill(action.sequence[self.currentactionsequence].id)								
-					else
-						return false
-					end
+			
+			-- If skill is already on CD, or if it is a spammable skill and our lastskillid is showing we cast it, get the next skill in the sequence OR a new action
+			if ( (skilldata.cooldown and skilldata.cooldown ~= 0) or (skilldata.cooldownmax and skilldata.cooldownmax == 0 and self.pp_castinfo.lastskillid == skilldata.id)) then
+				if (self:GetNextSkillForCasting() ) then-- get a new / next skill
+					action = self.actionlist[self.currentaction]
+					skilldata, skillset = self:GetSkill(action.sequence[self.currentactionsequence].id)								
+				else
+					return false
+				end
+			end
+			
+			
+			-- We are not casting the skill yet,...trying to do so ...
+			if (skilldata and (not skilldata.cooldown or skilldata.cooldown == 0) and (self.pp_castinfo.skillid ~= skilldata.id or (skilldata.slot == 1 and skilldata.cooldownmax and skilldata.cooldownmax == 0))) then
+				-- Ensure the correct Weapon Set
+				local switchslot = self:GetSkillsetCastID(skillset) 
+				if ( switchslot == -2 ) then
+					-- swap weapons
+					Player:SwapWeaponSet()
+					d("Swapping weaponset..")
+					return true
+				elseif ( switchslot >= 0 ) then
+					-- cast spell to swap sets
+					Player:CastSpell(GW2.SKILLBARSLOT["Slot_" .. switchslot])
+					d("Swapping weaponset to "..tostring(GW2.SKILLBARSLOT["Slot_" .. switchslot]))
+					return true
+				elseif ( switchslot == -3 ) then
+					d(tostring(skilldata.name)" .. is not on the skillset or it cannot be switched to. Check Activate / Deactivate Skills of that Set")
+					return false
 				end
 				
-				-- If skill is already on CD, or if it is a spammable skill and our lastskillid is showing we cast it, get the next skill in the sequence OR a new action
-				if ( (skilldata.cooldown and skilldata.cooldown ~= 0) or (skilldata.cooldownmax and skilldata.cooldownmax == 0 and self.pp_castinfo.lastskillid == skilldata.id)) then
-					if (self:GetNextSkillForCasting() ) then-- get a new / next skill
-						action = self.actionlist[self.currentaction]
-						skilldata, skillset = self:GetSkill(action.sequence[self.currentactionsequence].id)								
-					else
-						return false
-					end
+				
+				-- Cast
+				if ( action.sequence[self.currentactionsequence].settings.castonplayer) then
+					self.target = Player
 				end
 				
-				
-				-- We are not casting the skill yet,...trying to do so ...
-				if (skilldata and (not skilldata.cooldown or skilldata.cooldown == 0) and (self.pp_castinfo.skillid ~= skilldata.id or (skilldata.slot == 1 and skilldata.cooldownmax and skilldata.cooldownmax == 0))) then
-					-- Ensure the correct Weapon Set
-					local switchslot = self:GetSkillsetCastID(skillset) 
-					if ( switchslot == -2 ) then
-						-- swap weapons
-						Player:SwapWeaponSet()
-						d("Swapping weaponset..")
-						return true
-					elseif ( switchslot >= 0 ) then
-						-- cast spell to swap sets
-						Player:CastSpell(GW2.SKILLBARSLOT["Slot_" .. switchslot])
-						d("Swapping weaponset to "..tostring(GW2.SKILLBARSLOT["Slot_" .. switchslot]))
-						return true
-					elseif ( switchslot == -3 ) then
-						d(tostring(skilldata.name)" .. is not on the skillset or it cannot be switched to. Check Activate / Deactivate Skills of that Set")
-						return false
-					end
-					
-					
-					-- Cast
-					local pos = target.pos
-					local castresult
-					if (skilldata.groundtargeted) then
-						-- extend cast position by radius if the target is slightly outside
-						-- 5% extra range
-						-- increasing height slightly -> extra range
-						-- calc in radius -> extra range
-						if (target.ischaracter) then
+				if ( not target ) then return end
+				local castresult
+				if (skilldata.groundtargeted) then
+					local pos = self.target.pos
+					-- extend cast position by radius if the target is slightly outside
+					-- 5% extra range
+					-- increasing height slightly -> extra range
+					-- calc in radius -> extra range
+					if (self.target.ischaracter) then
+						castresult = Player:CastSpell(GW2.SKILLBARSLOT["Slot_" .. skilldata.slot] , pos.x, pos.y, pos.z)
+					elseif (self.target.isgadget) then
+						if (skilldata.isprojectile) then
 							castresult = Player:CastSpell(GW2.SKILLBARSLOT["Slot_" .. skilldata.slot] , pos.x, pos.y, pos.z)
-						elseif (target.isgadget) then
-							if (skilldata.isprojectile) then
-								castresult = Player:CastSpell(GW2.SKILLBARSLOT["Slot_" .. skilldata.slot] , pos.x, pos.y, pos.z)
-							else
-								castresult = Player:CastSpell(GW2.SKILLBARSLOT["Slot_" .. skilldata.slot] , pos.x, pos.y, (pos.z - target.height))
-							end
+						else
+							castresult = Player:CastSpell(GW2.SKILLBARSLOT["Slot_" .. skilldata.slot] , pos.x, pos.y, (pos.z - self.target.height))
 						end
-					else
-						castresult = Player:CastSpell(GW2.SKILLBARSLOT["Slot_" .. skilldata.slot] , target.id)
 					end
-				
-					if ( castresult ) then
-						d("Casting: "..skilldata.name)
-						return true
-					else
-						d("Casting Failed: "..skilldata.name)
-					end
-								
+				else
+					castresult = Player:CastSpell(GW2.SKILLBARSLOT["Slot_" .. skilldata.slot] , self.target.id)
 				end
-			else
-				ml_error("[SkillManager] - Invalid Skilldata for casting, ID : "..tostring(action.sequence[self.currentactionsequence].id))
+			
+				if ( castresult ) then
+					d("Casting: "..skilldata.name)
+					return true
+				else
+					d("Casting Failed: "..skilldata.name)
+				end
+							
 			end
+		else
+			ml_error("[SkillManager] - Invalid Skilldata for casting, ID : "..tostring(action.sequence[self.currentactionsequence].id))
 		end
-		self.player = nil
-		self.target = nil
-		self.sets = nil
 	end
+	self.pp_castinfo = nil
+	self.player = nil
+	self.target = nil
+	self.sets = nil
+	
 	return false
 end
 
@@ -1929,6 +1944,7 @@ function sm_skill_profile.Init()
 	end
 end
 RegisterEventHandler("Module.Initalize",sm_skill_profile.Init)
+
 
 -- Register this template in the SM Mgr
 SkillManager:RegisterProfileTemplate( sm_skill_profile )

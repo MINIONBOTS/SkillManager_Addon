@@ -246,9 +246,24 @@ function SkillManager:AddCondition(class) ml_skill_mgr.conditions[tostring(class
 function SkillManager:GetCondition(classname) if (ml_skill_mgr.conditions[classname]) then return ml_skill_mgr.conditions[classname] end end
 function SkillManager:GetConditions() return ml_skill_mgr.conditions end
 function SkillManager:Cast(targetid) return ml_skill_mgr:Cast( targetid ) end
+function SkillManager:Ready() return ml_skill_mgr.profile ~= nil end
+function SkillManager:GetActiveSkillRange() return ml_skill_mgr.profile.activeskillrange end
+
+
+ml_skill_mgr.original_getactiveskillrange = gw2_skill_manager.GetActiveSkillRange
+
+-- Get the range of the current active skill
+function gw2_skill_manager.GetActiveSkillRange()
+
+	if ( SkillManager:Ready() ) then
+		local maxrange = SkillManager:GetActiveSkillRange() 
+		return maxrange < 154 and 154 or maxrange
+	end
+	return ml_skill_mgr.original_getactiveskillrange()
+end
 
 function gw2_skill_manager:Use(targetid)
 	if ( BehaviorManager:Running() ) then
-		ml_skill_mgr:Cast( targetid )
+		SkillManager:Cast( targetid )
 	end
 end

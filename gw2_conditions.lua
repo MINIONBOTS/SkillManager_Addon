@@ -16,8 +16,8 @@ end
 -- Loads the condition data into this instance
 function sm_condition:Load(data)
 end
--- Evaluates the condition, returns "true" / "false". The first arg passed is always the Player table, 2nd the Target (can be nil, so check for it!)
-function sm_condition:Evaluate(...)
+-- Evaluates the condition, returns "true" / "false".
+function sm_condition:Evaluate(player,target)
 end
 -- Renders the condition UI
 function sm_condition:Render()
@@ -57,16 +57,16 @@ function sm_condition_hp:Load(data)
 	self.value = data.value or 100
 end
 -- Evaluates the condition, returns "true" / "false"
-function sm_condition_hp:Evaluate(...)	-- Player, Target, ... others	
-	if ( arg[1] ~= nil) then
+function sm_condition_hp:Evaluate(player,target)
+	if ( player ~= nil) then
 		-- This Health Check is set to check HP on a Target, check if we have one, else return false
-		if ( self.target == 2 and arg[2] == nil ) then return false end
+		if ( self.target == 2 and target == nil ) then return false end
 				
 		local hp
 		if ( self.target == 1 ) then 
-			hp = arg[1].health
+			hp = player.health
 		elseif ( self.target == 2 ) then
-			hp = arg[2].health
+			hp = target.health
 		end
 		
 		if ( table.valid(hp) ) then
@@ -126,7 +126,7 @@ SkillManager:AddCondition(sm_condition_hp) -- register this condition in the SM
 
 
 
--- HP check condition
+-- Power check condition
 local sm_condition_power = class('Power', sm_condition)
 sm_condition_power.operators = { [1] = "<", [2] = "<=", [3] = "==", [4] = ">=", [5] = ">",  }
 -- Initialize new class, - gets called when :new(..) is called
@@ -149,9 +149,9 @@ function sm_condition_power:Load(data)
 	self.value = data.value or 100
 end
 -- Evaluates the condition, returns "true" / "false"
-function sm_condition_power:Evaluate(...)	-- Player, Target, ... others	
-	if ( arg[1] ~= nil) then		
-		local mp = arg[1].power
+function sm_condition_power:Evaluate(player,target)
+	if ( player ~= nil) then		
+		local mp = player.power
 		
 		if ( type(mp) == "number" ) then						
 			if ( self.operator == 1 ) then return mp < self.value 
@@ -191,4 +191,5 @@ function sm_condition_power:Render(id) -- need to pass an index value here, for 
 	return modified
 end
 SkillManager:AddCondition(sm_condition_power) -- register this condition in the SM
+
 
