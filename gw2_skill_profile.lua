@@ -528,10 +528,7 @@ function sm_skill_profile:Render()
 				self.selectedskillset = nil
 				self.selectedactionid = nil
 				self.actioneditoropen = nil
-				self.modified = true
-				
-			elseif ( result == true ) then 
-				self.modified = true 			
+				self.modified = true						
 			end
 			
 			GUI:End()
@@ -548,14 +545,15 @@ end
 
 -- Show the SkillSet Editor and Skill Selector
 function sm_skill_profile:RenderSkillSetEditor(currentaction)
-	local modified = false
 	GUI:BulletText(GetString("Available Skill Sets:"))
 	
 	-- Make sure we have at least the "unsortedskillset" Group
-	if ( not self.skillsets["All"] ) then		
+	if ( not self.skillsets["All"] or not self.lastupdate or GetGameTime() - self.lastupdate > 1000) then		
+		self.lastupdate = GetGameTime()
 		self:UpdateCurrentSkillsetData()
-		self.selectedskillset = self.skillsets["All"]
-		modified = true
+		if( not self.skillsets["All"] ) then
+			self.selectedskillset = self.skillsets["All"]
+		end
 	end
 	
 	-- When opening the editor, select the current skillset and skill
@@ -627,7 +625,7 @@ function sm_skill_profile:RenderSkillSetEditor(currentaction)
 		GUI:SameLine(120)
 		local	changed
 		self.selectedskillset.name, changed = GUI:InputText("##smp3",self.selectedskillset.name)
-		if ( changed ) then modified = true end
+		if ( changed ) then self.modified = true end
 		
 		GUI:AlignFirstTextHeightToWidgets()
 		GUI:Text(GetString("Set ID:")) if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("Internal Skillset ID.")) end
@@ -638,11 +636,11 @@ function sm_skill_profile:RenderSkillSetEditor(currentaction)
 		
 	-- Main Skilllist - Refresh /Add / Delete Set buttons
 		if ( self.selectedskillset.id == "All" ) then
-			if ( GUI:ImageButton("##smadd",sm_skill_profile.texturepath.."\\addon.png",35,35)) then 				
-				self:UpdateCurrentSkillsetData()
-				modified = true
-			end
-			if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("Add your current Skills.")) end
+			--if ( GUI:ImageButton("##smadd",sm_skill_profile.texturepath.."\\addon.png",35,35)) then 				
+				--self:UpdateCurrentSkillsetData()
+				--modified = true
+			--end
+			--if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("Add your current Skills.")) end
 			GUI:SameLine(310)			
 			if ( GUI:ImageButton("##smclear",sm_skill_profile.texturepath.."\\w_delete.png",15,15)) then
 				for k,v in pairs(	self.skillsets["All"].skills ) do
@@ -650,7 +648,7 @@ function sm_skill_profile:RenderSkillSetEditor(currentaction)
 						self.skillsets["All"].skills[k] = nil
 					end
 				end
-				modified = true
+				self.modified = true
 			end
 			if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("Remove all unused skills of this Set.")) end
 		end
@@ -659,8 +657,29 @@ function sm_skill_profile:RenderSkillSetEditor(currentaction)
 		-- Set Activate & Deactivate 
 		if ( self.selectedskillset and self.selectedskillset.id ~= "All" and table.size(self.selectedskillset.skills) > 0 ) then						
 			local combolist = {}
+			local prof = SkillManager:GetPlayerProfession()
+			
+			-- Ele's attunements
+			if ( prof == GW2.CHARCLASS.Elementalist and (string.starts(self.selectedskillset.id,"4_") or string.starts(self.selectedskillset.id,"0_"))) then
+				if ( string.ends(self.selectedskillset.id,"_1") ) then self.selectedskillset.activateskillid = 13 end -- Fire
+				if ( string.ends(self.selectedskillset.id,"_2") ) then self.selectedskillset.activateskillid = 14 end -- Water
+				if ( string.ends(self.selectedskillset.id,"_3") ) then self.selectedskillset.activateskillid = 15 end -- Air
+				if ( string.ends(self.selectedskillset.id,"_4") ) then self.selectedskillset.activateskillid = 16 end -- Earth
+			
+			-- Necromancer
+			elseif ( prof == GW2.CHARCLASS.Necromancer and self.selectedskillset.id == "6") then -- normal shroud
+				self.selectedskillset.activateskillid = 10574
+				self.selectedskillset.deactivateskillid = 10585
+			elseif ( prof == GW2.CHARCLASS.Necromancer and self.selectedskillset.id == "3_6") then -- Reaper shroud
+				self.selectedskillset.activateskillid = 30792
+				self.selectedskillset.deactivateskillid = 30961
+			elseif ( prof == GW2.CHARCLASS.Necromancer and self.selectedskillset.id == "3_0") then -- Lichform
+				self.selectedskillset.activateskillid = 10550
+				self.selectedskillset.deactivateskillid = 10700 --slot 4	
+			
+			
 			-- Bundles and Transformations need a defined activate & deactivate skill for the set
-			if ( string.starts(self.selectedskillset.id,"2_") or string.starts(self.selectedskillset.id,"3_")) then
+			elseif ( string.starts(self.selectedskillset.id,"2_") or string.starts(self.selectedskillset.id,"3_")) then
 				for k,v in pairs(self.selectedskillset.skills) do
 					combolist[k] = v.name
 				end
@@ -688,17 +707,9 @@ function sm_skill_profile:RenderSkillSetEditor(currentaction)
 				end
 				
 				-- Normal weapons which can be swapped
-			elseif ( string.starts(self.selectedskillset.id,"4_") or string.starts(self.selectedskillset.id,"0_")) then
-				-- Ele's attunements
-				if ( SkillManager:GetPlayerProfession() == GW2.CHARCLASS.Elementalist ) then
-					if ( string.ends(self.selectedskillset.id,"_1") ) then self.selectedskillset.activateskillid = 13 end -- Fire
-					if ( string.ends(self.selectedskillset.id,"_2") ) then self.selectedskillset.activateskillid = 14 end -- Water
-					if ( string.ends(self.selectedskillset.id,"_3") ) then self.selectedskillset.activateskillid = 15 end -- Air
-					if ( string.ends(self.selectedskillset.id,"_4") ) then self.selectedskillset.activateskillid = 16 end -- Earth
-				else
-					self.selectedskillset.activateskillid = 2
-				end
-			end			
+			elseif ( string.starts(self.selectedskillset.id,"4_") or string.starts(self.selectedskillset.id,"0_")) then				
+				self.selectedskillset.activateskillid = 2				
+			end
 		end
 		GUI:Separator()
 		
@@ -732,8 +743,8 @@ function sm_skill_profile:RenderSkillSetEditor(currentaction)
 							GUI:PushStyleColor(GUI.Col_ButtonHovered,1.0,0.75,0.0,0.9)
 							GUI:PushStyleColor(GUI.Col_ButtonActive,1.0,0.75,0.0,1.0)
 						end
-						
-						if ( GUI:ImageButton(skill.name.."##"..tostring(i), sm_skill_profile.texturecache.."\\default.png", 30,30) ) then self.selectedskill = skill.id end if (GUI:IsItemHovered()) then GUI:SetTooltip( skill.name ) end						
+						if ( not skill.name ) then skill.name = GetString("Unknown Name") end
+						if ( GUI:ImageButton(skill.name.."##"..tostring(i), sm_skill_profile.texturecache.."\\default.png", 30,30) ) then self.selectedskill = skill.id end if (GUI:IsItemHovered()) then GUI:SetTooltip( skill.name or "" ) end						
 						if ( highlight ) then GUI:PopStyleColor(3) end
 						-- Right click - Context Menu Spawn
 						
@@ -743,7 +754,7 @@ function sm_skill_profile:RenderSkillSetEditor(currentaction)
 								if ( GUI:Selectable(GetString("Move to Main Set"),false) ) then 
 									self.skillsets["All"].skills[id] = skill
 									self.selectedskillset.skills[id] = nil  
-									modified = true 
+									self.modified = true 
 								end	
 								-- Options to move skill to all other sets
 							else
@@ -752,7 +763,7 @@ function sm_skill_profile:RenderSkillSetEditor(currentaction)
 										if ( GUI:Selectable(GetString("Move to "..v.name.."##"..tostring(k)),false )) then											
 											self.skillsets[k].skills[id] = skill
 											self.skillsets["All"].skills[id] = nil
-											modified = true 
+											self.modified = true 
 										end
 									end
 								end
@@ -763,7 +774,7 @@ function sm_skill_profile:RenderSkillSetEditor(currentaction)
 									if ( GUI:Selectable(GetString("Remove"),false) ) then
 										self.skillsets["All"].skills[id] = skill
 										self.selectedskillset.skills[id] = nil  
-										modified = true 
+										self.modified = true 
 									end
 								end
 							end
@@ -829,12 +840,11 @@ function sm_skill_profile:RenderSkillSetEditor(currentaction)
 			end
 		end
 	end
-	return modified
 end
 
 -- Grabs a "snapshot" of the current skills the player has and extends each entry with additional data from the "gw2_skill_data.lua" table.
 -- Creates "missing" skill sets and adds skills to the current profile...now this is some major ugly bullshit function ...thanks anet for your chaos profession mechanic!
-function sm_skill_profile:UpdateCurrentSkillsetData()
+function sm_skill_profile:UpdateCurrentSkillsetData()	
 	local skilldb = self.skilldata
 	local result = {}			-- Holds all skills of the current set, key is skillID
 	for i = 1, ml_global_information.MAX_SKILLBAR_SLOTS-1 do	-- 1 to 19
@@ -922,14 +932,23 @@ function sm_skill_profile:UpdateCurrentSkillsetData()
 	
 	-- All Transformations, ele, necro, warrior, engi, changes only skills 1-5
 	elseif ( w == 3 ) then
-		-- Necro has 2 kinds of transformation...-.-
+		-- Necro has 2 kinds of transformation...-.- pve and pvp shit shroud have diff ids ..fuck u anet big time
 		if ( SkillManager:GetPlayerProfession() == 8 ) then
-			self:CreateSetFromSkillData("3_"..tostring(t), result, 1, 5, GetString("Transform Set"))
+			if ( t == 0 ) then
+				self:CreateSetFromSkillData("3_0", result, 1, 5, GetString("LichForm"))
+			else
+				self:CreateSetFromSkillData("3_6", result, 1, 5, GetString("Reaper Shroud"))
+			end
 		else
 			self:CreateSetFromSkillData("3", result, 1, 5, GetString("Transform Set"))
 		end
 				
+	elseif ( t == 6 ) then
+		-- necro normal shroud
+		self:CreateSetFromSkillData("6", result, 1, 5, GetString("Shroud"))
+		
 	else
+		
 		local weapon1
 		local weapon2
 		-- Get 2 different "ids" in case it is a 1Hand weapon
@@ -940,14 +959,14 @@ function sm_skill_profile:UpdateCurrentSkillsetData()
 			local item = Inventory:GetEquippedItemBySlot(GW2.EQUIPMENTSLOT.AlternateAquaticWeapon)
 			if ( item ) then weapon1 = "0_2_"..tostring(item.weapontype) end
 		elseif ( w == 4 ) then
-			local item = Inventory:GetEquippedItemBySlot(GW2.EQUIPMENTSLOT.MainHandWeapon)
+			local item = Inventory:GetEquippedItemBySlot(GW2.EQUIPMENTSLOT.MainHandWeapon) or Inventory:GetEquippedItemBySlot(GW2.EQUIPMENTSLOT.AlternateMainHandWeapon)
 			if ( item ) then weapon1 = "4_"..tostring(item.weapontype) end	-- 4 for all "land" weapons, since they can be in either hand or slot
-			local item2 = Inventory:GetEquippedItemBySlot(GW2.EQUIPMENTSLOT.OffHandWeapon)
+			local item2 = Inventory:GetEquippedItemBySlot(GW2.EQUIPMENTSLOT.OffHandWeapon) or Inventory:GetEquippedItemBySlot(GW2.EQUIPMENTSLOT.AlternateOffHandWeapon)
 			if ( item2 ) then weapon2 = "4_2_"..tostring(item2.weapontype) end
 		elseif ( w == 5 ) then
-			local item = Inventory:GetEquippedItemBySlot(GW2.EQUIPMENTSLOT.AlternateMainHandWeapon)
-			if ( item ) then weapon1 ="4_"..tostring(item.weapontype) end
-			local item2 = Inventory:GetEquippedItemBySlot(GW2.EQUIPMENTSLOT.AlternateOffHandWeapon)
+			local item = Inventory:GetEquippedItemBySlot(GW2.EQUIPMENTSLOT.AlternateMainHandWeapon) or Inventory:GetEquippedItemBySlot(GW2.EQUIPMENTSLOT.MainHandWeapon)
+			if ( item ) then weapon1 = "4_"..tostring(item.weapontype) end	-- 4 for all "land" weapons, since they can be in either hand or slot
+			local item2 = Inventory:GetEquippedItemBySlot(GW2.EQUIPMENTSLOT.AlternateOffHandWeapon) or Inventory:GetEquippedItemBySlot(GW2.EQUIPMENTSLOT.OffHandWeapon)
 			if ( item2 ) then weapon2 = "4_2_"..tostring(item2.weapontype) end
 		end
 		
@@ -993,34 +1012,35 @@ end
 
 -- Helper to reduce the redudant code spam
 function sm_skill_profile:CreateSetFromSkillData(id, skills, slotmin, slotmax, name)
-	if ( not self.skillsets[id] ) then		
+	if ( not self.skillsets[id] ) then
 		local set = sm_skillset:new()
 		set.id = id				
 		set.skills = {}
 		
 		local namefixed
-		if(id == "12") then namefixed = GetString("Dragon ")
+		if(id == "3_0") then namefixed = GetString("Lichform")
+		elseif(id == "3_6") then namefixed = GetString("Reaper Shroud")
+		elseif(id == "6") then namefixed = GetString("Death Shroud ")
+		elseif(id == "12") then namefixed = GetString("Dragon ")
 		elseif(id == "13") then namefixed = GetString("Assassin ")
 		elseif(id == "14") then namefixed = GetString("Dwarf ")
 		elseif(id == "15") then namefixed = GetString("Deamon ")
-		elseif(id == "17") then namefixed = GetString("Centaur ")		
+		elseif(id == "17") then namefixed = GetString("Centaur ")
 		end
-		set.name = namefixed or name
+		set.name = namefixed or ""
 		
 		for k,v in pairs ( skills ) do
 			if ( v.slot >= slotmin and v.slot <= slotmax ) then set.skills[k] = v end
 					
-			if ( set.name == "" and v.slot == 1 ) then 
-				if ( v.weapon_type and v.weapon_type ~= "None" ) then
-					if ( slotmin == 4 ) then
-						set.name = v.weapon_type.." 2" 
-					else
-						set.name = v.weapon_type 
-					end
+			if ( set.name == "" and v.weapon_type and v.weapon_type ~= "None" ) then 
+				if ( (slotmin == 1 and v.slot == 1) or (slotmin == 4 and v.slot == 4)) then 				
+					set.name = v.weapon_type				
 				end
 			end
 		end
-		self.skillsets[id] = set				
+		if ( set.name == "" ) then set.name = name end 
+		self.skillsets[id] = set	
+		self.modified = true
 	end
 end
 
@@ -1237,7 +1257,6 @@ end
 
 -- Renders the Action Info, Details, Editor etc.
 function sm_action:Render(profile)
-	local modified
 	if ( not self.selectedskill ) then 
 		self.selectedskill = select(1,next(self.sequence))		
 		if ( self.selectedskill and self.sequence[self.selectedskill].id == 0 ) then 
@@ -1255,10 +1274,7 @@ function sm_action:Render(profile)
 				if ( skill ) then self.name = skill.name end
 			end
 			self.editskill = nil 
-			modified = true
-			
-		elseif ( result == true ) then
-			modified = true
+			profile.modified = true
 		end
 			
 	else
@@ -1270,7 +1286,7 @@ function sm_action:Render(profile)
 		GUI:SameLine(100)
 		self.name, changed = GUI:InputText( "##actionname", self.name or GetString("[Empty Action]"))
 		GUI:PopItemWidth()
-		if ( changed ) then modified = true end	
+		if ( changed ) then profile.modified = true end	
 			
 		GUI:SameLine(599)	
 		local highlighted
@@ -1430,7 +1446,7 @@ function sm_action:Render(profile)
 					for idx,or_group in pairs(self.sequence[self.selectedskill].conditions) do
 						for k,v in pairs(or_group) do
 							if ( type(v) == "table") then
-								if (v:Render(tostring(idx)..tostring(k))) then modified = true end
+								if (v:Render(tostring(idx)..tostring(k))) then profile.modified = true end
 								GUI:SameLine(590)
 								local highlighted
 								if ( v.deletecount ) then
@@ -1447,7 +1463,7 @@ function sm_action:Render(profile)
 										if ( table.size(self.sequence[self.selectedskill].conditions[idx]) == 0) then
 											self.sequence[self.selectedskill].conditions[idx] = nil
 										end
-										modified = true
+										profile.modified = true
 									end
 								end
 								if ( highlighted ) then GUI:PopStyleColor(4) end
@@ -1475,7 +1491,7 @@ function sm_action:Render(profile)
 												local newcond = v:new()
 												table.insert(self.sequence[self.selectedskill].conditions[idx], newcond)
 												or_group.addnew = nil
-												modified = true
+												profile.modified = true
 												break
 											end
 										end					
@@ -1521,7 +1537,7 @@ function sm_action:Render(profile)
 					local maxx,_ = GUI:GetContentRegionAvail()
 					local changed = false
 					self.sequence[self.selectedskill].conditioncode, changed = GUI:InputTextEditor( "##smactioncodeeditor", self.sequence[self.selectedskill].conditioncode or GetString("-- Return 'true' when the skill can be cast, else return 'false'. Use the 'context' table to share data between all skills.\nreturn true"), maxx, math.max(maxy/2,300) , GUI.InputTextFlags_AllowTabInput)
-					if ( changed ) then self.sequence[self.selectedskill].conditioncodechanged = true modified = true end
+					if ( changed ) then self.sequence[self.selectedskill].conditioncodechanged = true profile.modified = true end
 					if ( self.sequence[self.selectedskill].conditioncodechanged ) then
 						GUI:PushStyleColor(GUI.Col_Button,1.0,0.75,0.0,0.7)
 						GUI:PushStyleColor(GUI.Col_ButtonHovered,1.0,0.75,0.0,0.8)
@@ -1542,8 +1558,6 @@ function sm_action:Render(profile)
 			end
 		end
 	end
-	
-	return modified
 end
 
 
@@ -1566,7 +1580,7 @@ function sm_action:CanCastSkill(profile, targetskillset, sequenceid)
 			local skilldata, skillset = profile:GetSkill(skill.id)			
 			if ( skilldata and skilldata.flip_level > 0 and sequenceid == 1 ) then -- a flipskill in the not active targetskillset, used as 1st skill in a sequence, we don't allow that. Else chaos!
 				return false
-			end		
+			end
 		end
 		
 		local skill = self.sequence[sequenceid]
@@ -1652,32 +1666,32 @@ function sm_skill_profile:GetSkillsetCastID(targetskillset)
 		end
 	else
 	
-		-- Ele's attunements
+	-- Ele's attunements
 		
 		if ( prof == GW2.CHARCLASS.Elementalist ) then
 			if ( string.ends(targetskillset.id,"_1") ) then	 -- Fire
-				if ( self.currentskills[13] and self.currentskills[13].cooldown == 0 ) then 
+				if ( self.currentskills[13] and self.currentskills[13].cancast ) then 
 					return 13 
 				else
 					return false
 				end
 			
 			elseif ( string.ends(targetskillset.id,"_2") )then  -- Water
-				if (self.currentskills[14] and self.currentskills[14].cooldown == 0 ) then 
+				if (self.currentskills[14] and self.currentskills[14].cancast ) then 
 					return 14 
 				else
 					return false
 				end
 				
 			elseif ( string.ends(targetskillset.id,"_3") ) then -- Air
-				if (self.currentskills[15] and self.currentskills[15].cooldown == 0 ) then 
+				if (self.currentskills[15] and self.currentskills[15].cancast ) then 
 					return 15 
 				else
 					return false
 				end
 				
 			elseif ( string.ends(targetskillset.id,"_4") ) then -- Earth
-				if (self.currentskills[16] and self.currentskills[16].cooldown == 0 ) then 
+				if (self.currentskills[16] and self.currentskills[16].cancast ) then 
 					return 16 
 				else
 					return false
@@ -1688,61 +1702,66 @@ function sm_skill_profile:GetSkillsetCastID(targetskillset)
 		-- Revenant's stances
 		if (prof == GW2.CHARCLASS.Revenant ) then
 			if(targetskillset.id == "12") then --Dragon switch skill ID 28229				
-				if ( self.currentskills[13] and self.currentskills[13].skillid == 28229 and self.currentskills[13].cooldown == 0 ) then return 13
-				elseif (self.currentskills[17] and self.currentskills[17].skillid == 28229 and self.currentskills[17].cooldown == 0) then return 17					
+				if ( self.currentskills[13] and self.currentskills[13].skillid == 28229 and self.currentskills[13].cancast ) then return 13
+				elseif (self.currentskills[17] and self.currentskills[17].skillid == 28229 and self.currentskills[17].cancast) then return 17					
 				else return false
 				end
 			elseif(targetskillset.id == "13") then --Assassin switch skill ID 27659				
-				if ( self.currentskills[13] and self.currentskills[13].skillid == 27659 and self.currentskills[13].cooldown == 0 ) then return 13
-				elseif (self.currentskills[17] and self.currentskills[17].skillid == 27659 and self.currentskills[17].cooldown == 0) then return 17					
+				if ( self.currentskills[13] and self.currentskills[13].skillid == 27659 and self.currentskills[13].cancast ) then return 13
+				elseif (self.currentskills[17] and self.currentskills[17].skillid == 27659 and self.currentskills[17].cancast) then return 17					
 				else return false
 				end				
 			elseif(targetskillset.id == "14") then --Dwarf switch skill ID 26650
-				if ( self.currentskills[13] and self.currentskills[13].skillid == 26650 and self.currentskills[13].cooldown == 0 ) then return 13
-				elseif (self.currentskills[17] and self.currentskills[17].skillid == 26650 and self.currentskills[17].cooldown == 0) then return 17					
+				if ( self.currentskills[13] and self.currentskills[13].skillid == 26650 and self.currentskills[13].cancast ) then return 13
+				elseif (self.currentskills[17] and self.currentskills[17].skillid == 26650 and self.currentskills[17].cancast) then return 17					
 				else return false
 				end
 			elseif(targetskillset.id == "15") then --Deamon switch skill ID 28376
-				if ( self.currentskills[13] and self.currentskills[13].skillid == 28376 and self.currentskills[13].cooldown == 0 ) then return 13
-				elseif (self.currentskills[17] and self.currentskills[17].skillid == 28376 and self.currentskills[17].cooldown == 0) then return 17					
+				if ( self.currentskills[13] and self.currentskills[13].skillid == 28376 and self.currentskills[13].cancast ) then return 13
+				elseif (self.currentskills[17] and self.currentskills[17].skillid == 28376 and self.currentskills[17].cancast) then return 17					
 				else return false
 				end
 			elseif(targetskillset.id == "17") then --Centaur switch skill ID 28141
-				if ( self.currentskills[13] and self.currentskills[13].skillid == 28141 and self.currentskills[13].cooldown == 0 ) then return 13
-				elseif (self.currentskills[17] and self.currentskills[17].skillid == 28141 and self.currentskills[17].cooldown == 0) then return 17					
+				if ( self.currentskills[13] and self.currentskills[13].skillid == 28141 and self.currentskills[13].cancast ) then return 13
+				elseif (self.currentskills[17] and self.currentskills[17].skillid == 28141 and self.currentskills[17].cancast) then return 17					
 				else return false
 				end		
 			end
 		end
 		
+		-- Necro 
+		if (prof == GW2.CHARCLASS.Necromancer ) then
+			if ( targetskillset.id == "6") then -- normal shroud
+				if (not self.currentskills or not table.valid(self.currentskills[13]) or self.currentskills[13].cancast == 0 or targetskillset.activateskillid ~= self.currentskills[13].skillid ) then 
+					return false 
+				else
+					return 13
+				end				
+			elseif(targetskillset.id == "3_6") then -- reaper
+				if (not self.currentskills or not table.valid(self.currentskills[13]) or self.currentskills[13].cancast == 0 or targetskillset.activateskillid ~= self.currentskills[13].skillid) then 
+					return false 
+				else
+					return 13
+				end
+			elseif(targetskillset.id == "3_0") then -- Lich	
+				if (not self.currentskills or not table.valid(self.currentskills[10]) or self.currentskills[10].cancast == 0 or targetskillset.activateskillid ~= self.currentskills[10].skillid) then 										
+					return false
+				else
+					return 10
+				end
+			end
+		end
+		
 		-- Check if the activateskillid of the targetskillset is on our current skillset and can be cast, so we can swap to that set
 		for sid, sk in pairs (self.currentskills) do				
-			if ( sk.skillid == targetskillset.activateskillid ) then -- find the slot of the activate skill
+			if ( sk.skillid == targetskillset.activateskillid and sk.cancast ) then -- find the slot of the activate skill
 				local skilldata = self:GetSkill(targetskillset.activateskillid)						
 				if ( skilldata and (not skilldata.cooldown or skilldata.cooldown == 0) ) then
 					return skilldata.slot
 				end
 			end
 		end
-			
-			-- not sure if that is needed, so far only necro shroud would use it, but that can as well be fixed by setting a combo skill before one of the other shroud skills,  to swap out of it
-			--[[ check if the targetskillset is weapon1 or weapon2 set, assuming that activateskillid == 2 is ONLY used by these two sets, in that case, deactivating the current set should bring us to w1 or w2
-			if ( self.set.deactivateskillid and self.set.deactivateskillid > 2 
-				and (((string.starts(targetskillset.id,"4_") or string.starts(targetskillset.id,"5_")) and self.player.swimming == 0)	-- target set is W1 / W2 and we are on land
-				or((string.starts(targetskillset.id,"0_") or string.starts(targetskillset.id,"1_")) and self.player.swimming == 1)))	then-- or taget set is Aqua1/2 and we are under water		
-				
-				-- Check if the deactivateskillid of the targetskillset is on our current skillset and can be cast, so we can swap to that set
-				for sid, sk in pairs (self.currentskills) do				
-					if ( sk.skillid == self.set.deactivateskillid ) then -- find the slot of the activate skill
-						local skilldata = self:GetSkill(self.set.deactivateskillid)						
-						if ( skilldata and (not skilldata.cooldown or skilldata.cooldown == 0) ) then
-							return skilldata.slot
-						end
-					end
-				end
-				return 
-				 
-			end--]]
+		
 	end
 	return -3
 end
@@ -1763,12 +1782,21 @@ function sm_skill_profile:GetCurrentSkillSetIDs(currentskilldata)
 	elseif ( w == 3 ) then
 		-- Necro has 2 kinds of transformation...-.-
 		if ( SkillManager:GetPlayerProfession() == 8 ) then
-			return "3_"..tostring(t)
+			if ( t == 0 ) then
+				return "3_0"
+			else
+				return "3_6"
+			end
 		else
 			return "3"
 		end
 		
+	elseif ( t == 6 ) then
+		-- necro normal shroud
+		return "6"
+	
 	else
+	
 		local weapon1
 		local weapon2
 		-- Get 2 different "ids" in case it is a 1Hand weapon
@@ -1779,14 +1807,14 @@ function sm_skill_profile:GetCurrentSkillSetIDs(currentskilldata)
 			local item = Inventory:GetEquippedItemBySlot(GW2.EQUIPMENTSLOT.AlternateAquaticWeapon)
 			if ( item ) then weapon1 = "0_2_"..tostring(item.weapontype) end
 		elseif ( w == 4 ) then
-			local item = Inventory:GetEquippedItemBySlot(GW2.EQUIPMENTSLOT.MainHandWeapon)
+			local item = Inventory:GetEquippedItemBySlot(GW2.EQUIPMENTSLOT.MainHandWeapon) or Inventory:GetEquippedItemBySlot(GW2.EQUIPMENTSLOT.AlternateMainHandWeapon)
 			if ( item ) then weapon1 = "4_"..tostring(item.weapontype) end	-- 4 for all "land" weapons, since they can be in either hand or slot
-			local item2 = Inventory:GetEquippedItemBySlot(GW2.EQUIPMENTSLOT.OffHandWeapon)
+			local item2 = Inventory:GetEquippedItemBySlot(GW2.EQUIPMENTSLOT.OffHandWeapon) or Inventory:GetEquippedItemBySlot(GW2.EQUIPMENTSLOT.AlternateOffHandWeapon)
 			if ( item2 ) then weapon2 = "4_2_"..tostring(item2.weapontype) end
 		elseif ( w == 5 ) then
-			local item = Inventory:GetEquippedItemBySlot(GW2.EQUIPMENTSLOT.AlternateMainHandWeapon)
-			if ( item ) then weapon1 ="4_"..tostring(item.weapontype) end
-			local item2 = Inventory:GetEquippedItemBySlot(GW2.EQUIPMENTSLOT.AlternateOffHandWeapon)
+			local item = Inventory:GetEquippedItemBySlot(GW2.EQUIPMENTSLOT.AlternateMainHandWeapon) or Inventory:GetEquippedItemBySlot(GW2.EQUIPMENTSLOT.MainHandWeapon)
+			if ( item ) then weapon1 = "4_"..tostring(item.weapontype) end	-- 4 for all "land" weapons, since they can be in either hand or slot
+			local item2 = Inventory:GetEquippedItemBySlot(GW2.EQUIPMENTSLOT.AlternateOffHandWeapon) or Inventory:GetEquippedItemBySlot(GW2.EQUIPMENTSLOT.OffHandWeapon)
 			if ( item2 ) then weapon2 = "4_2_"..tostring(item2.weapontype) end
 		end
 		
@@ -1819,7 +1847,6 @@ end
 -- Which sets we are currently having active
 function sm_skill_profile:GetCurrentSkillSets()
 	local id,id2,id3 = self:GetCurrentSkillSetIDs() -- we can have up to 3 sets active at the same time @Revenant
-	
 	local availablesets = {}
 	table.insert(availablesets,self.skillsets["All"])
 	if ( id and self.skillsets[id] ) then table.insert(availablesets,self.skillsets[id]) end
