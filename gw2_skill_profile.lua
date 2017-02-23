@@ -229,6 +229,7 @@ function sm_skill_profile:PreSave()
 	self.dropid = nil
 	self.dropidhover = nil
 	self.activeskillrange = nil
+	self.weaponsets = nil
 end
 function sm_skill_profile:AfterSave()
 	self.menucodechanged = true
@@ -345,10 +346,10 @@ function sm_skill_profile:Render()
 					end
 				end
 				
-			elseif ( #skills > 0 ) then				
+			elseif ( table.size(skills) > 0 ) then				
 				local currenltycast				
 				for q,s in pairs(skills) do
-					if ( self.currentaction == k and self.currentactionsequence == q and self.pp_castinfo.skillid ~= 0 ) then
+					if ( (self.currentaction == k and self.currentactionsequence == q and self.pp_castinfo.skillid ~= 0) or (self.pp_castinfo.skillid == s.id) ) then
 						GUI:PushStyleColor(GUI.Col_ButtonHovered,0.18,1.0,0.0,0.8)
 						GUI:PushStyleColor(GUI.Col_ButtonActive,0.18,1.0,0.0,0.9)
 						GUI:PushStyleColor(GUI.Col_Text,1.0,1.0,1.0,1.0)
@@ -487,13 +488,14 @@ function sm_skill_profile:Render()
 		-- Apply Drag n Drop
 		if ( self.dragid and self.dropid ) then
 			local tmp = self.actionlist[self.dragid]
-			self.actionlist[self.dragid] = self.actionlist[self.dropid]
-			self.actionlist[self.dropid] = tmp
+			table.remove(self.actionlist,self.dragid)
+			table.insert(self.actionlist,self.dropid,tmp)
 			-- don't flip skill when it is being edited
 			if ( self.selectedactionid and self.actionlist[self.selectedactionid] ) then self.selectedactionid = self.dropid end
 			self.dragid = nil
 			self.dropid = nil
 			self.dropidhover = nil
+			self.modified = true
 		end
 		
 		-- Render 'empty' skill slot on the bottom to add new entries
@@ -1065,8 +1067,8 @@ function sm_skill_profile:IsSkillInUse(skillid)
 end
 
 -- Updates the Data of the current SkillSets
-function sm_skill_profile:Update(gametick)
-	if ( not self.lasttick or gametick - self.lasttick > 50 ) then
+function sm_skill_profile:Update(gametick, force)
+	if ( force or not self.lasttick or gametick - self.lasttick > 150) then
 		self.lasttick = gametick
 		self.currentskills = {}
 		self.activeskillrange = 154
@@ -1085,8 +1087,8 @@ function sm_skill_profile:Update(gametick)
 						setskill.slot = i
 					end
 											
-					self.activeskillrange = (setskill.maxrange > 0 and setskill.maxrange > self.activeskillrange and setskill.maxrange or self.activeskillrange)
-					self.activeskillrange = (setskill.radius > 0 and setskill.radius > self.activeskillrange and setskill.radius or self.activeskillrange)
+					self.activeskillrange = (setskill.maxrange and setskill.maxrange > 0 and setskill.maxrange > self.activeskillrange and setskill.maxrange or self.activeskillrange)
+					self.activeskillrange = (setskill.radius and setskill.radius > 0 and setskill.radius > self.activeskillrange and setskill.radius or self.activeskillrange)
 				end
 			end
 		end
@@ -1109,10 +1111,30 @@ function sm_skill_profile:Update(gametick)
 				if (setskill ) then
 					setskill.cooldown = 0
 				end
-				table.remove(self.cooldownlist,id)
+				self.cooldownlist[id] = nil
 			end		
 		end
 		
+		-- save the current weapon set UDs available, used a lot in cancast etc checks
+		local w = Player:GetCurrentWeaponSet()		
+		self.weaponsets = {}
+		if (Player.swimming == 0) then-- we are on land
+			local item = Inventory:GetEquippedItemBySlot(GW2.EQUIPMENTSLOT.MainHandWeapon)
+			if ( item ) then table.insert(self.weaponsets,"4_"..tostring(item.weapontype)) end
+			item = Inventory:GetEquippedItemBySlot(GW2.EQUIPMENTSLOT.OffHandWeapon)
+			if ( item ) then table.insert(self.weaponsets,"4_2_"..tostring(item.weapontype)) end
+			item = Inventory:GetEquippedItemBySlot(GW2.EQUIPMENTSLOT.AlternateMainHandWeapon)
+			if ( item ) then table.insert(self.weaponsets,"4_"..tostring(item.weapontype)) end
+			item = Inventory:GetEquippedItemBySlot(GW2.EQUIPMENTSLOT.AlternateOffHandWeapon)
+			if ( item ) then table.insert(self.weaponsets,"4_2_"..tostring(item.weapontype)) end		
+		
+		elseif ( Player.swminning == 1) then -- we are diving
+			local item = Inventory:GetEquippedItemBySlot(GW2.EQUIPMENTSLOT.AquaticWeapon)
+			if ( item ) then table.insert(self.weaponsets,"0_"..tostring(item.weapontype)) end	-- 0 for all water weapons
+			item = Inventory:GetEquippedItemBySlot(GW2.EQUIPMENTSLOT.AlternateAquaticWeapon)
+			if ( item ) then table.insert(self.weaponsets,"0_2_"..tostring(item.weapontype)) end			
+		end			
+			
 		ml_global_information.AttackRange = self.activeskillrange
 	end
 end
@@ -1304,7 +1326,7 @@ function sm_action:Render(profile)
 		-- Add new Skill to Sequence button		
 		if ( GUI:Button("+##sequence", 35, 35) ) then 
 			-- Create a new cast list entry
-			table.insert(self.sequence, {id = 0, conditions = {} })
+			table.insert(self.sequence, {id = 0, settings = {}, conditions = {} })
 			self.editskill = #self.sequence
 			self.selectedskill = #self.sequence
 		end		
@@ -1528,24 +1550,30 @@ end
 -- Checks if a skill of the sequence can be cast by evaluating all conditions
 function sm_action:CanCastSkill(profile, targetskillset, sequenceid)
 	if ( self.sequence[sequenceid] ~= nil ) then
-		-- Check if we need to swap sets and if that is possible			
+		-- Check if we need to swap sets and if that is possible		
 		local swapresult = profile:GetSkillsetCastID(targetskillset)
 		if ( swapresult == false )  then
 			return false -- We cannot currently "reach" the skillset which contains this skill
 		elseif( swapresult == -1 ) then	-- we have the set equipped, now check if the skill is actually there
 			-- Check if the skill id we want to cast is actually on the current skillbar
 			local skill = self.sequence[sequenceid]
-			local skilldata, skillset = profile:GetSkill(skill.id)
-			if ( not skilldata or not profile.currentskills[skilldata.slot] or (profile.currentskills[skilldata.slot].skillid ~= skill.id and skilldata.flip_level == 0)) then -- exclude all skilldata.flip_level > 0, to allow combos				
+			local skilldata, skillset = profile:GetSkill(skill.id)			
+			if ( not skilldata or not profile.currentskills[skilldata.slot] or (profile.currentskills[skilldata.slot].skillid ~= skill.id and sequenceid == 1 )) then --and skilldata.flip_level == 0)) then -- exclude all skilldata.flip_level > 0, to allow combos				
 				return false
 			end
+		elseif ( swapresult > 0 or swapresult == - 3 ) then -- we need to swap sets by activating a skill, engi bundles for example
+			local skill = self.sequence[sequenceid]
+			local skilldata, skillset = profile:GetSkill(skill.id)			
+			if ( skilldata and skilldata.flip_level > 0 and sequenceid == 1 ) then -- a flipskill in the not active targetskillset, used as 1st skill in a sequence, we don't allow that. Else chaos!
+				return false
+			end		
 		end
 		
 		local skill = self.sequence[sequenceid]
 		if ( not skill ) then 
 			return false
 		end
-		
+
 		-- Basic Settings
 		if ( not skill.settings.castonplayer and not profile.target ) then return false end 
 		if ( not skill.settings.nolos and not profile.target.los) then return false end
@@ -1568,9 +1596,9 @@ function sm_action:CanCastSkill(profile, targetskillset, sequenceid)
 				return false
 			end
 		end
-		
+
 		-- Go through all Conditions
-		if ( #skill.conditions > 0 ) then
+		if ( table.size(skill.conditions) > 0 ) then
 			for i,or_group in pairs( skill.conditions ) do
 				-- Either of the or_groups needs to be true for the skill to be castable
 				local cancast = true
@@ -1588,6 +1616,7 @@ function sm_action:CanCastSkill(profile, targetskillset, sequenceid)
 		end
 		return true -- in case there is only custom condition code or no code at all
 	end
+	
 	return false
 end
 
@@ -1599,20 +1628,32 @@ function sm_skill_profile:GetSkillsetCastID(targetskillset)
 		end
 	end
 	
-	
+	local prof = SkillManager:GetPlayerProfession()
 	-- Can we switch to that new set by swapping weapons ?
 	if ( targetskillset.activateskillid == 2 ) then	-- target set can be activated by swapping weapons
-		if (( Player:CanSwapWeaponSet() or Player:GetCurrentWeaponSet() == 2 ) -- we can swap weapons or player is engi and has a bundle equipped where we can just swap out
+		if ((( Player:CanSwapWeaponSet() and prof ~= GW2.CHARCLASS.Elementalist and prof ~= GW2.CHARCLASS.Engineer or Player:GetCurrentWeaponSet() == 2) -- we can swap weapons or player is engi and has a bundle equipped where we can just swap out
 			and ((string.starts(targetskillset.id,"4_") and self.player.swimming == 0)	-- target set is W1 / W2 and we are on land
-				or ( string.starts(targetskillset.id,"0_") and self.player.swimming == 1))) 	then-- or taget set is Aqua1/2 and we are under water						
-			return -2
+				or ( string.starts(targetskillset.id,"0_") and self.player.swimming == 1))) and self.weaponsets) 	then-- or taget set is Aqua1/2 and we are under water	
+				-- check equipped weapons if we have that set on our char
+				local weaponavailable = false
+				for k,v in pairs (self.weaponsets) do
+					if ( v == targetskillset.id ) then
+						weaponavailable = true
+						break
+					end
+				end				
+				if ( weaponavailable ) then
+					return -2
+				else
+					return false
+				end
 		else
 			return false -- we cannot swap to that set right now
 		end
 	else
 	
 		-- Ele's attunements
-		local prof = SkillManager:GetPlayerProfession()
+		
 		if ( prof == GW2.CHARCLASS.Elementalist ) then
 			if ( string.ends(targetskillset.id,"_1") ) then	 -- Fire
 				if ( self.currentskills[13] and self.currentskills[13].cooldown == 0 ) then 
@@ -1794,10 +1835,10 @@ function sm_skill_profile:GetNextSkillForCasting()
 	if ( self.currentaction ) then
 		self.currentactionsequence = self.currentactionsequence + 1 
 		local action = self.actionlist[self.currentaction]
-		if ( action.sequence[self.currentactionsequence] ) then
+		if ( action.sequence[self.currentactionsequence] ) then			
 			local skilldata, skillset = self:GetSkill(action.sequence[self.currentactionsequence].id)
 			if ( skilldata and (not skilldata.cooldown or skilldata.cooldown == 0) and action:CanCastSkill(self, skillset, self.currentactionsequence)) then				
-				return true
+				return true -- continue to cast the sequence / combo
 			end
 		end
 	end
@@ -1825,11 +1866,13 @@ end
 
 -- Casting
 function sm_skill_profile:Cast(targetid)
-	local target = CharacterList:Get(targetid) or GadgetList:Get(targetid) --or AgentList:Get(targetid)
-	
+	self:Update(GetGameTime(),true)	-- Update the skilldata before we do anything
 	self.pp_castinfo = Player.castinfo
 	self.player = Player
-	self.target = target
+	if ( not targetid ) then
+		d("SM NO TARGET PASSED !??! ")
+	end
+	self.target = CharacterList:Get(targetid) or GadgetList:Get(targetid) --or AgentList:Get(targetid)
 	self.sets = self:GetCurrentSkillSets()
 		
 	-- Setting a "current action to cast"
@@ -1837,7 +1880,7 @@ function sm_skill_profile:Cast(targetid)
 	
 	if ( self.currentaction ) then
 		local action = self.actionlist[self.currentaction]
-		if ( not action ) then 
+		if ( not action or not action.sequence[self.currentactionsequence]) then 
 			-- someone deleted an action from the list
 			self.currentaction = nil
 			self.currentactionsequence = nil	
@@ -1859,7 +1902,7 @@ function sm_skill_profile:Cast(targetid)
 			end
 			
 			-- If skill is already on CD, or if it is a spammable skill and our lastskillid is showing we cast it, get the next skill in the sequence OR a new action
-			if ( (skilldata.cooldown and skilldata.cooldown ~= 0) or (skilldata.cooldownmax and skilldata.cooldownmax == 0 and self.pp_castinfo.lastskillid == skilldata.id)) then
+			if (skilldata and (skilldata.cooldown and skilldata.cooldown ~= 0) or (skilldata.cooldownmax and skilldata.cooldownmax == 0 and self.pp_castinfo.lastskillid == skilldata.id)) then
 				if (self:GetNextSkillForCasting() ) then-- get a new / next skill
 					action = self.actionlist[self.currentaction]
 					skilldata, skillset = self:GetSkill(action.sequence[self.currentactionsequence].id)								
@@ -1873,7 +1916,9 @@ function sm_skill_profile:Cast(targetid)
 			if (skilldata and (not skilldata.cooldown or skilldata.cooldown == 0) and (self.pp_castinfo.skillid ~= skilldata.id or (skilldata.slot == 1 and skilldata.cooldownmax and skilldata.cooldownmax == 0))) then
 				-- Ensure the correct Weapon Set
 				local switchslot = self:GetSkillsetCastID(skillset) 
-				if ( switchslot == -2 ) then
+				if ( switchslot == false ) then
+					d("Could not swap to weaponset which holds "..tostring(skilldata.name))
+				elseif ( switchslot == -2 ) then
 					-- swap weapons
 					Player:SwapWeaponSet()
 					d("Swapping weaponset..")
@@ -1884,7 +1929,7 @@ function sm_skill_profile:Cast(targetid)
 					d("Swapping weaponset to "..tostring(GW2.SKILLBARSLOT["Slot_" .. switchslot]))
 					return true
 				elseif ( switchslot == -3 ) then
-					d(tostring(skilldata.name)" .. is not on the skillset or it cannot be switched to. Check Activate / Deactivate Skills of that Set")
+					d(tostring(skilldata.name).." is not on the skillset or it cannot be switched to. Check Activate / Deactivate Skills of that Set")
 					return false
 				end
 				
@@ -1894,7 +1939,7 @@ function sm_skill_profile:Cast(targetid)
 					self.target = Player
 				end
 				
-				if ( not target ) then return end
+				if ( not self.target ) then return end
 				local castresult
 				if (skilldata.groundtargeted) then
 					local pos = self.target.pos
@@ -1902,20 +1947,26 @@ function sm_skill_profile:Cast(targetid)
 					-- 5% extra range
 					-- increasing height slightly -> extra range
 					-- calc in radius -> extra range
-					if (self.target.ischaracter) then
+					if (self.target.ischaracter or (self.target.isgadget and skilldata.isprojectile)) then
 						castresult = Player:CastSpell(GW2.SKILLBARSLOT["Slot_" .. skilldata.slot] , pos.x, pos.y, pos.z)
-					elseif (self.target.isgadget) then
-						if (skilldata.isprojectile) then
-							castresult = Player:CastSpell(GW2.SKILLBARSLOT["Slot_" .. skilldata.slot] , pos.x, pos.y, pos.z)
-						else
-							castresult = Player:CastSpell(GW2.SKILLBARSLOT["Slot_" .. skilldata.slot] , pos.x, pos.y, (pos.z - self.target.height))
-						end
+					else
+						castresult = Player:CastSpell(GW2.SKILLBARSLOT["Slot_" .. skilldata.slot] , pos.x, pos.y, (pos.z - self.target.height))					
 					end
 				else
-					castresult = Player:CastSpell(GW2.SKILLBARSLOT["Slot_" .. skilldata.slot] , self.target.id)
+					
+					if ( skilldata.id == 17260 ) then -- Stupid engi detonate flame blast doesnt work the "normal cast way" idk why
+						castresult = Player:CastSpellNoChecks(GW2.SKILLBARSLOT["Slot_" .. skilldata.slot])
+					else
+						castresult = Player:CastSpell(GW2.SKILLBARSLOT["Slot_" .. skilldata.slot] , self.target.id)
+					end
 				end
 			
 				if ( castresult ) then
+					if ( skilldata.flip_level > 0 ) then
+						-- add a temp cooldown on the spell, else they will never be removed from the queue
+						skilldata.cooldown = 750
+						self.cooldownlist[skilldata.id] = { tick = GetGameTime(), cd = 750 }
+					end
 					d("Casting: "..skilldata.name)
 					return true
 				else

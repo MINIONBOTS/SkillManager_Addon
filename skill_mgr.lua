@@ -221,7 +221,7 @@ function ml_skill_mgr.Draw(event,ticks)
 	
 	-- Update the SkillProfile
 	if ( ml_skill_mgr.profile) then
-		ml_skill_mgr.profile:Update(GetGameTime())			
+		ml_skill_mgr.profile:Update(GetGameTime())
 	end
 	
 end
@@ -263,7 +263,7 @@ function gw2_skill_manager.GetActiveSkillRange()
 end
 
 function gw2_skill_manager:Use(targetid)
-	if ( BehaviorManager:Running() ) then
+	if ( targetid and BehaviorManager:Running() ) then
 		SkillManager:Cast( targetid )
 	end
 end
