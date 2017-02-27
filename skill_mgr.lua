@@ -211,7 +211,7 @@ function ml_skill_mgr.Draw(event,ticks)
 			
 			
 			-- Render PROFILE
-			if ( ml_skill_mgr.profile) then				
+			if ( ml_skill_mgr.profile ) then
 				ml_skill_mgr.profile:Render()			
 			end
 			
