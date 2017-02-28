@@ -215,6 +215,21 @@ sm_skill_profile.professions = {
 	[9] = GetString("Revenant"), 
 	}
 	
+sm_skill_profile.hardcodedsets = {
+	["2_30162"] = { name = "Med Kit", activateskillid = 5802 },
+	["2_5930"] = { name = "Flamethrower", activateskillid = 5927 },
+	["2_5965"] = { name = "Elixier Gun", activateskillid = 5933 },
+	["2_6169"] = { name = "Grenade-Aqua", activateskillid = 5805 },			
+	["2_5808"] = { name = "Grenade Kit", activateskillid = 5805 },
+	["2_5822"] = { name = "Bomb Kit", activateskillid = 5812 },
+	["2_5905"] = { name = "Tool Kit", activateskillid = 5904 },
+	["3_6"] = { name = "Reaper", activateskillid = 30792, deactivateskillid = 30961},
+	["3_10633"] = { name = "Lichform", activateskillid = 10550, deactivateskillid = 10700},
+	["3_10663"] = { name = "Plaque", activateskillid = 10549, deactivateskillid = 10700},
+	["6_0"] = { name = "Death Shroud", activateskillid = 10574, deactivateskillid = 10585},
+	["6_1"] = { name = "Shroud-Aqua", activateskillid = 10574, deactivateskillid = 10585},
+}
+
 -- Resets all kinds of "modified" toggle vars, after saving. Enforces "reloading" of all codeeditor text.
 function sm_skill_profile:PreSave()
 	self.actioneditoropen = nil
@@ -671,16 +686,11 @@ function sm_skill_profile:RenderSkillSetEditor(currentaction)
 				if ( self.selectedskillset.transformid == 3 ) then self.selectedskillset.activateskillid = 15 end -- Air
 				if ( self.selectedskillset.transformid == 4 ) then self.selectedskillset.activateskillid = 16 end -- Earth
 			
-			-- Necromancer
-			elseif ( prof == GW2.CHARCLASS.Necromancer and self.selectedskillset.id == "6") then -- normal shroud
-				self.selectedskillset.activateskillid = 10574
-				self.selectedskillset.deactivateskillid = 10585
-			elseif ( prof == GW2.CHARCLASS.Necromancer and self.selectedskillset.id == "3_6") then -- Reaper shroud
-				self.selectedskillset.activateskillid = 30792
-				self.selectedskillset.deactivateskillid = 30961
-			elseif ( prof == GW2.CHARCLASS.Necromancer and self.selectedskillset.id == "3_0") then -- Lichform
-				self.selectedskillset.activateskillid = 10550
-				self.selectedskillset.deactivateskillid = 10700 --slot 4	
+			-- Hardcoded special poop
+			elseif ( self.hardcodedsets[self.selectedskillset.id] ~= nil ) then
+				local b = self.hardcodedsets[self.selectedskillset.id]				
+				self.selectedskillset.activateskillid = b.activateskillid
+				self.selectedskillset.deactivateskillid = b.deactivateskillid				
 			
 			
 			-- Bundles and Transformations need a defined activate & deactivate skill for the set
@@ -925,14 +935,14 @@ function sm_skill_profile:UpdateCurrentSkillsetData()
 	local t = Player:GetTransformID()
 		
 	 -- bundles and picked up weapons have all id 2, use additionally skill3 id to seperat them
-	if ( w == 2 ) then
-		if ( self.currentskills and self.currentskills[3] ) then
-			self:CreateSetFromSkillData(2, self.currentskills[3].skillid,0, result, 1, 5)
+	if ( w == 2 or w == 3 ) then
+		if ( self.currentskills and self.currentskills[3] ) then--reaper
+			if ( t ~= 6 ) then
+				self:CreateSetFromSkillData(w, self.currentskills[3].skillid, 0, result, 1, 5)		
+			else
+				self:CreateSetFromSkillData(w, t, 0, result, 1, 5)
+			end
 		end
-	
-	-- All Kinds of Transformations, including ele, necro, warrior, engi
-	elseif ( w == 3 ) then		
-		self:CreateSetFromSkillData(3, t, 0, result, 1, 5)
 			
 	else
 	
@@ -961,20 +971,28 @@ function sm_skill_profile:UpdateCurrentSkillsetData()
 		end
 		
 		if ( t >= 12 and t <=17 ) then
-			if ( weapon2 ) then
+			if ( weapon2 and not self:IsTwoHandWeapon(weapontype1)) then
 				self:CreateSetFromSkillData(weapon1,0,weapontype1, result, 1, 3)
 				self:CreateSetFromSkillData(weapon2,0,weapontype2, result, 4, 5)
 			else
-				self:CreateSetFromSkillData(weapon1,0,weapontype1, result, 1, 5)
+				if ( self:IsTwoHandWeapon(weapontype1) ) then
+					self:CreateSetFromSkillData(weapon1,0,weapontype1, result, 1, 5)
+				else
+					self:CreateSetFromSkillData(weapon1,0,weapontype1, result, 1, 3)
+				end
 			end
 			self:CreateSetFromSkillData(0,t,0, result, 6, 10)
 		else
 		
-			if ( weapon2 ) then
+			if ( weapon2 and not self:IsTwoHandWeapon(weapontype1)) then
 				self:CreateSetFromSkillData(weapon1,t,weapontype1, result, 1, 3)
 				self:CreateSetFromSkillData(weapon2,t,weapontype2, result, 4, 5)								
 			else
-				self:CreateSetFromSkillData(weapon1,t,weapontype1, result, 1, 5)
+				if ( self:IsTwoHandWeapon(weapontype1) ) then
+					self:CreateSetFromSkillData(weapon1,t,weapontype1, result, 1, 5)
+				else
+					self:CreateSetFromSkillData(weapon1,t,weapontype1, result, 1, 3)
+				end
 			end
 		end
 	end
@@ -987,6 +1005,7 @@ function sm_skill_profile:UpdateCurrentSkillsetData()
 	end
 end
 
+
 -- Helper to reduce the redudant code spam
 function sm_skill_profile:CreateSetFromSkillData(w, t, weapontype, currentskills, slotmin, slotmax)
 	local id
@@ -997,7 +1016,7 @@ function sm_skill_profile:CreateSetFromSkillData(w, t, weapontype, currentskills
 		id = tostring(t)
 	
 	elseif ( t == 6 ) then -- necro death shroud
-		id = tostring(t)
+		id = tostring(t).."_"..tostring(Player.swimming)
 		
 	else
 		id = tostring(w).."_"..tostring(t).."_"..tostring(weapontype)
@@ -1015,7 +1034,7 @@ function sm_skill_profile:CreateSetFromSkillData(w, t, weapontype, currentskills
 			if ( v.slot >= slotmin and v.slot <= slotmax ) then set.skills[k] = v end
 					
 			if ( v.weapon_type and v.weapon_type ~= "None" ) then 
-				if ( (slotmin == 1 and v.slot == 1) or (slotmin == 4 and v.slot == 4)) then 				
+				if ( (slotmin == 1 and v.slot == 1) or (slotmin == 4 and v.slot == 4)) then
 					set.name = v.weapon_type				
 				end
 			end
@@ -1023,18 +1042,16 @@ function sm_skill_profile:CreateSetFromSkillData(w, t, weapontype, currentskills
 		
 		local prof = SkillManager:GetPlayerProfession()
 		
-		if ( w == 2 and set.name == "" or set.name == "None") then
-			set.name = GetString("Bundle")
-			
-		elseif( w == 3 ) then
-			if ( prof == GW2.CHARCLASS.Necromancer ) then
-				if ( t == 0 ) then set.name = GetString("Lichform")
-				elseif( t == 6 ) then set.name = GetString("Reaper Shroud")
-				end
-			end
+		if ( (w == 2 or w == 3 ) and set.name == "" or set.name == "None") then
+			if ( self.hardcodedsets[id] ~= nil ) then
+				set.name = self.hardcodedsets[id].name
+			else
+				set.name = GetString("Bundle")
+			end			
 		
 		else
-			if ( t == 6 and prof == GW2.CHARCLASS.Necromancer) then	set.name = GetString("Death Shroud")
+			if ( t == 6 and Player.swimming == 0 and prof == GW2.CHARCLASS.Necromancer) then	set.name = GetString("Death Shroud")
+			elseif ( t == 6 and Player.swimming == 1 and prof == GW2.CHARCLASS.Necromancer) then	set.name = GetString("Aqua Shroud")
 				
 			elseif ( t == 1 and prof == GW2.CHARCLASS.Elementalist ) then set.name = GetString("Fire ")..set.name
 			elseif ( t == 2 and prof == GW2.CHARCLASS.Elementalist ) then set.name = GetString("Water ")..set.name
@@ -1643,19 +1660,18 @@ function sm_skill_profile:GetCurrentSkillSets()
 	
 	local w = Player:GetCurrentWeaponSet()
 	local t = Player:GetTransformID()
-		
-	if ( w == 2 ) then
-		if ( self.currentskills and self.currentskills[3] ) then		
-			table.insert(availablesets,self.skillsets[tostring(w).."_"..tostring(self.currentskills[3].skillid)]) 
-		end
 	
-		-- All Transformations, ele, necro, warrior, engi, changes only skills 1-5
-	elseif ( w == 3 ) then
-		if ( t == 6 ) then
-			table.insert(availablesets,self.skillsets[tostring(t)]) 
-		else		
-			table.insert(availablesets,self.skillsets[tostring(w).."_"..tostring(t)]) 
+	if ( w == 2 or w == 3 ) then
+		if ( self.currentskills and self.currentskills[3] ) then--reaper
+			if ( t ~= 6 ) then				
+				table.insert(availablesets,self.skillsets[tostring(w).."_"..tostring(self.currentskills[3].skillid)])
+			else
+				table.insert(availablesets,self.skillsets[tostring(w).."_"..tostring(t)])
+			end
 		end
+			
+	elseif ( t == 6 ) then
+		table.insert(availablesets,self.skillsets[tostring(t).."_"..tostring(Player.swimming)])
 		
 	else
 	
@@ -1759,11 +1775,17 @@ function sm_skill_profile:CanSwapToSet(targetskillset, action , sequenceid)
 		end		
 	
 	elseif (targetskillset.weaponsetid == 2 or targetskillset.weaponsetid == 3 ) then --Bundles, Transformations and pickup weapons, check if the skillID to actiavte the bundle is on our current set and can be activated
-		local skilldata, skillset = self:GetSkillAndSkillSet(targetskillset.activateskillid)		
+		local skilldata, skillset = self:GetSkillAndSkillSet(targetskillset.activateskillid)
+		
 		if ( not skilldata or not self.currentskills[skilldata.slot] or self.currentskills[skilldata.slot].skillid ~= skilldata.id or not self.currentskills[skilldata.slot].cancast) then
 			return false
 		else
-			return skilldata.slot	-- Returning the slot that has to be cast to activate the skillset
+			-- Engi special fuck gren case
+			if (skilldata.id == 5805 and ((targetskillset.id == "2_5808" and Player.swimming == 1) or (targetskillset.id == "2_6169" and Player.swimming == 0))) then -- not allowing underwater gren kit on land and the other way around
+				return false
+			else
+				return skilldata.slot	-- Returning the slot that has to be cast to activate the skillset
+			end
 		end
 
 	else
@@ -1816,13 +1838,13 @@ function sm_skill_profile:CanSwapToSet(targetskillset, action , sequenceid)
 		
 		-- Necro 
 		if (prof == GW2.CHARCLASS.Necromancer ) then
-			if ( targetskillset.id == "6" or targetskillset.id == "3_6" ) then -- normal shroud and reaper shroud
+			if ( targetskillset.id == "6_0" or targetskillset.id == "6_1" or targetskillset.id == "3_6" ) then -- normal shroud, underwater shroud and reaper shroud
 				if ( self.currentskills[13] and self.currentskills[13].cancast and self.currentskills[13].skillid == targetskillset.activateskillid ) then 
 					return 13
 				else
 					return false
 				end
-			elseif(targetskillset.id == "3_0") then -- Lich	
+			elseif(targetskillset.id == "3_10633" or targetskillset.id == "3_10663") then -- Lich & Plaque
 				if ( self.currentskills[10] and self.currentskills[10].cancast and self.currentskills[10].skillid == targetskillset.activateskillid ) then 									
 					return 10
 				else
@@ -1830,7 +1852,7 @@ function sm_skill_profile:CanSwapToSet(targetskillset, action , sequenceid)
 				end
 			end
 		end
-		
+
 		-- All remaining cases, should be only switch weapons ?
 		if ( targetskillset.activateskillid == 1 ) then
 			--d("self:HasWeaponAvailable(targetskillset): "..tostring(targetskillset.name).. " : "..tostring(self:HasWeaponAvailable(targetskillset)))
