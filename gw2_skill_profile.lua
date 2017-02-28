@@ -1792,10 +1792,10 @@ function sm_skill_profile:CanSwapToSet(targetskillset, action , sequenceid)
 		local prof = SkillManager:GetPlayerProfession()
 		-- Ele's attunements
 		if ( prof == GW2.CHARCLASS.Elementalist and targetskillset.weaponsetid == 4 or targetskillset.weaponsetid == 5 ) then
-			if ( targetskillset.transformid == 1 and self.currentskills[13] and self.currentskills[13].cancast ) then return 13 end
-			if ( targetskillset.transformid == 2 and self.currentskills[14] and self.currentskills[14].cancast ) then return 14 end
-			if ( targetskillset.transformid == 3 and self.currentskills[15] and self.currentskills[15].cancast ) then return 15 end
-			if ( targetskillset.transformid == 4 and self.currentskills[16] and self.currentskills[16].cancast ) then return 16 end
+			if ( targetskillset.transformid == 1 and self:HasWeaponAvailable(targetskillset) and self.currentskills[13] and self.currentskills[13].cancast ) then return 13 end
+			if ( targetskillset.transformid == 2 and self:HasWeaponAvailable(targetskillset) and self.currentskills[14] and self.currentskills[14].cancast ) then return 14 end
+			if ( targetskillset.transformid == 3 and self:HasWeaponAvailable(targetskillset) and self.currentskills[15] and self.currentskills[15].cancast ) then return 15 end
+			if ( targetskillset.transformid == 4 and self:HasWeaponAvailable(targetskillset) and self.currentskills[16] and self.currentskills[16].cancast ) then return 16 end
 			return false
 		end
 		
