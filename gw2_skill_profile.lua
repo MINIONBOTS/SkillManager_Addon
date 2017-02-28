@@ -256,7 +256,7 @@ end
 -- Renders the profile template into the SM "main" window
 function sm_skill_profile:Render()
 	
-	if ( not GetGameState() == GW2.GAMESTATE.GAMEPLAY or not Player.castinfo) then 
+	if ( not GetGameState() == GW2.GAMESTATE.GAMEPLAY or not Player.castinfo ) then 
 		return 		
 	end
 	
@@ -276,6 +276,11 @@ function sm_skill_profile:Render()
 		if ( changed ) then self.modified = true end
 		GUI:PopItemWidth()
 		GUI:Separator()
+		
+		if ( not Player.profession or self.profession ~= Player.profession ) then			
+			GUI:TreePop()
+			return
+		end
 -- DEBUG 
 
 		GUI:Text("DEBUG: activeskillrange  : "..tostring(self.activeskillrange))
@@ -330,15 +335,16 @@ function sm_skill_profile:Render()
 		if (not self.player) then self.player = Player end
 		if (not self.target) then self.target = Player:GetTarget() end
 		if (not self.sets) then self.sets = self:GetCurrentSkillSets() end
+		if (not self.playerbuffs) then self.playerbuffs = Player.buffs end
 		
 		for k,v in pairs(self.actionlist) do
 			local size = imgsize
-			local skills = {}
+			local skilldatas = {}
 			local skillsets = {}
 			for q,w in pairs(v.sequence) do
-				skills[q], skillsets[q] = self:GetSkillAndSkillSet(w.id)
+				skilldatas[q], skillsets[q] = self:GetSkillAndSkillSet(w.id)
 			end
-			local texture = skills[1] ~= nil and self.texturecache.."\\default.png" or self.texturecache.."\\blank.png"			
+			local texture = skilldatas[1] ~= nil and self.texturecache.."\\default.png" or self.texturecache.."\\blank.png"			
 			local cd = 0
 			local colorset
 			local labelx,labely = GUI:GetCursorScreenPos()
@@ -357,7 +363,7 @@ function sm_skill_profile:Render()
 				label = v.name
 				
 				for q,s in pairs(v.sequence) do
-					if ( not skills[q] ) then
+					if ( not skilldatas[q] ) then
 						if ( s.id > 0 ) then
 							label = "[Missing Skill Data ID: "..tostring(s.id)	
 						else
@@ -366,9 +372,9 @@ function sm_skill_profile:Render()
 					end
 				end
 				
-			elseif ( table.size(skills) > 0 ) then				
+			elseif ( table.size(skilldatas) > 0 ) then				
 				local currenltycast				
-				for q,s in pairs(skills) do
+				for q,s in pairs(skilldatas) do
 					if ( (self.currentaction == k and self.currentactionsequence == q and self.pp_castinfo.skillid ~= 0) or (self.pp_castinfo.skillid == s.id) ) then
 						GUI:PushStyleColor(GUI.Col_ButtonHovered,0.18,1.0,0.0,0.8)
 						GUI:PushStyleColor(GUI.Col_ButtonActive,0.18,1.0,0.0,0.9)
@@ -378,7 +384,7 @@ function sm_skill_profile:Render()
 						labelx = labelx + 35
 						labely = labely + size/4
 						if ( q > 1 ) then
-							label = v.name.." ("..GetString("Active ")..tostring(q).." / "..tostring(#skills)..")"
+							label = v.name.." ("..GetString("Active ")..tostring(q).." / "..tostring(#skilldatas)..")"
 						else
 							label = v.name.." ("..GetString("Active")..")"
 						end
@@ -389,7 +395,7 @@ function sm_skill_profile:Render()
 						
 				if ( not currenltycast ) then
 					local count = 0
-					for q,s in pairs(skills) do
+					for q,s in pairs(skilldatas) do
 						if ( s.cooldownmax and s.cooldownmax > 0 ) then 
 							if ( s.cooldown and s.cooldown > 0 ) then
 								cd = cd + (100 - math.round(s.cooldown*100 / s.cooldownmax, 0))
@@ -420,8 +426,8 @@ function sm_skill_profile:Render()
 					else
 						labelx = labelx + 35
 						labely = labely + size/4
-						if (#skills > 1) then
-							label = v.name .." (".. tostring(#skills)..")"
+						if (table.size(skilldatas)> 1) then
+							label = v.name .." (".. tostring(table.size(skilldatas))..")"
 						else
 							label = v.name
 						end
@@ -439,8 +445,8 @@ function sm_skill_profile:Render()
 			end
 			
 			local cancast = true
-			for q,s in pairs(skills) do
-				if ( not skillsets[q] or ( s.cooldown and s.cooldown > 0) or not v:CanCastSkill(self, skillsets[q], q)) then
+			for q,s in pairs(skilldatas) do
+				if ( not skillsets[q] or not v:CanCastSkill(self, skillsets[q], q, s)) then
 					cancast = false
 					break
 				end
@@ -496,6 +502,7 @@ function sm_skill_profile:Render()
 		
 		self.pp_castinfo = nil
 		self.player = nil
+		self.playerbuffs = nil
 		self.target = nil
 		self.sets = nil
 		
@@ -1005,7 +1012,6 @@ function sm_skill_profile:UpdateCurrentSkillsetData()
 	end
 end
 
-
 -- Helper to reduce the redudant code spam
 function sm_skill_profile:CreateSetFromSkillData(w, t, weapontype, currentskills, slotmin, slotmax)
 	local id
@@ -1405,8 +1411,8 @@ function sm_action:Render(profile)
 			GUI:SetColumnOffset(1,60)
 			GUI:SetColumnOffset(2,375)
 			GUI:Dummy(30,10)
-			local skill, set = profile:GetSkillAndSkillSet(self.sequence[self.selectedskill].id)
-			if ( skill ) then
+			local skilldata, set = profile:GetSkillAndSkillSet(self.sequence[self.selectedskill].id)
+			if ( skilldata ) then
 				if ( GUI:ImageButton("##sm"..tostring(i), sm_skill_profile.texturecache.."\\default.png",40,40) ) then				
 					self.editskill = self.selectedskill
 				end
@@ -1417,24 +1423,24 @@ function sm_action:Render(profile)
 			end
 			if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("Change the Skill.")) end
 			
-			if ( skill ) then
+			if ( skilldata ) then
 				GUI:NextColumn()
 			
-				GUI:BulletText(GetString("Name:")) GUI:SameLine(125) GUI:Text(skill.name)
-				GUI:BulletText(GetString("Skill ID:")) GUI:SameLine(125) GUI:Text(skill.id)				
-				GUI:BulletText(GetString("Slot:")) GUI:SameLine(125) GUI:Text(skill.slot ~= nil and tostring(skill.slot) or tostring(0))
-				GUI:BulletText(GetString("Type:")) GUI:SameLine(125) GUI:Text(skill.type ~= nil and tostring(skill.type) or tostring(0))
-				GUI:BulletText(GetString("Weapon:")) GUI:SameLine(125) GUI:Text(skill.weapon_type ~= nil and tostring(skill.weapon_type) or tostring(0))
-				if ( skill.flip_level and skill.flip_level > 0 ) then GUI:BulletText(GetString("Chain Level:")) GUI:SameLine(125) GUI:Text(tostring(skill.flip_level)) end
+				GUI:BulletText(GetString("Name:")) GUI:SameLine(125) GUI:Text(skilldata.name)
+				GUI:BulletText(GetString("Skill ID:")) GUI:SameLine(125) GUI:Text(skilldata.id)				
+				GUI:BulletText(GetString("Slot:")) GUI:SameLine(125) GUI:Text(skilldata.slot ~= nil and tostring(skilldata.slot) or tostring(0))
+				GUI:BulletText(GetString("Type:")) GUI:SameLine(125) GUI:Text(skilldata.type ~= nil and tostring(skilldata.type) or tostring(0))
+				GUI:BulletText(GetString("Weapon:")) GUI:SameLine(125) GUI:Text(skilldata.weapon_type ~= nil and tostring(skilldata.weapon_type) or tostring(0))
+				if ( skilldata.flip_level and skilldata.flip_level > 0 ) then GUI:BulletText(GetString("Chain Level:")) GUI:SameLine(125) GUI:Text(tostring(skilldata.flip_level)) end
 				GUI:NextColumn()
-				if ( skill.maxrange and skill.maxrange > 0) then GUI:BulletText(GetString("Max.Range:")) GUI:SameLine(125) GUI:Text(tostring(skill.maxrange)) end
-				if ( skill.minrange and skill.minrange > 0) then GUI:BulletText(GetString("Min.Range:")) GUI:SameLine(125) GUI:Text(tostring(skill.minrange)) end
-				if ( skill.radius and skill.radius > 0 ) then GUI:BulletText(GetString("Radius:")) GUI:SameLine(125) GUI:Text(tostring(skill.radius)) end
-				if ( skill.power and skill.power > 0 ) then GUI:BulletText(GetString("Req.Power:")) GUI:SameLine(125) GUI:Text(tostring(skill.power)) end				
-				if ( skill.cooldownmax ) then
-					if ( skill.cooldown ) then GUI:BulletText(GetString("Cooldown:")) GUI:SameLine(125) GUI:Text(tostring(skill.cooldown).. " / "..tostring(skill.cooldownmax))
+				if ( skilldata.maxrange and skilldata.maxrange > 0) then GUI:BulletText(GetString("Max.Range:")) GUI:SameLine(125) GUI:Text(tostring(skilldata.maxrange)) end
+				if ( skilldata.minrange and skilldata.minrange > 0) then GUI:BulletText(GetString("Min.Range:")) GUI:SameLine(125) GUI:Text(tostring(skilldata.minrange)) end
+				if ( skilldata.radius and skilldata.radius > 0 ) then GUI:BulletText(GetString("Radius:")) GUI:SameLine(125) GUI:Text(tostring(skilldata.radius)) end
+				if ( skilldata.power and skilldata.power > 0 ) then GUI:BulletText(GetString("Req.Power:")) GUI:SameLine(125) GUI:Text(tostring(skilldata.power)) end				
+				if ( skilldata.cooldownmax ) then
+					if ( skilldata.cooldown ) then GUI:BulletText(GetString("Cooldown:")) GUI:SameLine(125) GUI:Text(tostring(skilldata.cooldown).. " / "..tostring(skilldata.cooldownmax))
 					else
-						GUI:BulletText(GetString("Cooldown:")) GUI:SameLine(125) GUI:Text(" 0 / "..tostring(skill.cooldownmax))
+						GUI:BulletText(GetString("Cooldown:")) GUI:SameLine(125) GUI:Text(" 0 / "..tostring(skilldata.cooldownmax))
 					end
 				end
 				GUI:BulletText(GetString("Skill Set:")) GUI:SameLine(125) GUI:Text(tostring(set.name))
@@ -1589,22 +1595,32 @@ end
 
 
 -- Checks if a skill of the sequence can be cast by evaluating all conditions
-function sm_action:CanCastSkill(profile, targetskillset, sequenceid)
+function sm_action:CanCastSkill(profile, targetskillset, sequenceid, skilldata)
 	if ( self.sequence[sequenceid] ~= nil ) then
+		
+		local skill = self.sequence[sequenceid]
+
+		-- Basic Settings
+		if ( not skill.settings.castonplayer and not profile.target ) then return false end 
+		if ( not skill.settings.nolos and not profile.target.los) then return false end
+		if ( skilldata.cooldown and skilldata.cooldown > 0 ) then return false end
+		-- Thief Initiative
+		if ( skilldata.initiative and skilldata.initiative > 0 ) then
+			if ( profile.playerbuffs[14081] ) then -- Trickery trait equipped
+				if ( (skilldata.initiative * 100 / 15) > ml_global_information.Player_Power ) then return false end	
+			else
+				if ( (skilldata.initiative * 100 / 12) > ml_global_information.Player_Power ) then return false end	
+			end
+		end
+		-- Revenant Costs mechanic
+		if ( skilldata.cost and skilldata.cost > 0 and skilldata.cost > ml_global_information.Player_Power ) then return false end
+		
+		
 		-- Check if we need to swap sets and if that is possible		
 		local swapresult = profile:CanSwapToSet(targetskillset, self, sequenceid)
 		if ( swapresult == nil or swapresult == false )  then
 			return false -- We cannot currently "reach" the skillset which contains this skill		
 		end
-		
-		local skill = self.sequence[sequenceid]
-		if ( not skill ) then 
-			return false
-		end
-
-		-- Basic Settings
-		if ( not skill.settings.castonplayer and not profile.target ) then return false end 
-		if ( not skill.settings.nolos and not profile.target.los) then return false end
 		
 		-- Evaluate custom code first		
 		if ( skill.conditioncode ) then
@@ -1762,12 +1778,11 @@ function sm_skill_profile:CanSwapToSet(targetskillset, action , sequenceid)
 			end
 		end
 	end
-	
 	-- ADD A CHECK FOR "ARE WE IN A TRANSFORMATION (w == 3)  where we cannot go out from ?
 	
 	
 	-- We need to switch to the target skillset in order to reach the skill we want to cast, check if the set can be swapped to
-	if ( targetskillset.weaponsetid == 0 ) then -- underwater set
+	if ( targetskillset.weaponsetid == 0 and targetskillset.transformid < 12) then -- underwater set
 		if (self.player.swimming == 0 or not self:HasWeaponAvailable(targetskillset) or not self:CanSwapWeapon()) then -- we are not under water
 			return false
 		else
@@ -1808,7 +1823,7 @@ function sm_skill_profile:CanSwapToSet(targetskillset, action , sequenceid)
 				end
 			end
 			
-			if ( targetskillset.transformid == 13 ) then -- Assassin
+			if ( targetskillset.transformid == 13 ) then -- Assassin				
 				if ( self.currentskills[13] and self.currentskills[13].skillid == 27659 and self.currentskills[13].cancast ) then return 13
 				elseif (self.currentskills[17] and self.currentskills[17].skillid == 27659 and self.currentskills[17].cancast) then return 17
 				end
@@ -1876,7 +1891,7 @@ function sm_skill_profile:GetNextSkillForCasting()
 		local action = self.actionlist[self.currentaction]
 		if ( action.sequence[self.currentactionsequence] ) then			
 			local skilldata, skillset = self:GetSkillAndSkillSet(action.sequence[self.currentactionsequence].id)
-			if ( skilldata and (not skilldata.cooldown or skilldata.cooldown == 0) and action:CanCastSkill(self, skillset, self.currentactionsequence)) then				
+			if ( skilldata and action:CanCastSkill(self, skillset, self.currentactionsequence, skilldata)) then				
 				return true -- continue to cast the sequence / combo
 			end
 		end
@@ -1888,7 +1903,7 @@ function sm_skill_profile:GetNextSkillForCasting()
 		local cancast = true
 		for i,skill in pairs(action.sequence) do
 			local skilldata, skillset = self:GetSkillAndSkillSet(skill.id)
-			if ( not skilldata or ( skilldata.cooldown and skilldata.cooldown > 0) or not action:CanCastSkill(self, skillset, i)) then				
+			if ( not skilldata or not action:CanCastSkill(self, skillset, i, skilldata)) then				
 				cancast = nil
 			end			
 		end
@@ -1909,7 +1924,7 @@ function sm_skill_profile:NextSkillIsChainSkill()
 		if ( action.sequence[self.currentactionsequence+1] ) then
 			local skilldata, skillset = self:GetSkillAndSkillSet(action.sequence[self.currentactionsequence].id)
 			local skilldata2, skillset2 = self:GetSkillAndSkillSet(action.sequence[self.currentactionsequence+1].id)							
-			if ( skilldata and skilldata2 and (not skilldata2.cooldown or skilldata2.cooldown == 0) and skilldata.slot == skilldata2.slot and skilldata2.flip_level > skilldata.flip_level and action:CanCastSkill(self, skillset2, self.currentactionsequence+1)) then
+			if ( skilldata and skilldata2 and skilldata.slot == skilldata2.slot and skilldata2.flip_level > skilldata.flip_level and action:CanCastSkill(self, skillset2, self.currentactionsequence+1, skilldata2)) then
 				return true -- continue to cast the sequence / combo
 			end
 		end
@@ -1926,9 +1941,10 @@ function sm_skill_profile:Cast(targetid)
 	if ( not targetid ) then
 		d("SM NO TARGET PASSED !??! ")
 	end
+	self.playerbuffs = Player.buffs
 	self.target = CharacterList:Get(targetid) or GadgetList:Get(targetid) --or AgentList:Get(targetid)
 	self.sets = self:GetCurrentSkillSets()
-		
+	
 	-- Setting a "current action to cast"
 	if ( not self.currentaction ) then self:GetNextSkillForCasting() end
 	
@@ -1944,7 +1960,7 @@ function sm_skill_profile:Cast(targetid)
 		if ( skilldata ) then
 			
 			-- Make sure we can still cast the spell that we picked earlier, if somethign changed and we cannot cast it, get a new skill instead
-			if (( not skilldata.cooldown or skilldata.cooldown == 0) and not self.pp_castinfo.skillid == skilldata.id and not action:CanCastSkill(self, skillset, self.currentactionsequence)) then					
+			if ( not self.pp_castinfo.skillid == skilldata.id and not action:CanCastSkill(self, skillset, self.currentactionsequence, skilldata)) then					
 				self.currentaction = nil
 				self.currentactionsequence = nil	
 				if (self:GetNextSkillForCasting() ) then	-- get a new spell
@@ -2043,6 +2059,7 @@ function sm_skill_profile:Cast(targetid)
 	end
 	self.pp_castinfo = nil
 	self.player = nil
+	self.playerbuffs = nil
 	self.target = nil
 	self.sets = nil
 	
