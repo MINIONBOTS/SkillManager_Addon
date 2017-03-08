@@ -53,6 +53,67 @@ local tbl =
 		type = "Weapon",
 		weapon_type = "None",
 	},
+	[5486] = 
+	{
+		attunement = "Earth",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&Bm4VAAA=]",
+		cost = 0,
+		description = "Spear your foes on a giant stone spike.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
+				text = "Range",
+				type = "Range",
+				value = 900,
+			},
+			
+			{
+				dmg_multiplier = 0.6,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/65490660DC4D12927816F9A224CB982227597A35/103106.png",
+		id = 5486,
+		initiative = 0,
+		name = "Impale",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = true,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Weapon_1",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Weapon",
+		weapon_type = "Dagger",
+	},
 	[5487] = 
 	{
 		attunement = "Water",
@@ -2632,6 +2693,67 @@ local tbl =
 		type = "Weapon",
 		weapon_type = "Dagger",
 	},
+	[5524] = 
+	{
+		attunement = "Fire",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BpQVAAA=]",
+		cost = 0,
+		description = "Fling fire in a claw-shaped spread at your foe.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
+				text = "Range",
+				type = "Range",
+				value = 400,
+			},
+			
+			{
+				dmg_multiplier = 0.4,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage per Projectile",
+				type = "Damage",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/1663AA3AC00FA2F31C4DD4040A759EAB0307B92A/103211.png",
+		id = 5524,
+		initiative = 0,
+		name = "Dragon's Claw",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = true,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Weapon_1",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Weapon",
+		weapon_type = "Dagger",
+	},
 	[5525] = 
 	{
 		attunement = "Earth",
@@ -2883,7 +3005,7 @@ local tbl =
 			Thief = false,
 			Warrior = false,
 		},
-		slot = "Weapon_3",
+		slot = "Weapon_4",
 		toolbelt_skill = 0,
 		traited_facts = 
 		{
@@ -3065,7 +3187,7 @@ local tbl =
 			Thief = false,
 			Warrior = false,
 		},
-		slot = "Weapon_4",
+		slot = "Weapon_3",
 		toolbelt_skill = 0,
 		traited_facts = 
 		{
@@ -3777,7 +3899,7 @@ local tbl =
 			Thief = false,
 			Warrior = false,
 		},
-		slot = "Weapon_2",
+		slot = "Weapon_1",
 		toolbelt_skill = 0,
 		traited_facts = 
 		{
@@ -5382,7 +5504,7 @@ local tbl =
 			Thief = false,
 			Warrior = false,
 		},
-		slot = "Weapon_5",
+		slot = "Weapon_2",
 		toolbelt_skill = 0,
 		traited_facts = 
 		{
@@ -5476,6 +5598,83 @@ local tbl =
 			Warrior = false,
 		},
 		slot = "Weapon_3",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Weapon",
+		weapon_type = "Dagger",
+	},
+	[5560] = 
+	{
+		attunement = "Water",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BrgVAAA=]",
+		cost = 0,
+		description = "Summon a geyser to heal nearby allies.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
+				text = "Range",
+				type = "Range",
+				value = 1200,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 40,
+			},
+			
+			{
+				apply_count = 1,
+				description = "Gain health every second; stacks duration.",
+				duration = 1,
+				icon = "https://render.guildwars2.com/file/F69996772B9E18FD18AD0AABAB25D7E3FC42F261/102835.png",
+				status = "Regeneration",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				duration = 10,
+				icon = "https://render.guildwars2.com/file/7B2193ACCF77E56C13E608191B082D68AA0FAA71/156659.png",
+				text = "Duration",
+				type = "Time",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/4CCE5E636B2FCD33495780FB1BCD02A3666DEEBC/103290.png",
+		id = 5560,
+		initiative = 0,
+		name = "Geyser",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = true,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Weapon_5",
 		toolbelt_skill = 0,
 		traited_facts = 
 		{
@@ -9700,6 +9899,101 @@ local tbl =
 		},
 		type = "Elite",
 		weapon_type = "None",
+	},
+	[5668] = 
+	{
+		attunement = "Fire",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BiQWAAA=]",
+		cost = 0,
+		description = "Encircle target area in flame, burning foes that enter.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
+				text = "Range",
+				type = "Range",
+				value = 900,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 10,
+			},
+			
+			{
+				dmg_multiplier = 0.5,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Deals damage every second; stacks intensity.",
+				duration = 4,
+				icon = "https://render.guildwars2.com/file/B47BF5803FED2718D7474EAF9617629AD068EE10/102849.png",
+				status = "Burning",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 240,
+				description = "Area of Effect: Nearby",
+				duration = 1,
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				status = "Aoe 240",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				duration = 6,
+				icon = "https://render.guildwars2.com/file/7B2193ACCF77E56C13E608191B082D68AA0FAA71/156659.png",
+				text = "Duration",
+				type = "Time",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/CD08FDC23B56EBB19C90B909C65D9EE4D9FFF8C8/103183.png",
+		id = 5668,
+		initiative = 0,
+		name = "Ring of Fire",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = true,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Weapon_5",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Weapon",
+		weapon_type = "Dagger",
 	},
 	[5671] = 
 	{
@@ -49384,30 +49678,30 @@ local tbl =
 		},
 		transform_skills = 
 		{
-			10690,
-			10588,
-			10643,
-			29458,
 			10586,
-			30961,
-			10645,
 			10554,
+			30278,
+			10643,
+			10585,
 			30825,
-			18504,
+			10604,
 			30557,
 			30504,
-			10585,
-			30278,
+			29958,
 			10594,
 			30792,
-			10604,
-			29709,
-			10644,
-			29958,
-			19504,
-			29442,
+			10690,
+			10645,
 			24287,
+			10588,
+			19504,
 			10574,
+			29442,
+			18504,
+			29458,
+			30961,
+			10644,
+			29709,
 		},
 		type = "Profession",
 		weapon_type = "None",
@@ -49655,7 +49949,7 @@ local tbl =
 			Thief = false,
 			Warrior = true,
 		},
-		slot = "Profession_2",
+		slot = "Transform_1",
 		toolbelt_skill = 0,
 		traited_facts = 
 		{
@@ -49663,7 +49957,7 @@ local tbl =
 		transform_skills = 
 		{
 		},
-		type = "Profession",
+		type = "Transform",
 		weapon_type = "None",
 	},
 	[10588] = 
@@ -50569,7 +50863,7 @@ local tbl =
 		},
 		chat_link = "[&Bm4pAAA=]",
 		cost = 0,
-		description = "Corruption. Apply vulnerability on yourself. Spread conditions on a target foe to all nearby foes.",
+		description = "Corruption. Apply vulnerability to yourself. Spread conditions on a target foe to all nearby foes.\nWvW Only: Does not affect structures or targets with resistance.",
 		dual_wield = "",
 		facts = 
 		{
@@ -55801,6 +56095,165 @@ local tbl =
 		},
 		type = "Weapon",
 		weapon_type = "Scepter",
+	},
+	[10712] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BtgpAAA=]",
+		cost = 0,
+		description = "Strike your foe. Every other hit causes Weakness or Vulnerability.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
+				text = "Range",
+				type = "Range",
+				value = 130,
+			},
+		},
+		flip_skill = 10713,
+		icon = "https://render.guildwars2.com/file/C62E1323CF1E0626CE9D6FEA27FA1EA7B5B13E55/103071.png",
+		id = 10712,
+		initiative = 0,
+		name = "Twisting Fang",
+		next_chain = 10713,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = true,
+			Warrior = false,
+		},
+		slot = "Weapon_1",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Weapon",
+		weapon_type = "Dagger",
+	},
+	[10713] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BtkpAAA=]",
+		cost = 0,
+		description = "Strike your foe. Every other hit causes weakness or vulnerability.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
+				text = "Range",
+				type = "Range",
+				value = 130,
+			},
+		},
+		flip_skill = 10714,
+		icon = "https://render.guildwars2.com/file/C62E1323CF1E0626CE9D6FEA27FA1EA7B5B13E55/103071.png",
+		id = 10713,
+		initiative = 0,
+		name = "Twisting Fang",
+		next_chain = 10714,
+		prev_chain = 10712,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = true,
+			Warrior = false,
+		},
+		slot = "Weapon_1",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Weapon",
+		weapon_type = "Dagger",
+	},
+	[10714] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BtopAAA=]",
+		cost = 0,
+		description = "Strike your foe. Every other hit causes weakness or vulnerability.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
+				text = "Range",
+				type = "Range",
+				value = 130,
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/C62E1323CF1E0626CE9D6FEA27FA1EA7B5B13E55/103071.png",
+		id = 10714,
+		initiative = 0,
+		name = "Twisting Fang",
+		next_chain = 0,
+		prev_chain = 10713,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = true,
+			Warrior = false,
+		},
+		slot = "Weapon_1",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Weapon",
+		weapon_type = "Dagger",
 	},
 	[10800] = 
 	{
@@ -87895,13 +88348,13 @@ local tbl =
 		},
 		transform_skills = 
 		{
-			14487,
-			14556,
-			14490,
-			14488,
 			14489,
-			14486,
 			14485,
+			14556,
+			14487,
+			14486,
+			14488,
+			14490,
 		},
 		type = "Elite",
 		weapon_type = "None",
@@ -106816,18 +107269,18 @@ local tbl =
 		},
 		transform_skills = 
 		{
-			10182,
+			10180,
 			10375,
-			10376,
-			10374,
+			10182,
+			10181,
 			10373,
-			10183,
 			10372,
 			15862,
-			10181,
-			15863,
+			10183,
 			15861,
-			10180,
+			10376,
+			15863,
+			10374,
 		},
 		type = "Elite",
 		weapon_type = "None",
@@ -125814,16 +126267,16 @@ local tbl =
 		},
 		transform_skills = 
 		{
-			31406,
-			34070,
-			33387,
-			31503,
-			31796,
 			32364,
 			31894,
-			32253,
-			32242,
+			31406,
 			31318,
+			33387,
+			31503,
+			34070,
+			31796,
+			32242,
+			32253,
 		},
 		type = "Profession",
 		weapon_type = "None",
@@ -128187,8 +128640,8 @@ local tbl =
 	},
 	info = 
 	{
-		date = 1488200666,
-		size = 1389,
+		date = 1488980453,
+		size = 1396,
 	},
 }
 

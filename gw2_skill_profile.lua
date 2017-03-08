@@ -216,13 +216,14 @@ sm_skill_profile.professions = {
 	}
 	
 sm_skill_profile.hardcodedsets = {
-	["2_30162"] = { name = "Med Kit", activateskillid = 5802 },
+	["2_30162"] = { name = "Med Kit", activateskillid = 5802 },	-- bundles use additionally currentskills[3].skillid to ident them 
 	["2_5930"] = { name = "Flamethrower", activateskillid = 5927 },
 	["2_5965"] = { name = "Elixier Gun", activateskillid = 5933 },
 	["2_6169"] = { name = "Grenade-Aqua", activateskillid = 5805 },			
 	["2_5808"] = { name = "Grenade Kit", activateskillid = 5805 },
 	["2_5822"] = { name = "Bomb Kit", activateskillid = 5812 },
 	["2_5905"] = { name = "Tool Kit", activateskillid = 5904 },
+	["2_30307"] = { name = "Mortar Kit", activateskillid = 30800 },
 	["3_6"] = { name = "Reaper", activateskillid = 30792, deactivateskillid = 30961},
 	["3_10633"] = { name = "Lichform", activateskillid = 10550, deactivateskillid = 10700},
 	["3_10663"] = { name = "Plaque", activateskillid = 10549, deactivateskillid = 10700},
@@ -245,6 +246,7 @@ function sm_skill_profile:PreSave()
 	self.activeskillrange = nil
 	self.weaponsets = nil
 	self.lastcast = nil
+	self.lastcastonplayer = nil
 end
 function sm_skill_profile:AfterSave()
 	self.menucodechanged = true
@@ -256,7 +258,7 @@ end
 -- Renders the profile template into the SM "main" window
 function sm_skill_profile:Render()
 	
-	if ( not GetGameState() == GW2.GAMESTATE.GAMEPLAY or not Player.castinfo ) then 
+	if ( not ml_global_information.GameState == GW2.GAMESTATE.GAMEPLAY or not ml_global_information.Player_CastInfo ) then 
 		return 		
 	end
 	
@@ -331,7 +333,7 @@ function sm_skill_profile:Render()
 		GUI:PushStyleVar(GUI.StyleVar_ItemSpacing, 0, 4)
 		GUI:PushStyleVar(GUI.StyleVar_FramePadding, 0, 0)
 		-- CanCast() ->Evaluate is using 2 args, player and target which are saved on the profile
-		if (not self.pp_castinfo) then self.pp_castinfo = Player.castinfo end
+		if (not self.pp_castinfo) then self.pp_castinfo = ml_global_information.Player_CastInfo end
 		if (not self.player) then self.player = Player end
 		if (not self.target) then self.target = Player:GetTarget() end
 		if (not self.sets) then self.sets = self:GetCurrentSkillSets() end
@@ -762,7 +764,7 @@ function sm_skill_profile:RenderSkillSetEditor(currentaction)
 							GUI:PushStyleColor(GUI.Col_ButtonActive,1.0,0.75,0.0,1.0)
 						end
 						if ( not skill.name ) then skill.name = GetString("Unknown Name") end
-						if ( GUI:ImageButton(skill.name.."##"..tostring(i), sm_skill_profile.texturecache.."\\default.png", 30,30) ) then self.selectedskill = id end if (GUI:IsItemHovered()) then GUI:SetTooltip( skill.name or "" ) end						
+						if ( GUI:ImageButton(skill.name.."##"..tostring(id), sm_skill_profile.texturecache.."\\default.png", 30,30) ) then self.selectedskill = id end if (GUI:IsItemHovered()) then GUI:SetTooltip( skill.name or "" ) end						
 						if ( highlight ) then GUI:PopStyleColor(3) end
 						-- Right click - Context Menu Spawn
 						
@@ -771,8 +773,8 @@ function sm_skill_profile:RenderSkillSetEditor(currentaction)
 							if ( self.selectedskillset.id ~= "All" ) then
 								if ( GUI:Selectable(GetString("Move to Main Set"),false) ) then 
 									self.skillsets["All"].skills[id] = skill
-									self.selectedskillset.skills[id] = nil  
-									self.modified = true 
+									self.selectedskillset.skills[id] = nil									
+									self.modified = true
 								end	
 								-- Options to move skill to all other sets
 							else
@@ -797,16 +799,22 @@ function sm_skill_profile:RenderSkillSetEditor(currentaction)
 								end
 							end
 							GUI:EndPopup()
-						end
+						end						
 					end
 				end
 				GUI:NextColumn()
 			end
 			GUI:Columns(1)			
 			GUI:PopStyleVar(2)
-		
+			
+			-- Delete skillset in case it holds no skills anymore
+			if ( table.size(self.selectedskillset.skills) == 0) then										
+				self.skillsets[self.selectedskillset.id] = nil
+				self.selectedskillset = nil				
+			end
+						
 			-- Selected Skill Details
-			if ( self.selectedskill and self.selectedskillset.skills[self.selectedskill] and (self.selectedskillset.id == "All" or self.selectedskillset.activateskillid <= 18 or (self.selectedskillset.activateskillid > 18 and self.selectedskillset.activateskillid and self.selectedskillset.activateskillid > 2 ))) then
+			if ( self.selectedskill and self.selectedskillset and self.selectedskillset.skills[self.selectedskill] and (self.selectedskillset.id == "All" or self.selectedskillset.activateskillid <= 18 or (self.selectedskillset.activateskillid > 18 and self.selectedskillset.activateskillid and self.selectedskillset.activateskillid > 2 ))) then
 				GUI:Separator()
 				local skill = self.selectedskillset.skills[self.selectedskill]
 				
@@ -869,42 +877,39 @@ function sm_skill_profile:UpdateCurrentSkillsetData()
 		local skill = Player:GetSpellInfo(GW2.SKILLBARSLOT["Slot_" .. i])
 		if (skill) then
 			local sID = skill.skillid
-			result[sID] = skill
+			result[sID] = {}
+			for k,v in pairs (skill) do 
+				result[sID][k] = v
+			end
 			result[sID]["slot"] = i
 			result[sID]["flip_level"] = 0
 			
 			-- Add the additional skill data from the anet api file
-			local data = skilldb[sID]
+			local data = self:GetSkillDataByID(sID)
 			if ( data ) then
 				for k,v in pairs (data) do 
-					if ( k == "slot" ) then -- slot is also a value we use in the c++ skill table, dont wanna overwrite it
-						result[sID]["slot_name"] = v
-					else
-						result[sID][k] = v
-					end
+					result[sID][k] = v
 				end
 				
 				-- Check and add 1st Chain/Flipskill
 				if ( data.flip_skill ~= 0 ) then	--flip_skill is the skillID 
-					local flip1 = skilldb[data.flip_skill]
+					local flip1 = self:GetSkillDataByID(data.flip_skill)
 					if ( flip1 ) then
 						result[flip1.id] = {}
 						for k,v in pairs (flip1) do 
 							result[flip1.id][k] = v
 						end						
-						result[flip1.id]["slot_name"] = flip1.slot
 						result[flip1.id]["slot"] = i
 						result[flip1.id]["flip_level"] = 1
 									
 						-- 2nd Chain/Flipskill
 						if ( flip1.flip_skill ~= 0 ) then
-							local flip2 = skilldb[flip1.flip_skill]
+							local flip2 = self:GetSkillDataByID(flip1.flip_skill)
 							if ( flip2 ) then
 								result[flip2.id] = {}
 								for k,v in pairs (flip2) do 
 									result[flip2.id][k] = v
 								end
-								result[flip2.id]["slot_name"] = flip2.slot
 								result[flip2.id]["slot"] = i
 								result[flip2.id]["flip_level"] = 2								
 							end				
@@ -1015,6 +1020,7 @@ end
 -- Helper to reduce the redudant code spam
 function sm_skill_profile:CreateSetFromSkillData(w, t, weapontype, currentskills, slotmin, slotmax)
 	local id
+	local prof = SkillManager:GetPlayerProfession()
 	if ( w == 2 or w == 3) then
 		id = tostring(w).."_"..tostring(t)
 		
@@ -1024,8 +1030,10 @@ function sm_skill_profile:CreateSetFromSkillData(w, t, weapontype, currentskills
 	elseif ( t == 6 ) then -- necro death shroud
 		id = tostring(t).."_"..tostring(Player.swimming)
 		
-	else
+	elseif (prof == GW2.CHARCLASS.Necromancer or prof == GW2.CHARCLASS.Necromancer or prof == GW2.CHARCLASS.Necromancer ) then
 		id = tostring(w).."_"..tostring(t).."_"..tostring(weapontype)
+	else
+		id = tostring(w).."_"..tostring(weapontype)
 	end
 	
 	if ( not self.skillsets[id] ) then
@@ -1045,9 +1053,7 @@ function sm_skill_profile:CreateSetFromSkillData(w, t, weapontype, currentskills
 				end
 			end
 		end
-		
-		local prof = SkillManager:GetPlayerProfession()
-		
+				
 		if ( (w == 2 or w == 3 ) and set.name == "" or set.name == "None") then
 			if ( self.hardcodedsets[id] ~= nil ) then
 				set.name = self.hardcodedsets[id].name
@@ -1059,10 +1065,10 @@ function sm_skill_profile:CreateSetFromSkillData(w, t, weapontype, currentskills
 			if ( t == 6 and Player.swimming == 0 and prof == GW2.CHARCLASS.Necromancer) then	set.name = GetString("Death Shroud")
 			elseif ( t == 6 and Player.swimming == 1 and prof == GW2.CHARCLASS.Necromancer) then	set.name = GetString("Aqua Shroud")
 				
-			elseif ( t == 1 and prof == GW2.CHARCLASS.Elementalist ) then set.name = GetString("Fire ")..set.name
-			elseif ( t == 2 and prof == GW2.CHARCLASS.Elementalist ) then set.name = GetString("Water ")..set.name
-			elseif ( t == 3 and prof == GW2.CHARCLASS.Elementalist ) then set.name = GetString("Air ")..set.name
-			elseif ( t == 4 and prof == GW2.CHARCLASS.Elementalist ) then set.name = GetString("Earth ")..set.name
+			elseif ( t == 1 and prof == GW2.CHARCLASS.Elementalist ) then set.name = set.name..GetString(" Fire")
+			elseif ( t == 2 and prof == GW2.CHARCLASS.Elementalist ) then set.name = set.name..GetString(" Water")
+			elseif ( t == 3 and prof == GW2.CHARCLASS.Elementalist ) then set.name = set.name..GetString(" Air")
+			elseif ( t == 4 and prof == GW2.CHARCLASS.Elementalist ) then set.name = set.name..GetString(" Earth")
 			
 			elseif ( t == 12 and prof == GW2.CHARCLASS.Revenant ) then set.name = GetString("Dragon Stance")
 			elseif ( t == 13 and prof == GW2.CHARCLASS.Revenant ) then set.name = GetString("Assassin Stance")
@@ -1095,6 +1101,37 @@ function sm_skill_profile:GetSkillDataByID( skillid )
 					result[k] = v
 				end
 			end
+			
+			-- Trying to get the radius and range of the spell from the "facts" table
+			local range = 0
+			local radius = 0
+				
+			--[[
+			if ( table.size(data.traited_facts) > 0 ) then
+				for q,entry in pairs (data.traited_facts) do
+					if ( entry.text and entry.text == "Range" and entry.type == "Range" and type(entry.value) == "number" and entry.value > range ) then 
+						range = entry.value
+					end
+					if ( entry.text and entry.type == "Distance" and string.contains(entry.text,"Radius")  and entry.distance and type(entry.distance) == "number" and entry.distance > radius ) then 
+						radius = entry.distance
+					end
+				end
+			end]]
+			
+			if ( table.size(data.facts) > 0 ) then
+				for q,entry in pairs (data.facts) do
+					if ( entry.text and entry.text == "Range" and entry.type == "Range" and type(entry.value) == "number" and entry.value > range ) then 
+						range = entry.value
+					end
+					if ( entry.text and entry.type == "Distance" and string.contains(entry.text,"Radius")  and entry.distance and type(entry.distance) == "number" and entry.distance > radius ) then 
+						radius = entry.distance
+					end
+				end
+			end
+
+			if (radius > 0 ) then result["radius"] = radius end
+			if (range > 0 ) then result["maxrange"] = range end
+			
 			return result
 		end		
 	else
@@ -1102,13 +1139,28 @@ function sm_skill_profile:GetSkillDataByID( skillid )
 	end
 end
 
--- Finds the skill (data) in all skillsets and returns that
+-- Finds the skill (data) in all skillsets and returns that. A skill should be only ONCE in all skillsets ...
 function sm_skill_profile:GetSkillAndSkillSet(id)
 	for k,v in pairs(self.skillsets) do
 		if (v.skills[id]) then
 			return v.skills[id], v
 		end
 	end
+end
+
+-- Returns the maxrange of the skill by id, for determining if the skill can be used to "set max attack range"
+function sm_skill_profile:GetSkillMaxRange(id)
+	local skill = self:GetSkillAndSkillSet(id)
+	if ( skill ) then
+		if ( skill.maxrange and skill.radius ) then
+			return skill.maxrange > skill.radius and skill.maxrange or skill.radius
+		elseif ( skill.maxrange ) then
+			return skill.maxrange
+		elseif ( skill.radius ) then
+			return skill.radius
+		end
+	end	
+	return 0
 end
 
 -- Checks if the skill ID is used by the current profile/castlist
@@ -1302,8 +1354,8 @@ function sm_action:Render(profile)
 		if ( result == -1 ) then -- cancel
 			self.editskill = nil 
 		elseif ( result == -2 ) then -- accept
-			if ( not self.name or not string.valid(self.name) or self.name == GetString("[Empty Action]") ) then
-				local skill = profile:GetSkillAndSkillSet(self.sequence[self.editskill].id)		
+			if ( not self.name or not string.valid(self.name) or self.name == GetString("[Empty Action]") or table.size(self.sequence) == 1 ) then
+				local skill = profile:GetSkillAndSkillSet(self.sequence[self.editskill].id)
 				if ( skill ) then self.name = skill.name end
 			end
 			self.editskill = nil 
@@ -1456,17 +1508,20 @@ function sm_action:Render(profile)
 		-- Skill Settings
 				GUI:Text(GetString("Skill Settings:"))	if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("Special Settings for this Skill" )) end
 				local changed
-				self.sequence[self.selectedskill].settings.setsattackrange, changed = GUI:Checkbox( GetString("Sets Attackrange"), self.sequence[self.selectedskill].settings.setsattackrange or false) if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("If Enabled, the 'MaxRange' of the Skill defines the Attackrange of the bot." )) end if (changed) then modified = true end
+				self.sequence[self.selectedskill].settings.stopmovement, changed = GUI:Checkbox( GetString("Stop Movement"), self.sequence[self.selectedskill].settings.stopmovement or false) if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("If Enabled, the bot movement will be stopped while casting the skill." )) end if (changed) then modified = true end				
 				GUI:SameLine(200)
-				self.sequence[self.selectedskill].settings.nolos, changed = GUI:Checkbox( GetString("No Line of Sight"), self.sequence[self.selectedskill].settings.nolos or false) if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("If Enabled, the line of sight to the target will not be checked when casting." )) end if (changed) then modified = true end
-				GUI:SameLine(400)
-				self.sequence[self.selectedskill].settings.stopmovement, changed = GUI:Checkbox( GetString("Stop Movement"), self.sequence[self.selectedskill].settings.stopmovement or false) if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("If Enabled, the bot movement will be stopped while casting the skill." )) end if (changed) then modified = true end
 				self.sequence[self.selectedskill].settings.castonplayer, changed = GUI:Checkbox( GetString("Cast on Player"), self.sequence[self.selectedskill].settings.castonplayer or false) if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("If Enabled, the Skill will be cast on the Player and not on the Target." )) end if (changed) then modified = true end
-				GUI:SameLine(200)
-				self.sequence[self.selectedskill].settings.castslow, changed = GUI:Checkbox( GetString("Cast Slow"), self.sequence[self.selectedskill].settings.castslow or false) if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("If Enabled, the Skill will be cast slower and not skipped." )) end if (changed) then modified = true end
-				GUI:SameLine(400)
+				if ( not self.sequence[self.selectedskill].settings.castonplayer ) then
+					GUI:SameLine(400)
+					self.sequence[self.selectedskill].settings.nolos, changed = GUI:Checkbox( GetString("No Line of Sight"), self.sequence[self.selectedskill].settings.nolos or false) if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("If Enabled, the line of sight to the target will not be checked when casting." )) end if (changed) then modified = true end
+				end
+												
 				self.sequence[self.selectedskill].settings.isprojectile, changed = GUI:Checkbox( GetString("Is Projectile"), self.sequence[self.selectedskill].settings.isprojectile or false) if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("Enable this only if the Skill cannot be cast on some objects." )) end if (changed) then modified = true end				
-								
+				if ( profile:GetSkillMaxRange(skilldata.id) > 154 ) then
+					GUI:SameLine(200)
+					self.sequence[self.selectedskill].settings.setsattackrange, changed = GUI:Checkbox( GetString("Sets Attackrange"), self.sequence[self.selectedskill].settings.setsattackrange or true) if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("If Enabled, the 'MaxRange' of the Skill defines the Attackrange of the bot." )) end if (changed) then modified = true end				
+				end
+				
 				
 				GUI:Separator()
 				
@@ -1601,8 +1656,8 @@ function sm_action:CanCastSkill(profile, targetskillset, sequenceid, skilldata)
 		local skill = self.sequence[sequenceid]
 
 		-- Basic Settings
-		if ( not skill.settings.castonplayer and not profile.target ) then return false end 
-		if ( not skill.settings.nolos and not profile.target.los) then return false end
+		if ( not skill.settings.castonplayer and not profile.target ) then return false end	-- can't use skill if it is meant to be cast on a target and we don'T have one
+		if ( not skill.settings.castonplayer and not skill.settings.nolos and (not profile.target or not profile.target.los)) then return false end		-- can't use skill if it requires los but we don't have los to our target - TODO: Move this below the other checks and check against "customtarget" ?
 		if ( skilldata.cooldown and skilldata.cooldown > 0 ) then return false end
 		-- Thief Initiative
 		if ( skilldata.initiative and skilldata.initiative > 0 ) then
@@ -1734,12 +1789,30 @@ function sm_skill_profile:GetCurrentSkillSets()
 			table.insert(availablesets,self.skillsets[tostring(t)]) 
 			
 		else
-		
-			if ( weapon2 ) then
-				table.insert(availablesets,self.skillsets[tostring(weapon1).."_"..tostring(t).."_"..tostring(weapontype1)])
-				table.insert(availablesets,self.skillsets[tostring(weapon2).."_"..tostring(t).."_"..tostring(weapontype2)])
+			local prof = SkillManager:GetPlayerProfession()		
+			if ( t >= 12 and t <=17 ) then
+				if ( weapon2 ) then
+					table.insert(availablesets,self.skillsets[tostring(weapon1).."_0_"..tostring(weapontype1)])
+					table.insert(availablesets,self.skillsets[tostring(weapon2).."_0_"..tostring(weapontype2)])
+				else
+					table.insert(availablesets,self.skillsets[tostring(weapon1).."_0_"..tostring(weapontype1)])
+				end
+				table.insert(availablesets,self.skillsets[tostring(t)]) 
+				
+			elseif (prof == GW2.CHARCLASS.Necromancer or prof == GW2.CHARCLASS.Elementalist or prof == GW2.CHARCLASS.Revenant ) then
+				if ( weapon2 ) then
+					table.insert(availablesets,self.skillsets[tostring(weapon1).."_"..tostring(t).."_"..tostring(weapontype1)])
+					table.insert(availablesets,self.skillsets[tostring(weapon2).."_"..tostring(t).."_"..tostring(weapontype2)])
+				else
+					table.insert(availablesets,self.skillsets[tostring(weapon1).."_"..tostring(t).."_"..tostring(weapontype1)])
+				end
 			else
-				table.insert(availablesets,self.skillsets[tostring(weapon1).."_"..tostring(t).."_"..tostring(weapontype1)])
+				if ( weapon2 ) then
+					table.insert(availablesets,self.skillsets[tostring(weapon1).."_"..tostring(weapontype1)])
+					table.insert(availablesets,self.skillsets[tostring(weapon2).."_"..tostring(weapontype2)])
+				else
+					table.insert(availablesets,self.skillsets[tostring(weapon1).."_"..tostring(weapontype1)])
+				end
 			end
 		end
 	end	
@@ -1935,12 +2008,18 @@ end
 -- Casting
 function sm_skill_profile:Cast(targetid)
 	local gametime = GetGameTime()
-	self:Update(gametime,true)	-- Update the skilldata before we do anything
-	self.pp_castinfo = Player.castinfo
-	self.player = Player
+	
 	if ( not targetid ) then
-		d("SM NO TARGET PASSED !??! ")
+		if ( (not self.lastcast or gametime - self.lastcast > 1000) and ( not self.lastcastonplayer or gametime - self.lastcastonplayer > 1000)) then -- check only the buff/heal spells if we haven't cast for a while
+			self.lastcastonplayer = gametime
+		else
+			return
+		end
 	end
+
+	self:Update(gametime,true)	-- Update the skilldata before we do anything
+	self.pp_castinfo = ml_global_information.Player_CastInfo
+	self.player = Player	
 	self.playerbuffs = Player.buffs
 	self.target = CharacterList:Get(targetid) or GadgetList:Get(targetid) --or AgentList:Get(targetid)
 	self.sets = self:GetCurrentSkillSets()
@@ -1954,7 +2033,7 @@ function sm_skill_profile:Cast(targetid)
 			-- someone deleted an action from the list
 			self.currentaction = nil
 			self.currentactionsequence = nil	
-			return false
+			return
 		end
 		local skilldata, skillset = self:GetSkillAndSkillSet(action.sequence[self.currentactionsequence].id)		
 		if ( skilldata ) then
@@ -1967,7 +2046,7 @@ function sm_skill_profile:Cast(targetid)
 					action = self.actionlist[self.currentaction]
 					skilldata, skillset = self:GetSkillAndSkillSet(action.sequence[self.currentactionsequence].id)								
 				else
-					return false
+					return
 				end
 			end
 			
@@ -1979,7 +2058,7 @@ function sm_skill_profile:Cast(targetid)
 					action = self.actionlist[self.currentaction]
 					skilldata, skillset = self:GetSkillAndSkillSet(action.sequence[self.currentactionsequence].id)								
 				else
-					return false
+					return
 				end
 			end
 			
@@ -1996,19 +2075,22 @@ function sm_skill_profile:Cast(targetid)
 					
 				elseif ( switchslot == -1 ) then
 					-- swap weapons
+					d("AAAAAAAAAA")
+					d(tostring(skilldata.name))
+					
 					Player:SwapWeaponSet()
 					d("Swapping weaponset..")
-					return true
+					return
 					
 				elseif ( switchslot >= 0 ) then
 					-- cast spell to swap sets
 					Player:CastSpell(GW2.SKILLBARSLOT["Slot_" .. switchslot])
 					d("Swapping weaponset to "..tostring(GW2.SKILLBARSLOT["Slot_" .. switchslot]))
-					return true
+					return
 					
 				else
 					d("Unhandled CanSwapToSet case in castspell ! : "..tostring(switchslot))
-					return false
+					return 
 				end
 				
 				
@@ -2046,8 +2128,9 @@ function sm_skill_profile:Cast(targetid)
 						self.cooldownlist[skilldata.id] = { tick = GetGameTime(), cd = 500 }					
 					end
 					self.lastcast = gametime
+										
 					d("Casting: "..skilldata.name)
-					return true
+					return
 				else
 					d("Casting Failed: "..skilldata.name)
 				end
@@ -2063,7 +2146,7 @@ function sm_skill_profile:Cast(targetid)
 	self.target = nil
 	self.sets = nil
 	
-	return false
+	return
 end
 
 

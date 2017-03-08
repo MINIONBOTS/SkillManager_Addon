@@ -263,7 +263,7 @@ function gw2_skill_manager.GetActiveSkillRange()
 end
 
 function gw2_skill_manager:Use(targetid)
-	if ( targetid and BehaviorManager:Running() ) then
+	if ( BehaviorManager:Running() ) then
 		SkillManager:Cast( targetid )
 	end
 end
