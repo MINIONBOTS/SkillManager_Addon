@@ -1148,21 +1148,6 @@ function sm_skill_profile:GetSkillAndSkillSet(id)
 	end
 end
 
--- Returns the maxrange of the skill by id, for determining if the skill can be used to "set max attack range"
-function sm_skill_profile:GetSkillMaxRange(id)
-	local skill = self:GetSkillAndSkillSet(id)
-	if ( skill ) then
-		if ( skill.maxrange and skill.radius ) then
-			return skill.maxrange > skill.radius and skill.maxrange or skill.radius
-		elseif ( skill.maxrange ) then
-			return skill.maxrange
-		elseif ( skill.radius ) then
-			return skill.radius
-		end
-	end	
-	return 0
-end
-
 -- Checks if the skill ID is used by the current profile/castlist
 function sm_skill_profile:IsSkillInUse(skillid)
 	for k,v in pairs(self.actionlist) do
@@ -1195,9 +1180,18 @@ function sm_skill_profile:Update(gametick, force)
 					if ( setskill.slot >= 7 and setskill.slot <=9 ) then
 						setskill.slot = i
 					end
-											
-					self.activeskillrange = (setskill.maxrange and setskill.maxrange > 0 and setskill.maxrange > self.activeskillrange and setskill.maxrange or self.activeskillrange)
-					self.activeskillrange = (setskill.radius and setskill.radius > 0 and setskill.radius > self.activeskillrange and setskill.radius or self.activeskillrange)
+					
+					-- Go through our action list and check the maxrange from each instance of the skill					
+					for k,v in pairs(self.actionlist) do
+						for a,s in pairs(v.sequence) do
+							if ( s.id == skill.skillid) then
+								if ( not s.settings.castonplayer and s.settings.setsattackrange) then
+									if ( s.settings.maxrange and s.settings.maxrange > self.activeskillrange ) then self.activeskillrange = s.settings.maxrange end
+									if ( s.settings.radius and s.settings.radius > self.activeskillrange ) then self.activeskillrange = s.settings.radius end
+								end
+							end
+						end
+					end
 				end
 			end
 		end
@@ -1461,7 +1455,7 @@ function sm_action:Render(profile)
 			
 			GUI:Columns(3)
 			GUI:SetColumnOffset(1,60)
-			GUI:SetColumnOffset(2,375)
+			GUI:SetColumnOffset(2,325)
 			GUI:Dummy(30,10)
 			local skilldata, set = profile:GetSkillAndSkillSet(self.sequence[self.selectedskill].id)
 			if ( skilldata ) then
@@ -1484,44 +1478,68 @@ function sm_action:Render(profile)
 				GUI:BulletText(GetString("Type:")) GUI:SameLine(125) GUI:Text(skilldata.type ~= nil and tostring(skilldata.type) or tostring(0))
 				GUI:BulletText(GetString("Weapon:")) GUI:SameLine(125) GUI:Text(skilldata.weapon_type ~= nil and tostring(skilldata.weapon_type) or tostring(0))
 				if ( skilldata.flip_level and skilldata.flip_level > 0 ) then GUI:BulletText(GetString("Chain Level:")) GUI:SameLine(125) GUI:Text(tostring(skilldata.flip_level)) end
-				GUI:NextColumn()
-				if ( skilldata.maxrange and skilldata.maxrange > 0) then GUI:BulletText(GetString("Max.Range:")) GUI:SameLine(125) GUI:Text(tostring(skilldata.maxrange)) end
-				if ( skilldata.minrange and skilldata.minrange > 0) then GUI:BulletText(GetString("Min.Range:")) GUI:SameLine(125) GUI:Text(tostring(skilldata.minrange)) end
-				if ( skilldata.radius and skilldata.radius > 0 ) then GUI:BulletText(GetString("Radius:")) GUI:SameLine(125) GUI:Text(tostring(skilldata.radius)) end
-				if ( skilldata.power and skilldata.power > 0 ) then GUI:BulletText(GetString("Req.Power:")) GUI:SameLine(125) GUI:Text(tostring(skilldata.power)) end				
 				if ( skilldata.cooldownmax ) then
 					if ( skilldata.cooldown ) then GUI:BulletText(GetString("Cooldown:")) GUI:SameLine(125) GUI:Text(tostring(skilldata.cooldown).. " / "..tostring(skilldata.cooldownmax))
 					else
 						GUI:BulletText(GetString("Cooldown:")) GUI:SameLine(125) GUI:Text(" 0 / "..tostring(skilldata.cooldownmax))
 					end
 				end
+				GUI:NextColumn()
+				if ( skilldata.maxrange and skilldata.maxrange > 0) then GUI:BulletText(GetString("Max.Range:")) GUI:SameLine(125) GUI:Text(tostring(skilldata.maxrange)) end
+				if ( skilldata.minrange and skilldata.minrange > 0) then GUI:BulletText(GetString("Min.Range:")) GUI:SameLine(125) GUI:Text(tostring(skilldata.minrange)) end
+				if ( skilldata.radius and skilldata.radius > 0 ) then GUI:BulletText(GetString("Radius:")) GUI:SameLine(125) GUI:Text(tostring(skilldata.radius)) end
+				if ( skilldata.power and skilldata.power > 0 ) then GUI:BulletText(GetString("Req.Power:")) GUI:SameLine(125) GUI:Text(tostring(skilldata.power)) end				
+				
 				GUI:BulletText(GetString("Skill Set:")) GUI:SameLine(125) GUI:Text(tostring(set.name))
 				local currentsets = profile:GetCurrentSkillSets()				
 				for q,currentset in pairs ( currentsets ) do
 					if ( currentset ) then
-						GUI:BulletText(GetString("Current Sets: ")) GUI:SameLine(125) GUI:Text(tostring(currentset.name))
+						GUI:BulletText(GetString("Current Set: ")) GUI:SameLine(125) GUI:Text(tostring(currentset.name))
 					end
 				end
 			
 				GUI:Columns(1)
 				GUI:Separator()
 		-- Skill Settings
-				GUI:Text(GetString("Skill Settings:"))	if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("Special Settings for this Skill" )) end
 				local changed
-				self.sequence[self.selectedskill].settings.stopmovement, changed = GUI:Checkbox( GetString("Stop Movement"), self.sequence[self.selectedskill].settings.stopmovement or false) if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("If Enabled, the bot movement will be stopped while casting the skill." )) end if (changed) then modified = true end				
-				GUI:SameLine(200)
+				GUI:Text(GetString("Skill Settings:"))	if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("Special Settings for this Skill" )) end
 				self.sequence[self.selectedskill].settings.castonplayer, changed = GUI:Checkbox( GetString("Cast on Player"), self.sequence[self.selectedskill].settings.castonplayer or false) if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("If Enabled, the Skill will be cast on the Player and not on the Target." )) end if (changed) then modified = true end
+				if ( changed ) then profile.modified = true end
+				
 				if ( not self.sequence[self.selectedskill].settings.castonplayer ) then
-					GUI:SameLine(400)
-					self.sequence[self.selectedskill].settings.nolos, changed = GUI:Checkbox( GetString("No Line of Sight"), self.sequence[self.selectedskill].settings.nolos or false) if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("If Enabled, the line of sight to the target will not be checked when casting." )) end if (changed) then modified = true end
-				end
-												
-				self.sequence[self.selectedskill].settings.isprojectile, changed = GUI:Checkbox( GetString("Is Projectile"), self.sequence[self.selectedskill].settings.isprojectile or false) if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("Enable this only if the Skill cannot be cast on some objects." )) end if (changed) then modified = true end				
-				if ( profile:GetSkillMaxRange(skilldata.id) > 154 ) then
 					GUI:SameLine(200)
-					self.sequence[self.selectedskill].settings.setsattackrange, changed = GUI:Checkbox( GetString("Sets Attackrange"), self.sequence[self.selectedskill].settings.setsattackrange or true) if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("If Enabled, the 'MaxRange' of the Skill defines the Attackrange of the bot." )) end if (changed) then modified = true end				
+					self.sequence[self.selectedskill].settings.nolos, changed = GUI:Checkbox( GetString("No Line of Sight"), self.sequence[self.selectedskill].settings.nolos or false) if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("If Enabled, the line of sight to the target will not be checked when casting." )) end if (changed) then modified = true end
+					if ( changed ) then profile.modified = true end
 				end
 				
+				if ( self.sequence[self.selectedskill].settings.maxrange and self.sequence[self.selectedskill].settings.maxrange > 154 ) then
+					if ( not self.sequence[self.selectedskill].settings.castonplayer ) then
+						GUI:SameLine(400)
+					else
+						GUI:SameLine(200)
+					end
+					if ( self.sequence[self.selectedskill].settings.setsattackrange == nil ) then self.sequence[self.selectedskill].settings.setsattackrange = true end
+					self.sequence[self.selectedskill].settings.setsattackrange, changed = GUI:Checkbox( GetString("Sets Attackrange"), self.sequence[self.selectedskill].settings.setsattackrange) if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("If Enabled, the 'MaxRange' of the Skill defines the Attackrange of the bot." )) end if (changed) then modified = true end				
+					if ( changed ) then profile.modified = true end
+				end
+				
+				if ( not self.sequence[self.selectedskill].settings.castonplayer ) then
+					GUI:PushItemWidth(100)				
+					if ( self.sequence[self.selectedskill].settings.maxrange == nil ) then self.sequence[self.selectedskill].settings.maxrange = skilldata.maxrange or 0 end
+					self.sequence[self.selectedskill].settings.maxrange, changed = GUI:InputInt(GetString("Max.Range"), self.sequence[self.selectedskill].settings.maxrange, 1, 10, GUI.InputTextFlags_CharsDecimal+GUI.InputTextFlags_CharsNoBlank)		
+					if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("The max. distance to the target where this skill should be cast. Don't touch this if you don't know what you are doing!" )) end if (changed) then profile.modified = true end
+					GUI:SameLine(200)
+					if ( self.sequence[self.selectedskill].settings.minrange == nil ) then self.sequence[self.selectedskill].settings.minrange = skilldata.minrange or 0 end
+					self.sequence[self.selectedskill].settings.minrange, changed = GUI:InputInt(GetString("Min.Range"), self.sequence[self.selectedskill].settings.minrange, 1, 10, GUI.InputTextFlags_CharsDecimal+GUI.InputTextFlags_CharsNoBlank)		
+					if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("The min. distance to the target where this skill should be cast. Don't touch this if you don't know what you are doing!" )) end if (changed) then profile.modified = true end
+					GUI:SameLine(400)
+					if ( self.sequence[self.selectedskill].settings.radius == nil ) then self.sequence[self.selectedskill].settings.radius = skilldata.radius or 0 end
+					self.sequence[self.selectedskill].settings.radius, changed = GUI:InputInt(GetString("Radius"), self.sequence[self.selectedskill].settings.radius, 1, 10, GUI.InputTextFlags_CharsDecimal+GUI.InputTextFlags_CharsNoBlank)		
+					if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("The impact / damage / effect radius of this skill. Don't touch this if you don't know what you are doing!" )) end if (changed) then profile.modified = true end
+					
+					GUI:PopItemWidth()
+					
+				end
 				
 				GUI:Separator()
 				
@@ -1670,6 +1688,15 @@ function sm_action:CanCastSkill(profile, targetskillset, sequenceid, skilldata)
 		-- Revenant Costs mechanic
 		if ( skilldata.cost and skilldata.cost > 0 and skilldata.cost > ml_global_information.Player_Power ) then return false end
 		
+		-- Range Check
+		if ( not skill.settings.castonplayer and profile.target ) then
+			local maxrange = skill.settings.maxrange or skilldata.maxrange or 0
+			if ( maxrange == 0 ) then maxrange = skill.settings.radius or skilldata.radius or 0 end
+			local minrange = skill.settings.minrange or skilldata.minrange or 0
+			local targetdist = profile.target.distance - (profile.target.radius or 0)
+			if ( minrange > 0 and targetdist < minrange ) then return false end
+			if ( maxrange > 0 and targetdist > maxrange ) then return false end
+		end
 		
 		-- Check if we need to swap sets and if that is possible		
 		local swapresult = profile:CanSwapToSet(targetskillset, self, sequenceid)
@@ -2075,11 +2102,8 @@ function sm_skill_profile:Cast(targetid)
 					
 				elseif ( switchslot == -1 ) then
 					-- swap weapons
-					d("AAAAAAAAAA")
-					d(tostring(skilldata.name))
-					
 					Player:SwapWeaponSet()
-					d("Swapping weaponset..")
+					d("Swapping Main Weaponset")
 					return
 					
 				elseif ( switchslot >= 0 ) then
@@ -2101,16 +2125,33 @@ function sm_skill_profile:Cast(targetid)
 				
 				if ( not self.target ) then return end
 				local castresult
-				if (skilldata.groundtargeted) then
+				
+				if (skilldata.isgroundtargeted) then
 					local pos = self.target.pos
-					-- extend cast position by radius if the target is slightly outside
-					-- 5% extra range
-					-- increasing height slightly -> extra range
-					-- calc in radius -> extra range
-					if (self.target.ischaracter or (self.target.isgadget and skilldata.isprojectile)) then
-						castresult = Player:CastSpell(GW2.SKILLBARSLOT["Slot_" .. skilldata.slot] , pos.x, pos.y, pos.z)
+					local ppos = ml_global_information.Player_Position
+					local targetdist = self.target.distance
+					local targetradius = self.target.radius or 0
+					local maxrange = action.sequence[self.currentactionsequence].settings.maxrange or skilldata.maxrange or 0
+					if ( maxrange == 0 ) then maxrange = action.sequence[self.currentactionsequence].settings.radius or skilldata.radius or 0 end
+					-- In case the target is "on the outside border of where we can throw/place the aoe spell and just the impact radius of the skill will still hit the target
+					if ( not action.sequence[self.currentactionsequence].settings.castonplayer and targetdist >= maxrange ) then
+						-- Calculate the position on the outside radius of the target towards our player
+						local vec = { x = pos.x - ppos.x, y = pos.y - ppos.y, z = pos.z - ppos.z }
+						local vec2 = math.normalize(vec)						
+						pos.x = ppos.x + (vec2.x*maxrange)
+						pos.y = ppos.y + (vec2.y*maxrange)
+						pos.z = ppos.z + (vec2.z*maxrange )
+												
 					else
-						castresult = Player:CastSpell(GW2.SKILLBARSLOT["Slot_" .. skilldata.slot] , pos.x, pos.y, (pos.z - self.target.height))					
+						-- Use target prediciton in case the target is moving
+						d("TODO: Use target prediciton in case the target is moving ")
+						
+					end
+					
+					if (self.target.isgadget) then
+						castresult = Player:CastSpell(GW2.SKILLBARSLOT["Slot_" .. skilldata.slot] , pos.x, pos.y, (pos.z - self.target.height)) -- need to cast at the top of the gadget, else no los errors on larger things
+					else
+						castresult = Player:CastSpell(GW2.SKILLBARSLOT["Slot_" .. skilldata.slot] , pos.x, pos.y, pos.z)
 					end
 				else
 					
@@ -2128,7 +2169,6 @@ function sm_skill_profile:Cast(targetid)
 						self.cooldownlist[skilldata.id] = { tick = GetGameTime(), cd = 500 }					
 					end
 					self.lastcast = gametime
-										
 					d("Casting: "..skilldata.name)
 					return
 				else
