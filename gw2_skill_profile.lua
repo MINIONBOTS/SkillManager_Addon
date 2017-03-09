@@ -577,7 +577,7 @@ function sm_skill_profile:RenderSkillSetEditor(currentaction)
 	GUI:BulletText(GetString("Available Skill Sets:"))
 	
 	-- Make sure we have at least the "unsortedskillset" Group
-	if ( not self.skillsets["All"] or not self.lastupdate or GetGameTime() - self.lastupdate > 1000) then		
+	if ( not self.skillsets["All"] or not self.lastupdate or GetGameTime() - self.lastupdate > 2000) then		
 		self.lastupdate = GetGameTime()
 		self:UpdateCurrentSkillsetData()
 		if( not self.skillsets["All"] ) then
@@ -2048,7 +2048,7 @@ function sm_skill_profile:Cast(targetid)
 	self.pp_castinfo = ml_global_information.Player_CastInfo
 	self.player = Player	
 	self.playerbuffs = Player.buffs
-	self.target = CharacterList:Get(targetid) or GadgetList:Get(targetid) --or AgentList:Get(targetid)
+	self.target = CharacterList:Get(targetid) or GadgetList:Get(targetid) --or AgentList:Get(targetid) --  TODO Create a table with all target shit once instead of having conditions spam these things over n over ?
 	self.sets = self:GetCurrentSkillSets()
 	
 	-- Setting a "current action to cast"
