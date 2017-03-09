@@ -1689,7 +1689,7 @@ function sm_action:CanCastSkill(profile, targetskillset, sequenceid, skilldata)
 		if ( skilldata.cost and skilldata.cost > 0 and skilldata.cost > ml_global_information.Player_Power ) then return false end
 		
 		-- Range Check
-		if ( not skill.settings.castonplayer and profile.target ) then
+		if ( sequenceid <= 1 and not skill.settings.castonplayer and profile.target ) then
 			local maxrange = skill.settings.maxrange or skilldata.maxrange or 0
 			if ( maxrange == 0 ) then maxrange = skill.settings.radius or skilldata.radius or 0 end
 			local minrange = skill.settings.minrange or skilldata.minrange or 0
