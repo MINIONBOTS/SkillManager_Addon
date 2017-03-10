@@ -392,7 +392,7 @@ SkillManager:AddCondition(sm_condition_movement) -- register this condition in t
 
 
 -- Buff Count check condition
-local sm_condition_buffs = class('Buffs', sm_condition)
+local sm_condition_buffs = class('Buffs (Count)', sm_condition)
 sm_condition_buffs.targets = { [1] = GetString("Player has"), [2] = GetString("Target has"),  }
 sm_condition_buffs.operators = { [1] = "<", [2] = "<=", [3] = "==", [4] = ">=", [5] = ">",  }
 sm_condition_buffs.bufftypes = { [1] = GetString("Boons"), [2] = GetString("Conditions"), [3] = GetString("SpeedBoons"), [4] = GetString("SlowConditions"), [5] = GetString("ImmobilizeConditions"),  }
@@ -406,7 +406,7 @@ end
 -- Save  the condition data into a table and returns that
 function sm_condition_buffs:Save()
 	local data = {}
-	data.class = 'Buffs'
+	data.class = 'Buffs (Count)'
 	data.target = self.target
 	data.operator = self.operator
 	data.bufftype = self.bufftype
@@ -435,11 +435,11 @@ function sm_condition_buffs:Evaluate(player,target)
 		
 		if ( table.valid(buffs) ) then
 			local count = 0
-			if (self.bufftypes == 1) then count = self:CountBuffsInList(ml_global_information.BoonsEnum, buffs)
-			elseif (self.bufftypes == 2) then count = self:CountBuffsInList(ml_global_information.ConditionsEnum, buffs)
-			elseif (self.bufftypes == 3) then count = self:CountBuffsInList(ml_global_information.SpeedBoons, buffs)
-			elseif (self.bufftypes == 4) then count = self:CountBuffsInList(ml_global_information.SlowConditions, buffs)
-			elseif (self.bufftypes == 5) then count = self:CountBuffsInList(ml_global_information.ImmobilizeConditions, buffs)
+			if (self.bufftype == 1) then count = self:CountBuffsInList(ml_global_information.BoonsEnum, buffs)
+			elseif (self.bufftype == 2) then count = self:CountBuffsInList(ml_global_information.ConditionsEnum, buffs)
+			elseif (self.bufftype == 3) then count = self:CountBuffsInList(ml_global_information.SpeedBoons, buffs)
+			elseif (self.bufftype == 4) then count = self:CountBuffsInList(ml_global_information.SlowConditions, buffs)
+			elseif (self.bufftype == 5) then count = self:CountBuffsInList(ml_global_information.ImmobilizeConditions, buffs)
 			end
 			
 			if ( self.operator == 1 ) then return count < self.value 
@@ -476,20 +476,20 @@ function sm_condition_buffs:Render(id) -- need to pass an index value here, for 
 	if ( changed ) then modified = true end
 	GUI:PopItemWidth()	
 	
-	GUI:PushItemWidth(150)
+	GUI:PushItemWidth(50)
 	GUI:SameLine()
 	self.operator, changed = GUI:Combo("##sm_condition_buffs2"..tostring(id),self.operator, self.operators)
 	if ( changed ) then modified = true end
 	GUI:PopItemWidth()
 	
-	GUI:PushItemWidth(50)
+	GUI:PushItemWidth(100)
 	GUI:SameLine()
 	self.value, changed = GUI:InputInt("##sm_condition_buffs3"..tostring(id),self.value, 1,2,GUI.InputTextFlags_CharsDecimal+GUI.InputTextFlags_CharsNoBlank)
 	if ( self.value < 0 ) then self.value = 0 end
 	if ( changed ) then modified = true end
 	GUI:PopItemWidth()
 	
-	GUI:PushItemWidth(150)
+	GUI:PushItemWidth(175)
 	GUI:SameLine()
 	self.bufftype, changed = GUI:Combo("##sm_condition_buffs4"..tostring(id),self.bufftype, self.bufftypes)
 	if ( changed ) then modified = true end
@@ -502,7 +502,7 @@ SkillManager:AddCondition(sm_condition_buffs) -- register this condition in the 
 
 
 -- Single Buff check condition
-local sm_condition_buff = class('Buff', sm_condition)
+local sm_condition_buff = class('Buff (Name)', sm_condition)
 sm_condition_buff.targets = { [1] = GetString("Player"), [2] = GetString("Target"),  }
 sm_condition_buff.operators = { [1] = GetString("has"), [2] = GetString("has not"), }
 sm_condition_buff.buffs = {
@@ -554,13 +554,6 @@ sm_condition_buff.buffs = {
 	[16963]		= GetString("Petrified 2"),
 	[25181]		= GetString("Trapped"),
 	[37211]		= GetString("Frostbite"),
-	
-	[895]		= GetString("Determined (no icon)"),
-	[11641]		= GetString("Determined (no icon)"),
-	[757]		= GetString("Invulnerable"),
-	[903]		= GetString("Righteous Indignation"),
-	[36143]		= GetString("Destruction Immunity"),
-	[29065]		= GetString("Tough Hide"),
 }
 
 -- Initialize new class, - gets called when :new(..) is called
@@ -572,7 +565,7 @@ end
 -- Save  the condition data into a table and returns that
 function sm_condition_buff:Save()
 	local data = {}
-	data.class = 'Buff'
+	data.class = 'Buff (Name)'
 	data.target = self.target
 	data.operator = self.operator
 	data.buff = self.buff
@@ -695,13 +688,13 @@ function sm_condition_buffid:Render(id) -- need to pass an index value here, for
 	if ( changed ) then modified = true end
 	GUI:PopItemWidth()	
 	
-	GUI:PushItemWidth(100)
+	GUI:PushItemWidth(175)
 	GUI:SameLine()
 	self.operator, changed = GUI:Combo("##sm_condition_buffid2"..tostring(id),self.operator, self.operators)
 	if ( changed ) then modified = true end
 	GUI:PopItemWidth()
 		
-	GUI:PushItemWidth(200)
+	GUI:PushItemWidth(100)
 	GUI:SameLine()	
 	self.buffid, changed = GUI:InputInt("##sm_condition_buffid3"..tostring(id),self.buffid, 1,2,GUI.InputTextFlags_CharsDecimal+GUI.InputTextFlags_CharsNoBlank)	
 	if ( changed ) then modified = true end
