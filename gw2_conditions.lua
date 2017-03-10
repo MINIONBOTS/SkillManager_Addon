@@ -553,7 +553,7 @@ sm_condition_buff.buffs = {
 	[15090]		= GetString("Petrified 1"),
 	[16963]		= GetString("Petrified 2"),
 	[25181]		= GetString("Trapped"),
-	[37211]		= GetString("Frostbite"
+	[37211]		= GetString("Frostbite"),
 	
 	[895]		= GetString("Determined (no icon)"),
 	[11641]		= GetString("Determined (no icon)"),
