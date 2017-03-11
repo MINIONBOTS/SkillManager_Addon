@@ -1879,8 +1879,9 @@ function sm_skill_profile:CanSwapToSet(targetskillset, action , sequenceid)
 		end
 	end
 	-- ADD A CHECK FOR "ARE WE IN A TRANSFORMATION (w == 3)  where we cannot go out from ?
-	
-	
+		
+		
+		
 	-- We need to switch to the target skillset in order to reach the skill we want to cast, check if the set can be swapped to
 	if ( targetskillset.weaponsetid == 0 and targetskillset.transformid < 12) then -- underwater set
 		if (self.player.swimming == 0 or not self:HasWeaponAvailable(targetskillset) or not self:CanSwapWeapon()) then -- we are not under water
@@ -1894,7 +1895,7 @@ function sm_skill_profile:CanSwapToSet(targetskillset, action , sequenceid)
 		
 		if ( not skilldata or not self.currentskills[skilldata.slot] or self.currentskills[skilldata.slot].skillid ~= skilldata.id or not self.currentskills[skilldata.slot].cancast) then
 			return false
-		else
+		else			
 			-- Engi special fuck gren case
 			if (skilldata.id == 5805 and ((targetskillset.id == "2_5808" and Player.swimming == 1) or (targetskillset.id == "2_6169" and Player.swimming == 0))) then -- not allowing underwater gren kit on land and the other way around
 				return false
@@ -1904,9 +1905,10 @@ function sm_skill_profile:CanSwapToSet(targetskillset, action , sequenceid)
 		end
 
 	else
+	
 		local prof = SkillManager:GetPlayerProfession()
 		-- Ele's attunements
-		if ( prof == GW2.CHARCLASS.Elementalist and targetskillset.weaponsetid == 4 or targetskillset.weaponsetid == 5 ) then
+		if ( prof == GW2.CHARCLASS.Elementalist and (targetskillset.weaponsetid == 4 or targetskillset.weaponsetid == 5) ) then
 			if ( targetskillset.transformid == 1 and self:HasWeaponAvailable(targetskillset) and self.currentskills[13] and self.currentskills[13].cancast ) then return 13 end
 			if ( targetskillset.transformid == 2 and self:HasWeaponAvailable(targetskillset) and self.currentskills[14] and self.currentskills[14].cancast ) then return 14 end
 			if ( targetskillset.transformid == 3 and self:HasWeaponAvailable(targetskillset) and self.currentskills[15] and self.currentskills[15].cancast ) then return 15 end
@@ -1969,7 +1971,7 @@ function sm_skill_profile:CanSwapToSet(targetskillset, action , sequenceid)
 		end
 
 		-- All remaining cases, should be only switch weapons ?
-		if ( targetskillset.activateskillid == 1 ) then
+		if ( targetskillset.activateskillid == 1 ) then			
 			--d("self:HasWeaponAvailable(targetskillset): "..tostring(targetskillset.name).. " : "..tostring(self:HasWeaponAvailable(targetskillset)))
 			if ((targetskillset.weaponsetid == 4 or targetskillset.weaponsetid == 5) and self.player.swimming == 0 and self:HasWeaponAvailable(targetskillset) and self:CanSwapWeapon() ) then
 				return -1	-- good to swap				

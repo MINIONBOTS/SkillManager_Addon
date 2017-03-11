@@ -449,7 +449,7 @@ function sm_condition_buffs:Evaluate(player,target)
 			elseif ( self.operator == 5 ) then return count > self.value
 			end
 		else
-			ml_error("[SkillManager] - sm_condition_buffs:Evaluate: Invalid Buff table")
+			return false
 		end
 	else
 		ml_error("[SkillManager] - sm_condition_buffs:Evaluate: Invalid arguments received")
@@ -554,6 +554,8 @@ sm_condition_buff.buffs = {
 	[16963]		= GetString("Petrified 2"),
 	[25181]		= GetString("Trapped"),
 	[37211]		= GetString("Frostbite"),
+	[13017]		= GetString("Stealth"),
+	[26142]		= GetString("Stealth2"),
 }
 
 -- Initialize new class, - gets called when :new(..) is called
@@ -589,14 +591,11 @@ function sm_condition_buff:Evaluate(player,target)
 		elseif ( self.target == 2 ) then
 			buffs = target.buffs
 		end
-		
-		if ( table.valid(buffs) ) then			
-			if ( self.operator == 1 ) then return buffs[self.buff] ~= nil
-			elseif ( self.operator == 2 ) then return buffs[self.buff] == nil
-			end
-		else
-			ml_error("[SkillManager] - sm_condition_buff:Evaluate: Invalid Buff table")
+				
+		if ( self.operator == 1 and table.valid(buffs) ) then return buffs[self.buff] ~= nil
+		elseif ( self.operator == 2 and table.valid(buffs) ) then return buffs[self.buff] == nil
 		end
+		return false
 	else
 		ml_error("[SkillManager] - sm_condition_buff:Evaluate: Invalid arguments received")
 	end	
@@ -672,7 +671,7 @@ function sm_condition_buffid:Evaluate(player,target)
 			elseif ( self.operator == 2 ) then return buffs[self.buffid] == nil
 			end
 		else
-			ml_error("[SkillManager] - sm_condition_buffid:Evaluate: Invalid Buff table")
+			return false
 		end
 	else
 		ml_error("[SkillManager] - sm_condition_buffid:Evaluate: Invalid arguments received")
