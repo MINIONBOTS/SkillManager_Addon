@@ -227,9 +227,9 @@ function ml_skill_mgr.Draw(event,ticks)
 end
 RegisterEventHandler("Gameloop.Draw", ml_skill_mgr.Draw)
 
-function ml_skill_mgr:Cast( targetid )
+function ml_skill_mgr:Use( targetid )
 	if ( ml_skill_mgr.profile) then
-		return ml_skill_mgr.profile:Cast(targetid)
+		return ml_skill_mgr.profile:Use(targetid)
 	else
 		ml_error("[SkillManager] - No SkillManager Profile loaded.")
 	end
@@ -245,25 +245,42 @@ function SkillManager:RenderMainMenuCode() if ( ml_skill_mgr.profile ) then ml_s
 function SkillManager:AddCondition(class) ml_skill_mgr.conditions[tostring(class)] = class end
 function SkillManager:GetCondition(classname) if (ml_skill_mgr.conditions[classname]) then return ml_skill_mgr.conditions[classname] end end
 function SkillManager:GetConditions() return ml_skill_mgr.conditions end
-function SkillManager:Cast(targetid) return ml_skill_mgr:Cast( targetid ) end
+function SkillManager:Use(targetid) return ml_skill_mgr:Use( targetid ) end
 function SkillManager:Ready() return ml_skill_mgr.profile ~= nil end
-function SkillManager:GetActiveSkillRange() return ml_skill_mgr.profile.activeskillrange end
 
-
-ml_skill_mgr.original_getactiveskillrange = gw2_skill_manager.GetActiveSkillRange
+-- On / Off / Cast / Update
+ml_skill_mgr.original_use = gw2_skill_manager.Use
+function gw2_skill_manager:Use(targetid)
+	if ( SkillManager:Ready() ) then
+		if ( BehaviorManager:Running() ) then
+			return SkillManager:Use( targetid )			
+		end
+	end
+	return ml_skill_mgr.original_use()
+end
 
 -- Get the range of the current active skill
+ml_skill_mgr.original_getactiveskillrange = gw2_skill_manager.GetActiveSkillRange
 function gw2_skill_manager.GetActiveSkillRange()
-
 	if ( SkillManager:Ready() ) then
-		local maxrange = SkillManager:GetActiveSkillRange() 
+		local maxrange = ml_global_information.AttackRange
 		return maxrange < 154 and 154 or maxrange
 	end
 	return ml_skill_mgr.original_getactiveskillrange()
 end
 
-function gw2_skill_manager:Use(targetid)
-	if ( BehaviorManager:Running() ) then
-		SkillManager:Cast( targetid )
+ml_skill_mgr.original_canmove = gw2_skill_manager.CanMove
+function gw2_skill_manager.CanMove()
+	if ( SkillManager:Ready() ) then
+		return not ml_skill_mgr.profile.combatmovement.combat
 	end
+	return ml_skill_mgr.original_canmove()
+end
+
+ml_skill_mgr.original_combatmovement = gw2_skill_manager.CombatMovement
+function gw2_skill_manager.CombatMovement()	
+	if ( SkillManager:Ready() ) then		
+		return ml_skill_mgr.profile.combatmovement
+	end
+	return ml_skill_mgr.original_combatmovement()
 end

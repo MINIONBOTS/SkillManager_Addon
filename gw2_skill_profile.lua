@@ -21,7 +21,7 @@ sm_skill_profile.actionlist = {}				-- The priority list used for casting, holdi
 sm_skill_profile.currentskills = {}			-- Holds a copy of the "live data" of the player skills
 sm_skill_profile.cooldownlist = {}			-- Another internal list to know which skills were on cd
 sm_skill_profile.skilldata = {}				-- Additional Skill Data from the API
-
+sm_skill_profile.combatmovement = {}
 
 -- These 2 needs to be set before the profile can be loaded / saved. Pass the 3rd arg for private addon handling
 function sm_skill_profile:initialize(filepath, filename, modulefunctions, customcontext, profession)
@@ -30,7 +30,6 @@ function sm_skill_profile:initialize(filepath, filename, modulefunctions, custom
 	self.modulefunctions = modulefunctions
 	self.context = customcontext or {}	
 	self.profession = profession or SkillManager:GetPlayerProfession()
-	self.activeskillrange = 154
 end
 
 -- Saving this Profile
@@ -243,15 +242,16 @@ function sm_skill_profile:PreSave()
 	self.dragid = nil
 	self.dropid = nil
 	self.dropidhover = nil
-	self.activeskillrange = nil
 	self.weaponsets = nil
 	self.lastcast = nil
 	self.lastcastonplayer = nil
+	self.combatmovement = {}
+	self.dataupdated = nil
+	self.sets = nil
 end
 function sm_skill_profile:AfterSave()
 	self.menucodechanged = true
 	self.actioneditoropen = true
-	self.activeskillrange = 154
 	self.weaponsets = {}
 end
 
@@ -285,8 +285,11 @@ function sm_skill_profile:Render()
 		end
 -- DEBUG 
 
-		GUI:Text("DEBUG: activeskillrange  : "..tostring(self.activeskillrange))
 		GUI:Text("DEBUG: maxattackrange  : "..tostring(ml_global_information.AttackRange))
+		if ( self.actionlist[self.currentaction] and self.actionlist[self.currentaction].sequence[self.currentactionsequence]) then 
+			GUI:Text("DEBUG: currentaction  : "..tostring(self.actionlist[self.currentaction].name))
+			GUI:Text("DEBUG: sequence  : "..tostring(self.currentactionsequence))
+		end
 
 -- Main Menu UI CodeEditor
 		local _,maxy = GUI:GetContentRegionAvail()
@@ -506,7 +509,6 @@ function sm_skill_profile:Render()
 		self.player = nil
 		self.playerbuffs = nil
 		self.target = nil
-		self.sets = nil
 		
 		-- When moving the mouse outside the window while dragging actions around
 		if ( (self.dragid or self.dropidhover) and (hoveringaction == nil and not GUI:IsWindowHovered())) then
@@ -577,8 +579,7 @@ function sm_skill_profile:RenderSkillSetEditor(currentaction)
 	GUI:BulletText(GetString("Available Skill Sets:"))
 	
 	-- Make sure we have at least the "unsortedskillset" Group
-	if ( not self.skillsets["All"] or not self.lastupdate or GetGameTime() - self.lastupdate > 2000) then		
-		self.lastupdate = GetGameTime()
+	if ( not self.skillsets["All"] ) then
 		self:UpdateCurrentSkillsetData()
 		if( not self.skillsets["All"] ) then
 			self.selectedskillset = self.skillsets["All"]
@@ -640,6 +641,12 @@ function sm_skill_profile:RenderSkillSetEditor(currentaction)
 		end
 	end
 	
+	-- Refresh button to let it add new sets (can't be automated since it somethings creates bonky sets when the game data is slow in updating on switching weapons etc
+	if (GUI:ImageButton("##smrefreshsets",self.texturepath.."\\change.png",20,20)) then
+		self:UpdateCurrentSkillsetData()
+	end
+	
+	
 	GUI:Separator()
 
 		
@@ -671,7 +678,7 @@ function sm_skill_profile:RenderSkillSetEditor(currentaction)
 			--end
 			--if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("Add your current Skills.")) end
 			GUI:SameLine(310)			
-			if ( GUI:ImageButton("##smclear",sm_skill_profile.texturepath.."\\w_delete.png",15,15)) then
+			if ( GUI:ImageButton("##smclear",self.texturepath.."\\w_delete.png",15,15)) then
 				for k,v in pairs(	self.skillsets["All"].skills ) do
 					if ( not self:IsSkillInUse(k) ) then -- checks if the current actionlist is using this skill
 						self.skillsets["All"].skills[k] = nil
@@ -711,9 +718,9 @@ function sm_skill_profile:RenderSkillSetEditor(currentaction)
 				GUI:Text(GetString("Activate Set:")) if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("Select the Skill that activates this Skillset.")) end
 				GUI:SameLine(120)
 				if ( self.selectedskillset.activateskillid > 2 and self.selectedskillset.skills[self.selectedskillset.activateskillid] ) then
-					GUI:ImageButton("##smactivate",sm_skill_profile.texturecache.."\\default.png",20,20)				
+					GUI:ImageButton("##smactivate",self.texturecache.."\\default.png",20,20)				
 				else
-					GUI:ImageButton("##smactivate",sm_skill_profile.texturepath.."\\gear.png",20,20)
+					GUI:ImageButton("##smactivate",self.texturepath.."\\gear.png",20,20)
 				end
 				GUI:SameLine(155) self.selectedskillset.activateskillid = GUI:Combo("##smactivate",self.selectedskillset.activateskillid or 1, combolist)
 				
@@ -1162,23 +1169,25 @@ end
 
 -- Updates the Data of the current SkillSets
 function sm_skill_profile:Update(gametick, force)
-	if ( force or not self.lasttick or gametick - self.lasttick > 150) then
+	if ( force or not self.lasttick or gametick - self.lasttick > 250) then
 		self.lasttick = gametick
 		self.currentskills = {}
-		self.activeskillrange = 154
+		local activeskillrange = 154
+		local cancastskillrange = 154
 		
 		-- Use the current gamedata to update the skillset data
+		local rangeset
 		for i = 1, ml_global_information.MAX_SKILLBAR_SLOTS-1 do	-- 1 to 19
 			local skill = Player:GetSpellInfo(GW2.SKILLBARSLOT["Slot_" .. i])
 			if (skill) then
 				self.currentskills[i] = skill
-				local setskill = self:GetSkillAndSkillSet(skill.skillid)
-				if (setskill ) then
-					setskill.cooldown = skill.cooldown
-					setskill.cooldownmax = skill.cooldownmax
-					if ( setskill.isgroundtargeted == nil ) then setskill.isgroundtargeted = skill.isgroundtargeted end
-					if ( setskill.slot >= 7 and setskill.slot <=9 ) then
-						setskill.slot = i
+				local skilldata, skillset = self:GetSkillAndSkillSet(skill.skillid)
+				if (skilldata ) then
+					skilldata.cooldown = skill.cooldown
+					skilldata.cooldownmax = skill.cooldownmax
+					if ( skilldata.isgroundtargeted == nil ) then skilldata.isgroundtargeted = skill.isgroundtargeted end
+					if ( skilldata.slot >= 7 and skilldata.slot <=9 ) then
+						skilldata.slot = i
 					end
 					
 					-- Go through our action list and check the maxrange from each instance of the skill					
@@ -1186,8 +1195,22 @@ function sm_skill_profile:Update(gametick, force)
 						for a,s in pairs(v.sequence) do
 							if ( s.id == skill.skillid) then
 								if ( not s.settings.castonplayer and s.settings.setsattackrange) then
-									if ( s.settings.maxrange and s.settings.maxrange > self.activeskillrange ) then self.activeskillrange = s.settings.maxrange end
-									if ( s.settings.radius and s.settings.radius > self.activeskillrange ) then self.activeskillrange = s.settings.radius end
+									local range = 0
+									if ( s.settings.maxrange and s.settings.maxrange > range ) then range = s.settings.maxrange end
+									if ( s.settings.radius and s.settings.radius > range ) then range = s.settings.radius end
+									if ( range > activeskillrange ) then 
+										activeskillrange = range 
+									end
+									
+									
+									if ( force and range > cancastskillrange and table.valid(self.target) and (not skilldata.flip_level or skilldata.flip_level <= 1) ) then 
+										local ha = v:CanCastSkill(self, skillset, a, skilldata, true)
+										--d(tostring(skilldata.name) .." - " ..tostring(ha).. " -- " ..tostring(range))										
+										if ( ha ) then
+											cancastskillrange = range
+											rangeset = true										
+										end
+									end
 								end
 							end
 						end
@@ -1196,12 +1219,27 @@ function sm_skill_profile:Update(gametick, force)
 			end
 		end
 		
+		-- we haven't been in a fight for 1+ second, use the max range of our active skills
+		if ( not force ) then
+			if (not self.lastrangeupdate or gametick - self.lastrangeupdate > 1000 ) then
+				self.lastrangeupdate = gametick
+				ml_global_information.AttackRange = activeskillrange
+			end
+		
+		elseif ( force and table.valid(self.target) and not self.stayatmaxrange ) then
+			self.lastrangeupdate = gametick
+			ml_global_information.AttackRange = cancastskillrange
+		
+		elseif ( not ml_global_information.AttackRange ) then
+			ml_global_information.AttackRange = activeskillrange
+		end
+				
 		local cdlist = Player:GetCoolDownList()
 		if ( cdlist ) then
 			for id,e in pairs(cdlist) do
-				local setskill = self:GetSkillAndSkillSet(id)
-				if (setskill ) then
-					setskill.cooldown = e.cooldown
+				local skilldata = self:GetSkillAndSkillSet(id)
+				if (skilldata ) then
+					skilldata.cooldown = e.cooldown
 					self.cooldownlist[id] = { tick = gametick, cd = e.cooldown }
 				end
 			end
@@ -1210,9 +1248,9 @@ function sm_skill_profile:Update(gametick, force)
 		-- in case our skill arrived at 0 cooldown, it would disappear from the GetCoolDownList, this code makes sure our data is set back to 0 
 		for id, e in pairs (self.cooldownlist) do
 			if ( gametick - e.tick >= e.cd ) then
-				local setskill = self:GetSkillAndSkillSet(id)
-				if (setskill ) then
-					setskill.cooldown = 0
+				local skilldata = self:GetSkillAndSkillSet(id)
+				if (skilldata ) then
+					skilldata.cooldown = 0
 				end
 				self.cooldownlist[id] = nil
 			end		
@@ -1238,8 +1276,12 @@ function sm_skill_profile:Update(gametick, force)
 			item = Inventory:GetEquippedItemBySlot(GW2.EQUIPMENTSLOT.AlternateAquaticWeapon)
 			if ( item ) then table.insert(self.weaponsets, { weapontype = item.weapontype, weaponsetid = 0} ) end
 		end
-			
-		ml_global_information.AttackRange = self.activeskillrange
+		
+		-- Reset if needed
+		if ( not BehaviorManager:Running() ) then
+			self.currentaction = nil
+			self.currentactionsequence = nil
+		end
 	end
 end
 
@@ -1668,7 +1710,7 @@ end
 
 
 -- Checks if a skill of the sequence can be cast by evaluating all conditions
-function sm_action:CanCastSkill(profile, targetskillset, sequenceid, skilldata)
+function sm_action:CanCastSkill(profile, targetskillset, sequenceid, skilldata, ignorerangecheck)
 	if ( self.sequence[sequenceid] ~= nil ) then
 		
 		local skill = self.sequence[sequenceid]
@@ -1689,7 +1731,7 @@ function sm_action:CanCastSkill(profile, targetskillset, sequenceid, skilldata)
 		if ( skilldata.cost and skilldata.cost > 0 and skilldata.cost > ml_global_information.Player_Power ) then return false end
 		
 		-- Range Check
-		if ( sequenceid <= 1 and not skill.settings.castonplayer and profile.target ) then
+		if ( not ignorerangecheck and sequenceid <= 1 and not skill.settings.castonplayer and profile.target ) then
 			local maxrange = skill.settings.maxrange or skilldata.maxrange or 0
 			if ( maxrange == 0 ) then maxrange = skill.settings.radius or skilldata.radius or 0 end
 			local minrange = skill.settings.minrange or skilldata.minrange or 0
@@ -1742,10 +1784,8 @@ function sm_action:CanCastSkill(profile, targetskillset, sequenceid, skilldata)
 		end
 		return true -- in case there is only custom condition code or no code at all
 	end
-	
 	return false
 end
-
 
 function sm_skill_profile:IsTwoHandWeapon(weapontype)
 	return weapontype == 1 or weapontype == 2 or weapontype == 6 or weapontype == 10 or weapontype == 12 or weapontype == 19 or weapontype == 20 or weapontype == 21
@@ -2035,8 +2075,7 @@ function sm_skill_profile:NextSkillIsChainSkill()
 end
 
 -- Casting
-function sm_skill_profile:Cast(targetid)
-	local gametime = GetGameTime()
+function sm_skill_profile:Cast(gametime,targetid)	
 	
 	if ( not targetid ) then
 		if ( (not self.lastcast or gametime - self.lastcast > 1000) and ( not self.lastcastonplayer or gametime - self.lastcastonplayer > 1000)) then -- check only the buff/heal spells if we haven't cast for a while
@@ -2045,13 +2084,17 @@ function sm_skill_profile:Cast(targetid)
 			return
 		end
 	end
-
-	self:Update(gametime,true)	-- Update the skilldata before we do anything
-	self.pp_castinfo = ml_global_information.Player_CastInfo
-	self.player = Player	
-	self.playerbuffs = Player.buffs
-	self.target = CharacterList:Get(targetid) or GadgetList:Get(targetid) --or AgentList:Get(targetid) --  TODO Create a table with all target shit once instead of having conditions spam these things over n over ?
+	
+	if ( not self.dataupdated ) then
+		self.target = CharacterList:Get(targetid) or GadgetList:Get(targetid) --or AgentList:Get(targetid) --  TODO Create a table with all target shit once instead of having conditions spam these things over n over ?
+		self.pp_castinfo = ml_global_information.Player_CastInfo
+		self.player = Player	
+		self.playerbuffs = Player.buffs
+		self:Update(gametime,true)	-- Update the skilldata before we do anything				
+		self.dataupdated = true
+	end
 	self.sets = self:GetCurrentSkillSets()
+	if ( not self.pp_castinfo ) then d("[SkillManager] - No Player CastInfo table !?") return end
 	
 	-- Setting a "current action to cast"
 	if ( not self.currentaction ) then self:GetNextSkillForCasting() end
@@ -2172,7 +2215,7 @@ function sm_skill_profile:Cast(targetid)
 					end
 					self.lastcast = gametime
 					d("Casting: "..skilldata.name)
-					return
+					return true
 				else
 					d("Casting Failed: "..skilldata.name)
 				end
@@ -2182,15 +2225,182 @@ function sm_skill_profile:Cast(targetid)
 			ml_error("[SkillManager] - Invalid Skilldata for casting, ID : "..tostring(action.sequence[self.currentactionsequence].id))
 		end
 	end
+	
+end
+
+function sm_skill_profile:Evade()
+	if (Settings.GW2Minion.evade) then
+		gw2_common_functions.Evade()
+	end
+end
+
+function sm_skill_profile:DoCombatMovement()
+	
+	local fightdistance = ml_global_information.AttackRange
+	if ( table.valid(self.target) and self.target.distance <= (fightdistance + 250) and not self.combatmovement.range and ml_global_information.Player_Alive and ml_global_information.Player_OnMesh ) then --and ml_global_information.Player_Health.percent < 99) then
+		local isimmobilized	
+		if ( table.size(self.playerbuffs) > 0 ) then
+			for id,v in pairs (self.playerbuffs) do
+				if ( ml_global_information.ImmobilizeConditions[id] ) then
+					isimmobilized = true
+					break
+				end
+			end
+		end
+		
+		if (not isimmobilized) then		
+			local forward,backward,left,right,forwardLeft,forwardRight,backwardLeft,backwardRight = GW2.MOVEMENTTYPE.Forward,GW2.MOVEMENTTYPE.Backward,GW2.MOVEMENTTYPE.Left,GW2.MOVEMENTTYPE.Right,4,5,6,7
+			local currentMovement = ml_global_information.Player_MovementDirections
+			local movementDirection = {[forward] = true, [backward] = true,[left] = true,[right] = true,}
+			local tDistance = self.target.distance
+			
+			-- Stop walking into range.
+			if (self.combatmovement.range and tDistance < fightdistance - 250) then Player:StopMovement() self.combatmovement.range = false end
+			-- Face target.
+			local tpos = self.target.pos
+			Player:SetFacingExact(tpos.x, tpos.y, tpos.z)
+			-- Range, walking too close to enemy, stop walking forward.
+			if (fightdistance > 300 and tDistance < (fightdistance / 2)) then movementDirection[forward] = false end
+			-- Range, walking too far from enemy, stop walking backward.
+			if (fightdistance > 300 and tDistance > fightdistance * 0.95) then movementDirection[backward] = false end
+			-- Melee, walking too close to enemy, stop walking forward.
+			if (tDistance < self.target.radius) then movementDirection[forward] = false end
+			-- Melee, walking too far from enemy, stop walking backward.
+			if (tDistance > fightdistance) then movementDirection[backward] = false end
+			-- We are strafing too far from target, stop walking left or right.
+			if (tDistance > fightdistance) then
+				movementDirection[left] = false
+				movementDirection[right] = false
+			end
+			-- Can we move in direction, while staying on the mesh.
+			if (movementDirection[forward] and gw2_common_functions.CanMoveDirection(forward,400) == false) then movementDirection[forward] = false end
+			if (movementDirection[backward] and gw2_common_functions.CanMoveDirection(backward,400) == false) then movementDirection[backward] = false end
+			if (movementDirection[left] and gw2_common_functions.CanMoveDirection(left,400) == false) then movementDirection[left] = false end
+			if (movementDirection[right] and gw2_common_functions.CanMoveDirection(right,400) == false) then movementDirection[right] = false end
+			--
+			if (movementDirection[forward]) then
+				if (movementDirection[left] and gw2_common_functions.CanMoveDirection(forwardLeft,300) == false) then
+					movementDirection[left] = false
+				elseif (movementDirection[right] and gw2_common_functions.CanMoveDirection(forwardRight,300) == false) then
+					movementDirection[right] = false
+				end
+			elseif (movementDirection[backward]) then
+				if (movementDirection[left] and gw2_common_functions.CanMoveDirection(backwardLeft,300) == false) then
+					movementDirection[left] = false
+				elseif (movementDirection[right] and gw2_common_functions.CanMoveDirection(backwardRight,300) == false) then
+					movementDirection[right] = false
+				end
+			end
+
+			-- Can we move in direction, while not walking towards potential enemy's.
+			local targets = CharacterList("alive,los,notaggro,attackable,hostile,maxdistance=1500,exclude="..self.target.id)
+
+			if (movementDirection[forward] and table.size(gw2_common_functions.filterRelativePostion(targets,forward)) > 0) then movementDirection[forward] = false end
+			if (movementDirection[backward] and table.size(gw2_common_functions.filterRelativePostion(targets,backward)) > 0) then movementDirection[backward] = false end
+			if (movementDirection[left] and table.size(gw2_common_functions.filterRelativePostion(targets,left)) > 0) then movementDirection[left] = false end
+			if (movementDirection[right] and table.size(gw2_common_functions.filterRelativePostion(targets,right)) > 0) then movementDirection[right] = false end
+			--
+			if (movementDirection[forward]) then
+				if (movementDirection[left] and table.size(gw2_common_functions.filterRelativePostion(targets,forwardLeft)) > 0) then
+					movementDirection[left] = false
+				elseif (movementDirection[right] and table.size(gw2_common_functions.filterRelativePostion(targets,forwardRight)) > 0) then
+					movementDirection[right] = false
+				end
+			elseif (movementDirection[backward]) then
+				if (movementDirection[left] and table.size(gw2_common_functions.filterRelativePostion(targets,backwardLeft)) > 0) then
+					movementDirection[left] = false
+				elseif (movementDirection[right] and table.size(gw2_common_functions.filterRelativePostion(targets,backwardRight)) > 0) then
+					movementDirection[right] = false
+				end
+			end
+
+			-- We know where we can move, decide where to go.
+			if (movementDirection[forward] and movementDirection[backward]) then -- Can move forward and backward, choose.
+				
+				-- Range, try to stay back from target.
+				if (fightdistance > 300) then
+					movementDirection[forward] = false
+					if (tDistance >= fightdistance - 25) then
+						movementDirection[backward] = false
+					end
+				end
+				-- Melee, try to stay close to target.
+				if (fightdistance <= 300) then
+					movementDirection[backward] = false
+					if (tDistance <= fightdistance - 25) then
+						movementDirection[forward] = false
+					end
+				end
+				
+			end
+			if (movementDirection[left] and movementDirection[right]) then -- Can move left and right, choose.
+				if (currentMovement.left) then -- We are moving left already.
+					if (math.random(0,250) ~= 3) then -- Keep moving left gets higher chance.
+						movementDirection[right] = false
+					else
+						movementDirection[left] = false
+					end
+				elseif (currentMovement.right) then -- We are moving right already.
+					if (math.random(0,250) ~= 3) then -- Keep moving right gets higher chance.
+						movementDirection[left] = false
+					else
+						movementDirection[right] = false
+					end
+				end
+			end
+
+			-- Execute combat movement.
+			for direction,canMove in pairs(movementDirection) do
+				if (canMove) then
+					Player:SetMovement(direction)
+				end
+			end
+			self.combatmovement.combat = true
+			return
+		end
+	end
+	
+	if(self.combatmovement.combat) then -- Stop active combat movement.		 
+		Player:StopMovement()
+		self.combatmovement.combat = false
+	end
+end
+
+-- function called from skillmgr.lua
+function sm_skill_profile:Use(targetid)
+	local gametime = GetGameTime()
+	self.cancastskillrange = 0
+		
+	self:Cast(gametime,targetid)
+
+	-- Throttle this a bit 
+	if (not self.lastmovementtick or gametime - self.lastmovementtick > 250) then
+		if ( not self.dataupdated ) then -- make sure in this pulse the data was updated already either by self:Cast() or we have to do that here now
+			self.target = CharacterList:Get(targetid) or GadgetList:Get(targetid) --or AgentList:Get(targetid) --  TODO Create a table with all target shit once instead of having conditions spam these things over n over ?
+			self.pp_castinfo = ml_global_information.Player_CastInfo
+			self.player = Player
+			self.playerbuffs = Player.buffs
+			self:Update(gametime,true)	-- Update the skilldata before we do anything			
+			self.sets = self:GetCurrentSkillSets()
+		end
+		
+		local evaded
+		if ( ml_global_information.Player_InCombat and ml_global_information.Player_CastInfo and (ml_global_information.Player_CastInfo.slot == GW2.SKILLBARSLOT.None or ml_global_information.Player_CastInfo.slot == GW2.SKILLBARSLOT.Slot_1 )) then
+			evaded = self:Evade()
+		end
+		
+		if ( not evaded and Settings.GW2Minion.combatmovement ) then
+			self:DoCombatMovement()
+		end
+	end
+
+	-- Reset the temp variables used in all of the functions above
 	self.pp_castinfo = nil
 	self.player = nil
 	self.playerbuffs = nil
 	self.target = nil
-	self.sets = nil
-	
-	return
+	self.dataupdated = nil
 end
-
 
 -- To load the additional skill data
 function sm_skill_profile.Init()
