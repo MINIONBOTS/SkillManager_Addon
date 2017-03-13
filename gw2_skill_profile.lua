@@ -4,13 +4,13 @@
 local sm_action = class('sm_action')
 local sm_skillset = class('sm_skillset')
 
-local sm_skill_profile = class('sm_skill_profile')
+ sm_skill_profile = class('sm_skill_profile')
 sm_skill_profile.filepath = ""
 sm_skill_profile.filename = ""
 sm_skill_profile.modulefunctions = nil 	-- private store addon functions
 sm_skill_profile.context = {}					-- private addons can use their own custom variables or functions
 sm_skill_profile.name = ""						-- Custom profile name that is displayed in the dropdown menu
-sm_skill_profile.mainmenucode = ""		-- UI Code of the SM Profile that is rendered in the Main Menu
+sm_skill_profile.mainmenucode = GetString("-- You can render Main Menu UI Elements here as well as access the shared 'context' table. \n \n-- You can use:'context', 'context.currentskills', 'context.casthistory'\nreturn true")		-- UI Code of the SM Profile that is rendered in the Main Menu
 sm_skill_profile.smcode = ""					-- UI Code that is rendered in the SM window above the skills
 sm_skill_profile.smskilllistcode = ""		-- UI Code to present, manage and edit the skills
 sm_skill_profile.profession = 1				-- The Class or Profession the skillprofile is made for
@@ -158,22 +158,22 @@ function sm_skill_profile:Load()
 end
 
 -- Renders Custom Profile UI Elements into the Main Menu of the Bot
-function sm_skill_profile:RenderMainMenu()
+function sm_skill_profile:RenderCodeEditor()
 	if ( self.mainmenucode ) then
 		if ( self.menucodechanged or not self.menucodefunc ) then
-			local execstring = 'return function(self, context) '..self.mainmenucode..' end'
+			local execstring = 'return function(context) '..self.mainmenucode..' end'
 			local func = loadstring(execstring)
 			if ( func ) then
-				func()(self, self.context)
+				func()(self.context)
 				self.menucodechanged = nil
 				self.menucodefunc = func	
 			else				
-				ml_error("SkillManagerProfile::RenderMainMenu() compilation error in ".. tostring(self.name ~= "" and self.name or self.filename ))
+				ml_error("SkillManagerProfile::RenderCodeEditor() compilation error in ".. tostring(self.name ~= "" and self.name or self.filename ))
 				assert(loadstring(execstring)) -- print out the actual error
 			end
 		else
 			--executing the already loaded function
-			self.menucodefunc()(self, context)
+			self.menucodefunc()(self.context)
 		end
 	end
 end
@@ -263,26 +263,30 @@ function sm_skill_profile:Render()
 	end
 	
 	if ( GUI:TreeNode(GetString("Profile Editor")) ) then
-		GUI:PushItemWidth(180)
+		GUI:PushItemWidth(150)
 		GUI:AlignFirstTextHeightToWidgets()
 		GUI:Text(GetString("Custom Name:")) if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("Give the Profile a custom name (The filename will not change!).")) end
-		GUI:SameLine(120)
+		GUI:SameLine(150)
 		local changed 	
 		self.name,changed = GUI:InputText("##smp1",self.name or self.filename)
 		if ( changed ) then self.modified = true end
 		
 		GUI:AlignFirstTextHeightToWidgets()
 		GUI:Text(GetString("Profession:")) if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("The Profession this Profile is for.")) end
-		GUI:SameLine(120)
+		GUI:SameLine(150)
 		self.profession, changed = GUI:Combo("##smp2",self.profession, self.professions)
-		if ( changed ) then self.modified = true end
-		GUI:PopItemWidth()
-		GUI:Separator()
-		
+		if ( changed ) then self.modified = true end					
 		if ( not Player.profession or self.profession ~= Player.profession ) then			
 			GUI:TreePop()
 			return
 		end
+		
+		GUI:Text(GetString("Fight Range:")) if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("While fighting, the bot tries to stay at this distance to the target.")) end
+		GUI:SameLine(150)
+		self.targetedfightrange, changed = GUI:SliderInt( "##smp3fd", self.targetedfightrange or 300, 150, 1500)
+		if ( changed ) then self.modified = true end
+		GUI:PopItemWidth()
+		GUI:Separator()
 -- DEBUG 
 
 		GUI:Text("DEBUG: maxattackrange  : "..tostring(ml_global_information.AttackRange))
@@ -291,14 +295,14 @@ function sm_skill_profile:Render()
 			GUI:Text("DEBUG: sequence  : "..tostring(self.currentactionsequence))
 		end
 
--- Main Menu UI CodeEditor
+-- CodeEditor
 		local _,maxy = GUI:GetContentRegionAvail()
 		GUI:SetNextTreeNodeOpened(false,GUI.SetCond_Once)
-		if ( GUI:TreeNode(GetString("Main Menu UI CodeEditor")) ) then			
+		if ( GUI:TreeNode(GetString("CodeEditor")) ) then			
 			local x,y = GUI:GetWindowSize()
 			if ( y < 700 ) then y = 700 end
 			GUI:SetWindowSize(650,y)
-			if ( GUI:IsItemHovered() ) then GUI:SetTooltip( "CodeEditor for SkillProfile UI Elements shown in the Main Menu Window" ) end
+			if ( GUI:IsItemHovered() ) then GUI:SetTooltip(GetString( "Write custom lua code which gets called all the time! So don't spam useless stuff here!" ) )end
 			local maxx,_ = GUI:GetContentRegionAvail()
 			local changed = false
 			self.mainmenucode, changed = GUI:InputTextEditor( "##smmainmenueditor", self.mainmenucode, maxx, math.max(maxy/2,300) , GUI.InputTextFlags_AllowTabInput)
@@ -1176,7 +1180,6 @@ function sm_skill_profile:Update(gametick, force)
 		local cancastskillrange = 154
 		
 		-- Use the current gamedata to update the skillset data
-		local rangeset
 		for i = 1, ml_global_information.MAX_SKILLBAR_SLOTS-1 do	-- 1 to 19
 			local skill = Player:GetSpellInfo(GW2.SKILLBARSLOT["Slot_" .. i])
 			if (skill) then
@@ -1207,8 +1210,7 @@ function sm_skill_profile:Update(gametick, force)
 										local ha = v:CanCastSkill(self, skillset, a, skilldata, true)
 										--d(tostring(skilldata.name) .." - " ..tostring(ha).. " -- " ..tostring(range))										
 										if ( ha ) then
-											cancastskillrange = range
-											rangeset = true										
+											cancastskillrange = range					
 										end
 									end
 								end
@@ -1218,6 +1220,24 @@ function sm_skill_profile:Update(gametick, force)
 				end
 			end
 		end
+		
+		-- Make that current skills available to our context
+		if ( self.context ) then 
+			self.context.currentskills = {}
+			for k,v in pairs (self.currentskills) do				
+				self.context.currentskills[k] = v
+			end
+			
+			-- Clear old cast history
+			if ( table.size(self.context.casthistory) > 0 ) then 
+				for k,v in pairs (self.context.casthistory) do				
+					if ( gametick - v.casttime > 5000 ) then
+						table.remove(self.context.casthistory,k) 
+					end
+				end				
+			end
+		end
+		
 		
 		-- we haven't been in a fight for 1+ second, use the max range of our active skills
 		if ( not force ) then
@@ -1565,6 +1585,9 @@ function sm_action:Render(profile)
 					if ( changed ) then profile.modified = true end
 				end
 				
+				self.sequence[self.selectedskill].settings.slowcast, changed = GUI:Checkbox( GetString("Slow Cast"), self.sequence[self.selectedskill].settings.slowcast or false) if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("If Enabled, the Skill will be cast until the end. Use this if the skill gets interrupted while casting." )) end if (changed) then modified = true end
+				if ( changed ) then profile.modified = true end
+				
 				if ( not self.sequence[self.selectedskill].settings.castonplayer ) then
 					GUI:PushItemWidth(100)				
 					if ( self.sequence[self.selectedskill].settings.maxrange == nil ) then self.sequence[self.selectedskill].settings.maxrange = skilldata.maxrange or 0 end
@@ -1684,7 +1707,7 @@ function sm_action:Render(profile)
 					if ( GUI:IsItemHovered() ) then GUI:SetTooltip(GetString("Write you own Lua code, when to cast this skill. Must return 'true' or 'false'!")) end
 					local maxx,_ = GUI:GetContentRegionAvail()
 					local changed = false
-					self.sequence[self.selectedskill].conditioncode, changed = GUI:InputTextEditor( "##smactioncodeeditor", self.sequence[self.selectedskill].conditioncode or GetString("-- Return 'true' when the skill can be cast, else return 'false'. Use the 'context' table to share data between all skills.\nreturn true"), maxx, math.max(maxy/2,300) , GUI.InputTextFlags_AllowTabInput)
+					self.sequence[self.selectedskill].conditioncode, changed = GUI:InputTextEditor( "##smactioncodeeditor", self.sequence[self.selectedskill].conditioncode or GetString("-- Return 'true' when the skill can be cast, else 'false'. Share data through 'context' table.\n \n-- You can use:'this', 'context.currentskills', 'context.casthistory'\nreturn true"), maxx, math.max(maxy/2,300) , GUI.InputTextFlags_AllowTabInput)
 					if ( changed ) then self.sequence[self.selectedskill].conditioncodechanged = true profile.modified = true end
 					if ( self.sequence[self.selectedskill].conditioncodechanged ) then
 						GUI:PushStyleColor(GUI.Col_Button,1.0,0.75,0.0,0.7)
@@ -1717,8 +1740,18 @@ function sm_action:CanCastSkill(profile, targetskillset, sequenceid, skilldata, 
 
 		-- Basic Settings
 		if ( not skill.settings.castonplayer and not profile.target ) then return false end	-- can't use skill if it is meant to be cast on a target and we don'T have one
-		if ( not skill.settings.castonplayer and not skill.settings.nolos and (not profile.target or not profile.target.los)) then return false end		-- can't use skill if it requires los but we don't have los to our target - TODO: Move this below the other checks and check against "customtarget" ?
+		if ( not skill.settings.castonplayer and not skill.settings.nolos and (not profile.target or not profile.target.los)) then return false end		-- can't use skill if it requires los but we don't have los to our target - TODO: Move this below the other checks and check against "customtarget" ?				
+		if ( not skill.settings.slowcast and skilldata.lastcast ) then -- normal spells have 0,5s cast time Unless checked to be cast fast or slow, use this as default 
+			-- We dont have the actual casttime of the spells ...so kinda improvising here 
+			if ( (sequenceid <= 1 and ml_global_information.Now - skilldata.lastcast > 500) or ml_global_information.Now - skilldata.lastcast > 850) then 
+				if ( (ml_global_information.Now - skilldata.lastcast > 1500) and (not skilldata.cooldown or skilldata.cooldown <= 0) ) then
+					skilldata.lastcast = nil
+				end
+				return false
+			end
+		end
 		if ( skilldata.cooldown and skilldata.cooldown > 0 ) then return false end
+		
 		-- Thief Initiative
 		if ( skilldata.initiative and skilldata.initiative > 0 ) then
 			if ( profile.playerbuffs[14081] ) then -- Trickery trait equipped
@@ -1749,10 +1782,10 @@ function sm_action:CanCastSkill(profile, targetskillset, sequenceid, skilldata, 
 		-- Evaluate custom code first		
 		if ( skill.conditioncode ) then
 			if ( not skill.conditioncodefunc ) then
-				local execstring = 'return function(self, context) '..skill.conditioncode..' end'
+				local execstring = 'return function(context,this) '..skill.conditioncode..' end'
 				local func = loadstring(execstring)
 				if ( func ) then
-					func()(skill, profile.context)
+					func()(profile.context, skilldata)
 					skill.conditioncodefunc = func	
 				else				
 					ml_error("[SkillManager] - Custom Condition Code Editor compilation error in Action ".. tostring(self.name ~= "" and self.name or "").." at skill "..tostring(sequenceid))
@@ -1760,7 +1793,7 @@ function sm_action:CanCastSkill(profile, targetskillset, sequenceid, skilldata, 
 				end
 			end
 			
-			if ( skill.conditioncodefunc and not skill.conditioncodefunc()(skill, profile.context) ) then 
+			if ( skill.conditioncodefunc and not skill.conditioncodefunc()(profile.context,skilldata) ) then 
 				return false
 			end
 		end
@@ -2092,6 +2125,7 @@ function sm_skill_profile:Cast(gametime,targetid)
 		self.playerbuffs = Player.buffs
 		self:Update(gametime,true)	-- Update the skilldata before we do anything				
 		self.dataupdated = true
+		self.context.target = CharacterList:Get(targetid) or GadgetList:Get(targetid)
 	end
 	self.sets = self:GetCurrentSkillSets()
 	if ( not self.pp_castinfo ) then d("[SkillManager] - No Player CastInfo table !?") return end
@@ -2121,11 +2155,11 @@ function sm_skill_profile:Cast(gametime,targetid)
 					return
 				end
 			end
-			
+
 			-- If skill is already on CD, or if it is a spammable skill and our lastskillid is showing we cast it, get the next skill in the sequence OR a new action
 			-- or when we have a chainskill..?
-			if (skilldata and (skilldata.cooldown and skilldata.cooldown ~= 0) or (skilldata.cooldownmax and skilldata.cooldownmax == 0 and self.pp_castinfo.lastskillid == skilldata.id) 
-				or ( self.pp_castinfo.skillid == skilldata.id and self:NextSkillIsChainSkill() and (not self.lastcast or (gametime - self.lastcast >= 500)))) then
+			if (skilldata and ((skilldata.cooldown and skilldata.cooldown ~= 0) or ( not action.sequence[self.currentactionsequence].settings.slowcast and (skilldata.lastcast and (ml_global_information.Now - skilldata.lastcast > 500 ))) or (skilldata.cooldownmax and skilldata.cooldownmax == 0 and self.pp_castinfo.lastskillid == skilldata.id) 
+				or ( self.pp_castinfo.skillid == skilldata.id and self:NextSkillIsChainSkill() and (not self.lastcast or (gametime - self.lastcast >= 500))))) then
 				if (self:GetNextSkillForCasting() ) then-- get a new / next skill
 					action = self.actionlist[self.currentaction]
 					skilldata, skillset = self:GetSkillAndSkillSet(action.sequence[self.currentactionsequence].id)								
@@ -2133,10 +2167,9 @@ function sm_skill_profile:Cast(gametime,targetid)
 					return
 				end
 			end
-			
-			
+								
 			-- We are not casting the skill yet,...trying to do so ...
-			if (skilldata and action and action.sequence[self.currentactionsequence] and (not skilldata.cooldown or skilldata.cooldown == 0) and (self.pp_castinfo.skillid ~= skilldata.id or (skilldata.slot == 1 and skilldata.cooldownmax and skilldata.cooldownmax == 0))) then
+			if (skilldata and action and action.sequence[self.currentactionsequence] and (not skilldata.cooldown or skilldata.cooldown == 0) and (not skilldata.lastcast or (ml_global_information.Now - skilldata.lastcast > 500)) and (self.pp_castinfo.skillid ~= skilldata.id or (skilldata.slot == 1 and skilldata.cooldownmax and skilldata.cooldownmax == 0))) then
 				-- Ensure the correct Weapon Set
 				local switchslot = self:CanSwapToSet(skillset,action,self.currentactionsequence) 
 				if ( switchslot == false ) then
@@ -2210,11 +2243,25 @@ function sm_skill_profile:Cast(gametime,targetid)
 				if ( castresult ) then
 					if ( skilldata.flip_level > 0 ) then
 						-- add a temp cooldown on the spell, else they will never be removed from the queue
-						skilldata.cooldown = 500
-						self.cooldownlist[skilldata.id] = { tick = GetGameTime(), cd = 500 }					
+						skilldata.cooldown = 750
+						self.cooldownlist[skilldata.id] = { tick = gametime, cd = 750 }					
+					end
+					if ( self.lastcast ) then
+						d("LAST CAST : "..tostring(gametime-self.lastcast))
+					end
+					
+					-- building a cast history
+					if ( self.context ) then 
+						if ( not self.context.casthistory ) then self.context.casthistory = {} end
+						-- don't spam-add the skill1 
+						if ( not skilldata.slot == 1 or not self.context.casthistory[1] or self.context.casthistory[1].skillid ~= skilldata.id ) then
+							table.insert(self.context.casthistory,1, { name=skilldata.name, skillid=skilldata.id, casttime = gametime, targetid = self.target.id, })
+							if ( table.size(self.context.casthistory) > 5 ) then table.remove(self.context.casthistory,6) end
+						end
 					end
 					self.lastcast = gametime
-					d("Casting: "..skilldata.name)
+					skilldata.lastcast=gametime
+					d("Casting: "..skilldata.name)					
 					return true
 				else
 					d("Casting Failed: "..skilldata.name)
@@ -2224,8 +2271,7 @@ function sm_skill_profile:Cast(gametime,targetid)
 		else
 			ml_error("[SkillManager] - Invalid Skilldata for casting, ID : "..tostring(action.sequence[self.currentactionsequence].id))
 		end
-	end
-	
+	end	
 end
 
 function sm_skill_profile:Evade()
@@ -2236,8 +2282,8 @@ end
 
 function sm_skill_profile:DoCombatMovement()
 	
-	local fightdistance = ml_global_information.AttackRange
-	if ( table.valid(self.target) and self.target.distance <= (fightdistance + 250) and not self.combatmovement.range and ml_global_information.Player_Alive and ml_global_information.Player_OnMesh ) then --and ml_global_information.Player_Health.percent < 99) then
+	local fightdistance = self.targetedfightrange or ml_global_information.AttackRange
+	if ( table.valid(self.target) and self.target.distance <= (fightdistance + 250) and not self.combatmovement.range and ml_global_information.Player_Alive and ml_global_information.Player_OnMesh and ml_global_information.Player_Health.percent < 99) then
 		local isimmobilized	
 		if ( table.size(self.playerbuffs) > 0 ) then
 			for id,v in pairs (self.playerbuffs) do
@@ -2368,20 +2414,21 @@ end
 
 -- function called from skillmgr.lua
 function sm_skill_profile:Use(targetid)
-	local gametime = GetGameTime()
+	local ticks = ml_global_information.Now
 	self.cancastskillrange = 0
-		
-	self:Cast(gametime,targetid)
+	
+	self:Cast(ticks,targetid)
 
 	-- Throttle this a bit 
-	if (not self.lastmovementtick or gametime - self.lastmovementtick > 250) then
+	if (not self.lastmovementtick or ticks - self.lastmovementtick > 250) then
 		if ( not self.dataupdated ) then -- make sure in this pulse the data was updated already either by self:Cast() or we have to do that here now
 			self.target = CharacterList:Get(targetid) or GadgetList:Get(targetid) --or AgentList:Get(targetid) --  TODO Create a table with all target shit once instead of having conditions spam these things over n over ?
 			self.pp_castinfo = ml_global_information.Player_CastInfo
 			self.player = Player
 			self.playerbuffs = Player.buffs
-			self:Update(gametime,true)	-- Update the skilldata before we do anything			
+			self:Update(ticks,true)	-- Update the skilldata before we do anything			
 			self.sets = self:GetCurrentSkillSets()
+			self.context.target = CharacterList:Get(targetid) or GadgetList:Get(targetid)
 		end
 		
 		local evaded
@@ -2400,6 +2447,8 @@ function sm_skill_profile:Use(targetid)
 	self.playerbuffs = nil
 	self.target = nil
 	self.dataupdated = nil
+	
+	self.context.target = nil
 end
 
 -- To load the additional skill data

@@ -7,7 +7,7 @@
 
 
 --IMPORTANT: Every addon and the main game need to register for the "RequestSMProfileUpdate" event, which forces the re-registering of all wanted SM Profiles.
---Optional , use GetGameTime() to update the profile
+
 
 local ml_skill_mgr = {}
 ml_skill_mgr.open = true
@@ -221,7 +221,7 @@ function ml_skill_mgr.Draw(event,ticks)
 	
 	-- Update the SkillProfile
 	if ( ml_skill_mgr.profile) then
-		ml_skill_mgr.profile:Update(GetGameTime())
+		ml_skill_mgr.profile:Update(ticks)
 	end
 	
 end
@@ -241,7 +241,7 @@ function SkillManager:RegisterProfileTemplate( template ) ml_skill_mgr.ProfileTe
 function SkillManager:SetProfileFolder( folderpath ) ml_skill_mgr:SetProfileFolder( folderpath ) end
 function SkillManager:RegisterProfile( folderpath, filename, modfunc, context) return ml_skill_mgr:RegisterProfile( folderpath, filename, modfunc, context ) end
 function SkillManager:GetPlayerProfession()	return ml_skill_mgr.GetPlayerProfession() end
-function SkillManager:RenderMainMenuCode() if ( ml_skill_mgr.profile ) then ml_skill_mgr.profile:RenderMainMenu() end end	-- renders the UI code of the SM profile
+function SkillManager:RenderCodeEditor() if ( ml_skill_mgr.profile ) then ml_skill_mgr.profile:RenderCodeEditor() end end	-- renders the UI code of the SM profile
 function SkillManager:AddCondition(class) ml_skill_mgr.conditions[tostring(class)] = class end
 function SkillManager:GetCondition(classname) if (ml_skill_mgr.conditions[classname]) then return ml_skill_mgr.conditions[classname] end end
 function SkillManager:GetConditions() return ml_skill_mgr.conditions end
@@ -253,7 +253,7 @@ ml_skill_mgr.original_use = gw2_skill_manager.Use
 function gw2_skill_manager:Use(targetid)
 	if ( SkillManager:Ready() ) then
 		if ( BehaviorManager:Running() ) then
-			return SkillManager:Use( targetid )			
+			return SkillManager:Use( targetid )
 		end
 	end
 	return ml_skill_mgr.original_use()
