@@ -4,7 +4,7 @@
 local sm_action = class('sm_action')
 local sm_skillset = class('sm_skillset')
 
- sm_skill_profile = class('sm_skill_profile')
+local sm_skill_profile = class('sm_skill_profile')
 sm_skill_profile.filepath = ""
 sm_skill_profile.filename = ""
 sm_skill_profile.modulefunctions = nil 	-- private store addon functions
@@ -1743,8 +1743,8 @@ function sm_action:CanCastSkill(profile, targetskillset, sequenceid, skilldata, 
 		if ( not skill.settings.castonplayer and not skill.settings.nolos and (not profile.target or not profile.target.los)) then return false end		-- can't use skill if it requires los but we don't have los to our target - TODO: Move this below the other checks and check against "customtarget" ?				
 		if ( not skill.settings.slowcast and skilldata.lastcast ) then -- normal spells have 0,5s cast time Unless checked to be cast fast or slow, use this as default 
 			-- We dont have the actual casttime of the spells ...so kinda improvising here 
-			if ( (sequenceid <= 1 and ml_global_information.Now - skilldata.lastcast > 500) or ml_global_information.Now - skilldata.lastcast > 850) then 
-				if ( (ml_global_information.Now - skilldata.lastcast > 1500) and (not skilldata.cooldown or skilldata.cooldown <= 0) ) then
+			if ( (sequenceid <= 1 and ml_global_information.Now - skilldata.lastcast > 600) or ml_global_information.Now - skilldata.lastcast > 1000 ) then 
+				if ( ((ml_global_information.Now - skilldata.lastcast > 1500) and (not skilldata.cooldown or skilldata.cooldown <= 0)) or ml_global_information.Now - skilldata.lastcast > 2500 ) then
 					skilldata.lastcast = nil
 				end
 				return false
