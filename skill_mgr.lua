@@ -212,18 +212,13 @@ function ml_skill_mgr.Draw(event,ticks)
 			
 			-- Render PROFILE
 			if ( ml_skill_mgr.profile ) then
-				ml_skill_mgr.profile:Render()			
+				ml_skill_mgr.profile:Render()
 			end
 			
 		end
 		GUI:End()
 	end
-	
-	-- Update the SkillProfile
-	if ( ml_skill_mgr.profile) then
-		ml_skill_mgr.profile:Update(ticks)
-	end
-	
+		
 end
 RegisterEventHandler("Gameloop.Draw", ml_skill_mgr.Draw)
 
@@ -235,6 +230,14 @@ function ml_skill_mgr:Use( targetid )
 	end
 	return false
 end
+
+-- Main Loop for the SM to update n do stuff
+function ml_skill_mgr.OnUpdate()
+	if ( ml_skill_mgr.profile ~= nil ) then
+		ml_skill_mgr.profile:Update()
+	end
+end
+RegisterEventHandler("Gameloop.Update", ml_skill_mgr.OnUpdate)
 
 _G["SkillManager"] = {}
 function SkillManager:RegisterProfileTemplate( template ) ml_skill_mgr.ProfileTemplate = template end -- just for internal usage, to get an instance / link to the local sm_skill_profile.lua
@@ -259,12 +262,11 @@ function gw2_skill_manager:Use(targetid)
 	return ml_skill_mgr.original_use()
 end
 
--- Get the range of the current active skill
+-- Get the range of the current active skills. Give back a larger value in case of Assist or if it should stay at a far away position instead of walking into closer range when the "long range skill" is on cooldown!
 ml_skill_mgr.original_getactiveskillrange = gw2_skill_manager.GetActiveSkillRange
 function gw2_skill_manager.GetActiveSkillRange()
-	if ( SkillManager:Ready() ) then
-		local maxrange = ml_global_information.AttackRange
-		return maxrange < 154 and 154 or maxrange
+	if ( SkillManager:Ready() ) then		
+		return ml_global_information.AttackRange or 154
 	end
 	return ml_skill_mgr.original_getactiveskillrange()
 end
