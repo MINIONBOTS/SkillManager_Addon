@@ -315,13 +315,13 @@ function sm_skill_profile:Render()
 		GUI:Separator()
 -- DEBUG 
 
-		GUI:Text("DEBUG: maxattackrange  : "..tostring(ml_global_information.AttackRange))
-		GUI:Text("DEBUG: fightrange  : "..tostring(self.fixedfightrange))
-		GUI:Text("DEBUG: used range  : "..tostring(gw2_skill_manager.GetActiveSkillRange()))		
-		if ( self.actionlist[self.currentaction] and self.actionlist[self.currentaction].sequence[self.currentactionsequence]) then 
-			GUI:Text("DEBUG: currentaction  : "..tostring(self.actionlist[self.currentaction].name))
-			GUI:Text("DEBUG: sequence  : "..tostring(self.currentactionsequence))
-		end
+		--GUI:Text("DEBUG: maxattackrange  : "..tostring(ml_global_information.AttackRange))
+		--GUI:Text("DEBUG: fightrange  : "..tostring(self.fixedfightrange))
+		--GUI:Text("DEBUG: used range  : "..tostring(gw2_skill_manager.GetActiveSkillRange()))		
+		--if ( self.actionlist[self.currentaction] and self.actionlist[self.currentaction].sequence[self.currentactionsequence]) then 
+			--GUI:Text("DEBUG: currentaction  : "..tostring(self.actionlist[self.currentaction].name))
+			--GUI:Text("DEBUG: sequence  : "..tostring(self.currentactionsequence))
+		--end
 
 -- CodeEditor
 		local _,maxy = GUI:GetContentRegionAvail()
@@ -2134,10 +2134,10 @@ function sm_skill_profile:Cast()
 					end
 					self.context.lastcast = self.lasttick
 					skilldata.lastcast=self.lasttick
-					d("Casting: "..skilldata.name)					
+					--d("Casting: "..skilldata.name)					
 					return true
 				else
-					d("Casting Failed: "..skilldata.name)
+					--d("Casting Failed: "..skilldata.name)
 				end
 							
 			end
