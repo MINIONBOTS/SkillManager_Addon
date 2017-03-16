@@ -10,7 +10,7 @@
 
 
 local ml_skill_mgr = {}
-ml_skill_mgr.open = true
+ml_skill_mgr.open = false
 ml_skill_mgr.profilelist = {}			-- Holds all registered SM profiles
 ml_skill_mgr.profile = nil				-- The currently selected SM profile
 ml_skill_mgr.texturepath = GetStartupPath() .. "\\GUI\\UI_Textures"
@@ -21,6 +21,10 @@ function ml_skill_mgr.GetPlayerProfession()
 	return Player.profession or Player.job -- gw2 & ffxiv ;) me lazy I know
 end
 
+function ml_skill_mgr.ModuleInit()	
+	ml_gui.ui_mgr:AddMember({ id = "GW2MINION##SKILLMANAGER", name = "Skills(BETA)", onClick = function() ml_skill_mgr.open = not ml_skill_mgr.open end, tooltip = "Click to open \"Skill Manager\" window.", texture = GetStartupPath().."\\GUI\\UI_Textures\\sword.png"},"GW2MINION##MENU_HEADER")
+end
+RegisterEventHandler("Module.Initalize",ml_skill_mgr.ModuleInit)
 
 -- In order to load the last used Skill Profile, all the main bot profiles and all addons need to be loaded & initialized first. Since MinionLib is loaded first, I'll use 2 queued events below to make sure that everything is initialized before loading our skill profile.
 function ml_skill_mgr.RefreshProfileFiles()
@@ -85,7 +89,7 @@ function ml_skill_mgr.Draw(event,ticks)
 			if ( ml_skill_mgr.LoadDefaultSMProfile()	) then
 				ml_skill_mgr.lastprofession = profession
 			else
-				d("[SkillManager] - No default Profile found or set.")
+				--d("[SkillManager] - No default Profile found or set.")
 			end
 		end
 	end
@@ -250,39 +254,7 @@ function SkillManager:GetCondition(classname) if (ml_skill_mgr.conditions[classn
 function SkillManager:GetConditions() return ml_skill_mgr.conditions end
 function SkillManager:Use(targetid) return ml_skill_mgr:Use( targetid ) end
 function SkillManager:Ready() return ml_skill_mgr.profile ~= nil end
+function SkillManager:GetActiveSkillRange() if ( ml_skill_mgr.profile ~= nil ) then return ml_global_information.AttackRange or 154 end return 154 end
+function SkillManager:GetCombatMovement() if ( ml_skill_mgr.profile ~= nil ) then return ml_skill_mgr.profile.combatmovement end return {} end
+function SkillManager:CanMove() if ( ml_skill_mgr.profile ~= nil ) then return not ml_skill_mgr.profile.combatmovement.combat end return true end
 
--- On / Off / Cast / Update
-ml_skill_mgr.original_use = gw2_skill_manager.Use
-function gw2_skill_manager:Use(targetid)
-	if ( SkillManager:Ready() ) then
-		if ( BehaviorManager:Running() ) then
-			return SkillManager:Use( targetid )
-		end
-	end
-	return ml_skill_mgr.original_use()
-end
-
--- Get the range of the current active skills. Give back a larger value in case of Assist or if it should stay at a far away position instead of walking into closer range when the "long range skill" is on cooldown!
-ml_skill_mgr.original_getactiveskillrange = gw2_skill_manager.GetActiveSkillRange
-function gw2_skill_manager.GetActiveSkillRange()
-	if ( SkillManager:Ready() ) then		
-		return ml_global_information.AttackRange or 154
-	end
-	return ml_skill_mgr.original_getactiveskillrange()
-end
-
-ml_skill_mgr.original_canmove = gw2_skill_manager.CanMove
-function gw2_skill_manager.CanMove()
-	if ( SkillManager:Ready() ) then
-		return not ml_skill_mgr.profile.combatmovement.combat
-	end
-	return ml_skill_mgr.original_canmove()
-end
-
-ml_skill_mgr.original_combatmovement = gw2_skill_manager.CombatMovement
-function gw2_skill_manager.CombatMovement()	
-	if ( SkillManager:Ready() ) then		
-		return ml_skill_mgr.profile.combatmovement
-	end
-	return ml_skill_mgr.original_combatmovement()
-end
