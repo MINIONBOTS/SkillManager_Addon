@@ -42,7 +42,8 @@ function sm_skill_profile:Save()
 			copy.mainmenucode = self.mainmenucode
 			copy.smcode = self.smcode
 			copy.smskilllistcode = self.smskilllistcode
-			copy.profession = self.profession			
+			copy.profession = self.profession
+			copy.targetedfightrange = self.targetedfightrange
 			-- Saving the essential data for actionlist
 			copy.actionlist = {}
 			local idx = 1
