@@ -1825,7 +1825,7 @@ function sm_skill_profile:CanSwapToSet(targetskillset, action , sequenceid)
 			return -1	-- we need to swap weapons
 		end		
 	
-	elseif (targetskillset.weaponsetid == 2 or targetskillset.weaponsetid == 3 ) then --Bundles, Transformations and pickup weapons, check if the skillID to actiavte the bundle is on our current set and can be activated
+	elseif ((targetskillset.weaponsetid == 2 or targetskillset.weaponsetid == 3) and (targetskillset.id ~= "3_6" and targetskillset.id ~= "3_10633" and targetskillset.id ~= "3_10663")) then --Bundles, Transformations and pickup weapons, check if the skillID to actiavte the bundle is on our current set and can be activated
 		local skilldata, skillset = self:GetSkillAndSkillSet(targetskillset.activateskillid)
 		
 		if ( not skilldata or not self.currentskills[skilldata.slot] or self.currentskills[skilldata.slot].skillid ~= skilldata.id or not self.currentskills[skilldata.slot].cancast) then
