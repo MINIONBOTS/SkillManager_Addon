@@ -19,7 +19,6 @@ sm_skill_profile.texturepath = GetStartupPath() .. "\\GUI\\UI_Textures"
 sm_skill_profile.texturecache = GetLuaModsPath() .. "\\SkillManager\\Cache"
 sm_skill_profile.actionlist = {}				-- The priority list used for casting, holding all skills / combos in order 1 - n
 sm_skill_profile.currentskills = {}			-- Holds a copy of the "live data" of the player skills
-sm_skill_profile.cooldownlist = {}			-- Another internal list to know which skills were on cd
 sm_skill_profile.skilldata = {}				-- Additional Skill Data from the API
 sm_skill_profile.combatmovement = {}
 
@@ -43,7 +42,9 @@ function sm_skill_profile:Save()
 			copy.smcode = self.smcode
 			copy.smskilllistcode = self.smskilllistcode
 			copy.profession = self.profession
-			copy.targetedfightrange = self.targetedfightrange
+			copy.fightrangetype = self.fightrangetype
+			copy.fixedfightrange = self.fixedfightrange
+			copy.castspeed = self.castspeed
 			-- Saving the essential data for actionlist
 			copy.actionlist = {}
 			local idx = 1
@@ -244,7 +245,6 @@ function sm_skill_profile:PreSave()
 	self.dropid = nil
 	self.dropidhover = nil
 	self.weaponsets = nil
-	self.lastcast = nil
 	self.lastcastonplayer = nil
 	self.combatmovement = {}
 	self.targetlastupdated = nil
@@ -255,6 +255,13 @@ function sm_skill_profile:AfterSave()
 	self.menucodechanged = true
 	self.actioneditoropen = true
 	self.weaponsets = {}
+	
+	-- Reset potential bugged editorcode - spam - blocks
+	for k,v in pairs(self.actionlist) do
+		for a,s in pairs(v.sequence) do
+			s.conditioncodebugged = nil
+		end
+	end
 end
 
 -- Renders the profile template into the SM "main" window
@@ -277,22 +284,39 @@ function sm_skill_profile:Render()
 		GUI:Text(GetString("Profession:")) if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("The Profession this Profile is for.")) end
 		GUI:SameLine(150)
 		self.profession, changed = GUI:Combo("##smp2",self.profession, self.professions)
-		if ( changed ) then self.modified = true end					
+		if ( changed ) then self.modified = true end
 		if ( not Player.profession or self.profession ~= Player.profession ) then			
 			GUI:TreePop()
 			return
 		end
 		
-		GUI:Text(GetString("Fight Range:")) if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("While fighting, the bot tries to stay at this distance to the target.")) end
+		GUI:AlignFirstTextHeightToWidgets()
+		GUI:Text(GetString("Fight Range:")) if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("'Dynamic'- Adjusts the range depending on the available spells. 'Custom'-Tries to stay at that range during fights.")) end
 		GUI:SameLine(150)
-		self.targetedfightrange, changed = GUI:SliderInt( "##smp3fd", self.targetedfightrange or 300, 150, 1500)
+		self.fightrangetype, changed = GUI:Combo("##smfightrangetype",self.fightrangetype or 1, { [1] = GetString("Dynamic"), [2] = GetString("Custom"), })
 		if ( changed ) then self.modified = true end
+		
+		if ( self.fightrangetype == 2 ) then
+			GUI:AlignFirstTextHeightToWidgets()
+			GUI:Text(GetString("Fight Distance:")) if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("While fighting, the bot tries to stay at this distance to the target.")) end
+			GUI:SameLine(150)
+			self.fixedfightrange, changed = GUI:InputInt("##smfightdistance", self.fixedfightrange or ml_global_information.AttackRange or 154, 1, 10, GUI.InputTextFlags_CharsDecimal+GUI.InputTextFlags_CharsNoBlank)	
+			if ( changed ) then self.modified = true end
+			if ( self.fixedfightrange <= 154 ) then self.fixedfightrange = 154 end
+		end
+						
+		GUI:AlignFirstTextHeightToWidgets()
+		GUI:Text(GetString("Cast Speed:")) if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("Setting this too fast, can result in misfired skills or failing to cast, depending on the situation and profile skills. (Smaller value means faster casting)")) end
+		GUI:SameLine(150)
+		self.castspeed, changed = GUI:SliderInt("##smcastspeed",self.castspeed or 750, 500, 1500)		
+		if ( changed ) then self.modified = true end
+		
 		GUI:PopItemWidth()
 		GUI:Separator()
 -- DEBUG 
 
 		GUI:Text("DEBUG: maxattackrange  : "..tostring(ml_global_information.AttackRange))
-		GUI:Text("DEBUG: fightrange  : "..tostring(self.targetedfightrange))
+		GUI:Text("DEBUG: fightrange  : "..tostring(self.fixedfightrange))
 		GUI:Text("DEBUG: used range  : "..tostring(gw2_skill_manager.GetActiveSkillRange()))		
 		if ( self.actionlist[self.currentaction] and self.actionlist[self.currentaction].sequence[self.currentactionsequence]) then 
 			GUI:Text("DEBUG: currentaction  : "..tostring(self.actionlist[self.currentaction].name))
@@ -644,7 +668,7 @@ function sm_skill_profile:RenderSkillSetEditor(currentaction)
 	if (GUI:ImageButton("##smrefreshsets",self.texturepath.."\\change.png",20,20)) then
 		self:UpdateCurrentSkillsetData()
 	end
-	
+	if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("Add your current weaponset to the list.")) end
 	
 	GUI:Separator()
 
@@ -1603,7 +1627,7 @@ function sm_action:CanCastSkill(profile, targetskillset, sequenceid, skilldata, 
 		if ( not skill.settings.castonplayer and not skill.settings.nolos and (not profile.context.target or not profile.context.target.los)) then return false end		-- can't use skill if it requires los but we don't have los to our target - TODO: Move this below the other checks and check against "customtarget" ?				
 		if ( not skill.settings.slowcast and skilldata.lastcast ) then -- normal spells have 0,5s cast time Unless checked to be cast fast or slow, use this as default 
 			-- We dont have the actual casttime of the spells ...so kinda improvising here 
-			if ( (sequenceid <= 1 and ml_global_information.Now - skilldata.lastcast > 600) or ml_global_information.Now - skilldata.lastcast > 1000 ) then 
+			if ( (sequenceid <= 1 and ml_global_information.Now - skilldata.lastcast > profile.castspeed) or ml_global_information.Now - skilldata.lastcast > 1000 ) then 
 				if ( ((ml_global_information.Now - skilldata.lastcast > 1500) and (not skilldata.cooldown or skilldata.cooldown <= 0)) or ml_global_information.Now - skilldata.lastcast > 2500 ) then
 					skilldata.lastcast = nil
 				end
@@ -1641,13 +1665,14 @@ function sm_action:CanCastSkill(profile, targetskillset, sequenceid, skilldata, 
 		
 		-- Evaluate custom code first		
 		if ( skill.conditioncode ) then
-			if ( not skill.conditioncodefunc ) then
+			if ( not skill.conditioncodefunc and not skill.conditioncodebugged ) then
 				local execstring = 'return function(context,this) '..skill.conditioncode..' end'
 				local func = loadstring(execstring)
 				if ( func ) then
 					func()(profile.context, skilldata)
 					skill.conditioncodefunc = func	
-				else				
+				else
+					skill.conditioncodebugged = true
 					ml_error("[SkillManager] - Custom Condition Code Editor compilation error in Action ".. tostring(self.name ~= "" and self.name or "").." at skill "..tostring(sequenceid))
 					assert(loadstring(execstring)) -- print out the actual error
 				end
@@ -1920,7 +1945,6 @@ function sm_skill_profile:CanSwapToSet(targetskillset, action , sequenceid)
 	d("UNHANDLED CASE : "..tostring(targetskillset.name).. " ID " ..tostring(targetskillset.id).." - weaponsetid "..tostring(targetskillset.weaponsetid))
 end
 
-
 -- Gets "next" skill that can be cast.
 function sm_skill_profile:GetNextSkillForCasting()
 	-- We casted an action before, check if this action is a sequence and pick the next skill if possible
@@ -2003,8 +2027,8 @@ function sm_skill_profile:Cast()
 
 			-- If skill is already on CD, or if it is a spammable skill and our lastskillid is showing we cast it, get the next skill in the sequence OR a new action
 			-- or when we have a chainskill..?
-			if (skilldata and ((skilldata.cooldown and skilldata.cooldown ~= 0) or ( not action.sequence[self.currentactionsequence].settings.slowcast and (skilldata.lastcast and (ml_global_information.Now - skilldata.lastcast > 500 ))) or (skilldata.cooldownmax and skilldata.cooldownmax == 0 and ml_global_information.Player_CastInfo.lastskillid == skilldata.id) 
-				or ( ml_global_information.Player_CastInfo.skillid == skilldata.id and self:NextSkillIsChainSkill() and (not self.lastcast or (self.lasttick - self.lastcast >= 500))))) then
+			if (skilldata and ((skilldata.cooldown and skilldata.cooldown ~= 0) or ( not action.sequence[self.currentactionsequence].settings.slowcast and (skilldata.lastcast and (ml_global_information.Now - skilldata.lastcast > self.castspeed ))) or (skilldata.cooldownmax and skilldata.cooldownmax == 0 and ml_global_information.Player_CastInfo.lastskillid == skilldata.id) 
+				or ( ml_global_information.Player_CastInfo.skillid == skilldata.id and self:NextSkillIsChainSkill() and (not self.context.lastcast or (self.lasttick - self.context.lastcast >= self.castspeed))))) then
 				if (self:GetNextSkillForCasting() ) then-- get a new / next skill
 					action = self.actionlist[self.currentaction]
 					skilldata, skillset = self:GetSkillAndSkillSet(action.sequence[self.currentactionsequence].id)								
@@ -2014,7 +2038,7 @@ function sm_skill_profile:Cast()
 			end
 								
 			-- We are not casting the skill yet,...trying to do so ...
-			if (skilldata and action and action.sequence[self.currentactionsequence] and (not skilldata.cooldown or skilldata.cooldown == 0) and (not skilldata.lastcast or (ml_global_information.Now - skilldata.lastcast > 500)) and (ml_global_information.Player_CastInfo.skillid ~= skilldata.id or (skilldata.slot == 1 and skilldata.cooldownmax and skilldata.cooldownmax == 0))) then
+			if (skilldata and action and action.sequence[self.currentactionsequence] and (not skilldata.cooldown or skilldata.cooldown == 0) and (not skilldata.lastcast or (ml_global_information.Now - skilldata.lastcast > self.castspeed)) and (ml_global_information.Player_CastInfo.skillid ~= skilldata.id or (skilldata.slot == 1 and skilldata.cooldownmax and skilldata.cooldownmax == 0))) then
 				-- Ensure the correct Weapon Set
 				local switchslot = self:CanSwapToSet(skillset,action,self.currentactionsequence) 
 				if ( switchslot == false ) then
@@ -2026,6 +2050,7 @@ function sm_skill_profile:Cast()
 				elseif ( switchslot == -1 ) then
 					-- swap weapons
 					Player:SwapWeaponSet()
+					self.context.lastcast = self.lasttick
 					d("Swapping Main Weaponset")
 					return
 					
@@ -2033,6 +2058,7 @@ function sm_skill_profile:Cast()
 					-- cast spell to swap sets
 					Player:CastSpell(GW2.SKILLBARSLOT["Slot_" .. switchslot])
 					d("Swapping weaponset to "..tostring(GW2.SKILLBARSLOT["Slot_" .. switchslot]))
+					self.context.lastcast = self.lasttick
 					return
 					
 				else
@@ -2090,10 +2116,11 @@ function sm_skill_profile:Cast()
 					if ( skilldata.flip_level > 0 ) then
 						-- add a temp cooldown on the spell, else they will never be removed from the queue
 						skilldata.cooldown = 750
-						self.cooldownlist[skilldata.id] = { tick = self.lasttick, cd = 750 }					
+						 if ( not self.context.cooldownlist ) then self.context.cooldownlist = {} end
+						self.context.cooldownlist[skilldata.id] = { tick = self.lasttick, cd = 750 }					
 					end
-					--if ( self.lastcast ) then
-						--d("LAST CAST : "..tostring(self.lasttick-self.lastcast))
+					--if ( self.context.lastcast ) then
+						--d("LAST CAST : "..tostring(self.lasttick-self.context.lastcast))
 					--end
 					
 					-- building a cast history
@@ -2105,7 +2132,7 @@ function sm_skill_profile:Cast()
 							if ( table.size(self.context.casthistory) > 5 ) then table.remove(self.context.casthistory,6) end
 						end
 					end
-					self.lastcast = self.lasttick
+					self.context.lastcast = self.lasttick
 					skilldata.lastcast=self.lasttick
 					d("Casting: "..skilldata.name)					
 					return true
@@ -2128,7 +2155,7 @@ end
 
 function sm_skill_profile:DoCombatMovement()
 	
-	local fightdistance = self.targetedfightrange or ml_global_information.AttackRange
+	local fightdistance = ml_global_information.AttackRange
 	if ( table.valid(self.context.target) and self.context.target.distance <= (fightdistance + 250) and not self.combatmovement.range and ml_global_information.Player_Alive and ml_global_information.Player_OnMesh and ml_global_information.Player_Health.percent < 99) then
 		local isimmobilized	
 		if ( table.size(ml_global_information.Player_Buffs) > 0 ) then
@@ -2264,8 +2291,8 @@ end
 -- Updates the Data of the current SkillSets
 function sm_skill_profile:UpdateSkillData()
 	self.currentskills = {}
-	self.maxskillrange = 154
-	self.activeskillrange = 154
+	self.context.maxskillrange = 154
+	self.context.activeskillrange = 154
 			
 	-- Use the current gamedata to update the skillset data
 	for i = 1, ml_global_information.MAX_SKILLBAR_SLOTS-1 do	-- 1 to 19
@@ -2299,15 +2326,15 @@ function sm_skill_profile:UpdateSkillData()
 							local range = 0
 							if ( s.settings.maxrange and s.settings.maxrange > range ) then range = s.settings.maxrange end
 							if ( s.settings.radius and s.settings.radius > range ) then range = s.settings.radius end
-							if ( range > self.maxskillrange ) then 
-								self.maxskillrange = range 
+							if ( range > self.context.maxskillrange ) then 
+								self.context.maxskillrange = range 
 							end
 																
-							if ( range > self.activeskillrange and table.valid(self.context.target) and (not skill.skilldata.flip_level or skill.skilldata.flip_level <= 1) ) then 
+							if ( range > self.context.activeskillrange and table.valid(self.context.target) and (not skill.skilldata.flip_level or skill.skilldata.flip_level <= 1) ) then 
 								local ha = v:CanCastSkill(self, skill.skillset, a, skill.skilldata, true)
 								--d(tostring(skilldata.name) .." - " ..tostring(ha).. " -- " ..tostring(range))										
 								if ( ha ) then
-									self.activeskillrange = range					
+									self.context.activeskillrange = range					
 								end
 							end
 						end
@@ -2333,27 +2360,30 @@ function sm_skill_profile:UpdateSkillData()
 			end				
 		end
 	end		
-			
-	local cdlist = Player:GetCoolDownList()
+	
+	if ( not self.context.cooldownlist ) then self.context.cooldownlist = {} end
+	local cdlist = Player:GetCoolDownList()	
 	if ( cdlist ) then
 		for id,e in pairs(cdlist) do
 			local skilldata = self:GetSkillAndSkillSet(id)
 			if (skilldata ) then
 				skilldata.cooldown = e.cooldown
-				self.cooldownlist[id] = { tick = self.lasttick, cd = e.cooldown }
+				self.context.cooldownlist[id] = { tick = self.lasttick, cd = e.cooldown }
 			end
 		end
 	end
 	
 	-- in case our skill arrived at 0 cooldown, it would disappear from the GetCoolDownList, this code makes sure our data is set back to 0 
-	for id, e in pairs (self.cooldownlist) do
-		if ( self.lasttick - e.tick >= e.cd ) then
-			local skilldata = self:GetSkillAndSkillSet(id)
-			if (skilldata ) then
-				skilldata.cooldown = 0
-			end
-			self.cooldownlist[id] = nil
-		end		
+	if ( table.valid(self.context.cooldownlist) ) then 
+		for id, e in pairs (self.context.cooldownlist) do
+			if ( self.lasttick - e.tick >= e.cd ) then
+				local skilldata = self:GetSkillAndSkillSet(id)
+				if (skilldata ) then
+					skilldata.cooldown = 0
+				end
+				self.context.cooldownlist[id] = nil
+			end		
+		end
 	end
 	
 	-- save the current weapon set UDs available, used a lot in cancast etc checks
@@ -2388,7 +2418,7 @@ end
 function sm_skill_profile:Update()	
 	if ( not self.lasttick or ml_global_information.Now - self.lasttick > 250) then
 		self.lasttick = ml_global_information.Now
-		
+				
 		-- Check if we (still) have an active target and update that. Make sure it is not our player.
 		if ( self.targetid and (self.targetlastupdated and self.lasttick - self.targetlastupdated < 2000) and Player.id ~= self.targetid) then			
 			self.context.target = CharacterList:Get(self.targetid) or GadgetList:Get(self.targetid) --or AgentList:Get(self.targetid)			
@@ -2398,19 +2428,23 @@ function sm_skill_profile:Update()
 		if ( self.context.target and self.context.target.attackable and self.context.target.dead ) then
 			self.context.target = nil
 		end
-				
-		-- Update self.currentskills , sets, cooldowns, and the self.maxskillrange and self.activeskillrange
+
+		-- Update self.currentskills , sets, cooldowns, and the self.context.maxskillrange and self.context.activeskillrange
 		self:UpdateSkillData()
 		
 		-- Set the correct attackrange depending on our situation
 		if (not self.targetid and not ml_global_information.Player_InCombat ) then
-			ml_global_information.AttackRange = self.maxskillrange			
+			ml_global_information.AttackRange = self.context.maxskillrange			
 		else
-			ml_global_information.AttackRange = self.activeskillrange
+			if ( self.fightrangetype == 1 ) then -- Dynamic fight range
+				ml_global_information.AttackRange = self.context.activeskillrange
+			else -- fixed fight range
+				ml_global_information.AttackRange = self.fixedfightrange or self.context.activeskillrange
+			end
 		end
 			
 		-- Go crazy
-		if ( BehaviorManager:Running() ) then
+		if ( BehaviorManager:Running() and (ml_global_information.Player_HealthState == GW2.HEALTHSTATE.Alive or ml_global_information.Player_HealthState == GW2.HEALTHSTATE.Downed)) then
 			
 			-- Cast (but only every 1 second on the player if we have no target)
 			if ( self.context.target or ( not self.lastcastonplayer or self.lasttick-self.lastcastonplayer> 1000)) then
@@ -2420,12 +2454,12 @@ function sm_skill_profile:Update()
 			
 			-- Evade
 			local evaded
-			if ( ml_global_information.Player_InCombat and ml_global_information.Player_CastInfo and (ml_global_information.Player_CastInfo.slot == GW2.SKILLBARSLOT.None or ml_global_information.Player_CastInfo.slot == GW2.SKILLBARSLOT.Slot_1 )) then
+			if ( ml_global_information.Player_HealthState == GW2.HEALTHSTATE.Alive and ml_global_information.Player_InCombat and ml_global_information.Player_CastInfo and (ml_global_information.Player_CastInfo.slot == GW2.SKILLBARSLOT.None or ml_global_information.Player_CastInfo.slot == GW2.SKILLBARSLOT.Slot_1 )) then
 				evaded = self:Evade()
 			end
 			
 			-- Combatmovement			
-			if ( not evaded and Settings.GW2Minion.combatmovement ) then
+			if ( not evaded and ml_global_information.Player_HealthState == GW2.HEALTHSTATE.Alive and Settings.GW2Minion.combatmovement ) then
 				self:DoCombatMovement()
 			end
 		
