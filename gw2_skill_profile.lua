@@ -1824,8 +1824,8 @@ end
 -- Returns the skill ID to cast, for the case we have to swap to the Targetskillset. Returns false if it cannot reach the wanted set, returns true if it is already on the set
 function sm_skill_profile:CanSwapToSet(targetskillset, action , sequenceid)
 	-- happens
-	if ( not self.sets or table.size(self.sets) == 0 ) then return false end
-	
+	if ( not ml_global_information.Player_Alive or not self.sets or table.size(self.sets) == 0 ) then return false end
+		
 	-- We have the targetskill set on our current bar
 	for k,v in pairs (self.sets) do
 		if ( v.id == targetskillset.id ) then
