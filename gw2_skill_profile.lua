@@ -2147,9 +2147,9 @@ function sm_skill_profile:Cast()
 	end	
 end
 
-function sm_skill_profile:Evade()
+function sm_skill_profile:Evade(direction)
 	if (Settings.GW2Minion.evade) then
-		gw2_common_functions.Evade()
+		gw2_common_functions.Evade(direction)
 	end
 end
 
@@ -2423,10 +2423,19 @@ function sm_skill_profile:Update()
 		if ( self.targetid and (self.targetlastupdated and self.lasttick - self.targetlastupdated < 2000) and Player.id ~= self.targetid) then			
 			self.context.target = CharacterList:Get(self.targetid) or GadgetList:Get(self.targetid) --or AgentList:Get(self.targetid)			
 		else
+			self.targetid = nil
 			self.context.target = nil
-		end		
-		if ( self.context.target and self.context.target.attackable and self.context.target.dead ) then
+		end
+		-- Remove if target is dead.
+		if ( self.context.target and self.context.target.dead and (not self.context.target.selectable or self.context.target.attitude ~= GW2.ATTITUDE.Friendly)) then
+			d("SKILLSTUFF: UNSET TARGET")
+			self.targetid = nil
 			self.context.target = nil
+		end
+
+		-- select target ingame.
+		if (self.context.target and self.context.target.id) then -- TODO: could use a los or similar check, selecting a target we can't possibly know about might be bad?
+			Player:SetTarget(self.context.target.id)
 		end
 
 		-- Update self.currentskills , sets, cooldowns, and the self.context.maxskillrange and self.context.activeskillrange
@@ -2455,7 +2464,7 @@ function sm_skill_profile:Update()
 			-- Evade
 			local evaded
 			if ( ml_global_information.Player_HealthState == GW2.HEALTHSTATE.Alive and ml_global_information.Player_InCombat and ml_global_information.Player_CastInfo and (ml_global_information.Player_CastInfo.slot == GW2.SKILLBARSLOT.None or ml_global_information.Player_CastInfo.slot == GW2.SKILLBARSLOT.Slot_1 )) then
-				evaded = self:Evade()
+				evaded = self:Evade(self.context.target == nil and 3 or nil) -- if we dont have a target, evade forward. (3 == forward)
 			end
 			
 			-- Combatmovement			
@@ -2504,7 +2513,7 @@ function sm_skill_profile.Init()
 			ml_error("[SkillManager] - Invalid 'data' Folder!")
 		end	
 	else-- dev version	
-		sm_skill_profile.skilldata = FileLoad(GetStartupPath()  .. "\\LuaMods\\SkillManager\\gw2_skill_data.lua")
+		sm_skill_profile.skilldata = FileLoad(GetStartupPath()  .. "\\LuaMods\\SkillManager\\data\\gw2_skill_data.lua")
 	end
 	if ( not table.valid(sm_skill_profile.skilldata) ) then
 		ml_error("[SkillManager] - Failed to load Skill Data!")
