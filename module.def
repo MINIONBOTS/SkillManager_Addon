@@ -4,3 +4,5 @@ Dependencies=minionlib
 Version=1
 Files=skill_mgr.lua,gw2_skill_profile.lua,gw2_conditions.lua
 Enabled=1
+CreateFolders=cache
+ExportFiles=cache/blank.png,cache/default.png

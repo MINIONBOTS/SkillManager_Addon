@@ -2479,14 +2479,38 @@ function sm_skill_profile:Update()
 end
 
 -- To load the additional skill data
+sm_skill_profile.modfunc = GetPrivateModuleFunctions()
 function sm_skill_profile.Init()
-	sm_skill_profile.skilldata = FileLoad(GetStartupPath()  .. "\\LuaMods\\SkillManager\\gw2_skill_data.lua")
+	
+	-- live version
+	if ( sm_skill_profile.modfunc ) then
+		local files = sm_skill_profile.modfunc.GetModuleFiles("data")		
+		if(table.size(files)>0) then
+			for _,filedata in pairs(files) do
+				if( "gw2_skill_data.lua" == filedata.f) then
+					local fileString = sm_skill_profile.modfunc.ReadModuleFile(filedata)
+					if(fileString) then						
+						local fileFunction, errorMessage = loadstring(fileString)
+						if (fileFunction) then
+							sm_skill_profile.skilldata = fileFunction()					
+						end
+					else
+						ml_error("[SkillManager] - Error loading gw2_skill_data!")
+					end
+					break
+				end
+			end
+		else
+			ml_error("[SkillManager] - Invalid 'data' Folder!")
+		end	
+	else-- dev version	
+		sm_skill_profile.skilldata = FileLoad(GetStartupPath()  .. "\\LuaMods\\SkillManager\\gw2_skill_data.lua")
+	end
 	if ( not table.valid(sm_skill_profile.skilldata) ) then
 		ml_error("[SkillManager] - Failed to load Skill Data!")
 	end
 end
 RegisterEventHandler("Module.Initalize",sm_skill_profile.Init)
-
-
+		
 -- Register this template in the SM Mgr
 SkillManager:RegisterProfileTemplate( sm_skill_profile )
