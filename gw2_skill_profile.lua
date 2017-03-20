@@ -1708,7 +1708,7 @@ function sm_action:CanCastSkill(profile, targetskillset, sequenceid, skilldata, 
 end
 
 function sm_skill_profile:IsTwoHandWeapon(weapontype)
-	return weapontype == 1 or weapontype == 2 or weapontype == 6 or weapontype == 10 or weapontype == 12 or weapontype == 19 or weapontype == 20 or weapontype == 21
+	return weapontype == 1 or weapontype == 2 or weapontype == 3 or weapontype == 6 or weapontype == 10 or weapontype == 12 or weapontype == 19 or weapontype == 20 or weapontype == 21
 end
 
 -- Which sets we are currently having active
