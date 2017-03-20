@@ -98,11 +98,29 @@ function ml_skill_mgr.Draw(event,ticks)
 	if (ml_skill_mgr.open) then
 		GUI:SetNextWindowSize(310,150,GUI.SetCond_Once)
 		GUI:SetNextWindowPosCenter(GUI.SetCond_Once)
-		ml_skill_mgr.visible, ml_skill_mgr.open = GUI:Begin(GetString("Skill Manager").."##smmgr", ml_skill_mgr.open,GUI.WindowFlags_NoSavedSettings)
+		ml_skill_mgr.visible, ml_skill_mgr.open = GUI:Begin(GetString("Skill Manager (BETA)").."##smmgr", ml_skill_mgr.open,GUI.WindowFlags_NoSavedSettings)
 		if (ml_skill_mgr.visible) then
 			
 			GUI:BulletText(GetString("Current Profile:"))
+-- REMOVE THIS LATER
+			GUI:SameLine(200)
+			if ( Settings.minionlib.SMActive == nil) then Settings.minionlib.SMActive = false end
+			if ( not Settings.minionlib.SMActive ) then
+				GUI:PushStyleColor(GUI.Col_Button,255,0,0,0.5)
+				GUI:PushStyleColor(GUI.Col_ButtonHovered,255,0,0,0.7)
+				GUI:PushStyleColor(GUI.Col_ButtonActive,255,0,0,0.9)
+				if (GUI:SmallButton(GetString("Turn ON"))  ) then Settings.minionlib.SMActive = not Settings.minionlib.SMActive end
+			else
+				GUI:PushStyleColor(GUI.Col_Button,0,200,0,0.5)
+				GUI:PushStyleColor(GUI.Col_ButtonHovered,0,200,0,0.7)
+				GUI:PushStyleColor(GUI.Col_ButtonActive,0,200,0,0.9)
+				if (GUI:SmallButton(GetString("Turn OFF"))  ) then Settings.minionlib.SMActive = not Settings.minionlib.SMActive end
+			end
+			GUI:PopStyleColor(3)
 			
+
+
+
 			local itemchanged,currentidx
 			GUI:PushItemWidth(210)
 			currentidx = 0
@@ -253,8 +271,8 @@ function SkillManager:AddCondition(class) ml_skill_mgr.conditions[tostring(class
 function SkillManager:GetCondition(classname) if (ml_skill_mgr.conditions[classname]) then return ml_skill_mgr.conditions[classname] end end
 function SkillManager:GetConditions() return ml_skill_mgr.conditions end
 function SkillManager:Use(targetid) return ml_skill_mgr:Use( targetid ) end
-function SkillManager:Ready() return ml_skill_mgr.profile ~= nil end
-function SkillManager:GetActiveSkillRange() if ( ml_skill_mgr.profile ~= nil ) then return ml_global_information.AttackRange or 154 end return 154 end
-function SkillManager:GetCombatMovement() if ( ml_skill_mgr.profile ~= nil ) then return ml_skill_mgr.profile.combatmovement end return {} end
-function SkillManager:CanMove() if ( ml_skill_mgr.profile ~= nil ) then return not ml_skill_mgr.profile.combatmovement.combat end return true end
+function SkillManager:Ready() return ml_skill_mgr.profile ~= nil and Settings.minionlib.SMActive end
+function SkillManager:GetActiveSkillRange() if ( SkillManager:Ready() ) then return ml_global_information.AttackRange or 154 end return 154 end
+function SkillManager:GetCombatMovement() if ( SkillManager:Ready() ) then return ml_skill_mgr.profile.combatmovement end return {} end
+function SkillManager:CanMove() if ( SkillManager:Ready() ) then return not ml_skill_mgr.profile.combatmovement.combat end return true end
 

@@ -1627,11 +1627,13 @@ function sm_action:CanCastSkill(profile, targetskillset, sequenceid, skilldata, 
 		if ( not skill.settings.castonplayer and not skill.settings.nolos and (not profile.context.target or not profile.context.target.los)) then return false end		-- can't use skill if it requires los but we don't have los to our target - TODO: Move this below the other checks and check against "customtarget" ?				
 		if ( not skill.settings.slowcast and skilldata.lastcast ) then -- normal spells have 0,5s cast time Unless checked to be cast fast or slow, use this as default 
 			-- We dont have the actual casttime of the spells ...so kinda improvising here 
-			if ( (sequenceid <= 1 and ml_global_information.Now - skilldata.lastcast > profile.castspeed) or ml_global_information.Now - skilldata.lastcast > 1000 ) then 
+			if ( ((sequenceid <= 1 and ml_global_information.Now - skilldata.lastcast > profile.castspeed) or (ml_global_information.Now - skilldata.lastcast > 1000)) ) then 
 				if ( ((ml_global_information.Now - skilldata.lastcast > 1500) and (not skilldata.cooldown or skilldata.cooldown <= 0)) or ml_global_information.Now - skilldata.lastcast > 2500 ) then
 					skilldata.lastcast = nil
 				end
-				return false
+				if ( skilldata.slot ~= 1 ) then -- skill slot 1 can be spammed
+					return false
+				end
 			end
 		end
 		if ( skilldata.cooldown and skilldata.cooldown > 0 ) then return false end
@@ -2332,7 +2334,7 @@ function sm_skill_profile:UpdateSkillData()
 																
 							if ( range > self.context.activeskillrange and table.valid(self.context.target) and (not skill.skilldata.flip_level or skill.skilldata.flip_level <= 1) ) then 
 								local ha = v:CanCastSkill(self, skill.skillset, a, skill.skilldata, true)
-								--d(tostring(skilldata.name) .." - " ..tostring(ha).. " -- " ..tostring(range))										
+								--d(tostring(skill.skilldata.name) .." - " ..tostring(ha).. " -- " ..tostring(range))										
 								if ( ha ) then
 									self.context.activeskillrange = range					
 								end
