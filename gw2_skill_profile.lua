@@ -369,7 +369,15 @@ function sm_skill_profile:Render()
 		GUI:PushStyleVar(GUI.StyleVar_FramePadding, 0, 0)
 
 		if (not self.sets) then self.sets = self:GetCurrentSkillSets() end
-		
+		local temptargetset
+		if (not self.context.target) then
+			-- get our current target, else the UI wont show which skills can be cast and which cannot
+			local t = Player:GetTarget()
+			if ( t and t.selectable and (t.attitude == GW2.ATTITUDE.Friendly or not t.dead )) then
+				self.context.target = t
+				temptargetset = true
+			end
+		end
 		for k,v in pairs(self.actionlist) do
 			local size = imgsize
 			local skilldatas = {}
@@ -532,7 +540,7 @@ function sm_skill_profile:Render()
 			GUI:AddText( labelx, labely, GUI:ColorConvertFloat4ToU32(1.0,1.0,1.0,0.80), label)	
 		end
 		GUI:PopStyleVar(2)
-				
+		if ( temptargetset ) then self.context.target = nil
 		-- When moving the mouse outside the window while dragging actions around
 		if ( (self.dragid or self.dropidhover) and (hoveringaction == nil and not GUI:IsWindowHovered())) then
 			self.dragid = nil
@@ -1631,7 +1639,7 @@ function sm_action:CanCastSkill(profile, targetskillset, sequenceid, skilldata, 
 				if ( ((ml_global_information.Now - skilldata.lastcast > 1500) and (not skilldata.cooldown or skilldata.cooldown <= 0)) or ml_global_information.Now - skilldata.lastcast > 2500 ) then
 					skilldata.lastcast = nil
 				end
-				if ( skilldata.slot ~= 1 ) then -- skill slot 1 can be spammed
+				if ( skilldata.slot ~= 1 ) then -- skill slot 1 can be spammed					
 					return false
 				end
 			end
