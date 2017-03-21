@@ -540,7 +540,7 @@ function sm_skill_profile:Render()
 			GUI:AddText( labelx, labely, GUI:ColorConvertFloat4ToU32(1.0,1.0,1.0,0.80), label)	
 		end
 		GUI:PopStyleVar(2)
-		if ( temptargetset ) then self.context.target = nil
+		if ( temptargetset ) then self.context.target = nil end
 		-- When moving the mouse outside the window while dragging actions around
 		if ( (self.dragid or self.dropidhover) and (hoveringaction == nil and not GUI:IsWindowHovered())) then
 			self.dragid = nil
