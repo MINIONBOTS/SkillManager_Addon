@@ -930,8 +930,9 @@ function sm_skill_profile:UpdateCurrentSkillsetData()
 				end
 				
 				-- Check and add 1st Chain/Flipskill
-				if ( data.flip_skill ~= 0 ) then	--flip_skill is the skillID 
-					local flip1 = self:GetSkillDataByID(data.flip_skill)
+				local chainskillid = data.flip_skill ~= 0 and data.flip_skill or data.next_chain
+				if ( chainskillid ) then	--flip_skill is the skillID 
+					local flip1 = self:GetSkillDataByID(chainskillid)
 					if ( flip1 ) then
 						result[flip1.id] = {}
 						for k,v in pairs (flip1) do 
@@ -941,8 +942,9 @@ function sm_skill_profile:UpdateCurrentSkillsetData()
 						result[flip1.id]["flip_level"] = 1
 									
 						-- 2nd Chain/Flipskill
-						if ( flip1.flip_skill ~= 0 ) then
-							local flip2 = self:GetSkillDataByID(flip1.flip_skill)
+						local chainskill2id = flip1.flip_skill ~= 0 and flip1.flip_skill or flip1.next_chain
+						if ( chainskill2id) then
+							local flip2 = self:GetSkillDataByID(chainskill2id)
 							if ( flip2 ) then
 								result[flip2.id] = {}
 								for k,v in pairs (flip2) do 
