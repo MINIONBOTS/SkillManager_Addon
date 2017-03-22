@@ -1010,40 +1010,75 @@ function sm_skill_profile:UpdateCurrentSkillsetData()
 		-- Main & Offhand 
 		elseif ( w == 4 ) then
 			local item = Inventory:GetEquippedItemBySlot(GW2.EQUIPMENTSLOT.MainHandWeapon)
-			if ( item ) then weapon1 = 4  weapontype1 = item.weapontype end	-- Mainhand
+			if ( item ) then 
+				weapon1 = 4  weapontype1 = item.weapontype 
+			else	-- in case the slot is empty and the main hand weapon is shown
+				item = Inventory:GetEquippedItemBySlot(GW2.EQUIPMENTSLOT.AlternateMainHandWeapon)
+				if ( item and not self:IsTwoHandWeapon(item.weapontype)) then weapon1 = 4  weapontype1 = item.weapontype end
+			end	-- Mainhand
+			
 			local item2 = Inventory:GetEquippedItemBySlot(GW2.EQUIPMENTSLOT.OffHandWeapon)
-			if ( item2 ) then weapon2 = 5  weapontype2 = item2.weapontype end	-- Offhand
+			if ( item2 ) then 
+				weapon2 = 5  weapontype2 = item2.weapontype 
+			else	-- in case the slot is empty and the main hand weapon is shown
+				item2 = Inventory:GetEquippedItemBySlot(GW2.EQUIPMENTSLOT.AlternateOffHandWeapon)
+				if ( item2 and not self:IsTwoHandWeapon(item2.weapontype)) then weapon2 = 5  weapontype2 = item2.weapontype end
+			end	-- Offhand
 		
 		-- 2nd Main & Offhand 
 		elseif ( w == 5 ) then
 			local item = Inventory:GetEquippedItemBySlot(GW2.EQUIPMENTSLOT.AlternateMainHandWeapon)
-			if ( item ) then weapon1 = 4  weapontype1 = item.weapontype end	-- Mainhand
+			if ( item ) then 
+				weapon1 = 4  weapontype1 = item.weapontype 
+			else	-- in case the slot is empty and the main hand weapon is shown
+				item = Inventory:GetEquippedItemBySlot(GW2.EQUIPMENTSLOT.MainHandWeapon)
+				if ( item and not self:IsTwoHandWeapon(item.weapontype)) then weapon1 = 4  weapontype1 = item.weapontype end
+			end	-- Mainhand
+			
 			local item2 = Inventory:GetEquippedItemBySlot(GW2.EQUIPMENTSLOT.AlternateOffHandWeapon)
-			if ( item2 ) then weapon2 = 5  weapontype2 = item2.weapontype end	-- Offhand
+			if ( item2 ) then 
+				weapon2 = 5  weapontype2 = item2.weapontype 
+			else	-- in case the slot is empty and the main hand weapon is shown
+				item2 = Inventory:GetEquippedItemBySlot(GW2.EQUIPMENTSLOT.OffHandWeapon)
+				if ( item2 and not self:IsTwoHandWeapon(item2.weapontype)) then weapon2 = 5  weapontype2 = item2.weapontype end
+			end	-- Offhand
 		end
 		
 		if ( t >= 12 and t <=17 ) then
-			if ( weapon2 and not self:IsTwoHandWeapon(weapontype1)) then
+			if (  weapon1 and weapon2 and not self:IsTwoHandWeapon(weapontype1)) then
 				self:CreateSetFromSkillData(weapon1,0,weapontype1, result, 1, 3)
 				self:CreateSetFromSkillData(weapon2,0,weapontype2, result, 4, 5)
 			else
-				if ( self:IsTwoHandWeapon(weapontype1) ) then
-					self:CreateSetFromSkillData(weapon1,0,weapontype1, result, 1, 5)
-				else
-					self:CreateSetFromSkillData(weapon1,0,weapontype1, result, 1, 3)
+			
+				if ( weapon1 ) then
+					if ( self:IsTwoHandWeapon(weapontype1) ) then
+						self:CreateSetFromSkillData(weapon1,0,weapontype1, result, 1, 5)
+					else
+						self:CreateSetFromSkillData(weapon1,0,weapontype1, result, 1, 3)
+					end
+				end
+				if ( weapon2 ) then
+					self:CreateSetFromSkillData(weapon2,0,weapontype2, result, 4, 5)
 				end
 			end
 			self:CreateSetFromSkillData(0,t,0, result, 6, 10)
 		else
 		
-			if ( weapon2 and not self:IsTwoHandWeapon(weapontype1)) then
+			if ( weapon1 and weapon2 and not self:IsTwoHandWeapon(weapontype1)) then
 				self:CreateSetFromSkillData(weapon1,t,weapontype1, result, 1, 3)
-				self:CreateSetFromSkillData(weapon2,t,weapontype2, result, 4, 5)								
+				self:CreateSetFromSkillData(weapon2,t,weapontype2, result, 4, 5)
+			
 			else
-				if ( self:IsTwoHandWeapon(weapontype1) ) then
-					self:CreateSetFromSkillData(weapon1,t,weapontype1, result, 1, 5)
-				else
-					self:CreateSetFromSkillData(weapon1,t,weapontype1, result, 1, 3)
+				if ( weapon1 ) then
+					if ( self:IsTwoHandWeapon(weapontype1) ) then
+						self:CreateSetFromSkillData(weapon1,t,weapontype1, result, 1, 5)
+					else
+						self:CreateSetFromSkillData(weapon1,t,weapontype1, result, 1, 3)
+					end
+				end
+				
+				if ( weapon2 ) then
+					self:CreateSetFromSkillData(weapon2,t,weapontype2, result, 4, 5)
 				end
 			end
 		end
@@ -1656,9 +1691,20 @@ function sm_action:CanCastSkill(profile, targetskillset, sequenceid, skilldata, 
 				if ( (skilldata.initiative * 100 / 12) > ml_global_information.Player_Power ) then return false end	
 			end
 		end
-		-- Revenant Costs mechanic
-		if ( skilldata.cost and skilldata.cost > 0 and skilldata.cost > ml_global_information.Player_Power ) then return false end
-		
+						
+		-- Revenant Costs and warrior costs mechanic
+		if ( skilldata.cost and skilldata.cost > 0 ) then
+			-- Warrior cost mechanic ( 0 - 30 adrenalin )
+			if ( ml_global_information.Player_Profession == GW2.CHARCLASS.Warrior ) then
+				if ( ml_global_information.Player_Buffs[29502] ) then -- Berserk
+					if ( skilldata.cost > ml_global_information.Player_Power*0.1 ) then return false end
+				else
+					if ( skilldata.cost > ml_global_information.Player_Power*0.3 ) then return false end
+				end
+			else
+				if ( skilldata.cost > ml_global_information.Player_Power ) then return false end
+			end
+		end
 		-- Range Check
 		if ( not ignorerangecheck and sequenceid <= 1 and not skill.settings.castonplayer and profile.context.target ) then
 			local maxrange = skill.settings.maxrange or skilldata.maxrange or 0
@@ -1788,27 +1834,30 @@ function sm_skill_profile:GetCurrentSkillSets()
 		else
 			local prof = SkillManager:GetPlayerProfession()		
 			if ( t >= 12 and t <=17 ) then
-				if ( weapon2 ) then
+				if ( weapon1 and weapon2 ) then
 					table.insert(availablesets,self.skillsets[tostring(weapon1).."_0_"..tostring(weapontype1)])
 					table.insert(availablesets,self.skillsets[tostring(weapon2).."_0_"..tostring(weapontype2)])
 				else
-					table.insert(availablesets,self.skillsets[tostring(weapon1).."_0_"..tostring(weapontype1)])
+					if ( weapon1 ) then table.insert(availablesets,self.skillsets[tostring(weapon1).."_0_"..tostring(weapontype1)]) end
+					if ( weapon2 ) then table.insert(availablesets,self.skillsets[tostring(weapon2).."_0_"..tostring(weapontype2)]) end
 				end
 				table.insert(availablesets,self.skillsets[tostring(t)]) 
 				
 			elseif (prof == GW2.CHARCLASS.Necromancer or prof == GW2.CHARCLASS.Elementalist or prof == GW2.CHARCLASS.Revenant ) then
-				if ( weapon2 ) then
+				if ( weapon1 and weapon2 ) then
 					table.insert(availablesets,self.skillsets[tostring(weapon1).."_"..tostring(t).."_"..tostring(weapontype1)])
 					table.insert(availablesets,self.skillsets[tostring(weapon2).."_"..tostring(t).."_"..tostring(weapontype2)])
 				else
-					table.insert(availablesets,self.skillsets[tostring(weapon1).."_"..tostring(t).."_"..tostring(weapontype1)])
+					if ( weapon1 ) then table.insert(availablesets,self.skillsets[tostring(weapon1).."_"..tostring(t).."_"..tostring(weapontype1)]) end
+					if ( weapon2 ) then table.insert(availablesets,self.skillsets[tostring(weapon2).."_"..tostring(t).."_"..tostring(weapontype2)]) end					
 				end
 			else
-				if ( weapon2 ) then
+				if ( weapon1 and weapon2 ) then
 					table.insert(availablesets,self.skillsets[tostring(weapon1).."_"..tostring(weapontype1)])
 					table.insert(availablesets,self.skillsets[tostring(weapon2).."_"..tostring(weapontype2)])
 				else
-					table.insert(availablesets,self.skillsets[tostring(weapon1).."_"..tostring(weapontype1)])
+					if ( weapon1 ) then table.insert(availablesets,self.skillsets[tostring(weapon1).."_"..tostring(weapontype1)]) end
+					if ( weapon2 ) then table.insert(availablesets,self.skillsets[tostring(weapon2).."_"..tostring(weapontype2)]) end					
 				end
 			end
 		end
@@ -2088,6 +2137,20 @@ function sm_skill_profile:Cast()
 				if ( not target ) then return end
 				local castresult
 				
+				-- Make sure the wanted skill is actually on our skillbar within a certain timeframe, if not, skip this skill by putting it on a cooldown
+				if ( self.currentskills[skilldata.slot] ) then
+					local realskill = self.currentskills[skilldata.slot]
+					if ( realskill.skillid ~= skilldata.id ) then
+						if ( not self.context.lastcast or (self.lasttick - self.context.lastcast > 1000 )) then
+							skilldata.cooldown = 750
+							 if ( not self.context.cooldownlist ) then self.context.cooldownlist = {} end
+							self.context.cooldownlist[skilldata.id] = { tick = self.lasttick, cd = 750 }
+							d("[SkillManager] - Could NOT cast " ..skilldata.name.." , skipping it. Equip that Skill or fix your SM Profile!")
+						end
+					end					
+				end
+				
+				
 				if (skilldata.isgroundtargeted) then
 					local pos = target.pos
 					local ppos = ml_global_information.Player_Position
@@ -2146,10 +2209,10 @@ function sm_skill_profile:Cast()
 					end
 					self.context.lastcast = self.lasttick
 					skilldata.lastcast=self.lasttick
-					--d("Casting: "..skilldata.name)					
+					d("Casting: "..skilldata.name)					
 					return true
 				else
-					--d("Casting Failed: "..skilldata.name)
+					d("Casting Failed: "..skilldata.name)
 				end
 							
 			end
