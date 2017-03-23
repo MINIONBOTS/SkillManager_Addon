@@ -1748,7 +1748,7 @@ function sm_action:CanCastSkill(profile, targetskillset, sequenceid, skilldata, 
 				local cancast = true
 				for k,v in pairs(or_group) do
 					if ( type(v) == "table") then
-						if ( not v:Evaluate(Player, profile.context.target) ) then
+						if ( not v:Evaluate(profile.context)) then
 							cancast = false
 							break
 						end
@@ -2381,7 +2381,7 @@ function sm_skill_profile:UpdateSkillData()
 				skilldata.cooldown = skill.cooldown
 				skilldata.cooldownmax = skill.cooldownmax
 				if ( skilldata.isgroundtargeted == nil ) then skilldata.isgroundtargeted = skill.isgroundtargeted end
-				if ( skilldata.slot >= 7 and skilldata.slot <=9 ) then
+				if ( ( skilldata.slot >= 7 and skilldata.slot <= 9 ) or ( skilldata.slot >= 13 and skilldata.slot <= 17) ) then -- Update utility spell slots
 					skilldata.slot = i
 				end
 			end
@@ -2512,6 +2512,9 @@ function sm_skill_profile:Update()
 		if (self.context.target and self.context.target.id) then -- TODO: could use a los or similar check, selecting a target we can't possibly know about might be bad?
 			Player:SetTarget(self.context.target.id)
 		end
+		
+		-- TODO: Add some caching of player stuff somewheer ? c++ ? lua ?
+		self.context.player = Player
 
 		-- Update self.currentskills , sets, cooldowns, and the self.context.maxskillrange and self.context.activeskillrange
 		self:UpdateSkillData()

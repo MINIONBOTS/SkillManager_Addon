@@ -17,7 +17,7 @@ end
 function sm_condition:Load(data)
 end
 -- Evaluates the condition, returns "true" / "false".
-function sm_condition:Evaluate(player,target)
+function sm_condition:Evaluate(context)
 end
 -- Renders the condition UI
 function sm_condition:Render()
@@ -54,7 +54,9 @@ function sm_condition_hp:Load(data)
 	self.value = data.value or 100
 end
 -- Evaluates the condition, returns "true" / "false"
-function sm_condition_hp:Evaluate(player,target)
+function sm_condition_hp:Evaluate(context)
+	local player = context.player
+	local target = context.target
 	if ( player ~= nil) then
 		-- This Health Check is set to check HP on a Target, check if we have one, else return false
 		if ( self.target == 2 and target == nil ) then return false end
@@ -145,7 +147,9 @@ function sm_condition_power:Load(data)
 	self.value = data.value or 100
 end
 -- Evaluates the condition, returns "true" / "false"
-function sm_condition_power:Evaluate(player,target)
+function sm_condition_power:Evaluate(context)
+	local player = context.player
+	local target = context.target
 	if ( player ~= nil) then		
 		local mp = player.power
 		
@@ -168,7 +172,7 @@ function sm_condition_power:Render(id) -- need to pass an index value here, for 
 	local modified
 	local changed
 	GUI:PushItemWidth(200)
-	GUI:InputText("##sm_condition_power2"..tostring(id), GetString("Player Power Percent"),GUI.InputTextFlags_ReadOnly)
+	GUI:InputText("##sm_condition_power1"..tostring(id), GetString("Player Power Percent"),GUI.InputTextFlags_ReadOnly)
 	GUI:PopItemWidth()
 	
 	GUI:PushItemWidth(50)
@@ -213,7 +217,9 @@ function sm_condition_endurance:Load(data)
 	self.value = data.value or 100
 end
 -- Evaluates the condition, returns "true" / "false"
-function sm_condition_endurance:Evaluate(player,target)
+function sm_condition_endurance:Evaluate(context)
+	local player = context.player
+	local target = context.target
 	if ( player ~= nil) then		
 		local mp = player.endurance
 		
@@ -236,7 +242,7 @@ function sm_condition_endurance:Render(id) -- need to pass an index value here, 
 	local modified
 	local changed
 	GUI:PushItemWidth(200)
-	GUI:InputText("##sm_condition_endurance2"..tostring(id), GetString("Player Endurance Percent"),GUI.InputTextFlags_ReadOnly)
+	GUI:InputText("##sm_condition_endurance1"..tostring(id), GetString("Player Endurance Percent"),GUI.InputTextFlags_ReadOnly)
 	GUI:PopItemWidth()
 	
 	GUI:PushItemWidth(50)
@@ -282,7 +288,9 @@ function sm_condition_combatstate:Load(data)
 	self.operator = data.operator or 1
 end
 -- Evaluates the condition, returns "true" / "false"
-function sm_condition_combatstate:Evaluate(player,target)
+function sm_condition_combatstate:Evaluate(context)
+	local player = context.player
+	local target = context.target
 	if ( player ~= nil) then
 		-- This CombatState Check is set to check on a Target, check if we have one, else return false
 		if ( self.target == 2 and target == nil ) then return false end
@@ -347,7 +355,9 @@ function sm_condition_movement:Load(data)
 	self.operator = data.operator or 1
 end
 -- Evaluates the condition, returns "true" / "false"
-function sm_condition_movement:Evaluate(player,target)
+function sm_condition_movement:Evaluate(context)
+	local player = context.player
+	local target = context.target
 	if ( player ~= nil) then
 		-- This CombatState Check is set to check on a Target, check if we have one, else return false
 		if ( self.target == 2 and target == nil ) then return false end
@@ -421,14 +431,16 @@ function sm_condition_buffs:Load(data)
 	self.value = data.value or 1
 end
 -- Evaluates the condition, returns "true" / "false"
-function sm_condition_buffs:Evaluate(player,target)
+function sm_condition_buffs:Evaluate(context)
+	local player = context.player
+	local target = context.target
 	if ( player ~= nil) then
 		-- This Check is set to a Target, check if we have one, else return false
 		if ( self.target == 2 and target == nil ) then return false end
 				
 		local buffs
 		if ( self.target == 1 ) then 
-			buffs = player.buffs
+			buffs = ml_global_information.Player_Buffs
 		elseif ( self.target == 2 ) then
 			buffs = target.buffs
 		end
@@ -580,14 +592,16 @@ function sm_condition_buff:Load(data)
 	self.buff = data.buff or 743
 end
 -- Evaluates the condition, returns "true" / "false"
-function sm_condition_buff:Evaluate(player,target)
+function sm_condition_buff:Evaluate(context)
+	local player = context.player
+	local target = context.target
 	if ( player ~= nil) then
 		-- This Check is set to a Target, check if we have one, else return false
 		if ( self.target == 2 and target == nil ) then return false end
 				
 		local buffs
 		if ( self.target == 1 ) then 
-			buffs = player.buffs
+			buffs = ml_global_information.Player_Buffs
 		elseif ( self.target == 2 ) then
 			buffs = target.buffs
 		end
@@ -654,14 +668,16 @@ function sm_condition_buffid:Load(data)
 	self.buffid = data.buffid or 743
 end
 -- Evaluates the condition, returns "true" / "false"
-function sm_condition_buffid:Evaluate(player,target)
+function sm_condition_buffid:Evaluate(context)
+	local player = context.player
+	local target = context.target
 	if ( player ~= nil) then
 		-- This Check is set to a Target, check if we have one, else return false
 		if ( self.target == 2 and target == nil ) then return false end
 				
 		local buffs
 		if ( self.target == 1 ) then 
-			buffs = player.buffs
+			buffs = ml_global_information.Player_Buffs
 		elseif ( self.target == 2 ) then
 			buffs = target.buffs
 		end
@@ -701,3 +717,154 @@ function sm_condition_buffid:Render(id) -- need to pass an index value here, for
 	return modified
 end
 SkillManager:AddCondition(sm_condition_buffid) -- register this condition in the SM
+
+
+
+-- Cooldown condition
+local sm_condition_cooldown = class('Cooldown', sm_condition)
+sm_condition_cooldown.operators = { [1] = "<", [2] = "<=", [3] = "==", [4] = ">=", [5] = ">",  }
+
+-- Initialize new class, - gets called when :new(..) is called
+function sm_condition_cooldown:initialize()
+	self.skillid = 1
+	self.operator = 1
+	self.value = 50
+end
+-- Save  the condition data into a table and returns that
+function sm_condition_cooldown:Save()
+	local data = {}
+	data.class = 'Cooldown'
+	data.skillid = self.skillid
+	data.operator = self.operator
+	data.value = self.value
+	return data
+end
+-- Loads the condition data into this instance
+function sm_condition_cooldown:Load(data)
+	self.skillid = data.skillid or 1
+	self.operator = data.operator or 1
+	self.value = data.value or 50
+end
+-- Evaluates the condition, returns "true" / "false"
+function sm_condition_cooldown:Evaluate(context)
+	local cooldownlist = context.cooldownlist
+	if ( cooldownlist == nil) then ml_error("[SkillManager] - sm_condition_cooldown:Evaluate: cooldownlist is nil") return true end
+	if ( self.skillid == nil or type(self.skillid) ~= "number" ) then ml_error("[SkillManager] - sm_condition_cooldown:Evaluate: skill ID is invalid") return true end
+	if ( self.value == nil or type(self.value) ~= "number" ) then ml_error("[SkillManager] - sm_condition_cooldown:Evaluate: cooldown value is invalid") return true end
+	
+	local cd = 0
+	if ( cooldownlist[self.skillid] ) then
+		cd = cooldownlist[self.skillid].cd
+	end
+					
+	if ( self.operator == 1 ) then return cd < self.value 
+	elseif ( self.operator == 2 ) then return cd <= self.value 
+	elseif ( self.operator == 3 ) then return cd == self.value 
+	elseif ( self.operator == 4 ) then return cd >= self.value
+	elseif ( self.operator == 5 ) then return cd > self.value		
+	end	
+end
+
+-- Renders the condition data into UI, for "presentation" in the SkillManager's Condition Builder. Returns "true" when stuff changed, for saving
+function sm_condition_cooldown:Render(id) -- need to pass an index value here, for the unique IDs used by imgui	
+	local modified
+	local changed
+	GUI:AlignFirstTextHeightToWidgets()
+	GUI:Text(GetString("Cooldown of Skill ID"))
+	GUI:SameLine()
+	
+	GUI:PushItemWidth(100)
+	self.skillid, changed = GUI:InputInt("##sm_condition_cooldown1"..tostring(id),self.skillid, 1,2,GUI.InputTextFlags_CharsDecimal+GUI.InputTextFlags_CharsNoBlank)	
+	if ( changed ) then modified = true end
+	GUI:PopItemWidth()	
+	
+	GUI:PushItemWidth(50)
+	GUI:SameLine()
+	self.operator, changed = GUI:Combo("##sm_condition_cooldown2"..tostring(id),self.operator, self.operators)
+	if ( changed ) then modified = true end
+	GUI:PopItemWidth()
+		
+	GUI:PushItemWidth(120)
+	GUI:SameLine()	
+	self.value, changed = GUI:InputInt("##sm_condition_cooldown3"..tostring(id),self.value, 1,2,GUI.InputTextFlags_CharsDecimal+GUI.InputTextFlags_CharsNoBlank)	
+	if ( changed ) then modified = true end
+	GUI:PopItemWidth()
+	
+	GUI:SameLine()
+	GUI:Text(GetString("milliseconds."))
+	
+	
+	return modified
+end
+SkillManager:AddCondition(sm_condition_cooldown) -- register this condition in the SM
+
+
+
+-- Breakbar condition
+local sm_condition_breakbar = class('Breakbar', sm_condition)
+sm_condition_breakbar.operators = { [1] = "<", [2] = "<=", [3] = "==", [4] = ">=", [5] = ">",  }
+
+-- Initialize new class, - gets called when :new(..) is called
+function sm_condition_breakbar:initialize()
+	self.operator = 1
+	self.value = 50
+end
+-- Save  the condition data into a table and returns that
+function sm_condition_breakbar:Save()
+	local data = {}
+	data.class = 'Breakbar'
+	data.operator = self.operator
+	data.value = self.value
+	return data
+end
+-- Loads the condition data into this instance
+function sm_condition_breakbar:Load(data)
+	self.operator = data.operator or 1
+	self.value = data.value or 50
+end
+-- Evaluates the condition, returns "true" / "false"
+function sm_condition_breakbar:Evaluate(context)
+	local cooldownlist = context.cooldownlist
+	if ( cooldownlist == nil) then ml_error("[SkillManager] - sm_condition_breakbar:Evaluate: cooldownlist is nil") return true end
+	if ( self.value == nil or type(self.value) ~= "number" ) then ml_error("[SkillManager] - sm_condition_breakbar:Evaluate: breakbar value is invalid") return true end
+	
+	local target = context.target
+	if ( target ) then
+		local bb = target.breakbarpercent
+		if ( self.operator == 1 ) then return bb < self.value 
+		elseif ( self.operator == 2 ) then return bb <= self.value 
+		elseif ( self.operator == 3 ) then return bb == self.value 
+		elseif ( self.operator == 4 ) then return bb >= self.value
+		elseif ( self.operator == 5 ) then return bb > self.value		
+		end	
+	end
+	return false
+end
+
+-- Renders the condition data into UI, for "presentation" in the SkillManager's Condition Builder. Returns "true" when stuff changed, for saving
+function sm_condition_breakbar:Render(id) -- need to pass an index value here, for the unique IDs used by imgui	
+	local modified
+	local changed
+	GUI:AlignFirstTextHeightToWidgets()
+	GUI:Text(GetString("Target's Breakbar is"))
+	GUI:SameLine()
+	
+	GUI:PushItemWidth(50)
+	GUI:SameLine()
+	self.operator, changed = GUI:Combo("##sm_condition_breakbar1"..tostring(id),self.operator, self.operators)
+	if ( changed ) then modified = true end
+	GUI:PopItemWidth()
+		
+	GUI:PushItemWidth(120)
+	GUI:SameLine()	
+	self.value, changed = GUI:InputInt("##sm_condition_breakbar2"..tostring(id),self.value, 1,2,GUI.InputTextFlags_CharsDecimal+GUI.InputTextFlags_CharsNoBlank)	
+	if ( changed ) then modified = true end
+	GUI:PopItemWidth()
+	
+	GUI:SameLine()
+	GUI:Text(GetString("Percent."))
+	
+	
+	return modified
+end
+SkillManager:AddCondition(sm_condition_breakbar) -- register this condition in the SM
