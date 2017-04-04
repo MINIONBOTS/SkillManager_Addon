@@ -1013,16 +1013,16 @@ function sm_skill_profile:UpdateCurrentSkillsetData()
 			if ( item ) then 
 				weapon1 = 4  weapontype1 = item.weapontype 
 			else	-- in case the slot is empty and the main hand weapon is shown
-				item = Inventory:GetEquippedItemBySlot(GW2.EQUIPMENTSLOT.AlternateMainHandWeapon)
-				if ( item and not self:IsTwoHandWeapon(item.weapontype)) then weapon1 = 4  weapontype1 = item.weapontype end
+				--item = Inventory:GetEquippedItemBySlot(GW2.EQUIPMENTSLOT.AlternateMainHandWeapon)
+				--if ( item and not self:IsTwoHandWeapon(item.weapontype)) then weapon1 = 4  weapontype1 = item.weapontype end
 			end	-- Mainhand
 			
 			local item2 = Inventory:GetEquippedItemBySlot(GW2.EQUIPMENTSLOT.OffHandWeapon)
 			if ( item2 ) then 
 				weapon2 = 5  weapontype2 = item2.weapontype 
 			else	-- in case the slot is empty and the main hand weapon is shown
-				item2 = Inventory:GetEquippedItemBySlot(GW2.EQUIPMENTSLOT.AlternateOffHandWeapon)
-				if ( item2 and not self:IsTwoHandWeapon(item2.weapontype)) then weapon2 = 5  weapontype2 = item2.weapontype end
+				--item2 = Inventory:GetEquippedItemBySlot(GW2.EQUIPMENTSLOT.AlternateOffHandWeapon)
+				--if ( item2 and not self:IsTwoHandWeapon(item2.weapontype)) then weapon2 = 5  weapontype2 = item2.weapontype end
 			end	-- Offhand
 		
 		-- 2nd Main & Offhand 
@@ -1031,16 +1031,16 @@ function sm_skill_profile:UpdateCurrentSkillsetData()
 			if ( item ) then 
 				weapon1 = 4  weapontype1 = item.weapontype 
 			else	-- in case the slot is empty and the main hand weapon is shown
-				item = Inventory:GetEquippedItemBySlot(GW2.EQUIPMENTSLOT.MainHandWeapon)
-				if ( item and not self:IsTwoHandWeapon(item.weapontype)) then weapon1 = 4  weapontype1 = item.weapontype end
+				--item = Inventory:GetEquippedItemBySlot(GW2.EQUIPMENTSLOT.MainHandWeapon)
+				--if ( item and not self:IsTwoHandWeapon(item.weapontype)) then weapon1 = 4  weapontype1 = item.weapontype end
 			end	-- Mainhand
 			
 			local item2 = Inventory:GetEquippedItemBySlot(GW2.EQUIPMENTSLOT.AlternateOffHandWeapon)
 			if ( item2 ) then 
 				weapon2 = 5  weapontype2 = item2.weapontype 
 			else	-- in case the slot is empty and the main hand weapon is shown
-				item2 = Inventory:GetEquippedItemBySlot(GW2.EQUIPMENTSLOT.OffHandWeapon)
-				if ( item2 and not self:IsTwoHandWeapon(item2.weapontype)) then weapon2 = 5  weapontype2 = item2.weapontype end
+				--item2 = Inventory:GetEquippedItemBySlot(GW2.EQUIPMENTSLOT.OffHandWeapon)
+				--if ( item2 and not self:IsTwoHandWeapon(item2.weapontype)) then weapon2 = 5  weapontype2 = item2.weapontype end
 			end	-- Offhand
 		end
 		
@@ -1105,7 +1105,7 @@ function sm_skill_profile:CreateSetFromSkillData(w, t, weapontype, currentskills
 	elseif ( t == 6 ) then -- necro death shroud
 		id = tostring(t).."_"..tostring(ml_global_information.Player_SwimState)
 		
-	elseif (prof == GW2.CHARCLASS.Necromancer or prof == GW2.CHARCLASS.Necromancer or prof == GW2.CHARCLASS.Necromancer ) then
+	elseif ((prof == GW2.CHARCLASS.Necromancer) or (prof == GW2.CHARCLASS.Elementalist) or (prof == GW2.CHARCLASS.Revenant) ) then
 		id = tostring(w).."_"..tostring(t).."_"..tostring(weapontype)
 	else
 		id = tostring(w).."_"..tostring(weapontype)
@@ -1843,7 +1843,7 @@ function sm_skill_profile:GetCurrentSkillSets()
 				end
 				table.insert(availablesets,self.skillsets[tostring(t)]) 
 				
-			elseif (prof == GW2.CHARCLASS.Necromancer or prof == GW2.CHARCLASS.Elementalist or prof == GW2.CHARCLASS.Revenant ) then
+			elseif ((prof == GW2.CHARCLASS.Necromancer) or (prof == GW2.CHARCLASS.Elementalist) or (prof == GW2.CHARCLASS.Revenant) ) then
 				if ( weapon1 and weapon2 ) then
 					table.insert(availablesets,self.skillsets[tostring(weapon1).."_"..tostring(t).."_"..tostring(weapontype1)])
 					table.insert(availablesets,self.skillsets[tostring(weapon2).."_"..tostring(t).."_"..tostring(weapontype2)])

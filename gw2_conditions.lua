@@ -830,7 +830,7 @@ function sm_condition_breakbar:Evaluate(context)
 	
 	local target = context.target
 	if ( target ) then
-		local bb = target.breakbarpercent
+		local bb = target.breakbarpercent*100  -- is originally a value between 0 and 1
 		if ( self.operator == 1 ) then return bb < self.value 
 		elseif ( self.operator == 2 ) then return bb <= self.value 
 		elseif ( self.operator == 3 ) then return bb == self.value 
@@ -859,6 +859,8 @@ function sm_condition_breakbar:Render(id) -- need to pass an index value here, f
 	GUI:SameLine()	
 	self.value, changed = GUI:InputInt("##sm_condition_breakbar2"..tostring(id),self.value, 1,2,GUI.InputTextFlags_CharsDecimal+GUI.InputTextFlags_CharsNoBlank)	
 	if ( changed ) then modified = true end
+	if ( self.value < 0 ) then self.value = 0 end
+	if ( self.value > 100 ) then self.value = 100 end
 	GUI:PopItemWidth()
 	
 	GUI:SameLine()
