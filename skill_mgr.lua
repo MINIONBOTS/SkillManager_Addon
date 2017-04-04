@@ -244,6 +244,32 @@ function ml_skill_mgr.Draw(event,ticks)
 end
 RegisterEventHandler("Gameloop.Draw", ml_skill_mgr.Draw)
 
+function ml_skill_mgr:SelectProfile(pname)
+	if ( table.size(ml_skill_mgr.profilelist) > 0 ) then
+		local profile
+		for k,v in pairs (ml_skill_mgr.profilelist) do				
+			if ( v.name == pname ) then
+				profile = v
+				break
+			end
+		end	
+		if ( profile ) then
+			ml_skill_mgr.profile = profile:Load()
+			if ( ml_skill_mgr.profile ) then
+				local profession = ml_skill_mgr.GetPlayerProfession()
+				if ( profession ~= nil ) then
+					Settings.minionlib.lastSMProfiles[profession] = ml_skill_mgr.profile.filename
+					Settings.minionlib.lastSMProfiles = Settings.minionlib.lastSMProfiles -- trigger save
+					ml_skill_mgr.lastprofession = profession	-- dont make it load twice
+				end
+				d("[SkillManager] - SelectProfile: "..tostring(pname))				
+				return true
+			end
+		end
+	end
+	return false
+end
+
 function ml_skill_mgr:Use( targetid )
 	if ( ml_skill_mgr.profile) then
 		return ml_skill_mgr.profile:Use(targetid)
@@ -265,6 +291,7 @@ _G["SkillManager"] = {}
 function SkillManager:RegisterProfileTemplate( template ) ml_skill_mgr.ProfileTemplate = template end -- just for internal usage, to get an instance / link to the local sm_skill_profile.lua
 function SkillManager:SetProfileFolder( folderpath ) ml_skill_mgr:SetProfileFolder( folderpath ) end
 function SkillManager:RegisterProfile( folderpath, filename, modfunc, context) return ml_skill_mgr:RegisterProfile( folderpath, filename, modfunc, context ) end
+function SkillManager:SelectProfile( profilename ) return ml_skill_mgr:SelectProfile(profilename) end
 function SkillManager:GetPlayerProfession()	return ml_skill_mgr.GetPlayerProfession() end
 function SkillManager:RenderCodeEditor() if ( ml_skill_mgr.profile ) then ml_skill_mgr.profile:RenderCodeEditor() end end	-- renders the UI code of the SM profile
 function SkillManager:AddCondition(class) ml_skill_mgr.conditions[tostring(class)] = class end
