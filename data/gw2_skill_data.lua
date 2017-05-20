@@ -1,5 +1,1025 @@
 local tbl = 
 {
+	[1110] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BlYEAAA=]",
+		cost = 0,
+		description = "Throw gunk at target area to inflict a random condition.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
+				text = "Range",
+				type = "Range",
+				value = 900,
+			},
+			
+			{
+				dmg_multiplier = 0.3,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Targets",
+				type = "Number",
+				value = 5,
+			},
+			
+			{
+				distance = 120,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Radius",
+				type = "Distance",
+			},
+			
+			{
+				field_type = "Ethereal",
+				icon = "https://render.guildwars2.com/file/59E0DB6A699810641C959926ADFEF73E08CC255B/156655.png",
+				text = "Combo Field",
+				type = "ComboField",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/3A487770D4A0E006D0A0E57C68A639BF7003A5BC/102940.png",
+		id = 1110,
+		initiative = 0,
+		name = "Throw Gunk",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Profession_2",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Profession",
+		weapon_type = "None",
+	},
+	[1115] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BlsEAAA=]",
+		cost = 0,
+		description = "Use the branch to leap at your foe.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
+				text = "Range",
+				type = "Range",
+				value = 450,
+			},
+			
+			{
+				dmg_multiplier = 2.5,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				finisher_type = "Leap",
+				icon = "https://render.guildwars2.com/file/A513F3653D33FBA4220D2D307799F8A327A36A3B/156656.png",
+				percent = 100,
+				text = "Combo Finisher",
+				type = "ComboFinisher",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/15E0A1080FE0AE70ABD305F4DD045139F1216C37/102945.png",
+		id = 1115,
+		initiative = 0,
+		name = "Branch Leap",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Profession_2",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Profession",
+		weapon_type = "None",
+	},
+	[1118] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&Bl4EAAA=]",
+		cost = 0,
+		description = "Throw a chain to cripple and immobilize your foe.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
+				text = "Range",
+				type = "Range",
+				value = 900,
+			},
+			
+			{
+				dmg_multiplier = 0.75,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Unable to move; stacks duration.",
+				duration = 2,
+				icon = "https://render.guildwars2.com/file/397A613651BFCA2832B6469CE34735580A2C120E/102844.png",
+				status = "Immobile",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Movement speed decreased by 50%; stacks duration.",
+				duration = 6,
+				icon = "https://render.guildwars2.com/file/070325E519C178D502A8160523766070D30C0C19/102838.png",
+				status = "Crippled",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				finisher_type = "Projectile",
+				icon = "https://render.guildwars2.com/file/A513F3653D33FBA4220D2D307799F8A327A36A3B/156656.png",
+				percent = 100,
+				text = "Combo Finisher",
+				type = "ComboFinisher",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/07364259014FCB3F01C7F31808C140720DACC70A/102946.png",
+		id = 1118,
+		initiative = 0,
+		name = "Throw Chain",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Profession_2",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Profession",
+		weapon_type = "None",
+	},
+	[1123] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BmMEAAA=]",
+		cost = 0,
+		description = "Gain all boons.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				apply_count = 1,
+				description = "Incoming damage decreased by 33%; stacks duration.",
+				duration = 10,
+				icon = "https://render.guildwars2.com/file/CD77D1FAB7B270223538A8F8ECDA1CFB044D65F4/102834.png",
+				status = "Protection",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Gain health every second; stacks duration.",
+				duration = 10,
+				icon = "https://render.guildwars2.com/file/F69996772B9E18FD18AD0AABAB25D7E3FC42F261/102835.png",
+				status = "Regeneration",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Endurance regeneration increased by 50%; stacks duration.",
+				duration = 10,
+				icon = "https://render.guildwars2.com/file/58E92EBAF0DB4DA7C4AC04D9B22BCA5ECF0100DE/102843.png",
+				status = "Vigor",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Increased outgoing damage; stacks intensity.",
+				duration = 10,
+				icon = "https://render.guildwars2.com/file/2FA9DF9D6BC17839BBEA14723F1C53D645DDB5E1/102852.png",
+				status = "Might",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Critical Chance increased by 20%; stacks duration.",
+				duration = 10,
+				icon = "https://render.guildwars2.com/file/96D90DF84CAFE008233DD1C2606A12C1A0E68048/102842.png",
+				status = "Fury",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Movement speed increased by 33%; stacks duration.",
+				duration = 10,
+				icon = "https://render.guildwars2.com/file/20CFC14967E67F7A3FD4A4B8722B4CF5B8565E11/102836.png",
+				status = "Swiftness",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Reflect incoming damage back to its source; stacks duration.",
+				duration = 5,
+				icon = "https://render.guildwars2.com/file/27F233F7D4CE4E9EFE040E3D665B7B0643557B6E/102883.png",
+				status = "Retaliation",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Block the next incoming attack; stacks duration.",
+				duration = 10,
+				icon = "https://render.guildwars2.com/file/DFB4D1B50AE4D6A275B349E15B179261EE3EB0AF/102854.png",
+				status = "Aegis",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Cannot be knocked down, pushed back, pulled, launched, stunned, dazed, floated, sunk, feared, or taunted.",
+				duration = 3,
+				icon = "https://render.guildwars2.com/file/3D3A1C2D6D791C05179AB871902D28782C65C244/415959.png",
+				status = "Stability",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Conditions currently on you are ineffective; stacks duration.",
+				duration = 3,
+				icon = "https://render.guildwars2.com/file/50BAC1B8E10CFAB9E749A5D910D4A9DCF29EBB7C/961398.png",
+				status = "Resistance",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/BED8F4C37CA1D040CEA5381E082E155DB5D295F7/102949.png",
+		id = 1123,
+		initiative = 0,
+		name = "Consume Plasma",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Profession_2",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Profession",
+		weapon_type = "None",
+	},
+	[1125] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BmUEAAA=]",
+		cost = 0,
+		description = "Restore health and initiative.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/D4347C52157B040943051D7E09DEAD7AF63D4378/156662.png",
+				target = "Healing",
+				text = "Healing",
+				type = "AttributeAdjust",
+				value = 2132,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Initiative Gain",
+				type = "Number",
+				value = 6,
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/23A3644A7C25F9ACCD64C00AE90858C2C2F2A61C/102934.png",
+		id = 1125,
+		initiative = 0,
+		name = "Eat Egg",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Profession_2",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Profession",
+		weapon_type = "None",
+	},
+	[1129] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BmkEAAA=]",
+		cost = 0,
+		description = "Stab and chill your foe.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
+				text = "Range",
+				type = "Range",
+				value = 170,
+			},
+			
+			{
+				dmg_multiplier = 1,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Movement speed decreased by 66%; skill cooldown increased by 66%; stacks duration.",
+				duration = 10,
+				icon = "https://render.guildwars2.com/file/28C4EC547A3516AF0242E826772DA43A5EAC3DF3/102839.png",
+				status = "Chilled",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/53CFF0A54AD6FC3C6959722DCF2B9AB2C1ADF754/102953.png",
+		id = 1129,
+		initiative = 0,
+		name = "Ice Shard Stab",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Profession_2",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Profession",
+		weapon_type = "None",
+	},
+	[1131] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BmsEAAA=]",
+		cost = 0,
+		description = "Daze your foe.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
+				text = "Range",
+				type = "Range",
+				value = 170,
+			},
+			
+			{
+				dmg_multiplier = 1,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Unable to activate skills; stacks duration.",
+				duration = 3,
+				icon = "https://render.guildwars2.com/file/9AE125E930C92FEA0DD99E7EBAEDE4CF5EC556B6/433474.png",
+				status = "Daze",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/EA28344BCD136298D5011EF553763C097C0A09E0/102955.png",
+		id = 1131,
+		initiative = 0,
+		name = "Mace Head Crack",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Profession_2",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Profession",
+		weapon_type = "None",
+	},
+	[1139] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BnMEAAA=]",
+		cost = 0,
+		description = "Periodically grants regeneration and removes conditions from you and your allies.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 15,
+			},
+			
+			{
+				distance = 240,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Radius",
+				type = "Distance",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Gain health every second; stacks duration.",
+				duration = 3,
+				icon = "https://render.guildwars2.com/file/F69996772B9E18FD18AD0AABAB25D7E3FC42F261/102835.png",
+				status = "Regeneration",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Conditions Removed",
+				type = "Number",
+				value = 1,
+			},
+			
+			{
+				duration = 1,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Interval",
+				type = "Time",
+			},
+			
+			{
+				duration = 5,
+				icon = "https://render.guildwars2.com/file/7B2193ACCF77E56C13E608191B082D68AA0FAA71/156659.png",
+				text = "Duration",
+				type = "Time",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Targets",
+				type = "Number",
+				value = 5,
+			},
+			
+			{
+				field_type = "Water",
+				icon = "https://render.guildwars2.com/file/59E0DB6A699810641C959926ADFEF73E08CC255B/156655.png",
+				text = "Combo Field",
+				type = "ComboField",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/C9052DC9C2AF805EC14C903D5EA0536E0A1A243F/102961.png",
+		id = 1139,
+		initiative = 0,
+		name = "Healing Seed",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Profession_2",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Profession",
+		weapon_type = "None",
+	},
+	[1141] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BnUEAAA=]",
+		cost = 0,
+		description = "Strike fear into nearby foes.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
+				text = "Range",
+				type = "Range",
+				value = 600,
+			},
+			
+			{
+				apply_count = 1,
+				description = "Involuntary retreat; unable to act; stacks duration.",
+				duration = 2,
+				icon = "https://render.guildwars2.com/file/30307A6E766D74B6EB09EDA12A4A2DE50E4D76F4/102869.png",
+				status = "Fear",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Involuntary retreat; unable to act; stacks duration.",
+				duration = 2,
+				icon = "https://render.guildwars2.com/file/30307A6E766D74B6EB09EDA12A4A2DE50E4D76F4/102869.png",
+				status = "Fear",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Involuntary retreat; unable to act; stacks duration.",
+				duration = 1,
+				icon = "https://render.guildwars2.com/file/30307A6E766D74B6EB09EDA12A4A2DE50E4D76F4/102869.png",
+				status = "Fear",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Targets",
+				type = "Number",
+				value = 5,
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/44B30CD10A3AA30A80A7A64CE2EF0B942CFF9BFF/102963.png",
+		id = 1141,
+		initiative = 0,
+		name = "Skull Fear",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Profession_2",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Profession",
+		weapon_type = "None",
+	},
+	[1148] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BnwEAAA=]",
+		cost = 0,
+		description = "Throw a handful of hair, vanishing in stealth and blinding nearby foes.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
+				text = "Range",
+				type = "Range",
+				value = 120,
+			},
+			
+			{
+				apply_count = 1,
+				description = "Next outgoing attack misses; stacks duration.",
+				duration = 3,
+				icon = "https://render.guildwars2.com/file/09770136BB76FD0DBE1CC4267DEED54774CB20F6/102837.png",
+				status = "Blinded",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Currently invisible. Ends if you deal damage.",
+				duration = 3,
+				icon = "https://render.guildwars2.com/file/3BD4670638470439F3325B444FAF7D5FA620CCE5/62777.png",
+				status = "Stealth",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Targets",
+				type = "Number",
+				value = 5,
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/08956AFCA1FECE4E5F28A17CA068A2A134A697E5/102970.png",
+		id = 1148,
+		initiative = 0,
+		name = "Blinding Tuft",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Profession_2",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+			
+			{
+				apply_count = 1,
+				description = "Currently invisible. Ends if you deal damage.",
+				duration = 4,
+				icon = "https://render.guildwars2.com/file/3BD4670638470439F3325B444FAF7D5FA620CCE5/62777.png",
+				overrides = 2,
+				requires_trait = 1136,
+				status = "Stealth",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+		},
+		transform_skills = 
+		{
+		},
+		type = "Profession",
+		weapon_type = "None",
+	},
+	[1162] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BooEAAA=]",
+		cost = 0,
+		description = "Spin and attack nearby foes. You can move while spinning.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
+				text = "Range",
+				type = "Range",
+				value = 1200,
+			},
+			
+			{
+				dmg_multiplier = 0.3,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Attacks",
+				type = "Number",
+				value = 15,
+			},
+			
+			{
+				finisher_type = "Whirl",
+				icon = "https://render.guildwars2.com/file/A513F3653D33FBA4220D2D307799F8A327A36A3B/156656.png",
+				percent = 100,
+				text = "Combo Finisher",
+				type = "ComboFinisher",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/ACBF2C0EE9B64FCF12BBA443D16A08256C07B7E0/102941.png",
+		id = 1162,
+		initiative = 0,
+		name = "Whirling Axe",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Profession_2",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Profession",
+		weapon_type = "None",
+	},
+	[1167] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&Bo8EAAA=]",
+		cost = 0,
+		description = "Strike nearby foes, pushing them back.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
+				text = "Range",
+				type = "Range",
+				value = 150,
+			},
+			
+			{
+				dmg_multiplier = 1,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Targets",
+				type = "Number",
+				value = 5,
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/3B72CF3E16A70F730DF1F897565A50147A4FCF7A/103490.png",
+		id = 1167,
+		initiative = 0,
+		name = "Whirling Strike",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Profession_2",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Profession",
+		weapon_type = "None",
+	},
 	[1175] = 
 	{
 		attunement = "",
@@ -52,67 +1072,6 @@ local tbl =
 		},
 		type = "Weapon",
 		weapon_type = "None",
-	},
-	[5486] = 
-	{
-		attunement = "Earth",
-		bundle_skills = 
-		{
-		},
-		categories = 
-		{
-		},
-		chat_link = "[&Bm4VAAA=]",
-		cost = 0,
-		description = "Spear your foes on a giant stone spike.",
-		dual_wield = "",
-		facts = 
-		{
-			
-			{
-				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
-				text = "Range",
-				type = "Range",
-				value = 900,
-			},
-			
-			{
-				dmg_multiplier = 0.6,
-				hit_count = 1,
-				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
-				text = "Damage",
-				type = "Damage",
-			},
-		},
-		flip_skill = 0,
-		icon = "https://render.guildwars2.com/file/65490660DC4D12927816F9A224CB982227597A35/103106.png",
-		id = 5486,
-		initiative = 0,
-		name = "Impale",
-		next_chain = 0,
-		prev_chain = 0,
-		professions = 
-		{
-			Elementalist = true,
-			Engineer = false,
-			Guardian = false,
-			Mesmer = false,
-			Necromancer = false,
-			Ranger = false,
-			Revenant = false,
-			Thief = false,
-			Warrior = false,
-		},
-		slot = "Weapon_1",
-		toolbelt_skill = 0,
-		traited_facts = 
-		{
-		},
-		transform_skills = 
-		{
-		},
-		type = "Weapon",
-		weapon_type = "Dagger",
 	},
 	[5487] = 
 	{
@@ -811,9 +1770,27 @@ local tbl =
 			},
 			
 			{
+				dmg_multiplier = 0.8,
+				hit_count = 4,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
 				apply_count = 4,
 				description = "Deals damage every second; stacks intensity.",
 				duration = 3,
+				icon = "https://render.guildwars2.com/file/B47BF5803FED2718D7474EAF9617629AD068EE10/102849.png",
+				status = "Burning",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 4,
+				description = "Deals damage every second; stacks intensity.",
+				duration = 4,
 				icon = "https://render.guildwars2.com/file/B47BF5803FED2718D7474EAF9617629AD068EE10/102849.png",
 				status = "Burning",
 				text = "Apply Buff/Condition",
@@ -1468,7 +2445,7 @@ local tbl =
 		},
 		chat_link = "[&BoIVAAA=]",
 		cost = 0,
-		description = "Glyph. Gain a chance for spells to inflict a condition based on your attunement.",
+		description = "Glyph. Inflict conditions on your next few strikes based on your attunement.",
 		dual_wield = "",
 		facts = 
 		{
@@ -1477,18 +2454,11 @@ local tbl =
 				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
 				text = "Recharge",
 				type = "Recharge",
-				value = 45,
+				value = 25,
 			},
 			
 			{
-				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
-				percent = 100,
-				text = "Trigger Chance",
-				type = "Percent",
-			},
-			
-			{
-				apply_count = 2,
+				apply_count = 1,
 				description = "Deals damage every second; stacks intensity.",
 				duration = 3,
 				icon = "https://render.guildwars2.com/file/B47BF5803FED2718D7474EAF9617629AD068EE10/102849.png",
@@ -1522,10 +2492,10 @@ local tbl =
 			},
 			
 			{
-				apply_count = 1,
-				description = "Endurance regeneration decreased by 50%. 50% of hits are Glancing Blows (50% damage). Stacks duration.",
-				duration = 3,
-				icon = "https://render.guildwars2.com/file/6CB0E64AF9AA292E332A38C1770CE577E2CDE0E8/102853.png",
+				apply_count = 4,
+				description = "Damage and condition damage taken are increased; stacks intensity.",
+				duration = 5,
+				icon = "https://render.guildwars2.com/file/3A394C1A0A3257EB27A44842DDEEF0DF000E1241/102850.png",
 				prefix = 
 				{
 					description = "Cast air spells.",
@@ -1533,16 +2503,16 @@ local tbl =
 					status = "Air Attunement",
 					text = "Apply Buff/Condition",
 				},
-				status = "Weakness",
+				status = "Vulnerability",
 				text = "Apply Buff/Condition",
 				type = "PrefixedBuff",
 			},
 			
 			{
 				apply_count = 1,
-				description = "Movement speed decreased by 50%; stacks duration.",
-				duration = 5,
-				icon = "https://render.guildwars2.com/file/070325E519C178D502A8160523766070D30C0C19/102838.png",
+				description = "Deals damage every second; stacks intensity.",
+				duration = 6,
+				icon = "https://render.guildwars2.com/file/79FF0046A5F9ADA3B4C4EC19ADB4CB124D5F0021/102848.png",
 				prefix = 
 				{
 					description = "Cast earth spells.",
@@ -1550,23 +2520,23 @@ local tbl =
 					status = "Earth Attunement",
 					text = "Apply Buff/Condition",
 				},
-				status = "Crippled",
+				status = "Bleeding",
 				text = "Apply Buff/Condition",
 				type = "PrefixedBuff",
 			},
 			
 			{
-				duration = 5,
+				duration = 25,
 				icon = "https://render.guildwars2.com/file/7B2193ACCF77E56C13E608191B082D68AA0FAA71/156659.png",
-				text = "Effect Recharge",
+				text = "Duration",
 				type = "Time",
 			},
 			
 			{
-				duration = 30,
-				icon = "https://render.guildwars2.com/file/7B2193ACCF77E56C13E608191B082D68AA0FAA71/156659.png",
-				text = "Duration",
-				type = "Time",
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Strikes",
+				type = "Number",
+				value = 5,
 			},
 		},
 		flip_skill = 0,
@@ -2543,6 +3513,13 @@ local tbl =
 			},
 			
 			{
+				duration = 3,
+				icon = "https://render.guildwars2.com/file/7B2193ACCF77E56C13E608191B082D68AA0FAA71/156659.png",
+				text = "Duration",
+				type = "Time",
+			},
+			
+			{
 				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
 				text = "Prevents Capture-Point Contribution",
 				type = "NoData",
@@ -2693,67 +3670,6 @@ local tbl =
 		type = "Weapon",
 		weapon_type = "Dagger",
 	},
-	[5524] = 
-	{
-		attunement = "Fire",
-		bundle_skills = 
-		{
-		},
-		categories = 
-		{
-		},
-		chat_link = "[&BpQVAAA=]",
-		cost = 0,
-		description = "Fling fire in a claw-shaped spread at your foe.",
-		dual_wield = "",
-		facts = 
-		{
-			
-			{
-				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
-				text = "Range",
-				type = "Range",
-				value = 400,
-			},
-			
-			{
-				dmg_multiplier = 0.4,
-				hit_count = 1,
-				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
-				text = "Damage per Projectile",
-				type = "Damage",
-			},
-		},
-		flip_skill = 0,
-		icon = "https://render.guildwars2.com/file/1663AA3AC00FA2F31C4DD4040A759EAB0307B92A/103211.png",
-		id = 5524,
-		initiative = 0,
-		name = "Dragon's Claw",
-		next_chain = 0,
-		prev_chain = 0,
-		professions = 
-		{
-			Elementalist = true,
-			Engineer = false,
-			Guardian = false,
-			Mesmer = false,
-			Necromancer = false,
-			Ranger = false,
-			Revenant = false,
-			Thief = false,
-			Warrior = false,
-		},
-		slot = "Weapon_1",
-		toolbelt_skill = 0,
-		traited_facts = 
-		{
-		},
-		transform_skills = 
-		{
-		},
-		type = "Weapon",
-		weapon_type = "Dagger",
-	},
 	[5525] = 
 	{
 		attunement = "Earth",
@@ -2879,6 +3795,14 @@ local tbl =
 			},
 			
 			{
+				dmg_multiplier = 0.15,
+				hit_count = 3,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Stage 1 Damage",
+				type = "Damage",
+			},
+			
+			{
 				dmg_multiplier = 0.12,
 				hit_count = 3,
 				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
@@ -2887,10 +3811,26 @@ local tbl =
 			},
 			
 			{
+				dmg_multiplier = 0.3,
+				hit_count = 3,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Stage 2 Damage",
+				type = "Damage",
+			},
+			
+			{
 				dmg_multiplier = 0.24,
 				hit_count = 3,
 				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
 				text = "Stage 2 Damage",
+				type = "Damage",
+			},
+			
+			{
+				dmg_multiplier = 0.449,
+				hit_count = 4,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Stage 3 Damage",
 				type = "Damage",
 			},
 			
@@ -3005,7 +3945,7 @@ local tbl =
 			Thief = false,
 			Warrior = false,
 		},
-		slot = "Weapon_4",
+		slot = "Weapon_3",
 		toolbelt_skill = 0,
 		traited_facts = 
 		{
@@ -3187,7 +4127,7 @@ local tbl =
 			Thief = false,
 			Warrior = false,
 		},
-		slot = "Weapon_3",
+		slot = "Weapon_4",
 		toolbelt_skill = 0,
 		traited_facts = 
 		{
@@ -3899,7 +4839,7 @@ local tbl =
 			Thief = false,
 			Warrior = false,
 		},
-		slot = "Weapon_1",
+		slot = "Weapon_2",
 		toolbelt_skill = 0,
 		traited_facts = 
 		{
@@ -5504,7 +6444,7 @@ local tbl =
 			Thief = false,
 			Warrior = false,
 		},
-		slot = "Weapon_2",
+		slot = "Weapon_5",
 		toolbelt_skill = 0,
 		traited_facts = 
 		{
@@ -5598,83 +6538,6 @@ local tbl =
 			Warrior = false,
 		},
 		slot = "Weapon_3",
-		toolbelt_skill = 0,
-		traited_facts = 
-		{
-		},
-		transform_skills = 
-		{
-		},
-		type = "Weapon",
-		weapon_type = "Dagger",
-	},
-	[5560] = 
-	{
-		attunement = "Water",
-		bundle_skills = 
-		{
-		},
-		categories = 
-		{
-		},
-		chat_link = "[&BrgVAAA=]",
-		cost = 0,
-		description = "Summon a geyser to heal nearby allies.",
-		dual_wield = "",
-		facts = 
-		{
-			
-			{
-				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
-				text = "Range",
-				type = "Range",
-				value = 1200,
-			},
-			
-			{
-				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
-				text = "Recharge",
-				type = "Recharge",
-				value = 40,
-			},
-			
-			{
-				apply_count = 1,
-				description = "Gain health every second; stacks duration.",
-				duration = 1,
-				icon = "https://render.guildwars2.com/file/F69996772B9E18FD18AD0AABAB25D7E3FC42F261/102835.png",
-				status = "Regeneration",
-				text = "Apply Buff/Condition",
-				type = "Buff",
-			},
-			
-			{
-				duration = 10,
-				icon = "https://render.guildwars2.com/file/7B2193ACCF77E56C13E608191B082D68AA0FAA71/156659.png",
-				text = "Duration",
-				type = "Time",
-			},
-		},
-		flip_skill = 0,
-		icon = "https://render.guildwars2.com/file/4CCE5E636B2FCD33495780FB1BCD02A3666DEEBC/103290.png",
-		id = 5560,
-		initiative = 0,
-		name = "Geyser",
-		next_chain = 0,
-		prev_chain = 0,
-		professions = 
-		{
-			Elementalist = true,
-			Engineer = false,
-			Guardian = false,
-			Mesmer = false,
-			Necromancer = false,
-			Ranger = false,
-			Revenant = false,
-			Thief = false,
-			Warrior = false,
-		},
-		slot = "Weapon_5",
 		toolbelt_skill = 0,
 		traited_facts = 
 		{
@@ -8439,7 +9302,7 @@ local tbl =
 		},
 		chat_link = "[&BgMWAAA=]",
 		cost = 0,
-		description = "Arcane. Your next five attacks do critical damage.",
+		description = "Arcane. You and nearby allies do critical damage with your next few attacks. Each stack of Arcane Power grants bonus ferocity.",
 		dual_wield = "",
 		facts = 
 		{
@@ -8452,13 +9315,34 @@ local tbl =
 			},
 			
 			{
-				apply_count = 5,
+				apply_count = 1,
 				description = "Attacks do critical damage.",
 				duration = 30,
 				icon = "https://render.guildwars2.com/file/AD24BD1B231424D2A8F223A6F899AC34D6AAAB26/103356.png",
-				status = "Glyph of Arcane Power",
+				status = "Arcane Power",
 				text = "Apply Buff/Condition",
 				type = "Buff",
+			},
+			
+			{
+				distance = 240,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Radius",
+				type = "Distance",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Allied Targets",
+				type = "Number",
+				value = 5,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Stacks",
+				type = "Number",
+				value = 4,
 			},
 		},
 		flip_skill = 0,
@@ -9899,101 +10783,6 @@ local tbl =
 		},
 		type = "Elite",
 		weapon_type = "None",
-	},
-	[5668] = 
-	{
-		attunement = "Fire",
-		bundle_skills = 
-		{
-		},
-		categories = 
-		{
-		},
-		chat_link = "[&BiQWAAA=]",
-		cost = 0,
-		description = "Encircle target area in flame, burning foes that enter.",
-		dual_wield = "",
-		facts = 
-		{
-			
-			{
-				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
-				text = "Range",
-				type = "Range",
-				value = 900,
-			},
-			
-			{
-				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
-				text = "Recharge",
-				type = "Recharge",
-				value = 10,
-			},
-			
-			{
-				dmg_multiplier = 0.5,
-				hit_count = 1,
-				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
-				text = "Damage",
-				type = "Damage",
-			},
-			
-			{
-				apply_count = 1,
-				description = "Deals damage every second; stacks intensity.",
-				duration = 4,
-				icon = "https://render.guildwars2.com/file/B47BF5803FED2718D7474EAF9617629AD068EE10/102849.png",
-				status = "Burning",
-				text = "Apply Buff/Condition",
-				type = "Buff",
-			},
-			
-			{
-				apply_count = 240,
-				description = "Area of Effect: Nearby",
-				duration = 1,
-				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
-				status = "Aoe 240",
-				text = "Apply Buff/Condition",
-				type = "Buff",
-			},
-			
-			{
-				duration = 6,
-				icon = "https://render.guildwars2.com/file/7B2193ACCF77E56C13E608191B082D68AA0FAA71/156659.png",
-				text = "Duration",
-				type = "Time",
-			},
-		},
-		flip_skill = 0,
-		icon = "https://render.guildwars2.com/file/CD08FDC23B56EBB19C90B909C65D9EE4D9FFF8C8/103183.png",
-		id = 5668,
-		initiative = 0,
-		name = "Ring of Fire",
-		next_chain = 0,
-		prev_chain = 0,
-		professions = 
-		{
-			Elementalist = true,
-			Engineer = false,
-			Guardian = false,
-			Mesmer = false,
-			Necromancer = false,
-			Ranger = false,
-			Revenant = false,
-			Thief = false,
-			Warrior = false,
-		},
-		slot = "Weapon_5",
-		toolbelt_skill = 0,
-		traited_facts = 
-		{
-		},
-		transform_skills = 
-		{
-		},
-		type = "Weapon",
-		weapon_type = "Dagger",
 	},
 	[5671] = 
 	{
@@ -14221,6 +15010,85 @@ local tbl =
 		type = "Utility",
 		weapon_type = "None",
 	},
+	[5777] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+			"Cantrip",
+		},
+		chat_link = "[&BpEWAAA=]",
+		cost = 0,
+		description = "Cantrip. Protect yourself with earth armor and gain protection and stability.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 75,
+			},
+			
+			{
+				apply_count = 1,
+				description = "Incoming damage decreased by 33%; stacks duration.",
+				duration = 6,
+				icon = "https://render.guildwars2.com/file/CD77D1FAB7B270223538A8F8ECDA1CFB044D65F4/102834.png",
+				status = "Protection",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 10,
+				description = "Cannot be knocked down, pushed back, pulled, launched, stunned, dazed, floated, sunk, feared, or taunted.",
+				duration = 6,
+				icon = "https://render.guildwars2.com/file/3D3A1C2D6D791C05179AB871902D28782C65C244/415959.png",
+				status = "Stability",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				duration = 6,
+				icon = "https://render.guildwars2.com/file/7B2193ACCF77E56C13E608191B082D68AA0FAA71/156659.png",
+				text = "Duration",
+				type = "Time",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/C4FF5D0F0942BC27D7277CC9CB64280F451B16C5/103070.png",
+		id = 5777,
+		initiative = 0,
+		name = "Armor of Earth",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+	},
 	[5780] = 
 	{
 		attunement = "Earth",
@@ -14299,6 +15167,449 @@ local tbl =
 		},
 		type = "Weapon",
 		weapon_type = "Scepter",
+	},
+	[5791] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&Bp8WAAA=]",
+		cost = 0,
+		description = "Envelop yourself with electrical energy that stuns nearby foes if they attack you. Each attacker can be affected by this only once every 2 seconds.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 25,
+			},
+			
+			{
+				apply_count = 1,
+				description = "Stun nearby attacking foes with an electric shock (only once per 2 seconds for each attacker).",
+				duration = 4,
+				icon = "https://render.guildwars2.com/file/9D30A3547A777040C5FE730816A13932FDFDD77F/103104.png",
+				status = "Shocking Aura",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				duration = 1,
+				icon = "https://render.guildwars2.com/file/143F46DEF466062F01C52B69922FFCEF73DCA801/156668.png",
+				text = "Stun",
+				type = "Time",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/9D30A3547A777040C5FE730816A13932FDFDD77F/103104.png",
+		id = 5791,
+		initiative = 0,
+		name = "Shocking Aura",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+			
+			{
+				apply_count = 1,
+				description = "Critical Chance increased by 20%; stacks duration.",
+				duration = 5,
+				icon = "https://render.guildwars2.com/file/96D90DF84CAFE008233DD1C2606A12C1A0E68048/102842.png",
+				overrides = 0,
+				requires_trait = 227,
+				status = "Fury",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Incoming damage decreased by 33%; stacks duration.",
+				duration = 3,
+				icon = "https://render.guildwars2.com/file/CD77D1FAB7B270223538A8F8ECDA1CFB044D65F4/102834.png",
+				overrides = 0,
+				requires_trait = 289,
+				status = "Protection",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Movement speed increased by 33%; stacks duration.",
+				duration = 5,
+				icon = "https://render.guildwars2.com/file/20CFC14967E67F7A3FD4A4B8722B4CF5B8565E11/102836.png",
+				overrides = 0,
+				requires_trait = 227,
+				status = "Swiftness",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+		},
+		transform_skills = 
+		{
+		},
+	},
+	[5792] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BqAWAAA=]",
+		cost = 0,
+		description = "Blind nearby foes.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 10,
+			},
+			
+			{
+				apply_count = 1,
+				description = "Next outgoing attack misses; stacks duration.",
+				duration = 5,
+				icon = "https://render.guildwars2.com/file/09770136BB76FD0DBE1CC4267DEED54774CB20F6/102837.png",
+				status = "Blinded",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Targets",
+				type = "Number",
+				value = 5,
+			},
+			
+			{
+				distance = 180,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Radius",
+				type = "Distance",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/2E2837AB65D4283DD23673CB21450A9CC5D2F07F/103384.png",
+		id = 5792,
+		initiative = 0,
+		name = "Blinding Flash",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+	},
+	[5793] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BqEWAAA=]",
+		cost = 0,
+		description = "Heal yourself and nearby allies, curing a condition.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 10,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/D4347C52157B040943051D7E09DEAD7AF63D4378/156662.png",
+				target = "Healing",
+				text = "Healing",
+				type = "AttributeAdjust",
+				value = 1302,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Conditions Removed",
+				type = "Number",
+				value = 1,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Targets",
+				type = "Number",
+				value = 5,
+			},
+			
+			{
+				distance = 180,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Radius",
+				type = "Distance",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/180D2C7CDB69E301401509737CEC35F90D57E358/102819.png",
+		id = 5793,
+		initiative = 0,
+		name = "Cleansing Wave",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+	},
+	[5794] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BqIWAAA=]",
+		cost = 0,
+		description = "Burn nearby foes.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 10,
+			},
+			
+			{
+				dmg_multiplier = 0.1,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				apply_count = 2,
+				description = "Deals damage every second; stacks intensity.",
+				duration = 6,
+				icon = "https://render.guildwars2.com/file/B47BF5803FED2718D7474EAF9617629AD068EE10/102849.png",
+				status = "Burning",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Targets",
+				type = "Number",
+				value = 5,
+			},
+			
+			{
+				distance = 180,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Radius",
+				type = "Radius",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/610424237E18EA90F0D824454104355309FF5DDA/102959.png",
+		id = 5794,
+		initiative = 0,
+		name = "Flame Burst",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+	},
+	[5795] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BqMWAAA=]",
+		cost = 0,
+		description = "Create a shock wave that bleeds and cripples nearby foes.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 10,
+			},
+			
+			{
+				dmg_multiplier = 0.5,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Deals damage every second; stacks intensity.",
+				duration = 20,
+				icon = "https://render.guildwars2.com/file/79FF0046A5F9ADA3B4C4EC19ADB4CB124D5F0021/102848.png",
+				status = "Bleeding",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Movement speed decreased by 50%; stacks duration.",
+				duration = 2,
+				icon = "https://render.guildwars2.com/file/070325E519C178D502A8160523766070D30C0C19/102838.png",
+				status = "Crippled",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Targets",
+				type = "Number",
+				value = 5,
+			},
+			
+			{
+				distance = 180,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Radius",
+				type = "Distance",
+			},
+			
+			{
+				finisher_type = "Blast",
+				icon = "https://render.guildwars2.com/file/A513F3653D33FBA4220D2D307799F8A327A36A3B/156656.png",
+				percent = 100,
+				text = "Combo Finisher",
+				type = "ComboFinisher",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/69CFF22DD8599E35164720AC02A5F2044C33C7DD/103136.png",
+		id = 5795,
+		initiative = 0,
+		name = "Shock Wave",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
 	},
 	[5802] = 
 	{
@@ -15288,7 +16599,7 @@ local tbl =
 		},
 		chat_link = "[&BroWAAA=]",
 		cost = 0,
-		description = "Turret. Build a rifle turret that shoots at foes.",
+		description = "Turret. Build a rifle turret that shoots at foes. This turret overcharges when it is first placed.",
 		dual_wield = "",
 		facts = 
 		{
@@ -16947,7 +18258,7 @@ local tbl =
 		},
 		chat_link = "[&BswWAAA=]",
 		cost = 0,
-		description = "Turret. Deploy a turret that burns foes.",
+		description = "Turret. Deploy a turret that burns foes. This turret overcharges when it is first placed.",
 		dual_wield = "",
 		facts = 
 		{
@@ -16956,7 +18267,7 @@ local tbl =
 				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
 				text = "Recharge",
 				type = "Recharge",
-				value = 25,
+				value = 20,
 			},
 			
 			{
@@ -17061,7 +18372,7 @@ local tbl =
 		},
 		chat_link = "[&Bs0WAAA=]",
 		cost = 0,
-		description = "Turret. Build a net turret that immobilizes nearby foes.",
+		description = "Turret. Build a net turret that immobilizes nearby foes. This turret overcharges when it is first placed.",
 		dual_wield = "",
 		facts = 
 		{
@@ -17160,7 +18471,7 @@ local tbl =
 		},
 		chat_link = "[&Bs4WAAA=]",
 		cost = 0,
-		description = "Turret. Build a high-health thumper turret that damages nearby foes.",
+		description = "Turret. Build a high-health thumper turret that damages nearby foes. This turret overcharges when it is first placed.",
 		dual_wield = "",
 		facts = 
 		{
@@ -17169,7 +18480,7 @@ local tbl =
 				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
 				text = "Recharge",
 				type = "Recharge",
-				value = 50,
+				value = 40,
 			},
 			
 			{
@@ -17211,7 +18522,7 @@ local tbl =
 				value = 5,
 			},
 		},
-		flip_skill = 5889,
+		flip_skill = 5960,
 		icon = "https://render.guildwars2.com/file/EA2452FCE71C0F0B9755517324A47680BF45E79E/103201.png",
 		id = 5838,
 		initiative = 0,
@@ -17374,7 +18685,7 @@ local tbl =
 		},
 		chat_link = "[&BuEWAAA=]",
 		cost = 0,
-		description = "Turret. Deploy a turret that heals you briefly, then regenerates you and your allies.",
+		description = "Turret. Deploy a turret that heals you briefly, then regenerates you and your allies. This turret overcharges when it is first placed.",
 		dual_wield = "",
 		facts = 
 		{
@@ -17930,7 +19241,7 @@ local tbl =
 		},
 		chat_link = "[&BuwWAAA=]",
 		cost = 0,
-		description = "Turret. Request a supply drop of turrets.",
+		description = "Turret. Request a supply drop of turrets. Turrets overcharge when they are first dropped.",
 		dual_wield = "",
 		facts = 
 		{
@@ -18049,13 +19360,6 @@ local tbl =
 		{
 			
 			{
-				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
-				text = "Recharge",
-				type = "Recharge",
-				value = 30,
-			},
-			
-			{
 				dmg_multiplier = 0.75,
 				hit_count = 1,
 				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
@@ -18114,7 +19418,7 @@ local tbl =
 			Warrior = false,
 		},
 		slot = "Utility",
-		toolbelt_skill = 5957,
+		toolbelt_skill = 0,
 		traited_facts = 
 		{
 		},
@@ -18248,13 +19552,6 @@ local tbl =
 		{
 			
 			{
-				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
-				text = "Recharge",
-				type = "Recharge",
-				value = 30,
-			},
-			
-			{
 				dmg_multiplier = 1.5,
 				hit_count = 1,
 				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
@@ -18263,7 +19560,7 @@ local tbl =
 			},
 			
 			{
-				distance = 400,
+				distance = 0,
 				icon = "https://render.guildwars2.com/file/CB330EF25C62C05F1800A1C507B6AE4944551746/156653.png",
 				text = "Launch",
 				type = "Distance",
@@ -18311,7 +19608,7 @@ local tbl =
 			Warrior = false,
 		},
 		slot = "Utility",
-		toolbelt_skill = 5960,
+		toolbelt_skill = 0,
 		traited_facts = 
 		{
 		},
@@ -18336,13 +19633,6 @@ local tbl =
 		dual_wield = "",
 		facts = 
 		{
-			
-			{
-				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
-				text = "Recharge",
-				type = "Recharge",
-				value = 30,
-			},
 			
 			{
 				dmg_multiplier = 0.5,
@@ -18403,14 +19693,14 @@ local tbl =
 			Warrior = false,
 		},
 		slot = "Utility",
-		toolbelt_skill = 5984,
+		toolbelt_skill = 0,
 		traited_facts = 
 		{
 			
 			{
 				duration = 3,
 				icon = "https://render.guildwars2.com/file/143F46DEF466062F01C52B69922FFCEF73DCA801/156668.png",
-				overrides = 3,
+				overrides = 2,
 				requires_trait = 1877,
 				text = "Stun",
 				type = "Time",
@@ -18437,13 +19727,6 @@ local tbl =
 		dual_wield = "",
 		facts = 
 		{
-			
-			{
-				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
-				text = "Recharge",
-				type = "Recharge",
-				value = 30,
-			},
 			
 			{
 				apply_count = 1,
@@ -18503,7 +19786,7 @@ local tbl =
 			Warrior = false,
 		},
 		slot = "Utility",
-		toolbelt_skill = 5985,
+		toolbelt_skill = 0,
 		traited_facts = 
 		{
 		},
@@ -18764,7 +20047,7 @@ local tbl =
 		},
 		chat_link = "[&BhgXAAA=]",
 		cost = 0,
-		description = "Turret. Build a turret that fires rockets.",
+		description = "Turret. Build a turret that fires rockets. This turret overcharges when it is first placed.",
 		dual_wield = "",
 		facts = 
 		{
@@ -18773,7 +20056,7 @@ local tbl =
 				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
 				text = "Recharge",
 				type = "Recharge",
-				value = 50,
+				value = 40,
 			},
 			
 			{
@@ -18886,13 +20169,6 @@ local tbl =
 		{
 			
 			{
-				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
-				text = "Recharge",
-				type = "Recharge",
-				value = 20,
-			},
-			
-			{
 				dmg_multiplier = 2.5,
 				hit_count = 1,
 				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
@@ -18968,7 +20244,7 @@ local tbl =
 			Warrior = false,
 		},
 		slot = "Utility",
-		toolbelt_skill = 6134,
+		toolbelt_skill = 0,
 		traited_facts = 
 		{
 		},
@@ -20291,8 +21567,8 @@ local tbl =
 			Thief = false,
 			Warrior = false,
 		},
-		slot = "Toolbelt",
-		toolbelt_skill = 0,
+		slot = "Utility",
+		toolbelt_skill = 6178,
 		traited_facts = 
 		{
 			
@@ -20317,7 +21593,7 @@ local tbl =
 		transform_skills = 
 		{
 		},
-		type = "Toolbelt",
+		type = "Utility",
 		weapon_type = "None",
 	},
 	[5960] = 
@@ -20385,8 +21661,8 @@ local tbl =
 			Thief = false,
 			Warrior = false,
 		},
-		slot = "Toolbelt",
-		toolbelt_skill = 0,
+		slot = "Utility",
+		toolbelt_skill = 6180,
 		traited_facts = 
 		{
 			
@@ -20411,7 +21687,7 @@ local tbl =
 		transform_skills = 
 		{
 		},
-		type = "Toolbelt",
+		type = "Utility",
 		weapon_type = "None",
 	},
 	[5961] = 
@@ -20478,8 +21754,8 @@ local tbl =
 			Thief = false,
 			Warrior = false,
 		},
-		slot = "Toolbelt",
-		toolbelt_skill = 0,
+		slot = "Heal",
+		toolbelt_skill = 6176,
 		traited_facts = 
 		{
 			
@@ -20496,7 +21772,7 @@ local tbl =
 		transform_skills = 
 		{
 		},
-		type = "Toolbelt",
+		type = "Heal",
 		weapon_type = "None",
 	},
 	[5962] = 
@@ -21769,13 +23045,6 @@ local tbl =
 		{
 			
 			{
-				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
-				text = "Recharge",
-				type = "Recharge",
-				value = 15,
-			},
-			
-			{
 				icon = "https://render.guildwars2.com/file/D4347C52157B040943051D7E09DEAD7AF63D4378/156662.png",
 				target = "Healing",
 				text = "Healing",
@@ -21841,7 +23110,7 @@ local tbl =
 			Warrior = false,
 		},
 		slot = "Heal",
-		toolbelt_skill = 5961,
+		toolbelt_skill = 0,
 		traited_facts = 
 		{
 		},
@@ -22109,8 +23378,8 @@ local tbl =
 			Thief = false,
 			Warrior = false,
 		},
-		slot = "Toolbelt",
-		toolbelt_skill = 0,
+		slot = "Utility",
+		toolbelt_skill = 6179,
 		traited_facts = 
 		{
 			
@@ -22135,7 +23404,7 @@ local tbl =
 		transform_skills = 
 		{
 		},
-		type = "Toolbelt",
+		type = "Utility",
 		weapon_type = "None",
 	},
 	[5985] = 
@@ -22203,8 +23472,8 @@ local tbl =
 			Thief = false,
 			Warrior = false,
 		},
-		slot = "Toolbelt",
-		toolbelt_skill = 0,
+		slot = "Utility",
+		toolbelt_skill = 6181,
 		traited_facts = 
 		{
 			
@@ -22229,7 +23498,7 @@ local tbl =
 		transform_skills = 
 		{
 		},
-		type = "Toolbelt",
+		type = "Utility",
 		weapon_type = "None",
 	},
 	[5987] = 
@@ -22463,7 +23732,7 @@ local tbl =
 				type = "Distance",
 			},
 		},
-		flip_skill = 0,
+		flip_skill = 5957,
 		icon = "https://render.guildwars2.com/file/FE750EEBB19017A516C521E3F2754F970318206D/103401.png",
 		id = 5989,
 		initiative = 0,
@@ -22556,7 +23825,7 @@ local tbl =
 				type = "Distance",
 			},
 		},
-		flip_skill = 0,
+		flip_skill = 5960,
 		icon = "https://render.guildwars2.com/file/EA2452FCE71C0F0B9755517324A47680BF45E79E/103201.png",
 		id = 5990,
 		initiative = 0,
@@ -24353,6 +25622,120 @@ local tbl =
 		type = "Bundle",
 		weapon_type = "None",
 	},
+	[6050] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BqIXAAA=]",
+		cost = 0,
+		description = "Throw several grenades at once.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 20,
+			},
+			
+			{
+				dmg_multiplier = 0.5,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Grenades",
+				type = "Number",
+				value = 6,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Blast Radius",
+				type = "Number",
+				value = 120,
+			},
+			
+			{
+				distance = 300,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Radius",
+				type = "Distance",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Explosion",
+				type = "NoData",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/5B2AB667667749BC1BC7AEFD27362E3E0E0F2FE6/103294.png",
+		id = 6050,
+		initiative = 0,
+		name = "Grenade Barrage",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+			
+			{
+				dmg_multiplier = 0.55,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				overrides = 1,
+				requires_trait = 429,
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				overrides = 2,
+				requires_trait = 514,
+				text = "Number of Grenades",
+				type = "Number",
+				value = 7,
+			},
+			
+			{
+				distance = 360,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				overrides = 4,
+				requires_trait = 514,
+				text = "Radius",
+				type = "Distance",
+			},
+		},
+		transform_skills = 
+		{
+		},
+	},
 	[6053] = 
 	{
 		attunement = "",
@@ -25508,7 +26891,7 @@ local tbl =
 		},
 		chat_link = "[&Bs0XAAA=]",
 		cost = 0,
-		description = "Turret. Build a harpoon turret that shoots at foes.",
+		description = "Turret. Build a harpoon turret that shoots at foes. This turret overcharges when it is first placed.",
 		dual_wield = "",
 		facts = 
 		{
@@ -25542,7 +26925,7 @@ local tbl =
 				type = "Distance",
 			},
 		},
-		flip_skill = 6098,
+		flip_skill = 6097,
 		icon = "https://render.guildwars2.com/file/FE750EEBB19017A516C521E3F2754F970318206D/103401.png",
 		id = 6093,
 		initiative = 0,
@@ -25630,8 +27013,8 @@ local tbl =
 			Thief = false,
 			Warrior = false,
 		},
-		slot = "Toolbelt",
-		toolbelt_skill = 0,
+		slot = "Utility",
+		toolbelt_skill = 6182,
 		traited_facts = 
 		{
 			
@@ -25656,7 +27039,7 @@ local tbl =
 		transform_skills = 
 		{
 		},
-		type = "Toolbelt",
+		type = "Utility",
 		weapon_type = "None",
 	},
 	[6098] = 
@@ -25674,13 +27057,6 @@ local tbl =
 		dual_wield = "",
 		facts = 
 		{
-			
-			{
-				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
-				text = "Recharge",
-				type = "Recharge",
-				value = 30,
-			},
 			
 			{
 				dmg_multiplier = 2,
@@ -25741,7 +27117,7 @@ local tbl =
 			Warrior = false,
 		},
 		slot = "Utility",
-		toolbelt_skill = 6097,
+		toolbelt_skill = 0,
 		traited_facts = 
 		{
 		},
@@ -26510,8 +27886,8 @@ local tbl =
 			Thief = false,
 			Warrior = false,
 		},
-		slot = "Toolbelt",
-		toolbelt_skill = 0,
+		slot = "Utility",
+		toolbelt_skill = 6177,
 		traited_facts = 
 		{
 			
@@ -26536,7 +27912,7 @@ local tbl =
 		transform_skills = 
 		{
 		},
-		type = "Toolbelt",
+		type = "Utility",
 		weapon_type = "None",
 	},
 	[6140] = 
@@ -27256,6 +28632,38 @@ local tbl =
 				text = "Recharge",
 				type = "Recharge",
 				value = 10,
+			},
+			
+			{
+				dmg_multiplier = 1.76,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage within 0-250 Range",
+				type = "Damage",
+			},
+			
+			{
+				dmg_multiplier = 1.54,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage within 250-400 Range",
+				type = "Damage",
+			},
+			
+			{
+				dmg_multiplier = 1.32,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage within 400-550 Range",
+				type = "Damage",
+			},
+			
+			{
+				dmg_multiplier = 1.1,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage within 550-700 Range",
+				type = "Damage",
 			},
 			
 			{
@@ -29429,7 +30837,7 @@ local tbl =
 		},
 		chat_link = "[&BicYAAA=]",
 		cost = 0,
-		description = "Turret. Request a supply drop of turrets.",
+		description = "Turret. Request a supply drop of turrets. Turrets overcharge when they are first dropped.",
 		dual_wield = "",
 		facts = 
 		{
@@ -30120,6 +31528,16 @@ local tbl =
 				duration = 10,
 				icon = "https://render.guildwars2.com/file/58E92EBAF0DB4DA7C4AC04D9B22BCA5ECF0100DE/102843.png",
 				status = "Vigor",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Conditions currently on you are ineffective; stacks duration.",
+				duration = 2,
+				icon = "https://render.guildwars2.com/file/50BAC1B8E10CFAB9E749A5D910D4A9DCF29EBB7C/961398.png",
+				status = "Resistance",
 				text = "Apply Buff/Condition",
 				type = "Buff",
 			},
@@ -31396,6 +32814,95 @@ local tbl =
 		},
 		type = "Weapon",
 		weapon_type = "Scepter",
+	},
+	[9101] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+			"Meditation",
+		},
+		chat_link = "[&Bo0jAAA=]",
+		cost = 0,
+		description = "Meditation. Cure conditions and damage nearby foes. Deal more damage if a condition is cured.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 20,
+			},
+			
+			{
+				dmg_multiplier = 0.85,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage With No Conditions",
+				type = "Damage",
+			},
+			
+			{
+				dmg_multiplier = 1.9,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage With Condition",
+				type = "Damage",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Conditions Removed",
+				type = "Number",
+				value = 2,
+			},
+			
+			{
+				distance = 360,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Radius",
+				type = "Distance",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Targets",
+				type = "Number",
+				value = 5,
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/DB5FBEBBD092642AE39C99F7CD3521EB41C0D717/103644.png",
+		id = 9101,
+		initiative = 0,
+		name = "Smite Condition",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
 	},
 	[9102] = 
 	{
@@ -34056,7 +35563,7 @@ local tbl =
 		},
 		chat_link = "[&Br4jAAA=]",
 		cost = 0,
-		description = "Signet Passive: Reduces incoming damage.\nSignet Active: Grants retaliation to nearby allies and weakness to nearby foes.",
+		description = "Signet Passive: Reduces incoming damage.\nSignet Active: Grant retaliation to nearby allies.",
 		dual_wield = "",
 		facts = 
 		{
@@ -34089,17 +35596,17 @@ local tbl =
 			},
 			
 			{
-				apply_count = 1,
-				description = "Endurance regeneration decreased by 50%. 50% of hits are Glancing Blows (50% damage). Stacks duration.",
-				duration = 5,
-				icon = "https://render.guildwars2.com/file/6CB0E64AF9AA292E332A38C1770CE577E2CDE0E8/102853.png",
-				status = "Weakness",
+				apply_count = 2,
+				description = "Deals damage every second; stacks intensity.",
+				duration = 3,
+				icon = "https://render.guildwars2.com/file/B47BF5803FED2718D7474EAF9617629AD068EE10/102849.png",
+				status = "Burning",
 				text = "Apply Buff/Condition",
 				type = "Buff",
 			},
 			
 			{
-				distance = 600,
+				distance = 300,
 				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
 				text = "Radius",
 				type = "Distance",
@@ -37264,17 +38771,17 @@ local tbl =
 			},
 			
 			{
-				apply_count = 1,
-				description = "Endurance regeneration decreased by 50%. 50% of hits are Glancing Blows (50% damage). Stacks duration.",
-				duration = 5,
-				icon = "https://render.guildwars2.com/file/6CB0E64AF9AA292E332A38C1770CE577E2CDE0E8/102853.png",
-				status = "Weakness",
+				apply_count = 2,
+				description = "Deals damage every second; stacks intensity.",
+				duration = 3,
+				icon = "https://render.guildwars2.com/file/B47BF5803FED2718D7474EAF9617629AD068EE10/102849.png",
+				status = "Burning",
 				text = "Apply Buff/Condition",
 				type = "Buff",
 			},
 			
 			{
-				distance = 600,
+				distance = 300,
 				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
 				text = "Radius",
 				type = "Distance",
@@ -37549,6 +39056,22 @@ local tbl =
 				hit_count = 1,
 				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
 				text = "Damage With Condition",
+				type = "Damage",
+			},
+			
+			{
+				dmg_multiplier = 0.85,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage with No Conditions",
+				type = "Damage",
+			},
+			
+			{
+				dmg_multiplier = 1.5,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage with Condition",
 				type = "Damage",
 			},
 			
@@ -37987,7 +39510,7 @@ local tbl =
 				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
 				text = "Recharge",
 				type = "Recharge",
-				value = 40,
+				value = 30,
 			},
 			
 			{
@@ -38071,7 +39594,7 @@ local tbl =
 				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
 				text = "Recharge",
 				type = "Recharge",
-				value = 60,
+				value = 45,
 			},
 			
 			{
@@ -38086,10 +39609,10 @@ local tbl =
 			
 			{
 				apply_count = 1,
-				description = "Boon duration is increased by 20%.",
+				description = "Reflect incoming damage back to its source; stacks duration.",
 				duration = 2,
-				icon = "https://render.guildwars2.com/file/06C916D4A05B790110976BD61E7DDE6932B5B2C6/103676.png",
-				status = "Hallowed Ground",
+				icon = "https://render.guildwars2.com/file/27F233F7D4CE4E9EFE040E3D665B7B0643557B6E/102883.png",
+				status = "Retaliation",
 				text = "Apply Buff/Condition",
 				type = "Buff",
 			},
@@ -38105,14 +39628,7 @@ local tbl =
 				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
 				text = "Pulses",
 				type = "Number",
-				value = 10,
-			},
-			
-			{
-				duration = 10,
-				icon = "https://render.guildwars2.com/file/7B2193ACCF77E56C13E608191B082D68AA0FAA71/156659.png",
-				text = "Duration",
-				type = "Time",
+				value = 8,
 			},
 			
 			{
@@ -38166,13 +39682,126 @@ local tbl =
 				requires_trait = 617,
 				text = "Pulses",
 				type = "Number",
-				value = 12,
+				value = 10,
+			},
+		},
+		transform_skills = 
+		{
+		},
+		type = "Utility",
+		weapon_type = "None",
+	},
+	[9254] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+			"Consecration",
+		},
+		chat_link = "[&BiYkAAA=]",
+		cost = 0,
+		description = "Consecration. Form a protective healing shelter for allies. Foes and projectiles cannot enter.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 75,
 			},
 			
 			{
-				duration = 12,
+				icon = "https://render.guildwars2.com/file/D4347C52157B040943051D7E09DEAD7AF63D4378/156662.png",
+				target = "Healing",
+				text = "Healing",
+				type = "AttributeAdjust",
+				value = 394,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Pulses",
+				type = "Number",
+				value = 4,
+			},
+			
+			{
+				duration = 4,
 				icon = "https://render.guildwars2.com/file/7B2193ACCF77E56C13E608191B082D68AA0FAA71/156659.png",
-				overrides = 6,
+				text = "Duration",
+				type = "Time",
+			},
+			
+			{
+				field_type = "Light",
+				icon = "https://render.guildwars2.com/file/59E0DB6A699810641C959926ADFEF73E08CC255B/156655.png",
+				text = "Combo Field",
+				type = "ComboField",
+			},
+			
+			{
+				distance = 180,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Radius",
+				type = "Distance",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Targets",
+				type = "Number",
+				value = 5,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Impacts",
+				type = "Number",
+				value = 10,
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/2E31D763EA1D05432949EBB39603CD6DBBE29870/103541.png",
+		id = 9254,
+		initiative = 0,
+		name = "Merciful Sanctuary",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				overrides = 2,
+				requires_trait = 617,
+				text = "Pulses",
+				type = "Number",
+				value = 6,
+			},
+			
+			{
+				duration = 6,
+				icon = "https://render.guildwars2.com/file/7B2193ACCF77E56C13E608191B082D68AA0FAA71/156659.png",
+				overrides = 3,
 				requires_trait = 617,
 				text = "Duration",
 				type = "Time",
@@ -38181,8 +39810,6 @@ local tbl =
 		transform_skills = 
 		{
 		},
-		type = "Utility",
-		weapon_type = "None",
 	},
 	[9260] = 
 	{
@@ -39062,7 +40689,7 @@ local tbl =
 		},
 		chat_link = "[&Br4nAAA=]",
 		cost = 0,
-		description = "Phantasm. Create an illusion that attacks your foe.",
+		description = "Phantasm. Perform a sword strike and create an illusion that attacks your foe. If the sword strike hits, you and all Phantasmal Swordsmen gain might.",
 		dual_wield = "",
 		facts = 
 		{
@@ -39085,8 +40712,33 @@ local tbl =
 				dmg_multiplier = 0.805,
 				hit_count = 1,
 				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
-				text = "Damage",
+				text = "Phantasm Damage",
 				type = "Damage",
+			},
+			
+			{
+				dmg_multiplier = 0.5,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Sword Strike Damage",
+				type = "Damage",
+			},
+			
+			{
+				apply_count = 8,
+				description = "Increased outgoing damage; stacks intensity.",
+				duration = 10,
+				icon = "https://render.guildwars2.com/file/2FA9DF9D6BC17839BBEA14723F1C53D645DDB5E1/102852.png",
+				status = "Might",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				distance = 130,
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Sword Strike Range",
+				type = "Distance",
 			},
 			
 			{
@@ -39127,7 +40779,7 @@ local tbl =
 				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
 				overrides = 2,
 				requires_trait = 682,
-				text = "Damage",
+				text = "Phantasm Damage",
 				type = "Damage",
 			},
 		},
@@ -40155,7 +41807,7 @@ local tbl =
 			},
 			
 			{
-				dmg_multiplier = 0.33,
+				dmg_multiplier = 0.38,
 				hit_count = 1,
 				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
 				text = "Damage",
@@ -40209,16 +41861,6 @@ local tbl =
 		toolbelt_skill = 0,
 		traited_facts = 
 		{
-			
-			{
-				dmg_multiplier = 0.379,
-				hit_count = 1,
-				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
-				overrides = 2,
-				requires_trait = 680,
-				text = "Damage",
-				type = "Damage",
-			},
 			
 			{
 				apply_count = 1,
@@ -40310,7 +41952,7 @@ local tbl =
 			},
 			
 			{
-				dmg_multiplier = 0.775,
+				dmg_multiplier = 0.8,
 				hit_count = 2,
 				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
 				text = "2 Illusions",
@@ -40318,7 +41960,7 @@ local tbl =
 			},
 			
 			{
-				dmg_multiplier = 0.675,
+				dmg_multiplier = 0.7,
 				hit_count = 3,
 				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
 				text = "3 Illusions",
@@ -40364,36 +42006,6 @@ local tbl =
 		{
 			
 			{
-				dmg_multiplier = 1.322,
-				hit_count = 1,
-				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
-				overrides = 2,
-				requires_trait = 680,
-				text = "1 Illusion",
-				type = "Damage",
-			},
-			
-			{
-				dmg_multiplier = 0.891,
-				hit_count = 2,
-				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
-				overrides = 3,
-				requires_trait = 680,
-				text = "2 Illusions",
-				type = "Damage",
-			},
-			
-			{
-				dmg_multiplier = 0.776,
-				hit_count = 3,
-				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
-				overrides = 4,
-				requires_trait = 680,
-				text = "3 Illusions",
-				type = "Damage",
-			},
-			
-			{
 				apply_count = 3,
 				description = "Increased outgoing damage; stacks intensity.",
 				duration = 15,
@@ -40408,7 +42020,7 @@ local tbl =
 			{
 				icon = "https://render.guildwars2.com/file/63015872E20761F5E76F803A90666FBE4E262BC9/536051.png",
 				overrides = 0,
-				percent = 10,
+				percent = 25,
 				requires_trait = 2035,
 				text = "Critical Chance Increase",
 				type = "Percent",
@@ -42080,7 +43692,7 @@ local tbl =
 		},
 		chat_link = "[&Bu0nAAA=]",
 		cost = 0,
-		description = "Phantasm. Create a phantasm that uses a whirling attack to damage and cripple foes.",
+		description = "Phantasm. Throw an illusionary greatsword that inflicts vulnerability in a line and then returns to you. Create a phantasm that uses a whirling attack to damage and cripple foes.",
 		dual_wield = "",
 		facts = 
 		{
@@ -42108,11 +43720,29 @@ local tbl =
 			},
 			
 			{
+				dmg_multiplier = 0.2,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Greatsword Damage",
+				type = "Damage",
+			},
+			
+			{
 				apply_count = 4,
 				description = "Movement speed decreased by 50%; stacks duration.",
 				duration = 1,
 				icon = "https://render.guildwars2.com/file/070325E519C178D502A8160523766070D30C0C19/102838.png",
 				status = "Crippled",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 3,
+				description = "Damage and condition damage taken are increased; stacks intensity.",
+				duration = 3,
+				icon = "https://render.guildwars2.com/file/3A394C1A0A3257EB27A44842DDEEF0DF000E1241/102850.png",
+				status = "Vulnerability",
 				text = "Apply Buff/Condition",
 				type = "Buff",
 			},
@@ -42129,6 +43759,12 @@ local tbl =
 				text = "Number of Impacts",
 				type = "Number",
 				value = 4,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Pierces",
+				type = "NoData",
 			},
 		},
 		flip_skill = 0,
@@ -42170,7 +43806,7 @@ local tbl =
 				description = "Movement speed decreased by 50%; stacks duration.",
 				duration = 2,
 				icon = "https://render.guildwars2.com/file/070325E519C178D502A8160523766070D30C0C19/102838.png",
-				overrides = 3,
+				overrides = 4,
 				requires_trait = 681,
 				status = "Crippled",
 				text = "Apply Buff/Condition",
@@ -42195,7 +43831,7 @@ local tbl =
 		},
 		chat_link = "[&BvAnAAA=]",
 		cost = 0,
-		description = "Phantasm. Summon a phantasmal rogue that deals double damage from behind.",
+		description = "Phantasm. Strike your target and apply conditions, then summon a phantasmal rogue that deals double damage from behind.",
 		dual_wield = "",
 		facts = 
 		{
@@ -42215,6 +43851,26 @@ local tbl =
 			},
 			
 			{
+				apply_count = 1,
+				description = "Damage received on skill activation; stacks intensity.",
+				duration = 5,
+				icon = "https://render.guildwars2.com/file/289AA0A4644F0E044DED3D3F39CED958E1DDFF53/102880.png",
+				status = "Confusion",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 5,
+				description = "Damage and condition damage taken are increased; stacks intensity.",
+				duration = 5,
+				icon = "https://render.guildwars2.com/file/3A394C1A0A3257EB27A44842DDEEF0DF000E1241/102850.png",
+				status = "Vulnerability",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
 				dmg_multiplier = 1.15,
 				hit_count = 1,
 				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
@@ -42223,10 +43879,11 @@ local tbl =
 			},
 			
 			{
-				distance = 240,
-				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
-				text = "Radius",
-				type = "Distance",
+				dmg_multiplier = 0.4,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Strike Damage",
+				type = "Damage",
 			},
 		},
 		flip_skill = 0,
@@ -42257,7 +43914,7 @@ local tbl =
 				dmg_multiplier = 1.32,
 				hit_count = 1,
 				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
-				overrides = 2,
+				overrides = 4,
 				requires_trait = 682,
 				text = "Damage",
 				type = "Damage",
@@ -43197,7 +44854,7 @@ local tbl =
 		},
 		chat_link = "[&BgsoAAA=]",
 		cost = 0,
-		description = "Phantasm. Create an illusion that evades while attacking your foe in a flurry.",
+		description = "Phantasm. Perform an evasive strike and create an illusion that evades while attacking your foe in a flurry.",
 		dual_wield = "",
 		facts = 
 		{
@@ -43229,6 +44886,14 @@ local tbl =
 				hit_count = 1,
 				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
 				text = "Final Strike Damage",
+				type = "Damage",
+			},
+			
+			{
+				dmg_multiplier = 0.8,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Evasive Strike Damage",
 				type = "Damage",
 			},
 		},
@@ -44059,7 +45724,7 @@ local tbl =
 		},
 		chat_link = "[&BiooAAA=]",
 		cost = 0,
-		description = "Phantasm. Create a phantasm that attacks your target and creates a defensive bubble, protecting itself and allies from projectiles.",
+		description = "Phantasm. Throw a phantasmal axe that immobilizes your target. Create a phantasm that attacks your target and creates a defensive bubble, protecting itself and allies from projectiles.",
 		dual_wield = "",
 		facts = 
 		{
@@ -44087,10 +45752,28 @@ local tbl =
 			},
 			
 			{
+				dmg_multiplier = 0.3,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Axe Damage",
+				type = "Damage",
+			},
+			
+			{
 				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
 				text = "Number of Targets",
 				type = "Number",
 				value = 3,
+			},
+			
+			{
+				apply_count = 1,
+				description = "Unable to move; stacks duration.",
+				duration = 2,
+				icon = "https://render.guildwars2.com/file/397A613651BFCA2832B6469CE34735580A2C120E/102844.png",
+				status = "Immobile",
+				text = "Apply Buff/Condition",
+				type = "Buff",
 			},
 		},
 		flip_skill = 0,
@@ -45501,7 +47184,7 @@ local tbl =
 		},
 		chat_link = "[&BlgoAAA=]",
 		cost = 0,
-		description = "Phantasm. Create an illusion that confuses foes with a harpoon gun.",
+		description = "Phantasm. Cast Siren's Call on nearby foes and create an illusion that confuses foes with a harpoon gun.",
 		dual_wield = "",
 		facts = 
 		{
@@ -45518,6 +47201,20 @@ local tbl =
 				text = "Recharge",
 				type = "Recharge",
 				value = 20,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Casts",
+				type = "Number",
+				value = 3,
+			},
+			
+			{
+				distance = 600,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Radius",
+				type = "Distance",
 			},
 			
 			{
@@ -45566,7 +47263,7 @@ local tbl =
 				dmg_multiplier = 0.132,
 				hit_count = 4,
 				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
-				overrides = 2,
+				overrides = 4,
 				requires_trait = 682,
 				text = "Damage",
 				type = "Damage",
@@ -46333,6 +48030,95 @@ local tbl =
 		},
 		type = "Weapon",
 		weapon_type = "Trident",
+	},
+	[10356] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+			"Glamour",
+		},
+		chat_link = "[&BnQoAAA=]",
+		cost = 0,
+		description = "Glamour. Create a dome around you that reflects projectiles.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
+				text = "Range",
+				type = "Range",
+				value = 1200,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 32,
+			},
+			
+			{
+				duration = 6,
+				icon = "https://render.guildwars2.com/file/7B2193ACCF77E56C13E608191B082D68AA0FAA71/156659.png",
+				text = "Shield Duration",
+				type = "Time",
+			},
+			
+			{
+				distance = 240,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Radius",
+				type = "Distance",
+			},
+			
+			{
+				field_type = "Ethereal",
+				icon = "https://render.guildwars2.com/file/59E0DB6A699810641C959926ADFEF73E08CC255B/156655.png",
+				text = "Combo Field",
+				type = "ComboField",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/A5720B5C9ED8CB02A3272944C50DF8426E22C5A0/103773.png",
+		id = 10356,
+		initiative = 0,
+		name = "Feedback",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+			
+			{
+				duration = 8,
+				icon = "https://render.guildwars2.com/file/7B2193ACCF77E56C13E608191B082D68AA0FAA71/156659.png",
+				overrides = 2,
+				requires_trait = 752,
+				text = "Shield Duration",
+				type = "Time",
+			},
+		},
+		transform_skills = 
+		{
+		},
 	},
 	[10358] = 
 	{
@@ -47153,7 +48939,7 @@ local tbl =
 		},
 		chat_link = "[&BiApAAA=]",
 		cost = 0,
-		description = "Summon spectral claws to slash your foe in a quick flurry of strikes, gaining life force per strike.",
+		description = "Summon spectral claws to slash your foe in a quick flurry of strikes, gaining life force per strike. This attack deals increased damage per stack of vulnerability on your target.",
 		dual_wield = "",
 		facts = 
 		{
@@ -47184,6 +48970,13 @@ local tbl =
 				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
 				percent = 12,
 				text = "Life Force",
+				type = "Percent",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				percent = 1,
+				text = "Bonus damage per vulnerability stack",
 				type = "Percent",
 			},
 		},
@@ -47228,7 +49021,7 @@ local tbl =
 		},
 		chat_link = "[&BiEpAAA=]",
 		cost = 0,
-		description = "Immobilize your foe.",
+		description = "Immobilize your foe. Bleed yourself.",
 		dual_wield = "",
 		facts = 
 		{
@@ -47248,7 +49041,7 @@ local tbl =
 			},
 			
 			{
-				dmg_multiplier = 0.75,
+				dmg_multiplier = 0.9,
 				hit_count = 1,
 				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
 				text = "Damage",
@@ -47270,6 +49063,16 @@ local tbl =
 				text = "Boons Converted to Conditions",
 				type = "Number",
 				value = 2,
+			},
+			
+			{
+				apply_count = 2,
+				description = "Deals damage every second; stacks intensity.",
+				duration = 10,
+				icon = "https://render.guildwars2.com/file/79FF0046A5F9ADA3B4C4EC19ADB4CB124D5F0021/102848.png",
+				status = "Bleeding",
+				text = "Apply Buff/Condition",
+				type = "Buff",
 			},
 		},
 		flip_skill = 0,
@@ -48340,7 +50143,7 @@ local tbl =
 		},
 		chat_link = "[&BjUpAAA=]",
 		cost = 0,
-		description = "Corruption. Become a virulent cloud and inflict multiple conditions on foes you touch. Entering this form removes spectral effects. Inflict bleeding on yourself.",
+		description = "Corruption. Create a virulent cloud that inflicts conditions on foes in its area. This plague inflicts additional conditions every second it persists. Inflict bleeding on yourself.",
 		dual_wield = "",
 		facts = 
 		{
@@ -48349,7 +50152,7 @@ local tbl =
 				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
 				text = "Recharge",
 				type = "Recharge",
-				value = 180,
+				value = 120,
 			},
 			
 			{
@@ -48361,11 +50164,11 @@ local tbl =
 			},
 			
 			{
-				apply_count = 3,
-				description = "Cannot be knocked down, pushed back, pulled, launched, stunned, dazed, floated, sunk, feared, or taunted.",
-				duration = 3,
-				icon = "https://render.guildwars2.com/file/3D3A1C2D6D791C05179AB871902D28782C65C244/415959.png",
-				status = "Stability",
+				apply_count = 1,
+				description = "Deals damage every second; stacks intensity.",
+				duration = 8,
+				icon = "https://render.guildwars2.com/file/79FF0046A5F9ADA3B4C4EC19ADB4CB124D5F0021/102848.png",
+				status = "Bleeding",
 				text = "Apply Buff/Condition",
 				type = "Buff",
 			},
@@ -48373,9 +50176,79 @@ local tbl =
 			{
 				apply_count = 1,
 				description = "Deals damage every second; decreases healing effectiveness by 33%; damage stacks intensity.",
-				duration = 2,
+				duration = 5,
 				icon = "https://render.guildwars2.com/file/559B0AF9FB5E1243D2649FAAE660CCB338AACC19/102840.png",
 				status = "Poisoned",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Deals damage every second. Deals additional damage to moving foes. Stacks intensity.",
+				duration = 5,
+				icon = "https://render.guildwars2.com/file/10BABF2708CA3575730AC662A2E72EC292565B08/598887.png",
+				status = "Torment",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Damage and condition damage taken are increased; stacks intensity.",
+				duration = 8,
+				icon = "https://render.guildwars2.com/file/3A394C1A0A3257EB27A44842DDEEF0DF000E1241/102850.png",
+				status = "Vulnerability",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Movement speed decreased by 50%; stacks duration.",
+				duration = 2,
+				icon = "https://render.guildwars2.com/file/070325E519C178D502A8160523766070D30C0C19/102838.png",
+				status = "Crippled",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Endurance regeneration decreased by 50%. 50% of hits are Glancing Blows (50% damage). Stacks duration.",
+				duration = 3,
+				icon = "https://render.guildwars2.com/file/6CB0E64AF9AA292E332A38C1770CE577E2CDE0E8/102853.png",
+				status = "Weakness",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Next outgoing attack misses; stacks duration.",
+				duration = 3,
+				icon = "https://render.guildwars2.com/file/09770136BB76FD0DBE1CC4267DEED54774CB20F6/102837.png",
+				status = "Blinded",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Movement speed decreased by 66%; skill cooldown increased by 66%; stacks duration.",
+				duration = 2,
+				icon = "https://render.guildwars2.com/file/28C4EC547A3516AF0242E826772DA43A5EAC3DF3/102839.png",
+				status = "Chilled",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 2,
+				description = "Deals damage every second; stacks intensity.",
+				duration = 5,
+				icon = "https://render.guildwars2.com/file/B47BF5803FED2718D7474EAF9617629AD068EE10/102849.png",
+				status = "Burning",
 				text = "Apply Buff/Condition",
 				type = "Buff",
 			},
@@ -48388,7 +50261,7 @@ local tbl =
 			},
 			
 			{
-				duration = 20,
+				duration = 10,
 				icon = "https://render.guildwars2.com/file/7B2193ACCF77E56C13E608191B082D68AA0FAA71/156659.png",
 				text = "Duration",
 				type = "Time",
@@ -48409,13 +50282,6 @@ local tbl =
 			},
 			
 			{
-				duration = 3,
-				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
-				text = "Boon Application Interval",
-				type = "Time",
-			},
-			
-			{
 				apply_count = 1,
 				description = "Deals damage every second; stacks intensity.",
 				duration = 10,
@@ -48429,7 +50295,7 @@ local tbl =
 		icon = "https://render.guildwars2.com/file/97EC4B6E302F5D79639CA519D25F9A5C2A2DDEC1/103312.png",
 		id = 10549,
 		initiative = 0,
-		name = "Plague",
+		name = "Plaguelands",
 		next_chain = 0,
 		prev_chain = 0,
 		professions = 
@@ -49323,7 +51189,7 @@ local tbl =
 		},
 		chat_link = "[&BkEpAAA=]",
 		cost = 0,
-		description = "Slash your foe twice with ghostly claws to make them vulnerable.",
+		description = "Slash your foe twice with ghostly claws to make them vulnerable. Vulnerability applied increases against foes below the health threshold.",
 		dual_wield = "",
 		facts = 
 		{
@@ -49351,6 +51217,23 @@ local tbl =
 				status = "Vulnerability",
 				text = "Apply Buff/Condition",
 				type = "Buff",
+			},
+			
+			{
+				apply_count = 2,
+				description = "Damage and condition damage taken are increased; stacks intensity.",
+				duration = 7,
+				icon = "https://render.guildwars2.com/file/3A394C1A0A3257EB27A44842DDEEF0DF000E1241/102850.png",
+				status = "Vulnerability",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				percent = 50,
+				text = "Health Threshold",
+				type = "Percent",
 			},
 		},
 		flip_skill = 0,
@@ -49476,7 +51359,7 @@ local tbl =
 		},
 		chat_link = "[&BkMpAAA=]",
 		cost = 0,
-		description = "Siphon health from your foe.",
+		description = "Siphon health from your foe. Healing effectiveness increases if you are bleeding. Damage increases if your foe is bleeding.",
 		dual_wield = "",
 		facts = 
 		{
@@ -49509,6 +51392,20 @@ local tbl =
 				text = "Pulse Heal",
 				type = "AttributeAdjust",
 				value = 358,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/D4347C52157B040943051D7E09DEAD7AF63D4378/156662.png",
+				percent = 20,
+				text = "Healing Increased While Bleeding",
+				type = "Percent",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				percent = 20,
+				text = "Damage Increased While Bleeding",
+				type = "Percent",
 			},
 		},
 		flip_skill = 0,
@@ -49678,30 +51575,30 @@ local tbl =
 		},
 		transform_skills = 
 		{
-			10586,
-			10554,
-			30278,
-			10643,
-			10585,
-			30825,
-			10604,
-			30557,
-			30504,
-			29958,
-			10594,
-			30792,
-			10690,
+			18504,
 			10645,
+			10644,
+			30557,
+			10586,
+			19504,
+			10690,
+			10643,
+			29442,
+			30792,
+			10574,
+			30961,
+			29458,
+			10594,
+			30825,
+			29958,
+			10585,
+			10554,
+			30504,
+			29709,
 			24287,
 			10588,
-			19504,
-			10574,
-			29442,
-			18504,
-			29458,
-			30961,
-			10644,
-			29709,
+			10604,
+			30278,
 		},
 		type = "Profession",
 		weapon_type = "None",
@@ -49949,7 +51846,7 @@ local tbl =
 			Thief = false,
 			Warrior = true,
 		},
-		slot = "Transform_1",
+		slot = "Weapon_4",
 		toolbelt_skill = 0,
 		traited_facts = 
 		{
@@ -49957,7 +51854,7 @@ local tbl =
 		transform_skills = 
 		{
 		},
-		type = "Transform",
+		type = "Bundle",
 		weapon_type = "None",
 	},
 	[10588] = 
@@ -50890,6 +52787,14 @@ local tbl =
 			},
 			
 			{
+				dmg_multiplier = 0.1,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
 				apply_count = 3,
 				description = "Damage and condition damage taken are increased; stacks intensity.",
 				duration = 6,
@@ -50900,7 +52805,7 @@ local tbl =
 			},
 			
 			{
-				distance = 600,
+				distance = 900,
 				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
 				text = "Radius",
 				type = "Distance",
@@ -50911,6 +52816,12 @@ local tbl =
 				text = "Number of Targets",
 				type = "Number",
 				value = 5,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/63015872E20761F5E76F803A90666FBE4E262BC9/536051.png",
+				text = "Cannot Critical Hit",
+				type = "NoData",
 			},
 		},
 		flip_skill = 0,
@@ -53623,7 +55534,7 @@ local tbl =
 			{
 				apply_count = 2,
 				description = "Deals damage every second; stacks intensity.",
-				duration = 2,
+				duration = 8,
 				icon = "https://render.guildwars2.com/file/79FF0046A5F9ADA3B4C4EC19ADB4CB124D5F0021/102848.png",
 				status = "Bleeding",
 				text = "Apply Buff/Condition",
@@ -53700,9 +55611,19 @@ local tbl =
 			{
 				apply_count = 1,
 				description = "Next outgoing attack misses; stacks duration.",
-				duration = 1,
+				duration = 2,
 				icon = "https://render.guildwars2.com/file/09770136BB76FD0DBE1CC4267DEED54774CB20F6/102837.png",
 				status = "Blinded",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Deals damage every second. Deals additional damage to moving foes. Stacks intensity.",
+				duration = 8,
+				icon = "https://render.guildwars2.com/file/10BABF2708CA3575730AC662A2E72EC292565B08/598887.png",
+				status = "Torment",
 				text = "Apply Buff/Condition",
 				type = "Buff",
 			},
@@ -53774,7 +55695,7 @@ local tbl =
 		},
 		chat_link = "[&BqcpAAA=]",
 		cost = 0,
-		description = "Add cripple and weakness to your plague.",
+		description = "Add cripple and weakness to your plague and increase its damage dealt.",
 		dual_wield = "",
 		facts = 
 		{
@@ -53787,9 +55708,16 @@ local tbl =
 			},
 			
 			{
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				percent = 100,
+				text = "Damage Increase",
+				type = "Percent",
+			},
+			
+			{
 				apply_count = 1,
 				description = "Movement speed decreased by 50%; stacks duration.",
-				duration = 1,
+				duration = 3,
 				icon = "https://render.guildwars2.com/file/070325E519C178D502A8160523766070D30C0C19/102838.png",
 				status = "Crippled",
 				text = "Apply Buff/Condition",
@@ -55346,17 +57274,10 @@ local tbl =
 		},
 		chat_link = "[&Bs0pAAA=]",
 		cost = 0,
-		description = "Cripple nearby foes and convert their boons into conditions. Gain retaliation for each foe you strike.",
+		description = "Cripple nearby foes and convert their boons into conditions. Release an Unholy Burst on foes below the health threshold.",
 		dual_wield = "",
 		facts = 
 		{
-			
-			{
-				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
-				text = "Range",
-				type = "Range",
-				value = 600,
-			},
 			
 			{
 				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
@@ -55371,16 +57292,6 @@ local tbl =
 				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
 				text = "Damage",
 				type = "Damage",
-			},
-			
-			{
-				apply_count = 1,
-				description = "Reflect incoming damage back to its source; stacks duration.",
-				duration = 3,
-				icon = "https://render.guildwars2.com/file/27F233F7D4CE4E9EFE040E3D665B7B0643557B6E/102883.png",
-				status = "Retaliation",
-				text = "Apply Buff/Condition",
-				type = "Buff",
 			},
 			
 			{
@@ -55405,6 +57316,20 @@ local tbl =
 				text = "Boons Converted to Conditions",
 				type = "Number",
 				value = 2,
+			},
+			
+			{
+				distance = 600,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Radius",
+				type = "Distance",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				percent = 25,
+				text = "Health Threshold",
+				type = "Percent",
 			},
 		},
 		flip_skill = 0,
@@ -56095,165 +58020,6 @@ local tbl =
 		},
 		type = "Weapon",
 		weapon_type = "Scepter",
-	},
-	[10712] = 
-	{
-		attunement = "",
-		bundle_skills = 
-		{
-		},
-		categories = 
-		{
-		},
-		chat_link = "[&BtgpAAA=]",
-		cost = 0,
-		description = "Strike your foe. Every other hit causes Weakness or Vulnerability.",
-		dual_wield = "",
-		facts = 
-		{
-			
-			{
-				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
-				text = "Range",
-				type = "Range",
-				value = 130,
-			},
-		},
-		flip_skill = 10713,
-		icon = "https://render.guildwars2.com/file/C62E1323CF1E0626CE9D6FEA27FA1EA7B5B13E55/103071.png",
-		id = 10712,
-		initiative = 0,
-		name = "Twisting Fang",
-		next_chain = 10713,
-		prev_chain = 0,
-		professions = 
-		{
-			Elementalist = false,
-			Engineer = false,
-			Guardian = false,
-			Mesmer = false,
-			Necromancer = false,
-			Ranger = false,
-			Revenant = false,
-			Thief = true,
-			Warrior = false,
-		},
-		slot = "Weapon_1",
-		toolbelt_skill = 0,
-		traited_facts = 
-		{
-		},
-		transform_skills = 
-		{
-		},
-		type = "Weapon",
-		weapon_type = "Dagger",
-	},
-	[10713] = 
-	{
-		attunement = "",
-		bundle_skills = 
-		{
-		},
-		categories = 
-		{
-		},
-		chat_link = "[&BtkpAAA=]",
-		cost = 0,
-		description = "Strike your foe. Every other hit causes weakness or vulnerability.",
-		dual_wield = "",
-		facts = 
-		{
-			
-			{
-				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
-				text = "Range",
-				type = "Range",
-				value = 130,
-			},
-		},
-		flip_skill = 10714,
-		icon = "https://render.guildwars2.com/file/C62E1323CF1E0626CE9D6FEA27FA1EA7B5B13E55/103071.png",
-		id = 10713,
-		initiative = 0,
-		name = "Twisting Fang",
-		next_chain = 10714,
-		prev_chain = 10712,
-		professions = 
-		{
-			Elementalist = false,
-			Engineer = false,
-			Guardian = false,
-			Mesmer = false,
-			Necromancer = false,
-			Ranger = false,
-			Revenant = false,
-			Thief = true,
-			Warrior = false,
-		},
-		slot = "Weapon_1",
-		toolbelt_skill = 0,
-		traited_facts = 
-		{
-		},
-		transform_skills = 
-		{
-		},
-		type = "Weapon",
-		weapon_type = "Dagger",
-	},
-	[10714] = 
-	{
-		attunement = "",
-		bundle_skills = 
-		{
-		},
-		categories = 
-		{
-		},
-		chat_link = "[&BtopAAA=]",
-		cost = 0,
-		description = "Strike your foe. Every other hit causes weakness or vulnerability.",
-		dual_wield = "",
-		facts = 
-		{
-			
-			{
-				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
-				text = "Range",
-				type = "Range",
-				value = 130,
-			},
-		},
-		flip_skill = 0,
-		icon = "https://render.guildwars2.com/file/C62E1323CF1E0626CE9D6FEA27FA1EA7B5B13E55/103071.png",
-		id = 10714,
-		initiative = 0,
-		name = "Twisting Fang",
-		next_chain = 0,
-		prev_chain = 10713,
-		professions = 
-		{
-			Elementalist = false,
-			Engineer = false,
-			Guardian = false,
-			Mesmer = false,
-			Necromancer = false,
-			Ranger = false,
-			Revenant = false,
-			Thief = true,
-			Warrior = false,
-		},
-		slot = "Weapon_1",
-		toolbelt_skill = 0,
-		traited_facts = 
-		{
-		},
-		transform_skills = 
-		{
-		},
-		type = "Weapon",
-		weapon_type = "Dagger",
 	},
 	[10800] = 
 	{
@@ -62240,7 +64006,7 @@ local tbl =
 			{
 				apply_count = 1,
 				description = "Deals damage every second; stacks intensity.",
-				duration = 10,
+				duration = 3,
 				icon = "https://render.guildwars2.com/file/79FF0046A5F9ADA3B4C4EC19ADB4CB124D5F0021/102848.png",
 				status = "Bleeding",
 				text = "Apply Buff/Condition",
@@ -62668,7 +64434,7 @@ local tbl =
 		},
 		chat_link = "[&BrQwAAA=]",
 		cost = 0,
-		description = "Fire a spread of five poison arrows. Poison lasts longer if the target is hit from behind.",
+		description = "Fire a spread of five poison arrows. Poison lasts longer if you are flanking or behind the target.",
 		dual_wield = "",
 		facts = 
 		{
@@ -62751,6 +64517,18 @@ local tbl =
 		toolbelt_skill = 0,
 		traited_facts = 
 		{
+			
+			{
+				apply_count = 5,
+				description = "Deals damage every second; decreases healing effectiveness by 33%; damage stacks intensity.",
+				duration = 9,
+				icon = "https://render.guildwars2.com/file/559B0AF9FB5E1243D2649FAAE660CCB338AACC19/102840.png",
+				overrides = 6,
+				requires_trait = 1912,
+				status = "Poisoned",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
 		},
 		transform_skills = 
 		{
@@ -62932,6 +64710,18 @@ local tbl =
 		toolbelt_skill = 0,
 		traited_facts = 
 		{
+			
+			{
+				apply_count = 1,
+				description = "Deals damage every second; stacks intensity.",
+				duration = 5,
+				icon = "https://render.guildwars2.com/file/79FF0046A5F9ADA3B4C4EC19ADB4CB124D5F0021/102848.png",
+				overrides = 2,
+				requires_trait = 1912,
+				status = "Bleeding",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
 			
 			{
 				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
@@ -63925,11 +65715,11 @@ local tbl =
 				target = "Healing",
 				text = "Health per Second",
 				type = "AttributeAdjust",
-				value = 850,
+				value = 1062,
 			},
 			
 			{
-				duration = 10,
+				duration = 8,
 				icon = "https://render.guildwars2.com/file/7B2193ACCF77E56C13E608191B082D68AA0FAA71/156659.png",
 				text = "Duration",
 				type = "Time",
@@ -66024,7 +67814,7 @@ local tbl =
 		},
 		chat_link = "[&BtswAAA=]",
 		cost = 0,
-		description = "Fire an arrow that cripples your target. If you are behind your target, immobilize them. Your pet's next three attacks inflict bleeding.",
+		description = "Fire an arrow that cripples your target. If you are flanking or behind your target, immobilize them. Your pet's next three attacks inflict bleeding.",
 		dual_wield = "",
 		facts = 
 		{
@@ -66119,6 +67909,18 @@ local tbl =
 				requires_trait = 1912,
 				text = "Pierces",
 				type = "NoData",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Unable to move; stacks duration.",
+				duration = 3,
+				icon = "https://render.guildwars2.com/file/397A613651BFCA2832B6469CE34735580A2C120E/102844.png",
+				overrides = 5,
+				requires_trait = 1912,
+				status = "Immobile",
+				text = "Apply Buff/Condition",
+				type = "Buff",
 			},
 		},
 		transform_skills = 
@@ -66235,6 +68037,18 @@ local tbl =
 				requires_trait = 1912,
 				text = "Pierces",
 				type = "NoData",
+			},
+			
+			{
+				apply_count = 10,
+				description = "Damage and condition damage taken are increased; stacks intensity.",
+				duration = 10,
+				icon = "https://render.guildwars2.com/file/3A394C1A0A3257EB27A44842DDEEF0DF000E1241/102850.png",
+				overrides = 0,
+				requires_trait = 1912,
+				status = "Vulnerability",
+				text = "Apply Buff/Condition",
+				type = "Buff",
 			},
 		},
 		transform_skills = 
@@ -66601,7 +68415,7 @@ local tbl =
 			{
 				apply_count = 1,
 				description = "Critical Chance increased by 20%; stacks duration.",
-				duration = 3,
+				duration = 12,
 				icon = "https://render.guildwars2.com/file/96D90DF84CAFE008233DD1C2606A12C1A0E68048/102842.png",
 				status = "Fury",
 				text = "Apply Buff/Condition",
@@ -66609,9 +68423,9 @@ local tbl =
 			},
 			
 			{
-				apply_count = 3,
+				apply_count = 10,
 				description = "Cannot be knocked down, pushed back, pulled, launched, stunned, dazed, floated, sunk, feared, or taunted.",
-				duration = 3,
+				duration = 8,
 				icon = "https://render.guildwars2.com/file/3D3A1C2D6D791C05179AB871902D28782C65C244/415959.png",
 				status = "Stability",
 				text = "Apply Buff/Condition",
@@ -66621,7 +68435,7 @@ local tbl =
 			{
 				apply_count = 1,
 				description = "Movement speed increased by 33%; stacks duration.",
-				duration = 3,
+				duration = 12,
 				icon = "https://render.guildwars2.com/file/20CFC14967E67F7A3FD4A4B8722B4CF5B8565E11/102836.png",
 				status = "Swiftness",
 				text = "Apply Buff/Condition",
@@ -70568,7 +72382,7 @@ local tbl =
 			{
 				apply_count = 2,
 				description = "Deals damage every second; stacks intensity.",
-				duration = 6,
+				duration = 5,
 				icon = "https://render.guildwars2.com/file/B47BF5803FED2718D7474EAF9617629AD068EE10/102849.png",
 				status = "Burning",
 				text = "Apply Buff/Condition",
@@ -70978,6 +72792,4151 @@ local tbl =
 		},
 		type = "Weapon",
 		weapon_type = "Dagger",
+	},
+	[12656] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BnAxAAA=]",
+		cost = 0,
+		description = "Bite your foe, chilling them.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
+				text = "Range",
+				type = "Range",
+				value = 130,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 25,
+			},
+			
+			{
+				dmg_multiplier = 0.5,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Movement speed decreased by 66%; skill cooldown increased by 66%; stacks duration.",
+				duration = 3,
+				icon = "https://render.guildwars2.com/file/28C4EC547A3516AF0242E826772DA43A5EAC3DF3/102839.png",
+				status = "Chilled",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/520693759A79FD464CA7AD08947D10B4B50F7A96/103516.png",
+		id = 12656,
+		initiative = 0,
+		name = "Icy Bite",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Pet",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Pet",
+		weapon_type = "None",
+	},
+	[12658] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BnIxAAA=]",
+		cost = 0,
+		description = "Grant extreme might to nearby allies.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 25,
+			},
+			
+			{
+				apply_count = 5,
+				description = "Increased outgoing damage; stacks intensity.",
+				duration = 15,
+				icon = "https://render.guildwars2.com/file/2FA9DF9D6BC17839BBEA14723F1C53D645DDB5E1/102852.png",
+				status = "Might",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Targets",
+				type = "Number",
+				value = 5,
+			},
+			
+			{
+				distance = 600,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Radius",
+				type = "Distance",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/FC1F050E63ACD1504A2E71FD01C279ED26CFE423/103240.png",
+		id = 12658,
+		initiative = 0,
+		name = "Mighty Roar",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Pet",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Pet",
+		weapon_type = "None",
+	},
+	[12664] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BngxAAA=]",
+		cost = 0,
+		description = "Make your foe bleed with a fierce mauling.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
+				text = "Range",
+				type = "Range",
+				value = 130,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 15,
+			},
+			
+			{
+				dmg_multiplier = 0.5,
+				hit_count = 2,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				apply_count = 2,
+				description = "Deals damage every second; stacks intensity.",
+				duration = 6,
+				icon = "https://render.guildwars2.com/file/79FF0046A5F9ADA3B4C4EC19ADB4CB124D5F0021/102848.png",
+				status = "Bleeding",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/695DA2E83CF23F527DD9109333CCB5239053DB94/104027.png",
+		id = 12664,
+		initiative = 0,
+		name = "Rending Maul",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Pet",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Pet",
+		weapon_type = "None",
+	},
+	[12666] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BnoxAAA=]",
+		cost = 0,
+		description = "Cure a condition on yourself and all nearby allies.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 25,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Conditions Removed",
+				type = "Number",
+				value = 2,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Targets",
+				type = "Number",
+				value = 5,
+			},
+			
+			{
+				distance = 600,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Radius",
+				type = "Distance",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/4D234DA072DE77DEFC0605ED401CB93EDC2AC84B/103009.png",
+		id = 12666,
+		initiative = 0,
+		name = "Shake It Off",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Pet",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Pet",
+		weapon_type = "None",
+	},
+	[12667] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BnsxAAA=]",
+		cost = 0,
+		description = "Roar fiercely, chilling nearby foes.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
+				text = "Range",
+				type = "Range",
+				value = 600,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 45,
+			},
+			
+			{
+				dmg_multiplier = 0.25,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Movement speed decreased by 66%; skill cooldown increased by 66%; stacks duration.",
+				duration = 3,
+				icon = "https://render.guildwars2.com/file/28C4EC547A3516AF0242E826772DA43A5EAC3DF3/102839.png",
+				status = "Chilled",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Targets",
+				type = "Number",
+				value = 5,
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/F4ECC4EA13941443755D0F9B3344C4B015F1DAA7/103927.png",
+		id = 12667,
+		initiative = 0,
+		name = "Icy Roar",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Pet",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Pet",
+		weapon_type = "None",
+	},
+	[12670] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&Bn4xAAA=]",
+		cost = 0,
+		description = "Breathe a cone of fire that burns foes.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
+				text = "Range",
+				type = "Range",
+				value = 250,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 30,
+			},
+			
+			{
+				dmg_multiplier = 0.25,
+				hit_count = 5,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				apply_count = 5,
+				description = "Deals damage every second; stacks intensity.",
+				duration = 1,
+				icon = "https://render.guildwars2.com/file/B47BF5803FED2718D7474EAF9617629AD068EE10/102849.png",
+				status = "Burning",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Targets",
+				type = "Number",
+				value = 5,
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/D6D964AD6F784A4CEAA2D0CE7C5F542213D635D0/102890.png",
+		id = 12670,
+		initiative = 0,
+		name = "Fire Breath",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Pet",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Pet",
+		weapon_type = "None",
+	},
+	[12674] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BoIxAAA=]",
+		cost = 0,
+		description = "Spray poisonous barbs in an arc in front of you, damaging and poisoning foes.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
+				text = "Range",
+				type = "Range",
+				value = 900,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 30,
+			},
+			
+			{
+				dmg_multiplier = 1,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Deals damage every second; decreases healing effectiveness by 33%; damage stacks intensity.",
+				duration = 2,
+				icon = "https://render.guildwars2.com/file/559B0AF9FB5E1243D2649FAAE660CCB338AACC19/102840.png",
+				status = "Poisoned",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				finisher_type = "Projectile",
+				icon = "https://render.guildwars2.com/file/A513F3653D33FBA4220D2D307799F8A327A36A3B/156656.png",
+				percent = 20,
+				text = "Combo Finisher",
+				type = "ComboFinisher",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/9A033F36CC4EEB19F6FCDE440D7CCB150A169BB5/104030.png",
+		id = 12674,
+		initiative = 0,
+		name = "Poison Barbs",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Pet",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Pet",
+		weapon_type = "None",
+	},
+	[12675] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BoMxAAA=]",
+		cost = 0,
+		description = "Spit a ball of venom that covers an area with a poisonous cloud.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
+				text = "Range",
+				type = "Range",
+				value = 900,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 30,
+			},
+			
+			{
+				dmg_multiplier = 0.2,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Deals damage every second; decreases healing effectiveness by 33%; damage stacks intensity.",
+				duration = 4,
+				icon = "https://render.guildwars2.com/file/559B0AF9FB5E1243D2649FAAE660CCB338AACC19/102840.png",
+				status = "Poisoned",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Pulses",
+				type = "Number",
+				value = 6,
+			},
+			
+			{
+				duration = 5,
+				icon = "https://render.guildwars2.com/file/7B2193ACCF77E56C13E608191B082D68AA0FAA71/156659.png",
+				text = "Poison Cloud Duration",
+				type = "Time",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Targets",
+				type = "Number",
+				value = 5,
+			},
+			
+			{
+				field_type = "Poison",
+				icon = "https://render.guildwars2.com/file/59E0DB6A699810641C959926ADFEF73E08CC255B/156655.png",
+				text = "Combo Field",
+				type = "ComboField",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/36A3327C0EEA1D5C03EAA5587C73692580A42BB5/104031.png",
+		id = 12675,
+		initiative = 0,
+		name = "Poisonous Cloud",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Pet",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Pet",
+		weapon_type = "None",
+	},
+	[12679] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BocxAAA=]",
+		cost = 0,
+		description = "Rapidly launch projectiles that bleed your target.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
+				text = "Range",
+				type = "Range",
+				value = 900,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 30,
+			},
+			
+			{
+				dmg_multiplier = 0.2,
+				hit_count = 6,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				apply_count = 6,
+				description = "Deals damage every second; stacks intensity.",
+				duration = 5,
+				icon = "https://render.guildwars2.com/file/79FF0046A5F9ADA3B4C4EC19ADB4CB124D5F0021/102848.png",
+				status = "Bleeding",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/5A56036047B5A211D8470C4F65F56FAC0550006D/104032.png",
+		id = 12679,
+		initiative = 0,
+		name = "Rending Barbs",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Pet",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Pet",
+		weapon_type = "None",
+	},
+	[12680] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BogxAAA=]",
+		cost = 0,
+		description = "Leap at a foe and make them bleed.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
+				text = "Range",
+				type = "Range",
+				value = 600,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 30,
+			},
+			
+			{
+				dmg_multiplier = 0.5,
+				hit_count = 2,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				apply_count = 4,
+				description = "Deals damage every second; stacks intensity.",
+				duration = 10,
+				icon = "https://render.guildwars2.com/file/79FF0046A5F9ADA3B4C4EC19ADB4CB124D5F0021/102848.png",
+				status = "Bleeding",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				finisher_type = "Leap",
+				icon = "https://render.guildwars2.com/file/A513F3653D33FBA4220D2D307799F8A327A36A3B/156656.png",
+				percent = 100,
+				text = "Combo Finisher",
+				type = "ComboFinisher",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/43210A51F17CF8FA6E600CD8D0495458471C4CDA/103959.png",
+		id = 12680,
+		initiative = 0,
+		name = "Rending Pounce",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Pet",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Pet",
+		weapon_type = "None",
+	},
+	[12681] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BokxAAA=]",
+		cost = 0,
+		description = "Gain stealth.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
+				text = "Range",
+				type = "Range",
+				value = 1200,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 24,
+			},
+			
+			{
+				duration = 6,
+				icon = "https://render.guildwars2.com/file/7B2193ACCF77E56C13E608191B082D68AA0FAA71/156659.png",
+				text = "Duration",
+				type = "Time",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/15780BCEBC0C20E7403191DEA92DB365AB380AE6/103960.png",
+		id = 12681,
+		initiative = 0,
+		name = "Stalk",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Pet",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Pet",
+		weapon_type = "None",
+	},
+	[12685] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&Bo0xAAA=]",
+		cost = 0,
+		description = "Roar fiercely, weakening nearby foes.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
+				text = "Range",
+				type = "Range",
+				value = 600,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 40,
+			},
+			
+			{
+				dmg_multiplier = 0.25,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Endurance regeneration decreased by 50%. 50% of hits are Glancing Blows (50% damage). Stacks duration.",
+				duration = 10,
+				icon = "https://render.guildwars2.com/file/6CB0E64AF9AA292E332A38C1770CE577E2CDE0E8/102853.png",
+				status = "Weakness",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Targets",
+				type = "Number",
+				value = 5,
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/F4ECC4EA13941443755D0F9B3344C4B015F1DAA7/103927.png",
+		id = 12685,
+		initiative = 0,
+		name = "Enfeebling Roar",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Pet",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Pet",
+		weapon_type = "None",
+	},
+	[12687] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&Bo8xAAA=]",
+		cost = 0,
+		description = "Emit a noxious cloud that poisons and damages foes.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
+				text = "Range",
+				type = "Range",
+				value = 180,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 35,
+			},
+			
+			{
+				dmg_multiplier = 0.1,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Deals damage every second; decreases healing effectiveness by 33%; damage stacks intensity.",
+				duration = 4,
+				icon = "https://render.guildwars2.com/file/559B0AF9FB5E1243D2649FAAE660CCB338AACC19/102840.png",
+				status = "Poisoned",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Pulses",
+				type = "Number",
+				value = 7,
+			},
+			
+			{
+				duration = 7,
+				icon = "https://render.guildwars2.com/file/7B2193ACCF77E56C13E608191B082D68AA0FAA71/156659.png",
+				text = "Duration",
+				type = "Time",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Targets",
+				type = "Number",
+				value = 5,
+			},
+			
+			{
+				field_type = "Poison",
+				icon = "https://render.guildwars2.com/file/59E0DB6A699810641C959926ADFEF73E08CC255B/156655.png",
+				text = "Combo Field",
+				type = "ComboField",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/F80934FEC30547EAE2022A22D06E00CFDBB4B328/104038.png",
+		id = 12687,
+		initiative = 0,
+		name = "Poison Cloud",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Pet",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Pet",
+		weapon_type = "None",
+	},
+	[12688] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BpAxAAA=]",
+		cost = 0,
+		description = "Maul your foe, weakening them.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
+				text = "Range",
+				type = "Range",
+				value = 130,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 20,
+			},
+			
+			{
+				dmg_multiplier = 0.5,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Endurance regeneration decreased by 50%. 50% of hits are Glancing Blows (50% damage). Stacks duration.",
+				duration = 5,
+				icon = "https://render.guildwars2.com/file/6CB0E64AF9AA292E332A38C1770CE577E2CDE0E8/102853.png",
+				status = "Weakness",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/695DA2E83CF23F527DD9109333CCB5239053DB94/104027.png",
+		id = 12688,
+		initiative = 0,
+		name = "Enfeebling Maul",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Pet",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Pet",
+		weapon_type = "None",
+	},
+	[12689] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BpExAAA=]",
+		cost = 0,
+		description = "Maul your foe fiercely and chill them.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
+				text = "Range",
+				type = "Range",
+				value = 200,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 30,
+			},
+			
+			{
+				dmg_multiplier = 0.5,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Movement speed decreased by 66%; skill cooldown increased by 66%; stacks duration.",
+				duration = 3,
+				icon = "https://render.guildwars2.com/file/28C4EC547A3516AF0242E826772DA43A5EAC3DF3/102839.png",
+				status = "Chilled",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/695DA2E83CF23F527DD9109333CCB5239053DB94/104027.png",
+		id = 12689,
+		initiative = 0,
+		name = "Icy Maul",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Pet",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Pet",
+		weapon_type = "None",
+	},
+	[12690] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BpIxAAA=]",
+		cost = 0,
+		description = "Maul your foe fiercely and poison them.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
+				text = "Range",
+				type = "Range",
+				value = 130,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 20,
+			},
+			
+			{
+				dmg_multiplier = 0.5,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Deals damage every second; decreases healing effectiveness by 33%; damage stacks intensity.",
+				duration = 12,
+				icon = "https://render.guildwars2.com/file/559B0AF9FB5E1243D2649FAAE660CCB338AACC19/102840.png",
+				status = "Poisoned",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/695DA2E83CF23F527DD9109333CCB5239053DB94/104027.png",
+		id = 12690,
+		initiative = 0,
+		name = "Poisonous Maul",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Pet",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Pet",
+		weapon_type = "None",
+	},
+	[12691] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BpMxAAA=]",
+		cost = 0,
+		description = "Purge all conditions from yourself.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
+				text = "Range",
+				type = "Range",
+				value = 600,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 30,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Conditions Removed",
+				type = "Number",
+				value = 10,
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/4D234DA072DE77DEFC0605ED401CB93EDC2AC84B/103009.png",
+		id = 12691,
+		initiative = 0,
+		name = "Purge Conditions",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Pet",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Pet",
+		weapon_type = "None",
+	},
+	[12693] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BpUxAAA=]",
+		cost = 0,
+		description = "Leap at your foe, chilling them.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
+				text = "Range",
+				type = "Range",
+				value = 600,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 30,
+			},
+			
+			{
+				dmg_multiplier = 0.5,
+				hit_count = 2,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				apply_count = 2,
+				description = "Movement speed decreased by 66%; skill cooldown increased by 66%; stacks duration.",
+				duration = 2,
+				icon = "https://render.guildwars2.com/file/28C4EC547A3516AF0242E826772DA43A5EAC3DF3/102839.png",
+				status = "Chilled",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				finisher_type = "Leap",
+				icon = "https://render.guildwars2.com/file/A513F3653D33FBA4220D2D307799F8A327A36A3B/156656.png",
+				percent = 100,
+				text = "Combo Finisher",
+				type = "ComboFinisher",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/43210A51F17CF8FA6E600CD8D0495458471C4CDA/103959.png",
+		id = 12693,
+		initiative = 0,
+		name = "Icy Pounce",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Pet",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Pet",
+		weapon_type = "None",
+	},
+	[12695] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BpcxAAA=]",
+		cost = 0,
+		description = "Boil the water around your foe.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
+				text = "Range",
+				type = "Range",
+				value = 1200,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 30,
+			},
+			
+			{
+				dmg_multiplier = 0.2,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				duration = 4,
+				icon = "https://render.guildwars2.com/file/7B2193ACCF77E56C13E608191B082D68AA0FAA71/156659.png",
+				text = "Duration",
+				type = "Time",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Targets",
+				type = "Number",
+				value = 5,
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/DEF9F23FBF5F3A57A80B01713F6B7EB7A7D099CF/104039.png",
+		id = 12695,
+		initiative = 0,
+		name = "Boil",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Pet",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Pet",
+		weapon_type = "None",
+	},
+	[12696] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BpgxAAA=]",
+		cost = 0,
+		description = "Breathe a cone of frost, damaging and chilling foes.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
+				text = "Range",
+				type = "Range",
+				value = 250,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 25,
+			},
+			
+			{
+				dmg_multiplier = 0.25,
+				hit_count = 5,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				apply_count = 5,
+				description = "Movement speed decreased by 66%; skill cooldown increased by 66%; stacks duration.",
+				duration = 1,
+				icon = "https://render.guildwars2.com/file/28C4EC547A3516AF0242E826772DA43A5EAC3DF3/102839.png",
+				status = "Chilled",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Targets",
+				type = "Number",
+				value = 5,
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/C9CC5F16B1371B524005D5CB995797411A2F021A/104040.png",
+		id = 12696,
+		initiative = 0,
+		name = "Frost Breath",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Pet",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Pet",
+		weapon_type = "None",
+	},
+	[12697] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BpkxAAA=]",
+		cost = 0,
+		description = "Freeze the water around your foe.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
+				text = "Range",
+				type = "Range",
+				value = 1200,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 25,
+			},
+			
+			{
+				dmg_multiplier = 0.2,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Movement speed decreased by 66%; skill cooldown increased by 66%; stacks duration.",
+				duration = 3,
+				icon = "https://render.guildwars2.com/file/28C4EC547A3516AF0242E826772DA43A5EAC3DF3/102839.png",
+				status = "Chilled",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Targets",
+				type = "Number",
+				value = 5,
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/C3B4B3CF115A0C49DC086C03ED02D36D7E6503EB/103613.png",
+		id = 12697,
+		initiative = 0,
+		name = "Frost Nova",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Pet",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Pet",
+		weapon_type = "None",
+	},
+	[12698] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BpoxAAA=]",
+		cost = 0,
+		description = "Breathe bolts of lightning that bounce to nearby foes.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
+				text = "Range",
+				type = "Range",
+				value = 600,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 30,
+			},
+			
+			{
+				dmg_multiplier = 0.33,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/59A1097728F7E50F54CC992D52F7ACF64411A1D8/104041.png",
+		id = 12698,
+		initiative = 0,
+		name = "Lightning Breath",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Pet",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Pet",
+		weapon_type = "None",
+	},
+	[12699] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BpsxAAA=]",
+		cost = 0,
+		description = "Charge the water around your foe with electricity.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 30,
+			},
+			
+			{
+				dmg_multiplier = 0.8,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Targets",
+				type = "Number",
+				value = 5,
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/650E47443AA86B57337FA1443404E420282EF19C/104042.png",
+		id = 12699,
+		initiative = 0,
+		name = "Electrocute",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Pet",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Pet",
+		weapon_type = "None",
+	},
+	[12700] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BpwxAAA=]",
+		cost = 0,
+		description = "Create poisonous bubbles.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 25,
+			},
+			
+			{
+				apply_count = 1,
+				description = "Deals damage every second; decreases healing effectiveness by 33%; damage stacks intensity.",
+				duration = 4,
+				icon = "https://render.guildwars2.com/file/559B0AF9FB5E1243D2649FAAE660CCB338AACC19/102840.png",
+				status = "Poisoned",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Pulses",
+				type = "Number",
+				value = 6,
+			},
+			
+			{
+				duration = 5,
+				icon = "https://render.guildwars2.com/file/7B2193ACCF77E56C13E608191B082D68AA0FAA71/156659.png",
+				text = "Duration",
+				type = "Time",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Targets",
+				type = "Number",
+				value = 5,
+			},
+			
+			{
+				field_type = "Poison",
+				icon = "https://render.guildwars2.com/file/59E0DB6A699810641C959926ADFEF73E08CC255B/156655.png",
+				text = "Combo Field",
+				type = "ComboField",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/F9BDFC9DDDC6279046C6A638620EC4B35725905F/103582.png",
+		id = 12700,
+		initiative = 0,
+		name = "Poison Cloud",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Pet",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Pet",
+		weapon_type = "None",
+	},
+	[12701] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&Bp0xAAA=]",
+		cost = 0,
+		description = "Exhale a swarm of insects that hits multiple foes.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
+				text = "Range",
+				type = "Range",
+				value = 900,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 30,
+			},
+			
+			{
+				dmg_multiplier = 0.25,
+				hit_count = 5,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				apply_count = 5,
+				description = "Deals damage every second; decreases healing effectiveness by 33%; damage stacks intensity.",
+				duration = 3,
+				icon = "https://render.guildwars2.com/file/559B0AF9FB5E1243D2649FAAE660CCB338AACC19/102840.png",
+				status = "Poisoned",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Targets",
+				type = "Number",
+				value = 3,
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/3F1A0AF31F0AEC0BCB120B0C730DADB7C6ABC090/104043.png",
+		id = 12701,
+		initiative = 0,
+		name = "Insect Swarm",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Pet",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Pet",
+		weapon_type = "None",
+	},
+	[12702] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&Bp4xAAA=]",
+		cost = 0,
+		description = "Shoot a noxious cloud at your foe, damaging and poisoning them.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
+				text = "Range",
+				type = "Range",
+				value = 900,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 25,
+			},
+			
+			{
+				dmg_multiplier = 0.2,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Deals damage every second; decreases healing effectiveness by 33%; damage stacks intensity.",
+				duration = 2,
+				icon = "https://render.guildwars2.com/file/559B0AF9FB5E1243D2649FAAE660CCB338AACC19/102840.png",
+				status = "Poisoned",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Pulses",
+				type = "Number",
+				value = 6,
+			},
+			
+			{
+				duration = 6,
+				icon = "https://render.guildwars2.com/file/7B2193ACCF77E56C13E608191B082D68AA0FAA71/156659.png",
+				text = "Duration",
+				type = "Time",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Targets",
+				type = "Number",
+				value = 5,
+			},
+			
+			{
+				field_type = "Poison",
+				icon = "https://render.guildwars2.com/file/59E0DB6A699810641C959926ADFEF73E08CC255B/156655.png",
+				text = "Combo Field",
+				type = "ComboField",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/5D01A2BF9C93FCD25C73A75C6E72336F42675E97/103929.png",
+		id = 12702,
+		initiative = 0,
+		name = "Poison Cloud",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Pet",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Pet",
+		weapon_type = "None",
+	},
+	[12703] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&Bp8xAAA=]",
+		cost = 0,
+		description = "Gain regeneration.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 30,
+			},
+			
+			{
+				apply_count = 1,
+				description = "Gain health every second; stacks duration.",
+				duration = 15,
+				icon = "https://render.guildwars2.com/file/F69996772B9E18FD18AD0AABAB25D7E3FC42F261/102835.png",
+				status = "Regeneration",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/9F3FCD0F3CD0F174C71BF277584A69A75BAF9151/104044.png",
+		id = 12703,
+		initiative = 0,
+		name = "Regenerate",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Pet",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Pet",
+		weapon_type = "None",
+	},
+	[12704] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BqAxAAA=]",
+		cost = 0,
+		description = "Your next two attacks stun your victims.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 60,
+			},
+			
+			{
+				duration = 1,
+				icon = "https://render.guildwars2.com/file/143F46DEF466062F01C52B69922FFCEF73DCA801/156668.png",
+				text = "Stun",
+				type = "Time",
+			},
+			
+			{
+				duration = 60,
+				icon = "https://render.guildwars2.com/file/7B2193ACCF77E56C13E608191B082D68AA0FAA71/156659.png",
+				text = "Venom Duration",
+				type = "Time",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/07354D6CEA72A5F607EBA5A5C54135F74424320A/103601.png",
+		id = 12704,
+		initiative = 0,
+		name = "Lashtail Venom",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Pet",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Pet",
+		weapon_type = "None",
+	},
+	[12708] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BqQxAAA=]",
+		cost = 0,
+		description = "Create a cone of sound, dazing foes.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
+				text = "Range",
+				type = "Range",
+				value = 280,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 30,
+			},
+			
+			{
+				dmg_multiplier = 0.5,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				duration = 2,
+				icon = "https://render.guildwars2.com/file/07B6122FBF169A2124A23FBCB06A3B7991A35179/156658.png",
+				text = "Daze",
+				type = "Time",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Targets",
+				type = "Number",
+				value = 5,
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/103BC1F43615CD02E416E04100022EB0AAEDD618/103238.png",
+		id = 12708,
+		initiative = 0,
+		name = "Dazing Screech",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Pet",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Pet",
+		weapon_type = "None",
+	},
+	[12709] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BqUxAAA=]",
+		cost = 0,
+		description = "Create a cone of sound, dazing foes.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
+				text = "Range",
+				type = "Range",
+				value = 280,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 30,
+			},
+			
+			{
+				dmg_multiplier = 0.2,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				duration = 1,
+				icon = "https://render.guildwars2.com/file/07B6122FBF169A2124A23FBCB06A3B7991A35179/156658.png",
+				text = "Daze",
+				type = "Time",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Targets",
+				type = "Number",
+				value = 5,
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/103BC1F43615CD02E416E04100022EB0AAEDD618/103238.png",
+		id = 12709,
+		initiative = 0,
+		name = "Dazing Screech",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Pet",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Pet",
+		weapon_type = "None",
+	},
+	[12711] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BqcxAAA=]",
+		cost = 0,
+		description = "Screech to chill nearby foes.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 24,
+			},
+			
+			{
+				dmg_multiplier = 0.5,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Movement speed decreased by 66%; skill cooldown increased by 66%; stacks duration.",
+				duration = 5,
+				icon = "https://render.guildwars2.com/file/28C4EC547A3516AF0242E826772DA43A5EAC3DF3/102839.png",
+				status = "Chilled",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Targets",
+				type = "Number",
+				value = 5,
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/103BC1F43615CD02E416E04100022EB0AAEDD618/103238.png",
+		id = 12711,
+		initiative = 0,
+		name = "Icy Screech",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Pet",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Pet",
+		weapon_type = "None",
+	},
+	[12712] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BqgxAAA=]",
+		cost = 0,
+		description = "Screech angrily to grant fury to nearby allies.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 25,
+			},
+			
+			{
+				apply_count = 1,
+				description = "Critical Chance increased by 20%; stacks duration.",
+				duration = 15,
+				icon = "https://render.guildwars2.com/file/96D90DF84CAFE008233DD1C2606A12C1A0E68048/102842.png",
+				status = "Fury",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Targets",
+				type = "Number",
+				value = 5,
+			},
+			
+			{
+				distance = 600,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Radius",
+				type = "Distance",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/103BC1F43615CD02E416E04100022EB0AAEDD618/103238.png",
+		id = 12712,
+		initiative = 0,
+		name = "Furious Screech",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Pet",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Pet",
+		weapon_type = "None",
+	},
+	[12713] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BqkxAAA=]",
+		cost = 0,
+		description = "Screech to grant protection to nearby allies.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 24,
+			},
+			
+			{
+				apply_count = 1,
+				description = "Incoming damage decreased by 33%; stacks duration.",
+				duration = 4,
+				icon = "https://render.guildwars2.com/file/CD77D1FAB7B270223538A8F8ECDA1CFB044D65F4/102834.png",
+				status = "Protection",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Targets",
+				type = "Number",
+				value = 5,
+			},
+			
+			{
+				distance = 600,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Radius",
+				type = "Distance",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/103BC1F43615CD02E416E04100022EB0AAEDD618/103238.png",
+		id = 12713,
+		initiative = 0,
+		name = "Protecting Screech",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Pet",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Pet",
+		weapon_type = "None",
+	},
+	[12714] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BqoxAAA=]",
+		cost = 0,
+		description = "Howl at foes to send them running in fear.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 45,
+			},
+			
+			{
+				dmg_multiplier = 0.2,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Involuntary retreat; unable to act; stacks duration.",
+				duration = 2,
+				icon = "https://render.guildwars2.com/file/30307A6E766D74B6EB09EDA12A4A2DE50E4D76F4/102869.png",
+				status = "Fear",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				distance = 600,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Radius",
+				type = "Distance",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Targets",
+				type = "Number",
+				value = 5,
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/C016B80FBD257CDD09EACFE7EBC611DF0A7040D6/103520.png",
+		id = 12714,
+		initiative = 0,
+		name = "Terrifying Howl",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Pet",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Pet",
+		weapon_type = "None",
+	},
+	[12715] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BqsxAAA=]",
+		cost = 0,
+		description = "Howl at foes to immobilize them.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 20,
+			},
+			
+			{
+				dmg_multiplier = 0.2,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Unable to move; stacks duration.",
+				duration = 2,
+				icon = "https://render.guildwars2.com/file/397A613651BFCA2832B6469CE34735580A2C120E/102844.png",
+				status = "Immobile",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				distance = 600,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Radius",
+				type = "Distance",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Targets",
+				type = "Number",
+				value = 5,
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/45E153B2939D037C4E6FDE1FEF42CF6456280D3E/104046.png",
+		id = 12715,
+		initiative = 0,
+		name = "Intimidating Howl",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Pet",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Pet",
+		weapon_type = "None",
+	},
+	[12716] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BqwxAAA=]",
+		cost = 0,
+		description = "Howl at foes to chill them.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 30,
+			},
+			
+			{
+				dmg_multiplier = 0.2,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Movement speed decreased by 66%; skill cooldown increased by 66%; stacks duration.",
+				duration = 3,
+				icon = "https://render.guildwars2.com/file/28C4EC547A3516AF0242E826772DA43A5EAC3DF3/102839.png",
+				status = "Chilled",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				distance = 600,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Radius",
+				type = "Distance",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Targets",
+				type = "Number",
+				value = 5,
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/5D97691719F5D52AAA610CCECB13B0F2056A0E08/103607.png",
+		id = 12716,
+		initiative = 0,
+		name = "Chilling Howl",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Pet",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Pet",
+		weapon_type = "None",
+	},
+	[12717] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&Bq0xAAA=]",
+		cost = 0,
+		description = "Howl to heal and grant regeneration to nearby allies.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 25,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/D4347C52157B040943051D7E09DEAD7AF63D4378/156662.png",
+				target = "Healing",
+				text = "Healing",
+				type = "AttributeAdjust",
+				value = 1000,
+			},
+			
+			{
+				apply_count = 1,
+				description = "Gain health every second; stacks duration.",
+				duration = 10,
+				icon = "https://render.guildwars2.com/file/F69996772B9E18FD18AD0AABAB25D7E3FC42F261/102835.png",
+				status = "Regeneration",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Targets",
+				type = "Number",
+				value = 5,
+			},
+			
+			{
+				distance = 600,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Radius",
+				type = "Distance",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/3CD0D15B0C0E9CB7BD6709E773DFB2FCFEC25823/103609.png",
+		id = 12717,
+		initiative = 0,
+		name = "Regenerate",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Pet",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Pet",
+		weapon_type = "None",
+	},
+	[12718] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&Bq4xAAA=]",
+		cost = 0,
+		description = "Howl to summon a hyena ally to fight with you.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 45,
+			},
+			
+			{
+				duration = 40,
+				icon = "https://render.guildwars2.com/file/7B2193ACCF77E56C13E608191B082D68AA0FAA71/156659.png",
+				text = "Duration",
+				type = "Time",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/B824F20C4F5F7B739A0634DD79EE0EA2A82D7FC3/103237.png",
+		id = 12718,
+		initiative = 0,
+		name = "Howl of the Pack",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Pet",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+			
+			{
+				distance = 600,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				overrides = 0,
+				requires_trait = 975,
+				text = "Radius",
+				type = "Distance",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				overrides = 0,
+				requires_trait = 975,
+				text = "Number of Targets",
+				type = "Number",
+				value = 5,
+			},
+		},
+		transform_skills = 
+		{
+		},
+		type = "Pet",
+		weapon_type = "None",
+	},
+	[12721] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BrExAAA=]",
+		cost = 0,
+		description = "Slash your foes and chill them.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
+				text = "Range",
+				type = "Range",
+				value = 300,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 20,
+			},
+			
+			{
+				dmg_multiplier = 0.66,
+				hit_count = 2,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Movement speed decreased by 66%; skill cooldown increased by 66%; stacks duration.",
+				duration = 3,
+				icon = "https://render.guildwars2.com/file/28C4EC547A3516AF0242E826772DA43A5EAC3DF3/102839.png",
+				status = "Chilled",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/6A3CA8D32FDD9EB0A8546FDC4DB39FA8EE740059/104049.png",
+		id = 12721,
+		initiative = 0,
+		name = "Chilling Slash",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Pet",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Pet",
+		weapon_type = "None",
+	},
+	[12722] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BrIxAAA=]",
+		cost = 0,
+		description = "Slash your foes and cause them to bleed.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
+				text = "Range",
+				type = "Range",
+				value = 300,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 6,
+			},
+			
+			{
+				dmg_multiplier = 0.33,
+				hit_count = 2,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				apply_count = 2,
+				description = "Deals damage every second; stacks intensity.",
+				duration = 15,
+				icon = "https://render.guildwars2.com/file/79FF0046A5F9ADA3B4C4EC19ADB4CB124D5F0021/102848.png",
+				status = "Bleeding",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/6A3CA8D32FDD9EB0A8546FDC4DB39FA8EE740059/104049.png",
+		id = 12722,
+		initiative = 0,
+		name = "Lacerating Slash",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Pet",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Pet",
+		weapon_type = "None",
+	},
+	[12723] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BrMxAAA=]",
+		cost = 0,
+		description = "Blind your foes with a slash.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
+				text = "Range",
+				type = "Range",
+				value = 300,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 18,
+			},
+			
+			{
+				dmg_multiplier = 0.66,
+				hit_count = 2,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Next outgoing attack misses; stacks duration.",
+				duration = 5,
+				icon = "https://render.guildwars2.com/file/09770136BB76FD0DBE1CC4267DEED54774CB20F6/102837.png",
+				status = "Blinded",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/6A3CA8D32FDD9EB0A8546FDC4DB39FA8EE740059/104049.png",
+		id = 12723,
+		initiative = 0,
+		name = "Blinding Slash",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Pet",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Pet",
+		weapon_type = "None",
+	},
+	[12729] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BrkxAAA=]",
+		cost = 0,
+		description = "Your next attack immobilizes your foe.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 45,
+			},
+			
+			{
+				apply_count = 1,
+				description = "Unable to move; stacks duration.",
+				duration = 3,
+				icon = "https://render.guildwars2.com/file/397A613651BFCA2832B6469CE34735580A2C120E/102844.png",
+				status = "Immobile",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				duration = 30,
+				icon = "https://render.guildwars2.com/file/7B2193ACCF77E56C13E608191B082D68AA0FAA71/156659.png",
+				text = "Venom Duration",
+				type = "Time",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/D8AAF1C759E0E4F0A4C85A9462DF75055EB5BF92/104052.png",
+		id = 12729,
+		initiative = 0,
+		name = "Paralyzing Venom",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Pet",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Pet",
+		weapon_type = "None",
+	},
+	[12730] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BroxAAA=]",
+		cost = 0,
+		description = "Your next two attacks weaken your foes and make them vulnerable.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 30,
+			},
+			
+			{
+				apply_count = 3,
+				description = "Damage and condition damage taken are increased; stacks intensity.",
+				duration = 10,
+				icon = "https://render.guildwars2.com/file/3A394C1A0A3257EB27A44842DDEEF0DF000E1241/102850.png",
+				status = "Vulnerability",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Endurance regeneration decreased by 50%. 50% of hits are Glancing Blows (50% damage). Stacks duration.",
+				duration = 5,
+				icon = "https://render.guildwars2.com/file/6CB0E64AF9AA292E332A38C1770CE577E2CDE0E8/102853.png",
+				status = "Weakness",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				duration = 30,
+				icon = "https://render.guildwars2.com/file/7B2193ACCF77E56C13E608191B082D68AA0FAA71/156659.png",
+				text = "Venom Duration",
+				type = "Time",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/D8AAF1C759E0E4F0A4C85A9462DF75055EB5BF92/104052.png",
+		id = 12730,
+		initiative = 0,
+		name = "Weakening Venom",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Pet",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Pet",
+		weapon_type = "None",
+	},
+	[12731] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BrsxAAA=]",
+		cost = 0,
+		description = "Your next three attacks poison your foe.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 30,
+			},
+			
+			{
+				apply_count = 1,
+				description = "Deals damage every second; decreases healing effectiveness by 33%; damage stacks intensity.",
+				duration = 12,
+				icon = "https://render.guildwars2.com/file/559B0AF9FB5E1243D2649FAAE660CCB338AACC19/102840.png",
+				status = "Poisoned",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				duration = 30,
+				icon = "https://render.guildwars2.com/file/7B2193ACCF77E56C13E608191B082D68AA0FAA71/156659.png",
+				text = "Venom Duration",
+				type = "Time",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/D8AAF1C759E0E4F0A4C85A9462DF75055EB5BF92/104052.png",
+		id = 12731,
+		initiative = 0,
+		name = "Deadly Venom",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Pet",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Pet",
+		weapon_type = "None",
+	},
+	[12732] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BrwxAAA=]",
+		cost = 0,
+		description = "Search the area for an improvised weapon.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
+				text = "Range",
+				type = "Range",
+				value = 2000,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 30,
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/7FE63F139CC1BC0EB0F1DA49066B0DE5A0CC062B/104053.png",
+		id = 12732,
+		initiative = 0,
+		name = "Forage",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Pet",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Pet",
+		weapon_type = "None",
+	},
+	[12744] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BsgxAAA=]",
+		cost = 0,
+		description = "Rush at a foe and stun them.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
+				text = "Range",
+				type = "Range",
+				value = 200,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 40,
+			},
+			
+			{
+				dmg_multiplier = 0.8,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				duration = 2,
+				icon = "https://render.guildwars2.com/file/143F46DEF466062F01C52B69922FFCEF73DCA801/156668.png",
+				text = "Stun",
+				type = "Time",
+			},
+			
+			{
+				finisher_type = "Leap",
+				icon = "https://render.guildwars2.com/file/A513F3653D33FBA4220D2D307799F8A327A36A3B/156656.png",
+				percent = 100,
+				text = "Combo Finisher",
+				type = "ComboFinisher",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/0FC6D6B3CBD0DDB7A3E2962FF138FDA329A1C90B/103599.png",
+		id = 12744,
+		initiative = 0,
+		name = "Stunning Rush",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Pet",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Pet",
+		weapon_type = "None",
+	},
+	[12748] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BswxAAA=]",
+		cost = 0,
+		description = "Whirl your tentacles, chilling the foes you strike.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
+				text = "Range",
+				type = "Range",
+				value = 150,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 30,
+			},
+			
+			{
+				dmg_multiplier = 0.4,
+				hit_count = 4,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				apply_count = 4,
+				description = "Movement speed decreased by 66%; skill cooldown increased by 66%; stacks duration.",
+				duration = 1,
+				icon = "https://render.guildwars2.com/file/28C4EC547A3516AF0242E826772DA43A5EAC3DF3/102839.png",
+				status = "Chilled",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Targets",
+				type = "Number",
+				value = 5,
+			},
+			
+			{
+				finisher_type = "Whirl",
+				icon = "https://render.guildwars2.com/file/A513F3653D33FBA4220D2D307799F8A327A36A3B/156656.png",
+				percent = 100,
+				text = "Combo Finisher",
+				type = "ComboFinisher",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/1CC39FE444CDC677CA124172CA04A216F2F2C51E/103600.png",
+		id = 12748,
+		initiative = 0,
+		name = "Chilling Whirl",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Pet",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Pet",
+		weapon_type = "None",
+	},
+	[12749] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&Bs0xAAA=]",
+		cost = 0,
+		description = "Whirl your tentacles, immobilizing the foes you strike.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
+				text = "Range",
+				type = "Range",
+				value = 150,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 30,
+			},
+			
+			{
+				dmg_multiplier = 0.4,
+				hit_count = 4,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				apply_count = 4,
+				description = "Unable to move; stacks duration.",
+				duration = 1,
+				icon = "https://render.guildwars2.com/file/397A613651BFCA2832B6469CE34735580A2C120E/102844.png",
+				status = "Immobile",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Targets",
+				type = "Number",
+				value = 5,
+			},
+			
+			{
+				finisher_type = "Whirl",
+				icon = "https://render.guildwars2.com/file/A513F3653D33FBA4220D2D307799F8A327A36A3B/156656.png",
+				percent = 100,
+				text = "Combo Finisher",
+				type = "ComboFinisher",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/1CC39FE444CDC677CA124172CA04A216F2F2C51E/103600.png",
+		id = 12749,
+		initiative = 0,
+		name = "Immobilizing Whirl",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Pet",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Pet",
+		weapon_type = "None",
+	},
+	[12754] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BtIxAAA=]",
+		cost = 0,
+		description = "Search the area for an improvised weapon.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
+				text = "Range",
+				type = "Range",
+				value = 2000,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 30,
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/7FE63F139CC1BC0EB0F1DA49066B0DE5A0CC062B/104053.png",
+		id = 12754,
+		initiative = 0,
+		name = "Forage",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Pet",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Pet",
+		weapon_type = "None",
+	},
+	[12755] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BtMxAAA=]",
+		cost = 0,
+		description = "Search the area for an improvised weapon.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
+				text = "Range",
+				type = "Range",
+				value = 2000,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 30,
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/7FE63F139CC1BC0EB0F1DA49066B0DE5A0CC062B/104053.png",
+		id = 12755,
+		initiative = 0,
+		name = "Forage",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Pet",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Pet",
+		weapon_type = "None",
+	},
+	[12756] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BtQxAAA=]",
+		cost = 0,
+		description = "Search the area for an improvised weapon.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
+				text = "Range",
+				type = "Range",
+				value = 2000,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 30,
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/7FE63F139CC1BC0EB0F1DA49066B0DE5A0CC062B/104053.png",
+		id = 12756,
+		initiative = 0,
+		name = "Forage",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Pet",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Pet",
+		weapon_type = "None",
+	},
+	[12757] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BtUxAAA=]",
+		cost = 0,
+		description = "Enter a frenzy. Attack faster and bleed on each hit.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
+				text = "Range",
+				type = "Range",
+				value = 1200,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 45,
+			},
+			
+			{
+				apply_count = 1,
+				description = "Skills and actions are faster.",
+				duration = 10,
+				icon = "https://render.guildwars2.com/file/D4AB6401A6D6917C3D4F230764452BCCE1035B0D/1012835.png",
+				status = "Quickness",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Your next three attacks inflict bleeding.",
+				duration = 30,
+				icon = "https://render.guildwars2.com/file/05365CD3720551805D3F9645924AE3E4EB3E5F06/104036.png",
+				status = "Feeding Frenzy",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Deals damage every second; stacks intensity.",
+				duration = 5,
+				icon = "https://render.guildwars2.com/file/79FF0046A5F9ADA3B4C4EC19ADB4CB124D5F0021/102848.png",
+				status = "Bleeding",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/05365CD3720551805D3F9645924AE3E4EB3E5F06/104036.png",
+		id = 12757,
+		initiative = 0,
+		name = "Feeding Frenzy",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Pet",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Pet",
+		weapon_type = "None",
 	},
 	[13002] = 
 	{
@@ -71512,7 +77471,7 @@ local tbl =
 			{
 				apply_count = 1,
 				description = "Unable to move; stacks duration.",
-				duration = 1,
+				duration = 2,
 				icon = "https://render.guildwars2.com/file/397A613651BFCA2832B6469CE34735580A2C120E/102844.png",
 				status = "Immobile",
 				text = "Apply Buff/Condition",
@@ -71755,7 +77714,7 @@ local tbl =
 		},
 		chat_link = "[&BtMyAAA=]",
 		cost = 0,
-		description = "Dual Wield. Blast your foe repeatedly with both pistols.",
+		description = "Dual Wield. Blast your foe repeatedly with both pistols. Gain initiative if all attacks hit.",
 		dual_wield = "Pistol",
 		facts = 
 		{
@@ -71790,6 +77749,13 @@ local tbl =
 				text = "Number of Shots",
 				type = "Number",
 				value = 8,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Initiative",
+				type = "Number",
+				value = 2,
 			},
 			
 			{
@@ -72130,6 +78096,16 @@ local tbl =
 				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
 				text = "Damage",
 				type = "Damage",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Unable to move; stacks duration.",
+				duration = 2,
+				icon = "https://render.guildwars2.com/file/397A613651BFCA2832B6469CE34735580A2C120E/102844.png",
+				status = "Immobile",
+				text = "Apply Buff/Condition",
+				type = "Buff",
 			},
 			
 			{
@@ -72564,7 +78540,7 @@ local tbl =
 		},
 		chat_link = "[&Bt4yAAA=]",
 		cost = 0,
-		description = "Bounce an arrow between multiple nearby foes.",
+		description = "Bounce an arrow between multiple nearby foes. This attack deals increased damage to poisoned foes.",
 		dual_wield = "",
 		facts = 
 		{
@@ -72588,7 +78564,14 @@ local tbl =
 				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
 				text = "Number of Bounces",
 				type = "Number",
-				value = 2,
+				value = 3,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				percent = 25,
+				text = "Damage Increase",
+				type = "Percent",
 			},
 			
 			{
@@ -72640,7 +78623,7 @@ local tbl =
 		},
 		chat_link = "[&BuAyAAA=]",
 		cost = 0,
-		description = "Fire an arrow that fills the target area with a poisonous cloud.",
+		description = "Fire an arrow that fills the target area with a poisonous cloud. Foes at or above the poison threshold are dazed.\n(The same foe cannot be dazed more than once per interval.)",
 		dual_wield = "",
 		facts = 
 		{
@@ -72660,7 +78643,7 @@ local tbl =
 			},
 			
 			{
-				dmg_multiplier = 0.2,
+				dmg_multiplier = 0.6,
 				hit_count = 1,
 				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
 				text = "Damage",
@@ -72703,6 +78686,27 @@ local tbl =
 				text = "Number of Targets",
 				type = "Number",
 				value = 5,
+			},
+			
+			{
+				duration = 1,
+				icon = "https://render.guildwars2.com/file/07B6122FBF169A2124A23FBCB06A3B7991A35179/156658.png",
+				text = "Daze",
+				type = "Time",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Poison Threshold",
+				type = "Number",
+				value = 5,
+			},
+			
+			{
+				duration = 1,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Interval",
+				type = "Time",
 			},
 			
 			{
@@ -72880,6 +78884,14 @@ local tbl =
 				text = "Unblockable",
 				type = "Unblockable",
 				value = true,
+			},
+			
+			{
+				dmg_multiplier = 0.33,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
 			},
 			
 			{
@@ -73874,7 +79886,7 @@ local tbl =
 				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
 				text = "Number of Impacts",
 				type = "Number",
-				value = 3,
+				value = 4,
 			},
 			
 			{
@@ -74413,6 +80425,14 @@ local tbl =
 				text = "Unblockable",
 				type = "Unblockable",
 				value = true,
+			},
+			
+			{
+				dmg_multiplier = 1,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
 			},
 			
 			{
@@ -76937,6 +82957,14 @@ local tbl =
 			},
 			
 			{
+				dmg_multiplier = 0.33,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
 				apply_count = 1,
 				description = "Unable to move; stacks duration.",
 				duration = 3,
@@ -76949,7 +82977,7 @@ local tbl =
 			{
 				apply_count = 3,
 				description = "Deals damage every second; decreases healing effectiveness by 33%; damage stacks intensity.",
-				duration = 6,
+				duration = 10,
 				icon = "https://render.guildwars2.com/file/559B0AF9FB5E1243D2649FAAE660CCB338AACC19/102840.png",
 				status = "Poisoned",
 				text = "Apply Buff/Condition",
@@ -76996,6 +83024,18 @@ local tbl =
 		toolbelt_skill = 0,
 		traited_facts = 
 		{
+			
+			{
+				apply_count = 4,
+				description = "Deals damage every second; decreases healing effectiveness by 33%; damage stacks intensity.",
+				duration = 10,
+				icon = "https://render.guildwars2.com/file/559B0AF9FB5E1243D2649FAAE660CCB338AACC19/102840.png",
+				overrides = 4,
+				requires_trait = 1291,
+				status = "Poisoned",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
 			
 			{
 				apply_count = 5,
@@ -77080,6 +83120,112 @@ local tbl =
 		},
 		type = "Utility",
 		weapon_type = "None",
+	},
+	[13107] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+			"Deception",
+		},
+		chat_link = "[&BjMzAAA=]",
+		cost = 0,
+		description = "Deception. Blind foes in the target area and grant stealth to nearby allies.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 40,
+			},
+			
+			{
+				apply_count = 1,
+				description = "Currently invisible. Ends if you deal damage.",
+				duration = 3,
+				icon = "https://render.guildwars2.com/file/3BD4670638470439F3325B444FAF7D5FA620CCE5/62777.png",
+				status = "Stealth",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Next outgoing attack misses; stacks duration.",
+				duration = 5,
+				icon = "https://render.guildwars2.com/file/09770136BB76FD0DBE1CC4267DEED54774CB20F6/102837.png",
+				status = "Blinded",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Targets",
+				type = "Number",
+				value = 5,
+			},
+			
+			{
+				distance = 240,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Radius",
+				type = "Distance",
+			},
+			
+			{
+				finisher_type = "Blast",
+				icon = "https://render.guildwars2.com/file/A513F3653D33FBA4220D2D307799F8A327A36A3B/156656.png",
+				percent = 100,
+				text = "Combo Finisher",
+				type = "ComboFinisher",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/A50FF4564443B9C436E2354762D6077AB0C63746/103113.png",
+		id = 13107,
+		initiative = 0,
+		name = "Blinding Powder",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+			
+			{
+				apply_count = 1,
+				description = "Currently invisible. Ends if you deal damage.",
+				duration = 4,
+				icon = "https://render.guildwars2.com/file/3BD4670638470439F3325B444FAF7D5FA620CCE5/62777.png",
+				overrides = 1,
+				requires_trait = 1136,
+				status = "Stealth",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+		},
+		transform_skills = 
+		{
+		},
 	},
 	[13108] = 
 	{
@@ -78891,6 +85037,2105 @@ local tbl =
 		type = "Weapon",
 		weapon_type = "None",
 	},
+	[13339] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&Bhs0AAA=]",
+		cost = 0,
+		description = "Make lava erupt from target area.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 10,
+			},
+			
+			{
+				dmg_multiplier = 1,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Targets",
+				type = "Number",
+				value = 5,
+			},
+			
+			{
+				duration = 8,
+				icon = "https://render.guildwars2.com/file/7B2193ACCF77E56C13E608191B082D68AA0FAA71/156659.png",
+				text = "Duration",
+				type = "Time",
+			},
+			
+			{
+				distance = 180,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Radius",
+				type = "Distance",
+			},
+			
+			{
+				field_type = "Fire",
+				icon = "https://render.guildwars2.com/file/59E0DB6A699810641C959926ADFEF73E08CC255B/156655.png",
+				text = "Combo Field",
+				type = "ComboField",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/CFA80DB42022C240001D249CED6235CEF70C9042/103135.png",
+		id = 13339,
+		initiative = 0,
+		name = "Lava Font",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+			
+			{
+				duration = 10,
+				icon = "https://render.guildwars2.com/file/7B2193ACCF77E56C13E608191B082D68AA0FAA71/156659.png",
+				overrides = 3,
+				requires_trait = 1510,
+				text = "Duration",
+				type = "Time",
+			},
+		},
+		transform_skills = 
+		{
+		},
+	},
+	[13464] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&Bpg0AAA=]",
+		cost = 0,
+		description = "Shrink and evade attacks.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 75,
+			},
+			
+			{
+				duration = 3,
+				icon = "https://render.guildwars2.com/file/7B2193ACCF77E56C13E608191B082D68AA0FAA71/156659.png",
+				text = "Duration",
+				type = "Time",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/0E9264100B0A6A13395EF6083534E6DFB64C0BD8/103415.png",
+		id = 13464,
+		initiative = 0,
+		name = "Elixir S",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+			
+			{
+				duration = 4,
+				icon = "https://render.guildwars2.com/file/7B2193ACCF77E56C13E608191B082D68AA0FAA71/156659.png",
+				overrides = 1,
+				requires_trait = 473,
+				text = "Duration",
+				type = "Time",
+			},
+		},
+		transform_skills = 
+		{
+		},
+	},
+	[13465] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&Bpk0AAA=]",
+		cost = 0,
+		description = "Gain fury, might, and swiftness.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 40,
+			},
+			
+			{
+				apply_count = 1,
+				description = "Critical Chance increased by 20%; stacks duration.",
+				duration = 10,
+				icon = "https://render.guildwars2.com/file/96D90DF84CAFE008233DD1C2606A12C1A0E68048/102842.png",
+				status = "Fury",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Increased outgoing damage; stacks intensity.",
+				duration = 30,
+				icon = "https://render.guildwars2.com/file/2FA9DF9D6BC17839BBEA14723F1C53D645DDB5E1/102852.png",
+				status = "Might",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Reflect incoming damage back to its source; stacks duration.",
+				duration = 10,
+				icon = "https://render.guildwars2.com/file/27F233F7D4CE4E9EFE040E3D665B7B0643557B6E/102883.png",
+				status = "Retaliation",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Movement speed increased by 33%; stacks duration.",
+				duration = 10,
+				icon = "https://render.guildwars2.com/file/20CFC14967E67F7A3FD4A4B8722B4CF5B8565E11/102836.png",
+				status = "Swiftness",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/19E19A741B72550BF44E96F43C28571CCB059FBC/103402.png",
+		id = 13465,
+		initiative = 0,
+		name = "Elixir B",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+			
+			{
+				apply_count = 1,
+				description = "Critical Chance increased by 20%; stacks duration.",
+				duration = 12,
+				icon = "https://render.guildwars2.com/file/96D90DF84CAFE008233DD1C2606A12C1A0E68048/102842.png",
+				overrides = 1,
+				requires_trait = 473,
+				status = "Fury",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Increased outgoing damage; stacks intensity.",
+				duration = 36,
+				icon = "https://render.guildwars2.com/file/2FA9DF9D6BC17839BBEA14723F1C53D645DDB5E1/102852.png",
+				overrides = 2,
+				requires_trait = 473,
+				status = "Might",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Reflect incoming damage back to its source; stacks duration.",
+				duration = 12,
+				icon = "https://render.guildwars2.com/file/27F233F7D4CE4E9EFE040E3D665B7B0643557B6E/102883.png",
+				overrides = 3,
+				requires_trait = 473,
+				status = "Retaliation",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Movement speed increased by 33%; stacks duration.",
+				duration = 12,
+				icon = "https://render.guildwars2.com/file/20CFC14967E67F7A3FD4A4B8722B4CF5B8565E11/102836.png",
+				overrides = 4,
+				requires_trait = 473,
+				status = "Swiftness",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+		},
+		transform_skills = 
+		{
+		},
+	},
+	[13474] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BqI0AAA=]",
+		cost = 0,
+		description = "Set a timed charge that damages foes when it explodes.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				dmg_multiplier = 1.25,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				distance = 240,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Radius",
+				type = "Distance",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Combat Only",
+				type = "NoData",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Targets",
+				type = "Number",
+				value = 5,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Explosion",
+				type = "NoData",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/02A02091B1EBDB782719EB6AE56F01E6372C500D/103091.png",
+		id = 13474,
+		initiative = 0,
+		name = "Bomb",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+			
+			{
+				dmg_multiplier = 1.71875,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				overrides = 0,
+				requires_trait = 1947,
+				text = "Damage",
+				type = "Damage",
+			},
+		},
+		transform_skills = 
+		{
+		},
+	},
+	[13551] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&Bu80AAA=]",
+		cost = 0,
+		description = "Set a timed charge that creates a cloud of smoke, blinding nearby foes.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 20,
+			},
+			
+			{
+				apply_count = 1,
+				description = "Next outgoing attack misses; stacks duration.",
+				duration = 3,
+				icon = "https://render.guildwars2.com/file/09770136BB76FD0DBE1CC4267DEED54774CB20F6/102837.png",
+				status = "Blinded",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				duration = 6,
+				icon = "https://render.guildwars2.com/file/7B2193ACCF77E56C13E608191B082D68AA0FAA71/156659.png",
+				text = "Duration",
+				type = "Time",
+			},
+			
+			{
+				duration = 2,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Interval",
+				type = "Time",
+			},
+			
+			{
+				distance = 240,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Radius",
+				type = "Distance",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Pulses",
+				type = "Number",
+				value = 3,
+			},
+			
+			{
+				field_type = "Smoke",
+				icon = "https://render.guildwars2.com/file/59E0DB6A699810641C959926ADFEF73E08CC255B/156655.png",
+				text = "Combo Field",
+				type = "ComboField",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/02A02091B1EBDB782719EB6AE56F01E6372C500D/103091.png",
+		id = 13551,
+		initiative = 0,
+		name = "Smoke Bomb",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+	},
+	[13552] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BvA0AAA=]",
+		cost = 0,
+		description = "Hit multiple foes with arcs of chain lightning.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
+				text = "Range",
+				type = "Range",
+				value = 1200,
+			},
+			
+			{
+				dmg_multiplier = 0.66,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Bounces",
+				type = "Number",
+				value = 2,
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/01D310FE65DBA378CBAFD13B2BFEDE59939C5153/102964.png",
+		id = 13552,
+		initiative = 0,
+		name = "Static Discharge",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+	},
+	[13677] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+			"Symbol",
+		},
+		chat_link = "[&Bm01AAA=]",
+		cost = 0,
+		description = "Symbol. Sear a mystic symbol into the target area, damaging foes and granting retaliation to allies.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 30,
+			},
+			
+			{
+				dmg_multiplier = 0.5,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Reflect incoming damage back to its source; stacks duration.",
+				duration = 2,
+				icon = "https://render.guildwars2.com/file/27F233F7D4CE4E9EFE040E3D665B7B0643557B6E/102883.png",
+				status = "Retaliation",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Targets",
+				type = "Number",
+				value = 5,
+			},
+			
+			{
+				duration = 4,
+				icon = "https://render.guildwars2.com/file/7B2193ACCF77E56C13E608191B082D68AA0FAA71/156659.png",
+				text = "Symbol Duration",
+				type = "Time",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Pulses",
+				type = "Number",
+				value = 4,
+			},
+			
+			{
+				distance = 180,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Symbol Radius",
+				type = "Distance",
+			},
+			
+			{
+				field_type = "Light",
+				icon = "https://render.guildwars2.com/file/59E0DB6A699810641C959926ADFEF73E08CC255B/156655.png",
+				text = "Combo Field",
+				type = "ComboField",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/E315FF56624F5B2BB8BF51D00FA716FA4936F037/103268.png",
+		id = 13677,
+		initiative = 0,
+		name = "Symbol of Wrath",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+			
+			{
+				dmg_multiplier = 0.55,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				overrides = 1,
+				requires_trait = 649,
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Reflect incoming damage back to its source; stacks duration.",
+				duration = 2,
+				icon = "https://render.guildwars2.com/file/27F233F7D4CE4E9EFE040E3D665B7B0643557B6E/102883.png",
+				overrides = 2,
+				requires_trait = 604,
+				status = "Retaliation",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				duration = 6,
+				icon = "https://render.guildwars2.com/file/7B2193ACCF77E56C13E608191B082D68AA0FAA71/156659.png",
+				overrides = 4,
+				requires_trait = 558,
+				text = "Symbol Duration",
+				type = "Time",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				overrides = 5,
+				requires_trait = 558,
+				text = "Pulses",
+				type = "Number",
+				value = 6,
+			},
+			
+			{
+				distance = 240,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				overrides = 6,
+				requires_trait = 558,
+				text = "Symbol Radius",
+				type = "Distance",
+			},
+		},
+		transform_skills = 
+		{
+		},
+	},
+	[13684] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+			"Symbol",
+		},
+		chat_link = "[&BnQ1AAA=]",
+		cost = 0,
+		description = "Symbol. Create a symbol that gives protection to you and your allies.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
+				text = "Range",
+				type = "Range",
+				value = 180,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 8,
+			},
+			
+			{
+				dmg_multiplier = 0.6,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Incoming damage decreased by 33%; stacks duration.",
+				duration = 1,
+				icon = "https://render.guildwars2.com/file/CD77D1FAB7B270223538A8F8ECDA1CFB044D65F4/102834.png",
+				status = "Protection",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Targets",
+				type = "Number",
+				value = 5,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Pulses",
+				type = "Number",
+				value = 2,
+			},
+			
+			{
+				duration = 2,
+				icon = "https://render.guildwars2.com/file/7B2193ACCF77E56C13E608191B082D68AA0FAA71/156659.png",
+				text = "Symbol Duration",
+				type = "Time",
+			},
+			
+			{
+				distance = 180,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Radius",
+				type = "Distance",
+			},
+			
+			{
+				field_type = "Light",
+				icon = "https://render.guildwars2.com/file/59E0DB6A699810641C959926ADFEF73E08CC255B/156655.png",
+				text = "Combo Field",
+				type = "ComboField",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/E56B3804B2F82E3256A82318E537D024DC57E271/103161.png",
+		id = 13684,
+		initiative = 0,
+		name = "Symbol of Protection",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+			
+			{
+				dmg_multiplier = 0.66,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				overrides = 2,
+				requires_trait = 649,
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				overrides = 5,
+				requires_trait = 558,
+				text = "Pulses",
+				type = "Number",
+				value = 3,
+			},
+			
+			{
+				duration = 3,
+				icon = "https://render.guildwars2.com/file/7B2193ACCF77E56C13E608191B082D68AA0FAA71/156659.png",
+				overrides = 6,
+				requires_trait = 558,
+				text = "Symbol Duration",
+				type = "Time",
+			},
+			
+			{
+				distance = 240,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				overrides = 7,
+				requires_trait = 558,
+				text = "Radius",
+				type = "Distance",
+			},
+		},
+		transform_skills = 
+		{
+		},
+	},
+	[13688] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&Bng1AAA=]",
+		cost = 0,
+		description = "Create a dome around you that pushes foes back and Absorbs projectiles.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 24,
+			},
+			
+			{
+				distance = 320,
+				icon = "https://render.guildwars2.com/file/9A6A02DCA260929CD14B4A4402266006981FF51B/648509.png",
+				text = "Knockback Distance",
+				type = "Distance",
+			},
+			
+			{
+				duration = 1,
+				icon = "https://render.guildwars2.com/file/7B2193ACCF77E56C13E608191B082D68AA0FAA71/156659.png",
+				text = "Shield Duration",
+				type = "Time",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/D4347C52157B040943051D7E09DEAD7AF63D4378/156662.png",
+				target = "Healing",
+				text = "Healing",
+				type = "AttributeAdjust",
+				value = 1300,
+			},
+			
+			{
+				distance = 300,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Radius",
+				type = "Distance",
+			},
+			
+			{
+				field_type = "Light",
+				icon = "https://render.guildwars2.com/file/59E0DB6A699810641C959926ADFEF73E08CC255B/156655.png",
+				text = "Combo Field",
+				type = "ComboField",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/BC380F0749013D4B5272B8599A510D0099F945BB/103026.png",
+		id = 13688,
+		initiative = 0,
+		name = "Shield of Absorption",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+	},
+	[13733] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BqU1AAA=]",
+		cost = 0,
+		description = "Create a storm at target location that applies random conditions to foes and random boons to allies",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
+				text = "Range",
+				type = "Range",
+				value = 1200,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 35,
+			},
+			
+			{
+				dmg_multiplier = 0.33,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Block the next incoming attack; stacks duration.",
+				duration = 3,
+				icon = "https://render.guildwars2.com/file/DFB4D1B50AE4D6A275B349E15B179261EE3EB0AF/102854.png",
+				status = "Aegis",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Reflect incoming damage back to its source; stacks duration.",
+				duration = 3,
+				icon = "https://render.guildwars2.com/file/27F233F7D4CE4E9EFE040E3D665B7B0643557B6E/102883.png",
+				status = "Retaliation",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Movement speed increased by 33%; stacks duration.",
+				duration = 3,
+				icon = "https://render.guildwars2.com/file/20CFC14967E67F7A3FD4A4B8722B4CF5B8565E11/102836.png",
+				status = "Swiftness",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Movement speed decreased by 66%; skill cooldown increased by 66%; stacks duration.",
+				duration = 1,
+				icon = "https://render.guildwars2.com/file/28C4EC547A3516AF0242E826772DA43A5EAC3DF3/102839.png",
+				status = "Chilled",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Deals damage every second; decreases healing effectiveness by 33%; damage stacks intensity.",
+				duration = 2,
+				icon = "https://render.guildwars2.com/file/559B0AF9FB5E1243D2649FAAE660CCB338AACC19/102840.png",
+				status = "Poisoned",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Endurance regeneration decreased by 50%. 50% of hits are Glancing Blows (50% damage). Stacks duration.",
+				duration = 2,
+				icon = "https://render.guildwars2.com/file/6CB0E64AF9AA292E332A38C1770CE577E2CDE0E8/102853.png",
+				status = "Weakness",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				duration = 1,
+				icon = "https://render.guildwars2.com/file/07B6122FBF169A2124A23FBCB06A3B7991A35179/156658.png",
+				text = "Daze",
+				type = "Time",
+			},
+			
+			{
+				distance = 240,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Radius",
+				type = "Distance",
+			},
+			
+			{
+				field_type = "Ethereal",
+				icon = "https://render.guildwars2.com/file/59E0DB6A699810641C959926ADFEF73E08CC255B/156655.png",
+				text = "Combo Field",
+				type = "ComboField",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/B741282BD5EE93C9FC43AE417878953D50BB3974/103156.png",
+		id = 13733,
+		initiative = 0,
+		name = "Chaos Storm",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+			
+			{
+				duration = 1,
+				icon = "https://render.guildwars2.com/file/07B6122FBF169A2124A23FBCB06A3B7991A35179/156658.png",
+				overrides = 9,
+				requires_trait = 686,
+				text = "Daze",
+				type = "Time",
+			},
+		},
+		transform_skills = 
+		{
+		},
+	},
+	[13849] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&Bhk2AAA=]",
+		cost = 0,
+		description = "Summon a well of blood to heal nearby allies.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 35,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/D4347C52157B040943051D7E09DEAD7AF63D4378/156662.png",
+				target = "Healing",
+				text = "Initial Self Heal",
+				type = "AttributeAdjust",
+				value = 3960,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/D4347C52157B040943051D7E09DEAD7AF63D4378/156662.png",
+				target = "Healing",
+				text = "Health per Second",
+				type = "AttributeAdjust",
+				value = 152,
+			},
+			
+			{
+				duration = 5,
+				icon = "https://render.guildwars2.com/file/7B2193ACCF77E56C13E608191B082D68AA0FAA71/156659.png",
+				text = "Duration",
+				type = "Time",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Targets",
+				type = "Number",
+				value = 5,
+			},
+			
+			{
+				distance = 240,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Radius",
+				type = "Distance",
+			},
+			
+			{
+				field_type = "Light",
+				icon = "https://render.guildwars2.com/file/59E0DB6A699810641C959926ADFEF73E08CC255B/156655.png",
+				text = "Combo Field",
+				type = "ComboField",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/F7E56628560660BBD504BB1661934814DD41A9A5/103097.png",
+		id = 13849,
+		initiative = 0,
+		name = "Lesser Well of Blood",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+			
+			{
+				apply_count = 1,
+				description = "Incoming damage decreased by 33%; stacks duration.",
+				duration = 3,
+				icon = "https://render.guildwars2.com/file/CD77D1FAB7B270223538A8F8ECDA1CFB044D65F4/102834.png",
+				overrides = 0,
+				requires_trait = 782,
+				status = "Protection",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+		},
+		transform_skills = 
+		{
+		},
+	},
+	[13906] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BlI2AAA=]",
+		cost = 0,
+		description = "Chill your target and remove up to three boons, dealing extra damage based on the number of boons removed.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
+				text = "Range",
+				type = "Range",
+				value = 1200,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 20,
+			},
+			
+			{
+				dmg_multiplier = 1.75,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage\xe2\x80\x94Three Boons",
+				type = "Damage",
+			},
+			
+			{
+				dmg_multiplier = 1.25,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage\xe2\x80\x94Two Boons",
+				type = "Damage",
+			},
+			
+			{
+				dmg_multiplier = 0.75,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage\xe2\x80\x94One Boon",
+				type = "Damage",
+			},
+			
+			{
+				dmg_multiplier = 0.5,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage\xe2\x80\x94No Boons",
+				type = "Damage",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Movement speed decreased by 66%; skill cooldown increased by 66%; stacks duration.",
+				duration = 5,
+				icon = "https://render.guildwars2.com/file/28C4EC547A3516AF0242E826772DA43A5EAC3DF3/102839.png",
+				status = "Chilled",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Boons Removed",
+				type = "Number",
+				value = 3,
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/365608D62CC05CD6030EA30FEFD6D7D52EB002E7/103808.png",
+		id = 13906,
+		initiative = 0,
+		name = "Spinal Shivers",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+	},
+	[13907] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BlM2AAA=]",
+		cost = 0,
+		description = "Bleed and weaken nearby foes.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				dmg_multiplier = 0.5,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				apply_count = 2,
+				description = "Deals damage every second; stacks intensity.",
+				duration = 10,
+				icon = "https://render.guildwars2.com/file/79FF0046A5F9ADA3B4C4EC19ADB4CB124D5F0021/102848.png",
+				status = "Bleeding",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Endurance regeneration decreased by 50%. 50% of hits are Glancing Blows (50% damage). Stacks duration.",
+				duration = 6,
+				icon = "https://render.guildwars2.com/file/6CB0E64AF9AA292E332A38C1770CE577E2CDE0E8/102853.png",
+				status = "Weakness",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Boons Converted to Conditions",
+				type = "Number",
+				value = 1,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Targets",
+				type = "Number",
+				value = 5,
+			},
+			
+			{
+				distance = 240,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Radius",
+				type = "Distance",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/3566470D2DCB5A01CE4E1D2EF09503B07108B9BD/103010.png",
+		id = 13907,
+		initiative = 0,
+		name = "Enfeeble",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+	},
+	[13918] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+			"Mark",
+		},
+		chat_link = "[&Bl42AAA=]",
+		cost = 0,
+		description = "Mark. Inscribe a mark that bleeds foes when they trigger it, and grants regeneration to allies.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 8,
+			},
+			
+			{
+				dmg_multiplier = 0.3,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Gain health every second; stacks duration.",
+				duration = 5,
+				icon = "https://render.guildwars2.com/file/F69996772B9E18FD18AD0AABAB25D7E3FC42F261/102835.png",
+				status = "Regeneration",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 2,
+				description = "Deals damage every second; stacks intensity.",
+				duration = 8,
+				icon = "https://render.guildwars2.com/file/79FF0046A5F9ADA3B4C4EC19ADB4CB124D5F0021/102848.png",
+				status = "Bleeding",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Targets",
+				type = "Number",
+				value = 5,
+			},
+			
+			{
+				distance = 240,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Radius",
+				type = "Distance",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/F205B3A517DF27E3323D2FBCFE6C0FA3430242F9/103813.png",
+		id = 13918,
+		initiative = 0,
+		name = "Mark of Blood",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				overrides = 0,
+				percent = 3,
+				requires_trait = 898,
+				text = "Life Force",
+				type = "Percent",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				overrides = 0,
+				requires_trait = 898,
+				text = "Unblockable",
+				type = "NoData",
+			},
+		},
+		transform_skills = 
+		{
+		},
+	},
+	[13920] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+			"Corruption",
+		},
+		chat_link = "[&BmA2AAA=]",
+		cost = 0,
+		description = "Corruption. The target area is enveloped in a noxious cloud that poisons foes.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Unblockable",
+				type = "Unblockable",
+				value = true,
+			},
+			
+			{
+				dmg_multiplier = 0.75,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Deals damage every second; decreases healing effectiveness by 33%; damage stacks intensity.",
+				duration = 5,
+				icon = "https://render.guildwars2.com/file/559B0AF9FB5E1243D2649FAAE660CCB338AACC19/102840.png",
+				status = "Poisoned",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Pulses",
+				type = "Number",
+				value = 2,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Targets",
+				type = "Number",
+				value = 5,
+			},
+			
+			{
+				distance = 240,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Radius",
+				type = "Distance",
+			},
+			
+			{
+				field_type = "Poison",
+				icon = "https://render.guildwars2.com/file/59E0DB6A699810641C959926ADFEF73E08CC255B/156655.png",
+				text = "Combo Field",
+				type = "ComboField",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/2B32FAFBD66F35AB51C3D97E910912AB74DD57A0/102897.png",
+		id = 13920,
+		initiative = 0,
+		name = "Poison Cloud",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+	},
+	[13938] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+			"Survival",
+		},
+		chat_link = "[&BnI2AAA=]",
+		cost = 0,
+		description = "Survival. Use mud to cripple foes.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
+				text = "Range",
+				type = "Range",
+				value = 900,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 25,
+			},
+			
+			{
+				apply_count = 1,
+				description = "Unable to move; stacks duration.",
+				duration = 3,
+				icon = "https://render.guildwars2.com/file/397A613651BFCA2832B6469CE34735580A2C120E/102844.png",
+				status = "Immobile",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Movement speed decreased by 50%; stacks duration.",
+				duration = 3,
+				icon = "https://render.guildwars2.com/file/070325E519C178D502A8160523766070D30C0C19/102838.png",
+				status = "Crippled",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				duration = 1,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Interval",
+				type = "Time",
+			},
+			
+			{
+				duration = 10,
+				icon = "https://render.guildwars2.com/file/7B2193ACCF77E56C13E608191B082D68AA0FAA71/156659.png",
+				text = "Duration",
+				type = "Time",
+			},
+			
+			{
+				distance = 240,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Radius",
+				type = "Distance",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/B6BD062BE66079C0514191004BB1D1140112E2A1/103996.png",
+		id = 13938,
+		initiative = 0,
+		name = "Muddy Terrain",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				overrides = 0,
+				requires_trait = 1699,
+				text = "Conditions Removed",
+				type = "Number",
+				value = 2,
+			},
+			
+			{
+				apply_count = 1,
+				description = "Critical Chance increased by 20%; stacks duration.",
+				duration = 6,
+				icon = "https://render.guildwars2.com/file/96D90DF84CAFE008233DD1C2606A12C1A0E68048/102842.png",
+				overrides = 0,
+				requires_trait = 1699,
+				status = "Fury",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+		},
+		transform_skills = 
+		{
+		},
+	},
+	[14136] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&Bjg3AAA=]",
+		cost = 0,
+		description = "Scatter caltrops that cripple and bleed foes.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				apply_count = 1,
+				description = "Deals damage every second; stacks intensity.",
+				duration = 4,
+				icon = "https://render.guildwars2.com/file/79FF0046A5F9ADA3B4C4EC19ADB4CB124D5F0021/102848.png",
+				status = "Bleeding",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Movement speed decreased by 50%; stacks duration.",
+				duration = 5,
+				icon = "https://render.guildwars2.com/file/070325E519C178D502A8160523766070D30C0C19/102838.png",
+				status = "Crippled",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				duration = 1,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Interval",
+				type = "Time",
+			},
+			
+			{
+				duration = 3,
+				icon = "https://render.guildwars2.com/file/7B2193ACCF77E56C13E608191B082D68AA0FAA71/156659.png",
+				text = "Caltrops Duration",
+				type = "Time",
+			},
+			
+			{
+				distance = 90,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Radius",
+				type = "Distance",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/A85F59D91114D0702C3AB54A0AA81EC1CAE66CF5/103073.png",
+		id = 14136,
+		initiative = 0,
+		name = "Caltrops",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+	},
+	[14184] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+			"Deception",
+		},
+		chat_link = "[&Bmg3AAA=]",
+		cost = 0,
+		description = "Deception. Create a smoke screen that blocks projectiles and blinds foes.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 30,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Unblockable",
+				type = "Unblockable",
+				value = true,
+			},
+			
+			{
+				apply_count = 1,
+				description = "Next outgoing attack misses; stacks duration.",
+				duration = 1,
+				icon = "https://render.guildwars2.com/file/09770136BB76FD0DBE1CC4267DEED54774CB20F6/102837.png",
+				status = "Blinded",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Targets",
+				type = "Number",
+				value = 5,
+			},
+			
+			{
+				duration = 7,
+				icon = "https://render.guildwars2.com/file/7B2193ACCF77E56C13E608191B082D68AA0FAA71/156659.png",
+				text = "Smoke Screen Duration",
+				type = "Time",
+			},
+			
+			{
+				field_type = "Smoke",
+				icon = "https://render.guildwars2.com/file/59E0DB6A699810641C959926ADFEF73E08CC255B/156655.png",
+				text = "Combo Field",
+				type = "ComboField",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/074E2F086D3E313BEDBCCB681E07E22A76E87548/104082.png",
+		id = 14184,
+		initiative = 0,
+		name = "Smoke Screen",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+	},
+	[14267] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&Brs3AAA=]",
+		cost = 0,
+		description = "Launch nearby foes into the air with a powerful stomp.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 1,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Unblockable",
+				type = "Unblockable",
+				value = true,
+			},
+			
+			{
+				dmg_multiplier = 2,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				distance = 450,
+				icon = "https://render.guildwars2.com/file/CB330EF25C62C05F1800A1C507B6AE4944551746/156653.png",
+				text = "Launch",
+				type = "Distance",
+			},
+			
+			{
+				distance = 240,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Radius",
+				type = "Distance",
+			},
+			
+			{
+				finisher_type = "Blast",
+				icon = "https://render.guildwars2.com/file/A513F3653D33FBA4220D2D307799F8A327A36A3B/156656.png",
+				percent = 100,
+				text = "Combo Finisher",
+				type = "ComboFinisher",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/D7040004B112A4075A1038917CEF5FFA0BC100A2/102788.png",
+		id = 14267,
+		initiative = 0,
+		name = "Death from Above",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+	},
+	[14330] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+			"Stance",
+		},
+		chat_link = "[&Bvo3AAA=]",
+		cost = 0,
+		description = "Stance. You gain stability.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 40,
+			},
+			
+			{
+				apply_count = 1,
+				description = "Periodically gain stability.",
+				duration = 8,
+				icon = "https://render.guildwars2.com/file/EE276A936FB880E44B2B310D56E6A9E22034E301/104112.png",
+				status = "Balanced Stance",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 2,
+				description = "Cannot be knocked down, pushed back, pulled, launched, stunned, dazed, floated, sunk, feared, or taunted.",
+				duration = 3,
+				icon = "https://render.guildwars2.com/file/3D3A1C2D6D791C05179AB871902D28782C65C244/415959.png",
+				status = "Stability",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Movement speed increased by 33%; stacks duration.",
+				duration = 3,
+				icon = "https://render.guildwars2.com/file/20CFC14967E67F7A3FD4A4B8722B4CF5B8565E11/102836.png",
+				status = "Swiftness",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				duration = 3,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Boon Application Interval",
+				type = "Time",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/EE276A936FB880E44B2B310D56E6A9E22034E301/104112.png",
+		id = 14330,
+		initiative = 0,
+		name = "Balanced Stance",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+			
+			{
+				apply_count = 1,
+				description = "Periodically gain stability.",
+				duration = 10,
+				icon = "https://render.guildwars2.com/file/EE276A936FB880E44B2B310D56E6A9E22034E301/104112.png",
+				overrides = 1,
+				requires_trait = 1375,
+				status = "Balanced Stance",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+		},
+		transform_skills = 
+		{
+		},
+	},
 	[14350] = 
 	{
 		attunement = "",
@@ -78956,7 +87201,7 @@ local tbl =
 		},
 		chat_link = "[&BhE4AAA=]",
 		cost = 100,
-		description = "Burst. Leap at your foe with a devastating attack. Effect increases with adrenaline level.",
+		description = "Burst. Leap at your foe with a devastating attack. Effect increases with adrenaline level. Gain might if this attack hits.",
 		dual_wield = "",
 		facts = 
 		{
@@ -78973,6 +87218,16 @@ local tbl =
 				text = "Recharge",
 				type = "Recharge",
 				value = 8,
+			},
+			
+			{
+				apply_count = 5,
+				description = "Increased outgoing damage; stacks intensity.",
+				duration = 5,
+				icon = "https://render.guildwars2.com/file/2FA9DF9D6BC17839BBEA14723F1C53D645DDB5E1/102852.png",
+				status = "Might",
+				text = "Apply Buff/Condition",
+				type = "Buff",
 			},
 			
 			{
@@ -79035,7 +87290,7 @@ local tbl =
 				dmg_multiplier = 2.2,
 				hit_count = 1,
 				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
-				overrides = 2,
+				overrides = 3,
 				requires_trait = 1657,
 				text = "Level 1 Damage",
 				type = "Damage",
@@ -79045,7 +87300,7 @@ local tbl =
 				dmg_multiplier = 2.75,
 				hit_count = 1,
 				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
-				overrides = 3,
+				overrides = 4,
 				requires_trait = 1657,
 				text = "Level 2 Damage",
 				type = "Damage",
@@ -79055,7 +87310,7 @@ local tbl =
 				dmg_multiplier = 3.3,
 				hit_count = 1,
 				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
-				overrides = 4,
+				overrides = 5,
 				requires_trait = 1657,
 				text = "Level 3 Damage",
 				type = "Damage",
@@ -80385,7 +88640,7 @@ local tbl =
 			},
 			
 			{
-				dmg_multiplier = 0.7,
+				dmg_multiplier = 0.75,
 				hit_count = 2,
 				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
 				text = "Damage",
@@ -80453,7 +88708,7 @@ local tbl =
 			},
 			
 			{
-				dmg_multiplier = 0.7,
+				dmg_multiplier = 0.75,
 				hit_count = 2,
 				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
 				text = "Damage",
@@ -80461,7 +88716,7 @@ local tbl =
 			},
 			
 			{
-				dmg_multiplier = 1.5,
+				dmg_multiplier = 1.6,
 				hit_count = 1,
 				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
 				text = "Final chop damage.",
@@ -81671,6 +89926,16 @@ local tbl =
 			
 			{
 				apply_count = 1,
+				description = "You regenerate health.",
+				duration = 0,
+				icon = "https://render.guildwars2.com/file/BFED9DC9065E01B726E6CF629A5642164B382BA6/102866.png",
+				status = "Healing Signet",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 1,
 				description = "Conditions currently on you are ineffective; stacks duration.",
 				duration = 6,
 				icon = "https://render.guildwars2.com/file/50BAC1B8E10CFAB9E749A5D910D4A9DCF29EBB7C/961398.png",
@@ -81904,10 +90169,23 @@ local tbl =
 			},
 			
 			{
+				apply_count = 1,
+				description = "You take no damage from incoming attacks. You are still susceptible to conditions and control effects.",
 				duration = 4,
-				icon = "https://render.guildwars2.com/file/7B2193ACCF77E56C13E608191B082D68AA0FAA71/156659.png",
-				text = "Duration",
-				type = "Time",
+				icon = "https://render.guildwars2.com/file/9D66F0BCCEC7A7C344170659D4CF7C7E3ECF0C60/102867.png",
+				status = "Enduring Pain",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 1,
+				description = "You take no damage from incoming attacks. You are still susceptible to conditions and control effects.",
+				duration = 2,
+				icon = "https://render.guildwars2.com/file/9D66F0BCCEC7A7C344170659D4CF7C7E3ECF0C60/102867.png",
+				status = "Enduring Pain",
+				text = "Apply Buff/Condition",
+				type = "Buff",
 			},
 		},
 		flip_skill = 0,
@@ -81935,12 +90213,27 @@ local tbl =
 		{
 			
 			{
+				apply_count = 1,
+				description = "You take no damage from incoming attacks. You are still susceptible to conditions and control effects.",
 				duration = 5,
-				icon = "https://render.guildwars2.com/file/7B2193ACCF77E56C13E608191B082D68AA0FAA71/156659.png",
+				icon = "https://render.guildwars2.com/file/9D66F0BCCEC7A7C344170659D4CF7C7E3ECF0C60/102867.png",
 				overrides = 1,
 				requires_trait = 1375,
-				text = "Duration",
-				type = "Time",
+				status = "Enduring Pain",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 1,
+				description = "You take no damage from incoming attacks. You are still susceptible to conditions and control effects.",
+				duration = 3,
+				icon = "https://render.guildwars2.com/file/9D66F0BCCEC7A7C344170659D4CF7C7E3ECF0C60/102867.png",
+				overrides = 2,
+				requires_trait = 1375,
+				status = "Enduring Pain",
+				text = "Apply Buff/Condition",
+				type = "Buff",
 			},
 		},
 		transform_skills = 
@@ -82446,7 +90739,7 @@ local tbl =
 			},
 			
 			{
-				dmg_multiplier = 0.67,
+				dmg_multiplier = 0.85,
 				hit_count = 1,
 				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
 				text = "Damage",
@@ -84147,7 +92440,7 @@ local tbl =
 		},
 		chat_link = "[&BlI4AAA=]",
 		cost = 0,
-		description = "Strike your foe with both weapons. Gain fury with each hit.",
+		description = "Strike your foe with both weapons. Gain quickness for each strike that hits.",
 		dual_wield = "",
 		facts = 
 		{
@@ -84176,10 +92469,10 @@ local tbl =
 			
 			{
 				apply_count = 2,
-				description = "Critical Chance increased by 20%; stacks duration.",
-				duration = 3,
-				icon = "https://render.guildwars2.com/file/96D90DF84CAFE008233DD1C2606A12C1A0E68048/102842.png",
-				status = "Fury",
+				description = "Skills and actions are faster.",
+				duration = 2,
+				icon = "https://render.guildwars2.com/file/D4AB6401A6D6917C3D4F230764452BCCE1035B0D/1012835.png",
+				status = "Quickness",
 				text = "Apply Buff/Condition",
 				type = "Buff",
 			},
@@ -84371,7 +92664,7 @@ local tbl =
 		},
 		chat_link = "[&BlU4AAA=]",
 		cost = 0,
-		description = "Spin around and attack all nearby foes.",
+		description = "Spin around and attack all nearby foes, applying vulnerability each hit. Gain fury for each foe hit.",
 		dual_wield = "",
 		facts = 
 		{
@@ -84399,7 +92692,17 @@ local tbl =
 			},
 			
 			{
-				apply_count = 4,
+				apply_count = 1,
+				description = "Critical Chance increased by 20%; stacks duration.",
+				duration = 2,
+				icon = "https://render.guildwars2.com/file/96D90DF84CAFE008233DD1C2606A12C1A0E68048/102842.png",
+				status = "Fury",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 3,
 				description = "Damage and condition damage taken are increased; stacks intensity.",
 				duration = 8,
 				icon = "https://render.guildwars2.com/file/3A394C1A0A3257EB27A44842DDEEF0DF000E1241/102850.png",
@@ -84465,7 +92768,7 @@ local tbl =
 		},
 		chat_link = "[&BlY4AAA=]",
 		cost = 0,
-		description = "Burst. Leap at your foe with a devastating attack. Effect increases with adrenaline level.",
+		description = "Burst. Leap at your foe with a devastating attack. Effect increases with adrenaline level. Gain might if this attack hits.",
 		dual_wield = "",
 		facts = 
 		{
@@ -84482,6 +92785,16 @@ local tbl =
 				text = "Recharge",
 				type = "Recharge",
 				value = 8,
+			},
+			
+			{
+				apply_count = 5,
+				description = "Increased outgoing damage; stacks intensity.",
+				duration = 5,
+				icon = "https://render.guildwars2.com/file/2FA9DF9D6BC17839BBEA14723F1C53D645DDB5E1/102852.png",
+				status = "Might",
+				text = "Apply Buff/Condition",
+				type = "Buff",
 			},
 			
 			{
@@ -84544,7 +92857,7 @@ local tbl =
 				dmg_multiplier = 2.2,
 				hit_count = 1,
 				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
-				overrides = 2,
+				overrides = 3,
 				requires_trait = 1657,
 				text = "Level 1 Damage",
 				type = "Damage",
@@ -84554,7 +92867,7 @@ local tbl =
 				dmg_multiplier = 2.75,
 				hit_count = 1,
 				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
-				overrides = 3,
+				overrides = 4,
 				requires_trait = 1657,
 				text = "Level 2 Damage",
 				type = "Damage",
@@ -84564,7 +92877,7 @@ local tbl =
 				dmg_multiplier = 3.3,
 				hit_count = 1,
 				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
-				overrides = 4,
+				overrides = 5,
 				requires_trait = 1657,
 				text = "Level 3 Damage",
 				type = "Damage",
@@ -84597,7 +92910,7 @@ local tbl =
 		},
 		chat_link = "[&Blc4AAA=]",
 		cost = 0,
-		description = "Burst. Leap at your foe with a devastating attack. Effect increases with adrenaline level.",
+		description = "Burst. Leap at your foe with a devastating attack. Effect increases with adrenaline level. Gain might if this attack hits.",
 		dual_wield = "",
 		facts = 
 		{
@@ -84614,6 +92927,16 @@ local tbl =
 				text = "Recharge",
 				type = "Recharge",
 				value = 8,
+			},
+			
+			{
+				apply_count = 5,
+				description = "Increased outgoing damage; stacks intensity.",
+				duration = 5,
+				icon = "https://render.guildwars2.com/file/2FA9DF9D6BC17839BBEA14723F1C53D645DDB5E1/102852.png",
+				status = "Might",
+				text = "Apply Buff/Condition",
+				type = "Buff",
 			},
 			
 			{
@@ -84676,7 +92999,7 @@ local tbl =
 				dmg_multiplier = 2.2,
 				hit_count = 1,
 				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
-				overrides = 2,
+				overrides = 3,
 				requires_trait = 1657,
 				text = "Level 1 Damage",
 				type = "Damage",
@@ -84686,7 +93009,7 @@ local tbl =
 				dmg_multiplier = 2.75,
 				hit_count = 1,
 				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
-				overrides = 3,
+				overrides = 4,
 				requires_trait = 1657,
 				text = "Level 2 Damage",
 				type = "Damage",
@@ -84696,7 +93019,7 @@ local tbl =
 				dmg_multiplier = 3.3,
 				hit_count = 1,
 				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
-				overrides = 4,
+				overrides = 5,
 				requires_trait = 1657,
 				text = "Level 3 Damage",
 				type = "Damage",
@@ -84729,7 +93052,7 @@ local tbl =
 		},
 		chat_link = "[&Blg4AAA=]",
 		cost = 0,
-		description = "Burst. Leap at your foe with a devastating attack. Effect increases with adrenaline level.",
+		description = "Burst. Leap at your foe with a devastating attack. Effect increases with adrenaline level. Gain might if this attack hits.",
 		dual_wield = "",
 		facts = 
 		{
@@ -84770,6 +93093,16 @@ local tbl =
 				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
 				text = "Damage",
 				type = "Damage",
+			},
+			
+			{
+				apply_count = 5,
+				description = "Increased outgoing damage; stacks intensity.",
+				duration = 5,
+				icon = "https://render.guildwars2.com/file/2FA9DF9D6BC17839BBEA14723F1C53D645DDB5E1/102852.png",
+				status = "Might",
+				text = "Apply Buff/Condition",
+				type = "Buff",
 			},
 			
 			{
@@ -88348,13 +96681,13 @@ local tbl =
 		},
 		transform_skills = 
 		{
-			14489,
 			14485,
-			14556,
-			14487,
-			14486,
+			14489,
 			14488,
+			14487,
 			14490,
+			14486,
+			14556,
 		},
 		type = "Elite",
 		weapon_type = "None",
@@ -92402,6 +100735,79 @@ local tbl =
 		type = "Weapon",
 		weapon_type = "Sword",
 	},
+	[14568] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+			"Shout",
+		},
+		chat_link = "[&Bug4AAA=]",
+		cost = 0,
+		description = "Shout. Cure a condition on yourself and nearby allies. Also breaks stuns.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 25,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Conditions Removed",
+				type = "Number",
+				value = 1,
+			},
+			
+			{
+				distance = 600,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Radius",
+				type = "Distance",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Targets",
+				type = "Number",
+				value = 5,
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/E8D20BEE10E680A217A055CE62D938D97EA03B7A/103797.png",
+		id = 14568,
+		initiative = 0,
+		name = "\"Shake It Off!\"",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+	},
 	[14569] = 
 	{
 		attunement = "",
@@ -93745,6 +102151,165 @@ local tbl =
 		type = "Monster",
 		weapon_type = "None",
 	},
+	[16426] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BipAAAA=]",
+		cost = 0,
+		description = "Emit a cone of discordant sonic energy to confuse foes.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
+				text = "Range",
+				type = "Range",
+				value = 250,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 25,
+			},
+			
+			{
+				dmg_multiplier = 0.25,
+				hit_count = 5,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				apply_count = 5,
+				description = "Damage received on skill activation; stacks intensity.",
+				duration = 5,
+				icon = "https://render.guildwars2.com/file/289AA0A4644F0E044DED3D3F39CED958E1DDFF53/102880.png",
+				status = "Confusion",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Targets",
+				type = "Number",
+				value = 5,
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/7D0139B155352CEA660D19EEBB01EE5C941980E5/514415.png",
+		id = 16426,
+		initiative = 0,
+		name = "Sonic Shriek",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Pet",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Pet",
+		weapon_type = "None",
+	},
+	[16427] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BitAAAA=]",
+		cost = 0,
+		description = "Create a sonic barrier that reflects projectiles.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
+				text = "Range",
+				type = "Range",
+				value = 1200,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 45,
+			},
+			
+			{
+				duration = 5,
+				icon = "https://render.guildwars2.com/file/7B2193ACCF77E56C13E608191B082D68AA0FAA71/156659.png",
+				text = "Duration",
+				type = "Time",
+			},
+			
+			{
+				field_type = "Ethereal",
+				icon = "https://render.guildwars2.com/file/59E0DB6A699810641C959926ADFEF73E08CC255B/156655.png",
+				text = "Combo Field",
+				type = "ComboField",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/24B90125B4433159A94D13EABF47E11154C11BE4/514416.png",
+		id = 16427,
+		initiative = 0,
+		name = "Sonic Barrier",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Pet",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Pet",
+		weapon_type = "None",
+	},
 	[16432] = 
 	{
 		attunement = "",
@@ -94128,6 +102693,344 @@ local tbl =
 		type = "Weapon",
 		weapon_type = "Sword",
 	},
+	[16940] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BixCAAA=]",
+		cost = 0,
+		description = "Damage nearby foes with a ring of fire, burning foes that pass through it.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 5,
+			},
+			
+			{
+				dmg_multiplier = 1.2,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Deals damage every second; stacks intensity.",
+				duration = 5,
+				icon = "https://render.guildwars2.com/file/B47BF5803FED2718D7474EAF9617629AD068EE10/102849.png",
+				status = "Burning",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				duration = 6,
+				icon = "https://render.guildwars2.com/file/7B2193ACCF77E56C13E608191B082D68AA0FAA71/156659.png",
+				text = "Ring of Fire Duration",
+				type = "Time",
+			},
+			
+			{
+				distance = 240,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Radius",
+				type = "Distance",
+			},
+			
+			{
+				field_type = "Fire",
+				icon = "https://render.guildwars2.com/file/59E0DB6A699810641C959926ADFEF73E08CC255B/156655.png",
+				text = "Combo Field",
+				type = "ComboField",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/CD08FDC23B56EBB19C90B909C65D9EE4D9FFF8C8/103183.png",
+		id = 16940,
+		initiative = 0,
+		name = "Ring of Fire",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+	},
+	[16941] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&Bi1CAAA=]",
+		cost = 0,
+		description = "Heal yourself and nearby allies, curing a condition.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 5,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/D4347C52157B040943051D7E09DEAD7AF63D4378/156662.png",
+				target = "Healing",
+				text = "Healing",
+				type = "AttributeAdjust",
+				value = 1302,
+			},
+			
+			{
+				distance = 240,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Radius",
+				type = "Distance",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/180D2C7CDB69E301401509737CEC35F90D57E358/102819.png",
+		id = 16941,
+		initiative = 0,
+		name = "Cleansing Wave",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+	},
+	[16942] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&Bi5CAAA=]",
+		cost = 0,
+		description = "Create an electrical field that stuns foes crossing it.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
+				text = "Range",
+				type = "Range",
+				value = 1200,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 5,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Unblockable",
+				type = "Unblockable",
+				value = true,
+			},
+			
+			{
+				dmg_multiplier = 0.5,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				duration = 4,
+				icon = "https://render.guildwars2.com/file/7B2193ACCF77E56C13E608191B082D68AA0FAA71/156659.png",
+				text = "Duration",
+				type = "Time",
+			},
+			
+			{
+				duration = 2,
+				icon = "https://render.guildwars2.com/file/143F46DEF466062F01C52B69922FFCEF73DCA801/156668.png",
+				text = "Stun",
+				type = "Time",
+			},
+			
+			{
+				distance = 180,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Radius",
+				type = "Distance",
+			},
+			
+			{
+				field_type = "Lightning",
+				icon = "https://render.guildwars2.com/file/59E0DB6A699810641C959926ADFEF73E08CC255B/156655.png",
+				text = "Combo Field",
+				type = "ComboField",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/C72B5BC2A1DC6243AF95C331BDC7CFE0D3F26F73/103182.png",
+		id = 16942,
+		initiative = 0,
+		name = "Static Field",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+	},
+	[16943] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&Bi9CAAA=]",
+		cost = 0,
+		description = "Trigger a quake at your location, knocking down foes and dealing massive damage.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 5,
+			},
+			
+			{
+				dmg_multiplier = 1,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				duration = 2,
+				icon = "https://render.guildwars2.com/file/61A6A8A161FB7124336A6ED1FBAF9B1E030166A6/156664.png",
+				text = "Knockdown",
+				type = "Time",
+			},
+			
+			{
+				distance = 240,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Radius",
+				type = "Distance",
+			},
+			
+			{
+				finisher_type = "Blast",
+				icon = "https://render.guildwars2.com/file/A513F3653D33FBA4220D2D307799F8A327A36A3B/156656.png",
+				percent = 100,
+				text = "Combo Finisher",
+				type = "ComboFinisher",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/01F24427AF4C18476A657647C39CB2F2374BDA57/102975.png",
+		id = 16943,
+		initiative = 0,
+		name = "Earthquake",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+	},
 	[17008] = 
 	{
 		attunement = "Earth",
@@ -94282,6 +103185,410 @@ local tbl =
 		},
 		type = "Bundle",
 		weapon_type = "None",
+	},
+	[17810] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BpJFAAA=]",
+		cost = 0,
+		description = "Drop a mine that deals damage to enemies that trigger it.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Unblockable",
+				type = "Unblockable",
+				value = true,
+			},
+			
+			{
+				dmg_multiplier = 1.75,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				distance = 60,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Radius",
+				type = "Distance",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Blast Radius",
+				type = "Number",
+				value = 180,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Targets",
+				type = "Number",
+				value = 5,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Explosion",
+				type = "NoData",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/C2A603094B5709BE213D391AFD4D33293C19EA38/103396.png",
+		id = 17810,
+		initiative = 0,
+		name = "Drop Mine",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+			
+			{
+				dmg_multiplier = 1.925,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				overrides = 1,
+				requires_trait = 429,
+				text = "Damage",
+				type = "Damage",
+			},
+		},
+		transform_skills = 
+		{
+		},
+	},
+	[17811] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BpNFAAA=]",
+		cost = 0,
+		description = "Set a timed charge that pulls nearby foes.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Pull",
+				type = "Number",
+				value = 300,
+			},
+			
+			{
+				distance = 240,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Radius",
+				type = "Distance",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Targets",
+				type = "Number",
+				value = 3,
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/02A02091B1EBDB782719EB6AE56F01E6372C500D/103091.png",
+		id = 17811,
+		initiative = 0,
+		name = "Magnetic Bomb",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+	},
+	[17812] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BpRFAAA=]",
+		cost = 0,
+		description = "Run at double speed.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				apply_count = 1,
+				description = "Movement speed is greatly increased.",
+				duration = 2,
+				icon = "https://render.guildwars2.com/file/E04392C3D8ED985125973AEB99D8460C483263F9/103458.png",
+				status = "Superspeed",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/A70C929E10EE010851B3FF5FCCBAE5630496B746/103427.png",
+		id = 17812,
+		initiative = 0,
+		name = "Superspeed",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+	},
+	[17813] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BpVFAAA=]",
+		cost = 0,
+		description = "Activate a fire shield that burns enemies who strike you, granting might for each burn applied.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				apply_count = 1,
+				description = "Enveloped in a fiery shield that burns foes, grants might each time you are struck (1-second cooldown per attacker).",
+				duration = 4,
+				icon = "https://render.guildwars2.com/file/2AE8672D7A08BB4129B6F0F40C2BC10642D55C28/102884.png",
+				status = "Fire Shield",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Increased outgoing damage; stacks intensity.",
+				duration = 10,
+				icon = "https://render.guildwars2.com/file/2FA9DF9D6BC17839BBEA14723F1C53D645DDB5E1/102852.png",
+				status = "Might",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Deals damage every second; stacks intensity.",
+				duration = 1,
+				icon = "https://render.guildwars2.com/file/B47BF5803FED2718D7474EAF9617629AD068EE10/102849.png",
+				status = "Burning",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/2AE8672D7A08BB4129B6F0F40C2BC10642D55C28/102884.png",
+		id = 17813,
+		initiative = 0,
+		name = "Fire Shield",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+	},
+	[17814] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BpZFAAA=]",
+		cost = 0,
+		description = "Become surrounded in a magnetic shield that reflects projectiles.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				apply_count = 1,
+				description = "Reflect projectiles with magnetic energy.",
+				duration = 2,
+				icon = "https://render.guildwars2.com/file/048054BEC158D010706002C22AF47952ECC5A33C/103108.png",
+				status = "Magnetic Aura",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/206FCC2A05035FDB306AB5136E5F3AC0FC6467F3/103395.png",
+		id = 17814,
+		initiative = 0,
+		name = "Magnetic Aura",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+	},
+	[17815] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BpdFAAA=]",
+		cost = 0,
+		description = "Leave a trail of glue behind you that hampers enemy movement.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				apply_count = 1,
+				description = "Unable to move; stacks duration.",
+				duration = 1,
+				icon = "https://render.guildwars2.com/file/397A613651BFCA2832B6469CE34735580A2C120E/102844.png",
+				status = "Immobile",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				duration = 3,
+				icon = "https://render.guildwars2.com/file/7B2193ACCF77E56C13E608191B082D68AA0FAA71/156659.png",
+				text = "Duration",
+				type = "Time",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/9A37D45CBD05C029915ED90E4F08F6B8D2DFF8AB/102816.png",
+		id = 17815,
+		initiative = 0,
+		name = "Glue Trail",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
 	},
 	[18504] = 
 	{
@@ -94952,11 +104259,21 @@ local tbl =
 			},
 			
 			{
-				apply_count = 3,
+				apply_count = 2,
 				description = "Deals damage every second. Deals additional damage to moving foes. Stacks intensity.",
 				duration = 10,
 				icon = "https://render.guildwars2.com/file/10BABF2708CA3575730AC662A2E72EC292565B08/598887.png",
 				status = "Torment",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 1,
+				description = "You cannot stealth",
+				duration = 5,
+				icon = "https://render.guildwars2.com/file/62BFF65D1CE99B1B2B0928152BCC596EAC0D372B/102887.png",
+				status = "Revealed",
 				text = "Apply Buff/Condition",
 				type = "Buff",
 			},
@@ -94984,6 +104301,13 @@ local tbl =
 				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
 				text = "Radius",
 				type = "Distance",
+			},
+			
+			{
+				duration = 1,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Interval",
+				type = "Time",
 			},
 			
 			{
@@ -95142,6 +104466,143 @@ local tbl =
 		},
 		type = "Elite",
 		weapon_type = "None",
+	},
+	[20975] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&Bu9RAAA=]",
+		cost = 0,
+		description = "Slash your foes and cause them to bleed.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
+				text = "Range",
+				type = "Range",
+				value = 300,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 6,
+			},
+			
+			{
+				dmg_multiplier = 0.33,
+				hit_count = 2,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				apply_count = 2,
+				description = "Deals damage every second; stacks intensity.",
+				duration = 15,
+				icon = "https://render.guildwars2.com/file/79FF0046A5F9ADA3B4C4EC19ADB4CB124D5F0021/102848.png",
+				status = "Bleeding",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/6A3CA8D32FDD9EB0A8546FDC4DB39FA8EE740059/104049.png",
+		id = 20975,
+		initiative = 0,
+		name = "Lacerating Slash",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Pet",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Pet",
+		weapon_type = "None",
+	},
+	[21636] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BoRUAAA=]",
+		cost = 0,
+		description = "Strike your foe with lightning.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
+				text = "Range",
+				type = "Range",
+				value = 900,
+			},
+			
+			{
+				dmg_multiplier = 0.7,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/9C090BF7E893030BABD5DC4BA4020262AD91CE2C/103134.png",
+		id = 21636,
+		initiative = 0,
+		name = "Lightning Strike",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
 	},
 	[21646] = 
 	{
@@ -96112,6 +105573,112 @@ local tbl =
 		type = "Heal",
 		weapon_type = "None",
 	},
+	[21777] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+			"Deception",
+		},
+		chat_link = "[&BhFVAAA=]",
+		cost = 0,
+		description = "Deception. Blind foes in the target area and grant stealth to nearby allies.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 40,
+			},
+			
+			{
+				apply_count = 1,
+				description = "Currently invisible. Ends if you deal damage.",
+				duration = 3,
+				icon = "https://render.guildwars2.com/file/3BD4670638470439F3325B444FAF7D5FA620CCE5/62777.png",
+				status = "Stealth",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Next outgoing attack misses; stacks duration.",
+				duration = 5,
+				icon = "https://render.guildwars2.com/file/09770136BB76FD0DBE1CC4267DEED54774CB20F6/102837.png",
+				status = "Blinded",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Targets",
+				type = "Number",
+				value = 5,
+			},
+			
+			{
+				distance = 240,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Radius",
+				type = "Distance",
+			},
+			
+			{
+				finisher_type = "Blast",
+				icon = "https://render.guildwars2.com/file/A513F3653D33FBA4220D2D307799F8A327A36A3B/156656.png",
+				percent = 100,
+				text = "Combo Finisher",
+				type = "ComboFinisher",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/A50FF4564443B9C436E2354762D6077AB0C63746/103113.png",
+		id = 21777,
+		initiative = 0,
+		name = "Blinding Powder",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+			
+			{
+				apply_count = 1,
+				description = "Currently invisible. Ends if you deal damage.",
+				duration = 4,
+				icon = "https://render.guildwars2.com/file/3BD4670638470439F3325B444FAF7D5FA620CCE5/62777.png",
+				overrides = 1,
+				requires_trait = 1136,
+				status = "Stealth",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+		},
+		transform_skills = 
+		{
+		},
+	},
 	[21778] = 
 	{
 		attunement = "",
@@ -96220,6 +105787,289 @@ local tbl =
 		type = "Heal",
 		weapon_type = "None",
 	},
+	[21795] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BiNVAAA=]",
+		cost = 0,
+		description = "Unleash a blast of ice that chills foes.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 10,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Unblockable",
+				type = "Unblockable",
+				value = true,
+			},
+			
+			{
+				dmg_multiplier = 1,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Movement speed decreased by 66%; skill cooldown increased by 66%; stacks duration.",
+				duration = 3,
+				icon = "https://render.guildwars2.com/file/28C4EC547A3516AF0242E826772DA43A5EAC3DF3/102839.png",
+				status = "Chilled",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Targets",
+				type = "Number",
+				value = 5,
+			},
+			
+			{
+				distance = 180,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Radius",
+				type = "Distance",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/0C5DAC290C007C490454612A2EAE61047DE6FDC8/104825.png",
+		id = 21795,
+		initiative = 0,
+		name = "Glacial Heart",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+	},
+	[21808] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+			"Spectral",
+		},
+		chat_link = "[&BjBVAAA=]",
+		cost = 0,
+		description = "Spectral. Gain life force as you take damage.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 50,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				percent = 8,
+				text = "Gain life force when taking damage.",
+				type = "Percent",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Incoming damage decreased by 33%; stacks duration.",
+				duration = 6,
+				icon = "https://render.guildwars2.com/file/CD77D1FAB7B270223538A8F8ECDA1CFB044D65F4/102834.png",
+				status = "Protection",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				duration = 6,
+				icon = "https://render.guildwars2.com/file/7B2193ACCF77E56C13E608191B082D68AA0FAA71/156659.png",
+				text = "Duration",
+				type = "Time",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/0FF3E79414E84A63C012CEE30EA1A25FF3FAC966/102994.png",
+		id = 21808,
+		initiative = 0,
+		name = "Spectral Armor",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+			
+			{
+				apply_count = 1,
+				description = "Incoming damage decreased by 33%; stacks duration.",
+				duration = 9,
+				icon = "https://render.guildwars2.com/file/CD77D1FAB7B270223538A8F8ECDA1CFB044D65F4/102834.png",
+				overrides = 2,
+				requires_trait = 894,
+				status = "Protection",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				duration = 9,
+				icon = "https://render.guildwars2.com/file/7B2193ACCF77E56C13E608191B082D68AA0FAA71/156659.png",
+				overrides = 3,
+				requires_trait = 894,
+				text = "Duration",
+				type = "Time",
+			},
+		},
+		transform_skills = 
+		{
+		},
+	},
+	[21813] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+			"Stance",
+		},
+		chat_link = "[&BjVVAAA=]",
+		cost = 0,
+		description = "Stance. Take no damage from attacks. You are still susceptible to conditions and control effects.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 60,
+			},
+			
+			{
+				apply_count = 1,
+				description = "You take no damage from incoming attacks. You are still susceptible to conditions and control effects.",
+				duration = 4,
+				icon = "https://render.guildwars2.com/file/9D66F0BCCEC7A7C344170659D4CF7C7E3ECF0C60/102867.png",
+				status = "Enduring Pain",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 1,
+				description = "You take no damage from incoming attacks. You are still susceptible to conditions and control effects.",
+				duration = 2,
+				icon = "https://render.guildwars2.com/file/9D66F0BCCEC7A7C344170659D4CF7C7E3ECF0C60/102867.png",
+				status = "Enduring Pain",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/9D66F0BCCEC7A7C344170659D4CF7C7E3ECF0C60/102867.png",
+		id = 21813,
+		initiative = 0,
+		name = "Endure Pain",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+			
+			{
+				apply_count = 1,
+				description = "You take no damage from incoming attacks. You are still susceptible to conditions and control effects.",
+				duration = 5,
+				icon = "https://render.guildwars2.com/file/9D66F0BCCEC7A7C344170659D4CF7C7E3ECF0C60/102867.png",
+				overrides = 1,
+				requires_trait = 1375,
+				status = "Enduring Pain",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 1,
+				description = "You take no damage from incoming attacks. You are still susceptible to conditions and control effects.",
+				duration = 3,
+				icon = "https://render.guildwars2.com/file/9D66F0BCCEC7A7C344170659D4CF7C7E3ECF0C60/102867.png",
+				overrides = 2,
+				requires_trait = 1375,
+				status = "Enduring Pain",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+		},
+		transform_skills = 
+		{
+		},
+	},
 	[21815] = 
 	{
 		attunement = "",
@@ -96314,6 +106164,182 @@ local tbl =
 		},
 		type = "Heal",
 		weapon_type = "None",
+	},
+	[22521] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+			"Cantrip",
+		},
+		chat_link = "[&BvlXAAA=]",
+		cost = 0,
+		description = "Cantrip. Cure three conditions and burn foes.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 40,
+			},
+			
+			{
+				apply_count = 3,
+				description = "Deals damage every second; stacks intensity.",
+				duration = 4,
+				icon = "https://render.guildwars2.com/file/B47BF5803FED2718D7474EAF9617629AD068EE10/102849.png",
+				status = "Burning",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				distance = 240,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Radius",
+				type = "Distance",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Conditions Removed",
+				type = "Number",
+				value = 3,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Targets",
+				type = "Number",
+				value = 5,
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/2FBB046640434531443F7920CFF205A2787932E3/103336.png",
+		id = 22521,
+		initiative = 0,
+		name = "Cleansing Fire",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+	},
+	[22556] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+			"Signet",
+		},
+		chat_link = "[&BhxYAAA=]",
+		cost = 0,
+		description = "Signet. You and your pet grow larger, dealing more damage and gaining stability.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 60,
+			},
+			
+			{
+				apply_count = 5,
+				description = "Cannot be knocked down, pushed back, pulled, launched, stunned, dazed, floated, sunk, feared, or taunted.",
+				duration = 8,
+				icon = "https://render.guildwars2.com/file/3D3A1C2D6D791C05179AB871902D28782C65C244/415959.png",
+				status = "Stability",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 1,
+				description = "You deal 25% more damage and move faster.",
+				duration = 8,
+				icon = "https://render.guildwars2.com/file/931EED66F521045FE7672104E949CF281F562CAE/103999.png",
+				status = "Enlarged",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				percent = 25,
+				text = "Damage Increase",
+				type = "Percent",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				percent = 50,
+				text = "Movement Speed Increase",
+				type = "Percent",
+			},
+			
+			{
+				duration = 8,
+				icon = "https://render.guildwars2.com/file/7B2193ACCF77E56C13E608191B082D68AA0FAA71/156659.png",
+				text = "Duration",
+				type = "Time",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/C5C6F15A60FA590B2810DE5023E7402964190496/103542.png",
+		id = 22556,
+		initiative = 0,
+		name = "Signet of the Wild",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
 	},
 	[22572] = 
 	{
@@ -96516,7 +106542,7 @@ local tbl =
 		},
 		chat_link = "[&Bi5YAAA=]",
 		cost = 0,
-		description = "Turret. Build a turret that fires rockets.",
+		description = "Turret. Build a turret that fires rockets. This turret overcharges when it is first placed.",
 		dual_wield = "",
 		facts = 
 		{
@@ -96704,6 +106730,164 @@ local tbl =
 		},
 		type = "Profession",
 		weapon_type = "None",
+	},
+	[24305] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BvFeAAA=]",
+		cost = 0,
+		description = "Call down lightning on a disabled foe.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				dmg_multiplier = 1.5,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Endurance regeneration decreased by 50%. 50% of hits are Glancing Blows (50% damage). Stacks duration.",
+				duration = 4,
+				icon = "https://render.guildwars2.com/file/6CB0E64AF9AA292E332A38C1770CE577E2CDE0E8/102853.png",
+				status = "Weakness",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/00A93FDC4F99D29749B27C4D73C5A1644A0F3726/104675.png",
+		id = 24305,
+		initiative = 0,
+		name = "Lightning Rod",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+	},
+	[24329] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BglfAAA=]",
+		cost = 0,
+		description = "Detonates when enemies draw near.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 2,
+			},
+			
+			{
+				dmg_multiplier = 0.7,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				distance = 180,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Explosion Radius",
+				type = "Distance",
+			},
+			
+			{
+				distance = 60,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Proximity Radius",
+				type = "Distance",
+			},
+			
+			{
+				duration = 10,
+				icon = "https://render.guildwars2.com/file/7B2193ACCF77E56C13E608191B082D68AA0FAA71/156659.png",
+				text = "Duration",
+				type = "Time",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Explosion",
+				type = "NoData",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/6BDE0704072F580D5818C004FB6CFA42A4F10F57/104786.png",
+		id = 24329,
+		initiative = 0,
+		name = "Bunker Down",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+			
+			{
+				dmg_multiplier = 0.77,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				overrides = 1,
+				requires_trait = 429,
+				text = "Damage",
+				type = "Damage",
+			},
+		},
+		transform_skills = 
+		{
+		},
 	},
 	[24407] = 
 	{
@@ -98678,6 +108862,83 @@ local tbl =
 		type = "Utility",
 		weapon_type = "None",
 	},
+	[25579] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+			"Arcane",
+		},
+		chat_link = "[&ButjAAA=]",
+		cost = 0,
+		description = "Arcane. Block attacks with an energy shield. If it blocks three attacks, it explodes.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 60,
+			},
+			
+			{
+				dmg_multiplier = 1.5,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				apply_count = 3,
+				description = "Blocks attacks. Explodes after blocking three attacks.",
+				duration = 5,
+				icon = "https://render.guildwars2.com/file/A20219EB6F5FC52A0E537163B4A9051606C11B52/65735.png",
+				status = "Arcane Shield",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				distance = 360,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Radius",
+				type = "Distance",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/A20219EB6F5FC52A0E537163B4A9051606C11B52/65735.png",
+		id = 25579,
+		initiative = 0,
+		name = "Arcane Shield",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+	},
 	[26557] = 
 	{
 		attunement = "",
@@ -98946,7 +109207,7 @@ local tbl =
 			},
 			
 			{
-				apply_count = 1,
+				apply_count = 2,
 				description = "Deals damage every second; decreases healing effectiveness by 33%; damage stacks intensity.",
 				duration = 6,
 				icon = "https://render.guildwars2.com/file/559B0AF9FB5E1243D2649FAAE660CCB338AACC19/102840.png",
@@ -99268,7 +109529,7 @@ local tbl =
 			{
 				apply_count = 1,
 				description = "Deals damage every second. Deals additional damage to moving foes. Stacks intensity.",
-				duration = 4,
+				duration = 5,
 				icon = "https://render.guildwars2.com/file/10BABF2708CA3575730AC662A2E72EC292565B08/598887.png",
 				status = "Torment",
 				text = "Apply Buff/Condition",
@@ -99852,7 +110113,7 @@ local tbl =
 			{
 				apply_count = 1,
 				description = "Deals damage every second. Deals additional damage to moving foes. Stacks intensity.",
-				duration = 4,
+				duration = 5,
 				icon = "https://render.guildwars2.com/file/10BABF2708CA3575730AC662A2E72EC292565B08/598887.png",
 				status = "Torment",
 				text = "Apply Buff/Condition",
@@ -100309,6 +110570,95 @@ local tbl =
 		type = "Utility",
 		weapon_type = "None",
 	},
+	[27198] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&Bj5qAAA=]",
+		cost = 0,
+		description = "Create an area that blocks projectiles and weakens foes.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 5,
+			},
+			
+			{
+				apply_count = 1,
+				description = "Endurance regeneration decreased by 50%. 50% of hits are Glancing Blows (50% damage). Stacks duration.",
+				duration = 1,
+				icon = "https://render.guildwars2.com/file/6CB0E64AF9AA292E332A38C1770CE577E2CDE0E8/102853.png",
+				status = "Weakness",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				duration = 8,
+				icon = "https://render.guildwars2.com/file/7B2193ACCF77E56C13E608191B082D68AA0FAA71/156659.png",
+				text = "Duration",
+				type = "Time",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Targets",
+				type = "Number",
+				value = 5,
+			},
+			
+			{
+				distance = 240,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Radius",
+				type = "Distance",
+			},
+			
+			{
+				field_type = "Dark",
+				icon = "https://render.guildwars2.com/file/59E0DB6A699810641C959926ADFEF73E08CC255B/156655.png",
+				text = "Combo Field",
+				type = "ComboField",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/B744222B69B2E5A27F51C6D005DD4BA5AA17D374/961482.png",
+		id = 27198,
+		initiative = 0,
+		name = "Dome of the Mists",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+	},
 	[27220] = 
 	{
 		attunement = "",
@@ -100579,8 +110929,8 @@ local tbl =
 		{
 		},
 		chat_link = "[&BtxqAAA=]",
-		cost = 35,
-		description = "Force energy to erupt from the tablet, knocking back nearby foes and leaving behind energy fragments that heal allies.",
+		cost = 10,
+		description = "Force energy to erupt from the tablet, knocking back nearby foes and leaving behind energy fragments that heal allies. Lose all remaining energy and remove conditions from allies based on the amount of energy lost.",
 		dual_wield = "",
 		facts = 
 		{
@@ -100634,6 +110984,13 @@ local tbl =
 				percent = 100,
 				text = "Combo Finisher",
 				type = "ComboFinisher",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Conditions Removed per 10 Energy",
+				type = "Number",
+				value = 1,
 			},
 		},
 		flip_skill = 29114,
@@ -101105,6 +111462,79 @@ local tbl =
 		type = "Utility",
 		weapon_type = "None",
 	},
+	[27741] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+			"LegendaryAssassin",
+		},
+		chat_link = "[&Bl1sAAA=]",
+		cost = 0,
+		description = "Legendary Assassin Call upon the Jade Wind to turn nearby enemies into jade, stunning them for a short duration.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 90,
+			},
+			
+			{
+				duration = 3,
+				icon = "https://render.guildwars2.com/file/143F46DEF466062F01C52B69922FFCEF73DCA801/156668.png",
+				text = "Jade Duration",
+				type = "Time",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Targets",
+				type = "Number",
+				value = 5,
+			},
+			
+			{
+				distance = 600,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Radius",
+				type = "Distance",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/47B374CE3A2C520BD9F1A8EA16030FEB2E0B1602/961435.png",
+		id = 27741,
+		initiative = 0,
+		name = "Jade Winds",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+	},
 	[27760] = 
 	{
 		attunement = "",
@@ -101451,9 +111881,9 @@ local tbl =
 			},
 			
 			{
-				apply_count = 3,
+				apply_count = 5,
 				description = "Deals damage every second. Deals additional damage to moving foes. Stacks intensity.",
-				duration = 6,
+				duration = 10,
 				icon = "https://render.guildwars2.com/file/10BABF2708CA3575730AC662A2E72EC292565B08/598887.png",
 				status = "Torment",
 				text = "Apply Buff/Condition",
@@ -101736,7 +112166,7 @@ local tbl =
 				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
 				text = "Recharge",
 				type = "Recharge",
-				value = 12,
+				value = 10,
 			},
 			
 			{
@@ -101767,6 +112197,16 @@ local tbl =
 				duration = 2,
 				icon = "https://render.guildwars2.com/file/28C4EC547A3516AF0242E826772DA43A5EAC3DF3/102839.png",
 				status = "Chilled",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Skills and actions are slower.",
+				duration = 2,
+				icon = "https://render.guildwars2.com/file/F60D1EF5271D7B9319610855676D320CD25F01C6/961397.png",
+				status = "Slow",
 				text = "Apply Buff/Condition",
 				type = "Buff",
 			},
@@ -103142,6 +113582,116 @@ local tbl =
 		type = "Utility",
 		weapon_type = "None",
 	},
+	[28388] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+			"LegendaryDemon",
+		},
+		chat_link = "[&BuRuAAA=]",
+		cost = 0,
+		description = "Legendary Demon. Deal damage, apply confusion, and remove boons from your foe.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
+				text = "Range",
+				type = "Range",
+				value = 1200,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 25,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Unblockable",
+				type = "Unblockable",
+				value = true,
+			},
+			
+			{
+				dmg_multiplier = 0.25,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				apply_count = 3,
+				description = "Damage received on skill activation; stacks intensity.",
+				duration = 6,
+				icon = "https://render.guildwars2.com/file/289AA0A4644F0E044DED3D3F39CED958E1DDFF53/102880.png",
+				status = "Confusion",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Boons Removed",
+				type = "Number",
+				value = 2,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Targets",
+				type = "Number",
+				value = 5,
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/91739F099CC45CB53B1C5CE9475EFBB4CF0E1EB0/961485.png",
+		id = 28388,
+		initiative = 0,
+		name = "Banish Enchantment",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+			
+			{
+				apply_count = 1,
+				description = "Conditions currently on you are ineffective; stacks duration.",
+				duration = 2,
+				icon = "https://render.guildwars2.com/file/50BAC1B8E10CFAB9E749A5D910D4A9DCF29EBB7C/961398.png",
+				overrides = 0,
+				requires_trait = 1789,
+				status = "Resistance",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+		},
+		transform_skills = 
+		{
+		},
+	},
 	[28406] = 
 	{
 		attunement = "",
@@ -103281,6 +113831,16 @@ local tbl =
 				duration = 8,
 				icon = "https://render.guildwars2.com/file/10BABF2708CA3575730AC662A2E72EC292565B08/598887.png",
 				status = "Torment",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 3,
+				description = "Damage received on skill activation; stacks intensity.",
+				duration = 8,
+				icon = "https://render.guildwars2.com/file/289AA0A4644F0E044DED3D3F39CED958E1DDFF53/102880.png",
+				status = "Confusion",
 				text = "Apply Buff/Condition",
 				type = "Buff",
 			},
@@ -104983,8 +115543,8 @@ local tbl =
 		{
 		},
 		chat_link = "[&BrpxAAA=]",
-		cost = 35,
-		description = "Force energy to erupt from the tablet, knocking back nearby foes and leaving behind energy fragments that heal allies.",
+		cost = 10,
+		description = "Force energy to erupt from the tablet, knocking back nearby foes and leaving behind energy fragments that heal allies. Lose all remaining energy and remove conditions from allies based on the amount of energy lost.",
 		dual_wield = "",
 		facts = 
 		{
@@ -105030,6 +115590,13 @@ local tbl =
 				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
 				text = "Radius",
 				type = "Distance",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Conditions Removed per 10 Energy",
+				type = "Number",
+				value = 1,
 			},
 			
 			{
@@ -105250,6 +115817,79 @@ local tbl =
 		},
 		type = "Heal",
 		weapon_type = "None",
+	},
+	[29152] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BuBxAAA=]",
+		cost = 0,
+		description = "Channel a shield from the Mists to protect you, blocking attacks and regenerating health.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 25,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/D4347C52157B040943051D7E09DEAD7AF63D4378/156662.png",
+				target = "Healing",
+				text = "Healing",
+				type = "AttributeAdjust",
+				value = 620,
+			},
+			
+			{
+				duration = 3,
+				icon = "https://render.guildwars2.com/file/7B2193ACCF77E56C13E608191B082D68AA0FAA71/156659.png",
+				text = "Duration",
+				type = "Time",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Pulses",
+				type = "Number",
+				value = 4,
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/642E5F995A02C7BAC7CEE5CFB964C06336B33BA1/102771.png",
+		id = 29152,
+		initiative = 0,
+		name = "Crystal Hibernation",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
 	},
 	[29180] = 
 	{
@@ -106591,6 +117231,119 @@ local tbl =
 		type = "Profession",
 		weapon_type = "None",
 	},
+	[29449] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BglzAAA=]",
+		cost = 0,
+		description = "Grant fury, might, and swiftness to yourself and nearby allies.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 30,
+			},
+			
+			{
+				apply_count = 1,
+				description = "Critical Chance increased by 20%; stacks duration.",
+				duration = 15,
+				icon = "https://render.guildwars2.com/file/96D90DF84CAFE008233DD1C2606A12C1A0E68048/102842.png",
+				status = "Fury",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 3,
+				description = "Increased outgoing damage; stacks intensity.",
+				duration = 15,
+				icon = "https://render.guildwars2.com/file/2FA9DF9D6BC17839BBEA14723F1C53D645DDB5E1/102852.png",
+				status = "Might",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Movement speed increased by 33%; stacks duration.",
+				duration = 15,
+				icon = "https://render.guildwars2.com/file/20CFC14967E67F7A3FD4A4B8722B4CF5B8565E11/102836.png",
+				status = "Swiftness",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Attacks are unblockable.",
+				duration = 4,
+				icon = "https://render.guildwars2.com/file/2BBB18C54A01FF1D5FF9473EB1059AE491AA98FF/103310.png",
+				status = "Call of the Wild",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				distance = 750,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Radius",
+				type = "Distance",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Targets",
+				type = "Number",
+				value = 5,
+			},
+			
+			{
+				finisher_type = "Blast",
+				icon = "https://render.guildwars2.com/file/A513F3653D33FBA4220D2D307799F8A327A36A3B/156656.png",
+				percent = 100,
+				text = "Combo Finisher",
+				type = "ComboFinisher",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/2BBB18C54A01FF1D5FF9473EB1059AE491AA98FF/103310.png",
+		id = 29449,
+		initiative = 0,
+		name = "Call of the Wild",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+	},
 	[29453] = 
 	{
 		attunement = "Earth",
@@ -106761,6 +117514,72 @@ local tbl =
 		type = "Profession",
 		weapon_type = "None",
 	},
+	[29467] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+			"Signet",
+		},
+		chat_link = "[&BhtzAAA=]",
+		cost = 0,
+		description = "Signet Active: Send your conditions to a foe.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
+				text = "Range",
+				type = "Range",
+				value = 1200,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 30,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Conditions Sent",
+				type = "Number",
+				value = 5,
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/7BA4196DCAD2BED2D4E7EF23B1CB4806DABC0C56/103812.png",
+		id = 29467,
+		initiative = 0,
+		name = "Plague Signet",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+	},
 	[29473] = 
 	{
 		attunement = "",
@@ -106859,6 +117678,87 @@ local tbl =
 		},
 		type = "Utility",
 		weapon_type = "None",
+	},
+	[29477] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+			"Clone",
+		},
+		chat_link = "[&BiVzAAA=]",
+		cost = 0,
+		description = "Clone. Gain stealth and summon an illusion to attack your foe.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
+				text = "Range",
+				type = "Range",
+				value = 1200,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 40,
+			},
+			
+			{
+				apply_count = 1,
+				description = "Currently invisible. Ends if you deal damage.",
+				duration = 3,
+				icon = "https://render.guildwars2.com/file/3BD4670638470439F3325B444FAF7D5FA620CCE5/62777.png",
+				status = "Stealth",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/0A4D48345ABB02E606AB45FF9FB6D27FDA70E83C/103191.png",
+		id = 29477,
+		initiative = 0,
+		name = "Decoy",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+			
+			{
+				apply_count = 1,
+				description = "Currently invisible. Ends if you deal damage.",
+				duration = 5,
+				icon = "https://render.guildwars2.com/file/3BD4670638470439F3325B444FAF7D5FA620CCE5/62777.png",
+				overrides = 2,
+				requires_trait = 674,
+				status = "Stealth",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+		},
+		transform_skills = 
+		{
+		},
 	},
 	[29505] = 
 	{
@@ -107177,8 +118077,8 @@ local tbl =
 			Thief = false,
 			Warrior = false,
 		},
-		slot = "Toolbelt",
-		toolbelt_skill = 0,
+		slot = "Elite",
+		toolbelt_skill = 29716,
 		traited_facts = 
 		{
 			
@@ -107195,7 +118095,7 @@ local tbl =
 		transform_skills = 
 		{
 		},
-		type = "Toolbelt",
+		type = "Elite",
 		weapon_type = "None",
 	},
 	[29519] = 
@@ -107269,18 +118169,18 @@ local tbl =
 		},
 		transform_skills = 
 		{
-			10180,
-			10375,
-			10182,
+			15863,
+			15861,
+			15862,
+			10376,
 			10181,
 			10373,
+			10180,
 			10372,
-			15862,
-			10183,
-			15861,
-			10376,
-			15863,
+			10182,
 			10374,
+			10183,
+			10375,
 		},
 		type = "Elite",
 		weapon_type = "None",
@@ -108001,6 +118901,99 @@ local tbl =
 		type = "Utility",
 		weapon_type = "None",
 	},
+	[29560] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BnhzAAA=]",
+		cost = 0,
+		description = "Cripple nearby foes and convert their boons into conditions. Gain retaliation for each foe you strike.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
+				text = "Range",
+				type = "Range",
+				value = 600,
+			},
+			
+			{
+				dmg_multiplier = 0.8,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Reflect incoming damage back to its source; stacks duration.",
+				duration = 3,
+				icon = "https://render.guildwars2.com/file/27F233F7D4CE4E9EFE040E3D665B7B0643557B6E/102883.png",
+				status = "Retaliation",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Movement speed decreased by 50%; stacks duration.",
+				duration = 5,
+				icon = "https://render.guildwars2.com/file/070325E519C178D502A8160523766070D30C0C19/102838.png",
+				status = "Crippled",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Targets",
+				type = "Number",
+				value = 5,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Boons Converted to Conditions",
+				type = "Number",
+				value = 1,
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/2A1707BB93BBF8B1A414D37BBFC5CAC90105D5DF/103567.png",
+		id = 29560,
+		initiative = 0,
+		name = "Spiteful Spirit",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+	},
 	[29578] = 
 	{
 		attunement = "",
@@ -108154,6 +119147,84 @@ local tbl =
 		},
 		type = "Utility",
 		weapon_type = "None",
+	},
+	[29606] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BqZzAAA=]",
+		cost = 0,
+		description = "Analyze a foe, applying vulnerability.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
+				text = "Range",
+				type = "Range",
+				value = 1200,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 25,
+			},
+			
+			{
+				apply_count = 10,
+				description = "Damage and condition damage taken are increased; stacks intensity.",
+				duration = 8,
+				icon = "https://render.guildwars2.com/file/3A394C1A0A3257EB27A44842DDEEF0DF000E1241/102850.png",
+				status = "Vulnerability",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 1,
+				description = "You cannot stealth",
+				duration = 6,
+				icon = "https://render.guildwars2.com/file/62BFF65D1CE99B1B2B0928152BCC596EAC0D372B/102887.png",
+				status = "Revealed",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/5DF2A130174A73B268A1683DCF5ED39AD0325592/103460.png",
+		id = 29606,
+		initiative = 0,
+		name = "Analyze",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
 	},
 	[29613] = 
 	{
@@ -109193,6 +120264,14 @@ local tbl =
 			},
 			
 			{
+				dmg_multiplier = 1,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
 				duration = 1,
 				icon = "https://render.guildwars2.com/file/07B6122FBF169A2124A23FBCB06A3B7991A35179/156658.png",
 				text = "Daze",
@@ -109220,6 +120299,16 @@ local tbl =
 			},
 			
 			{
+				apply_count = 3,
+				description = "Deals damage every second; stacks intensity.",
+				duration = 6,
+				icon = "https://render.guildwars2.com/file/79FF0046A5F9ADA3B4C4EC19ADB4CB124D5F0021/102848.png",
+				status = "Bleeding",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
 				apply_count = 4,
 				description = "Damage received on skill activation; stacks intensity.",
 				duration = 4,
@@ -109237,14 +120326,6 @@ local tbl =
 				status = "Crippled",
 				text = "Apply Buff/Condition",
 				type = "Buff",
-			},
-			
-			{
-				finisher_type = "Blast",
-				icon = "https://render.guildwars2.com/file/A513F3653D33FBA4220D2D307799F8A327A36A3B/156656.png",
-				percent = 100,
-				text = "Combo Finisher",
-				type = "ComboFinisher",
 			},
 		},
 		flip_skill = 0,
@@ -109276,6 +120357,16 @@ local tbl =
 				hit_count = 1,
 				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
 				overrides = 2,
+				requires_trait = 1657,
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				dmg_multiplier = 1.07,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				overrides = 3,
 				requires_trait = 1657,
 				text = "Damage",
 				type = "Damage",
@@ -109657,6 +120748,121 @@ local tbl =
 		type = "Profession",
 		weapon_type = "None",
 	},
+	[29712] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BhB0AAA=]",
+		cost = 0,
+		description = "Remove a damaging condition.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				apply_count = 0,
+				description = "Deals damage every second; stacks intensity.",
+				duration = 0,
+				icon = "https://render.guildwars2.com/file/B47BF5803FED2718D7474EAF9617629AD068EE10/102849.png",
+				status = "Burning",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 0,
+				description = "Deals damage every second; decreases healing effectiveness by 33%; damage stacks intensity.",
+				duration = 0,
+				icon = "https://render.guildwars2.com/file/559B0AF9FB5E1243D2649FAAE660CCB338AACC19/102840.png",
+				status = "Poisoned",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 0,
+				description = "Deals damage every second. Deals additional damage to moving foes. Stacks intensity.",
+				duration = 0,
+				icon = "https://render.guildwars2.com/file/10BABF2708CA3575730AC662A2E72EC292565B08/598887.png",
+				status = "Torment",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 0,
+				description = "Damage received on skill activation; stacks intensity.",
+				duration = 0,
+				icon = "https://render.guildwars2.com/file/289AA0A4644F0E044DED3D3F39CED958E1DDFF53/102880.png",
+				status = "Confusion",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 0,
+				description = "Deals damage every second; stacks intensity.",
+				duration = 0,
+				icon = "https://render.guildwars2.com/file/79FF0046A5F9ADA3B4C4EC19ADB4CB124D5F0021/102848.png",
+				status = "Bleeding",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Conditions Removed",
+				type = "Number",
+				value = 1,
+			},
+			
+			{
+				distance = 300,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Radius",
+				type = "Distance",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Allied Targets",
+				type = "Number",
+				value = 5,
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/1B0C0900BD7F04324E1695BCF97D5AF8AD0609B7/103419.png",
+		id = 29712,
+		initiative = 0,
+		name = "Cleansing Pulse",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+	},
 	[29716] = 
 	{
 		attunement = "",
@@ -109697,6 +120903,13 @@ local tbl =
 			
 			{
 				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Conditions Removed",
+				type = "Number",
+				value = 14,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
 				text = "Number of Impacts",
 				type = "Number",
 				value = 6,
@@ -109707,6 +120920,20 @@ local tbl =
 				icon = "https://render.guildwars2.com/file/7B2193ACCF77E56C13E608191B082D68AA0FAA71/156659.png",
 				text = "Duration",
 				type = "Time",
+			},
+			
+			{
+				distance = 240,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Radius",
+				type = "Distance",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Allied Targets",
+				type = "Number",
+				value = 5,
 			},
 		},
 		flip_skill = 0,
@@ -109768,6 +120995,14 @@ local tbl =
 				text = "Recharge",
 				type = "Recharge",
 				value = 20,
+			},
+			
+			{
+				dmg_multiplier = 0.715,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
 			},
 			
 			{
@@ -109922,6 +121157,182 @@ local tbl =
 		},
 		type = "Toolbelt",
 		weapon_type = "None",
+	},
+	[29724] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+			"Signet",
+		},
+		chat_link = "[&Bhx0AAA=]",
+		cost = 0,
+		description = "Signet Passive: Grant swiftness and an additional random boon every ten seconds. \nSignet Active: Apply one instance of any boon on you to nearby allies.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
+				text = "Range",
+				type = "Range",
+				value = 600,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 30,
+			},
+			
+			{
+				apply_count = 1,
+				description = "Block the next incoming attack; stacks duration.",
+				duration = 10,
+				icon = "https://render.guildwars2.com/file/DFB4D1B50AE4D6A275B349E15B179261EE3EB0AF/102854.png",
+				status = "Aegis",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Critical Chance increased by 20%; stacks duration.",
+				duration = 5,
+				icon = "https://render.guildwars2.com/file/96D90DF84CAFE008233DD1C2606A12C1A0E68048/102842.png",
+				status = "Fury",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Increased outgoing damage; stacks intensity.",
+				duration = 20,
+				icon = "https://render.guildwars2.com/file/2FA9DF9D6BC17839BBEA14723F1C53D645DDB5E1/102852.png",
+				status = "Might",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Incoming damage decreased by 33%; stacks duration.",
+				duration = 3,
+				icon = "https://render.guildwars2.com/file/CD77D1FAB7B270223538A8F8ECDA1CFB044D65F4/102834.png",
+				status = "Protection",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Gain health every second; stacks duration.",
+				duration = 5,
+				icon = "https://render.guildwars2.com/file/F69996772B9E18FD18AD0AABAB25D7E3FC42F261/102835.png",
+				status = "Regeneration",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Reflect incoming damage back to its source; stacks duration.",
+				duration = 5,
+				icon = "https://render.guildwars2.com/file/27F233F7D4CE4E9EFE040E3D665B7B0643557B6E/102883.png",
+				status = "Retaliation",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Movement speed increased by 33%; stacks duration.",
+				duration = 5,
+				icon = "https://render.guildwars2.com/file/20CFC14967E67F7A3FD4A4B8722B4CF5B8565E11/102836.png",
+				status = "Swiftness",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Endurance regeneration increased by 50%; stacks duration.",
+				duration = 5,
+				icon = "https://render.guildwars2.com/file/58E92EBAF0DB4DA7C4AC04D9B22BCA5ECF0100DE/102843.png",
+				status = "Vigor",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Cannot be knocked down, pushed back, pulled, launched, stunned, dazed, floated, sunk, feared, or taunted.",
+				duration = 5,
+				icon = "https://render.guildwars2.com/file/3D3A1C2D6D791C05179AB871902D28782C65C244/415959.png",
+				status = "Stability",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Conditions currently on you are ineffective; stacks duration.",
+				duration = 2,
+				icon = "https://render.guildwars2.com/file/50BAC1B8E10CFAB9E749A5D910D4A9DCF29EBB7C/961398.png",
+				status = "Resistance",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Skills and actions are faster.",
+				duration = 3,
+				icon = "https://render.guildwars2.com/file/D4AB6401A6D6917C3D4F230764452BCCE1035B0D/1012835.png",
+				status = "Quickness",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Targets",
+				type = "Number",
+				value = 5,
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/636A59096E48DD9B01D11F74EFECAEDCC4DB300D/103750.png",
+		id = 29724,
+		initiative = 0,
+		name = "Signet of Inspiration",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
 	},
 	[29739] = 
 	{
@@ -110299,6 +121710,14 @@ local tbl =
 			},
 			
 			{
+				dmg_multiplier = 2.52,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
 				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
 				text = "Number of Targets",
 				type = "Number",
@@ -110517,6 +121936,87 @@ local tbl =
 		},
 		type = "Weapon",
 		weapon_type = "Longbow",
+	},
+	[29812] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+			"Gadget",
+		},
+		chat_link = "[&BnR0AAA=]",
+		cost = 0,
+		description = "Gadget. Break out of stun, gaining fury and immunity to blindness.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 40,
+			},
+			
+			{
+				apply_count = 1,
+				description = "Critical Chance increased by 20%; stacks duration.",
+				duration = 10,
+				icon = "https://render.guildwars2.com/file/96D90DF84CAFE008233DD1C2606A12C1A0E68048/102842.png",
+				status = "Fury",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				duration = 10,
+				icon = "https://render.guildwars2.com/file/7B2193ACCF77E56C13E608191B082D68AA0FAA71/156659.png",
+				text = "Blindness Immunity Duration",
+				type = "Time",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/4ED8F42447B076AF1DD410430974C7BE7A0F7F61/103417.png",
+		id = 29812,
+		initiative = 0,
+		name = "Utility Goggles",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+			
+			{
+				apply_count = 5,
+				description = "Increased outgoing damage; stacks intensity.",
+				duration = 8,
+				icon = "https://render.guildwars2.com/file/2FA9DF9D6BC17839BBEA14723F1C53D645DDB5E1/102852.png",
+				overrides = 0,
+				requires_trait = 1679,
+				status = "Might",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+		},
+		transform_skills = 
+		{
+		},
 	},
 	[29830] = 
 	{
@@ -111033,6 +122533,13 @@ local tbl =
 				text = "Maximum Radius",
 				type = "Distance",
 			},
+			
+			{
+				field_type = "Dark",
+				icon = "https://render.guildwars2.com/file/59E0DB6A699810641C959926ADFEF73E08CC255B/156655.png",
+				text = "Combo Field",
+				type = "ComboField",
+			},
 		},
 		flip_skill = 0,
 		icon = "https://render.guildwars2.com/file/586F0469807BB7CB7942F098CC24331D0FF3CA4E/1012926.png",
@@ -111365,6 +122872,16 @@ local tbl =
 			},
 			
 			{
+				apply_count = 1,
+				description = "You cannot stealth",
+				duration = 6,
+				icon = "https://render.guildwars2.com/file/62BFF65D1CE99B1B2B0928152BCC596EAC0D372B/102887.png",
+				status = "Revealed",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
 				duration = 1,
 				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
 				text = "Interval",
@@ -111440,7 +122957,7 @@ local tbl =
 			
 			{
 				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
-				overrides = 8,
+				overrides = 9,
 				requires_trait = 622,
 				text = "Number of Attacks to Trigger",
 				type = "Number",
@@ -111461,6 +122978,265 @@ local tbl =
 		},
 		type = "Profession",
 		weapon_type = "None",
+	},
+	[29889] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BsF0AAA=]",
+		cost = 0,
+		description = "Fire a seeking rocket at your foe.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
+				text = "Range",
+				type = "Range",
+				value = 1500,
+			},
+			
+			{
+				dmg_multiplier = 1,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Targets",
+				type = "Number",
+				value = 3,
+			},
+			
+			{
+				distance = 120,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Radius",
+				type = "Distance",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Explosion",
+				type = "NoData",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/C61F211044C97242B6324B6F092802706A5FC101/103936.png",
+		id = 29889,
+		initiative = 0,
+		name = "Aim-Assisted Rocket",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+			
+			{
+				dmg_multiplier = 1.1,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				overrides = 1,
+				requires_trait = 429,
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Damage and condition damage taken are increased; stacks intensity.",
+				duration = 5,
+				icon = "https://render.guildwars2.com/file/3A394C1A0A3257EB27A44842DDEEF0DF000E1241/102850.png",
+				overrides = 0,
+				requires_trait = 517,
+				status = "Vulnerability",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+		},
+		transform_skills = 
+		{
+		},
+	},
+	[29894] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+			"Signet",
+		},
+		chat_link = "[&BsZ0AAA=]",
+		cost = 0,
+		description = "Signet Active: Mark a foe. Allied players will siphon life from that enemy.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
+				text = "Range",
+				type = "Range",
+				value = 1200,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 20,
+			},
+			
+			{
+				apply_count = 5,
+				description = "Life is siphoned when struck by players.",
+				duration = 6,
+				icon = "https://render.guildwars2.com/file/F62121A2D713A4CD5FDA3E5C734408EF3306BED4/699529.png",
+				status = "Vampiric Mark",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				target = "Power",
+				text = "Active Life Siphon Damage",
+				type = "AttributeAdjust",
+				value = 163,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				target = "Healing",
+				text = "Active Life Siphon Heal",
+				type = "AttributeAdjust",
+				value = 470,
+			},
+			
+			{
+				duration = 1,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Active Life Siphon Cooldown",
+				type = "Time",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/F62121A2D713A4CD5FDA3E5C734408EF3306BED4/699529.png",
+		id = 29894,
+		initiative = 0,
+		name = "Lesser Signet of Vampirism",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+	},
+	[29902] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&Bs50AAA=]",
+		cost = 0,
+		description = "Drop gunk at your location to inflict a random condition.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				dmg_multiplier = 0.3,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Targets",
+				type = "Number",
+				value = 5,
+			},
+			
+			{
+				field_type = "Ethereal",
+				icon = "https://render.guildwars2.com/file/59E0DB6A699810641C959926ADFEF73E08CC255B/156655.png",
+				text = "Combo Field",
+				type = "ComboField",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/3A487770D4A0E006D0A0E57C68A639BF7003A5BC/102940.png",
+		id = 29902,
+		initiative = 0,
+		name = "Drop Gunk",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
 	},
 	[29905] = 
 	{
@@ -112221,7 +123997,7 @@ local tbl =
 		},
 		chat_link = "[&BgZ1AAA=]",
 		cost = 0,
-		description = "Shroud yourself with dark armor that grants stability every second. You may shatter this armor to fear foes around you.",
+		description = "Shroud yourself with dark armor that grants stability and reduces most incoming damage. You may shatter this armor to fear foes around you.",
 		dual_wield = "",
 		facts = 
 		{
@@ -112234,9 +124010,9 @@ local tbl =
 			},
 			
 			{
-				apply_count = 1,
+				apply_count = 3,
 				description = "Cannot be knocked down, pushed back, pulled, launched, stunned, dazed, floated, sunk, feared, or taunted.",
-				duration = 3,
+				duration = 6,
 				icon = "https://render.guildwars2.com/file/3D3A1C2D6D791C05179AB871902D28782C65C244/415959.png",
 				status = "Stability",
 				text = "Apply Buff/Condition",
@@ -112244,7 +124020,21 @@ local tbl =
 			},
 			
 			{
-				duration = 5,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				percent = 20,
+				text = "Damage Reduced",
+				type = "Percent",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				percent = 20,
+				text = "Condition Damage Reduced",
+				type = "Percent",
+			},
+			
+			{
+				duration = 6,
 				icon = "https://render.guildwars2.com/file/7B2193ACCF77E56C13E608191B082D68AA0FAA71/156659.png",
 				text = "Duration",
 				type = "Time",
@@ -112404,7 +124194,7 @@ local tbl =
 				target = "Healing",
 				text = "Healing",
 				type = "AttributeAdjust",
-				value = 2132,
+				value = 2836,
 			},
 			
 			{
@@ -112547,6 +124337,87 @@ local tbl =
 		},
 		type = "Elite",
 		weapon_type = "None",
+	},
+	[29977] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+			"Signet",
+		},
+		chat_link = "[&Bhl1AAA=]",
+		cost = 0,
+		description = "Signet Active: Your attacks are unblockable.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 25,
+			},
+			
+			{
+				apply_count = 1,
+				description = "Your attacks are unblockable",
+				duration = 6,
+				icon = "https://render.guildwars2.com/file/19C9C66C3C5A335065C007F7C941B81BA3745EDE/575654.png",
+				status = "Unblockable",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				duration = 6,
+				icon = "https://render.guildwars2.com/file/7B2193ACCF77E56C13E608191B082D68AA0FAA71/156659.png",
+				text = "Duration",
+				type = "Time",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/450973A6DE4D0BEE580256F5759F632B7EBC7ADD/103798.png",
+		id = 29977,
+		initiative = 0,
+		name = "Signet of Might",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+			
+			{
+				apply_count = 1,
+				description = "",
+				duration = 60,
+				icon = "https://render.guildwars2.com/file/3D117C0158CD7A55BE740D6B072807A3121C90A1/1012775.png",
+				overrides = 0,
+				requires_trait = 1344,
+				status = "Signet Precision",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+		},
+		transform_skills = 
+		{
+		},
 	},
 	[29991] = 
 	{
@@ -112816,6 +124687,89 @@ local tbl =
 		type = "Weapon",
 		weapon_type = "Warhorn",
 	},
+	[30022] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BkZ1AAA=]",
+		cost = 0,
+		description = "Throw out a stimulant that heals, grants fury, and removes a debilitating condition (weakness, blind, vulnerability).",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
+				text = "Range",
+				type = "Range",
+				value = 600,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 10,
+			},
+			
+			{
+				apply_count = 1,
+				description = "Critical Chance increased by 20%; stacks duration.",
+				duration = 5,
+				icon = "https://render.guildwars2.com/file/96D90DF84CAFE008233DD1C2606A12C1A0E68048/102842.png",
+				status = "Fury",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				duration = 12,
+				icon = "https://render.guildwars2.com/file/7B2193ACCF77E56C13E608191B082D68AA0FAA71/156659.png",
+				text = "Duration",
+				type = "Time",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/D4347C52157B040943051D7E09DEAD7AF63D4378/156662.png",
+				target = "Healing",
+				text = "Healing",
+				type = "AttributeAdjust",
+				value = 505,
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/3ACC056A13C54D3FAB1CBA05F87ED17FC6DFFA35/102900.png",
+		id = 30022,
+		initiative = 0,
+		name = "Throw Stimulant",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+	},
 	[30025] = 
 	{
 		attunement = "",
@@ -113022,7 +124976,7 @@ local tbl =
 				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
 				text = "Recharge",
 				type = "Recharge",
-				value = 75,
+				value = 60,
 			},
 			
 			{
@@ -113057,7 +125011,7 @@ local tbl =
 			},
 			
 			{
-				duration = 4,
+				duration = 3,
 				icon = "https://render.guildwars2.com/file/7B2193ACCF77E56C13E608191B082D68AA0FAA71/156659.png",
 				text = "Duration",
 				type = "Time",
@@ -113128,7 +125082,7 @@ local tbl =
 			},
 			
 			{
-				duration = 6,
+				duration = 5,
 				icon = "https://render.guildwars2.com/file/7B2193ACCF77E56C13E608191B082D68AA0FAA71/156659.png",
 				overrides = 5,
 				requires_trait = 1943,
@@ -113297,7 +125251,7 @@ local tbl =
 				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
 				text = "Recharge",
 				type = "Recharge",
-				value = 75,
+				value = 60,
 			},
 			
 			{
@@ -113325,7 +125279,7 @@ local tbl =
 			},
 			
 			{
-				duration = 4,
+				duration = 3,
 				icon = "https://render.guildwars2.com/file/7B2193ACCF77E56C13E608191B082D68AA0FAA71/156659.png",
 				text = "Duration",
 				type = "Time",
@@ -113415,7 +125369,7 @@ local tbl =
 			},
 			
 			{
-				duration = 6,
+				duration = 5,
 				icon = "https://render.guildwars2.com/file/7B2193ACCF77E56C13E608191B082D68AA0FAA71/156659.png",
 				overrides = 4,
 				requires_trait = 1943,
@@ -114418,6 +126372,82 @@ local tbl =
 		type = "Bundle",
 		weapon_type = "None",
 	},
+	[30123] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+			"Shout",
+		},
+		chat_link = "[&Bqt1AAA=]",
+		cost = 0,
+		description = "Shout. Your pet will seek out and revive a downed ally.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 85,
+			},
+			
+			{
+				distance = 600,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Radius",
+				type = "Distance",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Gain health every second; stacks duration.",
+				duration = 8,
+				icon = "https://render.guildwars2.com/file/F69996772B9E18FD18AD0AABAB25D7E3FC42F261/102835.png",
+				status = "Regeneration",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Allied Targets",
+				type = "Number",
+				value = 5,
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/4345CDEAFF22E0A45DE84F42ED6B4862760D5731/104014.png",
+		id = 30123,
+		initiative = 0,
+		name = "\"Search and rescue.\"",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+	},
 	[30135] = 
 	{
 		attunement = "",
@@ -114485,6 +126515,72 @@ local tbl =
 		},
 		type = "Weapon",
 		weapon_type = "Staff",
+	},
+	[30142] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&Br51AAA=]",
+		cost = 0,
+		description = "Drop a pack of bandages that provides a little healing.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 2,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/D4347C52157B040943051D7E09DEAD7AF63D4378/156662.png",
+				target = "Healing",
+				text = "Healing",
+				type = "AttributeAdjust",
+				value = 502,
+			},
+			
+			{
+				duration = 12,
+				icon = "https://render.guildwars2.com/file/7B2193ACCF77E56C13E608191B082D68AA0FAA71/156659.png",
+				text = "Duration",
+				type = "Time",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/50C2CA45076553093FCF2135FBD7439280EE67F1/240697.png",
+		id = 30142,
+		initiative = 0,
+		name = "Bandage",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
 	},
 	[30162] = 
 	{
@@ -114668,6 +126764,78 @@ local tbl =
 		type = "Weapon",
 		weapon_type = "Greatsword",
 	},
+	[30166] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BtZ1AAA=]",
+		cost = 0,
+		description = "Remove conditions from you and nearby allies.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 1,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Conditions Removed",
+				type = "Number",
+				value = 2,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Targets",
+				type = "Number",
+				value = 5,
+			},
+			
+			{
+				distance = 240,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Radius",
+				type = "Distance",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/1E329F3FA4BA08107AD9DC96F116BA1DE479BF73/103741.png",
+		id = 30166,
+		initiative = 0,
+		name = "Power Cleanse",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+	},
 	[30185] = 
 	{
 		attunement = "",
@@ -114835,6 +127003,107 @@ local tbl =
 		type = "Heal",
 		weapon_type = "None",
 	},
+	[30192] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+			"Phantasm",
+		},
+		chat_link = "[&BvB1AAA=]",
+		cost = 0,
+		description = "Phantasm. Summon an illusion that gives Illusion of Defense to nearby allies when it attacks.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
+				text = "Range",
+				type = "Range",
+				value = 900,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 30,
+			},
+			
+			{
+				dmg_multiplier = 0.115,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Targets",
+				type = "Number",
+				value = 5,
+			},
+			
+			{
+				apply_count = 1,
+				description = "A portion of incoming damage is transfered to the illusionary defender.",
+				duration = 5,
+				icon = "https://render.guildwars2.com/file/3439B9C801F6F72F0701A1BA759B249FF428D5C2/103791.png",
+				status = "Illusion of Defense",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				percent = 33,
+				text = "Damage Reduced",
+				type = "Percent",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/3439B9C801F6F72F0701A1BA759B249FF428D5C2/103791.png",
+		id = 30192,
+		initiative = 0,
+		name = "Phantasmal Defender",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+			
+			{
+				dmg_multiplier = 0.132,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				overrides = 2,
+				requires_trait = 682,
+				text = "Damage",
+				type = "Damage",
+			},
+		},
+		transform_skills = 
+		{
+		},
+	},
 	[30210] = 
 	{
 		attunement = "",
@@ -114957,6 +127226,14 @@ local tbl =
 				text = "Healing",
 				type = "AttributeAdjust",
 				value = 3890,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/D4347C52157B040943051D7E09DEAD7AF63D4378/156662.png",
+				target = "Healing",
+				text = "Healing",
+				type = "AttributeAdjust",
+				value = 2968,
 			},
 			
 			{
@@ -115183,7 +127460,7 @@ local tbl =
 		},
 		chat_link = "[&BhZ2AAA=]",
 		cost = 0,
-		description = "",
+		description = "Overcharge supply crate's turrets.",
 		dual_wield = "",
 		facts = 
 		{
@@ -115208,7 +127485,7 @@ local tbl =
 			Warrior = false,
 		},
 		slot = "Elite",
-		toolbelt_skill = 29518,
+		toolbelt_skill = 0,
 		traited_facts = 
 		{
 		},
@@ -115285,6 +127562,155 @@ local tbl =
 		},
 		type = "Utility",
 		weapon_type = "None",
+	},
+	[30239] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+			"Trick",
+		},
+		chat_link = "[&Bh92AAA=]",
+		cost = 0,
+		description = "Trick. Gain quickness and fury.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 60,
+			},
+			
+			{
+				apply_count = 1,
+				description = "Skills and actions are faster.",
+				duration = 6,
+				icon = "https://render.guildwars2.com/file/D4AB6401A6D6917C3D4F230764452BCCE1035B0D/1012835.png",
+				status = "Quickness",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Critical Chance increased by 20%; stacks duration.",
+				duration = 6,
+				icon = "https://render.guildwars2.com/file/96D90DF84CAFE008233DD1C2606A12C1A0E68048/102842.png",
+				status = "Fury",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/1C7719C3046D06161D071C0A6B33D3C8179E3F67/103459.png",
+		id = 30239,
+		initiative = 0,
+		name = "Haste",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+	},
+	[30255] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+			"Signet",
+		},
+		chat_link = "[&Bi92AAA=]",
+		cost = 0,
+		description = "Signet Passive: Grants you increased condition damage.\nSignet Active: Immobilize your target.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
+				text = "Range",
+				type = "Range",
+				value = 1200,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 25,
+			},
+			
+			{
+				dmg_multiplier = 0.25,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Unable to move; stacks duration.",
+				duration = 3,
+				icon = "https://render.guildwars2.com/file/397A613651BFCA2832B6469CE34735580A2C120E/102844.png",
+				status = "Immobile",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/7F660CD006085D42B5A9F16A281D0E15434A2304/103643.png",
+		id = 30255,
+		initiative = 0,
+		name = "Signet of Wrath",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
 	},
 	[30258] = 
 	{
@@ -115460,13 +127886,6 @@ local tbl =
 		dual_wield = "",
 		facts = 
 		{
-			
-			{
-				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
-				text = "Recharge",
-				type = "Recharge",
-				value = 30,
-			},
 		},
 		flip_skill = 0,
 		icon = "https://render.guildwars2.com/file/6164B9025A1EC560F490AB654BDCE252E83369F2/1012857.png",
@@ -115488,7 +127907,7 @@ local tbl =
 			Warrior = false,
 		},
 		slot = "Elite",
-		toolbelt_skill = 29518,
+		toolbelt_skill = 0,
 		traited_facts = 
 		{
 		},
@@ -116532,7 +128951,7 @@ local tbl =
 				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
 				text = "Range",
 				type = "Range",
-				value = 300,
+				value = 400,
 			},
 			
 			{
@@ -117197,6 +129616,13 @@ local tbl =
 				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
 				text = "Endurance Gained",
 				type = "Number",
+				value = 15,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Endurance Gained",
+				type = "Number",
 				value = 25,
 			},
 			
@@ -117734,7 +130160,7 @@ local tbl =
 				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
 				text = "Recharge",
 				type = "Recharge",
-				value = 120,
+				value = 90,
 			},
 			
 			{
@@ -119199,6 +131625,20 @@ local tbl =
 			},
 			
 			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Allied Targets",
+				type = "Number",
+				value = 5,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Conditions Removed",
+				type = "Number",
+				value = 14,
+			},
+			
+			{
 				icon = "https://render.guildwars2.com/file/D4347C52157B040943051D7E09DEAD7AF63D4378/156662.png",
 				target = "Healing",
 				text = "Healing",
@@ -120235,6 +132675,107 @@ local tbl =
 		type = "Profession",
 		weapon_type = "Sword",
 	},
+	[30686] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&Bt53AAA=]",
+		cost = 0,
+		description = "Drop a delayed explosive pack at your foe's location.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				distance = 240,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Radius",
+				type = "Distance",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Targets",
+				type = "Number",
+				value = 5,
+			},
+			
+			{
+				dmg_multiplier = 1.5,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				duration = 1,
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Explosion Delay",
+				type = "Time",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Explosion",
+				type = "NoData",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/FF66C9731A6BC608AB185F98BE5F07E43AEACD36/103534.png",
+		id = 30686,
+		initiative = 0,
+		name = "Long-Fused Powder Pack",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+			
+			{
+				apply_count = 1,
+				description = "Damage and condition damage taken are increased; stacks intensity.",
+				duration = 5,
+				icon = "https://render.guildwars2.com/file/3A394C1A0A3257EB27A44842DDEEF0DF000E1241/102850.png",
+				overrides = 0,
+				requires_trait = 517,
+				status = "Vulnerability",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				dmg_multiplier = 1.65,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				overrides = 2,
+				requires_trait = 429,
+				text = "Damage",
+				type = "Damage",
+			},
+		},
+		transform_skills = 
+		{
+		},
+	},
 	[30693] = 
 	{
 		attunement = "",
@@ -120283,7 +132824,7 @@ local tbl =
 			},
 			
 			{
-				apply_count = 1,
+				apply_count = 2,
 				description = "Explosively damaging attack.",
 				duration = 2,
 				icon = "https://render.guildwars2.com/file/96580AB413D9791D53D45093063F54CD9F56C513/1058634.png",
@@ -120544,6 +133085,82 @@ local tbl =
 		type = "Toolbelt",
 		weapon_type = "None",
 	},
+	[30745] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+			"Shout",
+		},
+		chat_link = "[&Bhl4AAA=]",
+		cost = 0,
+		description = "Shout. Imbue your voice with the element of air, massively increasing speed for nearby allies. The effects of this shout linger, breaking stun for nearby allies.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 40,
+			},
+			
+			{
+				apply_count = 1,
+				description = "Movement speed is greatly increased.",
+				duration = 5,
+				icon = "https://render.guildwars2.com/file/E04392C3D8ED985125973AEB99D8460C483263F9/103458.png",
+				status = "Superspeed",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Targets",
+				type = "Number",
+				value = 5,
+			},
+			
+			{
+				distance = 600,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Radius",
+				type = "Distance",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/0A4809D69EDAD4FC34F9D46A035096B2EA48D412/1029990.png",
+		id = 30745,
+		initiative = 0,
+		name = "\"Eye of the Storm!\"",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+	},
 	[30747] = 
 	{
 		attunement = "",
@@ -120742,6 +133359,74 @@ local tbl =
 		},
 		type = "Weapon",
 		weapon_type = "Shield",
+	},
+	[30770] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+			"Physical",
+		},
+		chat_link = "[&BjJ4AAA=]",
+		cost = 0,
+		description = "Physical. Cause a rupture that deals massive damage when this skill ends. This ability cannot critically hit.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Unblockable",
+				type = "Unblockable",
+				value = true,
+			},
+			
+			{
+				dmg_multiplier = 3.28,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				dmg_multiplier = 2.8,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/96580AB413D9791D53D45093063F54CD9F56C513/1058634.png",
+		id = 30770,
+		initiative = 0,
+		name = "Pulmonary Impact",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
 	},
 	[30772] = 
 	{
@@ -121082,6 +133767,14 @@ local tbl =
 				text = "Healing",
 				type = "AttributeAdjust",
 				value = 3890,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/D4347C52157B040943051D7E09DEAD7AF63D4378/156662.png",
+				target = "Healing",
+				text = "Healing",
+				type = "AttributeAdjust",
+				value = 2968,
 			},
 			
 			{
@@ -121988,7 +134681,7 @@ local tbl =
 		},
 		chat_link = "[&BoN4AAA=]",
 		cost = 10,
-		description = "Primal Burst. Leap at your foe with a powerful attack. Foes behind your target also take damage.",
+		description = "Primal Burst. Leap at your foe with a powerful attack. If it hits, gain might and deal damage to foes behind your target.",
 		dual_wield = "",
 		facts = 
 		{
@@ -122028,6 +134721,16 @@ local tbl =
 				text = "Shock Wave Targets",
 				type = "Number",
 				value = 5,
+			},
+			
+			{
+				apply_count = 5,
+				description = "Increased outgoing damage; stacks intensity.",
+				duration = 5,
+				icon = "https://render.guildwars2.com/file/2FA9DF9D6BC17839BBEA14723F1C53D645DDB5E1/102852.png",
+				status = "Might",
+				text = "Apply Buff/Condition",
+				type = "Buff",
 			},
 			
 			{
@@ -123472,6 +136175,95 @@ local tbl =
 		type = "Utility",
 		weapon_type = "None",
 	},
+	[31129] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&Bpl5AAA=]",
+		cost = 0,
+		description = "Leap into an area, and deliver a massive blow to enemies.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				dmg_multiplier = 1.33,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				dmg_multiplier = 1.75,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Targets",
+				type = "Number",
+				value = 5,
+			},
+			
+			{
+				distance = 180,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Radius",
+				type = "Distance",
+			},
+			
+			{
+				distance = 300,
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Distance Traveled",
+				type = "Distance",
+			},
+			
+			{
+				finisher_type = "Leap",
+				icon = "https://render.guildwars2.com/file/A513F3653D33FBA4220D2D307799F8A327A36A3B/156656.png",
+				percent = 100,
+				text = "Combo Finisher",
+				type = "ComboFinisher",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/F3E22D0FDFDB436780BD4ACBA5D135EE40507FFD/1058554.png",
+		id = 31129,
+		initiative = 0,
+		name = "Bound",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+	},
 	[31159] = 
 	{
 		attunement = "",
@@ -123694,6 +136486,104 @@ local tbl =
 		type = "Toolbelt",
 		weapon_type = "None",
 	},
+	[31187] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BtN5AAA=]",
+		cost = 0,
+		description = "Remove conditions and gain swiftness, then rush forward and evade attacks.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				apply_count = 0,
+				description = "Unable to move; stacks duration.",
+				duration = 0,
+				icon = "https://render.guildwars2.com/file/397A613651BFCA2832B6469CE34735580A2C120E/102844.png",
+				status = "Immobile",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 0,
+				description = "Movement speed decreased by 50%; stacks duration.",
+				duration = 0,
+				icon = "https://render.guildwars2.com/file/070325E519C178D502A8160523766070D30C0C19/102838.png",
+				status = "Crippled",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 0,
+				description = "Movement speed decreased by 66%; skill cooldown increased by 66%; stacks duration.",
+				duration = 0,
+				icon = "https://render.guildwars2.com/file/28C4EC547A3516AF0242E826772DA43A5EAC3DF3/102839.png",
+				status = "Chilled",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Movement speed increased by 33%; stacks duration.",
+				duration = 10,
+				icon = "https://render.guildwars2.com/file/20CFC14967E67F7A3FD4A4B8722B4CF5B8565E11/102836.png",
+				status = "Swiftness",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				distance = 450,
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Distance Traveled",
+				type = "Distance",
+			},
+			
+			{
+				duration = 1,
+				icon = "https://render.guildwars2.com/file/7B2193ACCF77E56C13E608191B082D68AA0FAA71/156659.png",
+				text = "Evade",
+				type = "Time",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/00A434BE7B4B9AE0D22D6AC50A18C0E117345AC2/991941.png",
+		id = 31187,
+		initiative = 0,
+		name = "Dash",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+	},
 	[31248] = 
 	{
 		attunement = "",
@@ -123883,6 +136773,130 @@ local tbl =
 		},
 		type = "Utility",
 		weapon_type = "None",
+	},
+	[31267] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BiN6AAA=]",
+		cost = 0,
+		description = "Evade attacks and hurl damaging daggers, dealing multiple conditions to enemies.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				dmg_multiplier = 0.1875,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Deals damage every second; stacks intensity.",
+				duration = 8,
+				icon = "https://render.guildwars2.com/file/79FF0046A5F9ADA3B4C4EC19ADB4CB124D5F0021/102848.png",
+				status = "Bleeding",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Deals damage every second. Deals additional damage to moving foes. Stacks intensity.",
+				duration = 6,
+				icon = "https://render.guildwars2.com/file/10BABF2708CA3575730AC662A2E72EC292565B08/598887.png",
+				status = "Torment",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Movement speed decreased by 50%; stacks duration.",
+				duration = 3,
+				icon = "https://render.guildwars2.com/file/070325E519C178D502A8160523766070D30C0C19/102838.png",
+				status = "Crippled",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				distance = 360,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Missile Radius",
+				type = "Distance",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Impacts",
+				type = "Number",
+				value = 3,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Targets",
+				type = "Number",
+				value = 3,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Combat Only",
+				type = "NoData",
+			},
+			
+			{
+				distance = 300,
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Distance Traveled",
+				type = "Distance",
+			},
+			
+			{
+				finisher_type = "Whirl",
+				icon = "https://render.guildwars2.com/file/A513F3653D33FBA4220D2D307799F8A327A36A3B/156656.png",
+				percent = 100,
+				text = "Combo Finisher",
+				type = "ComboFinisher",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/0D7324A22F580F3DA3F244C466770FB69292C307/1058553.png",
+		id = 31267,
+		initiative = 0,
+		name = "Impaling Lotus",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
 	},
 	[31294] = 
 	{
@@ -124087,6 +137101,76 @@ local tbl =
 		type = "Utility",
 		weapon_type = "None",
 	},
+	[31302] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BkZ6AAA=]",
+		cost = 0,
+		description = "Activate a function gyro to revive a fallen ally or finish a fallen enemy.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				distance = 900,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Activate Range",
+				type = "Distance",
+			},
+			
+			{
+				duration = 10,
+				icon = "https://render.guildwars2.com/file/7B2193ACCF77E56C13E608191B082D68AA0FAA71/156659.png",
+				text = "Duration",
+				type = "Time",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/B6A4C502065F0AB570209E0EF3A4327FBC10B110/103475.png",
+		id = 31302,
+		initiative = 0,
+		name = "Function Gyro",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+			
+			{
+				apply_count = 1,
+				description = "Cannot be knocked down, pushed back, pulled, launched, stunned, dazed, floated, sunk, feared, or taunted.",
+				duration = 5,
+				icon = "https://render.guildwars2.com/file/3D3A1C2D6D791C05179AB871902D28782C65C244/415959.png",
+				overrides = 0,
+				requires_trait = 2052,
+				status = "Stability",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+		},
+		transform_skills = 
+		{
+		},
+	},
 	[31318] = 
 	{
 		attunement = "",
@@ -124116,6 +137200,14 @@ local tbl =
 				text = "Recharge",
 				type = "Recharge",
 				value = 8,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/D4347C52157B040943051D7E09DEAD7AF63D4378/156662.png",
+				target = "Healing",
+				text = "Healing",
+				type = "AttributeAdjust",
+				value = 1620,
 			},
 			
 			{
@@ -124182,7 +137274,7 @@ local tbl =
 			{
 				duration = 2,
 				icon = "https://render.guildwars2.com/file/07B6122FBF169A2124A23FBCB06A3B7991A35179/156658.png",
-				overrides = 3,
+				overrides = 4,
 				requires_trait = 1070,
 				text = "Daze",
 				type = "Time",
@@ -124343,6 +137435,74 @@ local tbl =
 		{
 		},
 		type = "Utility",
+		weapon_type = "None",
+	},
+	[31367] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&Bod6AAA=]",
+		cost = 0,
+		description = "Fire a barrage of spikes at your target.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
+				text = "Range",
+				type = "Range",
+				value = 1200,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 15,
+			},
+			
+			{
+				dmg_multiplier = 0.22,
+				hit_count = 10,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/D81C6616CA68357713C8CFEDB63E11AFF405ABAB/1128608.png",
+		id = 31367,
+		initiative = 0,
+		name = "Spike Barrage",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Pet",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Pet",
 		weapon_type = "None",
 	},
 	[31401] = 
@@ -124639,6 +137799,260 @@ local tbl =
 		{
 		},
 		type = "Profession",
+		weapon_type = "None",
+	},
+	[31438] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&Bs56AAA=]",
+		cost = 0,
+		description = "Throw energy at your target, slowing them.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
+				text = "Range",
+				type = "Range",
+				value = 900,
+			},
+			
+			{
+				dmg_multiplier = 1.5,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Skills and actions are slower.",
+				duration = 1,
+				icon = "https://render.guildwars2.com/file/F60D1EF5271D7B9319610855676D320CD25F01C6/961397.png",
+				status = "Slow",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/6DB27A68383B91A6E34ABA04BDF2402342B95EF8/961414.png",
+		id = 31438,
+		initiative = 0,
+		name = "Essence Sap",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Profession_2",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Profession",
+		weapon_type = "None",
+	},
+	[31451] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&Btt6AAA=]",
+		cost = 0,
+		description = "Pounce on your target and grant fury to nearby allies.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
+				text = "Range",
+				type = "Range",
+				value = 400,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 10,
+			},
+			
+			{
+				dmg_multiplier = 1,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Critical Chance increased by 20%; stacks duration.",
+				duration = 10,
+				icon = "https://render.guildwars2.com/file/96D90DF84CAFE008233DD1C2606A12C1A0E68048/102842.png",
+				status = "Fury",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				distance = 240,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Radius",
+				type = "Distance",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Allied Targets",
+				type = "Number",
+				value = 5,
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/ACDDD2A75BEE6C4FDDA26D0C9F3D4F94C85C9412/1128614.png",
+		id = 31451,
+		initiative = 0,
+		name = "Furious Pounce",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Pet",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Pet",
+		weapon_type = "None",
+	},
+	[31459] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BuN6AAA=]",
+		cost = 0,
+		description = "Channel an expanding stream of flame from above. When the engulfed region reaches its full size, it becomes a fire field.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 35,
+			},
+			
+			{
+				apply_count = 1,
+				description = "Deals damage every second; stacks intensity.",
+				duration = 2,
+				icon = "https://render.guildwars2.com/file/B47BF5803FED2718D7474EAF9617629AD068EE10/102849.png",
+				status = "Burning",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				duration = 2,
+				icon = "https://render.guildwars2.com/file/7B2193ACCF77E56C13E608191B082D68AA0FAA71/156659.png",
+				text = "Evade",
+				type = "Time",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Pulses",
+				type = "Number",
+				value = 6,
+			},
+			
+			{
+				distance = 300,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Maximum Radius",
+				type = "Distance",
+			},
+			
+			{
+				field_type = "Fire",
+				icon = "https://render.guildwars2.com/file/59E0DB6A699810641C959926ADFEF73E08CC255B/156655.png",
+				text = "Combo Field",
+				type = "ComboField",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/08606C1E5DCAB32DF2A991A207083CCDF1BB7F51/1128615.png",
+		id = 31459,
+		initiative = 0,
+		name = "Consuming Flame",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Pet",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Pet",
 		weapon_type = "None",
 	},
 	[31496] = 
@@ -124944,6 +138358,80 @@ local tbl =
 		type = "Weapon",
 		weapon_type = "Staff",
 	},
+	[31568] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BlB7AAA=]",
+		cost = 0,
+		description = "Create a cloud of smoke for the smokescale to hide in.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 20,
+			},
+			
+			{
+				distance = 240,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Radius",
+				type = "Distance",
+			},
+			
+			{
+				duration = 5,
+				icon = "https://render.guildwars2.com/file/7B2193ACCF77E56C13E608191B082D68AA0FAA71/156659.png",
+				text = "Duration",
+				type = "Time",
+			},
+			
+			{
+				field_type = "Smoke",
+				icon = "https://render.guildwars2.com/file/59E0DB6A699810641C959926ADFEF73E08CC255B/156655.png",
+				text = "Combo Field",
+				type = "ComboField",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/B4AF20E830E205E81027A50663C275F2F920C32F/1128613.png",
+		id = 31568,
+		initiative = 0,
+		name = "Smoke Cloud",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Pet",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Pet",
+		weapon_type = "None",
+	},
 	[31582] = 
 	{
 		attunement = "",
@@ -125194,6 +138682,88 @@ local tbl =
 		{
 		},
 		type = "Utility",
+		weapon_type = "None",
+	},
+	[31639] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&Bpd7AAA=]",
+		cost = 0,
+		description = "Charge forward, head-butting foes and electrifying its destination.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
+				text = "Range",
+				type = "Range",
+				value = 480,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 30,
+			},
+			
+			{
+				dmg_multiplier = 0.6,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				field_type = "Lightning",
+				icon = "https://render.guildwars2.com/file/59E0DB6A699810641C959926ADFEF73E08CC255B/156655.png",
+				text = "Combo Field",
+				type = "ComboField",
+			},
+			
+			{
+				distance = 0,
+				icon = "https://render.guildwars2.com/file/CB330EF25C62C05F1800A1C507B6AE4944551746/156653.png",
+				text = "Launch",
+				type = "Distance",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/B35FA64E076A65E11A2F03E61DD2373F5A20CEFD/1128616.png",
+		id = 31639,
+		initiative = 0,
+		name = "Lightning Assault",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Pet",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Pet",
 		weapon_type = "None",
 	},
 	[31658] = 
@@ -125889,6 +139459,222 @@ local tbl =
 		type = "Utility",
 		weapon_type = "None",
 	},
+	[31765] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+			"Trap",
+		},
+		chat_link = "[&BhV8AAA=]",
+		cost = 0,
+		description = "Trap. Lay a trap that deals damage and unleashes multiple fragments into the area when triggered. Each fragment grants aegis to allies, as long as they don't already have aegis.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 60,
+			},
+			
+			{
+				dmg_multiplier = 1.5,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				apply_count = 3,
+				description = "Cannot be knocked down, pushed back, pulled, launched, stunned, dazed, floated, sunk, feared, or taunted.",
+				duration = 5,
+				icon = "https://render.guildwars2.com/file/3D3A1C2D6D791C05179AB871902D28782C65C244/415959.png",
+				status = "Stability",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Movement speed decreased by 50%; stacks duration.",
+				duration = 6,
+				icon = "https://render.guildwars2.com/file/070325E519C178D502A8160523766070D30C0C19/102838.png",
+				status = "Crippled",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Block the next incoming attack; stacks duration.",
+				duration = 8,
+				icon = "https://render.guildwars2.com/file/DFB4D1B50AE4D6A275B349E15B179261EE3EB0AF/102854.png",
+				status = "Aegis",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Fragments",
+				type = "Number",
+				value = 3,
+			},
+			
+			{
+				duration = 10,
+				icon = "https://render.guildwars2.com/file/7B2193ACCF77E56C13E608191B082D68AA0FAA71/156659.png",
+				text = "Duration",
+				type = "Time",
+			},
+			
+			{
+				distance = 180,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Trigger Radius",
+				type = "Distance",
+			},
+			
+			{
+				distance = 240,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Attack Radius",
+				type = "Distance",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/32106907940C3F0AB9E771C014BF59D4DE285241/1012877.png",
+		id = 31765,
+		initiative = 0,
+		name = "Shards of Faith",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+	},
+	[31776] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+			"CelestialAvatar",
+		},
+		chat_link = "[&BiB8AAA=]",
+		cost = 0,
+		description = "Celestial Avatar. Summon a seed that heals and cleanses nearby allies of conditions when it blossoms.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png",
+				text = "Range",
+				type = "Range",
+				value = 1200,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/D4347C52157B040943051D7E09DEAD7AF63D4378/156662.png",
+				target = "Healing",
+				text = "Healing",
+				type = "AttributeAdjust",
+				value = 404,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Conditions Removed",
+				type = "Number",
+				value = 1,
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Targets",
+				type = "Number",
+				value = 5,
+			},
+			
+			{
+				distance = 180,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Radius",
+				type = "Distance",
+			},
+			
+			{
+				field_type = "Light",
+				icon = "https://render.guildwars2.com/file/59E0DB6A699810641C959926ADFEF73E08CC255B/156655.png",
+				text = "Combo Field",
+				type = "ComboField",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Next outgoing attack misses; stacks duration.",
+				duration = 4,
+				icon = "https://render.guildwars2.com/file/09770136BB76FD0DBE1CC4267DEED54774CB20F6/102837.png",
+				status = "Blinded",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/761706674AF9092C98D059AB03BD747BFC7DF506/1128623.png",
+		id = 31776,
+		initiative = 0,
+		name = "Seed of Life",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+	},
 	[31796] = 
 	{
 		attunement = "",
@@ -126127,6 +139913,106 @@ local tbl =
 		type = "Heal",
 		weapon_type = "None",
 	},
+	[31835] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&Blt8AAA=]",
+		cost = 0,
+		description = "Apply protection to you and your allies, then increase the duration of all boons currently existing on you and your allies. Gain magnetic aura.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 30,
+			},
+			
+			{
+				apply_count = 1,
+				description = "Reflect projectiles with magnetic energy.",
+				duration = 4,
+				icon = "https://render.guildwars2.com/file/048054BEC158D010706002C22AF47952ECC5A33C/103108.png",
+				status = "Magnetic Aura",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 1,
+				description = "Incoming damage decreased by 33%; stacks duration.",
+				duration = 2,
+				icon = "https://render.guildwars2.com/file/CD77D1FAB7B270223538A8F8ECDA1CFB044D65F4/102834.png",
+				status = "Protection",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				duration = 2,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Duration Increase",
+				type = "Time",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Targets",
+				type = "Number",
+				value = 5,
+			},
+			
+			{
+				distance = 600,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Radius",
+				type = "Distance",
+			},
+			
+			{
+				finisher_type = "Blast",
+				icon = "https://render.guildwars2.com/file/A513F3653D33FBA4220D2D307799F8A327A36A3B/156656.png",
+				percent = 100,
+				text = "Combo Finisher",
+				type = "ComboFinisher",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/7B047DE80C026DCF420E43DD16D80409E8C679A4/1029996.png",
+		id = 31835,
+		initiative = 0,
+		name = "Sand Squall",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+	},
 	[31867] = 
 	{
 		attunement = "",
@@ -126267,16 +140153,16 @@ local tbl =
 		},
 		transform_skills = 
 		{
+			31406,
+			33387,
 			32364,
 			31894,
-			31406,
-			31318,
-			33387,
+			32253,
 			31503,
 			34070,
-			31796,
 			32242,
-			32253,
+			31318,
+			31796,
 		},
 		type = "Profession",
 		weapon_type = "None",
@@ -126675,6 +140561,16 @@ local tbl =
 			
 			{
 				apply_count = 1,
+				description = "Gain health every second; stacks duration.",
+				duration = 3,
+				icon = "https://render.guildwars2.com/file/F69996772B9E18FD18AD0AABAB25D7E3FC42F261/102835.png",
+				status = "Regeneration",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				apply_count = 1,
 				description = "Reflect incoming damage back to its source; stacks duration.",
 				duration = 5,
 				icon = "https://render.guildwars2.com/file/27F233F7D4CE4E9EFE040E3D665B7B0643557B6E/102883.png",
@@ -127011,6 +140907,82 @@ local tbl =
 		},
 		type = "Weapon",
 		weapon_type = "Staff",
+	},
+	[32588] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+			"LegendaryDwarf",
+		},
+		chat_link = "[&Bkx/AAA=]",
+		cost = 0,
+		description = "Legendary Dwarf. Channel the power of the Rite of the Great Dwarf to turn yourself and nearby allies to stone to reduce incoming damage.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
+				text = "Recharge",
+				type = "Recharge",
+				value = 45,
+			},
+			
+			{
+				apply_count = 1,
+				description = "Gain 50% damage and condition damage reduction. You are still susceptible control effects.",
+				duration = 5,
+				icon = "https://render.guildwars2.com/file/D8AEB219F1A057F3F4E47E5E54A12BBABFC8474F/961437.png",
+				status = "Rite of the Great Dwarf",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Targets",
+				type = "Number",
+				value = 5,
+			},
+			
+			{
+				distance = 600,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Radius",
+				type = "Distance",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/D8AEB219F1A057F3F4E47E5E54A12BBABFC8474F/961437.png",
+		id = 32588,
+		initiative = 0,
+		name = "Rite of the Great Dwarf",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
 	},
 	[33134] = 
 	{
@@ -127591,7 +141563,7 @@ local tbl =
 		},
 		chat_link = "[&Bk2HAAA=]",
 		cost = 0,
-		description = "Glyph. Gain a chance for spells to inflict a condition based on your attunement.",
+		description = "Glyph. Inflict conditions on your next few strikes based on your attunement.",
 		dual_wield = "",
 		facts = 
 		{
@@ -127600,21 +141572,14 @@ local tbl =
 				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
 				text = "Recharge",
 				type = "Recharge",
-				value = 45,
+				value = 25,
 			},
 			
 			{
-				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
-				percent = 100,
-				text = "Trigger Chance",
-				type = "Percent",
-			},
-			
-			{
-				apply_count = 1,
-				description = "Endurance regeneration decreased by 50%. 50% of hits are Glancing Blows (50% damage). Stacks duration.",
-				duration = 3,
-				icon = "https://render.guildwars2.com/file/6CB0E64AF9AA292E332A38C1770CE577E2CDE0E8/102853.png",
+				apply_count = 4,
+				description = "Damage and condition damage taken are increased; stacks intensity.",
+				duration = 5,
+				icon = "https://render.guildwars2.com/file/3A394C1A0A3257EB27A44842DDEEF0DF000E1241/102850.png",
 				prefix = 
 				{
 					description = "Cast air spells.",
@@ -127622,23 +141587,23 @@ local tbl =
 					status = "Air Attunement",
 					text = "Apply Buff/Condition",
 				},
-				status = "Weakness",
+				status = "Vulnerability",
 				text = "Apply Buff/Condition",
 				type = "PrefixedBuff",
 			},
 			
 			{
-				duration = 5,
+				duration = 25,
 				icon = "https://render.guildwars2.com/file/7B2193ACCF77E56C13E608191B082D68AA0FAA71/156659.png",
-				text = "Effect Recharge",
+				text = "Duration",
 				type = "Time",
 			},
 			
 			{
-				duration = 30,
-				icon = "https://render.guildwars2.com/file/7B2193ACCF77E56C13E608191B082D68AA0FAA71/156659.png",
-				text = "Duration",
-				type = "Time",
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Strikes",
+				type = "Number",
+				value = 5,
 			},
 		},
 		flip_skill = 0,
@@ -127786,7 +141751,7 @@ local tbl =
 		},
 		chat_link = "[&BpqHAAA=]",
 		cost = 0,
-		description = "Glyph. Gain a chance for spells to inflict a condition based on your attunement.",
+		description = "Glyph. Inflict conditions on your next few strikes based on your attunement.",
 		dual_wield = "",
 		facts = 
 		{
@@ -127795,21 +141760,14 @@ local tbl =
 				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
 				text = "Recharge",
 				type = "Recharge",
-				value = 45,
-			},
-			
-			{
-				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
-				percent = 100,
-				text = "Trigger Chance",
-				type = "Percent",
+				value = 25,
 			},
 			
 			{
 				apply_count = 1,
-				description = "Movement speed decreased by 50%; stacks duration.",
-				duration = 5,
-				icon = "https://render.guildwars2.com/file/070325E519C178D502A8160523766070D30C0C19/102838.png",
+				description = "Deals damage every second; stacks intensity.",
+				duration = 6,
+				icon = "https://render.guildwars2.com/file/79FF0046A5F9ADA3B4C4EC19ADB4CB124D5F0021/102848.png",
 				prefix = 
 				{
 					description = "Cast earth spells.",
@@ -127817,23 +141775,23 @@ local tbl =
 					status = "Earth Attunement",
 					text = "Apply Buff/Condition",
 				},
-				status = "Crippled",
+				status = "Bleeding",
 				text = "Apply Buff/Condition",
 				type = "PrefixedBuff",
 			},
 			
 			{
-				duration = 5,
+				duration = 25,
 				icon = "https://render.guildwars2.com/file/7B2193ACCF77E56C13E608191B082D68AA0FAA71/156659.png",
-				text = "Effect Recharge",
+				text = "Duration",
 				type = "Time",
 			},
 			
 			{
-				duration = 30,
-				icon = "https://render.guildwars2.com/file/7B2193ACCF77E56C13E608191B082D68AA0FAA71/156659.png",
-				text = "Duration",
-				type = "Time",
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Strikes",
+				type = "Number",
+				value = 5,
 			},
 		},
 		flip_skill = 0,
@@ -127981,7 +141939,7 @@ local tbl =
 		},
 		chat_link = "[&BrCHAAA=]",
 		cost = 0,
-		description = "Glyph. Gain a chance for spells to inflict a condition based on your attunement.",
+		description = "Glyph. Inflict conditions on your next few strikes based on your attunement.",
 		dual_wield = "",
 		facts = 
 		{
@@ -127990,18 +141948,11 @@ local tbl =
 				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
 				text = "Recharge",
 				type = "Recharge",
-				value = 45,
+				value = 25,
 			},
 			
 			{
-				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
-				percent = 100,
-				text = "Trigger Chance",
-				type = "Percent",
-			},
-			
-			{
-				apply_count = 2,
+				apply_count = 1,
 				description = "Deals damage every second; stacks intensity.",
 				duration = 3,
 				icon = "https://render.guildwars2.com/file/B47BF5803FED2718D7474EAF9617629AD068EE10/102849.png",
@@ -128018,17 +141969,17 @@ local tbl =
 			},
 			
 			{
-				duration = 5,
+				duration = 25,
 				icon = "https://render.guildwars2.com/file/7B2193ACCF77E56C13E608191B082D68AA0FAA71/156659.png",
-				text = "Effect Recharge",
+				text = "Duration",
 				type = "Time",
 			},
 			
 			{
-				duration = 30,
-				icon = "https://render.guildwars2.com/file/7B2193ACCF77E56C13E608191B082D68AA0FAA71/156659.png",
-				text = "Duration",
-				type = "Time",
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Strikes",
+				type = "Number",
+				value = 5,
 			},
 		},
 		flip_skill = 0,
@@ -128176,7 +142127,7 @@ local tbl =
 		},
 		chat_link = "[&BtSHAAA=]",
 		cost = 0,
-		description = "Glyph. Gain a chance for spells to inflict a condition based on your attunement.",
+		description = "Glyph. Inflict conditions on your next few strikes based on your attunement.",
 		dual_wield = "",
 		facts = 
 		{
@@ -128185,14 +142136,7 @@ local tbl =
 				icon = "https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png",
 				text = "Recharge",
 				type = "Recharge",
-				value = 45,
-			},
-			
-			{
-				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
-				percent = 100,
-				text = "Trigger Chance",
-				type = "Percent",
+				value = 25,
 			},
 			
 			{
@@ -128213,17 +142157,17 @@ local tbl =
 			},
 			
 			{
-				duration = 5,
+				duration = 25,
 				icon = "https://render.guildwars2.com/file/7B2193ACCF77E56C13E608191B082D68AA0FAA71/156659.png",
-				text = "Effect Recharge",
+				text = "Duration",
 				type = "Time",
 			},
 			
 			{
-				duration = 30,
-				icon = "https://render.guildwars2.com/file/7B2193ACCF77E56C13E608191B082D68AA0FAA71/156659.png",
-				text = "Duration",
-				type = "Time",
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Strikes",
+				type = "Number",
+				value = 5,
 			},
 		},
 		flip_skill = 0,
@@ -128638,10 +142582,334 @@ local tbl =
 		type = "Weapon",
 		weapon_type = "None",
 	},
+	[38748] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&BlyXAAA=]",
+		cost = 0,
+		description = "Detonate your rocket turret.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				dmg_multiplier = 2,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				distance = 120,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Radius",
+				type = "Distance",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Targets",
+				type = "Number",
+				value = 5,
+			},
+			
+			{
+				finisher_type = "Blast",
+				icon = "https://render.guildwars2.com/file/A513F3653D33FBA4220D2D307799F8A327A36A3B/156656.png",
+				percent = 100,
+				text = "Combo Finisher",
+				type = "ComboFinisher",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/09EB220BF078A6F961E0B0D4F9969669F276DF50/103447.png",
+		id = 38748,
+		initiative = 0,
+		name = "Detonate Rocket Turret",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = true,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Utility",
+		toolbelt_skill = 22573,
+		traited_facts = 
+		{
+			
+			{
+				dmg_multiplier = 2.2,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				overrides = 0,
+				requires_trait = 429,
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				overrides = 0,
+				requires_trait = 429,
+				text = "Explosion",
+				type = "NoData",
+			},
+		},
+		transform_skills = 
+		{
+		},
+		type = "Utility",
+		weapon_type = "None",
+	},
+	[38749] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&Bl2XAAA=]",
+		cost = 0,
+		description = "Lash out at nearby foes, inflicting them with torment.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				dmg_multiplier = 0.343,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				distance = 240,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Radius",
+				type = "Distance",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Targets",
+				type = "Number",
+				value = 5,
+			},
+			
+			{
+				apply_count = 4,
+				description = "Deals damage every second. Deals additional damage to moving foes. Stacks intensity.",
+				duration = 5,
+				icon = "https://render.guildwars2.com/file/10BABF2708CA3575730AC662A2E72EC292565B08/598887.png",
+				status = "Torment",
+				text = "Apply Buff/Condition",
+				type = "Buff",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/B5BECC944A7808F6DF74315507B3F4233823A329/1012670.png",
+		id = 38749,
+		initiative = 0,
+		name = "Maniacal Pulse",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = 0,
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+	},
+	[38750] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&Bl6XAAA=]",
+		cost = 0,
+		description = "Detonate your supply crate turrets.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				dmg_multiplier = 2,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				distance = 120,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Radius",
+				type = "Distance",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Targets",
+				type = "Number",
+				value = 5,
+			},
+			
+			{
+				finisher_type = "Blast",
+				icon = "https://render.guildwars2.com/file/A513F3653D33FBA4220D2D307799F8A327A36A3B/156656.png",
+				percent = 100,
+				text = "Combo Finisher",
+				type = "ComboFinisher",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/09EB220BF078A6F961E0B0D4F9969669F276DF50/103447.png",
+		id = 38750,
+		initiative = 0,
+		name = "Detonate Supply Crate Turrets",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = true,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = false,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Elite",
+		toolbelt_skill = 30588,
+		traited_facts = 
+		{
+			
+			{
+				dmg_multiplier = 2.2,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				overrides = 0,
+				requires_trait = 429,
+				text = "Damage",
+				type = "Damage",
+			},
+		},
+		transform_skills = 
+		{
+		},
+		type = "Elite",
+		weapon_type = "None",
+	},
+	[38767] = 
+	{
+		attunement = "",
+		bundle_skills = 
+		{
+		},
+		categories = 
+		{
+		},
+		chat_link = "[&Bm+XAAA=]",
+		cost = 0,
+		description = "Invoke an explosion of dark energy at the target foe's location, damaging nearby foes.",
+		dual_wield = "",
+		facts = 
+		{
+			
+			{
+				dmg_multiplier = 0.8,
+				hit_count = 1,
+				icon = "https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png",
+				text = "Damage",
+				type = "Damage",
+			},
+			
+			{
+				icon = "https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png",
+				text = "Number of Targets",
+				type = "Number",
+				value = 3,
+			},
+			
+			{
+				distance = 180,
+				icon = "https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png",
+				text = "Radius",
+				type = "Distance",
+			},
+		},
+		flip_skill = 0,
+		icon = "https://render.guildwars2.com/file/2A1707BB93BBF8B1A414D37BBFC5CAC90105D5DF/103567.png",
+		id = 38767,
+		initiative = 0,
+		name = "Unholy Burst",
+		next_chain = 0,
+		prev_chain = 0,
+		professions = 
+		{
+			Elementalist = false,
+			Engineer = false,
+			Guardian = false,
+			Mesmer = false,
+			Necromancer = true,
+			Ranger = false,
+			Revenant = false,
+			Thief = false,
+			Warrior = false,
+		},
+		slot = "Weapon_3",
+		toolbelt_skill = 0,
+		traited_facts = 
+		{
+		},
+		transform_skills = 
+		{
+		},
+		type = "Weapon",
+		weapon_type = "Axe",
+	},
 	info = 
 	{
-		date = 1488980453,
-		size = 1396,
+		date = 1495267492,
+		size = 1552,
 	},
 }
 

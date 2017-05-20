@@ -83,8 +83,6 @@ function sm_condition_hp:Evaluate(context)
 		else
 			ml_error("[SkillManager] - sm_condition_hp:Evaluate: Invalid HP table")
 		end
-	else
-		ml_error("[SkillManager] - sm_condition_hp:Evaluate: Invalid arguments received")
 	end
 end
 -- Renders the condition data into UI, for "presentation" in the SkillManager's Condition Builder. Returns "true" when stuff changed, for saving
@@ -163,8 +161,6 @@ function sm_condition_power:Evaluate(context)
 		else
 			ml_error("[SkillManager] - sm_condition_power:Evaluate: Invalid Power Value")
 		end
-	else
-		ml_error("[SkillManager] - sm_condition_power:Evaluate: Invalid arguments received")
 	end
 end
 -- Renders the condition data into UI, for "presentation" in the SkillManager's Condition Builder. Returns "true" when stuff changed, for saving
@@ -233,8 +229,6 @@ function sm_condition_endurance:Evaluate(context)
 		else
 			ml_error("[SkillManager] - sm_condition_endurance:Evaluate: Invalid Endurance Value")
 		end
-	else
-		ml_error("[SkillManager] - sm_condition_endurance:Evaluate: Invalid arguments received")
 	end
 end
 -- Renders the condition data into UI, for "presentation" in the SkillManager's Condition Builder. Returns "true" when stuff changed, for saving
@@ -307,8 +301,6 @@ function sm_condition_combatstate:Evaluate(context)
 		elseif ( self.operator == 2 ) then return state == false
 		end
 		
-	else
-		ml_error("[SkillManager] - sm_condition_combatstate:Evaluate: Invalid arguments received")
 	end
 end
 -- Renders the condition data into UI, for "presentation" in the SkillManager's Condition Builder. Returns "true" when stuff changed, for saving
@@ -374,8 +366,6 @@ function sm_condition_movement:Evaluate(context)
 		elseif ( self.operator == 2 ) then return state == false
 		end
 		
-	else
-		ml_error("[SkillManager] - sm_condition_movement:Evaluate: Invalid arguments received")
 	end
 end
 -- Renders the condition data into UI, for "presentation" in the SkillManager's Condition Builder. Returns "true" when stuff changed, for saving
@@ -463,8 +453,6 @@ function sm_condition_buffs:Evaluate(context)
 		else
 			return false
 		end
-	else
-		ml_error("[SkillManager] - sm_condition_buffs:Evaluate: Invalid arguments received")
 	end	
 end
 --Helper func
@@ -610,8 +598,6 @@ function sm_condition_buff:Evaluate(context)
 		elseif ( self.operator == 2 and table.valid(buffs) ) then return buffs[self.buff] == nil
 		end
 		return false
-	else
-		ml_error("[SkillManager] - sm_condition_buff:Evaluate: Invalid arguments received")
 	end	
 end
 
@@ -689,8 +675,6 @@ function sm_condition_buffid:Evaluate(context)
 		else
 			return false
 		end
-	else
-		ml_error("[SkillManager] - sm_condition_buffid:Evaluate: Invalid arguments received")
 	end	
 end
 
@@ -748,7 +732,7 @@ end
 -- Evaluates the condition, returns "true" / "false"
 function sm_condition_cooldown:Evaluate(context)
 	local cooldownlist = context.cooldownlist
-	if ( cooldownlist == nil) then ml_error("[SkillManager] - sm_condition_cooldown:Evaluate: cooldownlist is nil") return true end
+	if ( cooldownlist == nil) then return true end
 	if ( self.skillid == nil or type(self.skillid) ~= "number" ) then ml_error("[SkillManager] - sm_condition_cooldown:Evaluate: skill ID is invalid") return true end
 	if ( self.value == nil or type(self.value) ~= "number" ) then ml_error("[SkillManager] - sm_condition_cooldown:Evaluate: cooldown value is invalid") return true end
 	
@@ -803,7 +787,6 @@ SkillManager:AddCondition(sm_condition_cooldown) -- register this condition in t
 -- Breakbar condition
 local sm_condition_breakbar = class('Breakbar', sm_condition)
 sm_condition_breakbar.operators = { [1] = "<", [2] = "<=", [3] = "==", [4] = ">=", [5] = ">",  }
-
 -- Initialize new class, - gets called when :new(..) is called
 function sm_condition_breakbar:initialize()
 	self.operator = 1
@@ -825,7 +808,7 @@ end
 -- Evaluates the condition, returns "true" / "false"
 function sm_condition_breakbar:Evaluate(context)
 	local cooldownlist = context.cooldownlist
-	if ( cooldownlist == nil) then ml_error("[SkillManager] - sm_condition_breakbar:Evaluate: cooldownlist is nil") return true end
+	if ( cooldownlist == nil) then return true end
 	if ( self.value == nil or type(self.value) ~= "number" ) then ml_error("[SkillManager] - sm_condition_breakbar:Evaluate: breakbar value is invalid") return true end
 	
 	local target = context.target
@@ -840,7 +823,6 @@ function sm_condition_breakbar:Evaluate(context)
 	end
 	return false
 end
-
 -- Renders the condition data into UI, for "presentation" in the SkillManager's Condition Builder. Returns "true" when stuff changed, for saving
 function sm_condition_breakbar:Render(id) -- need to pass an index value here, for the unique IDs used by imgui	
 	local modified
@@ -864,9 +846,199 @@ function sm_condition_breakbar:Render(id) -- need to pass an index value here, f
 	GUI:PopItemWidth()
 	
 	GUI:SameLine()
-	GUI:Text(GetString("Percent."))
-	
+	GUI:Text(GetString("Percent."))	
 	
 	return modified
 end
 SkillManager:AddCondition(sm_condition_breakbar) -- register this condition in the SM
+
+
+
+
+-- Distance condition
+local sm_condition_distance = class('Distance', sm_condition)
+sm_condition_distance.operators = { [1] = "<", [2] = "<=", [3] = "==", [4] = ">=", [5] = ">",  }
+-- Initialize new class, - gets called when :new(..) is called
+function sm_condition_distance:initialize()
+	self.operator = 1
+	self.value = 500
+end
+-- Save  the condition data into a table and returns that
+function sm_condition_distance:Save()
+	local data = {}
+	data.class = 'Distance'
+	data.operator = self.operator
+	data.value = self.value
+	return data
+end
+-- Loads the condition data into this instance
+function sm_condition_distance:Load(data)
+	self.operator = data.operator or 1
+	self.value = data.value or 500
+end
+-- Evaluates the condition, returns "true" / "false"
+function sm_condition_distance:Evaluate(context)
+	local cooldownlist = context.cooldownlist
+	if ( cooldownlist == nil) then return true end
+	if ( self.value == nil or type(self.value) ~= "number" ) then ml_error("[SkillManager] - sm_condition_distance:Evaluate: breakbar value is invalid") return true end
+	
+	local target = context.target
+	if ( target ) then
+		local bb = target.distance
+		if ( self.operator == 1 ) then return bb < self.value 
+		elseif ( self.operator == 2 ) then return bb <= self.value 
+		elseif ( self.operator == 3 ) then return bb == self.value 
+		elseif ( self.operator == 4 ) then return bb >= self.value
+		elseif ( self.operator == 5 ) then return bb > self.value		
+		end	
+	end
+	return false
+end
+function sm_condition_distance:Render(id)
+	local modified
+	local changed
+	GUI:AlignFirstTextHeightToWidgets()
+	GUI:Text(GetString("Target Distance is"))
+	GUI:SameLine()
+	
+	GUI:PushItemWidth(50)
+	GUI:SameLine()
+	self.operator, changed = GUI:Combo("##sm_condition_distance1"..tostring(id),self.operator, self.operators)
+	if ( changed ) then modified = true end
+	GUI:PopItemWidth()
+		
+	GUI:PushItemWidth(120)
+	GUI:SameLine()	
+	self.value, changed = GUI:InputInt("##sm_condition_distance2"..tostring(id),self.value, 1,10,GUI.InputTextFlags_CharsDecimal+GUI.InputTextFlags_CharsNoBlank)	
+	if ( changed ) then modified = true end
+	if ( self.value < 0 ) then self.value = 0 end
+	if ( self.value > 10000 ) then self.value = 10000 end
+	GUI:PopItemWidth()
+		
+	return modified
+end
+SkillManager:AddCondition(sm_condition_distance) -- register this condition in the SM
+
+
+
+-- ContentID condition
+local sm_condition_contentid = class('ContentID', sm_condition)
+sm_condition_contentid.operators = { [1] = "==", [2] = "~=",  }
+-- Initialize new class, - gets called when :new(..) is called
+function sm_condition_contentid:initialize()
+	self.operator = 1
+	self.value = 1
+end
+-- Save  the condition data into a table and returns that
+function sm_condition_contentid:Save()
+	local data = {}
+	data.class = 'Distance'
+	data.operator = self.operator
+	data.value = self.value
+	return data
+end
+-- Loads the condition data into this instance
+function sm_condition_contentid:Load(data)
+	self.operator = data.operator or 1
+	self.value = data.value or 1
+end
+-- Evaluates the condition, returns "true" / "false"
+function sm_condition_contentid:Evaluate(context)
+	local cooldownlist = context.cooldownlist
+	if ( cooldownlist == nil) then return true end
+	if ( self.value == nil or type(self.value) ~= "number" ) then ml_error("[SkillManager] - sm_condition_contentid:Evaluate: breakbar value is invalid") return true end
+	
+	local target = context.target
+	if ( target ) then
+		local bb = target.distance
+		if ( self.operator == 1 ) then return bb == self.value 
+		elseif ( self.operator == 2 ) then return bb ~= self.value 	
+		end	
+	end
+	return false
+end
+function sm_condition_contentid:Render(id)
+	local modified
+	local changed
+	GUI:AlignFirstTextHeightToWidgets()
+	GUI:Text(GetString("Target's Content ID is"))
+	GUI:SameLine()
+	
+	GUI:PushItemWidth(50)
+	GUI:SameLine()
+	self.operator, changed = GUI:Combo("##sm_condition_contentid1"..tostring(id),self.operator, self.operators)
+	if ( changed ) then modified = true end
+	GUI:PopItemWidth()
+		
+	GUI:PushItemWidth(120)
+	GUI:SameLine()	
+	self.value, changed = GUI:InputInt("##sm_condition_contentid2"..tostring(id),self.value, 1,10,GUI.InputTextFlags_CharsDecimal+GUI.InputTextFlags_CharsNoBlank)	
+	if ( changed ) then modified = true end
+	if ( self.value < 0 ) then self.value = 0 end
+	GUI:PopItemWidth()
+		
+	return modified
+end
+SkillManager:AddCondition(sm_condition_contentid) -- register this condition in the SM
+
+
+
+-- Aggro Condition
+local sm_condition_aggro = class('Aggro', sm_condition)
+sm_condition_aggro.targets = { [1] = GetString("Player"), [2] = GetString("Target"),  }
+sm_condition_aggro.operators = { [1] = GetString("has Aggro"), [2] = GetString("has not Aggro"), }
+-- Initialize new class, - gets called when :new(..) is called
+function sm_condition_aggro:initialize()
+	self.target = 1
+	self.operator = 1
+end
+-- Save  the condition data into a table and returns that
+function sm_condition_aggro:Save()
+	local data = {}
+	data.class = 'Aggro'
+	data.target = self.target
+	data.operator = self.operator
+	return data
+end
+-- Loads the condition data into this instance
+function sm_condition_aggro:Load(data)
+	self.target = data.target or 1
+	self.operator = data.operator or 1
+end
+-- Evaluates the condition, returns "true" / "false"
+function sm_condition_aggro:Evaluate(context)
+	local player = context.player
+	local target = context.target
+	if ( player ~= nil) then
+		-- This Check is set to a Target, check if we have one, else return false
+		if ( self.target == 2 and target == nil ) then return false end
+				
+		local value
+		if ( self.target == 1 ) then 
+			value = player.isaggro
+		elseif ( self.target == 2 ) then
+			value = target.isaggro
+		end
+				
+		if ( self.operator == 1 and table.valid(buffs) ) then return value == true
+		elseif ( self.operator == 2 and table.valid(buffs) ) then return value == false
+		end
+		return false
+	end	
+end
+function sm_condition_aggro:Render(id) -- need to pass an index value here, for the unique IDs used by imgui	
+	local modified
+	local changed
+	GUI:PushItemWidth(100)
+	self.target, changed = GUI:Combo("##sm_condition_aggro"..tostring(id),self.target, self.targets)
+	if ( changed ) then modified = true end
+	GUI:PopItemWidth()	
+	
+	GUI:PushItemWidth(100)
+	GUI:SameLine()
+	self.operator, changed = GUI:Combo("##sm_condition_aggro_2"..tostring(id),self.operator, self.operators)
+	if ( changed ) then modified = true end
+	GUI:PopItemWidth()
+	return modified
+end
+SkillManager:AddCondition(sm_condition_aggro) -- register this condition in the SM

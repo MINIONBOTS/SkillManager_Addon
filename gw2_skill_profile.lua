@@ -1582,13 +1582,13 @@ function sm_action:Render(profile)
 									combolist[i] = GetString(tostring(v))
 									i = i+1
 								end
+								table.sort(combolist)
 								or_group.addnew = GUI:Combo("##addcondinew",or_group.addnew, combolist)
 								if ( combolist[or_group.addnew]) then
 									GUI:SameLine()
 									if (GUI:Button(GetString("Add").."##addnewcond"..tostring(idx), 50,20)) then
-										for k,v in pairs(conditions) do						
-											or_group.addnew = or_group.addnew-1
-											if ( or_group.addnew == 0 ) then
+										for k,v in pairs(conditions) do
+											if ( GetString(tostring(v)) == combolist[or_group.addnew] ) then
 												local newcond = v:new()
 												table.insert(self.sequence[self.selectedskill].conditions[idx], newcond)
 												or_group.addnew = nil
@@ -2150,9 +2150,9 @@ function sm_skill_profile:Cast()
 					end					
 				end
 				
-				
+				local pos = target.pos
 				if (skilldata.isgroundtargeted) then
-					local pos = target.pos
+					
 					local ppos = ml_global_information.Player_Position
 					local targetdist = target.distance
 					local targetradius = target.radius or 0
@@ -2183,6 +2183,7 @@ function sm_skill_profile:Cast()
 					if ( skilldata.flip_level > 0 ) then
 						castresult = Player:CastSpellNoChecks(GW2.SKILLBARSLOT["Slot_" .. skilldata.slot] , target.id)
 					else
+						Player:SetFacingExact(pos.x, pos.y, pos.z)
 						castresult = Player:CastSpell(GW2.SKILLBARSLOT["Slot_" .. skilldata.slot] , target.id)
 					end
 				end
@@ -2502,8 +2503,7 @@ function sm_skill_profile:Update()
 			self.context.target = nil
 		end
 		-- Remove if target is dead.
-		if ( self.context.target and self.context.target.dead and (not self.context.target.selectable or self.context.target.attitude ~= GW2.ATTITUDE.Friendly)) then
-			d("SKILLSTUFF: UNSET TARGET")
+		if ( self.context.target and self.context.target.dead and (not self.context.target.selectable or self.context.target.attitude ~= GW2.ATTITUDE.Friendly)) then			
 			self.targetid = nil
 			self.context.target = nil
 		end

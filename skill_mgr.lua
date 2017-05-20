@@ -244,23 +244,23 @@ function ml_skill_mgr.Draw(event,ticks)
 end
 RegisterEventHandler("Gameloop.Draw", ml_skill_mgr.Draw)
 
-function ml_skill_mgr:SelectProfile(pname)
-	if ( table.size(ml_skill_mgr.profilelist) > 0 ) then
+function ml_skill_mgr:SelectProfile(pname)	
+	if ( table.size(self.profilelist) > 0 ) then	
 		local profile
-		for k,v in pairs (ml_skill_mgr.profilelist) do				
-			if ( v.name == pname ) then
+		for k,v in pairs (self.profilelist) do
+			if ( v.filename == pname ) then
 				profile = v
 				break
 			end
 		end	
 		if ( profile ) then
-			ml_skill_mgr.profile = profile:Load()
-			if ( ml_skill_mgr.profile ) then
-				local profession = ml_skill_mgr.GetPlayerProfession()
+			self.profile = profile:Load()
+			if ( self.profile ) then
+				local profession = self.GetPlayerProfession()
 				if ( profession ~= nil ) then
-					Settings.minionlib.lastSMProfiles[profession] = ml_skill_mgr.profile.filename
+					Settings.minionlib.lastSMProfiles[profession] = self.profile.filename
 					Settings.minionlib.lastSMProfiles = Settings.minionlib.lastSMProfiles -- trigger save
-					ml_skill_mgr.lastprofession = profession	-- dont make it load twice
+					self.lastprofession = profession	-- dont make it load twice
 				end
 				d("[SkillManager] - SelectProfile: "..tostring(pname))				
 				return true
@@ -271,8 +271,8 @@ function ml_skill_mgr:SelectProfile(pname)
 end
 
 function ml_skill_mgr:Use( targetid )
-	if ( ml_skill_mgr.profile) then
-		return ml_skill_mgr.profile:Use(targetid)
+	if ( self.profile) then
+		return self.profile:Use(targetid)
 	else
 		ml_error("[SkillManager] - No SkillManager Profile loaded.")
 	end
