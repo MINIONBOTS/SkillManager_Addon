@@ -2,7 +2,8 @@
 Name=SkillManager
 Dependencies=minionlib
 Version=1
-Files=skill_mgr.lua,gw2_skill_profile.lua,gw2_conditions.lua
 Enabled=1
-CreateFolders=cache
-ExportFiles=cache/blank.png,cache/default.png
+CreateFolders=iconcache
+ExportFiles=iconcache/blank.png,iconcache/default.png
+InternalFiles=sm_skillpalette.lua,sm_mgr.lua,sm_condition.lua,sm_profile.lua,sm_skill.lua,sm_skillpalettes/sm_sp_engineer.lua
+EnvironmentLevel=0
