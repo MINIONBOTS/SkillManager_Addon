@@ -234,7 +234,12 @@ function sm_profile:Cast()
 							end
 							
 						else
-							-- We have the needed set active, cast instant casts always or only when cancastnormal
+							-- The Set should be active now, check for the skill actually being on the bar?
+							--if( not action:IsOnSlot() ) then
+								--continue?
+							--end
+						
+							-- Cast instant casts always or only when cancastnormal
 							if ( cancastnormal or (action.activationtime == 0 and action.slot > GW2.SKILLBARSLOT.Slot_5)) then
 								local dbug = { [1] = "Enemy", [2] = "Player", [3] = "Friend"}
 								local ttlc = self.temp.lastcast and (ml_global_information.Now-self.temp.lastcast )or 0

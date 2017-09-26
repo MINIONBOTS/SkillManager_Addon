@@ -34,7 +34,6 @@ local pistol_mh = class('pistol_mh',sm_skillpalette)
 pistol_mh.uid = "Pistol_Mainhand"
 pistol_mh.profession = GW2.CHARCLASS.Engineer
 pistol_mh.icon = "Pistol.jpg"
-pistol_mh.weapontype = GW2.WEAPONTYPE.Pistol
 pistol_mh.skills_luacode = {
 	[5827] = { 
 		slot = GW2.SKILLBARSLOT.Slot_1,
@@ -72,10 +71,8 @@ function pistol_mh:CanActivate(context)
 	return context.player.swimming == GW2.SWIMSTATE.NotInWater and context.player.mainhand == GW2.WEAPONTYPE.Pistol and context.player.weaponset == 2 and context.player.transformid == 0 -- we have a pistol and a kit currently equipped
 end
 function pistol_mh:Activate(context)
-	Player:SwapWeaponSet() -- should be only "get out of kit"
 end
 function pistol_mh:Deactivate(context)
-	-- not needed here
 end
 SkillManager:AddSkillPalette( pistol_mh )
 
@@ -85,7 +82,6 @@ local pistol_oh = class('pistol_oh',sm_skillpalette)
 pistol_oh.uid = "Pistol_OffHand"
 pistol_oh.profession = GW2.CHARCLASS.Engineer
 pistol_oh.icon = "Pistol.jpg"
-pistol_oh.weapontype = GW2.WEAPONTYPE.Pistol
 pistol_oh.skills_luacode = {
 	[5831] = { 
 		slot = GW2.SKILLBARSLOT.Slot_4,
@@ -105,7 +101,6 @@ function pistol_oh:CanActivate(context)
 	return context.player.swimming == GW2.SWIMSTATE.NotInWater and context.player.offhand == GW2.WEAPONTYPE.Pistol and context.player.weaponset == 2 and context.player.transformid == 0 -- we have a pistol and a kit currently equipped
 end
 function pistol_oh:Activate(context)
-	Player:SwapWeaponSet()-- should be only "get out of kit"
 end
 function pistol_oh:Deactivate(context)
 	
@@ -118,7 +113,6 @@ local rifle = class('rifle',sm_skillpalette)
 rifle.uid = "Rifle"
 rifle.profession = GW2.CHARCLASS.Engineer
 rifle.icon = "Rifle.jpg"
-rifle.weapontype = GW2.WEAPONTYPE.Rifle
 rifle.skills_luacode = {
 	[6003] = { 
 		slot = GW2.SKILLBARSLOT.Slot_1,
@@ -153,7 +147,6 @@ function rifle:CanActivate(context)
 	return context.player.swimming == GW2.SWIMSTATE.NotInWater and context.player.mainhand == GW2.WEAPONTYPE.Rifle and context.player.weaponset == 2 and context.player.transformid == 0 -- we have a pistol and a kit currently equipped
 end
 function rifle:Activate(context)
-	Player:SwapWeaponSet()-- should be only "get out of kit"
 end
 function rifle:Deactivate(context)
 	
@@ -166,7 +159,6 @@ local shield = class('Shield',sm_skillpalette)
 shield.uid = "Shield"
 shield.profession = GW2.CHARCLASS.Engineer
 shield.icon = "Shield.jpg"
-shield.weapontype = GW2.WEAPONTYPE.Shield
 shield.skills_luacode = {
 	[6053] = { 
 		slot = GW2.SKILLBARSLOT.Slot_4,
@@ -196,7 +188,6 @@ function shield:CanActivate(context)
 	return context.player.swimming == GW2.SWIMSTATE.NotInWater and context.player.offhand == GW2.WEAPONTYPE.Shield and context.player.weaponset == 2 and context.player.transformid == 0 -- we have a pistol and a kit currently equipped
 end
 function shield:Activate(context)
-	Player:SwapWeaponSet()-- should be only "get out of kit"
 end
 function shield:Deactivate(context)
 	
@@ -209,14 +200,13 @@ local shield = class('Harpoongun',sm_skillpalette)
 shield.uid = "Harpoongun"
 shield.profession = GW2.CHARCLASS.Engineer
 shield.icon = "Harpoongun.jpg"
-shield.weapontype = GW2.WEAPONTYPE.HarpoonGun
 shield.skills_luacode = {
 	[6148] = { 
 		slot = GW2.SKILLBARSLOT.Slot_1,
 		activationtime = 1,
 		icon = "Homing Torpedo",		
 	},
-	[5941] = { 
+	[6147] = { 
 		slot = GW2.SKILLBARSLOT.Slot_2,
 		activationtime = 0.25,
 		icon = "Scatter Mines",		
@@ -236,7 +226,7 @@ shield.skills_luacode = {
 		activationtime = 0.25,
 		icon = "Timed Charge",		
 	},
-	[5879] = { 
+	[6145] = { 
 		slot = GW2.SKILLBARSLOT.Slot_5,
 		activationtime = 0.25,
 		icon = "Net Wall",		
@@ -254,9 +244,142 @@ function shield:CanActivate(context)
 	return context.player.swimming == GW2.SWIMSTATE.Diving and context.player.aquatic == GW2.WEAPONTYPE.HarpoonGun and context.player.weaponset == 2 and context.player.transformid == 0 -- we have a pistol and a kit currently equipped
 end
 function shield:Activate(context)
-	Player:SwapWeaponSet()-- should be only "get out of kit"
 end
-function shield:Deactivate(context)
-	
+function shield:Deactivate(context)	
 end
 SkillManager:AddSkillPalette( shield )
+
+
+local downed = class('Downed',sm_skillpalette)
+downed.uid = "Downed"
+downed.profession = GW2.CHARCLASS.Engineer
+downed.icon = "Bandage.jpg"
+downed.skills_luacode = {
+	[5820] = { 
+		slot = GW2.SKILLBARSLOT.Slot_1,
+		activationtime = 0,
+		icon = "Throw Junk",		
+	},
+	[5962] = { 
+		slot = GW2.SKILLBARSLOT.Slot_2,
+		activationtime = 0,
+		icon = "Grappling Line",		
+	},
+	[5963] = { 
+		slot = GW2.SKILLBARSLOT.Slot_3,
+		activationtime = 0,
+		icon = "Booby Trap",		
+	},
+	[1175] = { 
+		slot = GW2.SKILLBARSLOT.Slot_4,
+		activationtime = 0,
+		icon = "Bandage",		
+	},
+}
+function downed:IsActive(context)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 5820)	
+end
+function downed:CanActivate(context)
+	return false
+end
+function downed:Activate(context)
+end
+function downed:Deactivate(context)	
+end
+SkillManager:AddSkillPalette( downed )
+
+
+local drowning = class('Drowning',sm_skillpalette)
+drowning.uid = "Drowning"
+drowning.profession = GW2.CHARCLASS.Engineer
+drowning.icon = "Anchor.jpg"
+drowning.skills_luacode = {
+	[5916] = { 
+		slot = GW2.SKILLBARSLOT.Slot_1,
+		activationtime = 0,
+		icon = "Floating Mine",		
+	},
+	[5917] = { 
+		slot = GW2.SKILLBARSLOT.Slot_2,
+		activationtime = 0,
+		icon = "Anchor",		
+	},
+	[5918] = { 
+		slot = GW2.SKILLBARSLOT.Slot_3,
+		activationtime = 3.0,
+		icon = "Buoy",		
+	},
+	[1175] = { 
+		slot = GW2.SKILLBARSLOT.Slot_4,
+		activationtime = 0,
+		icon = "Bandage",		
+	},
+}
+function drowning:IsActive(context)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 5916)	
+end
+function drowning:CanActivate(context)
+	return false
+end
+function drowning:Activate(context)
+end
+function drowning:Deactivate(context)	
+end
+SkillManager:AddSkillPalette( drowning )
+
+
+local bombkit = class('BombKit',sm_skillpalette)
+bombkit.uid = "BombKit"
+bombkit.profession = GW2.CHARCLASS.Engineer
+bombkit.icon = "Bomb Kit.jpg"
+bombkit.id = 5812
+bombkit.skills_luacode = {
+	[5084] = { 
+		slot = GW2.SKILLBARSLOT.Slot_1,
+		activationtime = 0.5,
+		icon = "Bomb",		
+	},
+	[5823] = { 
+		slot = GW2.SKILLBARSLOT.Slot_2,
+		activationtime = 0.5,
+		icon = "Fire Bomb",		
+	},
+	[5822] = { 
+		slot = GW2.SKILLBARSLOT.Slot_3,
+		activationtime = 0.5,
+		icon = "Concussion Bomb",		
+	},
+	[5824] = { 
+		slot = GW2.SKILLBARSLOT.Slot_4,
+		activationtime = 0.5,
+		icon = "Smoke Bomb",		
+	},
+	[5939] = { 
+		slot = GW2.SKILLBARSLOT.Slot_5,
+		activationtime = 0.5,
+		icon = "Glue Bomb",		
+	},
+}
+function bombkit:IsActive(context)
+	return context.skillbar~=nil  and (
+	(context.skillbar[GW2.SKILLBARSLOT.Slot_7]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_7].id == 5084) ||
+	(context.skillbar[GW2.SKILLBARSLOT.Slot_8]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_8].id == 5084) ||
+	(context.skillbar[GW2.SKILLBARSLOT.Slot_9]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_9].id == 5084))
+end
+function bombkit:CanActivate(context)
+	return context.player.transformid == and context.skillbar~=nil  and (
+	(context.skillbar[GW2.SKILLBARSLOT.Slot_7]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_7].id == 5812) ||
+	(context.skillbar[GW2.SKILLBARSLOT.Slot_8]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_8].id == 5812) ||
+	(context.skillbar[GW2.SKILLBARSLOT.Slot_9]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_9].id == 5812))
+end
+function bombkit:Activate(context)
+	if ( context.skillbar~=nil ) then
+		if (context.skillbar[GW2.SKILLBARSLOT.Slot_7]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_7].id == 5812) then Player:CastSpell(GW2.SKILLBARSLOT.Slot_7) end
+		if (context.skillbar[GW2.SKILLBARSLOT.Slot_8]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_8].id == 5812) then Player:CastSpell(GW2.SKILLBARSLOT.Slot_8) end
+		if (context.skillbar[GW2.SKILLBARSLOT.Slot_9]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_9].id == 5812) then Player:CastSpell(GW2.SKILLBARSLOT.Slot_9) end
+	end
+end
+function bombkit:Deactivate(context)
+	Player:SwapWeaponSet()
+end
+SkillManager:AddSkillPalette( bombkit )

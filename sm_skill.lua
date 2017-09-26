@@ -304,6 +304,7 @@ function sm_skill:RenderIcon(currentselected, counter)
 	if (self.icon and FileExists(sm_mgr.iconpath.."\\"..self.icon..".png") ) then
 		clicked = GUI:ImageButton("##"..tostring(counter), sm_mgr.iconpath.."\\"..self.icon..".png",40,40)
 	else
+		sm_webapi.getimage( self.id, sm_mgr.iconpath.."\\"..self.icon..".png" )
 		clicked = GUI:ImageButton("##"..tostring(counter), sm_mgr.iconpath.."\\default.png",40,40)
 	end
 	if ( highlighted ) then GUI:PopStyleColor(3) end
@@ -587,6 +588,7 @@ function sm_skill:RenderActionButton(currentselectedaction,draggedaction, id1,id
 			clicked = GUI:ImageButton("##"..tostring(self.id)..tostring(id1)..tostring(id2), sm_mgr.iconpath.."\\"..self.icon..".png",iconsize,iconsize)	
 		end
 	else
+		sm_webapi.getimage( self.id, sm_mgr.iconpath.."\\"..self.icon..".png" )
 		clicked = GUI:ImageButton("##"..tostring(self.id)..tostring(id1)..tostring(id2), sm_mgr.iconpath.."\\default.png",iconsize,iconsize)
 	end
 	GUI:PopStyleColor(3)
@@ -677,7 +679,6 @@ function sm_skill:CanCast()
 	end
 	return false
 end
-
 
 
 
