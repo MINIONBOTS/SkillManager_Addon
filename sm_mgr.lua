@@ -100,7 +100,7 @@ function sm_mgr.RefreshConditions()
         for _,profileName in pairs(fileinfo) do
             local fileFunction, errorMessage  = loadfile(sm_mgr.luamodspath .. [[\SkillManager\sm_conditions\]] .. profileName)
             if (fileFunction) then
-               assert(loadstring(fileFunction))()
+				fileFunction()
             else
                 d("Syntax error:")
                 d(errorMessage)
