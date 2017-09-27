@@ -199,11 +199,11 @@ SkillManager:AddSkillPalette( shield )
 
 
 
-local shield = class('Harpoongun',sm_skillpalette)
-shield.uid = "Harpoongun"
-shield.profession = GW2.CHARCLASS.Engineer
-shield.icon = "Harpoongun"
-shield.skills_luacode = {
+local harpoon = class('Harpoongun',sm_skillpalette)
+harpoon.uid = "Harpoongun"
+harpoon.profession = GW2.CHARCLASS.Engineer
+harpoon.icon = "Harpoongun"
+harpoon.skills_luacode = {
 	[6148] = { 
 		slot = GW2.SKILLBARSLOT.Slot_1,
 		activationtime = 1,
@@ -240,17 +240,17 @@ shield.skills_luacode = {
 		icon = "Deploy Net Wall",		
 	},
 }
-function shield:IsActive(context)
+function harpoon:IsActive(context)
 	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 6148)	
 end
-function shield:CanActivate(context)
+function harpoon:CanActivate(context)
 	return context.player.swimming == GW2.SWIMSTATE.Diving and context.player.aquatic == GW2.WEAPONTYPE.HarpoonGun and context.player.weaponset == 2 and context.player.transformid == 0 -- we have a pistol and a kit currently equipped
 end
-function shield:Activate(context)
+function harpoon:Activate(context)
 end
-function shield:Deactivate(context)	
+function harpoon:Deactivate(context)	
 end
-SkillManager:AddSkillPalette( shield )
+SkillManager:AddSkillPalette( harpoon )
 
 
 local downed = class('Downed',sm_skillpalette)

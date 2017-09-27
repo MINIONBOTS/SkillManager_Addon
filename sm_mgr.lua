@@ -318,3 +318,34 @@ function SkillManager:Cast()
 		sm_mgr.profile:Cast() 
 	end 
 end
+
+
+
+-- some little helper window to update/see the skill data needed to build the hardcoded skill sets
+sm_mgr.sethelper = {}
+sm_mgr.sethelper.open = true
+-- Draws the SkillManager window, profile management and calls Profile:Render() to populate stuff
+function sm_mgr.sethelper.DrawMenu(event,ticks)
+	
+	if (sm_mgr.open) then
+		GUI:SetNextWindowSize(300,300,GUI.SetCond_Once)
+		GUI:SetNextWindowPosCenter(GUI.SetCond_Once)
+		sm_mgr.sethelper.visible, sm_mgr.sethelper.open = GUI:Begin(GetString("Skill Set Helper").."##smhelper", sm_mgr.sethelper.open,GUI.WindowFlags_NoSavedSettings)
+		if (sm_mgr.sethelper.visible) then
+			sm_mgr.sethelper.idx, changed = GUI:Combo("##smhelperskill", sm_mgr.sethelper.idx or 1, { [1] = 5, [2] = 6, [3] = 7, [4] = 8, [5] = 9, [6] = 0, [7] = 1, [8] = 2, [9] = 3, [10] = 4, [11] = 10, [12] = 11, [13] = 12, [14] = 13, [15] = 14, [16] = 17, [18] = 19,})
+			if ( sm_mgr.sethelper.idx ) then 
+				local skill = Player:GetSpellInfo(sm_mgr.sethelper.idx)
+				if ( skill ) then
+					sm_mgr.sethelper.skillinfo = "["..tostring(skill.id).."] = { \n\t slot = GW2.SKILLBARSLOT.SLOT_"..tostring(sm_mgr.sethelper.idx)..", \n\t activationtime = 0.0, \n\t icon = "..skill.name..",  \n },"
+		
+				end			
+				GUI:Separator()
+				--GUI:InputTextMultiline( "smhalpbox", sm_mgr.sethelper.skillinfo or "", 280, 200 , GUI.InputTextFlags_AutoSelectAll)
+				GUI:InputTextEditor( "##smhalpbox", sm_mgr.sethelper.skillinfo or "", 280, 200 , GUI.InputTextFlags_AutoSelectAll)
+		
+			end
+		end
+		GUI:End()
+	end
+end
+RegisterEventHandler("Gameloop.Draw", sm_mgr.sethelper.DrawMenu)
