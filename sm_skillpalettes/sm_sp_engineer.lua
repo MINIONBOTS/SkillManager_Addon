@@ -33,7 +33,7 @@
 local pistol_mh = class('pistol_mh',sm_skillpalette)
 pistol_mh.uid = "Pistol_Mainhand"
 pistol_mh.profession = GW2.CHARCLASS.Engineer
-pistol_mh.icon = "Pistol.jpg"
+pistol_mh.icon = "Pistol"
 pistol_mh.skills_luacode = {
 	[5827] = { 
 		slot = GW2.SKILLBARSLOT.Slot_1,
@@ -81,7 +81,7 @@ SkillManager:AddSkillPalette( pistol_mh )
 local pistol_oh = class('pistol_oh',sm_skillpalette)
 pistol_oh.uid = "Pistol_OffHand"
 pistol_oh.profession = GW2.CHARCLASS.Engineer
-pistol_oh.icon = "Pistol.jpg"
+pistol_oh.icon = "Pistol"
 pistol_oh.skills_luacode = {
 	[5831] = { 
 		slot = GW2.SKILLBARSLOT.Slot_4,
@@ -112,7 +112,7 @@ SkillManager:AddSkillPalette( pistol_oh )
 local rifle = class('rifle',sm_skillpalette)
 rifle.uid = "Rifle"
 rifle.profession = GW2.CHARCLASS.Engineer
-rifle.icon = "Rifle.jpg"
+rifle.icon = "Rifle"
 rifle.skills_luacode = {
 	[6003] = { 
 		slot = GW2.SKILLBARSLOT.Slot_1,
@@ -158,7 +158,7 @@ SkillManager:AddSkillPalette( rifle )
 local shield = class('Shield',sm_skillpalette)
 shield.uid = "Shield"
 shield.profession = GW2.CHARCLASS.Engineer
-shield.icon = "Shield.jpg"
+shield.icon = "Shield"
 shield.skills_luacode = {
 	[6053] = { 
 		slot = GW2.SKILLBARSLOT.Slot_4,
@@ -199,7 +199,7 @@ SkillManager:AddSkillPalette( shield )
 local shield = class('Harpoongun',sm_skillpalette)
 shield.uid = "Harpoongun"
 shield.profession = GW2.CHARCLASS.Engineer
-shield.icon = "Harpoongun.jpg"
+shield.icon = "Harpoongun"
 shield.skills_luacode = {
 	[6148] = { 
 		slot = GW2.SKILLBARSLOT.Slot_1,
@@ -253,7 +253,7 @@ SkillManager:AddSkillPalette( shield )
 local downed = class('Downed',sm_skillpalette)
 downed.uid = "Downed"
 downed.profession = GW2.CHARCLASS.Engineer
-downed.icon = "Bandage.jpg"
+downed.icon = "Bandage"
 downed.skills_luacode = {
 	[5820] = { 
 		slot = GW2.SKILLBARSLOT.Slot_1,
@@ -292,7 +292,7 @@ SkillManager:AddSkillPalette( downed )
 local drowning = class('Drowning',sm_skillpalette)
 drowning.uid = "Drowning"
 drowning.profession = GW2.CHARCLASS.Engineer
-drowning.icon = "Anchor.jpg"
+drowning.icon = "Anchor"
 drowning.skills_luacode = {
 	[5916] = { 
 		slot = GW2.SKILLBARSLOT.Slot_1,
@@ -331,10 +331,10 @@ SkillManager:AddSkillPalette( drowning )
 local bombkit = class('BombKit',sm_skillpalette)
 bombkit.uid = "BombKit"
 bombkit.profession = GW2.CHARCLASS.Engineer
-bombkit.icon = "Bomb Kit.jpg"
+bombkit.icon = "Bomb Kit"
 bombkit.id = 5812
 bombkit.skills_luacode = {
-	[5084] = { 
+	[5842] = { 
 		slot = GW2.SKILLBARSLOT.Slot_1,
 		activationtime = 0.5,
 		icon = "Bomb",		
@@ -362,14 +362,14 @@ bombkit.skills_luacode = {
 }
 function bombkit:IsActive(context)
 	return context.skillbar~=nil  and (
-	(context.skillbar[GW2.SKILLBARSLOT.Slot_7]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_7].id == 5084) ||
-	(context.skillbar[GW2.SKILLBARSLOT.Slot_8]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_8].id == 5084) ||
+	(context.skillbar[GW2.SKILLBARSLOT.Slot_7]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_7].id == 5084) or
+	(context.skillbar[GW2.SKILLBARSLOT.Slot_8]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_8].id == 5084) or
 	(context.skillbar[GW2.SKILLBARSLOT.Slot_9]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_9].id == 5084))
 end
 function bombkit:CanActivate(context)
-	return context.player.transformid == and context.skillbar~=nil  and (
-	(context.skillbar[GW2.SKILLBARSLOT.Slot_7]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_7].id == 5812) ||
-	(context.skillbar[GW2.SKILLBARSLOT.Slot_8]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_8].id == 5812) ||
+	return context.player.transformid == 0 and context.skillbar~=nil  and (
+	(context.skillbar[GW2.SKILLBARSLOT.Slot_7]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_7].id == 5812) or
+	(context.skillbar[GW2.SKILLBARSLOT.Slot_8]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_8].id == 5812) or
 	(context.skillbar[GW2.SKILLBARSLOT.Slot_9]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_9].id == 5812))
 end
 function bombkit:Activate(context)

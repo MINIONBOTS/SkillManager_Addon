@@ -86,6 +86,7 @@ function sm_webapi.ApiCallback(Event, ID, Data)
 				if (k.status == 3 and k.path and k.path == Data) then
 					d("Sucessfully loaded image, removing it from queue "..tostring(data))
 					sm_webapi.queue[i] = nil
+					sm_webapi.lasttick = sm_webapi.lasttick - 2000
 				end
 			end			
 			sm_webapi.ready = true

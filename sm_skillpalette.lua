@@ -21,8 +21,8 @@ function sm_skillpalette:RenderIcon(currentselectedsetuid)
 		GUI:PushStyleColor(GUI.Col_ButtonActive,1.0,0.75,0.0,0.9)
 		highlighted = true
 	end
-	if (self.icon and FileExists(sm_mgr.iconpath.."\\"..self.icon) ) then
-		result = GUI:ImageButton("##"..self.uid, sm_mgr.iconpath.."\\"..self.icon,40,40)
+	if (self.icon and FileExists(sm_mgr.iconpath.."\\"..self.icon..".png") ) then
+		result = GUI:ImageButton("##"..self.uid, sm_mgr.iconpath.."\\"..self.icon..".png",40,40)
 	else
 		sm_webapi.getimage( self.id, sm_mgr.iconpath.."\\"..self.icon..".png" )
 		result = GUI:ImageButton("##"..self.uid, sm_mgr.iconpath.."\\default.png",40,40)

@@ -213,7 +213,7 @@ function sm_profile:Cast()
 			if ( not self.temp.nextcasttimestamp or ml_global_information.Now >= self.temp.nextcasttimestamp ) then	
 				for i,action in pairs(self.actionlist) do
 					local pcastinfo = Player.castinfo
-					if ( action.temp.cancast and ((pcastinfo.id ~= action.id ) or (action.activationtime == 0 and action.slot > GW2.SKILLBARSLOT.Slot_5))) then --or (action.slot == GW2.SKILLBARSLOT.Slot_1)
+					if ( action.temp.cancast and ((pcastinfo.id ~= action.id ) or action.instantcast )) then  -- .cancast includes Cooldown, Power and "Do we have that set and skill at all" checks
 						
 						local cancastnormal = ( not self.temp.nextcast or ml_global_information.Now - self.temp.nextcast > 0 )
 						
@@ -234,13 +234,9 @@ function sm_profile:Cast()
 							end
 							
 						else
-							-- The Set should be active now, check for the skill actually being on the bar?
-							--if( not action:IsOnSlot() ) then
-								--continue?
-							--end
 						
 							-- Cast instant casts always or only when cancastnormal
-							if ( cancastnormal or (action.activationtime == 0 and action.slot > GW2.SKILLBARSLOT.Slot_5)) then
+							if ( cancastnormal or action.instantcast ) then
 								local dbug = { [1] = "Enemy", [2] = "Player", [3] = "Friend"}
 								local ttlc = self.temp.lastcast and (ml_global_information.Now-self.temp.lastcast )or 0
 								d("Cast "..tostring(action.name).. " at "..tostring(dbug[action.temp.context.casttarget]) .. " - " .. tostring(ttlc))
@@ -271,13 +267,12 @@ function sm_profile:Cast()
 											
 										else										
 											castresult = Player:CastSpell(action.slot , target.id)
-										end
-										
+										end										
 									end
 									if ( castresult ) then
 										
 										-- Add an internal cd, else spam
-										if ( action.activationtime ~= 0 or action.slot > GW2.SKILLBARSLOT.Slot_5 ) then
+										if ( not action.instantcast ) then
 											local mincasttime = action.activationtime*1000
 											if ( mincasttime == 0 ) then mincasttime = 750 end											
 											mincasttime = mincasttime + 450	-- THIS CAN BE EXPOSED TO LUA
@@ -285,13 +280,13 @@ function sm_profile:Cast()
 											self.temp.nextcast = ml_global_information.Now + mincasttime
 											self.temp.lastcast = ml_global_information.Now
 										end
-										
+										break
 									end
 									
 								else
 									d("[SkillManager] - We miss a target ?!?! ")
 								end
-							end
+							end							
 						end
 						
 					end
