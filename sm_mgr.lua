@@ -60,9 +60,27 @@ function sm_mgr.RefreshProfileFiles()
 				end
 			end
 		end
+		
 	else
-		ml_error("[SkillManager] - Invalid ModuleFunctions!")
-	end
+        local fileinfo = FolderList(sm_mgr.luamodspath .. [[\GW2Minion\SkillManagerProfiles\]],[[.*sm]])
+        for _,profileName in pairs(fileinfo) do
+            local fileFunction, errorMessage  = loadfile(sm_mgr.luamodspath .. [[\GW2Minion\SkillManagerProfiles\]] .. profileName)
+            if (fileFunction) then
+                local profile = fileFunction()                 
+                if( profile ~= nil and type(profile) == "table" and profile.version and profile.version >= 1 and profile.profession and profile.profession == sm_mgr.GetPlayerProfession() ) then
+                    profile.temp = {
+                        filename = profileName,
+                        folderpath = sm_mgr.luamodspath .. [[\GW2Minion\SkillManagerProfiles\]] .. profileName
+                        }
+                    table.insert(sm_mgr.profiles, profile)
+                    d("[SkillManager] - Found Profile : "..profileName)
+                end
+            else
+                d("Syntax error:")
+                d(errorMessage)
+            end
+        end
+    end
 end
 RegisterEventHandler("Module.AllInitialized",sm_mgr.RefreshProfileFiles)
 
@@ -78,8 +96,17 @@ function sm_mgr.RefreshConditions()
 			end
 		end
 	else
-		ml_error("[SkillManager] - Invalid ModuleFunctions for loading Conditions!")
-	end
+		 local fileinfo = FolderList(sm_mgr.luamodspath .. [[\SkillManager\sm_conditions\]],[[.*lua]])
+        for _,profileName in pairs(fileinfo) do
+            local fileFunction, errorMessage  = loadfile(sm_mgr.luamodspath .. [[\SkillManager\sm_conditions\]] .. profileName)
+            if (fileFunction) then
+               assert(loadstring(fileFunction))()
+            else
+                d("Syntax error:")
+                d(errorMessage)
+            end
+        end
+    end
 end
 RegisterEventHandler("Module.AllInitialized",sm_mgr.RefreshConditions)
 

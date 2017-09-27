@@ -355,18 +355,29 @@ function sm_skill:UpdateData(context)
 	self.temp.context = context
 	if (context.skillbar and self.id) then
 		local skilldata
-		if ( self.slot > 3 ) then
+		if ( self.slot > 3 and self.slot < 10 ) then
 			if (context.skillbar[self.slot] and context.skillbar[self.slot].id == ( self.id or self.oldid )) then
 				skilldata = context.skillbar[self.slot]
 			end
 		else
 			-- Utility Slot, check all 3 slots for the skill id
-			for i=i,3 do
-				if (context.skillbar[i] and context.skillbar[i].id == ( self.id or self.oldid )) then
-					skilldata = context.skillbar[i]
-					self.slot = i
-					break
+			if ( self.slot <= 3 ) then
+				for i=0,3 do
+					if (context.skillbar[i] and context.skillbar[i].id == ( self.id or self.oldid )) then
+						skilldata = context.skillbar[i]
+						self.slot = i
+						break
+					end
 				end
+			
+			elseif ( self.slot>=10 ) then
+				for i=12,16 do
+					if (context.skillbar[i] and context.skillbar[i].id == ( self.id or self.oldid )) then
+						skilldata = context.skillbar[i]
+						self.slot = i
+						break
+					end
+				end			
 			end
 		end
 		if( not skilldata) then
