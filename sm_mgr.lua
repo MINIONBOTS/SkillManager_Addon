@@ -25,8 +25,6 @@ sm_mgr.ModuleFunctions = {}
 if (GetModuleFiles ~= nil and ReadModuleFile ~= nil) then
 	sm_mgr.ModuleFunctions.GetModuleFiles = GetModuleFiles
 	sm_mgr.ModuleFunctions.ReadModuleFile = ReadModuleFile
-else
-	sm_mgr.ModuleFunctions.GetPrivateModuleFunctions()
 end
 
  -- Sets the default folderpath by the game, which is used when creating "NEW" profiles in the manager
