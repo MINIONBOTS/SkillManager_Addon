@@ -332,11 +332,12 @@ function sm_mgr.sethelper.DrawMenu(event,ticks)
 		GUI:SetNextWindowPosCenter(GUI.SetCond_Once)
 		sm_mgr.sethelper.visible, sm_mgr.sethelper.open = GUI:Begin(GetString("Skill Set Helper").."##smhelper", sm_mgr.sethelper.open,GUI.WindowFlags_NoSavedSettings)
 		if (sm_mgr.sethelper.visible) then
-			sm_mgr.sethelper.idx, changed = GUI:Combo("##smhelperskill", sm_mgr.sethelper.idx or 1, { [1] = 5, [2] = 6, [3] = 7, [4] = 8, [5] = 9, [6] = 0, [7] = 1, [8] = 2, [9] = 3, [10] = 4, [11] = 10, [12] = 11, [13] = 12, [14] = 13, [15] = 14, [16] = 17, [18] = 19,})
+			local shitlist = { 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16, }
+			sm_mgr.sethelper.idx, changed = GUI:Combo("##smhelperskill", sm_mgr.sethelper.idx or 1, shitlist )
 			if ( sm_mgr.sethelper.idx ) then 
-				local skill = Player:GetSpellInfo(sm_mgr.sethelper.idx)
+				local skill = Player:GetSpellInfo(GW2.SKILLBARSLOT["Slot_" .. tostring(sm_mgr.sethelper.idx)])
 				if ( skill ) then
-					sm_mgr.sethelper.skillinfo = "["..tostring(skill.id).."] = { \n\t slot = GW2.SKILLBARSLOT.SLOT_"..tostring(sm_mgr.sethelper.idx)..", \n\t activationtime = 0.0, \n\t icon = "..skill.name..",  \n },"
+					sm_mgr.sethelper.skillinfo = "["..tostring(skill.id).."] = { \n\t slot = GW2.SKILLBARSLOT.Slot_"..tostring(sm_mgr.sethelper.idx)..", \n\t activationtime = 0.0, \n\t icon = '"..skill.name.."',  \n },"
 		
 				end			
 				GUI:Separator()
