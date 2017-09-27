@@ -34,6 +34,9 @@ local pistol_mh = class('pistol_mh',sm_skillpalette)
 pistol_mh.uid = "Pistol_Mainhand"
 pistol_mh.profession = GW2.CHARCLASS.Engineer
 pistol_mh.icon = "Pistol"
+-- pistol_mh.id  -> set a skill ID if you want it to download an icon for this skillset 
+-- pistol_mh.instantcast  -> set this for spells which can be cast while you actually cast another skill right now
+-- pistol_mh.nounderwater -> set this for skills which cannot be used underwater
 pistol_mh.skills_luacode = {
 	[5827] = { 
 		slot = GW2.SKILLBARSLOT.Slot_1,
@@ -383,3 +386,29 @@ function bombkit:Deactivate(context)
 	Player:SwapWeaponSet()
 end
 SkillManager:AddSkillPalette( bombkit )
+
+
+-- ALL the skills which do not belong to a set
+local engineer = class('Engineer',sm_skillpalette)
+engineer.uid = "Engineer"
+engineer.profession = GW2.CHARCLASS.Engineer
+engineer.icon = "Engineer"
+engineer.skills_luacode = {
+	[21659] = { 
+		slot = GW2.SKILLBARSLOT.Slot_6,
+		activationtime = 0.75,
+		icon = "A.E.D.",		
+	},
+
+}
+function engineer:IsActive(context)
+	return context.player.transformid == 0
+end
+function engineer:CanActivate(context)
+	return false
+end
+function engineer:Activate(context)
+end
+function engineer:Deactivate(context)
+end
+SkillManager:AddSkillPalette( engineer )
