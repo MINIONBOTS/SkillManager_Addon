@@ -1,4 +1,4 @@
-﻿-- Distance condition
+-- Distance condition
 local sm_condition_distance = class('Distance', sm_condition)
 sm_condition_distance.uid = "Distance"
 sm_condition_distance.targets = { [1] = GetString("Enemy"), [2] = GetString("Friend"), }

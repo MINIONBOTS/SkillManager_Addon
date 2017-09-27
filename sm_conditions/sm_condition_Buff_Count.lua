@@ -1,4 +1,4 @@
-﻿
+
 -- Buff Count check condition
 local sm_condition_buffs = class('Buffs (Count)', sm_condition)
 sm_condition_buffs.uid = "Buffs (Count)"

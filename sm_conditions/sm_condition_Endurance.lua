@@ -1,4 +1,4 @@
-﻿-- Endurance check condition
+-- Endurance check condition
 local sm_condition_endurance = class('Endurance', sm_condition)
 sm_condition_endurance.uid = "Endurance"
 sm_condition_endurance.operators = { [1] = "<", [2] = "<=", [3] = "==", [4] = ">=", [5] = ">",  }

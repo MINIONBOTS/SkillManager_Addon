@@ -1,4 +1,4 @@
-﻿-- CombatState check condition
+-- CombatState check condition
 local sm_condition_combatstate = class('CombatState', sm_condition)
 sm_condition_combatstate.uid = "CombatState"
 sm_condition_combatstate.targets = { [1] = GetString("Player is"), [2] = GetString("Target is"), [3] = GetString("Friend is"),  }

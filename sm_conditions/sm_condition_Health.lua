@@ -1,4 +1,4 @@
-﻿-- HP check condition
+-- HP check condition
 local sm_condition_hp = class('Health', sm_condition)
 sm_condition_hp.uid = "Health"
 sm_condition_hp.targets = { [1] = GetString("Target"), [2] = GetString("Player"), [3] = GetString("Friend"), }

@@ -1,4 +1,4 @@
-﻿-- Movement check condition
+-- Movement check condition
 local sm_condition_movement = class('Movement', sm_condition)
 sm_condition_movement.uid = "Movement"
 sm_condition_movement.targets = { [1] = GetString("Target"), [2] = GetString("Player"), [3] = GetString("Friend"), }

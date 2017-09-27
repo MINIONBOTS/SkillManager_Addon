@@ -1,4 +1,4 @@
-﻿-- Single Custom Buff ID check condition
+-- Single Custom Buff ID check condition
 local sm_condition_buffid = class('Buff (ID)', sm_condition)
 sm_condition_buffid.uid = "Buff (ID)"
 sm_condition_buffid.targets = { [1] = GetString("Target"), [2] = GetString("Player"), [3] = GetString("Friend"),  }

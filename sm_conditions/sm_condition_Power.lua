@@ -1,4 +1,4 @@
-﻿-- Power check condition
+-- Power check condition
 local sm_condition_power = class('Power', sm_condition)
 sm_condition_power.uid = "Power"
 sm_condition_power.operators = { [1] = "<", [2] = "<=", [3] = "==", [4] = ">=", [5] = ">",  }

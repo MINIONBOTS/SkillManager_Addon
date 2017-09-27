@@ -1,4 +1,4 @@
-﻿-- ContentID condition
+-- ContentID condition
 local sm_condition_contentid = class('ContentID', sm_condition)
 sm_condition_contentid.uid = "ContentID"
 sm_condition_contentid.operators = { [1] = "==", [2] = "~=",  }

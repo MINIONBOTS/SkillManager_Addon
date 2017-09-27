@@ -1,4 +1,4 @@
-﻿-- Cooldown condition
+-- Cooldown condition
 local sm_condition_cooldown = class('SkillCooldown', sm_condition)
 sm_condition_cooldown.uid = "SkillCooldown"
 sm_condition_cooldown.operators = { [1] = "<", [2] = "<=", [3] = "==", [4] = ">=", [5] = ">",  }

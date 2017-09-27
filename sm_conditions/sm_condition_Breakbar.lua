@@ -1,4 +1,4 @@
-﻿-- Breakbar condition
+-- Breakbar condition
 local sm_condition_breakbar = class('Breakbar', sm_condition)
 sm_condition_breakbar.uid = "Breakbar"
 sm_condition_breakbar.operators = { [1] = "<", [2] = "<=", [3] = "==", [4] = ">=", [5] = ">",  }
