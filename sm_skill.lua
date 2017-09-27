@@ -661,6 +661,11 @@ function sm_skill:CanCast()
 			return false
 		end
 		
+		-- Skills which cannot be used underwater
+		if (self.nounderwater and self.temp.context.player.swimming == GW2.SWIMSTATE.Diving) then
+			return false
+		end
+		
 		-- At least ONE of the condition groups needs to be true for the skill to be castable
 		self.temp.context.casttarget = 1
 		for i,grp in pairs( self.conditions ) do

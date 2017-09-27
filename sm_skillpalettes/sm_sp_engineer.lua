@@ -357,7 +357,7 @@ bombkit.skills_luacode = {
 	[5939] = { 
 		slot = GW2.SKILLBARSLOT.Slot_5,
 		activationtime = 0.5,
-		icon = "Glue Bomb",		
+		icon = "Glue Bomb",
 	},
 }
 function bombkit:IsActive(context)
