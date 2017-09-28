@@ -31,7 +31,7 @@
 	},]]
 
 local pistol_mh = class('pistol_mh',sm_skillpalette)
-pistol_mh.uid = "Pistol_Mainhand"
+pistol_mh.uid = "Engi_Pistol_Mainhand"
 pistol_mh.profession = GW2.CHARCLASS.Engineer
 pistol_mh.icon = "Pistol"
 -- pistol_mh.id  -> set a skill ID if you want it to download an icon for this skillset 
@@ -81,7 +81,7 @@ SkillManager:AddSkillPalette( pistol_mh )
 
 
 local pistol_oh = class('pistol_oh',sm_skillpalette)
-pistol_oh.uid = "Pistol_OffHand"
+pistol_oh.uid = "Engi_Pistol_OffHand"
 pistol_oh.profession = GW2.CHARCLASS.Engineer
 pistol_oh.icon = "Pistol"
 pistol_oh.skills_luacode = {
@@ -112,7 +112,7 @@ SkillManager:AddSkillPalette( pistol_oh )
 
 
 local rifle = class('rifle',sm_skillpalette)
-rifle.uid = "Rifle"
+rifle.uid = "Engi_Rifle"
 rifle.profession = GW2.CHARCLASS.Engineer
 rifle.icon = "Rifle"
 rifle.skills_luacode = {
@@ -158,7 +158,7 @@ SkillManager:AddSkillPalette( rifle )
 
 
 local shield = class('Shield',sm_skillpalette)
-shield.uid = "Shield"
+shield.uid = "Engi_Shield"
 shield.profession = GW2.CHARCLASS.Engineer
 shield.icon = "Shield"
 shield.skills_luacode = {
@@ -201,7 +201,7 @@ SkillManager:AddSkillPalette( shield )
 
 
 local harpoon = class('Harpoongun',sm_skillpalette)
-harpoon.uid = "Harpoongun"
+harpoon.uid = "Engi_Harpoongun"
 harpoon.profession = GW2.CHARCLASS.Engineer
 harpoon.icon = "Harpoongun"
 harpoon.skills_luacode = {
@@ -258,7 +258,7 @@ SkillManager:AddSkillPalette( harpoon )
 
 
 local downed = class('Downed',sm_skillpalette)
-downed.uid = "Downed"
+downed.uid = "Engi_Downed"
 downed.profession = GW2.CHARCLASS.Engineer
 downed.icon = "Bandage"
 downed.skills_luacode = {
@@ -298,7 +298,7 @@ SkillManager:AddSkillPalette( downed )
 
 
 local drowning = class('Drowning',sm_skillpalette)
-drowning.uid = "Drowning"
+drowning.uid = "Engi_Drowning"
 drowning.profession = GW2.CHARCLASS.Engineer
 drowning.icon = "Anchor"
 drowning.skills_luacode = {
@@ -338,7 +338,7 @@ SkillManager:AddSkillPalette( drowning )
 
 
 local bombkit = class('BombKit',sm_skillpalette)
-bombkit.uid = "BombKit"
+bombkit.uid = "Engi_BombKit"
 bombkit.profession = GW2.CHARCLASS.Engineer
 bombkit.icon = "Bomb Kit"
 bombkit.id = 5812
@@ -397,7 +397,7 @@ SkillManager:AddSkillPalette( bombkit )
 
 
 local bombkit = class('Mortar Kit',sm_skillpalette)
-bombkit.uid = "MortarKit"
+bombkit.uid = "Engi_MortarKit"
 bombkit.profession = GW2.CHARCLASS.Engineer
 bombkit.icon = "Mortar Kit"
 bombkit.id = 30800
@@ -445,7 +445,7 @@ SkillManager:AddSkillPalette( bombkit )
 
 
 local elixiergun = class('ElixierGun',sm_skillpalette)
-elixiergun.uid = "ElixierGun"
+elixiergun.uid = "Engi_ElixierGun"
 elixiergun.profession = GW2.CHARCLASS.Engineer
 elixiergun.icon = "ElixierGun"
 elixiergun.id = 5933
@@ -504,7 +504,7 @@ SkillManager:AddSkillPalette( elixiergun )
 
 
 local flamethrower = class('Flamethrower',sm_skillpalette)
-flamethrower.uid = "Flamethrower"
+flamethrower.uid = "Engi_Flamethrower"
 flamethrower.profession = GW2.CHARCLASS.Engineer
 flamethrower.icon = "Flamethrower"
 flamethrower.id = 5927
@@ -570,7 +570,7 @@ SkillManager:AddSkillPalette( flamethrower )
 
 
 local grenadekit = class('Grenade Kit',sm_skillpalette)
-grenadekit.uid = "Grenade Kit"
+grenadekit.uid = "Engi_Grenade Kit"
 grenadekit.profession = GW2.CHARCLASS.Engineer
 grenadekit.icon = "Grenade Kit"
 grenadekit.id = 5805
@@ -628,7 +628,7 @@ SkillManager:AddSkillPalette( grenadekit )
 
 
 local medkit = class('Med Kit',sm_skillpalette)
-medkit.uid = "Med Kit"
+medkit.uid = "Engi_Med Kit"
 medkit.profession = GW2.CHARCLASS.Engineer
 medkit.icon = "Med Kit"
 medkit.id = 5802
@@ -678,7 +678,7 @@ SkillManager:AddSkillPalette( medkit )
 
 
 local toolkit = class('Tool Kit',sm_skillpalette)
-toolkit.uid = "Tool Kit"
+toolkit.uid = "Engi_Tool Kit"
 toolkit.profession = GW2.CHARCLASS.Engineer
 toolkit.icon = "Tool Kit"
 toolkit.id = 5904
@@ -753,7 +753,7 @@ SkillManager:AddSkillPalette( toolkit )
 
 
 local hammer = class('Hammer',sm_skillpalette)
-hammer.uid = "Hammer"
+hammer.uid = "Engi_Hammer"
 hammer.profession = GW2.CHARCLASS.Engineer
 hammer.icon = "Hammer"
 hammer.skills_luacode = {
@@ -809,7 +809,7 @@ SkillManager:AddSkillPalette( hammer )
 
 
 local sword = class('Sword',sm_skillpalette)
-sword.uid = "Sword"
+sword.uid = "Engi_Sword"
 sword.profession = GW2.CHARCLASS.Engineer
 sword.icon = "Sword"
 sword.skills_luacode = {
