@@ -883,7 +883,7 @@ function photonforge:CanActivate(context)
 end
 function photonforge:Activate(context)
 	if ( context.skillbar~=nil ) then
-		if (context.skillbar[GW2.SKILLBARSLOT.Slot_17]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_7].id == 42938) then Player:CastSpell(GW2.SKILLBARSLOT.Slot_17) end
+		if (context.skillbar[GW2.SKILLBARSLOT.Slot_17]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_17].id == 42938) then Player:CastSpell(GW2.SKILLBARSLOT.Slot_17) end
 	end
 end
 function photonforge:Deactivate(context)
