@@ -375,11 +375,8 @@ function sm_profile:Render()
 				self.temp.draggedactionidx = i
 				
 			elseif(released) then
-				if( self.temp.draggedaction and self.temp.draggedaction ~= a and self.temp.draggedactionidx ~= i)then
-					self.temp.atmp = self.actionlist[i]
-					self.actionlist[i] = self.actionlist[self.temp.draggedactionidx]
-					self.actionlist[self.temp.draggedactionidx] = self.temp.atmp
-					self.temp.atmp = nil
+				if( self.temp.draggedaction and self.temp.draggedaction ~= a and self.temp.draggedactionidx ~= i)then					
+					table.insert(self.actionlist,i,table.remove(self.actionlist, self.temp.draggedactionidx))					
 				end
 				self.temp.draggedaction = nil
 				self.temp.draggedactionidx = nil

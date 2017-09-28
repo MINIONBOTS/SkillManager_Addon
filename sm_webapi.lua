@@ -12,7 +12,7 @@ end
 -- Update even handler.
 function sm_webapi.Update(Event, ticks)
 	if (GetGameState() == GW2.GAMESTATE.GAMEPLAY ) then
-		if (sm_webapi.ready and not sm_webapi.lasttick or ticks - sm_webapi.lasttick > 2000) then
+		if (sm_webapi.ready == true and not sm_webapi.lasttick or ticks - sm_webapi.lasttick > 2000) then
 			sm_webapi.lasttick = ticks
 			local count = 0
 			local idstring = ""
@@ -49,13 +49,27 @@ function sm_webapi.Update(Event, ticks)
 				 for i,k in pairs(sm_webapi.queue) do
 					if (k.status == 2 and k.url ) then												
 						if ( WebAPI:GetImage("sm_image_req", k.url, k.path)) then
-							d("Requesting skill Icon from  "..tostring(k.url))
 							k.status = 3
 							sm_webapi.ready = false
+							k.lastattempt = ticks
+							if ( not k.tries ) then 
+								k.tries = 1 
+							else
+								k.tries = k.tries + 1
+							end
+							d("Requesting skill Icon from  "..tostring(k.url))							
 							break
 						end
 					end				 
-				 end			
+				 end
+
+				-- nothing todo anymore ? seems sometimes the loading icon gets stuck, no clue how that is possible.
+				 for i,k in pairs(sm_webapi.queue) do
+					if ( k.status == 3 and k.tries < 4 and k.lastattempt and ticks - k.lastattempt > 60000 ) then
+						k.lastattempt = nil
+						k.status = 2
+					end
+				 end
 			end
 		end
 	end
@@ -94,7 +108,7 @@ function sm_webapi.ApiCallback(Event, ID, Data)
 				if (k.status == 3 and k.path and k.path == Data) then
 					d("Sucessfully loaded image, removing it from queue "..tostring(data))
 					sm_webapi.queue[i] = nil
-					sm_webapi.lasttick = sm_webapi.lasttick - 2000
+					sm_webapi.lasttick = sm_webapi.lasttick - 1500
 				end
 			end			
 			sm_webapi.ready = true
