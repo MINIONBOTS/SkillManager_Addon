@@ -182,9 +182,13 @@ function sm_skill:RenderSkillPaletteEditor()
 		if ( not self.id ) then
 			if ( self.skill_next ) then
 				self.skill_next.skill_prev = self.skill_prev
-				self.skill_prev.skill_next = self.skill_next
+				if ( self.skill_prev ) then
+					self.skill_prev.skill_next = self.skill_next
+				end
 			else
-				self.skill_prev.skill_next = nil 
+				if ( self.skill_prev ) then 
+					self.skill_prev.skill_next = nil
+				end
 			end
 		end	
 	end	
