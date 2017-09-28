@@ -68,7 +68,7 @@ function sm_mgr.RefreshProfileFiles()
                 if( profile ~= nil and type(profile) == "table" and profile.version and profile.version >= 1 and profile.profession and profile.profession == sm_mgr.GetPlayerProfession() ) then
                     profile.temp = {
                         filename = profileName,
-                        folderpath = sm_mgr.luamodspath .. [[\GW2Minion\SkillManagerProfiles\]] .. profileName
+                        folderpath = sm_mgr.luamodspath .. [[\GW2Minion\SkillManagerProfiles\]]
                         }
                     table.insert(sm_mgr.profiles, profile)
                     d("[SkillManager] - Found Profile : "..profileName)
