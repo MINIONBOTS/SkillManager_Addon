@@ -208,95 +208,117 @@ function sm_profile:Cast()
 		local gw2_common_functions = _G["gw2_common_functions"]
 		if ( BehaviorManager:Running() and ml_global_information.Player_HealthState ~= GW2.HEALTHSTATE.Dead) then
 			
-			-- Casting
-			-- Make sure we finished the last cast activationtime
-			if ( not self.temp.nextcasttimestamp or ml_global_information.Now >= self.temp.nextcasttimestamp ) then	
-				for i,action in pairs(self.actionlist) do
-					local pcastinfo = Player.castinfo
-					if ( action.temp.cancast and ((pcastinfo.id ~= action.id ) or action.instantcast )) then  -- .cancast includes Cooldown, Power and "Do we have that set and skill at all" checks
-						
-						local cancastnormal = ( not self.temp.nextcast or ml_global_information.Now - self.temp.nextcast > 0 )
-						
-						if ( cancastnormal and not action.skillpalette:IsActive(self.temp.context) ) then							
-							if ( self.weaponswapmode == 1 ) then
-								local deactivated
-								for uid, sp in pairs (sm_mgr.profile.temp.activeskillpalettes) do
-									if ( sp:IsActive(self.temp.context) ) then
-										d("[SkillManager] - Deactivating Skill Set "..tostring(uid))
-										if ( sp:Deactivate(self.temp.context) ) then
-											self.temp.lasttick = self.temp.lasttick + 250	-- do not allow anything ,not even instant casts
-											deactivated = true
-											return
-										end
+			for i,a in pairs(self.actionlist) do
+				local action 
+				--override the action to cast our combos					
+				if ( self.temp.nextcomboaction ) then
+					if (ml_global_information.Now - self.temp.nextcomboactionEndTime > 500 ) then -- we did not cast the combo yet, something went probably wrong so we stop attempting to finish the combo
+						self.temp.nextcomboaction = nil
+						self.temp.nextcomboactionEndTime = nil
+					else
+						action = self.temp.nextcomboaction
+					end
+				end				
+				if ( not action ) then action = a end
+				
+				local pcastinfo = Player.castinfo
+				if ( action.temp.cancast and ((pcastinfo.id ~= action.id ) or action.instantcast )) then  -- .cancast includes Cooldown, Power and "Do we have that set and skill at all" checks
+					
+					local cancastnormal = ( not self.temp.nextcast or ml_global_information.Now - self.temp.nextcast > 0 )
+					
+					if ( cancastnormal and not action.skillpalette:IsActive(self.temp.context) ) then							
+						if ( self.weaponswapmode == 1 ) then
+							local deactivated
+							for uid, sp in pairs (sm_mgr.profile.temp.activeskillpalettes) do
+								if ( sp:IsActive(self.temp.context) ) then
+									d("[SkillManager] - Deactivating Skill Set "..tostring(uid))
+									if ( sp:Deactivate(self.temp.context) ) then
+										self.temp.lasttick = self.temp.lasttick + 250	-- do not allow anything ,not even instant casts
+										deactivated = true
+										return
 									end
-								end
-								if ( not deactivated ) then
-									d("[SkillManager] - Activating Skill Set "..tostring(action.skillpaletteuid))
-									action.skillpalette:Activate(self.temp.context)
-									self.temp.lasttick = self.temp.lasttick + 250	-- do not allow anything ,not even instant casts
-									return
 								end
 							end
-						else
-						
-							-- Cast instant casts always or only when cancastnormal
-							if ( cancastnormal or action.instantcast ) then
-								local dbug = { [1] = "Enemy", [2] = "Player", [3] = "Friend"}
-								local ttlc = self.temp.lastcast and (ml_global_information.Now-self.temp.lastcast )or 0
-								d("[SkillManager] - Casting "..tostring(action.name).. " at "..tostring(dbug[action.temp.context.casttarget]) .. " - " .. tostring(ttlc))
-								
-								local target
-								if (action.temp.context.casttarget == 1) then
-									target = self.temp.context.attack_target
-								elseif (action.temp.context.casttarget == 2) then
-									target = self.temp.context.player
-								elseif (action.temp.context.casttarget == 3) then
-									target = self.temp.context.heal_target
-								end
-								
-								if (target) then
-									local castresult
-									local pos = target.pos
-									if ( action.isgroundtargeted ) then									
-										if (target.isgadget) then
-											castresult = Player:CastSpell(action.slot , pos.x, pos.y, (pos.z - target.height)) -- need to cast at the top of the gadget, else no los errors on larger things
-										else
-											castresult = Player:CastSpell(action.slot , pos.x, pos.y, pos.z)
-										end
-									
-									else
-										Player:SetFacingExact(pos.x, pos.y, pos.z)
-										if ( action.slot == GW2.SKILLBARSLOT.Slot_1 or action.instantcast ) then
-											castresult = Player:CastSpellNoChecks(action.slot , target.id)
-											
-										else										
-											castresult = Player:CastSpell(action.slot , target.id)
-										end										
-									end
-									if ( castresult ) then
-										
-										-- Add an internal cd, else spam
-										local mincasttime = action.activationtime*1000
-										if ( mincasttime == 0 ) then mincasttime = 750 end											
-										mincasttime = mincasttime + 450	-- THIS CAN BE EXPOSED TO LUA
-										action.temp.internalcd = ml_global_information.Now + mincasttime
-										if ( not action.instantcast ) then
-											self.temp.nextcast = ml_global_information.Now + mincasttime
-											self.temp.lastcast = ml_global_information.Now
-										end
-										break
-									end
-									
-								else
-									d("[SkillManager] - You don't have ANY Condition setup for Skill: "..action.name)
-								end
-							end							
+							if ( not deactivated ) then
+								d("[SkillManager] - Activating Skill Set "..tostring(action.skillpaletteuid))
+								action.skillpalette:Activate(self.temp.context)
+								self.temp.lasttick = self.temp.lasttick + 250	-- do not allow anything ,not even instant casts
+								return
+							end
 						end
-						
+					else
+					
+						-- Cast instant casts always or only when cancastnormal
+						if ( cancastnormal or action.instantcast ) then
+							local dbug = { [1] = "Enemy", [2] = "Player", [3] = "Friend"}
+							local ttlc = self.temp.lastcast and (ml_global_information.Now-self.temp.lastcast )or 0
+							d("[SkillManager] - Casting "..tostring(action.name).. " at "..tostring(dbug[action.temp.context.casttarget]) .. " - " .. tostring(ttlc))
+							
+							local target
+							if (action.temp.context.casttarget == 1) then
+								target = self.temp.context.attack_target
+							elseif (action.temp.context.casttarget == 2) then
+								target = self.temp.context.player
+							elseif (action.temp.context.casttarget == 3) then
+								target = self.temp.context.heal_target
+							end
+							
+							if (target) then
+								local castresult
+								local pos = target.pos
+								if ( action.isgroundtargeted ) then									
+									if (target.isgadget) then
+										castresult = Player:CastSpell(action.slot , pos.x, pos.y, (pos.z - target.height)) -- need to cast at the top of the gadget, else no los errors on larger things
+									else
+										castresult = Player:CastSpell(action.slot , pos.x, pos.y, pos.z)
+									end
+								
+								else
+									Player:SetFacingExact(pos.x, pos.y, pos.z)
+									if ( action.slot == GW2.SKILLBARSLOT.Slot_1 or action.instantcast ) then
+										castresult = Player:CastSpellNoChecks(action.slot , target.id)
+										
+									else										
+										castresult = Player:CastSpell(action.slot , target.id)
+									end										
+								end
+								if ( castresult ) then
+									
+									-- Add an internal cd, else spam
+									local mincasttime = action.activationtime*1000
+									if ( mincasttime == 0 ) then mincasttime = 750 end											
+									mincasttime = mincasttime + 450	-- THIS CAN BE EXPOSED TO LUA
+									action.temp.internalcd = ml_global_information.Now + mincasttime
+									if ( not action.instantcast ) then
+										self.temp.nextcast = ml_global_information.Now + mincasttime
+										self.temp.lastcast = ml_global_information.Now
+									end
+									
+									-- Check if we cast a combo action
+									if ( action.skill_next ) then
+										self.temp.nextcomboaction = action.skill_next
+										local combotime = action.skill_next.activationtime*1000
+										if ( combotime == 0 ) then combotime = 750 end
+										self.temp.nextcomboactionEndTime = ml_global_information.Now + mincasttime  +  combotime
+									else
+										self.temp.nextcomboaction = nil
+										self.temp.nextcomboactionEndTime = nil
+									end
+									break
+								end
+								
+							else
+								d("[SkillManager] - You don't have ANY Condition setup for Skill: "..action.name)
+							end
+						end							
 					end
+					
 				end
-			end		
-			
+				if ( self.temp.nextcomboaction ) then
+					break -- dont loop through the actionlist when we override the action anyway with out combo that still needs to get finished
+				end
+			end
+						
 			-- Evade
 			local evaded
 			if ( Settings.GW2Minion.evade and ml_global_information.Player_HealthState == GW2.HEALTHSTATE.Alive and ml_global_information.Player_InCombat and ml_global_information.Player_CastInfo and (ml_global_information.Player_CastInfo.slot == GW2.SKILLBARSLOT.None or ml_global_information.Player_CastInfo.slot == GW2.SKILLBARSLOT.Slot_1 )) then

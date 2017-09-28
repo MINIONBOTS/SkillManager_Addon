@@ -669,7 +669,7 @@ end
 
 -- Checks if the skill can be cast -> skillpalette and Conditions and onslot check
 function sm_skill:CanCast()
-	if (self.id and self.skillpalette and (self.skillpalette:IsActive(self.temp.context) or self.skillpalette:CanActivate(self.temp.context)) and self:IsEquipped() and self.cancast ) then
+	if (self.id and self.skillpalette and self.cancast and (self.skillpalette:IsActive(self.temp.context) or self.skillpalette:CanActivate(self.temp.context)) and self:IsEquipped() ) then
 		-- Internal CD when spam casting
 		if ( self.temp.internalcd and ml_global_information.Now - self.temp.internalcd < 0 ) then
 			return false
