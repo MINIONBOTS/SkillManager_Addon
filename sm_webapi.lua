@@ -16,10 +16,11 @@ function sm_webapi.Update(Event, ticks)
 			sm_webapi.lasttick = ticks
 			local count = 0
 			local idstring = ""
+			local processed = {}
 			for i,k in pairs (sm_webapi.queue) do
 				if ( k.status == 0 ) then
 					count = count + 1
-					sm_webapi.queue[i].status = 1
+					processed[i] = i					
 					if ( idstring == "" ) then
 						idstring = tostring(i)
 					else
@@ -29,23 +30,30 @@ function sm_webapi.Update(Event, ticks)
 			end
 			
 			if ( count > 0 ) then
+				local result = false
 				if ( count == 1 ) then
-					WebAPI:Get("sm_data_req",'/v2/skills/'..idstring)
+					result = WebAPI:Get("sm_data_req",'/v2/skills/'..idstring)
 				else
-					WebAPI:Get("sm_data_req",'/v2/skills?ids='..idstring)
+					result = WebAPI:Get("sm_data_req",'/v2/skills?ids='..idstring)
 				end
-				d("Requesting skill infos for  "..'/v2/skills?ids='..idstring)				
-				sm_webapi.ready = false
+				if ( result ) then
+					for i,k in pairs (processed) do
+						sm_webapi.queue[k].status = 1
+					end					
+					d("Requesting skill infos for  "..'/v2/skills?ids='..idstring)				
+					sm_webapi.ready = false
+				end
 				
 			else
 			 -- get images for the urls we gathered			 
 				 for i,k in pairs(sm_webapi.queue) do
-					if (k.status == 2 and k.url ) then
-						d("Requesting skill Icon from  "..tostring(k.url))
-						k.status = 3
-						WebAPI:GetImage("sm_image_req", k.url, k.path)
-						sm_webapi.ready = false
-						break
+					if (k.status == 2 and k.url ) then												
+						if ( WebAPI:GetImage("sm_image_req", k.url, k.path)) then
+							d("Requesting skill Icon from  "..tostring(k.url))
+							k.status = 3
+							sm_webapi.ready = false
+							break
+						end
 					end				 
 				 end			
 			end
