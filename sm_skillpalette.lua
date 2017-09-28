@@ -1,6 +1,7 @@
 ﻿-- This template holds the renderfuncs etc. for the skillpelettes
 
 sm_skillpalette = class('sm_skillpalette')
+sm_skillpalette.table = _G["table"]
 
 -- this function is automatically called when a new "instance" of the class('..') is created with sm_skill:new(...)
 function sm_skillpalette:initialize(data)
@@ -42,8 +43,12 @@ function sm_skillpalette:RenderSkills(currentselectedid)
 			ml_error("TODO: ADD STRING LOAD HANDLER FOR PUBLIC SKILL SETS  IN sm_skillpalette:RenderSkills")
 			
 		end
-		if ( skilldata ) then			
+		if ( skilldata ) then
+			-- copy / save the key in the table value
 			for i,s in pairs(skilldata) do
+				s.id = i
+			end
+			for i,s in sm_skillpalette.table.pairsByValueAttribute(skilldata, "icon") do
 				local highlighted
 				if ( currentselectedid and i == currentselectedid ) then
 					GUI:PushStyleColor(GUI.Col_Button,1.0,0.75,0.0,0.7)
@@ -55,8 +60,9 @@ function sm_skillpalette:RenderSkills(currentselectedid)
 				local selected
 				if (s.icon and FileExists(sm_mgr.iconpath.."\\"..s.icon..".png") ) then
 					selected = GUI:ImageButton("##"..tostring(i), sm_mgr.iconpath.."\\"..s.icon..".png",30,30)
-				else
-					sm_webapi.getimage( i, sm_mgr.iconpath.."\\"..s.icon..".png" )
+				
+				else					
+					sm_webapi.getimage( s.id, sm_mgr.iconpath.."\\"..s.icon..".png" )
 					selected = GUI:ImageButton("##"..tostring(i), sm_mgr.iconpath.."\\default.png",30,30)
 				end
 				if ( selected ) then currentselectedid = i end

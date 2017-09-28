@@ -353,21 +353,41 @@ sm_mgr.sethelper.open = true
 function sm_mgr.sethelper.DrawMenu(event,ticks)
 	
 	if (sm_mgr.open) then
-		GUI:SetNextWindowSize(300,300,GUI.SetCond_Once)
+		GUI:SetNextWindowSize(300,500,GUI.SetCond_Once)
 		GUI:SetNextWindowPosCenter(GUI.SetCond_Once)
 		sm_mgr.sethelper.visible, sm_mgr.sethelper.open = GUI:Begin(GetString("Skill Set Helper").."##smhelper", sm_mgr.sethelper.open,GUI.WindowFlags_NoSavedSettings)
 		if (sm_mgr.sethelper.visible) then
 			local shitlist = { 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16, }
 			sm_mgr.sethelper.idx, changed = GUI:Combo("##smhelperskill", sm_mgr.sethelper.idx or 1, shitlist )
-			if ( sm_mgr.sethelper.idx ) then 
-				local skill = Player:GetSpellInfo(GW2.SKILLBARSLOT["Slot_" .. tostring(sm_mgr.sethelper.idx)])
-				if ( skill ) then
-					sm_mgr.sethelper.skillinfo = "["..tostring(skill.id).."] = { \n\t slot = GW2.SKILLBARSLOT.Slot_"..tostring(sm_mgr.sethelper.idx)..", \n\t activationtime = 0.0, \n\t icon = '"..skill.name.."',  \n },"
-		
-				end			
+			if ( sm_mgr.sethelper.idx ) then
+				local weapons = false
+				if ( sm_mgr.sethelper.idx >= 0 and sm_mgr.sethelper.idx <= 4 ) then
+					weapons = true
+				end
+				
+				if ( not weapons ) then
+					local skill = Player:GetSpellInfo(GW2.SKILLBARSLOT["Slot_" .. tostring(sm_mgr.sethelper.idx)])
+					if ( skill ) then
+						sm_mgr.sethelper.skillinfo = "["..tostring(skill.id).."] = { \n\t slot = GW2.SKILLBARSLOT.Slot_"..tostring(sm_mgr.sethelper.idx)..", \n\t activationtime = 0.0, \n\t icon = '"..skill.name.."',  \n },"
+			
+					end
+				else
+					 sm_mgr.sethelper.skillinfo = nil
+					for i=0,4 do
+						local skill = Player:GetSpellInfo(GW2.SKILLBARSLOT["Slot_" .. tostring(i)])
+						if ( skill ) then
+							if ( not  sm_mgr.sethelper.skillinfo or sm_mgr.sethelper.skillinfo == "" ) then							
+								sm_mgr.sethelper.skillinfo = "["..tostring(skill.id).."] = { \n\t slot = GW2.SKILLBARSLOT.Slot_"..tostring(i)..", \n\t activationtime = 0.0, \n\t icon = '"..skill.name.."',  \n },"
+							else
+								sm_mgr.sethelper.skillinfo = sm_mgr.sethelper.skillinfo.."\n ["..tostring(skill.id).."] = { \n\t slot = GW2.SKILLBARSLOT.Slot_"..tostring(i)..", \n\t activationtime = 0.0, \n\t icon = '"..skill.name.."',  \n },"
+								
+							end
+						end
+					end				
+				end
 				GUI:Separator()
 				--GUI:InputTextMultiline( "smhalpbox", sm_mgr.sethelper.skillinfo or "", 280, 200 , GUI.InputTextFlags_AutoSelectAll)
-				GUI:InputTextEditor( "##smhalpbox", sm_mgr.sethelper.skillinfo or "", 280, 200 , GUI.InputTextFlags_AutoSelectAll)
+				GUI:InputTextEditor( "##smhalpbox", sm_mgr.sethelper.skillinfo or "", 280, 450 , GUI.InputTextFlags_AutoSelectAll)
 		
 			end
 		end

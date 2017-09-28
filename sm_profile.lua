@@ -313,7 +313,6 @@ function sm_profile:Cast()
 	end
 end
 
-
 -- Renders elements into the SM Main Window
 function sm_profile:Render()
 	GUI:PushItemWidth(120)

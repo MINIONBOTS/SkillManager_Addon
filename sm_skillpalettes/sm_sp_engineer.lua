@@ -876,10 +876,10 @@ photonforge.skills_luacode = {
  },
 }
 function photonforge:IsActive(context)
-	return context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_17]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_17].id == 41123
+	return context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_17]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_17].id == 41123	-- Disable photon forge skill ID
 end
 function photonforge:CanActivate(context)
-	return context.player.transformid == 0 and context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_17]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_17].id == 42938
+	return context.player.transformid == 0 and context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_17]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_17].id == 42938 -- Enable photon forge skill id
 end
 function photonforge:Activate(context)
 	if ( context.skillbar~=nil ) then
