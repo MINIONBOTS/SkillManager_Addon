@@ -50,7 +50,7 @@ function sm_skillpalette:RenderSkills(currentselectedid)
 			end
 			for i,s in sm_skillpalette.table.pairsByValueAttribute(skilldata, "icon") do
 				local highlighted
-				if ( currentselectedid and i == currentselectedid ) then
+				if ( currentselectedid and s.id == currentselectedid ) then
 					GUI:PushStyleColor(GUI.Col_Button,1.0,0.75,0.0,0.7)
 					GUI:PushStyleColor(GUI.Col_ButtonHovered,1.0,0.75,0.0,0.8)
 					GUI:PushStyleColor(GUI.Col_ButtonActive,1.0,0.75,0.0,0.9)
@@ -59,13 +59,13 @@ function sm_skillpalette:RenderSkills(currentselectedid)
 				end
 				local selected
 				if (s.icon and FileExists(sm_mgr.iconpath.."\\"..s.icon..".png") ) then
-					selected = GUI:ImageButton("##"..tostring(i), sm_mgr.iconpath.."\\"..s.icon..".png",30,30)
+					selected = GUI:ImageButton("##"..tostring(s.id), sm_mgr.iconpath.."\\"..s.icon..".png",30,30)
 				
 				else					
 					sm_webapi.getimage( s.id, sm_mgr.iconpath.."\\"..s.icon..".png" )
-					selected = GUI:ImageButton("##"..tostring(i), sm_mgr.iconpath.."\\default.png",30,30)
+					selected = GUI:ImageButton("##"..tostring(s.id), sm_mgr.iconpath.."\\default.png",30,30)
 				end
-				if ( selected ) then currentselectedid = i end
+				if ( selected ) then currentselectedid = s.id end
 				if ( highlighted ) then GUI:PopStyleColor(4) end
 				if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString(s.icon)) end
 				GUI:SameLine()
