@@ -643,9 +643,9 @@ end
 -- For Heal, Utility and Elite Slots, which can have different Skills from the same Set
 -- Shitty flip skills fuck up the logic big time here, so we go the easiest way of just allowing "cancast" to be true when we are having the set actíve for skills 6-10
 function sm_skill:IsEquipped()
-	if ( self.slot >= GW2.SKILLBARSLOT.Slot_6 and self.slot <= GW2.SKILLBARSLOT.Slot_10 ) then -- other slots need this check as well ?
-		if ( self.skillpalette:IsActive(self.temp.context) ) then
-			if (self.temp.context.skillbar) then			
+	if (self.temp.context.skillbar) then
+		if ( self.slot >= GW2.SKILLBARSLOT.Slot_6 and self.slot <= GW2.SKILLBARSLOT.Slot_10 ) then -- other slots need this check as well ?
+			if ( self.skillpalette:IsActive(self.temp.context) ) then			
 				if ( self.slot == GW2.SKILLBARSLOT.Slot_6 and self.temp.context.skillbar[self.slot].id == self.id ) then return true end	-- Heal
 				if ( self.slot == GW2.SKILLBARSLOT.Slot_10 and self.temp.context.skillbar[self.slot].id == self.id ) then return true	end  -- Elite
 				-- Utility				
@@ -654,12 +654,15 @@ function sm_skill:IsEquipped()
 						self.temp.context.skillbar[GW2.SKILLBARSLOT.Slot_8].id == self.id or 
 						self.temp.context.skillbar[GW2.SKILLBARSLOT.Slot_9].id == self.id) then
 						return true
-					end
+					end			
 				end
+			end		
+		else
+			-- only return true for NONE-Flip-skills if they are not on our current bar
+			if ( not self.parent or (self.skillpalette:IsActive(self.temp.context) and self.temp.context.skillbar[self.slot].id == self.id))then 
+				return true
 			end
-		end		
-	else
-		return true
+		end
 	end
 	return false
 end

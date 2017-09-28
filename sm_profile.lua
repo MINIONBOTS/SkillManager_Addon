@@ -217,29 +217,33 @@ function sm_profile:Cast()
 						
 						local cancastnormal = ( not self.temp.nextcast or ml_global_information.Now - self.temp.nextcast > 0 )
 						
-						if ( cancastnormal and not action.skillpalette:IsActive(self.temp.context)  ) then
-							local deactivated
-							for uid, sp in pairs (sm_mgr.profile.temp.activeskillpalettes) do
-								if ( sp:IsActive(self.temp.context) ) then
-									d("[SkillManager] - Deactivating Skill Set "..tostring(uid))
-									sp:Deactivate(self.temp.context)
-									self.temp.lasttick = self.temp.lasttick + 150	-- do not allow anything ,not even instant casts
-									deactivated = true
+						if ( cancastnormal and not action.skillpalette:IsActive(self.temp.context) ) then							
+							if ( self.weaponswapmode == 1 ) then
+								local deactivated
+								for uid, sp in pairs (sm_mgr.profile.temp.activeskillpalettes) do
+									if ( sp:IsActive(self.temp.context) ) then
+										d("[SkillManager] - Deactivating Skill Set "..tostring(uid))
+										if ( sp:Deactivate(self.temp.context) ) then
+											self.temp.lasttick = self.temp.lasttick + 250	-- do not allow anything ,not even instant casts
+											deactivated = true
+											return
+										end
+									end
+								end
+								if ( not deactivated ) then
+									d("[SkillManager] - Activating Skill Set "..tostring(action.skillpaletteuid))
+									action.skillpalette:Activate(self.temp.context)
+									self.temp.lasttick = self.temp.lasttick + 250	-- do not allow anything ,not even instant casts
+									return
 								end
 							end
-							if ( not deactivated ) then
-								d("[SkillManager] - Activating Skill Set "..tostring(action.skillpaletteuid))
-								action.skillpalette:Activate(self.temp.context)
-								self.temp.lasttick = self.temp.lasttick + 150	-- do not allow anything ,not even instant casts
-							end
-							
 						else
 						
 							-- Cast instant casts always or only when cancastnormal
 							if ( cancastnormal or action.instantcast ) then
 								local dbug = { [1] = "Enemy", [2] = "Player", [3] = "Friend"}
 								local ttlc = self.temp.lastcast and (ml_global_information.Now-self.temp.lastcast )or 0
-								d("Cast "..tostring(action.name).. " at "..tostring(dbug[action.temp.context.casttarget]) .. " - " .. tostring(ttlc))
+								d("[SkillManager] - Casting "..tostring(action.name).. " at "..tostring(dbug[action.temp.context.casttarget]) .. " - " .. tostring(ttlc))
 								
 								local target
 								if (action.temp.context.casttarget == 1) then
@@ -262,7 +266,7 @@ function sm_profile:Cast()
 									
 									else
 										Player:SetFacingExact(pos.x, pos.y, pos.z)
-										if ( action.slot == GW2.SKILLBARSLOT.Slot_1 ) then
+										if ( action.slot == GW2.SKILLBARSLOT.Slot_1 or action.instantcast ) then
 											castresult = Player:CastSpellNoChecks(action.slot , target.id)
 											
 										else										
@@ -272,11 +276,11 @@ function sm_profile:Cast()
 									if ( castresult ) then
 										
 										-- Add an internal cd, else spam
+										local mincasttime = action.activationtime*1000
+										if ( mincasttime == 0 ) then mincasttime = 750 end											
+										mincasttime = mincasttime + 450	-- THIS CAN BE EXPOSED TO LUA
+										action.temp.internalcd = ml_global_information.Now + mincasttime
 										if ( not action.instantcast ) then
-											local mincasttime = action.activationtime*1000
-											if ( mincasttime == 0 ) then mincasttime = 750 end											
-											mincasttime = mincasttime + 450	-- THIS CAN BE EXPOSED TO LUA
-											action.temp.internalcd = ml_global_information.Now + mincasttime
 											self.temp.nextcast = ml_global_information.Now + mincasttime
 											self.temp.lastcast = ml_global_information.Now
 										end
@@ -284,7 +288,7 @@ function sm_profile:Cast()
 									end
 									
 								else
-									d("[SkillManager] - We miss a target ?!?! ")
+									d("[SkillManager] - You don't have ANY Condition setup for Skill: "..action.name)
 								end
 							end							
 						end
@@ -329,7 +333,13 @@ function sm_profile:Render()
 		self.fixedfightrange, changed = GUI:InputInt("##smfightdistance", self.fixedfightrange or ml_global_information.AttackRange or 154, 1, 10, GUI.InputTextFlags_CharsDecimal+GUI.InputTextFlags_CharsNoBlank)	
 		if ( changed ) then self.temp.modified = true end
 		if ( self.fixedfightrange <= 154 ) then self.fixedfightrange = 154 end
-	end		
+	end
+	
+	GUI:AlignFirstTextHeightToWidgets()
+	GUI:Text(GetString("Swap Weapons:")) if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("'Automatic'- Automatically switches Weapons/Kits/Stances. 'Manual'-You switch Weapons/Kits/Stances.")) end
+	GUI:SameLine(150)
+	self.weaponswapmode, changed = GUI:Combo("##smweaponswapmode",self.weaponswapmode or 1, { [1] = GetString("Automatic"), [2] = GetString("Manual"), })
+	if ( changed ) then self.temp.modified = true end
 	GUI:PopItemWidth()
 	GUI:Separator()
 	

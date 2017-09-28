@@ -74,6 +74,7 @@ end
 function pistol_mh:Activate(context)
 end
 function pistol_mh:Deactivate(context)
+	return false
 end
 SkillManager:AddSkillPalette( pistol_mh )
 
@@ -104,7 +105,7 @@ end
 function pistol_oh:Activate(context)
 end
 function pistol_oh:Deactivate(context)
-	
+	return false
 end
 SkillManager:AddSkillPalette( pistol_oh )
 
@@ -150,7 +151,7 @@ end
 function rifle:Activate(context)
 end
 function rifle:Deactivate(context)
-	
+	return false
 end
 SkillManager:AddSkillPalette( rifle )
 
@@ -169,7 +170,8 @@ shield.skills_luacode = {
 	[6126] = { 
 		slot = GW2.SKILLBARSLOT.Slot_4,
 		activationtime = 0.5,
-		icon = "Magnetic Inversion",		
+		icon = "Magnetic Inversion",
+		parent = 6053,
 	},
 	[6054] = { 
 		slot = GW2.SKILLBARSLOT.Slot_5,
@@ -179,7 +181,8 @@ shield.skills_luacode = {
 	[6057] = { 
 		slot = GW2.SKILLBARSLOT.Slot_5,
 		activationtime = 0.75,
-		icon = "Throw Shield",		
+		icon = "Throw Shield",
+		parent = 6054,
 	},
 }
 function shield:IsActive(context)
@@ -191,7 +194,7 @@ end
 function shield:Activate(context)
 end
 function shield:Deactivate(context)
-	
+	return false
 end
 SkillManager:AddSkillPalette( shield )
 
@@ -215,7 +218,8 @@ harpoon.skills_luacode = {
 	[6073] = { 
 		slot = GW2.SKILLBARSLOT.Slot_2,
 		activationtime = 0,
-		icon = "Detonate Mines",		
+		icon = "Detonate Mines",
+		parent = 6147,
 	},
 	[6146] = { 
 		slot = GW2.SKILLBARSLOT.Slot_3,
@@ -235,7 +239,8 @@ harpoon.skills_luacode = {
 	[6074] = { 
 		slot = GW2.SKILLBARSLOT.Slot_5,
 		activationtime = 0,
-		icon = "Deploy Net Wall",		
+		icon = "Deploy Net Wall",
+		parent = 6145,
 	},
 }
 function harpoon:IsActive(context)
@@ -246,7 +251,8 @@ function harpoon:CanActivate(context)
 end
 function harpoon:Activate(context)
 end
-function harpoon:Deactivate(context)	
+function harpoon:Deactivate(context)
+	return false
 end
 SkillManager:AddSkillPalette( harpoon )
 
@@ -286,6 +292,7 @@ end
 function downed:Activate(context)
 end
 function downed:Deactivate(context)	
+	return false
 end
 SkillManager:AddSkillPalette( downed )
 
@@ -324,7 +331,8 @@ function drowning:CanActivate(context)
 end
 function drowning:Activate(context)
 end
-function drowning:Deactivate(context)	
+function drowning:Deactivate(context)
+	return false
 end
 SkillManager:AddSkillPalette( drowning )
 
@@ -382,6 +390,7 @@ function bombkit:Activate(context)
 end
 function bombkit:Deactivate(context)
 	Player:SwapWeaponSet()
+	return true
 end
 SkillManager:AddSkillPalette( bombkit )
 
@@ -430,6 +439,7 @@ function bombkit:Activate(context)
 end
 function bombkit:Deactivate(context)
 	Player:SwapWeaponSet()
+	return true
 end
 SkillManager:AddSkillPalette( bombkit )
 
@@ -487,6 +497,7 @@ function elixiergun:Activate(context)
 end
 function elixiergun:Deactivate(context)
 	Player:SwapWeaponSet()
+	return true
 end
 SkillManager:AddSkillPalette( elixiergun )
 
@@ -513,6 +524,7 @@ flamethrower.skills_luacode = {
 	 activationtime = 0.0,
 	 instantcast = true,	 
 	 icon = 'Detonate Flame Blast',  
+	 parent = 5931,
  },
 [5930] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_3, 
@@ -552,6 +564,7 @@ function flamethrower:Activate(context)
 end
 function flamethrower:Deactivate(context)
 	Player:SwapWeaponSet()
+	return true
 end
 SkillManager:AddSkillPalette( flamethrower )
 
@@ -609,6 +622,7 @@ function grenadekit:Activate(context)
 end
 function grenadekit:Deactivate(context)
 	Player:SwapWeaponSet()
+	return true
 end
 SkillManager:AddSkillPalette( grenadekit )
 
@@ -658,6 +672,7 @@ function medkit:Activate(context)
 end
 function medkit:Deactivate(context)
 	Player:SwapWeaponSet()
+	return true
 end
 SkillManager:AddSkillPalette( medkit )
 
@@ -677,11 +692,13 @@ toolkit.skills_luacode = {
 	 slot = GW2.SKILLBARSLOT.Slot_1, 
 	 activationtime = 0.5, 
 	 icon = 'Whack',  
+	 parent = 5992,
  },
  [5994] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_1, 
 	 activationtime = 1.0, 
 	 icon = 'Thwack',  
+	 parent = 5993,
  },
 [5995] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_2, 
@@ -730,6 +747,7 @@ function toolkit:Activate(context)
 end
 function toolkit:Deactivate(context)
 	Player:SwapWeaponSet()
+	return true
 end
 SkillManager:AddSkillPalette( toolkit )
 
@@ -783,7 +801,8 @@ function hammer:CanActivate(context)
 end
 function hammer:Activate(context)
 end
-function hammer:Deactivate(context)	
+function hammer:Deactivate(context)
+	return false
 end
 SkillManager:AddSkillPalette( hammer )
 
@@ -797,17 +816,19 @@ sword.skills_luacode = {
 [43476] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_1, 
 	 activationtime = 0.5, 
-	 icon = 'Sun Edge',  
+	 icon = 'Sun Edge',	 
  },
 [45581] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_1, 
 	 activationtime = 0.5, 
-	 icon = 'Sun Ripper',  
+	 icon = 'Sun Ripper',
+	 parent = 43476,
  },
 [45979] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_1, 
 	 activationtime = 0.75, 
 	 icon = 'Gleam Saber',  
+	 parent = 45581,
  },
  [44110] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_2, 
@@ -828,7 +849,8 @@ function sword:CanActivate(context)
 end
 function sword:Activate(context)
 end
-function sword:Deactivate(context)	
+function sword:Deactivate(context)
+	return false
 end
 SkillManager:AddSkillPalette( sword )
 
@@ -847,12 +869,14 @@ photonforge.skills_luacode = {
  [45756] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_1, 
 	 activationtime = 0.5, 
-	 icon = 'Bright Slash',  
+	 icon = 'Bright Slash',
+	 parent = 44588,
  },
  [45890] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_1, 
 	 activationtime = 0.5, 
-	 icon = 'Flash Cutter',  
+	 icon = 'Flash Cutter',
+	 parent = 45756,
  },
 [42965] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_2, 
@@ -890,6 +914,7 @@ function photonforge:Deactivate(context)
 	if ( context.skillbar~=nil ) then
 		if (context.skillbar[GW2.SKILLBARSLOT.Slot_17]~=nil ) then Player:CastSpell(GW2.SKILLBARSLOT.Slot_17) end
 	end
+	return true
 end
 SkillManager:AddSkillPalette( photonforge )
 
@@ -938,7 +963,8 @@ engineer.skills_luacode = {
 		 slot = GW2.SKILLBARSLOT.Slot_6, 
 		 activationtime = 0.0, 
 		 instantcast = true,
-		 icon = 'Detonate Healing Turret',  
+		 icon = 'Detonate Healing Turret',
+		 parent = 5857,
 	 },
 	 [6176] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_13, 
@@ -1087,7 +1113,8 @@ engineer.skills_luacode = {
 		 slot = GW2.SKILLBARSLOT.Slot_14, 
 		 activationtime = 0.0,
 		 instantcast = true,
-		 icon = 'Detonate Mine Field',  
+		 icon = 'Detonate Mine Field',
+		 parent = 6164,
 	 },
 	 [5975] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_14, 
@@ -1254,7 +1281,8 @@ engineer.skills_luacode = {
 		 slot = GW2.SKILLBARSLOT.Slot_7, 
 		 activationtime = 0.0, 
 		 instantcast = true,
-		 icon = 'Detonate',  
+		 icon = 'Detonate',
+		 parent = 6161,
 	 },
 	 [5865] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_7, 
@@ -1271,7 +1299,8 @@ engineer.skills_luacode = {
 		 slot = GW2.SKILLBARSLOT.Slot_7, 
 		 activationtime = 0.0, 
 		 instantcast = true,
-		 icon = 'Detonate Flame Turret',  
+		 icon = 'Detonate Flame Turret', 
+		 parent = 5836,
 	 },
 	 [5837] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_7, 
@@ -1282,12 +1311,20 @@ engineer.skills_luacode = {
 		 slot = GW2.SKILLBARSLOT.Slot_7, 
 		 activationtime = 0.0, 
 		 instantcast = true,
-		 icon = 'Detonate Net Turret',  
+		 icon = 'Detonate Net Turret', 
+		 parent = 5837,
 	 },
 	 [5818] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_7, 
 		 activationtime = 0.5, 
 		 icon = 'Rifle Turret',  
+	 },
+	 [5957] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_8, 
+		 activationtime = 0.0, 
+		 instantcast = true,
+		 icon = 'Detonate Rifle Turret',
+		 parent = 5818,
 	 },
 	 [6093] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_7, 
@@ -1298,7 +1335,8 @@ engineer.skills_luacode = {
 		 slot = GW2.SKILLBARSLOT.Slot_7, 
 		 activationtime = 0.0, 
 		 instantcast = true,
-		 icon = 'Detonate Harpoon Turret',  
+		 icon = 'Detonate Harpoon Turret', 
+		 parent = 6093,
 	 },
 	 [5912] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_7, 
@@ -1309,7 +1347,8 @@ engineer.skills_luacode = {
 		 slot = GW2.SKILLBARSLOT.Slot_7, 
 		 activationtime = 0.0, 
 		 instantcast = true,
-		 icon = 'Detonate Rocket Turret',  
+		 icon = 'Detonate Rocket Turret', 
+		 parent = 5912,
 	 },
 	 [5838] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_7, 
@@ -1320,7 +1359,8 @@ engineer.skills_luacode = {
 		 slot = GW2.SKILLBARSLOT.Slot_7, 
 		 activationtime = 0.0, 
 		 instantcast = true,
-		 icon = 'Detonate Thumper Turret',  
+		 icon = 'Detonate Thumper Turret', 
+		 parent = 5838,
 	 },
 	 
 	 
@@ -1334,7 +1374,8 @@ engineer.skills_luacode = {
 		 slot = GW2.SKILLBARSLOT.Slot_10, 
 		 activationtime = 0.0, 
 		 instantcast = true,
-		 icon = 'Detonate Supply Crate Turrets',  
+		 icon = 'Detonate Supply Crate Turrets', 
+		 parent = 5868,
 	 },
 	 [5832] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_10, 
@@ -1362,7 +1403,8 @@ engineer.skills_luacode = {
 		 slot = GW2.SKILLBARSLOT.Slot_7, 
 		 activationtime = 0.0, 
 		 instantcast = true,
-		 icon = 'Blast Gyro Self-Destruct',  
+		 icon = 'Blast Gyro Self-Destruct',
+		 parent = 31248,
 	 },	 
 	 [30101] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_7, 
@@ -1376,6 +1418,7 @@ engineer.skills_luacode = {
 		 activationtime = 0.75, 
 		 instantcast = true,
 		 icon = 'Bulwark Gyro Self-Destruct',  
+		 parent = 30101,
 	 },
 	 [29739] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_8, 
@@ -1389,6 +1432,7 @@ engineer.skills_luacode = {
 		 activationtime = 0.75, 
 		 instantcast = true,
 		 icon = 'Purge Gyro Self-Destruct',  
+		 parent = 29739,
 	 },
 	 [29921] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_7, 
@@ -1400,7 +1444,8 @@ engineer.skills_luacode = {
 		 slot = GW2.SKILLBARSLOT.Slot_7, 
 		 activationtime = 0.0, 
 		 instantcast = true,
-		 icon = 'Shredder Gyro Self-Destruct',  
+		 icon = 'Shredder Gyro Self-Destruct', 
+		 parent = 29921,
 	 },
 	 [43739] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_7, 
@@ -1410,7 +1455,8 @@ engineer.skills_luacode = {
 	 [40533] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_7, 
 		 activationtime = 0.5, 
-		 icon = 'Launch Wall',  
+		 icon = 'Launch Wall', 
+		 parent = 43739,		 
 	 },
 	 [42842] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_8, 
@@ -1444,5 +1490,6 @@ end
 function engineer:Activate(context)
 end
 function engineer:Deactivate(context)
+	return false
 end
 SkillManager:AddSkillPalette( engineer )
