@@ -130,6 +130,11 @@ end
 -- Draws the SkillManager window, profile management and calls Profile:Render() to populate stuff
 function sm_mgr.DrawMenu(event,ticks)
 	-- Ingame and rdy
+	ml_global_information.GameState = GetGameState()
+	local p = Player
+	if(p) then
+		ml_global_information.Player_CastInfo = p.castinfo
+	end
 	if ( not ml_global_information.GameState == GW2.GAMESTATE.GAMEPLAY or not ml_global_information.Player_CastInfo ) then 
 		return
 	end

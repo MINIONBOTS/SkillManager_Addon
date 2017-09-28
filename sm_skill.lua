@@ -357,7 +357,7 @@ end
 -- Get data from c++ and update this skill's data
 function sm_skill:UpdateData(context)
 	self.temp.context = context
-	if (context.skillbar and self.id) then
+	if (context.skillbar and self.id and self.slot ) then
 		local skilldata
 		if ( self.slot > 3 and self.slot < 10 ) then
 			if (context.skillbar[self.slot] and context.skillbar[self.slot].id == ( self.id or self.oldid )) then
@@ -650,13 +650,13 @@ function sm_skill:IsEquipped()
 	if (self.temp.context.skillbar) then
 		if ( self.slot >= GW2.SKILLBARSLOT.Slot_6 and self.slot <= GW2.SKILLBARSLOT.Slot_10 ) then -- other slots need this check as well ?
 			if ( self.skillpalette:IsActive(self.temp.context) ) then			
-				if ( self.slot == GW2.SKILLBARSLOT.Slot_6 and self.temp.context.skillbar[self.slot].id == self.id ) then return true end	-- Heal
-				if ( self.slot == GW2.SKILLBARSLOT.Slot_10 and self.temp.context.skillbar[self.slot].id == self.id ) then return true	end  -- Elite
+				if ( self.slot == GW2.SKILLBARSLOT.Slot_6 and self.temp.context.skillbar[self.slot] and self.temp.context.skillbar[self.slot].id == self.id ) then return true end	-- Heal
+				if ( self.slot == GW2.SKILLBARSLOT.Slot_10 and self.temp.context.skillbar[self.slot]and self.temp.context.skillbar[self.slot].id == self.id ) then return true end  -- Elite
 				-- Utility				
 				if ( self.slot >= GW2.SKILLBARSLOT.Slot_7 and self.slot <= GW2.SKILLBARSLOT.Slot_9 ) then
-					if (self.temp.context.skillbar[GW2.SKILLBARSLOT.Slot_7].id == self.id or 
-						self.temp.context.skillbar[GW2.SKILLBARSLOT.Slot_8].id == self.id or 
-						self.temp.context.skillbar[GW2.SKILLBARSLOT.Slot_9].id == self.id) then
+					if ( (self.temp.context.skillbar[GW2.SKILLBARSLOT.Slot_7] and self.temp.context.skillbar[GW2.SKILLBARSLOT.Slot_7].id == self.id) or 
+						(self.temp.context.skillbar[GW2.SKILLBARSLOT.Slot_8] and self.temp.context.skillbar[GW2.SKILLBARSLOT.Slot_8].id == self.id )or 
+						(self.temp.context.skillbar[GW2.SKILLBARSLOT.Slot_9] and self.temp.context.skillbar[GW2.SKILLBARSLOT.Slot_9].id == self.id)) then
 						return true
 					end			
 				end
