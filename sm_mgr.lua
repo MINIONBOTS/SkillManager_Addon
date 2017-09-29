@@ -167,12 +167,9 @@ function sm_mgr.DrawMenu(event,ticks)
 	end
 	
 	-- Check for valid player profession and or changes
-	if ( not sm_mgr.lasttick or ticks - sm_mgr.lasttick > 2000 ) then
-		sm_mgr.lasttick = ticks
-		local profession = sm_mgr.GetPlayerProfession()
-		if ( profession and ( not sm_mgr.lastprofession or sm_mgr.lastprofession ~= profession or not sm_mgr.profile)) then						
-			sm_mgr:LoadLastProfileForProfession(profession)
-		end
+	local profession = sm_mgr.GetPlayerProfession()
+	if ( profession and ( not sm_mgr.lastprofession or sm_mgr.lastprofession ~= profession or not sm_mgr.profile)) then						
+		sm_mgr:LoadLastProfileForProfession(profession)
 	end
 		
 	-- Update GameData & Context & Skills etc.
