@@ -175,22 +175,10 @@ function sm_skill:RenderSkillPaletteEditor()
 			GUI:PopStyleVar()
 		end
 	else
-		-- someone pressed the X to close
+		-- someone pressed the X to close"
 		if ( not self.id and self.temp.oldid ) then self.id = self.temp.oldid end
 		self.temp.oldid = nil
-		self.temp.deleteaction = nil
-		if ( not self.id ) then
-			if ( self.skill_next ) then
-				self.skill_next.skill_prev = self.skill_prev
-				if ( self.skill_prev ) then
-					self.skill_prev.skill_next = self.skill_next
-				end
-			else
-				if ( self.skill_prev ) then 
-					self.skill_prev.skill_next = nil
-				end
-			end
-		end	
+		self.temp.deleteaction = nil		
 	end	
 	GUI:End()
 end
