@@ -71,7 +71,7 @@ axe.skills_luacode = {
 -- others, check ingame the green ? in CUSTOM LUA CONDITION EDITOR to see all
 -- IF YOU NEED OTHERS, TELL ME OR ADD THEM YOURSELF AT sm_profile.lua line ~51 -> function sm_profile:UpdateContext()
 function axe:IsActive(context)
-	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 10561)	
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 10561)	
 end
 function axe:CanActivate(context)
 	return context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.mainhand == GW2.WEAPONTYPE.Axe or context.player.mainhand_alt == GW2.WEAPONTYPE.Axe) and (context.player.weaponset == 4 or context.player.weaponset == 5) and context.player.transformid == 0 -- we have an axe and a kit currently equipped
@@ -104,7 +104,7 @@ warhorn.skills_luacode = {
 	},
 }
 function warhorn:IsActive(context)
-	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 10556)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 10556)
 end
 function warhorn:CanActivate(context)
 	return context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.offhand == GW2.WEAPONTYPE.Warhorn or context.player.offhand_alt == GW2.WEAPONTYPE.Warhorn) and (context.player.weaponset == 4 or context.player.weaponset == 5) and context.player.transformid == 0
@@ -152,7 +152,7 @@ staff.skills_luacode = {
 	},
 }
 function staff:IsActive(context)
-	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 10596)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 10596)
 end
 function staff:CanActivate(context)
 	return context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.mainhand == GW2.WEAPONTYPE.Staff or context.player.mainhand_alt == GW2.WEAPONTYPE.Staff) and (context.player.weaponset == 4 or context.player.weaponset == 5) and context.player.transformid == 0
@@ -202,7 +202,7 @@ dagger_mh.skills_luacode = {
 	},
 }
 function dagger_mh:IsActive(context)
-	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 10563)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 10563)
 end
 function dagger_mh:CanActivate(context)
 	return context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.mainhand == GW2.WEAPONTYPE.Dagger or context.player.mainhand_alt == GW2.WEAPONTYPE.Dagger) and (context.player.weaponset == 4 or context.player.weaponset == 5) and context.player.transformid == 0
@@ -235,7 +235,7 @@ dagger_oh.skills_luacode = {
 	},
 }
 function dagger_oh:IsActive(context)
-	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 10705)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 10705)
 end
 function dagger_oh:CanActivate(context)
 	return context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.offhand == GW2.WEAPONTYPE.Dagger or context.player.offhand_alt == GW2.WEAPONTYPE.Dagger) and (context.player.weaponset == 4 or context.player.weaponset == 5) and context.player.transformid == 0
@@ -295,7 +295,7 @@ greatsword.skills_luacode = {
 	},
 }
 function greatsword:IsActive(context)
-	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 30163)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 30163)
 end
 function greatsword:CanActivate(context)
 	return context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.mainhand == GW2.WEAPONTYPE.Greatsword or context.player.mainhand_alt == GW2.WEAPONTYPE.Greatsword) and (context.player.weaponset == 4 or context.player.weaponset == 5) and context.player.transformid == 0
@@ -345,7 +345,7 @@ scepter.skills_luacode = {
 	},
 }
 function scepter:IsActive(context)
-	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 10532)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 10532)
 end
 function scepter:CanActivate(context)
 	return context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.mainhand == GW2.WEAPONTYPE.Scepter or context.player.mainhand_alt == GW2.WEAPONTYPE.Scepter) and (context.player.weaponset == 4 or context.player.weaponset == 5) and context.player.transformid == 0
@@ -377,7 +377,7 @@ focus.skills_luacode = {
 	},
 }
 function focus:IsActive(context)
-	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 10707)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 10707)
 end
 function focus:CanActivate(context)
 	return context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.offhand == GW2.WEAPONTYPE.Focus or context.player.offhand_alt == GW2.WEAPONTYPE.Focus) and (context.player.weaponset == 4 or context.player.weaponset == 5) and context.player.transformid == 0
@@ -390,27 +390,6 @@ function focus:Deactivate(context)
 end
 SkillManager:AddSkillPalette( focus )
 
-
---[[ TODO: Need scourge training, butload of point things.. not even done with reaper yet... give me time to play!
-torch.uid = "torch"
-torch.profession = GW2.CHARCLASS.Necromancer
-torch.icon = "Torch"
--- torch.id =   --> set a skill ID if you want it to download an icon for this skillset 
-torch.skills_luacode = {
-	
-}
-function torch:IsActive(context)
-	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 10707)
-end
-function torch:CanActivate(context)
-	return context.player.swimming == GW2.SWIMSTATE.NotInWater and context.player.offhand == GW2.WEAPONTYPE.Torch and context.player.weaponset == 4 and context.player.transformid == 0
-end
-function torch:Activate(context)
-end
-function torch:Deactivate(context)
-end
-SkillManager:AddSkillPalette( torch )
---]]
 
 
 local trident = SkillManager:CreateSkillPalette('trident')
@@ -446,7 +425,7 @@ trident.skills_luacode = {
 	},
 }
 function trident:IsActive(context)
-	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 10623)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 10623)
 end
 function trident:CanActivate(context)
 	return context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.Diving and (context.player.aquatic == GW2.WEAPONTYPE.Trident or context.player.aquatic_alt == GW2.WEAPONTYPE.Trident) and (context.player.weaponset == 0 or context.player.weaponset == 1) and context.player.transformid == 0
@@ -505,7 +484,7 @@ spear.skills_luacode = {
 	},
 }
 function spear:IsActive(context)
-	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 10692)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 10692)
 end
 function spear:CanActivate(context)
 	return context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.Diving and (context.player.aquatic == GW2.WEAPONTYPE.Spear or context.player.aquatic_alt == GW2.WEAPONTYPE.Spear) and (context.player.weaponset == 0 or context.player.weaponset == 1) and context.player.transformid == 0
@@ -517,6 +496,69 @@ function spear:Deactivate(context)
 	return false
 end
 SkillManager:AddSkillPalette( spear )
+
+
+
+local lichform = SkillManager:CreateSkillPalette('lichform')
+lichform.uid = "Lich-Form"
+lichform.profession = GW2.CHARCLASS.Necromancer
+lichform.icon = "Lich Form"
+lichform.id = 10550 --> set a skill ID if you want it to download an icon for this skillset 
+lichform.skills_luacode = {
+	-- [10550] = {
+		-- slot = GW2.SKILLBARSLOT.Slot_10,
+		-- activationtime = 1,
+		-- icon = 'Lich Form',
+	-- },
+	-- [10700] = {
+		-- slot = GW2.SKILLBARSLOT.Slot_10,
+		-- activationtime = 0.0,
+		-- icon = 'Leave Transform',
+	-- },
+	[10634] = {
+		slot = GW2.SKILLBARSLOT.Slot_1,
+		activationtime = 0.75,
+		icon = 'Deathly Claws',
+	},
+	[10635] = {
+		slot = GW2.SKILLBARSLOT.Slot_2,
+		activationtime = 0.25,
+		icon = 'Lich's Gaze',
+	},
+	[10633] = {
+		slot = GW2.SKILLBARSLOT.Slot_3,
+		activationtime = 0.5,
+		icon = 'Ripple of Horror',
+	},
+	[10636] = {
+		slot = GW2.SKILLBARSLOT.Slot_4,
+		activationtime = 1.5,
+		icon = 'Summon Madness',
+	},
+	[10632] = {
+		slot = GW2.SKILLBARSLOT.Slot_5,
+		activationtime = 0.75,
+		icon = 'Grim Specter',
+	},
+}
+function lichform:IsActive(context)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_10] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_10].id == 10700)
+end
+function lichform:CanActivate(context)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_10] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_10].id == 10550 and context.skillbar[GW2.SKILLBARSLOT.Slot_10].cancast)
+end
+function lichform:Activate(context)
+	if ( context.skillbar~=nil ) then
+		if (context.skillbar[GW2.SKILLBARSLOT.Slot_10] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_10].id == 10550) then Player:CastSpell(GW2.SKILLBARSLOT.Slot_10) end
+	end
+end
+function lichform:Deactivate(context)
+	if ( context.skillbar~=nil ) then
+		if (context.skillbar[GW2.SKILLBARSLOT.Slot_10] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_10].id == 10700) then Player:CastSpell(GW2.SKILLBARSLOT.Slot_10) end
+		return true
+	end
+end
+SkillManager:AddSkillPalette( lichform )
 
 
 
@@ -580,19 +622,19 @@ reaperShroud.skills_luacode = {
 	},
 }
 function reaperShroud:IsActive(context)
-	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_13]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_13].id == 30961)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_13] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_13].id == 30961)
 end
 function reaperShroud:CanActivate(context)
-	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_13]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_13].id == 30792 and context.skillbar[GW2.SKILLBARSLOT.Slot_13].cancast)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_13] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_13].id == 30792 and context.skillbar[GW2.SKILLBARSLOT.Slot_13].cancast)
 end
 function reaperShroud:Activate(context)
 	if ( context.skillbar~=nil ) then
-		if (context.skillbar[GW2.SKILLBARSLOT.Slot_13]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_13].id == 30792) then Player:CastSpell(GW2.SKILLBARSLOT.Slot_13) end
+		if (context.skillbar[GW2.SKILLBARSLOT.Slot_13] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_13].id == 30792) then Player:CastSpell(GW2.SKILLBARSLOT.Slot_13) end
 	end
 end
 function reaperShroud:Deactivate(context)
 	if ( context.skillbar~=nil ) then
-		if (context.skillbar[GW2.SKILLBARSLOT.Slot_13]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_13].id == 30961) then Player:CastSpell(GW2.SKILLBARSLOT.Slot_13) end
+		if (context.skillbar[GW2.SKILLBARSLOT.Slot_13] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_13].id == 30961) then Player:CastSpell(GW2.SKILLBARSLOT.Slot_13) end
 		return true
 	end
 end
@@ -643,23 +685,105 @@ deathShroud.skills_luacode = {
 	},
 }
 function deathShroud:IsActive(context)
-	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_13]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_13].id == 10585)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_13] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_13].id == 10585)
 end
 function deathShroud:CanActivate(context)
-	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_13]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_13].id == 10574 and context.skillbar[GW2.SKILLBARSLOT.Slot_13].cancast)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_13] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_13].id == 10574 and context.skillbar[GW2.SKILLBARSLOT.Slot_13].cancast)
 end
 function deathShroud:Activate(context)
 	if ( context.skillbar~=nil ) then
-		if (context.skillbar[GW2.SKILLBARSLOT.Slot_13]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_13].id == 10574) then Player:CastSpell(GW2.SKILLBARSLOT.Slot_13) end
+		if (context.skillbar[GW2.SKILLBARSLOT.Slot_13] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_13].id == 10574) then Player:CastSpell(GW2.SKILLBARSLOT.Slot_13) end
 	end
 end
 function deathShroud:Deactivate(context)
 	if ( context.skillbar~=nil ) then
-		if (context.skillbar[GW2.SKILLBARSLOT.Slot_13]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_13].id == 10585) then Player:CastSpell(GW2.SKILLBARSLOT.Slot_13) end
+		if (context.skillbar[GW2.SKILLBARSLOT.Slot_13] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_13].id == 10585) then Player:CastSpell(GW2.SKILLBARSLOT.Slot_13) end
 		return true
 	end
 end
 SkillManager:AddSkillPalette( deathShroud )
+
+
+
+local downed = SkillManager:CreateSkillPalette('Downed')
+downed.uid = "Necromancer_Downed"
+downed.profession = GW2.CHARCLASS.Necromancer
+downed.icon = "Bandage"
+downed.skills_luacode = {
+	[10560] = {
+		 slot = GW2.SKILLBARSLOT.Slot_1,
+		 activationtime = 0.0,
+		 icon = 'Life Leech',
+	},
+	[10660] = {
+		 slot = GW2.SKILLBARSLOT.Slot_2,
+		 activationtime = 0.0,
+		 icon = 'Fear',
+	},
+	[10559] = {
+		 slot = GW2.SKILLBARSLOT.Slot_3,
+		 activationtime = 0.0,
+		 icon = 'Fetid Ground',
+	},
+	[1175] = {
+		 slot = GW2.SKILLBARSLOT.Slot_4,
+		 activationtime = 0.0,
+		 icon = 'Bandage',
+	},
+}
+function downed:IsActive(context)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 10560)
+end
+function downed:CanActivate(context)
+	return false
+end
+function downed:Activate(context)
+end
+function downed:Deactivate(context)	
+	return false
+end
+SkillManager:AddSkillPalette( downed )
+
+
+
+local drowning = SkillManager:CreateSkillPalette('Drowning')
+drowning.uid = "Engi_Drowning"
+drowning.profession = GW2.CHARCLASS.Engineer
+drowning.icon = "Anchor"
+drowning.skills_luacode = {
+	[10640] = {
+		slot = GW2.SKILLBARSLOT.Slot_1,
+		activationtime = 2,
+		icon = 'Life Leech',
+	},
+	[10642] = {
+		slot = GW2.SKILLBARSLOT.Slot_2,
+		activationtime = 0.5,
+		icon = 'Feeding Frenzy',
+	},
+	[10641] = {
+		slot = GW2.SKILLBARSLOT.Slot_3,
+		activationtime = 0.5,
+		icon = 'Death Curse',
+	},
+	[1175] = {
+		slot = GW2.SKILLBARSLOT.Slot_4,
+		activationtime = 1,
+		icon = 'Bandage',
+	},
+}
+function drowning:IsActive(context)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 10640)	
+end
+function drowning:CanActivate(context)
+	return false
+end
+function drowning:Activate(context)
+end
+function drowning:Deactivate(context)
+	return false
+end
+SkillManager:AddSkillPalette( drowning )
 
 
 
@@ -704,12 +828,79 @@ necromancer.skills_luacode = {
 -- END HEALING.
 
 -- F-Keys.
-	
-	
+	[44946] = {
+		 slot = GW2.SKILLBARSLOT.Slot_13,
+		 activationtime = 0.5,
+		 icon = 'Manifest Sand Shade',
+	},
+	[40813] = {
+		 slot = GW2.SKILLBARSLOT.Slot_14,
+		 activationtime = 0,
+		 icon = 'Nefarious Favor',
+	},
+	[43448] = {
+		 slot = GW2.SKILLBARSLOT.Slot_15,
+		 activationtime = 0,
+		 icon = 'Sand Cascade',
+	},
+	[44428] = {
+		 slot = GW2.SKILLBARSLOT.Slot_16,
+		 activationtime = 0,
+		 icon = 'Garish Pillar',
+	},
+	[44663] = {
+		 slot = GW2.SKILLBARSLOT.Slot_17,
+		 activationtime = 0,
+		 icon = 'Desert Shroud',
+	},
 
 -- END F-Keys.
 
 -- ELITE.
+	[10549] = {
+		slot = GW2.SKILLBARSLOT.Slot_10,
+		activationtime = 1,
+		icon = 'Plaguelands',
+	},
+	[10646] = {
+		slot = GW2.SKILLBARSLOT.Slot_10,
+		activationtime = 1.5,
+		icon = 'Summon Flesh Golem',
+	},
+	[10647] = {
+		slot = GW2.SKILLBARSLOT.Slot_10,
+		activationtime = 0.75,
+		icon = 'Charge',
+	},
+	[42355] = {
+		slot = GW2.SKILLBARSLOT.Slot_10,
+		activationtime = 0.75,
+		icon = 'Ghastly Breach',
+	},
+	
+-- END ELITE.
+
+-- UTILITY.
+	[40274] = {
+		slot = GW2.SKILLBARSLOT.Slot_7,
+		activationtime = 0.0,
+		icon = 'Trail of Anguish',
+	 },
+	[42935] = {
+		slot = GW2.SKILLBARSLOT.Slot_8,
+		activationtime = 0.0,
+		icon = 'Dessicate',
+	 },
+	[42917] = {
+		slot = GW2.SKILLBARSLOT.Slot_9,
+		activationtime = 0.0,
+		icon = 'Sand Swell',
+	},
+	[41615] = {
+		slot = GW2.SKILLBARSLOT.Slot_7,
+		activationtime = 0.0,
+		icon = 'Serpent Siphon',
+	},
 	[29414] = {
 		slot = GW2.SKILLBARSLOT.Slot_7,
 		activationtime = 0,
@@ -719,6 +910,16 @@ necromancer.skills_luacode = {
 		slot = GW2.SKILLBARSLOT.Slot_7,
 		activationtime = 0,
 		icon = '"Suffer!"',
+	},
+	[29666] = {
+		slot = GW2.SKILLBARSLOT.Slot_8,
+		activationtime = 0.5,
+		icon = '"Nothing Can Save You!"',
+	},
+	[30772] = {
+		slot = GW2.SKILLBARSLOT.Slot_8,
+		activationtime = 0,
+		icon = '"Rise!"',
 	},
 	[12453] = {
 		slot = GW2.SKILLBARSLOT.Slot_7,
@@ -831,7 +1032,7 @@ necromancer.skills_luacode = {
 		icon = 'Well of Darkness',
 	},
 
--- END ELITE.
+-- END UTILITY.
 }
 function necromancer:IsActive(context)
 	return context.player.transformid == 0
