@@ -523,7 +523,7 @@ lichform.skills_luacode = {
 	[10635] = {
 		slot = GW2.SKILLBARSLOT.Slot_2,
 		activationtime = 0.25,
-		icon = 'Lich's Gaze',
+		icon = 'Lich\'s Gaze',
 	},
 	[10633] = {
 		slot = GW2.SKILLBARSLOT.Slot_3,
@@ -709,6 +709,7 @@ local downed = SkillManager:CreateSkillPalette('Downed')
 downed.uid = "Necromancer_Downed"
 downed.profession = GW2.CHARCLASS.Necromancer
 downed.icon = "Bandage"
+downed.id = 10560 --> set a skill ID if you want it to download an icon for this skillset 
 downed.skills_luacode = {
 	[10560] = {
 		 slot = GW2.SKILLBARSLOT.Slot_1,
@@ -747,9 +748,10 @@ SkillManager:AddSkillPalette( downed )
 
 
 local drowning = SkillManager:CreateSkillPalette('Drowning')
-drowning.uid = "Engi_Drowning"
-drowning.profession = GW2.CHARCLASS.Engineer
+drowning.uid = "Necromancer_Drowning"
+drowning.profession = GW2.CHARCLASS.Necromancer
 drowning.icon = "Anchor"
+drowning.id = 10640 --> set a skill ID if you want it to download an icon for this skillset 
 drowning.skills_luacode = {
 	[10640] = {
 		slot = GW2.SKILLBARSLOT.Slot_1,
