@@ -1,5 +1,4 @@
-﻿-- This template holds the renderfuncs etc. for the skillpelettes
-
+-- This template holds the renderfuncs etc. for the skillpelettes
 sm_skillpalette = class('sm_skillpalette')
 sm_skillpalette.table = _G["table"]
 

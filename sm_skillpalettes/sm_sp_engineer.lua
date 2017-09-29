@@ -30,7 +30,7 @@
 		18	REV_CENTAUR	
 	},]]
 
-local pistol_mh = class('pistol_mh',sm_skillpalette)
+local pistol_mh = SkillManager:CreateSkillPalette('pistol_mh')
 pistol_mh.uid = "Engi_Pistol_Mainhand"
 pistol_mh.profession = GW2.CHARCLASS.Engineer
 pistol_mh.icon = "Pistol"
@@ -80,7 +80,7 @@ SkillManager:AddSkillPalette( pistol_mh )
 
 
 
-local pistol_oh = class('pistol_oh',sm_skillpalette)
+local pistol_oh = SkillManager:CreateSkillPalette('pistol_oh')
 pistol_oh.uid = "Engi_Pistol_OffHand"
 pistol_oh.profession = GW2.CHARCLASS.Engineer
 pistol_oh.icon = "Pistol"
@@ -111,7 +111,7 @@ SkillManager:AddSkillPalette( pistol_oh )
 
 
 
-local rifle = class('rifle',sm_skillpalette)
+local rifle = SkillManager:CreateSkillPalette('rifle')
 rifle.uid = "Engi_Rifle"
 rifle.profession = GW2.CHARCLASS.Engineer
 rifle.icon = "Rifle"
@@ -157,7 +157,7 @@ SkillManager:AddSkillPalette( rifle )
 
 
 
-local shield = class('Shield',sm_skillpalette)
+local shield = SkillManager:CreateSkillPalette('Shield')
 shield.uid = "Engi_Shield"
 shield.profession = GW2.CHARCLASS.Engineer
 shield.icon = "Shield"
@@ -200,7 +200,7 @@ SkillManager:AddSkillPalette( shield )
 
 
 
-local harpoon = class('Harpoongun',sm_skillpalette)
+local harpoon = SkillManager:CreateSkillPalette('Harpoongun')
 harpoon.uid = "Engi_Harpoongun"
 harpoon.profession = GW2.CHARCLASS.Engineer
 harpoon.icon = "Harpoongun"
@@ -257,7 +257,7 @@ end
 SkillManager:AddSkillPalette( harpoon )
 
 
-local downed = class('Downed',sm_skillpalette)
+local downed = SkillManager:CreateSkillPalette('Downed')
 downed.uid = "Engi_Downed"
 downed.profession = GW2.CHARCLASS.Engineer
 downed.icon = "Bandage"
@@ -297,7 +297,7 @@ end
 SkillManager:AddSkillPalette( downed )
 
 
-local drowning = class('Drowning',sm_skillpalette)
+local drowning = SkillManager:CreateSkillPalette('Drowning')
 drowning.uid = "Engi_Drowning"
 drowning.profession = GW2.CHARCLASS.Engineer
 drowning.icon = "Anchor"
@@ -337,7 +337,7 @@ end
 SkillManager:AddSkillPalette( drowning )
 
 
-local bombkit = class('BombKit',sm_skillpalette)
+local bombkit = SkillManager:CreateSkillPalette('BombKit')
 bombkit.uid = "Engi_BombKit"
 bombkit.profession = GW2.CHARCLASS.Engineer
 bombkit.icon = "Bomb Kit"
@@ -396,7 +396,7 @@ SkillManager:AddSkillPalette( bombkit )
 
 
 
-local bombkit = class('Mortar Kit',sm_skillpalette)
+local bombkit = SkillManager:CreateSkillPalette('Mortar Kit')
 bombkit.uid = "Engi_MortarKit"
 bombkit.profession = GW2.CHARCLASS.Engineer
 bombkit.icon = "Mortar Kit"
@@ -444,7 +444,7 @@ end
 SkillManager:AddSkillPalette( bombkit )
 
 
-local elixiergun = class('ElixierGun',sm_skillpalette)
+local elixiergun = SkillManager:CreateSkillPalette('ElixierGun')
 elixiergun.uid = "Engi_ElixierGun"
 elixiergun.profession = GW2.CHARCLASS.Engineer
 elixiergun.icon = "ElixierGun"
@@ -503,7 +503,7 @@ SkillManager:AddSkillPalette( elixiergun )
 
 
 
-local flamethrower = class('Flamethrower',sm_skillpalette)
+local flamethrower = SkillManager:CreateSkillPalette('Flamethrower')
 flamethrower.uid = "Engi_Flamethrower"
 flamethrower.profession = GW2.CHARCLASS.Engineer
 flamethrower.icon = "Flamethrower"
@@ -569,7 +569,7 @@ end
 SkillManager:AddSkillPalette( flamethrower )
 
 
-local grenadekit = class('Grenade Kit',sm_skillpalette)
+local grenadekit = SkillManager:CreateSkillPalette('Grenade Kit')
 grenadekit.uid = "Engi_Grenade Kit"
 grenadekit.profession = GW2.CHARCLASS.Engineer
 grenadekit.icon = "Grenade Kit"
@@ -627,7 +627,7 @@ end
 SkillManager:AddSkillPalette( grenadekit )
 
 
-local medkit = class('Med Kit',sm_skillpalette)
+local medkit = SkillManager:CreateSkillPalette('Med Kit')
 medkit.uid = "Engi_Med Kit"
 medkit.profession = GW2.CHARCLASS.Engineer
 medkit.icon = "Med Kit"
@@ -677,7 +677,7 @@ end
 SkillManager:AddSkillPalette( medkit )
 
 
-local toolkit = class('Tool Kit',sm_skillpalette)
+local toolkit = SkillManager:CreateSkillPalette('Tool Kit')
 toolkit.uid = "Engi_Tool Kit"
 toolkit.profession = GW2.CHARCLASS.Engineer
 toolkit.icon = "Tool Kit"
@@ -752,7 +752,7 @@ end
 SkillManager:AddSkillPalette( toolkit )
 
 
-local hammer = class('Hammer',sm_skillpalette)
+local hammer = SkillManager:CreateSkillPalette('Hammer')
 hammer.uid = "Engi_Hammer"
 hammer.profession = GW2.CHARCLASS.Engineer
 hammer.icon = "Hammer"
@@ -808,7 +808,7 @@ SkillManager:AddSkillPalette( hammer )
 
 
 
-local sword = class('Sword',sm_skillpalette)
+local sword = SkillManager:CreateSkillPalette('Sword')
 sword.uid = "Engi_Sword"
 sword.profession = GW2.CHARCLASS.Engineer
 sword.icon = "Sword"
@@ -855,7 +855,7 @@ end
 SkillManager:AddSkillPalette( sword )
 
 
-local photonforge = class('Photon Forge',sm_skillpalette)
+local photonforge = SkillManager:CreateSkillPalette('Photon Forge')
 photonforge.uid = "Photon Forge"
 photonforge.profession = GW2.CHARCLASS.Engineer
 photonforge.icon = "Photon Forge"
@@ -921,7 +921,7 @@ SkillManager:AddSkillPalette( photonforge )
 
 
 -- ALL the skills which do not belong to a set
-local engineer = class('Engineer',sm_skillpalette)
+local engineer = SkillManager:CreateSkillPalette('Engineer')
 engineer.uid = "Engineer"
 engineer.profession = GW2.CHARCLASS.Engineer
 engineer.icon = "Engineer"

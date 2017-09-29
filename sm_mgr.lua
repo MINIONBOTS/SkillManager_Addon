@@ -1,4 +1,4 @@
-﻿sm_mgr = {}
+sm_mgr = {}
 sm_mgr.open = false
 sm_mgr.luamodspath = GetLuaModsPath()
 sm_mgr.texturepath = GetStartupPath() .. "\\GUI\\UI_Textures"
@@ -15,6 +15,7 @@ function sm_mgr.GetPlayerProfession() return Player.profession end
 -- Register the SM UI Button:
 function sm_mgr.ModuleInit()	
 	ml_gui.ui_mgr:AddMember({ id = "GW2MINION##SKILLMANAGER", name = "SkillManager", onClick = function() sm_mgr.open = not sm_mgr.open end, tooltip = GetString("Click to open \"Skill Manager\" window."), texture = GetStartupPath().."\\GUI\\UI_Textures\\sword.png"},"GW2MINION##MENU_HEADER")	
+	sm_mgr.RefreshSkillPalettes()
 end
 RegisterEventHandler("Module.Initalize",sm_mgr.ModuleInit)
 
@@ -35,6 +36,32 @@ function sm_mgr:SetDefaultProfileFolder( folderpath )
 		ml_error("[SkillManager] - Invalid default Profile folder: "..tostring(folderpath))
 	end
 end
+
+-- Get all SkillSets / Palettes from the local folder
+function sm_mgr.RefreshSkillPalettes()
+	sm_mgr.skillpalettes = {}
+	if( sm_mgr.ModuleFunctions.GetModuleFiles and sm_mgr.ModuleFunctions.ReadModuleFile ) then
+		local fileinfo = sm_mgr.ModuleFunctions.GetModuleFiles("sm_skillpalettes")				
+		for _,k in pairs(fileinfo) do
+			local fileString = sm_mgr.ModuleFunctions.ReadModuleFile(k) -- the loaded files are NOT having access to the private stack the rest here is inside
+			if (fileString) then
+				assert(loadstring(fileString))()
+			end
+		end
+	else
+		 local fileinfo = FolderList(sm_mgr.luamodspath .. [[\SkillManager\sm_skillpalettes\]],[[.*lua]])
+        for _,profileName in pairs(fileinfo) do			
+            local fileFunction, errorMessage  = loadfile(sm_mgr.luamodspath .. [[\SkillManager\sm_skillpalettes\]] .. profileName)
+            if (fileFunction) then
+				fileFunction()
+            else
+                d("Syntax error:")
+                d(errorMessage)
+            end
+        end
+    end
+end
+
 
 -- Gets all skill profiles from all "SkillManagerProfiles" folders
 function sm_mgr.RefreshProfileFiles()
@@ -159,25 +186,7 @@ function sm_mgr.DrawMenu(event,ticks)
 		GUI:SetNextWindowPosCenter(GUI.SetCond_Once)
 		sm_mgr.visible, sm_mgr.open = GUI:Begin(GetString("Skill Manager").."##smmgr", sm_mgr.open,GUI.WindowFlags_NoSavedSettings)
 		if (sm_mgr.visible) then
-			
 			GUI:BulletText(GetString("Current Profile:"))
---[[ REMOVE THIS LATER
-			GUI:SameLine(200)
-			if ( Settings.minionlib.SMActive == nil) then Settings.minionlib.SMActive = false end
-			if ( not Settings.minionlib.SMActive ) then
-				GUI:PushStyleColor(GUI.Col_Button,255,0,0,0.5)
-				GUI:PushStyleColor(GUI.Col_ButtonHovered,255,0,0,0.7)
-				GUI:PushStyleColor(GUI.Col_ButtonActive,255,0,0,0.9)
-				if (GUI:SmallButton(GetString("Turn ON"))  ) then Settings.minionlib.SMActive = not Settings.minionlib.SMActive end
-			else
-				GUI:PushStyleColor(GUI.Col_Button,0,200,0,0.5)
-				GUI:PushStyleColor(GUI.Col_ButtonHovered,0,200,0,0.7)
-				GUI:PushStyleColor(GUI.Col_ButtonActive,0,200,0,0.9)
-				if (GUI:SmallButton(GetString("Turn OFF"))  ) then Settings.minionlib.SMActive = not Settings.minionlib.SMActive end
-			end
-			GUI:PopStyleColor(3)
-			
---]]
 			
 			local smlist = { }
 			local currentidx = 0
@@ -311,6 +320,7 @@ function sm_mgr:AddSkillPalette( palette )
 	if ( not sm_mgr.skillpalettes[palette.profession] ) then sm_mgr.skillpalettes[palette.profession] = {} end
 	if ( not sm_mgr.skillpalettes[palette.profession][palette.uid] ) then 
 		sm_mgr.skillpalettes[palette.profession][palette.uid] = palette
+		--d("[SkillManager] - Skill Palette with uid "..palette.uid.." added.")
 	else
 		ml_error("[SkillManager] - Skill Palette with uid "..palette.uid.." already exists, we got a duplicate here ?")
 	end
@@ -327,6 +337,11 @@ end
 
 -- Exposed API
 _G["SkillManager"] = {}
+function SkillManager:CreateSkillPalette(name)
+	if (string.valid(name)) then
+		return class(name,sm_skillpalette)
+	end
+end
 function SkillManager:AddSkillPalette( palette ) 
 	sm_mgr:AddSkillPalette( palette )
 end
@@ -366,7 +381,7 @@ function sm_mgr.sethelper.DrawMenu(event,ticks)
 			sm_mgr.sethelper.idx, changed = GUI:Combo("##smhelperskill", sm_mgr.sethelper.idx or 1, shitlist )
 			if ( sm_mgr.sethelper.idx ) then
 				local weapons = false
-				if ( sm_mgr.sethelper.idx >= 0 and sm_mgr.sethelper.idx <= 4 ) then
+				if ( sm_mgr.sethelper.idx >= 0 and sm_mgr.sethelper.idx <= 5 ) then
 					weapons = true
 				end
 				
@@ -378,7 +393,7 @@ function sm_mgr.sethelper.DrawMenu(event,ticks)
 					end
 				else
 					 sm_mgr.sethelper.skillinfo = nil
-					for i=0,4 do
+					for i=0,5 do
 						local skill = Player:GetSpellInfo(GW2.SKILLBARSLOT["Slot_" .. tostring(i)])
 						if ( skill ) then
 							if ( not  sm_mgr.sethelper.skillinfo or sm_mgr.sethelper.skillinfo == "" ) then							

@@ -129,7 +129,7 @@ function sm_skill:RenderSkillPaletteEditor()
 							c = 0 
 						else
 							c = c + 1
-						end						
+						end
 						if ( p:RenderIcon(self.temp.currentskillset) ) then -- icon was clicked
 							self.temp.currentskillset = i
 							self.temp.currentskillid = nil

@@ -30,7 +30,7 @@
 		18	REV_CENTAUR	
 	},]]
 
-local axe = class('axe',sm_skillpalette)
+local axe = SkillManager:CreateSkillPalette('axe')
 axe.uid = "Necromancer_Axe"
 axe.profession = GW2.CHARCLASS.Necromancer
 axe.icon = "Axe"
@@ -86,7 +86,7 @@ SkillManager:AddSkillPalette( axe )
 
 
 
-local warhorn = class('warhorn',sm_skillpalette)
+local warhorn = SkillManager:CreateSkillPalette('warhorn')
 warhorn.uid = "Necromancer_Warhorn"
 warhorn.profession = GW2.CHARCLASS.Necromancer
 warhorn.icon = "Warhorn"
@@ -119,7 +119,7 @@ SkillManager:AddSkillPalette( warhorn )
 
 
 
-local staff = class('staff',sm_skillpalette)
+local staff = SkillManager:CreateSkillPalette('staff')
 staff.uid = "Necromancer_Staff"
 staff.profession = GW2.CHARCLASS.Necromancer
 staff.icon = "Staff"
@@ -167,7 +167,7 @@ SkillManager:AddSkillPalette( staff )
 
 
 
-local dagger_mh = class('dagger_mh',sm_skillpalette)
+local dagger_mh = SkillManager:CreateSkillPalette('dagger_mh')
 dagger_mh.uid = "Necromancer_Dagger_mh"
 dagger_mh.profession = GW2.CHARCLASS.Necromancer
 dagger_mh.icon = "Dagger"
@@ -217,7 +217,7 @@ SkillManager:AddSkillPalette( dagger_mh )
 
 
 
-local dagger_oh = class('dagger_oh',sm_skillpalette)
+local dagger_oh = SkillManager:CreateSkillPalette('dagger_oh')
 dagger_oh.uid = "Necromancer_Dagger_oh"
 dagger_oh.profession = GW2.CHARCLASS.Necromancer
 dagger_oh.icon = "Dagger"
@@ -250,7 +250,7 @@ SkillManager:AddSkillPalette( dagger_oh )
 
 
 
-local greatsword = class('greatsword',sm_skillpalette)
+local greatsword = SkillManager:CreateSkillPalette('greatsword')
 greatsword.uid = "Necromancer_Greatsword"
 greatsword.profession = GW2.CHARCLASS.Necromancer
 greatsword.icon = "Greatsword"
@@ -310,7 +310,7 @@ SkillManager:AddSkillPalette( greatsword )
 
 
 
-local scepter = class('scepter',sm_skillpalette)
+local scepter = SkillManager:CreateSkillPalette('scepter')
 scepter.uid = "Necromancer_Scepter"
 scepter.profession = GW2.CHARCLASS.Necromancer
 scepter.icon = "Scepter"
@@ -359,7 +359,7 @@ end
 SkillManager:AddSkillPalette( scepter )
 
 
-local focus = class('focus',sm_skillpalette)
+local focus = SkillManager:CreateSkillPalette('focus')
 focus.uid = "Necromancer_Focus"
 focus.profession = GW2.CHARCLASS.Necromancer
 focus.icon = "Focus"
@@ -413,7 +413,7 @@ SkillManager:AddSkillPalette( torch )
 --]]
 
 
-local trident = class('trident',sm_skillpalette)
+local trident = SkillManager:CreateSkillPalette('trident')
 trident.uid = "Necromancer_Trident"
 trident.profession = GW2.CHARCLASS.Necromancer
 trident.icon = "Trident"
@@ -460,7 +460,7 @@ end
 SkillManager:AddSkillPalette( trident )
 
 
-local spear = class('spear',sm_skillpalette)
+local spear = SkillManager:CreateSkillPalette('spear')
 spear.uid = "Necromancer_Spear"
 spear.profession = GW2.CHARCLASS.Necromancer
 spear.icon = "Spear"
@@ -520,7 +520,7 @@ SkillManager:AddSkillPalette( spear )
 
 
 
-local reaperShroud = class('reaperShroud',sm_skillpalette)
+local reaperShroud = SkillManager:CreateSkillPalette('reaperShroud')
 reaperShroud.uid = "Necromancer_ReaperShroud"
 reaperShroud.profession = GW2.CHARCLASS.Necromancer
 reaperShroud.icon = "Reaper Shroud" -- TODO: this right? ask fx.
@@ -600,7 +600,7 @@ SkillManager:AddSkillPalette( reaperShroud )
 
 
 
-local deathShroud = class('deathShroud',sm_skillpalette)
+local deathShroud = SkillManager:CreateSkillPalette('deathShroud')
 deathShroud.uid = "Necromancer_DeathShroud"
 deathShroud.profession = GW2.CHARCLASS.Necromancer
 deathShroud.icon = "Death Shroud" -- TODO: this right? ask fx.
@@ -664,7 +664,7 @@ SkillManager:AddSkillPalette( deathShroud )
 
 
 -- ALL the skills which do not belong to a set
-local necromancer = class('Necromancer',sm_skillpalette)
+local necromancer = SkillManager:CreateSkillPalette('Necromancer')
 necromancer.uid = "Necromancer_Necromancer"
 necromancer.profession = GW2.CHARCLASS.Necromancer
 necromancer.icon = "Necromancer"

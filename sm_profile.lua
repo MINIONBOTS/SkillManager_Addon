@@ -1,4 +1,4 @@
-﻿-- Profile class for the Skill Manager. Renders Skills and handles casting etc.
+-- Profile class for the Skill Manager. Renders Skills and handles casting etc.
 
 sm_profile = class('sm_profile')
 
