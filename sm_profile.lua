@@ -68,7 +68,7 @@ function sm_profile:UpdateContext()
 	
 	-- Update currently equipped weapons
 	self.temp.context.player.weaponset = Player:GetCurrentWeaponSet()
-	self.temp.context.player.transformid = Player:GetTransformID()
+	self.temp.context.player.transformid = Player:GetTransformID()	
 	self.temp.context.player.canswapweaponset = Player:CanSwapWeaponSet()
 	self.temp.context.player.squad = Player:GetSquad()
 	self.temp.context.player.party = Player:GetParty()
@@ -113,17 +113,17 @@ function sm_profile:UpdateContext()
 	else
 		self.temp.context.player.aquatic_alt = nil
 	end
-		
-		
+	
 	-- helper for ele's crazy weaver
 	if ( Player.profession == GW2.CHARCLASS.Elementalist ) then
-		if ( table.valid(specs) ) then
+		if ( specs ) then
 			for i,s in pairs (specs) do
 				if (s.id == 65) then
 					self.temp.context.player.isweaver = true
 				end
 			end
 		end
+		self.temp.context.player.lasttransformid = Player:GetLastTransformID() -- ele's Weaver crap
 	end
 	
 	-- Default targets
