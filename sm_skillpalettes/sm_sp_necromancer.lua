@@ -21,7 +21,7 @@
 		9	WAR_ADREN3,
 		10	RANGER_DRUID,
 		11	RANGER_ASTRAL,
-		12	UNKNOWN2,
+		12	RANGER_BEASTMODE,
 		13	REV_DRAGON,
 		14	REV_ASSASSIN,
 		15	REV_DWARF,
@@ -68,6 +68,7 @@ axe.skills_luacode = {
 -- context.player.offhand_alt
 -- context.player.aquatic
 -- context.player.aquatic_alt
+-- context.player.specs = Player:GetSpecs()
 -- others, check ingame the green ? in CUSTOM LUA CONDITION EDITOR to see all
 -- IF YOU NEED OTHERS, TELL ME OR ADD THEM YOURSELF AT sm_profile.lua line ~51 -> function sm_profile:UpdateContext()
 function axe:IsActive(context)
@@ -713,22 +714,22 @@ downed.id = 10560 --> set a skill ID if you want it to download an icon for this
 downed.skills_luacode = {
 	[10560] = {
 		 slot = GW2.SKILLBARSLOT.Slot_1,
-		 activationtime = 0.0,
+		 activationtime = 6.25,
 		 icon = 'Life Leech',
 	},
 	[10660] = {
 		 slot = GW2.SKILLBARSLOT.Slot_2,
-		 activationtime = 0.0,
+		 activationtime = 1.25,
 		 icon = 'Fear',
 	},
 	[10559] = {
 		 slot = GW2.SKILLBARSLOT.Slot_3,
-		 activationtime = 0.0,
+		 activationtime = 0.25,
 		 icon = 'Fetid Ground',
 	},
 	[1175] = {
 		 slot = GW2.SKILLBARSLOT.Slot_4,
-		 activationtime = 0.0,
+		 activationtime = 1.0,
 		 icon = 'Bandage',
 	},
 }

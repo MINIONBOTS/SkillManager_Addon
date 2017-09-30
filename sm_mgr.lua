@@ -393,7 +393,7 @@ function sm_mgr.sethelper.DrawMenu(event,ticks)
 				if ( not weapons and not utility and not toolbar) then
 					local skill = Player:GetSpellInfo(GW2.SKILLBARSLOT["Slot_" .. tostring(sm_mgr.sethelper.idx)])
 					if ( skill ) then
-						sm_mgr.sethelper.skillinfo = "["..tostring(skill.id).."] = { \n\t slot = GW2.SKILLBARSLOT.Slot_"..tostring(sm_mgr.sethelper.idx)..", \n\t activationtime = 0.0, \n\t icon = '"..skill.name.."',  \n },"
+						sm_mgr.sethelper.skillinfo = "["..tostring(skill.id).."] = { \n\t slot = GW2.SKILLBARSLOT.Slot_"..tostring(sm_mgr.sethelper.idx)..", \n\t activationtime = 0.5, \n\t icon = '"..skill.name.."',  \n },"
 			
 					end
 				else
@@ -403,9 +403,9 @@ function sm_mgr.sethelper.DrawMenu(event,ticks)
 							local skill = Player:GetSpellInfo(GW2.SKILLBARSLOT["Slot_" .. tostring(i)])
 							if ( skill ) then
 								if ( not  sm_mgr.sethelper.skillinfo or sm_mgr.sethelper.skillinfo == "" ) then							
-									sm_mgr.sethelper.skillinfo = "["..tostring(skill.id).."] = { \n\t slot = GW2.SKILLBARSLOT.Slot_"..tostring(i)..", \n\t activationtime = 0.0, \n\t icon = '"..skill.name.."',  \n },"
+									sm_mgr.sethelper.skillinfo = "["..tostring(skill.id).."] = { \n\t slot = GW2.SKILLBARSLOT.Slot_"..tostring(i)..", \n\t activationtime = 0.5, \n\t icon = '"..skill.name.."',  \n },"
 								else
-									sm_mgr.sethelper.skillinfo = sm_mgr.sethelper.skillinfo.."\n ["..tostring(skill.id).."] = { \n\t slot = GW2.SKILLBARSLOT.Slot_"..tostring(i)..", \n\t activationtime = 0.0, \n\t icon = '"..skill.name.."',  \n },"
+									sm_mgr.sethelper.skillinfo = sm_mgr.sethelper.skillinfo.."\n ["..tostring(skill.id).."] = { \n\t slot = GW2.SKILLBARSLOT.Slot_"..tostring(i)..", \n\t activationtime = 0.5, \n\t icon = '"..skill.name.."',  \n },"
 									
 								end
 							end
@@ -416,9 +416,9 @@ function sm_mgr.sethelper.DrawMenu(event,ticks)
 							local skill = Player:GetSpellInfo(GW2.SKILLBARSLOT["Slot_" .. tostring(i)])
 							if ( skill ) then
 								if ( not  sm_mgr.sethelper.skillinfo or sm_mgr.sethelper.skillinfo == "" ) then							
-									sm_mgr.sethelper.skillinfo = "["..tostring(skill.id).."] = { \n\t slot = GW2.SKILLBARSLOT.Slot_"..tostring(i)..", \n\t activationtime = 0.0, \n\t icon = '"..skill.name.."',  \n },"
+									sm_mgr.sethelper.skillinfo = "["..tostring(skill.id).."] = { \n\t slot = GW2.SKILLBARSLOT.Slot_"..tostring(i)..", \n\t activationtime = 0.5, \n\t icon = '"..skill.name.."',  \n },"
 								else
-									sm_mgr.sethelper.skillinfo = sm_mgr.sethelper.skillinfo.."\n ["..tostring(skill.id).."] = { \n\t slot = GW2.SKILLBARSLOT.Slot_"..tostring(i)..", \n\t activationtime = 0.0, \n\t icon = '"..skill.name.."',  \n },"
+									sm_mgr.sethelper.skillinfo = sm_mgr.sethelper.skillinfo.."\n ["..tostring(skill.id).."] = { \n\t slot = GW2.SKILLBARSLOT.Slot_"..tostring(i)..", \n\t activationtime = 0.5, \n\t icon = '"..skill.name.."',  \n },"
 									
 								end
 							end
@@ -429,9 +429,9 @@ function sm_mgr.sethelper.DrawMenu(event,ticks)
 							local skill = Player:GetSpellInfo(GW2.SKILLBARSLOT["Slot_" .. tostring(i)])
 							if ( skill ) then
 								if ( not  sm_mgr.sethelper.skillinfo or sm_mgr.sethelper.skillinfo == "" ) then							
-									sm_mgr.sethelper.skillinfo = "["..tostring(skill.id).."] = { \n\t slot = GW2.SKILLBARSLOT.Slot_"..tostring(i)..", \n\t activationtime = 0.0, \n\t icon = '"..skill.name.."',  \n },"
+									sm_mgr.sethelper.skillinfo = "["..tostring(skill.id).."] = { \n\t slot = GW2.SKILLBARSLOT.Slot_"..tostring(i)..", \n\t activationtime = 0.5, \n\t icon = '"..skill.name.."',  \n },"
 								else
-									sm_mgr.sethelper.skillinfo = sm_mgr.sethelper.skillinfo.."\n ["..tostring(skill.id).."] = { \n\t slot = GW2.SKILLBARSLOT.Slot_"..tostring(i)..", \n\t activationtime = 0.0, \n\t icon = '"..skill.name.."',  \n },"
+									sm_mgr.sethelper.skillinfo = sm_mgr.sethelper.skillinfo.."\n ["..tostring(skill.id).."] = { \n\t slot = GW2.SKILLBARSLOT.Slot_"..tostring(i)..", \n\t activationtime = 0.5, \n\t icon = '"..skill.name.."',  \n },"
 									
 								end
 							end

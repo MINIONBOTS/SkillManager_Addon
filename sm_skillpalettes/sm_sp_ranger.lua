@@ -1,0 +1,1107 @@
+
+local set = SkillManager:CreateSkillPalette('Greatsword')
+set.uid = "Ranger_Greatsword"
+set.profession = GW2.CHARCLASS.Ranger
+set.icon = "Greatsword"
+set.skills_luacode = {
+[12474] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_1, 
+	 activationtime = 0.5, 
+	 icon = 'Slash',  
+ },
+ [12487] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_1, 
+	 activationtime = 0.5, 
+	 icon = 'Slice',  
+	 parent = 12474,
+ },
+ [12488] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_1, 
+	 activationtime = 0.75, 
+	 icon = 'Power Stab',  
+	 parent = 12487,
+ },
+ [12525] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_2, 
+	 activationtime = 0.75, 
+	 icon = 'Maul',  
+ },
+ [12521] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_3, 
+	 activationtime = 1.75, 
+	 icon = 'Swoop',  
+ },
+ [12522] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_4, 
+	 activationtime = 3.0, 
+	 icon = 'Counterattack',  
+ },
+  [12624] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_4, 
+	 activationtime = 0.75, 
+	 icon = 'Crippling Throw',  
+	 parent = 12522,
+ },
+ [12475] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_5, 
+	 activationtime = 0.5, 
+	 icon = 'Hilt Bash',  
+ },
+}
+function set:IsActive(context)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 12525)	
+end
+function set:CanActivate(context)
+	return context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.mainhand == GW2.WEAPONTYPE.Greatsword or context.player.mainhand_alt == GW2.WEAPONTYPE.Greatsword) and (context.player.weaponset == 4 or context.player.weaponset == 5) and (context.player.transformid == 0 or context.player.transformid == 10 or context.player.transformid == 12)
+end
+function set:Activate(context)
+	Player:SwapWeaponSet()
+end
+function set:Deactivate(context)
+	return false
+end
+SkillManager:AddSkillPalette( set )
+
+
+
+local set = SkillManager:CreateSkillPalette('Longbow')
+set.uid = "Ranger_Longbow"
+set.profession = GW2.CHARCLASS.Ranger
+set.icon = "Longbow"
+set.skills_luacode = {
+[12510] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_1, 
+	 activationtime = 0.0, 
+	 icon = 'Long Range Shot',  
+ },
+ [12509] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_2, 
+	 activationtime = 0.0, 
+	 icon = 'Rapid Fire',  
+ },
+ [12573] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_3, 
+	 activationtime = 0.0, 
+	 icon = 'Hunters Shot',  
+ },
+ [12511] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_4, 
+	 activationtime = 0.0, 
+	 icon = 'Point Blank Shot',  
+ },
+ [12469] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_5, 
+	 activationtime = 0.0, 
+	 icon = 'Barrage',  
+ },
+}
+function set:IsActive(context)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 12510)	
+end
+function set:CanActivate(context)
+	return context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.mainhand == GW2.WEAPONTYPE.Longbow or context.player.mainhand_alt == GW2.WEAPONTYPE.Longbow) and (context.player.weaponset == 4 or context.player.weaponset == 5) and (context.player.transformid == 0 or context.player.transformid == 10 or context.player.transformid == 12)
+end
+function set:Activate(context)
+	Player:SwapWeaponSet()
+end
+function set:Deactivate(context)
+	return false
+end
+SkillManager:AddSkillPalette( set )
+
+
+local set = SkillManager:CreateSkillPalette('Shortbow')
+set.uid = "Ranger_Shortbow"
+set.profession = GW2.CHARCLASS.Ranger
+set.icon = "Shortbow"
+set.skills_luacode = {
+[12470] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_1, 
+	 activationtime = 0.25, 
+	 icon = 'Crossfire',  
+ },
+ [12468] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_2, 
+	 activationtime = 0.25, 
+	 icon = 'Poison Volley',  
+ },
+ [12517] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_3, 
+	 activationtime = 0.25, 
+	 icon = 'Quick Shot',  
+ },
+ [12507] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_4, 
+	 activationtime = 0.25, 
+	 icon = 'Crippling Shot',  
+ },
+ [12508] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_5, 
+	 activationtime = 0.25, 
+	 icon = 'Concussion Shot',  
+ },
+}
+function set:IsActive(context)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 12470)	
+end
+function set:CanActivate(context)
+	return context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.mainhand == GW2.WEAPONTYPE.Shortbow or context.player.mainhand_alt == GW2.WEAPONTYPE.Shortbow) and (context.player.weaponset == 4 or context.player.weaponset == 5) and (context.player.transformid == 0 or context.player.transformid == 10 or context.player.transformid == 12)
+end
+function set:Activate(context)
+	Player:SwapWeaponSet()
+end
+function set:Deactivate(context)
+	return false
+end
+SkillManager:AddSkillPalette( set )
+
+
+local set = SkillManager:CreateSkillPalette('Sword')
+set.uid = "Ranger_Sword_Mainhand"
+set.profession = GW2.CHARCLASS.Ranger
+set.icon = "Sword"
+set.skills_luacode = {
+[12471] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_1, 
+	 activationtime = 0.5, 
+	 icon = 'Slash',  
+ },
+ [12472] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_1, 
+	 activationtime = 0.25, 
+	 icon = 'Crippling Thrust',  
+	 parent = 12471,
+ },
+ [12473] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_1, 
+	 activationtime = 0.75, 
+	 icon = 'Precision Swipe',  
+	 parent = 12472,
+ },
+ [12482] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_2, 
+	 activationtime = 0.5, 
+	 icon = 'Hornet Sting',  
+ },
+  [12622] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_2, 
+	 activationtime = 0.75, 
+	 icon = 'Monarchs Leap',  
+	 parent = 12482,
+ },
+ [12481] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_3, 
+	 activationtime = 1.0, 
+	 icon = 'Serpents Strike',  
+ },
+}
+function set:IsActive(context)
+	return context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_3]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_3].id == 12481
+end
+function set:CanActivate(context)
+	return context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.mainhand == GW2.WEAPONTYPE.Sword or context.player.mainhand_alt == GW2.WEAPONTYPE.Sword) and (context.player.weaponset == 4 or context.player.weaponset == 5) and (context.player.transformid == 0 or context.player.transformid == 10 or context.player.transformid == 12)
+end
+function set:Activate(context)
+	Player:SwapWeaponSet()
+end
+function set:Deactivate(context)
+	return false
+end
+SkillManager:AddSkillPalette( set )
+
+
+local set = SkillManager:CreateSkillPalette('Axe')
+set.uid = "Ranger_Axe_Offhand"
+set.profession = GW2.CHARCLASS.Ranger
+set.icon = "Axe"
+set.skills_luacode = {
+ [12638] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_4, 
+	 activationtime = 0.5, 
+	 icon = 'Path of Scars',  
+ },
+ [12639] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_5, 
+	 activationtime = 3.25, 
+	 icon = 'Whirling Defense',  
+ },
+}
+function set:IsActive(context)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 12638)	
+end
+function set:CanActivate(context)
+	return context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.offhand == GW2.WEAPONTYPE.Axe or context.player.offhand_alt == GW2.WEAPONTYPE.Axe) and (context.player.weaponset == 4 or context.player.weaponset == 5) and (context.player.transformid == 0 or context.player.transformid == 10 or context.player.transformid == 12)
+end
+function set:Activate(context)
+	Player:SwapWeaponSet()
+end
+function set:Deactivate(context)
+	return false
+end
+SkillManager:AddSkillPalette( set )
+
+
+
+local set = SkillManager:CreateSkillPalette('Axe')
+set.uid = "Ranger_Axe_Mainhand"
+set.profession = GW2.CHARCLASS.Ranger
+set.icon = "Axe"
+set.skills_luacode = {
+[12466] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_1, 
+	 activationtime = 0.25, 
+	 icon = 'Ricochet',  
+ },
+ [12480] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_2, 
+	 activationtime = 0.75, 
+	 icon = 'Splitblade',  
+ },
+ [12490] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_3, 
+	 activationtime = 0.5, 
+	 icon = 'Winters Bite',  
+ },
+}
+function set:IsActive(context)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 12466)	
+end
+function set:CanActivate(context)
+	return context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.mainhand == GW2.WEAPONTYPE.Axe or context.player.mainhand_alt == GW2.WEAPONTYPE.Axe) and (context.player.weaponset == 4 or context.player.weaponset == 5) and (context.player.transformid == 0 or context.player.transformid == 10 or context.player.transformid == 12)
+end
+function set:Activate(context)
+	Player:SwapWeaponSet()
+end
+function set:Deactivate(context)
+	return false
+end
+SkillManager:AddSkillPalette( set )
+
+
+local set = SkillManager:CreateSkillPalette('Torch')
+set.uid = "Ranger_Torch"
+set.profession = GW2.CHARCLASS.Ranger
+set.icon = "Torch"
+set.skills_luacode = {
+ [12635] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_4, 
+	 activationtime = 0.0, 
+	 icon = 'Throw Torch',  
+ },
+ [12504] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_5, 
+	 activationtime = 0.0, 
+	 icon = 'Bonfire',  
+ },
+}
+function set:IsActive(context)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 12635)	
+end
+function set:CanActivate(context)
+	return context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.offhand == GW2.WEAPONTYPE.Torch or context.player.offhand_alt == GW2.WEAPONTYPE.Torch) and (context.player.weaponset == 4 or context.player.weaponset == 5) and (context.player.transformid == 0 or context.player.transformid == 10 or context.player.transformid == 12)
+end
+function set:Activate(context)
+	Player:SwapWeaponSet()
+end
+function set:Deactivate(context)
+	return false
+end
+SkillManager:AddSkillPalette( set )
+
+
+local set = SkillManager:CreateSkillPalette('Dagger')
+set.uid = "Ranger_Dagger_Mainhand"
+set.profession = GW2.CHARCLASS.Ranger
+set.icon = "Dagger"
+set.skills_luacode = {
+[45426] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_1, 
+	 activationtime = 0.25, 
+	 icon = 'Groundwork Gouge',  
+ },
+ [40301] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_1, 
+	 activationtime = 0.25, 
+	 icon = 'Leading Swipe',  
+	 parent = 45426,
+ },
+ [41800] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_1, 
+	 activationtime = 0.25, 
+	 icon = 'Serpent Stab',  
+	 parent = 40301,
+ },
+ [44278] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_1, 
+	 activationtime = 0.75, 
+	 icon = 'Deadly Delivery',  
+	 parent = 41800,
+ },
+ [43536] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_2, 
+	 activationtime = 0.75, 
+	 icon = 'Double Arc',  
+ },
+ [46123] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_3, 
+	 activationtime = 0.75, 
+	 icon = 'Instinctive Engage',  
+ },
+}
+function set:IsActive(context)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 43536)	
+end
+function set:CanActivate(context)
+	return context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.mainhand == GW2.WEAPONTYPE.Dagger or context.player.mainhand_alt == GW2.WEAPONTYPE.Dagger) and (context.player.weaponset == 4 or context.player.weaponset == 5) and (context.player.transformid == 0 or context.player.transformid == 10 or context.player.transformid == 12)
+end
+function set:Activate(context)
+	Player:SwapWeaponSet()
+end
+function set:Deactivate(context)
+	return false
+end
+SkillManager:AddSkillPalette( set )
+
+
+local set = SkillManager:CreateSkillPalette('Dagger')
+set.uid = "Ranger_Dagger_Offhand"
+set.profession = GW2.CHARCLASS.Ranger
+set.icon = "Dagger"
+set.skills_luacode = {
+ [12478] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_4, 
+	 activationtime = 0.5, 
+	 icon = 'Stalkers Strike',  
+ },
+ [12477] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_5, 
+	 activationtime = 0.5, 
+	 icon = 'Crippling Talon',  
+ },
+}
+function set:IsActive(context)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 12478)	
+end
+function set:CanActivate(context)
+	return context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.offhand == GW2.WEAPONTYPE.Dagger or context.player.offhand_alt == GW2.WEAPONTYPE.Dagger) and (context.player.weaponset == 4 or context.player.weaponset == 5) and (context.player.transformid == 0 or context.player.transformid == 10 or context.player.transformid == 12)
+end
+function set:Activate(context)
+	Player:SwapWeaponSet()
+end
+function set:Deactivate(context)
+	return false
+end
+SkillManager:AddSkillPalette( set )
+
+
+
+local set = SkillManager:CreateSkillPalette('Warhorn')
+set.uid = "Ranger_Warhorn"
+set.profession = GW2.CHARCLASS.Ranger
+set.icon = "Warhorn"
+set.skills_luacode = {
+ [12620] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_4, 
+	 activationtime = 1.0, 
+	 icon = 'Hunters Call',  
+ },
+ [12621] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_5, 
+	 activationtime = 0.5, 
+	 icon = 'Call of the Wild',  
+ },
+}
+function set:IsActive(context)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 12620)	
+end
+function set:CanActivate(context)
+	return context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.offhand == GW2.WEAPONTYPE.Warhorn or context.player.offhand_alt == GW2.WEAPONTYPE.Warhorn) and (context.player.weaponset == 4 or context.player.weaponset == 5) and (context.player.transformid == 0 or context.player.transformid == 10 or context.player.transformid == 12)
+end
+function set:Activate(context)
+	Player:SwapWeaponSet()
+end
+function set:Deactivate(context)
+	return false
+end
+SkillManager:AddSkillPalette( set )
+
+
+local set = SkillManager:CreateSkillPalette('Staff')
+set.uid = "Ranger_Staff"
+set.profession = GW2.CHARCLASS.Ranger
+set.icon = "Staff"
+set.skills_luacode = {
+[31710] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_1, 
+	 activationtime = 1.25, 
+	 icon = 'Solar Beam',  
+ },
+ [31889] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_2, 
+	 activationtime = 0.75, 
+	 icon = 'Astral Wisp',  
+ },
+ [31535] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_3, 
+	 activationtime = 1.25, 
+	 icon = 'Ancestral Grace',  
+ },
+ [31700] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_4, 
+	 activationtime = 0.75, 
+	 icon = 'Vine Surge',  
+ },
+ [31496] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_5, 
+	 activationtime = 0.5, 
+	 icon = 'Sublime Conversion',  
+ },
+}
+function set:IsActive(context)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 31889)	
+end
+function set:CanActivate(context)
+	return context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.mainhand == GW2.WEAPONTYPE.Staff or context.player.mainhand_alt == GW2.WEAPONTYPE.Staff) and (context.player.weaponset == 4 or context.player.weaponset == 5) and (context.player.transformid == 0 or context.player.transformid == 10)
+end
+function set:Activate(context)
+	Player:SwapWeaponSet()
+end
+function set:Deactivate(context)
+	return false
+end
+SkillManager:AddSkillPalette( set )
+
+
+
+local set = SkillManager:CreateSkillPalette('Terrestrial')
+set.uid = "Ranger_Terrestrial"
+set.profession = GW2.CHARCLASS.Ranger
+set.icon = "Cosmic Ray"
+set.skills_luacode = {
+[31796] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_1, 
+	 activationtime = 0.5, 
+	 icon = 'Cosmic Ray',  
+ },
+ [31406] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_2, 
+	 activationtime = 0.5, 
+	 icon = 'Seed of Life',  
+ },
+ [31318] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_3, 
+	 activationtime = 0.75, 
+	 icon = 'Lunar Impact',  
+ },
+ [31894] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_4, 
+	 activationtime = 2.75, 
+	 icon = 'Rejuvenating Tides',  
+ },
+ [31503] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_5, 
+	 activationtime = 2.25, 
+	 icon = 'Natural Convergence',  
+ },
+}
+function set:IsActive(context)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 31796)
+end
+function set:CanActivate(context)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_17] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_17].id == 31796 and context.skillbar[GW2.SKILLBARSLOT.Slot_17].cancast)
+end
+function set:Activate(context)
+	if ( context.skillbar~=nil ) then
+		if (context.skillbar[GW2.SKILLBARSLOT.Slot_17] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_17].id == 31796) then Player:CastSpell(GW2.SKILLBARSLOT.Slot_17) end
+	end
+end
+function set:Deactivate(context)
+	if ( context.skillbar~=nil ) then
+		if (context.skillbar[GW2.SKILLBARSLOT.Slot_17] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_17].id == 31411) then Player:CastSpell(GW2.SKILLBARSLOT.Slot_17) end
+		return true
+	end
+end
+SkillManager:AddSkillPalette( set )
+
+
+local set = SkillManager:CreateSkillPalette('Harpoongun')
+set.uid = "Ranger_Harpoongun"
+set.profession = GW2.CHARCLASS.Ranger
+set.icon = "Harpoongun"
+set.skills_luacode = {
+[12526] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_1, 
+	 activationtime = 0.25, 
+	 icon = 'Splinter Shot',  
+ },
+ [12529] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_2, 
+	 activationtime = 0.25, 
+	 icon = 'Coral Shot',  
+ },
+ [12528] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_3, 
+	 activationtime = 1.0, 
+	 icon = 'Feeding Frenzy',  
+ },
+ [12527] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_4, 
+	 activationtime = 0.25, 
+	 icon = 'Mercy Shot',  
+ },
+ [12530] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_5, 
+	 activationtime = 0.5, 
+	 icon = 'Ink Blast',  
+ },
+}
+function set:IsActive(context)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 12526)	
+end
+function set:CanActivate(context)
+	return context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.Diving and (context.player.aquatic == GW2.WEAPONTYPE.Harpoongun or context.player.aquatic_alt == GW2.WEAPONTYPE.Harpoongun) and (context.player.weaponset == 0 or context.player.weaponset == 1) and (context.player.transformid == 0 or context.player.transformid == 10 or context.player.transformid == 12)
+end
+function set:Activate(context)
+	Player:SwapWeaponSet()
+end
+function set:Deactivate(context)
+	return false
+end
+SkillManager:AddSkillPalette( set )
+
+
+local set = SkillManager:CreateSkillPalette('Spear')
+set.uid = "Ranger_Spear"
+set.profession = GW2.CHARCLASS.Ranger
+set.icon = "Spear"
+set.skills_luacode = {
+[12553] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_1, 
+	 activationtime = 0.5, 
+	 icon = 'Stab',  
+ },
+ [12555] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_1, 
+	 activationtime = 0.75, 
+	 icon = 'Jab',  
+	 parent = 12553,
+ },
+ [12556] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_1, 
+	 activationtime = 0.5, 
+	 icon = 'Evasive Strike',  
+	 parent = 12555,
+ },
+ [12559] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_2, 
+	 activationtime = 0.75, 
+	 icon = 'Swirling Strike',  
+ },
+ [12557] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_3, 
+	 activationtime = 2.5, 
+	 icon = 'Dart',  
+ },
+ [12561] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_4, 
+	 activationtime = 1.5, 
+	 icon = 'Counterstrike',  
+ },
+  [12630] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_4, 
+	 activationtime = 0.5, 
+	 icon = 'Counter Throw',  
+	 parent = 12561,
+ },
+ [12552] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_5, 
+	 activationtime = 1.25, 
+	 icon = 'Man O War',  
+ },
+}
+function set:IsActive(context)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 12559)	
+end
+function set:CanActivate(context)
+	return context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.Diving and (context.player.aquatic == GW2.WEAPONTYPE.Spear or context.player.aquatic_alt == GW2.WEAPONTYPE.Spear) and (context.player.weaponset == 0 or context.player.weaponset == 1) and (context.player.transformid == 0 or context.player.transformid == 10 or context.player.transformid == 12)
+end
+function set:Activate(context)
+	Player:SwapWeaponSet()
+end
+function set:Deactivate(context)
+	return false
+end
+SkillManager:AddSkillPalette( set )
+
+
+local downed = SkillManager:CreateSkillPalette('Downed')
+downed.uid = "Ranger_Downed"
+downed.profession = GW2.CHARCLASS.Ranger
+downed.icon = "Bandage"
+downed.skills_luacode = {
+[12486] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_1, 
+	 activationtime = 0.5, 
+	 icon = 'Throw Dirt',  
+ },
+ [12485] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_2, 
+	 activationtime = 0.5, 
+	 icon = 'Thunderclap',  
+ },
+ [12515] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_3, 
+	 activationtime = 0.5, 
+	 icon = 'Lick Wounds',  
+ },
+ [1175] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_4, 
+	 activationtime = 1.0, 
+	 icon = 'Bandage',  
+ },
+}
+function downed:IsActive(context)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 12486)	
+end
+function downed:CanActivate(context)
+	return false
+end
+function downed:Activate(context)
+end
+function downed:Deactivate(context)	
+	return false
+end
+SkillManager:AddSkillPalette( downed )
+
+
+local drowning = SkillManager:CreateSkillPalette('Drowning')
+drowning.uid = "Ranger_Drowning"
+drowning.profession = GW2.CHARCLASS.Ranger
+drowning.icon = "Vengeance"
+drowning.skills_luacode = {
+[12566] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_1, 
+	 activationtime = 0.5, 
+	 icon = 'Throw Knife',  
+ },
+ [12485] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_2, 
+	 activationtime = 0.5, 
+	 icon = 'Thunderclap',  
+ },
+ [12515] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_3, 
+	 activationtime = 0.5, 
+	 icon = 'Lick Wounds',  
+ },
+ [1175] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_4, 
+	 activationtime = 1.0, 
+	 icon = 'Bandage',  
+ },
+}
+function drowning:IsActive(context)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 12566)	
+end
+function drowning:CanActivate(context)
+	return false
+end
+function drowning:Activate(context)
+end
+function drowning:Deactivate(context)
+	return false
+end
+SkillManager:AddSkillPalette( drowning )
+
+
+-- ALL the skills which do not belong to a set
+local set = SkillManager:CreateSkillPalette('Ranger')
+set.uid = "Ranger"
+set.profession = GW2.CHARCLASS.Ranger
+set.icon = "Ranger"
+set.skills_luacode = {
+[31914] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_6, 
+	 activationtime = 1.0, 
+	 icon = 'We Heal As One!',  
+ },
+ [12632] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_7, 
+	 activationtime = 0.0, 
+	 icon = 'Guard!',  
+	 instantcast = true,
+ },
+ [12631] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_8, 
+	 activationtime = 0.0, 
+	 icon = 'Protect Me!',  
+	 instantcast = true,
+ },
+ [34309] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_9, 
+	 activationtime = 0.0, 
+	 icon = 'Search and Rescue!',
+instantcast = true,	 
+ },
+ [12516] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_10, 
+	 activationtime = 1.0, 
+	 icon = 'Strength of the Pack!', 
+ },
+ [12483] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_6, 
+	 activationtime = 0.75, 
+	 icon = 'Troll Unguent',  
+ },
+ [12633] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_7, 
+	 activationtime = 0.0, 
+	 icon = 'Sic Em!',  
+	 instantcast = true,	
+ },
+ [12502] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_8, 
+	 activationtime = 0.0, 
+	 icon = 'Signet of Renewal',  
+	 instantcast = true,	
+ },
+ [12500] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_9, 
+	 activationtime = 0.0, 
+	 icon = 'Signet of Stone',  
+	instantcast = true,	
+ },
+ [12580] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_10, 
+	 activationtime = 0.75, 
+	 icon = 'Entangle',  
+ },
+ [12489] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_6, 
+	 activationtime = 0.5, 
+	 icon = 'Healing Spring',
+	 nounderwater = true,
+ },
+ [12542] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_7, 
+	 activationtime = 0.0, 
+	 icon = 'Signet of the Hunt', 
+	instantcast = true,
+ },
+ [12491] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_8, 
+	 activationtime = 0.75, 
+	 icon = 'Signet of the Wild',  
+ },
+  [12569] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_10, 
+	 activationtime = 1.5, 
+	 icon = 'Spirit of Nature',  
+ },
+ [12497] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_9, 
+	 activationtime = 1.0, 
+	 icon = 'Frost Spirit',  
+ },
+ [21773] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_6, 
+	 activationtime = 1.0, 
+	 icon = 'Water Spirit',  
+ },
+ [12495] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_7, 
+	 activationtime = 1.0, 
+	 icon = 'Stone Spirit',  
+ },
+ [12493] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_8, 
+	 activationtime = 1.0, 
+	 icon = 'Storm Spirit',  
+ },
+ [21775] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_6, 
+	 activationtime = 0.0, 
+	 icon = 'Aqua Surge',  
+	 instantcast = true,
+ },
+ [12595] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_7, 
+	 activationtime = 0.0, 
+	 icon = 'Quicksand',  
+	 instantcast = true,
+ },
+ [12594] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_8, 
+	 activationtime = 0.75, 
+	 icon = 'Call Lightning',  
+ },
+ [12593] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_9, 
+	 activationtime = 0.0, 
+	 icon = 'Cold Snap',  
+	 instantcast = true,
+ },
+ [12596] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_10, 
+	 activationtime = 0.0, 
+	 icon = 'Natures Renewal',  
+	 instantcast = true,
+ },
+ [31819] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_6, 
+	 activationtime = 0.5, 
+	 icon = 'Glyph of Rejuvenation',  
+	 nounderwater = true,
+ },
+ [12498] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_7, 
+	 activationtime = 1.0, 
+	 icon = 'Sun Spirit',  
+ },
+ [12494] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_8, 
+	 activationtime = 0.0, 
+	 icon = 'Lightning Reflexes',  
+	 instantcast = true,
+ },
+ [12501] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_9, 
+	 activationtime = 0.75, 
+	 icon = 'Muddy Terrain',
+	 nounderwater = true,
+ },
+  [12592] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_7, 
+	 activationtime = 0.0, 
+	 icon = 'Solar Flare',  
+	 instantcast = true,
+ },
+  [12550] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_7, 
+	 activationtime = 0.0, 
+	 icon = 'Quickening Zephyr', 
+	 instantcast = true,
+ },
+ [12537] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_8, 
+	 activationtime = 0.0, 
+	 icon = 'Sharpening Stone',
+	 instantcast = true,
+ },
+ [12499] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_9, 
+	 activationtime = 0.5, 
+	 icon = 'Flame Trap', 
+	nounderwater = true,	 
+ },
+  [12492] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_7, 
+	 activationtime = 0.5, 
+	 icon = 'Frost Trap',
+	nounderwater = true,	 
+ },
+ [12476] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_8, 
+	 activationtime = 0.5, 
+	 icon = 'Spike Trap',
+	nounderwater = true,	 
+ },
+ [12496] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_9, 
+	 activationtime = 0.5, 
+	 icon = 'Vipers Nest',
+	nounderwater = true,	 
+ },
+ [31607] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_7, 
+	 activationtime = 0.5, 
+	 icon = 'Glyph of Alignment', 
+	 nounderwater = true,	 
+ },
+ [31658] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_8, 
+	 activationtime = 0.5, 
+	 icon = 'Glyph of Equality',
+	nounderwater = true,	 
+ },
+ [30448] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_9, 
+	 activationtime = 0.5, 
+	 icon = 'Glyph of the Tides', 
+	nounderwater = true,
+ },
+ [31888] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_10, 
+	 activationtime = 0.5, 
+	 icon = 'Glyph of Unity', 
+	nounderwater = true,
+ },
+ [31804] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_9, 
+	 activationtime = 0.0, 
+	 icon = 'Glyph of Empowerment',  
+	 nounderwater = true,
+ },
+ [42944] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_17, 
+	 activationtime = 0.0, 
+	 icon = 'Beastmode',  
+ },
+ [43014] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_17, 
+	 activationtime = 0.0, 
+	 icon = 'Leave Beastmode',  
+ },
+ [44948] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_6, 
+	 activationtime = 0.75, 
+	 icon = 'Bear Stance',  
+ },
+ [45789] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_7, 
+	 activationtime = 0.0, 
+	 icon = 'Dolyak Stance',
+	instantcast = true,
+ },
+ [45142] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_8, 
+	 activationtime = 0.0, 
+	 icon = 'Griffon Stance',
+	 instantcast = true,
+ },
+ [45970] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_9, 
+	 activationtime = 0.0, 
+	 icon = 'Moa Stance',
+	 instantcast = true,
+ },
+ [45717] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_10, 
+	 activationtime = 0.75, 
+	 icon = 'One Wolf Pack',
+ },
+  [40498] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_9, 
+	 activationtime = 0.0, 
+	 icon = 'Vulture Stance',
+	 instantcast = true,
+ },
+ [43726] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_13, 
+	 activationtime = 0.75, 
+	 icon = 'Crippling Leap',  
+ },
+ [42894] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_14, 
+	 activationtime = 0.75, 
+	 icon = 'Brutal Charge',  
+ },
+ [45797] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_15, 
+	 activationtime = 0.25, 
+	 icon = 'Unflinching Fortitude',  
+ },
+ [43136] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_13, 
+	 activationtime = 0.5, 
+	 icon = 'Bite',  
+ },
+ [43060] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_14, 
+	 activationtime = 0.5, 
+	 icon = 'Defy Pain',  
+ },
+ [44626] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_15, 
+	 activationtime = 0.5, 
+	 icon = 'Spiritual Reprieve',  
+ },
+ [44617] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_13, 
+	 activationtime = 0.5, 
+	 icon = 'Harmonic Cry',  
+ },
+ [43548] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_14, 
+	 activationtime = 0.5, 
+	 icon = 'Frenzied Attack',  
+ },
+ [45797] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_15, 
+	 activationtime = 0.5, 
+	 icon = 'Unflinching Fortitude',  
+ },
+ [41406] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_13, 
+	 activationtime = 0.5, 
+	 icon = 'Maul',  
+ },
+ [46432] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_14, 
+	 activationtime = 0.5, 
+	 icon = 'Brutal Charge',  
+ },
+ [43375] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_15, 
+	 activationtime = 0.5, 
+	 icon = 'Prelude Lash',  
+ },
+ [41524] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_13, 
+	 activationtime = 0.5, 
+	 icon = 'Kick',  
+ },
+ [45743] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_14, 
+	 activationtime = 0.5, 
+	 icon = 'Charge',  
+ },
+ [40729] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_15, 
+	 activationtime = 0.5, 
+	 icon = 'Worldly Impact',  
+ },
+ [41206] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_13, 
+	 activationtime = 0.5, 
+	 icon = 'Rain of Spikes',  
+ },
+ [45479] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_14, 
+	 activationtime = 0.5, 
+	 icon = 'Sharpen Spines',  
+ },
+ [40588] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_15, 
+	 activationtime = 0.5, 
+	 icon = 'Primal Cry',  
+ },
+ [41206] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_13, 
+	 activationtime = 0.5, 
+	 icon = 'Rain of Spikes',  
+ },
+ [45479] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_14, 
+	 activationtime = 0.5, 
+	 icon = 'Sharpen Spines',  
+ },
+ [40588] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_15, 
+	 activationtime = 0.5, 
+	 icon = 'Primal Cry',  
+ },
+}
+function set:IsActive(context)
+	return context.player.transformid == 0 or context.player.transformid == 10 or context.player.transformid == 11 or context.player.transformid == 12
+end
+function set:CanActivate(context)
+	return false
+end
+function set:Activate(context)
+end
+function set:Deactivate(context)
+	return false
+end
+SkillManager:AddSkillPalette( set )
+

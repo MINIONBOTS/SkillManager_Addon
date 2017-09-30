@@ -70,6 +70,11 @@ function sm_profile:UpdateContext()
 	self.temp.context.player.weaponset = Player:GetCurrentWeaponSet()
 	self.temp.context.player.transformid = Player:GetTransformID()
 	self.temp.context.player.canswapweaponset = Player:CanSwapWeaponSet()
+	self.temp.context.player.squad = Player:GetSquad()
+	self.temp.context.player.party = Player:GetParty()
+	self.temp.context.player.specs = Player:GetSpecs()
+	self.temp.context.player.buffs = Player.buffs
+	
 	local item = Inventory:GetEquippedItemBySlot(GW2.EQUIPMENTSLOT.MainHandWeapon)
 	if ( item ) then
 		self.temp.context.player.mainhand = item.weapontype
@@ -109,9 +114,17 @@ function sm_profile:UpdateContext()
 		self.temp.context.player.aquatic_alt = nil
 	end
 		
-	
-	self.temp.context.player.squad = Player:GetSquad()
-	self.temp.context.player.party = Player:GetParty()
+		
+	-- helper for ele's crazy weaver
+	if ( Player.profession == GW2.CHARCLASS.Elementalist ) then
+		if ( table.valid(specs) ) then
+			for i,s in pairs (specs) do
+				if (s.id == 65) then
+					self.temp.context.player.isweaver = true
+				end
+			end
+		end
+	end
 	
 	-- Default targets
 	local target = Player:GetTarget()
