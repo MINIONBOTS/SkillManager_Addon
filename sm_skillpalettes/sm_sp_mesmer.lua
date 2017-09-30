@@ -65,7 +65,7 @@ sword_ambush_mh.skills_luacode = {
 		 slot = GW2.SKILLBARSLOT.Slot_1, 
 		 activationtime = 0.75, 
 		 icon = 'Mirage Thrust',  
-	 },,
+	 },
 	 [10334] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_2, 
 		 activationtime = 0.5, 
@@ -189,7 +189,7 @@ SkillManager:AddSkillPalette( axe )
 
 
 local axe_ambush = SkillManager:CreateSkillPalette('axe_ambush')
-axe_ambush.uid = "Mesmer_axe"
+axe_ambush.uid = "Mesmer_axe_ambush"
 axe_ambush.profession = GW2.CHARCLASS.Mesmer
 axe_ambush.icon = "axe"
 -- axe_ambush.id =   --> set a skill ID if you want it to download an icon for this skillset 
@@ -275,7 +275,7 @@ SkillManager:AddSkillPalette( greatsword )
 
 
 local greatsword_ambush = SkillManager:CreateSkillPalette('greatsword_ambush')
-greatsword_ambush.uid = "Mesmer_greatsword"
+greatsword_ambush.uid = "Mesmer_greatsword_ambush"
 greatsword_ambush.profession = GW2.CHARCLASS.Mesmer
 greatsword_ambush.icon = "greatsword"
 -- greatsword_ambush.id =   --> set a skill ID if you want it to download an icon for this skillset 
@@ -356,7 +356,7 @@ SkillManager:AddSkillPalette( pistol )
 
 
 local scepter = SkillManager:CreateSkillPalette('scepter')
-scepter.uid = "Mesmer_pistol"
+scepter.uid = "Mesmer_scepter"
 scepter.profession = GW2.CHARCLASS.Mesmer
 scepter.icon = "scepter"
 -- scepter.id =   --> set a skill ID if you want it to download an icon for this skillset 
@@ -412,7 +412,7 @@ SkillManager:AddSkillPalette( scepter )
 
 
 local scepter_ambush = SkillManager:CreateSkillPalette('scepter_ambush')
-scepter_ambush.uid = "Mesmer_pistol"
+scepter_ambush.uid = "Mesmer_cepter_ambush"
 scepter_ambush.profession = GW2.CHARCLASS.Mesmer
 scepter_ambush.icon = "scepter"
 -- scepter_ambush.id =   --> set a skill ID if you want it to download an icon for this skillset 
@@ -456,7 +456,7 @@ SkillManager:AddSkillPalette( scepter_ambush )
 
 
 local staff = SkillManager:CreateSkillPalette('staff')
-staff.uid = "Mesmer_pistol"
+staff.uid = "Mesmer_staff"
 staff.profession = GW2.CHARCLASS.Mesmer
 staff.icon = "staff"
 -- staff.id =   --> set a skill ID if you want it to download an icon for this skillset 
@@ -504,7 +504,7 @@ SkillManager:AddSkillPalette( staff )
 
 
 local staff_ambush = SkillManager:CreateSkillPalette('staff_ambush')
-staff_ambush.uid = "Mesmer_pistol"
+staff_ambush.uid = "Mesmer_staff_ambush"
 staff_ambush.profession = GW2.CHARCLASS.Mesmer
 staff_ambush.icon = "staff"
 -- staff_ambush.id =   --> set a skill ID if you want it to download an icon for this skillset 
@@ -552,7 +552,7 @@ SkillManager:AddSkillPalette( staff_ambush )
 
 
 local focus = SkillManager:CreateSkillPalette('focus')
-focus.uid = "Mesmer_pistol"
+focus.uid = "Mesmer_focus"
 focus.profession = GW2.CHARCLASS.Mesmer
 focus.icon = "focus"
 -- focus.id =   --> set a skill ID if you want it to download an icon for this skillset 
@@ -591,7 +591,7 @@ SkillManager:AddSkillPalette( focus )
 
 
 local torch = SkillManager:CreateSkillPalette('torch')
-torch.uid = "Mesmer_pistol"
+torch.uid = "Mesmer_torch"
 torch.profession = GW2.CHARCLASS.Mesmer
 torch.icon = "torch"
 -- torch.id =   --> set a skill ID if you want it to download an icon for this skillset 
@@ -622,7 +622,7 @@ end
 SkillManager:AddSkillPalette( torch )
 
 local shield = SkillManager:CreateSkillPalette('shield')
-shield.uid = "Mesmer_pistol"
+shield.uid = "Mesmer_shield"
 shield.profession = GW2.CHARCLASS.Mesmer
 shield.icon = "shield"
 -- shield.id =   --> set a skill ID if you want it to download an icon for this skillset 
