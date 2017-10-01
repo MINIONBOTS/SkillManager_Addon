@@ -669,7 +669,7 @@ trident.skills_luacode = {
 	[10258] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_1, 
 		 activationtime = 0.5, 
-		 icon = 'Siren's Call',  
+		 icon = 'Siren\'s Call',  
 	 },
 	 [10259] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_2, 
