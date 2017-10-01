@@ -78,7 +78,7 @@ dagger_mh.skills_luacode = {
 	 },
 	 [13108] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_1, 
-		 activationtime = 0.5, 
+		 activationtime = 0.25, 
 		 parent = 13087,
 		 icon = 'Lotus Strike',  
 	 },
@@ -112,7 +112,7 @@ dagger_mh.skills_luacode = {
 	 },
 }
 function dagger_mh:IsActive(context)
-	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 10334)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 13097)
 end
 function dagger_mh:CanActivate(context)
 	return context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.mainhand == GW2.WEAPONTYPE.Dagger or context.player.mainhand_alt == GW2.WEAPONTYPE.Dagger) and (context.player.weaponset == 4 or context.player.weaponset == 5) and context.player.transformid == 0
