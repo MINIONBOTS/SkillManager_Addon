@@ -628,25 +628,25 @@ downed.icon = "downed"
 downed.id = 13003  --> set a skill ID if you want it to download an icon for this skillset 
 downed.skills_luacode = {
 	[13003] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_1, 
-	 activationtime = 0.25, 
-	 icon = 'Trail of Knives',  
- },
- [13140] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_2, 
-	 activationtime = 0, 
-	 icon = 'Shadow Escape',  
- },
- [13033] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_3, 
-	 activationtime = 0.5, 
-	 icon = 'Smoke Bomb',  
- },
- [1175] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_4, 
-	 activationtime = 0, 
-	 icon = 'Bandage',  
- },
+		 slot = GW2.SKILLBARSLOT.Slot_1, 
+		 activationtime = 0.25, 
+		 icon = 'Trail of Knives',  
+	 },
+	 [13140] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_2, 
+		 activationtime = 0, 
+		 icon = 'Shadow Escape',  
+	 },
+	 [13033] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_3, 
+		 activationtime = 0.5, 
+		 icon = 'Smoke Bomb',  
+	 },
+	 [1175] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_4, 
+		 activationtime = 0, 
+		 icon = 'Bandage',  
+	 },
 }
 function downed:IsActive(context)
 	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 13079)

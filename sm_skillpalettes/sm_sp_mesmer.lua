@@ -660,6 +660,204 @@ SkillManager:AddSkillPalette( shield )
 
 
 
+local trident = SkillManager:CreateSkillPalette('trident')
+trident.uid = "Mesmer_Trident"
+trident.profession = GW2.CHARCLASS.Mesmer
+trident.icon = "trident"
+-- trident.id =   --> set a skill ID if you want it to download an icon for this skillset 
+trident.skills_luacode = {
+	[10258] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_1, 
+		 activationtime = 0.5, 
+		 icon = 'Siren's Call',  
+	 },
+	 [10259] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_2, 
+		 activationtime = 0.5, 
+		 icon = 'Blinding Tide',  
+	 },
+	 [10327] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_3, 
+		 activationtime = 0.75, 
+		 icon = 'Spinning Revenge',  
+	 },
+	 [10328] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_4, 
+		 activationtime = 0.5, 
+		 icon = 'Illusionary Whaler',  
+	 },
+	 [10260] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_5, 
+		 activationtime = 0.75, 
+		 icon = 'Illusion of Drowning',  
+	 },
+}
+function trident:IsActive(context)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 10258)
+end
+function trident:CanActivate(context)
+	return context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.Diving and (context.player.aquatic == GW2.WEAPONTYPE.Trident or context.player.aquatic_alt == GW2.WEAPONTYPE.Trident) and (context.player.weaponset == 0 or context.player.weaponset == 1) and context.player.transformid == 0
+end
+function trident:Activate(context)
+	Player:SwapWeaponSet()
+end
+function trident:Deactivate(context)
+	return false
+end
+SkillManager:AddSkillPalette( trident )
+
+
+
+local spear = SkillManager:CreateSkillPalette('spear')
+spear.uid = "Mesmer_spear"
+spear.profession = GW2.CHARCLASS.Mesmer
+spear.icon = "spear"
+-- spear.id =   --> set a skill ID if you want it to download an icon for this skillset 
+spear.skills_luacode = {
+	[10315] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_1, 
+		 activationtime = 0.5, 
+		 icon = 'Stab',  
+	 },
+	 [10316] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_1, 
+		 activationtime = 0.75, 
+		 parent = 10315,
+		 icon = 'Jab',  
+	 },
+	 [10317] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_1, 
+		 activationtime = 0.5, 
+		 parent = 10316,
+		 icon = 'Evasive Strike',  
+	 },
+	 [10318] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_2, 
+		 activationtime = 1.75, 
+		 icon = 'Feigned Surge',  
+	 },
+	 [10322] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_2, 
+		 activationtime = 0, 
+		 parent = 10318,
+		 icon = 'Feign',  
+	 },
+	 [10251] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_3, 
+		 activationtime = 0.5, 
+		 icon = 'Illusionary Mariner',  
+	 },
+	 [10325] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_4, 
+		 activationtime = 0.5, 
+		 icon = 'Slipstream',  
+	 },
+	 [10255] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_5, 
+		 activationtime = 1.25, 
+		 icon = 'Vortex',  
+	 },
+}
+function spear:IsActive(context)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_3] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_3].id == 10251)
+end
+function spear:CanActivate(context)
+	return context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.Diving and (context.player.aquatic == GW2.WEAPONTYPE.Spear or context.player.aquatic_alt == GW2.WEAPONTYPE.Spear) and (context.player.weaponset == 0 or context.player.weaponset == 1) and context.player.transformid == 0
+end
+function spear:Activate(context)
+	Player:SwapWeaponSet()
+end
+function spear:Deactivate(context)
+	return false
+end
+SkillManager:AddSkillPalette( spear )
+
+
+
+local downed = SkillManager:CreateSkillPalette('downed')
+downed.uid = "Mesmer_downed"
+downed.profession = GW2.CHARCLASS.Mesmer
+downed.icon = "downed"
+downed.id = 10196  --> set a skill ID if you want it to download an icon for this skillset 
+downed.skills_luacode = {
+	[10196] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_1, 
+		 activationtime = 0.75, 
+		 icon = 'Mind Blast',  
+	 },
+	 [10366] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_2, 
+		 activationtime = 0.5, 
+		 icon = 'Deception',  
+	 },
+	 [10224] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_3, 
+		 activationtime = 0.5, 
+		 icon = 'Phantasmal Rogue',  
+	 },
+	 [1175] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_4, 
+		 activationtime = 0, 
+		 icon = 'Bandage',  
+	 },
+}
+function downed:IsActive(context)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 10196)
+end
+function downed:CanActivate(context)
+	return false
+end
+function downed:Activate(context)
+end
+function downed:Deactivate(context)
+	return false
+end
+SkillManager:AddSkillPalette( downed )
+
+
+
+local drowning = SkillManager:CreateSkillPalette('drowning')
+drowning.uid = "Mesmer_drowning"
+drowning.profession = GW2.CHARCLASS.Mesmer
+drowning.icon = "drowning"
+drowning.id = 10196  --> set a skill ID if you want it to download an icon for this skillset 
+drowning.skills_luacode = {
+	[10196] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_1, 
+		 activationtime = 0.5, 
+		 icon = 'Mind Blast',  
+	 },
+	 [10366] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_2, 
+		 activationtime = 0.5, 
+		 icon = 'Deception',  
+	 },
+	 [10224] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_3, 
+		 activationtime = 1, 
+		 icon = 'Phantasmal Rogue',  
+	 },
+	 [1175] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_4, 
+		 activationtime = 1, 
+		 icon = 'Bandage',  
+	 },
+}
+function drowning:IsActive(context)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 10196)
+end
+function drowning:CanActivate(context)
+	return false
+end
+function drowning:Activate(context)
+end
+function drowning:Deactivate(context)
+	return false
+end
+SkillManager:AddSkillPalette( drowning )
+
+
+
 -- ALL the skills which do not belong to a set
 local mesmer = SkillManager:CreateSkillPalette('Mesmer')
 mesmer.uid = "Mesmer_Mesmer"
