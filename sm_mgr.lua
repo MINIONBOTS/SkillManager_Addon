@@ -355,12 +355,119 @@ function SkillManager:RenderCodeEditor()
 		sm_mgr.profile:RenderCodeEditor() 
 	end 
 end
-function SkillManager:Cast() 
-	if ( sm_mgr.profile ) then 
+function SkillManager:Cast()
+	d("CAAAAAAA")
+	if ( sm_mgr.profile ) then
 		sm_mgr.profile:Cast() 
+		
+		--sm_mgr:GenetateDefaultProfile()
+		
 	end 
 end
 
+
+
+
+-- auto generating default profiles, leaving it here for future changes I guess
+function sm_mgr:GenetateDefaultProfile()
+	--Gettting all skill infos and sorting the shit a bit + adding a "distance" condition to each
+	local heals = {}
+	local weapons = {}
+	local wpspam = {}
+	local utility = {}
+	for i,sp in pairs (sm_mgr.skillpalettes[sm_mgr.GetPlayerProfession()]) do
+		for j,s in pairs (sp.skills_luacode) do
+			local sinfo = Player:GetSpellInfoByID(j)
+			if (sinfo) then
+				local entry = {}
+				entry.id = j
+				entry.slot = s.slot
+				entry.activationtime = s.activationtime
+				entry.icon = s.icon
+				entry.parent = s.parent
+				entry.instantcast = s.instantcast
+				entry.nounderwater = s.nounderwater
+				entry.range = sinfo.maxrange
+				if ( sinfo.radius and sinfo.radius > entry.range )  then 
+					entry.range = sinfo.radius
+				end
+				entry.skillpaletteuid = i
+				
+				if ( s.slot == GW2.SKILLBARSLOT.Slot_6 ) then
+					table.insert(heals,entry)
+				elseif( s.slot == GW2.SKILLBARSLOT.Slot_1 ) then
+					table.insert(wpspam,entry)
+				elseif( s.slot > GW2.SKILLBARSLOT.Slot_1 and s.slot <= GW2.SKILLBARSLOT.Slot_5) then
+					table.insert(weapons,entry)	
+				else
+					table.insert(utility,entry)
+				end
+			end
+		end
+	end
+	
+	self.profile.actionlist = {}
+	
+	for i,k in pairs(heals) do
+		local n = sm_skill:new()
+		n.id = k.id
+		n.skillpaletteuid = k.skillpaletteuid
+		n.setsattackrange = false
+		local condi = { healthtype = 3, operator = 1, target = 2, uid = "Health", value = 75, }
+		n.conditions[1] = { [1] = sm_mgr.conditions["Health"]:new(condi) }
+		n.conditions[1].casttarget = 2
+		table.insert(self.profile.actionlist,n)
+	end
+	
+	for i,k in pairs(weapons) do
+		local n = sm_skill:new()
+		n.id = k.id
+		n.skillpaletteuid = k.skillpaletteuid
+		n.setsattackrange = false		
+		local condi = { operator = 1, target = 1, uid = "Distance", value = k.range }
+		local ct = 1
+		if ( not k.range or k.range == 0 ) then
+			condi = { operator = 1, target = 1, uid = "CombatState" }
+			ct = 2
+		end
+		n.conditions[1] = { [1] = sm_mgr.conditions[condi.uid]:new(condi) }
+		n.conditions[1].casttarget = ct
+		table.insert(self.profile.actionlist,n)
+	end
+	
+	for i,k in pairs(utility) do
+		local n = sm_skill:new()
+		n.id = k.id
+		n.skillpaletteuid = k.skillpaletteuid
+		n.setsattackrange = false		
+		local condi = { operator = 1, target = 1, uid = "CombatState" }		
+		n.conditions[1] = { [1] = sm_mgr.conditions[condi.uid]:new(condi) }
+		n.conditions[1].casttarget = 2
+		table.insert(self.profile.actionlist,n)
+	end
+	
+	for i,k in pairs(wpspam) do
+		local n = sm_skill:new()
+		n.id = k.id
+		n.skillpaletteuid = k.skillpaletteuid
+		n.setsattackrange = false		
+		local condi = { operator = 1, target = 1, uid = "Distance", value = k.range }
+		local ct = 1
+		if ( not k.range or k.range == 0 ) then
+			condi = { operator = 1, target = 1, uid = "CombatState" }
+			ct = 2
+		end
+		n.conditions[1] = { [1] = sm_mgr.conditions[condi.uid]:new(condi) }
+		n.conditions[1].casttarget = ct		
+		table.insert(self.profile.actionlist,n)
+	end
+	
+	self.profile.temp.filename = "default.sm"
+	self.profile:Save()
+	self.RefreshProfileFiles()
+	sm_mgr:LoadLastProfileForProfession(sm_mgr.GetPlayerProfession())
+	
+end
 
 
 -- some little helper window to update/see the skill data needed to build the hardcoded skill sets
@@ -368,7 +475,7 @@ sm_mgr.sethelper = {}
 sm_mgr.sethelper.open = true
 -- Draws the SkillManager window, profile management and calls Profile:Render() to populate stuff
 function sm_mgr.sethelper.DrawMenu(event,ticks)
-	
+
 	if (sm_mgr.open) then
 		GUI:SetNextWindowSize(300,500,GUI.SetCond_Once)
 		GUI:SetNextWindowPosCenter(GUI.SetCond_Once)
@@ -448,4 +555,4 @@ function sm_mgr.sethelper.DrawMenu(event,ticks)
 		GUI:End()
 	end
 end
-RegisterEventHandler("Gameloop.Draw", sm_mgr.sethelper.DrawMenu)
+--RegisterEventHandler("Gameloop.Draw", sm_mgr.sethelper.DrawMenu)

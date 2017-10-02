@@ -969,7 +969,7 @@ engineer.skills_luacode = {
 	 [6176] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_13, 
 		 activationtime = 0.25, 
-		 icon = 'Regenerating Mist',  
+		 icon = 'Regenerating Mist',
 	 },
 	 [29772] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_13, 
@@ -1394,7 +1394,7 @@ engineer.skills_luacode = {
 		 icon = 'Sneak Gyro',  
 	 },	 
 	 [31248] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_9, 
+		 slot = GW2.SKILLBARSLOT.Slot_7, 
 		 activationtime = 0.5,
 		 nounderwater = true, 
 		 icon = 'Blast Gyro Tag',  

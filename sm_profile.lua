@@ -239,93 +239,89 @@ function sm_profile:Cast()
 					
 					local cancastnormal = ( not self.temp.nextcast or ml_global_information.Now - self.temp.nextcast > 0 )
 					
-					if ( cancastnormal and not action.skillpalette:IsActive(self.temp.context) ) then							
-						if ( self.weaponswapmode == 1 ) then
-							local deactivated
-							for uid, sp in pairs (sm_mgr.profile.temp.activeskillpalettes) do
-								if ( sp:IsActive(self.temp.context) ) then
-									d("[SkillManager] - Deactivating Skill Set "..tostring(uid))
-									if ( sp:Deactivate(self.temp.context) ) then
-										self.temp.lasttick = self.temp.lasttick + 250	-- do not allow anything ,not even instant casts
-										deactivated = true
-										return
+					if( cancastnormal or action.instantcast ) then
+						if ( not action.skillpalette:IsActive(self.temp.context)) then
+							if ( self.weaponswapmode == 1 ) then
+								local deactivated
+								for uid, sp in pairs (sm_mgr.profile.temp.activeskillpalettes) do
+									if ( sp:IsActive(self.temp.context) ) then
+										d("[SkillManager] - Deactivating Skill Set "..tostring(uid))
+										if ( sp:Deactivate(self.temp.context) ) then
+											self.temp.lasttick = self.temp.lasttick + 250	-- do not allow anything ,not even instant casts
+											deactivated = true
+											return
+										end
 									end
 								end
+								if ( not deactivated ) then
+									d("[SkillManager] - Activating Skill Set "..tostring(action.skillpaletteuid))
+									action.skillpalette:Activate(self.temp.context)
+									self.temp.lasttick = self.temp.lasttick + 250	-- do not allow anything ,not even instant casts
+									return
+								end
 							end
-							if ( not deactivated ) then
-								d("[SkillManager] - Activating Skill Set "..tostring(action.skillpaletteuid))
-								action.skillpalette:Activate(self.temp.context)
-								self.temp.lasttick = self.temp.lasttick + 250	-- do not allow anything ,not even instant casts
-								return
+						
+						else											
+							if ( pcastinfo.id ~= action.id ) then
+								local dbug = { [1] = "Enemy", [2] = "Player", [3] = "Friend"}
+								local ttlc = self.temp.lastcast and (ml_global_information.Now-self.temp.lastcast )or 0
+								d("[SkillManager] - Casting "..tostring(action.name).. " at "..tostring(dbug[action.temp.casttarget]) .. " - " .. tostring(ttlc))
+								
+								local target
+								if (action.temp.casttarget == 1) then
+									target = self.temp.context.attack_target
+								elseif (action.temp.casttarget == 2) then
+									target = self.temp.context.player
+								elseif (action.temp.casttarget == 3) then
+									target = self.temp.context.heal_target								
+								end
+								
+								if (target) then
+									local castresult
+									local pos = target.pos
+									if ( action.isgroundtargeted ) then									
+										if (target.isgadget) then
+											castresult = Player:CastSpell(action.slot , pos.x, pos.y, (pos.z - target.height)) -- need to cast at the top of the gadget, else no los errors on larger things
+										else
+											castresult = Player:CastSpell(action.slot , pos.x, pos.y, pos.z)
+										end
+									
+									else
+										Player:SetFacingExact(pos.x, pos.y, pos.z)
+										if ( action.slot == GW2.SKILLBARSLOT.Slot_1 or action.instantcast ) then
+											castresult = Player:CastSpellNoChecks(action.slot , target.id)
+											
+										else										
+											castresult = Player:CastSpell(action.slot , target.id)
+										end										
+									end
+									if ( castresult ) then
+										-- Add an internal cd, else spam
+										local mincasttime = action.activationtime*1000
+										--if ( mincasttime == 0 ) then mincasttime = 750 end											
+										mincasttime = mincasttime + 450	-- THIS CAN BE EXPOSED TO LUA
+										action.temp.internalcd = ml_global_information.Now + mincasttime
+										if ( not action.instantcast ) then
+											self.temp.nextcast = ml_global_information.Now + mincasttime
+											self.temp.lastcast = ml_global_information.Now
+										end
+										
+										-- Check if we cast a combo action
+										if ( action.skill_next ) then
+											self.temp.nextcomboaction = action.skill_next
+											local combotime = action.skill_next.activationtime*1000
+											if ( combotime == 0 ) then combotime = 750 end
+											self.temp.nextcomboactionEndTime = ml_global_information.Now + mincasttime  +  combotime
+										else
+											self.temp.nextcomboaction = nil
+											self.temp.nextcomboactionEndTime = nil
+										end
+										break
+									end									
+								end
 							end
 						end
-					else
-					
-						-- Cast instant casts always or only when cancastnormal
-						if ( cancastnormal or action.instantcast ) then
-							local dbug = { [1] = "Enemy", [2] = "Player", [3] = "Friend"}
-							local ttlc = self.temp.lastcast and (ml_global_information.Now-self.temp.lastcast )or 0
-							d("[SkillManager] - Casting "..tostring(action.name).. " at "..tostring(dbug[action.temp.context.casttarget]) .. " - " .. tostring(ttlc))
-							
-							local target
-							if (action.temp.context.casttarget == 1) then
-								target = self.temp.context.attack_target
-							elseif (action.temp.context.casttarget == 2) then
-								target = self.temp.context.player
-							elseif (action.temp.context.casttarget == 3) then
-								target = self.temp.context.heal_target
-							end
-							
-							if (target) then
-								local castresult
-								local pos = target.pos
-								if ( action.isgroundtargeted ) then									
-									if (target.isgadget) then
-										castresult = Player:CastSpell(action.slot , pos.x, pos.y, (pos.z - target.height)) -- need to cast at the top of the gadget, else no los errors on larger things
-									else
-										castresult = Player:CastSpell(action.slot , pos.x, pos.y, pos.z)
-									end
-								
-								else
-									Player:SetFacingExact(pos.x, pos.y, pos.z)
-									if ( action.slot == GW2.SKILLBARSLOT.Slot_1 or action.instantcast ) then
-										castresult = Player:CastSpellNoChecks(action.slot , target.id)
-										
-									else										
-										castresult = Player:CastSpell(action.slot , target.id)
-									end										
-								end
-								if ( castresult ) then
-									
-									-- Add an internal cd, else spam
-									local mincasttime = action.activationtime*1000
-									if ( mincasttime == 0 ) then mincasttime = 750 end											
-									mincasttime = mincasttime + 450	-- THIS CAN BE EXPOSED TO LUA
-									action.temp.internalcd = ml_global_information.Now + mincasttime
-									if ( not action.instantcast ) then
-										self.temp.nextcast = ml_global_information.Now + mincasttime
-										self.temp.lastcast = ml_global_information.Now
-									end
-									
-									-- Check if we cast a combo action
-									if ( action.skill_next ) then
-										self.temp.nextcomboaction = action.skill_next
-										local combotime = action.skill_next.activationtime*1000
-										if ( combotime == 0 ) then combotime = 750 end
-										self.temp.nextcomboactionEndTime = ml_global_information.Now + mincasttime  +  combotime
-									else
-										self.temp.nextcomboaction = nil
-										self.temp.nextcomboactionEndTime = nil
-									end
-									break
-								end
-								
-							else
-								d("[SkillManager] - You don't have ANY Condition setup for Skill: "..action.name)
-							end
-						end							
 					end
-					
 				end
 				if ( self.temp.nextcomboaction ) then
 					break -- dont loop through the actionlist when we override the action anyway with out combo that still needs to get finished
@@ -401,7 +397,7 @@ function sm_profile:Render()
 				
 				
 	-- Action List Rendering
-	GUI:BeginChild("##skilllistgrp",0, self.temp.skilllistgrpheight  or 50)
+	GUI:BeginChild("##skilllistgrp",0,self.temp.skilllistgrpheight or 100)
 	local _,height = GUI:GetCursorPos()
 	if ( self.actionlist ) then
 		--GUI:PushStyleVar(GUI.StyleVar_ItemSpacing, 2, 4)
@@ -456,6 +452,11 @@ function sm_profile:Render()
 	end	
 	local _,endheight = GUI:GetCursorPos()
 	self.temp.skilllistgrpheight = endheight - height
+	local _,sm = GUI:GetScreenSize()
+	if ( self.temp.skilllistgrpheight > (sm*3/4)) then
+		self.temp.skilllistgrpheight = (sm*3/4) - height
+	end
+	
 	GUI:EndChild()	
 	
 	-- Save the last Y position in our window so we can proper resize to it in the next draw call

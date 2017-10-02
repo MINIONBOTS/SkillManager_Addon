@@ -636,7 +636,7 @@ end
 -- Shitty flip skills fuck up the logic big time here, so we go the easiest way of just allowing "cancast" to be true when we are having the set actíve for skills 6-10
 function sm_skill:IsEquipped()
 	if (self.temp.context.skillbar) then
-		if ( self.slot >= GW2.SKILLBARSLOT.Slot_6 and self.slot <= GW2.SKILLBARSLOT.Slot_10 ) then -- other slots need this check as well ?
+		if (  self.slot < GW2.SKILLBARSLOT.Slot_1 or self.slot > GW2.SKILLBARSLOT.Slot_5 ) then		
 			if ( self.skillpalette:IsActive(self.temp.context) ) then			
 				if ( self.slot == GW2.SKILLBARSLOT.Slot_6 and self.temp.context.skillbar[self.slot] and self.temp.context.skillbar[self.slot].id == self.id ) then return true end	-- Heal
 				if ( self.slot == GW2.SKILLBARSLOT.Slot_10 and self.temp.context.skillbar[self.slot]and self.temp.context.skillbar[self.slot].id == self.id ) then return true end  -- Elite
@@ -648,10 +648,22 @@ function sm_skill:IsEquipped()
 						return true
 					end			
 				end
+				-- Toolbelt aka F-shit
+				if ( self.slot >= GW2.SKILLBARSLOT.Slot_12 and self.slot <= GW2.SKILLBARSLOT.Slot_17 ) then
+					if ( (self.temp.context.skillbar[GW2.SKILLBARSLOT.Slot_12] and self.temp.context.skillbar[GW2.SKILLBARSLOT.Slot_12].id == self.id) or 
+						(self.temp.context.skillbar[GW2.SKILLBARSLOT.Slot_13] and self.temp.context.skillbar[GW2.SKILLBARSLOT.Slot_13].id == self.id ) or 
+						(self.temp.context.skillbar[GW2.SKILLBARSLOT.Slot_14] and self.temp.context.skillbar[GW2.SKILLBARSLOT.Slot_14].id == self.id) or
+						(self.temp.context.skillbar[GW2.SKILLBARSLOT.Slot_15] and self.temp.context.skillbar[GW2.SKILLBARSLOT.Slot_15].id == self.id) or
+						(self.temp.context.skillbar[GW2.SKILLBARSLOT.Slot_16] and self.temp.context.skillbar[GW2.SKILLBARSLOT.Slot_16].id == self.id) or 
+						(self.temp.context.skillbar[GW2.SKILLBARSLOT.Slot_17] and self.temp.context.skillbar[GW2.SKILLBARSLOT.Slot_17].id == self.id)) then
+						return true
+					end			
+				end
 			end		
 		else
 			-- only return true for NONE-Flip-skills if they are not on our current bar
 			if ( not self.parent or (self.skillpalette:IsActive(self.temp.context) and self.temp.context.skillbar[self.slot].id == self.id))then 
+			--d("FUCK "..tostring(self.slot) .. " - "..tostring(self.name))
 				return true
 			end
 		end
@@ -663,7 +675,7 @@ end
 function sm_skill:CanCast()
 	if (self.id and self.skillpalette and self.cancast and (self.skillpalette:IsActive(self.temp.context) or self.skillpalette:CanActivate(self.temp.context)) and self:IsEquipped() ) then
 		-- Internal CD when spam casting
-		if ( self.temp.internalcd and ml_global_information.Now - self.temp.internalcd < 0 ) then
+		if ( self.temp.internalcd and (ml_global_information.Now - self.temp.internalcd <= 0) ) then
 			return false
 		end
 		
@@ -673,25 +685,25 @@ function sm_skill:CanCast()
 		end
 		
 		-- At least ONE of the condition groups needs to be true for the skill to be castable
-		self.temp.context.casttarget = 1
+		self.temp.casttarget = 1
 		for i,grp in pairs( self.conditions ) do
-			self.temp.context.casttarget = 1
+			self.temp.casttarget = 1
 			for k,v in pairs(grp) do
 				if ( k ~= "casttarget") then
 					if ( not v:Evaluate(self.temp.context)) then
-						self.temp.context.casttarget = 0
+						self.temp.casttarget = 0
 						break
 					end
 				end
 			end
-			if (self.temp.context.casttarget > 0) then -- this condition group evaluated to true
-				self.temp.context.casttarget = grp.casttarget
+			if (self.temp.casttarget > 0) then -- this condition group evaluated to true
+				self.temp.casttarget = grp.casttarget
 				break
 			end
 		end
 		
 		-- Check custom code
-		if ( self.temp.context.casttarget > 0 ) then
+		if ( self.temp.casttarget > 0 ) then
 			if ( not self.temp.condition_luacode_compiled and not self.temp.condition_luacode_bugged ) then
 				local execstring = 'return function(context) '..self.condition_luacode..' end'
 				local func = loadstring(execstring)
@@ -707,10 +719,10 @@ function sm_skill:CanCast()
 			end
 		
 			if ( self.temp.condition_luacode_compiled and not self.temp.condition_luacode_compiled()(context) ) then 
-				self.temp.context.casttarget = 0
+				self.temp.casttarget = 0
 			end
 		end
-		return self.temp.context.casttarget ~= 0
+		return self.temp.casttarget ~= 0
 	end
 	return false
 end
