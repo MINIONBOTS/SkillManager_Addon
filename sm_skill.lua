@@ -123,7 +123,7 @@ function sm_skill:RenderSkillPaletteEditor()
 			local c = 0
 			GUI:BeginChild("##spe_group",120,0, true)											
 				if ( sm_mgr.skillpalettes[sm_mgr.GetPlayerProfession()] ~= nil ) then 
-					for i,p in pairs (sm_mgr.skillpalettes[sm_mgr.GetPlayerProfession()]) do						
+					for i,p in pairs(sm_mgr.skillpalettes[sm_mgr.GetPlayerProfession()]) do						
 						if ( c == 1 ) then 
 							GUI:SameLine() 
 							c = 0 
