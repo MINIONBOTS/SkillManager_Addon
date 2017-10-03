@@ -122,8 +122,8 @@ function sm_skill:RenderSkillPaletteEditor()
 			-- Left sided Skill Set group
 			local c = 0
 			GUI:BeginChild("##spe_group",120,0, true)											
-				if ( sm_mgr.skillpalettes[sm_mgr.GetPlayerProfession()] ~= nil ) then 
-					for i,p in pairs(sm_mgr.skillpalettes[sm_mgr.GetPlayerProfession()]) do						
+				if ( sm_mgr.skillpalettes[sm_mgr.GetPlayerProfession()] ~= nil ) then
+					for i,p in sm_skillpalette.table.pairsByValueAttribute(sm_mgr.skillpalettes[sm_mgr.GetPlayerProfession()], "uid") do											
 						if ( c == 1 ) then 
 							GUI:SameLine() 
 							c = 0 
@@ -131,8 +131,13 @@ function sm_skill:RenderSkillPaletteEditor()
 							c = c + 1
 						end
 						if ( p:RenderIcon(self.temp.currentskillset) ) then -- icon was clicked
-							self.temp.currentskillset = i
-							self.temp.currentskillid = nil
+							-- get the real "key" and not the one from the "sorted list" above...silly cpu usage but who cares							
+							for i,w in pairs(sm_mgr.skillpalettes[sm_mgr.GetPlayerProfession()]) do
+								if ( i == p.uid ) then
+									self.temp.currentskillset = i
+									self.temp.currentskillid = nil
+								end
+							end							
 						end
 					end
 				end
@@ -539,7 +544,7 @@ function sm_skill:RenderCustomConditionEditor()
 		local x,y = GUI:GetCursorPos()
 		GUI:SetCursorPos(maxy-25,y-20)		
 		GUI:ImageButton( "##ccinfobtn", sm_mgr.texturepath.."\\bt_selector_success_.png", 15, 15)
-		if ( GUI:IsItemHovered() ) then GUI:SetTooltip(GetString("Use the 'context' table which is available here: context.player.pos instead of Player.pos, to save performance. \n Also available: \n context.player.party \n context.player.squad \n context.player.transformid \n context.player.weaponset \n context.player.canswapweaponset \n context.player.mainhand \n context.player.mainhand_alt \n context.player.offhand\n context.player.offhand_alt \n context.skillbar \n context.actionlist \n context.casttarget (Result from the Condition Group above that evaluated to 'true'. Overwrite this if you need (1=Enemy, 2=Player, 3=Friend) \n context.attack_targetid (CAN BE NIL!) \n context.attack_target (CAN BE NIL! DO NOT OVERWRITE THIS!)  \n context.attack_targetid_alt (To override the attack_targetid by this lus code)  \n context.heal_targetid (CAN BE NIL!) \n context.heal_target (CAN BE NIL! DO NOT OVERWRITE THIS!)  \n context.heal_targetid_alt (To override the heal_targetid by this lua code)")) end
+		if ( GUI:IsItemHovered() ) then GUI:SetTooltip(GetString("Use the 'context' table which is available here: context.player.pos instead of Player.pos, to save performance. \n Also available: \n context.player.party \n context.player.squad \n context.player.specs \n context.player.buffs \n context.player.transformid \n context.player.lasttransformid \n context.player.weaponset \n context.player.canswapweaponset \n context.player.mainhand \n context.player.mainhand_alt \n context.player.offhand\n context.player.offhand_alt \n context.skillbar \n context.actionlist \n context.casttarget (Result from the Condition Group above that evaluated to 'true'. Overwrite this if you need (1=Enemy, 2=Player, 3=Friend) \n context.attack_targetid (CAN BE NIL!) \n context.attack_target (CAN BE NIL! DO NOT OVERWRITE THIS!)  \n context.attack_targetid_alt (To override the attack_targetid by this lus code)  \n context.heal_targetid (CAN BE NIL!) \n context.heal_target (CAN BE NIL! DO NOT OVERWRITE THIS!)  \n context.heal_targetid_alt (To override the heal_targetid by this lua code)")) end
 		GUI:SetCursorPos(x,y)
 		local maxx,_ = GUI:GetContentRegionAvail()
 		local changed = false

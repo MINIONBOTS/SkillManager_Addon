@@ -198,11 +198,10 @@ function sm_profile:UpdateContext()
 		end
 	end
 	if ( self.fightrangetype == 1 ) then -- Dynamic fight range
-		ml_global_information.AttackRange = (self.temp.activemaxattackrange and self.temp.activemaxattackrange > 154) and self.temp.activemaxattackrange or self.temp.maxattackrange
+		ml_global_information.AttackRange = (self.temp.activemaxattackrange and self.temp.activemaxattackrange > 154) and self.temp.activemaxattackrange or self.temp.maxattackrange or 154
 	else -- fixed fight range
-		ml_global_information.AttackRange = self.fixedfightrange or ((self.temp.activemaxattackrange and self.temp.activemaxattackrange > 154) and self.temp.activemaxattackrange  or self.temp.maxattackrange)
+		ml_global_information.AttackRange = self.fixedfightrange or ((self.temp.activemaxattackrange and self.temp.activemaxattackrange > 154) and self.temp.activemaxattackrange  or self.temp.maxattackrange or 154)
 	end	
-	
 end
 
 -- Setting Targets
@@ -453,8 +452,8 @@ function sm_profile:Render()
 	local _,endheight = GUI:GetCursorPos()
 	self.temp.skilllistgrpheight = endheight - height
 	local _,sm = GUI:GetScreenSize()
-	if ( self.temp.skilllistgrpheight > (sm*3/4)) then
-		self.temp.skilllistgrpheight = (sm*3/4) - height
+	if ( self.temp.skilllistgrpheight > (sm*3/5)) then
+		self.temp.skilllistgrpheight = (sm*3/5) - height
 	end
 	
 	GUI:EndChild()	

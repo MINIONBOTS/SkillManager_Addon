@@ -28,14 +28,14 @@ set.skills_luacode = {
  [5501] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_5, 
 	 activationtime = 3.75, 
-	 icon = 'Meteor Shower',  
+	 icon = 'Meteor Shower',
  },
 }
 function set:IsActive(context)
-	return context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 5491	and context.player.transformid == 1 and not self.temp.context.player.isweaver
+	return context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 5491	and context.player.transformid == 1 and not context.player.isweaver
 end
 function set:CanActivate(context)
-	return not self.temp.context.player.isweaver and context.player.swimming == GW2.SWIMSTATE.NotInWater and context.player.mainhand == GW2.WEAPONTYPE.Staff and context.player.weaponset == 4 and context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_13] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_13].id == 5492 and context.skillbar[GW2.SKILLBARSLOT.Slot_13].cancast
+	return not context.player.isweaver and context.player.swimming == GW2.SWIMSTATE.NotInWater and context.player.mainhand == GW2.WEAPONTYPE.Staff and context.player.weaponset == 4 and context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_13] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_13].id == 5492 and context.skillbar[GW2.SKILLBARSLOT.Slot_13].cancast
 end
 function set:Activate(context)
 	if ( context.skillbar~=nil ) then
@@ -80,10 +80,10 @@ set.skills_luacode = {
  },
 }
 function set:IsActive(context)
-	return context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 5549	and context.player.transformid == 2 and not self.temp.context.player.isweaver
+	return context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 5549	and context.player.transformid == 2 and not context.player.isweaver
 end
 function set:CanActivate(context)
-	return not self.temp.context.player.isweaver and context.player.swimming == GW2.SWIMSTATE.NotInWater and context.player.mainhand == GW2.WEAPONTYPE.Staff and context.player.weaponset == 4 and context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_14] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_14].id == 5493 and context.skillbar[GW2.SKILLBARSLOT.Slot_14].cancast
+	return not context.player.isweaver and context.player.swimming == GW2.SWIMSTATE.NotInWater and context.player.mainhand == GW2.WEAPONTYPE.Staff and context.player.weaponset == 4 and context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_14] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_14].id == 5493 and context.skillbar[GW2.SKILLBARSLOT.Slot_14].cancast
 end
 function set:Activate(context)
 	if ( context.skillbar~=nil ) then
@@ -128,10 +128,10 @@ set.skills_luacode = {
  },
 }
 function set:IsActive(context)
-	return context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 5518	and context.player.transformid == 3 and not self.temp.context.player.isweaver
+	return context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 5518	and context.player.transformid == 3 and not context.player.isweaver
 end
 function set:CanActivate(context)
-	return not self.temp.context.player.isweaver and context.player.swimming == GW2.SWIMSTATE.NotInWater and context.player.mainhand == GW2.WEAPONTYPE.Staff and context.player.weaponset == 4 and context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_15] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_15].id == 5494 and context.skillbar[GW2.SKILLBARSLOT.Slot_15].cancast
+	return not context.player.isweaver and context.player.swimming == GW2.SWIMSTATE.NotInWater and context.player.mainhand == GW2.WEAPONTYPE.Staff and context.player.weaponset == 4 and context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_15] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_15].id == 5494 and context.skillbar[GW2.SKILLBARSLOT.Slot_15].cancast
 end
 function set:Activate(context)
 	if ( context.skillbar~=nil ) then
@@ -176,10 +176,10 @@ set.skills_luacode = {
  },
 }
 function set:IsActive(context)
-	return context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 5519	and context.player.transformid == 4 and not self.temp.context.player.isweaver
+	return context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 5519	and context.player.transformid == 4 and not context.player.isweaver
 end
 function set:CanActivate(context)
-	return not self.temp.context.player.isweaver and context.player.swimming == GW2.SWIMSTATE.NotInWater and context.player.mainhand == GW2.WEAPONTYPE.Staff and context.player.weaponset == 4 and context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_16] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_16].id == 5495 and context.skillbar[GW2.SKILLBARSLOT.Slot_16].cancast
+	return not context.player.isweaver and context.player.swimming == GW2.SWIMSTATE.NotInWater and context.player.mainhand == GW2.WEAPONTYPE.Staff and context.player.weaponset == 4 and context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_16] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_16].id == 5495 and context.skillbar[GW2.SKILLBARSLOT.Slot_16].cancast
 end
 function set:Activate(context)
 	if ( context.skillbar~=nil ) then
@@ -214,10 +214,10 @@ set.skills_luacode = {
  },
 }
 function set:IsActive(context)
-	return context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 5508	and context.player.transformid == 1 and not self.temp.context.player.isweaver
+	return context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 5508	and context.player.transformid == 1 and not context.player.isweaver
 end
 function set:CanActivate(context)
-	return not self.temp.context.player.isweaver and context.player.swimming == GW2.SWIMSTATE.NotInWater and context.player.mainhand == GW2.WEAPONTYPE.Scepter and context.player.weaponset == 4 and context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_13] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_13].id == 5492 and context.skillbar[GW2.SKILLBARSLOT.Slot_13].cancast
+	return not context.player.isweaver and context.player.swimming == GW2.SWIMSTATE.NotInWater and context.player.mainhand == GW2.WEAPONTYPE.Scepter and context.player.weaponset == 4 and context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_13] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_13].id == 5492 and context.skillbar[GW2.SKILLBARSLOT.Slot_13].cancast
 end
 function set:Activate(context)
 	if ( context.skillbar~=nil ) then
@@ -252,10 +252,10 @@ set.skills_luacode = {
  },
 }
 function set:IsActive(context)
-	return context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 5693	and context.player.transformid == 2 and not self.temp.context.player.isweaver
+	return context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 5693	and context.player.transformid == 2 and not context.player.isweaver
 end
 function set:CanActivate(context)
-	return not self.temp.context.player.isweaver and context.player.swimming == GW2.SWIMSTATE.NotInWater and context.player.mainhand == GW2.WEAPONTYPE.Scepter and context.player.weaponset == 4 and context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_14] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_14].id == 5493 and context.skillbar[GW2.SKILLBARSLOT.Slot_14].cancast
+	return not context.player.isweaver and context.player.swimming == GW2.SWIMSTATE.NotInWater and context.player.mainhand == GW2.WEAPONTYPE.Scepter and context.player.weaponset == 4 and context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_14] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_14].id == 5493 and context.skillbar[GW2.SKILLBARSLOT.Slot_14].cancast
 end
 function set:Activate(context)
 	if ( context.skillbar~=nil ) then
@@ -290,10 +290,10 @@ set.skills_luacode = {
  },
 }
 function set:IsActive(context)
-	return context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 5526	and context.player.transformid == 3 and not self.temp.context.player.isweaver
+	return context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 5526	and context.player.transformid == 3 and not context.player.isweaver
 end
 function set:CanActivate(context)
-	return not self.temp.context.player.isweaver and context.player.swimming == GW2.SWIMSTATE.NotInWater and context.player.mainhand == GW2.WEAPONTYPE.Scepter and context.player.weaponset == 4 and context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_15] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_15].id == 5494 and context.skillbar[GW2.SKILLBARSLOT.Slot_15].cancast
+	return not context.player.isweaver and context.player.swimming == GW2.SWIMSTATE.NotInWater and context.player.mainhand == GW2.WEAPONTYPE.Scepter and context.player.weaponset == 4 and context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_15] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_15].id == 5494 and context.skillbar[GW2.SKILLBARSLOT.Slot_15].cancast
 end
 function set:Activate(context)
 	if ( context.skillbar~=nil ) then
@@ -328,10 +328,10 @@ set.skills_luacode = {
  },
 }
 function set:IsActive(context)
-	return context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 5500	and context.player.transformid == 4 and not self.temp.context.player.isweaver
+	return context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 5500	and context.player.transformid == 4 and not context.player.isweaver
 end
 function set:CanActivate(context)
-	return not self.temp.context.player.isweaver and context.player.swimming == GW2.SWIMSTATE.NotInWater and context.player.mainhand == GW2.WEAPONTYPE.Scepter and context.player.weaponset == 4 and context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_16] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_16].id == 5495 and context.skillbar[GW2.SKILLBARSLOT.Slot_16].cancast
+	return not context.player.isweaver and context.player.swimming == GW2.SWIMSTATE.NotInWater and context.player.mainhand == GW2.WEAPONTYPE.Scepter and context.player.weaponset == 4 and context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_16] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_16].id == 5495 and context.skillbar[GW2.SKILLBARSLOT.Slot_16].cancast
 end
 function set:Activate(context)
 	if ( context.skillbar~=nil ) then
@@ -366,10 +366,10 @@ set.skills_luacode = {
  },
 }
 function set:IsActive(context)
-	return context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 15718	and context.player.transformid == 1 and not self.temp.context.player.isweaver
+	return context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 15718	and context.player.transformid == 1 and not context.player.isweaver
 end
 function set:CanActivate(context)
-	return not self.temp.context.player.isweaver and context.player.swimming == GW2.SWIMSTATE.NotInWater and context.player.mainhand == GW2.WEAPONTYPE.Dagger and context.player.weaponset == 4 and context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_13] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_13].id == 5492 and context.skillbar[GW2.SKILLBARSLOT.Slot_13].cancast
+	return not context.player.isweaver and context.player.swimming == GW2.SWIMSTATE.NotInWater and context.player.mainhand == GW2.WEAPONTYPE.Dagger and context.player.weaponset == 4 and context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_13] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_13].id == 5492 and context.skillbar[GW2.SKILLBARSLOT.Slot_13].cancast
 end
 function set:Activate(context)
 	if ( context.skillbar~=nil ) then
@@ -404,10 +404,10 @@ set.skills_luacode = {
  },
 }
 function set:IsActive(context)
-	return context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 15716	and context.player.transformid == 2 and not self.temp.context.player.isweaver
+	return context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 15716	and context.player.transformid == 2 and not context.player.isweaver
 end
 function set:CanActivate(context)
-	return not self.temp.context.player.isweaver and context.player.swimming == GW2.SWIMSTATE.NotInWater and context.player.mainhand == GW2.WEAPONTYPE.Dagger and context.player.weaponset == 4 and context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_14] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_14].id == 5493 and context.skillbar[GW2.SKILLBARSLOT.Slot_14].cancast
+	return not context.player.isweaver and context.player.swimming == GW2.SWIMSTATE.NotInWater and context.player.mainhand == GW2.WEAPONTYPE.Dagger and context.player.weaponset == 4 and context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_14] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_14].id == 5493 and context.skillbar[GW2.SKILLBARSLOT.Slot_14].cancast
 end
 function set:Activate(context)
 	if ( context.skillbar~=nil ) then
@@ -443,10 +443,10 @@ set.skills_luacode = {
  },
 }
 function set:IsActive(context)
-	return context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 5489	and context.player.transformid == 3 and not self.temp.context.player.isweaver
+	return context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 5489	and context.player.transformid == 3 and not context.player.isweaver
 end
 function set:CanActivate(context)
-	return not self.temp.context.player.isweaver and context.player.swimming == GW2.SWIMSTATE.NotInWater and context.player.mainhand == GW2.WEAPONTYPE.Dagger and context.player.weaponset == 4 and context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_15] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_15].id == 5494 and context.skillbar[GW2.SKILLBARSLOT.Slot_15].cancast
+	return not context.player.isweaver and context.player.swimming == GW2.SWIMSTATE.NotInWater and context.player.mainhand == GW2.WEAPONTYPE.Dagger and context.player.weaponset == 4 and context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_15] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_15].id == 5494 and context.skillbar[GW2.SKILLBARSLOT.Slot_15].cancast
 end
 function set:Activate(context)
 	if ( context.skillbar~=nil ) then
@@ -481,10 +481,10 @@ set.skills_luacode = {
  },
 }
 function set:IsActive(context)
-	return context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 15717	and context.player.transformid == 4 and not self.temp.context.player.isweaver
+	return context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 15717	and context.player.transformid == 4 and not context.player.isweaver
 end
 function set:CanActivate(context)
-	return not self.temp.context.player.isweaver and context.player.swimming == GW2.SWIMSTATE.NotInWater and context.player.mainhand == GW2.WEAPONTYPE.Dagger and context.player.weaponset == 4 and context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_16] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_16].id == 5495 and context.skillbar[GW2.SKILLBARSLOT.Slot_16].cancast
+	return not context.player.isweaver and context.player.swimming == GW2.SWIMSTATE.NotInWater and context.player.mainhand == GW2.WEAPONTYPE.Dagger and context.player.weaponset == 4 and context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_16] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_16].id == 5495 and context.skillbar[GW2.SKILLBARSLOT.Slot_16].cancast
 end
 function set:Activate(context)
 	if ( context.skillbar~=nil ) then
@@ -514,10 +514,10 @@ set.skills_luacode = {
  },
 }
 function set:IsActive(context)
-	return context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 5691	and context.player.transformid == 1 and not self.temp.context.player.isweaver
+	return context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 5691	and context.player.transformid == 1 and not context.player.isweaver
 end
 function set:CanActivate(context)
-	return not self.temp.context.player.isweaver and context.player.swimming == GW2.SWIMSTATE.NotInWater and context.player.offhand == GW2.WEAPONTYPE.Dagger and context.player.weaponset == 4 and context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_13] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_13].id == 5492 and context.skillbar[GW2.SKILLBARSLOT.Slot_13].cancast
+	return not context.player.isweaver and context.player.swimming == GW2.SWIMSTATE.NotInWater and context.player.offhand == GW2.WEAPONTYPE.Dagger and context.player.weaponset == 4 and context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_13] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_13].id == 5492 and context.skillbar[GW2.SKILLBARSLOT.Slot_13].cancast
 end
 function set:Activate(context)
 	if ( context.skillbar~=nil ) then
@@ -547,10 +547,10 @@ set.skills_luacode = {
  },
 }
 function set:IsActive(context)
-	return context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 5520	and context.player.transformid == 2 and not self.temp.context.player.isweaver
+	return context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 5520	and context.player.transformid == 2 and not context.player.isweaver
 end
 function set:CanActivate(context)
-	return not self.temp.context.player.isweaver and context.player.swimming == GW2.SWIMSTATE.NotInWater and context.player.offhand == GW2.WEAPONTYPE.Dagger and context.player.weaponset == 4 and context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_14] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_14].id == 5493 and context.skillbar[GW2.SKILLBARSLOT.Slot_14].cancast
+	return not context.player.isweaver and context.player.swimming == GW2.SWIMSTATE.NotInWater and context.player.offhand == GW2.WEAPONTYPE.Dagger and context.player.weaponset == 4 and context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_14] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_14].id == 5493 and context.skillbar[GW2.SKILLBARSLOT.Slot_14].cancast
 end
 function set:Activate(context)
 	if ( context.skillbar~=nil ) then
@@ -580,10 +580,10 @@ set.skills_luacode = {
  },
 }
 function set:IsActive(context)
-	return context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 5529	and context.player.transformid == 3 and not self.temp.context.player.isweaver
+	return context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 5529	and context.player.transformid == 3 and not context.player.isweaver
 end
 function set:CanActivate(context)
-	return not self.temp.context.player.isweaver and context.player.swimming == GW2.SWIMSTATE.NotInWater and context.player.offhand == GW2.WEAPONTYPE.Dagger and context.player.weaponset == 4 and context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_15] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_15].id == 5494 and context.skillbar[GW2.SKILLBARSLOT.Slot_15].cancast
+	return not context.player.isweaver and context.player.swimming == GW2.SWIMSTATE.NotInWater and context.player.offhand == GW2.WEAPONTYPE.Dagger and context.player.weaponset == 4 and context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_15] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_15].id == 5494 and context.skillbar[GW2.SKILLBARSLOT.Slot_15].cancast
 end
 function set:Activate(context)
 	if ( context.skillbar~=nil ) then
@@ -613,10 +613,10 @@ set.skills_luacode = {
  },
 }
 function set:IsActive(context)
-	return context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 5690	and context.player.transformid == 4 and not self.temp.context.player.isweaver
+	return context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 5690	and context.player.transformid == 4 and not context.player.isweaver
 end
 function set:CanActivate(context)
-	return not self.temp.context.player.isweaver and context.player.swimming == GW2.SWIMSTATE.NotInWater and context.player.offhand == GW2.WEAPONTYPE.Dagger and context.player.weaponset == 4 and context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_16] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_16].id == 5495 and context.skillbar[GW2.SKILLBARSLOT.Slot_16].cancast
+	return not context.player.isweaver and context.player.swimming == GW2.SWIMSTATE.NotInWater and context.player.offhand == GW2.WEAPONTYPE.Dagger and context.player.weaponset == 4 and context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_16] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_16].id == 5495 and context.skillbar[GW2.SKILLBARSLOT.Slot_16].cancast
 end
 function set:Activate(context)
 	if ( context.skillbar~=nil ) then
@@ -646,10 +646,10 @@ set.skills_luacode = {
  },
 }
 function set:IsActive(context)
-	return context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 5497	and context.player.transformid == 1 and not self.temp.context.player.isweaver
+	return context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 5497	and context.player.transformid == 1 and not context.player.isweaver
 end
 function set:CanActivate(context)
-	return not self.temp.context.player.isweaver and context.player.swimming == GW2.SWIMSTATE.NotInWater and context.player.offhand == GW2.WEAPONTYPE.Focus and context.player.weaponset == 4 and context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_13] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_13].id == 5492 and context.skillbar[GW2.SKILLBARSLOT.Slot_13].cancast
+	return not context.player.isweaver and context.player.swimming == GW2.SWIMSTATE.NotInWater and context.player.offhand == GW2.WEAPONTYPE.Focus and context.player.weaponset == 4 and context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_13] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_13].id == 5492 and context.skillbar[GW2.SKILLBARSLOT.Slot_13].cancast
 end
 function set:Activate(context)
 	if ( context.skillbar~=nil ) then
@@ -679,10 +679,10 @@ set.skills_luacode = {
  },
 }
 function set:IsActive(context)
-	return context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 5556	and context.player.transformid == 2 and not self.temp.context.player.isweaver
+	return context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 5556	and context.player.transformid == 2 and not context.player.isweaver
 end
 function set:CanActivate(context)
-	return not self.temp.context.player.isweaver and context.player.swimming == GW2.SWIMSTATE.NotInWater and context.player.offhand == GW2.WEAPONTYPE.Focus and context.player.weaponset == 4 and context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_14] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_14].id == 5493 and context.skillbar[GW2.SKILLBARSLOT.Slot_14].cancast
+	return not context.player.isweaver and context.player.swimming == GW2.SWIMSTATE.NotInWater and context.player.offhand == GW2.WEAPONTYPE.Focus and context.player.weaponset == 4 and context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_14] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_14].id == 5493 and context.skillbar[GW2.SKILLBARSLOT.Slot_14].cancast
 end
 function set:Activate(context)
 	if ( context.skillbar~=nil ) then
@@ -712,10 +712,10 @@ set.skills_luacode = {
  },
 }
 function set:IsActive(context)
-	return context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 5530	and context.player.transformid == 3 and not self.temp.context.player.isweaver
+	return context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 5530	and context.player.transformid == 3 and not context.player.isweaver
 end
 function set:CanActivate(context)
-	return not self.temp.context.player.isweaver and context.player.swimming == GW2.SWIMSTATE.NotInWater and context.player.offhand == GW2.WEAPONTYPE.Focus and context.player.weaponset == 4 and context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_15] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_15].id == 5494 and context.skillbar[GW2.SKILLBARSLOT.Slot_15].cancast
+	return not context.player.isweaver and context.player.swimming == GW2.SWIMSTATE.NotInWater and context.player.offhand == GW2.WEAPONTYPE.Focus and context.player.weaponset == 4 and context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_15] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_15].id == 5494 and context.skillbar[GW2.SKILLBARSLOT.Slot_15].cancast
 end
 function set:Activate(context)
 	if ( context.skillbar~=nil ) then
@@ -745,10 +745,10 @@ set.skills_luacode = {
  },
 }
 function set:IsActive(context)
-	return context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 5555	and context.player.transformid == 4 and not self.temp.context.player.isweaver
+	return context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 5555	and context.player.transformid == 4 and not context.player.isweaver
 end
 function set:CanActivate(context)
-	return not self.temp.context.player.isweaver and context.player.swimming == GW2.SWIMSTATE.NotInWater and context.player.offhand == GW2.WEAPONTYPE.Focus and context.player.weaponset == 4 and context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_16] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_16].id == 5495 and context.skillbar[GW2.SKILLBARSLOT.Slot_16].cancast
+	return not context.player.isweaver and context.player.swimming == GW2.SWIMSTATE.NotInWater and context.player.offhand == GW2.WEAPONTYPE.Focus and context.player.weaponset == 4 and context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_16] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_16].id == 5495 and context.skillbar[GW2.SKILLBARSLOT.Slot_16].cancast
 end
 function set:Activate(context)
 	if ( context.skillbar~=nil ) then
@@ -778,10 +778,10 @@ set.skills_luacode = {
  },
 }
 function set:IsActive(context)
-	return context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 29548	and context.player.transformid == 1 and not self.temp.context.player.isweaver
+	return context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 29548	and context.player.transformid == 1 and not context.player.isweaver
 end
 function set:CanActivate(context)
-	return not self.temp.context.player.isweaver and context.player.swimming == GW2.SWIMSTATE.NotInWater and context.player.offhand == GW2.WEAPONTYPE.Warhorn and context.player.weaponset == 4 and context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_13] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_13].id == 5492 and context.skillbar[GW2.SKILLBARSLOT.Slot_13].cancast
+	return not context.player.isweaver and context.player.swimming == GW2.SWIMSTATE.NotInWater and context.player.offhand == GW2.WEAPONTYPE.Warhorn and context.player.weaponset == 4 and context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_13] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_13].id == 5492 and context.skillbar[GW2.SKILLBARSLOT.Slot_13].cancast
 end
 function set:Activate(context)
 	if ( context.skillbar~=nil ) then
@@ -811,10 +811,10 @@ set.skills_luacode = {
  },
 }
 function set:IsActive(context)
-	return context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 30864	and context.player.transformid == 2 and not self.temp.context.player.isweaver
+	return context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 30864	and context.player.transformid == 2 and not context.player.isweaver
 end
 function set:CanActivate(context)
-	return not self.temp.context.player.isweaver and context.player.swimming == GW2.SWIMSTATE.NotInWater and context.player.offhand == GW2.WEAPONTYPE.Warhorn and context.player.weaponset == 4 and context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_14] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_14].id == 5493 and context.skillbar[GW2.SKILLBARSLOT.Slot_14].cancast
+	return not context.player.isweaver and context.player.swimming == GW2.SWIMSTATE.NotInWater and context.player.offhand == GW2.WEAPONTYPE.Warhorn and context.player.weaponset == 4 and context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_14] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_14].id == 5493 and context.skillbar[GW2.SKILLBARSLOT.Slot_14].cancast
 end
 function set:Activate(context)
 	if ( context.skillbar~=nil ) then
@@ -844,10 +844,10 @@ set.skills_luacode = {
  },
 }
 function set:IsActive(context)
-	return context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 30008	and context.player.transformid == 3 and not self.temp.context.player.isweaver
+	return context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 30008	and context.player.transformid == 3 and not context.player.isweaver
 end
 function set:CanActivate(context)
-	return not self.temp.context.player.isweaver and context.player.swimming == GW2.SWIMSTATE.NotInWater and context.player.offhand == GW2.WEAPONTYPE.Warhorn and context.player.weaponset == 4 and context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_15] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_15].id == 5494 and context.skillbar[GW2.SKILLBARSLOT.Slot_15].cancast
+	return not context.player.isweaver and context.player.swimming == GW2.SWIMSTATE.NotInWater and context.player.offhand == GW2.WEAPONTYPE.Warhorn and context.player.weaponset == 4 and context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_15] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_15].id == 5494 and context.skillbar[GW2.SKILLBARSLOT.Slot_15].cancast
 end
 function set:Activate(context)
 	if ( context.skillbar~=nil ) then
@@ -877,10 +877,10 @@ set.skills_luacode = {
  },
 }
 function set:IsActive(context)
-	return context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 29453	and context.player.transformid == 4 and not self.temp.context.player.isweaver
+	return context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 29453	and context.player.transformid == 4 and not context.player.isweaver
 end
 function set:CanActivate(context)
-	return not self.temp.context.player.isweaver and context.player.swimming == GW2.SWIMSTATE.NotInWater and context.player.offhand == GW2.WEAPONTYPE.Warhorn and context.player.weaponset == 4 and context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_16] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_16].id == 5495 and context.skillbar[GW2.SKILLBARSLOT.Slot_16].cancast
+	return not context.player.isweaver and context.player.swimming == GW2.SWIMSTATE.NotInWater and context.player.offhand == GW2.WEAPONTYPE.Warhorn and context.player.weaponset == 4 and context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_16] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_16].id == 5495 and context.skillbar[GW2.SKILLBARSLOT.Slot_16].cancast
 end
 function set:Activate(context)
 	if ( context.skillbar~=nil ) then

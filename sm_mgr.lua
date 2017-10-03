@@ -138,20 +138,31 @@ RegisterEventHandler("Module.AllInitialized",sm_mgr.RefreshConditions)
 
 -- Load the default/last used SM profile for our profession
 function sm_mgr:LoadLastProfileForProfession(profession)	
+	local default = {
+			[GW2.CHARCLASS.Guardian] = "Guardian.sm",
+			[GW2.CHARCLASS.Warrior] = "Warrior.sm",
+			[GW2.CHARCLASS.Engineer] = "Engineer.sm",
+			[GW2.CHARCLASS.Ranger] = "Ranger.sm",
+			[GW2.CHARCLASS.Thief] = "Thief.sm",
+			[GW2.CHARCLASS.Elementalist] = "Elementalist.sm",
+			[GW2.CHARCLASS.Mesmer] = "Mesmer.sm",
+			[GW2.CHARCLASS.Necromancer] = "Necromancer.sm",
+			[GW2.CHARCLASS.Revenant] = "Revenant.sm",
+	}
+	
 	local profession = self.GetPlayerProfession()
-	if ( not Settings.SkillManager.lastProfiles ) then Settings.SkillManager.lastProfiles = {} end
-	if ( Settings.SkillManager.lastProfiles[profession] ~= nil) then
-		for i, p in pairs(self.profiles) do			
-			if ( p.temp.filename == Settings.SkillManager.lastProfiles[profession] ) then
-				self.profile = sm_profile:new(p)
-				self.lastprofession = profession
-				d("[SkillManager] - Loaded last used Profile : "..self.profile.temp.filename)
-				return
-			end
-		end
+	if ( not Settings.SkillManager.lastProfiles ) then Settings.SkillManager.lastProfiles = default end
+	
+	for i, p in pairs(self.profiles) do
+		if ( p.temp.filename == Settings.SkillManager.lastProfiles[profession] ) then
+			self.profile = sm_profile:new(p)
+			self.lastprofession = profession
+			d("[SkillManager] - Loaded last used Profile : "..self.profile.temp.filename)
+			return
+		end	
 	end
 	-- If we are here, no profile was loaded, try to load a default one
-	d("[SkillManager] - TODO: ADD A DEFAULT PROFILE TO PROFESSION  : "..tostring(profession))
+	Settings.SkillManager.lastProfiles[profession] = default[profession]
 end
 
 -- Draws the SkillManager window, profile management and calls Profile:Render() to populate stuff
@@ -168,7 +179,10 @@ function sm_mgr.DrawMenu(event,ticks)
 	
 	-- Check for valid player profession and or changes
 	local profession = sm_mgr.GetPlayerProfession()
-	if ( profession and ( not sm_mgr.lastprofession or sm_mgr.lastprofession ~= profession or not sm_mgr.profile)) then						
+	if ( profession and ( not sm_mgr.lastprofession or sm_mgr.lastprofession ~= profession or not sm_mgr.profile)) then
+		if (sm_mgr.lastprofession ~= profession) then 
+			sm_mgr.RefreshProfileFiles()
+		end
 		sm_mgr:LoadLastProfileForProfession(profession)
 	end
 		
@@ -356,12 +370,8 @@ function SkillManager:RenderCodeEditor()
 	end 
 end
 function SkillManager:Cast()
-	d("CAAAAAAA")
 	if ( sm_mgr.profile ) then
 		sm_mgr.profile:Cast() 
-		
-		--sm_mgr:GenetateDefaultProfile()
-		
 	end 
 end
 
@@ -467,6 +477,11 @@ function sm_mgr:GenetateDefaultProfile()
 	self.RefreshProfileFiles()
 	sm_mgr:LoadLastProfileForProfession(sm_mgr.GetPlayerProfession())
 	
+end
+function SkillManager:GenetateDefaultProfile()
+	if ( sm_mgr.profile ) then
+		sm_mgr:GenetateDefaultProfile() 
+	end 
 end
 
 
