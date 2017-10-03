@@ -132,10 +132,10 @@ function sm_profile:UpdateContext()
 	-- Default targets
 	local target = Player:GetTarget()
 	if ( target ) then
-		if ( target.attitude ~= GW2.ATTITUDE.Friendly and not self.temp.attack_targetid ) then			
+		if ( target.attitude ~= GW2.ATTITUDE.Friendly ) then			
 			self.temp.attack_targetid = target.id
 			self.temp.attack_target_lastupdate = ml_global_information.Now
-		elseif( target.attitude == GW2.ATTITUDE.Friendly and not self.temp.heal_targetid ) then
+		elseif( target.attitude == GW2.ATTITUDE.Friendly ) then
 			self.temp.heal_targetid = target.id
 			self.temp.heal_target_lastupdate = ml_global_information.Now
 		end
@@ -201,10 +201,11 @@ function sm_profile:UpdateContext()
 	end
 	
 	if ( self.fightrangetype == 1 ) then -- Dynamic fight range
-		ml_global_information.AttackRange = (self.temp.activemaxattackrange and self.temp.activemaxattackrange > 154) and self.temp.activemaxattackrange or self.temp.maxattackrange or 154
+		ml_global_information.AttackRange = (self.temp.activemaxattackrange and self.temp.activemaxattackrange >= 154) and self.temp.activemaxattackrange or (self.temp.maxattackrange or 154)
 	else -- fixed fight range
 		ml_global_information.AttackRange = self.fixedfightrange or ((self.temp.activemaxattackrange and self.temp.activemaxattackrange > 154) and self.temp.activemaxattackrange  or self.temp.maxattackrange or 154)
 	end	
+	--d(tostring(self.temp.activemaxattackrange) .. " - STATIC:" ..tostring(self.temp.maxattackrange))
 end
 
 -- Setting Targets

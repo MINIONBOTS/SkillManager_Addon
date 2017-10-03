@@ -471,7 +471,7 @@ function sm_mgr:GenetateDefaultProfile()
 		table.insert(self.profile.actionlist,n)
 	end
 	
-	self.profile.temp.filename = "default.sm"
+	--self.profile.temp.filename = "default.sm"
 	self.profile:Save()
 	self.RefreshProfileFiles()
 	sm_mgr:LoadLastProfileForProfession(sm_mgr.GetPlayerProfession())

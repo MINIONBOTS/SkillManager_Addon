@@ -418,10 +418,14 @@ function sm_skill:UpdateData(context)
 	end
 	
 	-- Update AttackRange	
-	if ( self.setsattackrange ) then
+	if ( self.setsattackrange and self.maxrange > 0 and self.skillpalette:IsActive(self.temp.context)) then
 		-- Set a maxattackrange and an actual activemaxattackrange
 		if ( not sm_mgr.profile.temp.maxattackrange or sm_mgr.profile.temp.maxattackrange < self.maxrange ) then sm_mgr.profile.temp.maxattackrange = self.maxrange end
-		if ( self.temp.cancast and (not sm_mgr.profile.temp.activemaxattackrange or sm_mgr.profile.temp.activemaxattackrange < self.maxrange )) then sm_mgr.profile.temp.activemaxattackrange = self.maxrange end
+		if ( self.temp.cancast ) then			
+			if ( not sm_mgr.profile.temp.activemaxattackrange or sm_mgr.profile.temp.activemaxattackrange < self.maxrange ) then
+				sm_mgr.profile.temp.activemaxattackrange = self.maxrange
+			end
+		end
 	end
 	
 	return self.temp.cancast
@@ -647,7 +651,7 @@ end
 function sm_skill:IsEquipped()
 	if (self.temp.context.skillbar) then
 		if (  self.slot < GW2.SKILLBARSLOT.Slot_1 or self.slot > GW2.SKILLBARSLOT.Slot_5 ) then		
-			if ( self.skillpalette:IsActive(self.temp.context) ) then			
+			if ( self.skillpalette:IsActive(self.temp.context) ) then				
 				if ( self.slot == GW2.SKILLBARSLOT.Slot_6 and self.temp.context.skillbar[self.slot] and self.temp.context.skillbar[self.slot].id == self.id ) then return true end	-- Heal
 				if ( self.slot == GW2.SKILLBARSLOT.Slot_10 and self.temp.context.skillbar[self.slot]and self.temp.context.skillbar[self.slot].id == self.id ) then return true end  -- Elite
 				-- Utility				
@@ -672,8 +676,7 @@ function sm_skill:IsEquipped()
 			end		
 		else
 			-- only return true for NONE-Flip-skills if they are not on our current bar
-			if ( not self.parent or (self.skillpalette:IsActive(self.temp.context) and self.temp.context.skillbar[self.slot].id == self.id))then 
-			--d("FUCK "..tostring(self.slot) .. " - "..tostring(self.name))
+			if ( not self.parent or (self.skillpalette:IsActive(self.temp.context) and self.temp.context.skillbar[self.slot].id == self.id))then 			
 				return true
 			end
 		end
