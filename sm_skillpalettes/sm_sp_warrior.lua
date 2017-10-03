@@ -1141,7 +1141,7 @@ set.skills_luacode = {
  [14409] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_9, 
 	 activationtime = 0.0, 
-	 icon = '"Fear Me!"', 
+	 icon = 'Fear Me!', 
 	 instantcast = true,
  },
  [14483] = { 
@@ -1171,7 +1171,7 @@ set.skills_luacode = {
   [14372] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_7, 
 	 activationtime = 0.0, 
-	 icon = '"Shake It Off!"',  
+	 icon = 'Shake It Off!',  
 	 instantcast = true,
  },
  [14413] = { 

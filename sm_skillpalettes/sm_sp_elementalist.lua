@@ -1526,23 +1526,23 @@ set.skills_luacode = {
  [30047] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_8, 
 	 activationtime = 0.0, 
-	 icon = '"Eye of the Storm!"',
+	 icon = 'Eye of the Storm!',
 	 instantcast = true,
  },
  [30432] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_9, 
 	 activationtime = 0.25, 
-	 icon = '"Aftershock!"',  
+	 icon = 'Aftershock!',  
  },
  [29968] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_10, 
 	 activationtime = 0.25, 
-	 icon = '"Rebound!"',  
+	 icon = 'Rebound!',  
  },
   [29948] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_9, 
 	 activationtime = 0.25, 
-	 icon = '"Flash-Freeze!"',  
+	 icon = 'Flash-Freeze!',  
  },
   [29618] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_16, 

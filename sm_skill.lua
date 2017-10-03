@@ -72,7 +72,7 @@ function sm_skill:Save()
 	copy.id = self.id
 	copy.skillpaletteuid = self.skillpaletteuid
 	copy.setsattackrange = self.setsattackrange
-	copy.requireslos = self.requireslos
+	copy.requireslos = self.requireslos-- or true
 	copy.condition_luacode = self.condition_luacode
 	copy.conditions = {}
 	local gidx = 0

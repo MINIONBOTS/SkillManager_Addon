@@ -820,7 +820,7 @@ necromancer.skills_luacode = {
 	[30488] = {
 		slot = GW2.SKILLBARSLOT.Slot_6,
 		activationtime = 0.75,
-		icon = '"Your Soul Is Mine!"',
+		icon = 'Your Soul Is Mine!',
 	},
 	[12440] = {
 		slot = GW2.SKILLBARSLOT.Slot_6,
@@ -907,22 +907,22 @@ necromancer.skills_luacode = {
 	[29414] = {
 		slot = GW2.SKILLBARSLOT.Slot_7,
 		activationtime = 0,
-		icon = '"You Are All Weaklings!"',
+		icon = 'You Are All Weaklings!',
 	},
 	[30670] = {
 		slot = GW2.SKILLBARSLOT.Slot_7,
 		activationtime = 0,
-		icon = '"Suffer!"',
+		icon = 'Suffer!',
 	},
 	[29666] = {
 		slot = GW2.SKILLBARSLOT.Slot_8,
 		activationtime = 0.5,
-		icon = '"Nothing Can Save You!"',
+		icon = 'Nothing Can Save You!',
 	},
 	[30772] = {
 		slot = GW2.SKILLBARSLOT.Slot_8,
 		activationtime = 0,
-		icon = '"Rise!"',
+		icon = 'Rise!',
 	},
 	[12453] = {
 		slot = GW2.SKILLBARSLOT.Slot_7,
