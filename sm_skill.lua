@@ -72,6 +72,7 @@ function sm_skill:Save()
 	copy.id = self.id
 	copy.skillpaletteuid = self.skillpaletteuid
 	copy.setsattackrange = self.setsattackrange
+	copy.requireslos = self.requireslos
 	copy.condition_luacode = self.condition_luacode
 	copy.conditions = {}
 	local gidx = 0
@@ -342,6 +343,10 @@ function sm_skill:RenderHardcodedSkillDetails()
 	
 	local changed
 	GUI:Text(GetString("Set AttackRange:")) GUI:SameLine(125) self.setsattackrange, changed = GUI:Checkbox("##setsattack" , self.setsattackrange or false) if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("If Enabled, this Skill is included in defining the maximum Attackrange of the bot." )) end			
+	if ( changed ) then sm_mgr.profile.temp.modified = true end
+	
+	GUI:SameLine(300)
+	GUI:Text(GetString("Requires LoS:")) GUI:SameLine(425) self.requireslos, changed = GUI:Checkbox("##requireslos" , self.requireslos or true) if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("If Enabled, this Skill will only be cast at the target if it is in Line of Sight." )) end			
 	if ( changed ) then sm_mgr.profile.temp.modified = true end
 	
 	GUI:PopStyleVar()
@@ -723,10 +728,24 @@ function sm_skill:CanCast()
 				end
 			end
 		
-			if ( self.temp.condition_luacode_compiled and not self.temp.condition_luacode_compiled()(context) ) then 
+			if ( self.temp.condition_luacode_compiled and not self.temp.condition_luacode_compiled()(self.temp.context) ) then 
 				self.temp.casttarget = 0
 			end
 		end
+		
+		-- LoS Check
+		if ( self.requireslos and self.temp.casttarget > 0 ) then
+			local target
+			if (action.temp.casttarget == 1) then	-- Enemy
+				target = self.temp.context.attack_target
+			elseif (action.temp.casttarget == 3) then
+				target = self.temp.context.heal_target	-- Friend						
+			end
+			if (target and not target.los) then
+				self.temp.casttarget = 0
+			end		
+		end
+		
 		return self.temp.casttarget ~= 0
 	end
 	return false

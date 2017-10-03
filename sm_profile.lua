@@ -146,8 +146,7 @@ function sm_profile:UpdateContext()
 	local attacktargetvalid = false
 	if ( self.temp.attack_targetid ) then			
 		self.temp.attack_target = CharacterList:Get(self.temp.attack_targetid) or GadgetList:Get(self.temp.attack_targetid) --or AgentList:Get(self.targetid)
-		if ( self.temp.attack_target and (self.temp.attack_target_lastupdate and ml_global_information.Now - self.temp.attack_target_lastupdate < 2000) and not self.temp.attack_target.dead and self.temp.attack_target.selectable and self.temp.attack_target.attitude ~= GW2.ATTITUDE.Friendly ) then
-		
+		if ( self.temp.attack_target and (self.temp.attack_target_lastupdate and ml_global_information.Now - self.temp.attack_target_lastupdate < 2000) and not self.temp.attack_target.dead and self.temp.attack_target.attackable) then
 			self.temp.context.attack_target = setmetatable({}, {
 			__index = function (self, key)
 								local val = sm_mgr.profile.temp.attack_target[key]

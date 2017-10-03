@@ -487,7 +487,7 @@ end
 
 -- some little helper window to update/see the skill data needed to build the hardcoded skill sets
 sm_mgr.sethelper = {}
-sm_mgr.sethelper.open = true
+sm_mgr.sethelper.open = false
 -- Draws the SkillManager window, profile management and calls Profile:Render() to populate stuff
 function sm_mgr.sethelper.DrawMenu(event,ticks)
 

@@ -65,7 +65,7 @@ function sm_webapi.Update(Event, ticks)
 
 				-- nothing todo anymore ? seems sometimes the loading icon gets stuck, no clue how that is possible.
 				 for i,k in pairs(sm_webapi.queue) do
-					if ( k.status == 3 and k.tries < 4 and k.lastattempt and ticks - k.lastattempt > 60000 ) then
+					if ( k.status == 3 and k.tries < 4 and k.lastattempt and ticks - k.lastattempt > 3000000 ) then
 						k.lastattempt = nil
 						k.status = 2
 					end

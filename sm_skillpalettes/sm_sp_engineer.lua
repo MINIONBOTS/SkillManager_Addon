@@ -371,9 +371,10 @@ bombkit.skills_luacode = {
 }
 function bombkit:IsActive(context)
 	return context.skillbar~=nil  and (
-	(context.skillbar[GW2.SKILLBARSLOT.Slot_7]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_7].id == 5084) or
-	(context.skillbar[GW2.SKILLBARSLOT.Slot_8]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_8].id == 5084) or
-	(context.skillbar[GW2.SKILLBARSLOT.Slot_9]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_9].id == 5084))
+	(context.skillbar[GW2.SKILLBARSLOT.Slot_7]~=nil and ( context.skillbar[GW2.SKILLBARSLOT.Slot_7].id == 5084 or context.skillbar[GW2.SKILLBARSLOT.Slot_7].id == 6111 )) or
+	(context.skillbar[GW2.SKILLBARSLOT.Slot_8]~=nil and ( context.skillbar[GW2.SKILLBARSLOT.Slot_8].id == 5084 or context.skillbar[GW2.SKILLBARSLOT.Slot_8].id == 6111 )) or
+	(context.skillbar[GW2.SKILLBARSLOT.Slot_9]~=nil and ( context.skillbar[GW2.SKILLBARSLOT.Slot_9].id == 5084 or context.skillbar[GW2.SKILLBARSLOT.Slot_9].id == 6111 ))
+	)
 end
 function bombkit:CanActivate(context)
 	return context.player.transformid == 0 and context.skillbar~=nil  and (
@@ -800,6 +801,7 @@ function hammer:CanActivate(context)
 	return context.player.swimming == GW2.SWIMSTATE.NotInWater and context.player.mainhand == GW2.WEAPONTYPE.Hammer and context.player.weaponset == 2 and context.player.transformid == 0 -- we have a pistol and a kit currently equipped
 end
 function hammer:Activate(context)
+
 end
 function hammer:Deactivate(context)
 	return false
