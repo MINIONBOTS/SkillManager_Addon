@@ -736,9 +736,9 @@ function sm_skill:CanCast()
 		-- LoS Check
 		if ( self.requireslos and self.temp.casttarget > 0 ) then
 			local target
-			if (action.temp.casttarget == 1) then	-- Enemy
+			if (self.temp.casttarget == 1) then	-- Enemy
 				target = self.temp.context.attack_target
-			elseif (action.temp.casttarget == 3) then
+			elseif (self.temp.casttarget == 3) then
 				target = self.temp.context.heal_target	-- Friend						
 			end
 			if (target and not target.los) then
