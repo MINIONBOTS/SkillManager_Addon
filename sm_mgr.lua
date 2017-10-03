@@ -6,7 +6,6 @@ sm_mgr.iconpath = sm_mgr.luamodspath .. "\\SkillManager\\iconcache"
 sm_mgr.profiles = {}				-- SM profiles
 sm_mgr.conditions = {}		-- SM condition "classes" which are used in the condition builder/editor for the "cast if ..." check per skill
 sm_mgr.skillpalettes = {}		-- For each Profession, a different set of palettes are "hardcoded" and available in here. These include the functions to swap to the palette in order to cast the spell on it
-sm_mgr.open = true
 
 -- Extend this or overwrite this for other games::
 sm_mgr.profilepath = GetLuaModsPath()  .. "GW2Minion\\\SkillManagerProfiles"
@@ -14,7 +13,7 @@ function sm_mgr.GetPlayerProfession() return Player.profession end
 
 -- Register the SM UI Button:
 function sm_mgr.ModuleInit()	
-	ml_gui.ui_mgr:AddMember({ id = "GW2MINION##SKILLMANAGER", name = "SkillManager", onClick = function() sm_mgr.open = not sm_mgr.open end, tooltip = GetString("Click to open \"Skill Manager\" window."), texture = GetStartupPath().."\\GUI\\UI_Textures\\sword.png"},"GW2MINION##MENU_HEADER")	
+	_G["ml_gui"].ui_mgr:AddMember({ id = "GW2MINION##SKILLMANAGER", name = "SkillManager", onClick = function() sm_mgr.open = not sm_mgr.open end, tooltip = GetString("Click to open \"Skill Manager\" window."), texture = GetStartupPath().."\\GUI\\UI_Textures\\sword.png"},"GW2MINION##MENU_HEADER")	
 	sm_mgr.RefreshSkillPalettes()
 end
 RegisterEventHandler("Module.Initalize",sm_mgr.ModuleInit)
@@ -433,7 +432,7 @@ function sm_mgr:GenetateDefaultProfile()
 		local n = sm_skill:new()
 		n.id = k.id
 		n.skillpaletteuid = k.skillpaletteuid
-		n.setsattackrange = false		
+		n.setsattackrange = true		
 		local condi = { operator = 1, target = 1, uid = "Distance", value = k.range }
 		local ct = 1
 		if ( not k.range or k.range == 0 ) then
@@ -460,7 +459,7 @@ function sm_mgr:GenetateDefaultProfile()
 		local n = sm_skill:new()
 		n.id = k.id
 		n.skillpaletteuid = k.skillpaletteuid
-		n.setsattackrange = false		
+		n.setsattackrange = true		
 		local condi = { operator = 1, target = 1, uid = "Distance", value = k.range }
 		local ct = 1
 		if ( not k.range or k.range == 0 ) then

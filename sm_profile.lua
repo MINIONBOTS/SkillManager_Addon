@@ -50,6 +50,9 @@ end
 -- Updates all Skilldata and the shared context and metatables and target and and and
 function sm_profile:UpdateContext()
 	if ( not self.temp.context ) then self.temp.context = {} end
+	-- reset range
+	self.temp.activemaxattackrange = 154
+	self.temp.maxattackrange = 154
 	
 	self.temp.context.actionlist = self.actionlist
 	local allskills = Player:GetCompleteSpellInfo()
@@ -196,6 +199,7 @@ function sm_profile:UpdateContext()
 			a:UpdateData(self.temp.context)
 		end
 	end
+	
 	if ( self.fightrangetype == 1 ) then -- Dynamic fight range
 		ml_global_information.AttackRange = (self.temp.activemaxattackrange and self.temp.activemaxattackrange > 154) and self.temp.activemaxattackrange or self.temp.maxattackrange or 154
 	else -- fixed fight range
