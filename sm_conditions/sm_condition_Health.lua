@@ -33,8 +33,7 @@ function sm_condition_hp:Evaluate(context)
 	end
 		
 	if ( t ~= nil) then				
-		local hp = t.health
-		
+		local hp = t.health		
 		if ( hp ) then
 			if (self.healthtype == 1) then hp = hp.current
 			elseif (self.healthtype == 2) then hp = hp.max

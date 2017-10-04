@@ -766,12 +766,14 @@ hammer.skills_luacode = {
  [29785] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_1, 
 	 activationtime = 0.5, 
-	 icon = 'Negative Bash',  
+	 icon = 'Negative Bash',
+	 parent = 30501,
  },
  [30489] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_1, 
 	 activationtime = 0.5, 
-	 icon = 'Equalizing Blow',  
+	 icon = 'Equalizing Blow',
+	 parent = 30489,
  },
 [30088] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_2, 

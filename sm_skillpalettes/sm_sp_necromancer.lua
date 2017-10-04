@@ -119,6 +119,36 @@ end
 SkillManager:AddSkillPalette( warhorn )
 
 
+local torch = SkillManager:CreateSkillPalette('Torch')
+torch.uid = "Necromancer_Torch"
+torch.profession = GW2.CHARCLASS.Necromancer
+torch.icon = "Torch"
+torch.skills_luacode = {
+	[45846] = {
+		slot = GW2.SKILLBARSLOT.Slot_4,
+		activationtime = 0.5,
+		icon = 'Harrowing Wave',
+	},
+	[44296] = {
+		slot = GW2.SKILLBARSLOT.Slot_5,
+		activationtime = 0.75,
+		icon = 'Oppressive Collapse',
+	},
+}
+function torch:IsActive(context)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 45846)
+end
+function torch:CanActivate(context)
+	return context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.offhand == GW2.WEAPONTYPE.Torch or context.player.offhand_alt == GW2.WEAPONTYPE.Torch) and (context.player.weaponset == 4 or context.player.weaponset == 5) and context.player.transformid == 0
+end
+function torch:Activate(context)
+	Player:SwapWeaponSet()
+end
+function torch:Deactivate(context)
+	return false
+end
+SkillManager:AddSkillPalette( torch )
+
 
 local staff = SkillManager:CreateSkillPalette('staff')
 staff.uid = "Necromancer_Staff"
@@ -368,12 +398,12 @@ focus.icon = "Focus"
 focus.skills_luacode = {
 	[10707] = {
 		slot = GW2.SKILLBARSLOT.Slot_4,
-		activationtime = 0.0,
+		activationtime = 0.75,
 		icon = 'Reapers Touch',
 	},
 	[10555] = {
 		slot = GW2.SKILLBARSLOT.Slot_5,
-		activationtime = 0.0,
+		activationtime = 1.0,
 		icon = 'Spinal Shivers',
 	},
 }
@@ -401,27 +431,27 @@ trident.icon = "Trident"
 trident.skills_luacode = {
 	[10623] = {
 		slot = GW2.SKILLBARSLOT.Slot_1,
-		activationtime = 0.0,
+		activationtime = 0.5,
 		icon = 'Crimson Tide',
 	},
 	[10624] = {
 		slot = GW2.SKILLBARSLOT.Slot_2,
-		activationtime = 0.0,
+		activationtime = 0.5,
 		icon = 'Feast',
 	},
 	[10625] = {
 		slot = GW2.SKILLBARSLOT.Slot_3,
-		activationtime = 0.0,
+		activationtime = 1.0,
 		icon = 'Foul Current',
 	},
 	[10628] = {
 		slot = GW2.SKILLBARSLOT.Slot_4,
-		activationtime = 0.0,
+		activationtime = 0.5,
 		icon = 'Sinking Tomb',
 	},
 	[10629] = {
 		slot = GW2.SKILLBARSLOT.Slot_5,
-		activationtime = 0.0,
+		activationtime = 2.0,
 		icon = 'Frozen Abyss',
 	},
 }
@@ -827,7 +857,12 @@ necromancer.skills_luacode = {
 		activationtime = 1,
 		icon = 'Healing Seed',
 	},
-
+	[43148] = {
+		slot = GW2.SKILLBARSLOT.Slot_6,
+		activationtime = 0.75,
+		icon = 'Sand Flare',
+	},
+	
 -- END HEALING.
 
 -- F-Keys.
@@ -888,21 +923,23 @@ necromancer.skills_luacode = {
 		slot = GW2.SKILLBARSLOT.Slot_7,
 		activationtime = 0.0,
 		icon = 'Trail of Anguish',
+		nounderwater = true,
 	 },
 	[42935] = {
 		slot = GW2.SKILLBARSLOT.Slot_8,
-		activationtime = 0.0,
+		activationtime = 1.0,
 		icon = 'Dessicate',
 	 },
 	[42917] = {
 		slot = GW2.SKILLBARSLOT.Slot_9,
-		activationtime = 0.0,
+		activationtime = 0.75,
 		icon = 'Sand Swell',
 	},
 	[41615] = {
 		slot = GW2.SKILLBARSLOT.Slot_7,
-		activationtime = 0.0,
+		activationtime = 0.5,
 		icon = 'Serpent Siphon',
+		nounderwater = true,
 	},
 	[29414] = {
 		slot = GW2.SKILLBARSLOT.Slot_7,

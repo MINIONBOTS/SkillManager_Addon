@@ -629,18 +629,18 @@ shield.icon = "shield"
 shield.skills_luacode = {
 	[30769] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_4, 
-		 activationtime = 0.0, 
+		 activationtime = 1.5, 
 		 icon = 'Echo of Memory',  
 	 },
 	 [29649] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_4, 
-		 activationtime = 0.0, 
+		 activationtime = 1.5, 
 		 parent = 30769,
 		 icon = 'Deja Vu',  
 	 },
 	 [30643] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_5, 
-		 activationtime = 0.0, 
+		 activationtime = 0.75, 
 		 icon = 'Tides of Time',  
 	 },
 }

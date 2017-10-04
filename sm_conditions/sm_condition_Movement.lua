@@ -32,9 +32,11 @@ function sm_condition_movement:Evaluate(context)
 	
 	if (t) then
 		local state = t.movementstate
-		if ( self.operator == 1 ) then return state > 1
-		elseif ( self.operator == 2 ) then return state <= 1
-		end		
+		if ( state ~= nil ) then
+			if ( self.operator == 1 ) then return state > 1
+			elseif ( self.operator == 2 ) then return state <= 1
+			end
+		end
 	end
 	return false
 end

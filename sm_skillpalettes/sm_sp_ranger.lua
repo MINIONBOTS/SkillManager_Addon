@@ -71,12 +71,12 @@ set.icon = "Longbow"
 set.skills_luacode = {
 [12510] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_1, 
-	 activationtime = 0.0, 
+	 activationtime = 0.75, 
 	 icon = 'Long Range Shot',  
  },
  [12509] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_2, 
-	 activationtime = 0.0, 
+	 activationtime = 2.5, 
 	 icon = 'Rapid Fire',  
  },
  [12573] = { 
@@ -86,12 +86,12 @@ set.skills_luacode = {
  },
  [12511] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_4, 
-	 activationtime = 0.0, 
+	 activationtime = 0.5, 
 	 icon = 'Point Blank Shot',  
  },
  [12469] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_5, 
-	 activationtime = 0.0, 
+	 activationtime = 2.25, 
 	 icon = 'Barrage',  
  },
 }
@@ -285,12 +285,12 @@ set.icon = "Torch"
 set.skills_luacode = {
  [12635] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_4, 
-	 activationtime = 0.0, 
+	 activationtime = 0.5, 
 	 icon = 'Throw Torch',  
  },
  [12504] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_5, 
-	 activationtime = 0.0, 
+	 activationtime = 0.5, 
 	 icon = 'Bonfire',  
  },
 }

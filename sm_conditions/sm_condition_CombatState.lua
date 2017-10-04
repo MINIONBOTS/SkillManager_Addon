@@ -21,11 +21,11 @@ function sm_condition_combatstate:Evaluate(context)
 	if ( self.target == 1 and context.player ) then
 		state = context.player.incombat
 	elseif ( self.target == 2 and context.attack_target ) then
-		state = context.attack_target.isaggro or context.attack_target.hp.percent < 100 or context.attack_target.incombat
+		state = context.attack_target.isaggro or context.attack_target.incombat or (context.attack_target.hp and context.attack_target.hp.percent < 100 )
 	elseif ( self.target == 3 and context.heal_target ) then
-		state = context.heal_target.incombat or context.heal_target.hp.percent < 100
+		state = context.heal_target.incombat  or (context.heal_target.hp and context.heal_target.hp.percent < 100 )
 	end
-	if (state) then
+	if (state~=nil) then
 		if ( self.operator == 1 ) then return state == true
 		elseif ( self.operator == 2 ) then return state == false
 		end		

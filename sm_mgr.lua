@@ -364,7 +364,7 @@ function SkillManager:SetTarget(targetid, healtargetid)
 	end
 end
 function SkillManager:RenderCodeEditor() 
-	if ( sm_mgr.profile ) then 
+	if ( sm_mgr.profile ) then
 		sm_mgr.profile:RenderCodeEditor() 
 	end 
 end

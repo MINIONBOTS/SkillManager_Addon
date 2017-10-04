@@ -22,11 +22,13 @@ function sm_condition_cooldown:Evaluate(context)
 	local skillinfo = Player:GetSpellInfoByID(self.skillid)
 	if(skillinfo) then
 		local cd = skillinfo.cooldown
-		if ( self.operator == 1 ) then return cd < self.value 
-		elseif ( self.operator == 2 ) then return cd <= self.value 
-		elseif ( self.operator == 3 ) then return cd == self.value 
-		elseif ( self.operator == 4 ) then return cd >= self.value
-		elseif ( self.operator == 5 ) then return cd > self.value		
+		if ( cd ) then
+			if ( self.operator == 1 ) then return cd < self.value 
+			elseif ( self.operator == 2 ) then return cd <= self.value 
+			elseif ( self.operator == 3 ) then return cd == self.value 
+			elseif ( self.operator == 4 ) then return cd >= self.value
+			elseif ( self.operator == 5 ) then return cd > self.value		
+			end
 		end
 	end
 end

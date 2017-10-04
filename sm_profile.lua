@@ -138,18 +138,62 @@ function sm_profile:UpdateContext()
 		elseif( target.attitude == GW2.ATTITUDE.Friendly ) then
 			self.temp.heal_targetid = target.id
 			self.temp.heal_target_lastupdate = ml_global_information.Now
+		end		
+	end
+	
+	-- 
+	if ( not self.temp.heal_targetid ) then
+		local lowesthp = 101
+		if ( self.temp.context.player.party ) then
+			for id, p in pairs(self.temp.context.player.party) do
+				if ( p.id ~= ml_global_information.Player_ID ) then
+					local e = CharacterList:Get(p.id)			
+					if ( e ) then
+						local ehp = e.health
+						if ( e.distance < 1200 and ehp and ehp.percent < lowesthp ) then					
+							lowesthp = ehp.percent
+							self.temp.heal_targetid = p.id
+							self.temp.heal_target_lastupdate = ml_global_information.Now
+						end
+					end
+				end
+			end
 		end
-		if ( not self.temp.heal_targetid ) then 
-			self.temp.heal_targetid = self.temp.context.player.id 
-			self.temp.heal_target_lastupdate = ml_global_information.Now
+		if ( self.temp.context.player.squad ) then
+			for id, p in pairs(self.temp.context.player.squad) do
+				if ( p.id ~= ml_global_information.Player_ID ) then
+					local e = CharacterList:Get(p.id)			
+					if ( e ) then
+						local ehp = e.health
+						if ( e.distance < 1200 and ehp and ehp.percent < lowesthp ) then					
+							lowesthp = ehp.percent
+							self.temp.heal_targetid = p.id
+							self.temp.heal_target_lastupdate = ml_global_information.Now
+						end
+					end
+				end
+			end
 		end
-	end	
+		
+		if ( not self.temp.heal_targetid ) then		
+			local clist = CharacterList("friendly,player,maxdistance=1200,lowesthealthpercent,alive")				
+			for id, e in pairs(clist) do			
+				local ehp = e.health
+				if ( e.distance < 1200 and ehp and ehp.percent < lowesthp ) then					
+					lowesthp = ehp.percent
+					self.temp.heal_targetid = e.id
+					self.temp.heal_target_lastupdate = ml_global_information.Now
+				end			
+			end
+		end		
+	end
+	
 	
 	-- Check if we (still) have an active target to attack and update that. Make sure it is not our player.
 	local attacktargetvalid = false
 	if ( self.temp.attack_targetid ) then			
 		self.temp.attack_target = CharacterList:Get(self.temp.attack_targetid) or GadgetList:Get(self.temp.attack_targetid) --or AgentList:Get(self.targetid)
-		if ( self.temp.attack_target and (self.temp.attack_target_lastupdate and ml_global_information.Now - self.temp.attack_target_lastupdate < 2000) and not self.temp.attack_target.dead and self.temp.attack_target.attackable) then
+		if ( self.temp.attack_target and (self.temp.attack_target_lastupdate and ml_global_information.Now - self.temp.attack_target_lastupdate < 1000) and not self.temp.attack_target.dead and self.temp.attack_target.attackable) then
 			self.temp.context.attack_target = setmetatable({}, {
 			__index = function (self, key)
 								local val = sm_mgr.profile.temp.attack_target[key]
@@ -171,9 +215,9 @@ function sm_profile:UpdateContext()
 	
 	-- Update Heal Target
 	local healtargetvalid = false
-	if ( self.temp.heal_targetid ) then			
+	if ( self.temp.heal_targetid ) then
 		self.temp.heal_target = CharacterList:Get(self.temp.heal_targetid) or GadgetList:Get(self.temp.heal_targetid) --or AgentList:Get(self.targetid)
-		if ( self.temp.heal_target and (self.temp.heal_target_lastupdate and ml_global_information.Now - self.temp.heal_target_lastupdate < 2000) and self.temp.heal_target.selectable and self.temp.heal_target.attitude ~= GW2.ATTITUDE.Hostile ) then
+		if ( self.temp.heal_target and (self.temp.heal_target_lastupdate and ml_global_information.Now - self.temp.heal_target_lastupdate < 1000) and self.temp.heal_target.selectable and self.temp.heal_target.attitude ~= GW2.ATTITUDE.Hostile ) then
 			self.temp.context.heal_target = setmetatable({}, {
 			__index = function (self, key)
 								 local val = sm_mgr.profile.temp.heal_target[key]
@@ -183,7 +227,7 @@ function sm_profile:UpdateContext()
 								return val
 							end})
 			self.temp.context.heal_targetid = self.temp.heal_targetid
-			attacktargetvalid = true
+			healtargetvalid = true
 		end
 	end
 	if ( not healtargetvalid ) then
@@ -237,12 +281,12 @@ function sm_profile:Cast()
 				end				
 				if ( not action ) then action = a end
 				
-				local pcastinfo = Player.castinfo
-				if ( action.temp.cancast and ((pcastinfo.id ~= action.id ) or action.instantcast )) then  -- .cancast includes Cooldown, Power and "Do we have that set and skill at all" checks
+				ml_global_information.Player_CastInfo = Player.castinfo
+				if ( action.temp.cancast and ((ml_global_information.Player_CastInfo.id ~= action.id ) or action.instantcast )) then  -- .cancast includes Cooldown, Power and "Do we have that set and skill at all" checks
 					
 					local cancastnormal = ( not self.temp.nextcast or ml_global_information.Now - self.temp.nextcast > 0 )
 					
-					if( cancastnormal or action.instantcast ) then
+					if( (cancastnormal or action.instantcast) and  action:IsCastTargetValid()) then
 						if ( not action.skillpalette:IsActive(self.temp.context)) then
 							if ( self.weaponswapmode == 1 ) then
 								local deactivated
@@ -257,7 +301,7 @@ function sm_profile:Cast()
 									end
 								end
 								if ( not deactivated ) then
-									d("[SkillManager] - Activating Skill Set "..tostring(action.skillpaletteuid))
+									d("[SkillManager] - Activating Skill Set "..tostring(action.skillpaletteuid).. " to cast "..tostring(action.name))
 									action.skillpalette:Activate(self.temp.context)
 									self.temp.lasttick = self.temp.lasttick + 250	-- do not allow anything ,not even instant casts
 									return
@@ -265,19 +309,12 @@ function sm_profile:Cast()
 							end
 						
 						else											
-							if ( pcastinfo.id ~= action.id ) then
+							if ( ml_global_information.Player_CastInfo.id ~= action.id ) then
 								local dbug = { [1] = "Enemy", [2] = "Player", [3] = "Friend"}
 								local ttlc = self.temp.lastcast and (ml_global_information.Now-self.temp.lastcast )or 0
 								d("[SkillManager] - Casting "..tostring(action.name).. " at "..tostring(dbug[action.temp.casttarget]) .. " - " .. tostring(ttlc))
 								
-								local target
-								if (action.temp.casttarget == 1) then
-									target = self.temp.context.attack_target
-								elseif (action.temp.casttarget == 2) then
-									target = self.temp.context.player
-								elseif (action.temp.casttarget == 3) then
-									target = self.temp.context.heal_target								
-								end
+								local target = action:GetCastTarget()
 								
 								if (target) then
 									local castresult
@@ -386,9 +423,8 @@ function sm_profile:Render()
 		if ( GUI:IsItemHovered() ) then GUI:SetTooltip(GetString( "Lua Code which gets executed from the Main Bot Menu, to render Profile Settings etc. there." ) )end
 		local maxx,_ = GUI:GetContentRegionAvail()
 		if ( maxx < 650 ) then maxx = x end
-		local changed = false
-		maxy = math.max(maxy/2,300)
-		self.botmainmenu_luacode, changed = GUI:InputTextEditor( "##smmainmenueditor", self.botmainmenu_luacode or "", maxx, maxy, GUI.InputTextFlags_AllowTabInput)
+		local changed = false		
+		self.botmainmenu_luacode, changed = GUI:InputTextEditor( "##smmainmenueditor", self.botmainmenu_luacode or "", maxx, 450, GUI.InputTextFlags_AllowTabInput)
 		if ( changed ) then self.temp.modified = true self.temp.botmainmenu_luacode_bugged = true end
 		GUI:TreePop()
 	else		
@@ -474,7 +510,7 @@ end
 -- Renders Custom Profile UI Elements into the Main Menu of the Bot
 function sm_profile:RenderCodeEditor()
 	if ( self.botmainmenu_luacode and self.botmainmenu_luacode ~= "" ) then
-		if ( not self.temp.botmainmenu_luacode_compiled and not self.temp.botmainmenu_luacode_bugged ) then
+		if ( not self.temp.botmainmenu_luacode_compiled and not self.temp.botmainmenu_luacode_bugged ) then					
 			local execstring = 'return function(context) '..self.botmainmenu_luacode..' end'
 			local func = loadstring(execstring)
 			if ( func ) then
@@ -486,6 +522,9 @@ function sm_profile:RenderCodeEditor()
 				ml_error("[SkillManager] - Main Menu Code has a BUG !!")
 				assert(loadstring(execstring)) -- print out the actual error
 			end
+		else
+			--executing the already loaded function
+			self.temp.botmainmenu_luacode_compiled()(self.temp.context)
 		end
 	end
 end

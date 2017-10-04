@@ -112,7 +112,7 @@ function sm_skill:Render()
 	self:RenderSkillEditor()
 end
 
--- Renders all SkillPalettes, to pick a skill from
+-- Renders all SkillPalettes / skill sets, to pick a skill from
 function sm_skill:RenderSkillPaletteEditor()	
 	GUI:SetNextWindowSize(400,600,GUI.SetCond_Always)
 	GUI:SetNextWindowPosCenter(GUI.SetCond_Once)
@@ -346,14 +346,15 @@ function sm_skill:RenderHardcodedSkillDetails()
 	if ( changed ) then sm_mgr.profile.temp.modified = true end
 	
 	GUI:SameLine(300)
-	GUI:Text(GetString("Requires LoS:")) GUI:SameLine(425) self.requireslos, changed = GUI:Checkbox("##requireslos" , self.requireslos or true) if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("If Enabled, this Skill will only be cast at the target if it is in Line of Sight." )) end			
+	if ( self.requireslos == nil ) then self.requireslos = true end
+	GUI:Text(GetString("Requires LoS:")) GUI:SameLine(425) self.requireslos, changed = GUI:Checkbox("##requireslos" , self.requireslos) if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("If Enabled, this Skill will only be cast at the target if it is in Line of Sight." )) end			
 	if ( changed ) then sm_mgr.profile.temp.modified = true end
 	
 	GUI:PopStyleVar()
 end
 
 -- Get data from c++ and update this skill's data
-function sm_skill:UpdateData(context)
+function sm_skill:UpdateData(context, iscombo)
 	self.temp.context = context
 	if (context.skillbar and self.id and self.slot ) then
 		local skilldata
@@ -402,19 +403,22 @@ function sm_skill:UpdateData(context)
 			self.radius = skilldata.radius
 			self.power = skilldata.power
 			self.isgroundtargeted = skilldata.isgroundtargeted
-		
+			
 		else
 			ml_error("[SkillManager] - No Skill Data found for Skill ID "..tostring(self.temp.currentskillid))	
 		end
 	end
 	
 	if ( self.skill_next ) then		
-		self.temp.cancast = self.skill_next:UpdateData(context)		
+		self.temp.cancast = self.skill_next:UpdateData(context,true)		
 	end
 	
-	-- Check if we can cast this spell	
+	-- Check if we can cast this spell
+	self.temp.cancastflipcombo = nil	
 	if ( self.temp.cancast or not self.skill_next) then
-		self.temp.cancast = self:CanCast()
+		local cc = self:CanCast()
+		self.temp.cancastflipcombo = iscombo and cc and self.parent
+		self.temp.cancast = cc and self:IsEquipped()		
 	end
 	
 	-- Update AttackRange	
@@ -428,7 +432,7 @@ function sm_skill:UpdateData(context)
 		end
 	end
 	
-	return self.temp.cancast
+	return self.temp.cancast or self.temp.cancastflipcombo
 end
 
 -- Take a fucking wild guess, returns true for modified conditions
@@ -588,7 +592,7 @@ function sm_skill:RenderActionButton(currentselectedaction,draggedaction, id1,id
 		GUI:PushStyleColor(GUI.Col_Button,1,1,1,0.7)
 		GUI:PushStyleColor(GUI.Col_ButtonHovered,1,1,1,0.9)
 		GUI:PushStyleColor(GUI.Col_ButtonActive,1,1,1,1)
-	elseif ( self.temp.cancast ) then
+	elseif ( self.temp.cancast or (self.temp.cancastflipcombo and combo)) then
 		GUI:PushStyleColor(GUI.Col_Button,0,1,0.2,0.7)
 		GUI:PushStyleColor(GUI.Col_ButtonHovered,0,1,0.2,0.9)
 		GUI:PushStyleColor(GUI.Col_ButtonActive,0,1,0.2,1)
@@ -610,13 +614,13 @@ function sm_skill:RenderActionButton(currentselectedaction,draggedaction, id1,id
 	end
 	GUI:PopStyleColor(3)
 	if (GUI:IsItemHovered()) then GUI:SetTooltip( self.name or self.icon) end
-	
+		
 	-- Drag n Drop to switch places
 	if ( not clicked ) then
 		if ( GUI:IsItemClicked() ) then dragged = true end
 		if ( GUI:IsMouseReleased(0) and GUI:IsItemHoveredRect() ) then released = true end
 	end
-
+	
 	-- Cooldown Overlay
 	if ( not combo and self.cooldown > 0 ) then
 		--local nx,ny = GUI:GetCursorPos()	
@@ -633,6 +637,14 @@ function sm_skill:RenderActionButton(currentselectedaction,draggedaction, id1,id
 		GUI:PopStyleVar()
 	end
 	
+	-- Nametag for non combos
+	if ( not combo and not self.skill_next ) then
+		GUI:SameLine()
+		GUI:BeginGroup()		
+		GUI:Dummy(20,10)
+		GUI:Text(self.name)
+		GUI:EndGroup()		
+	end
 	-- Render Skill Combo Icons
 	if ( self.skill_next and self.skill_next.id) then
 		GUI:SameLine()
@@ -646,12 +658,33 @@ function sm_skill:IsCasting()
 	return self.temp.context.player.castinfo and self.temp.context.player.castinfo.skillid == self.id
 end
 
+-- Checks if the Target of the Condition group which evaluated to "true"  is actually valid right now
+function sm_skill:IsCastTargetValid()
+	if (self.temp.casttarget == 1) then
+		return self.temp.context.attack_target ~= nil
+	elseif (self.temp.casttarget == 2) then
+		return self.temp.context.player ~= nil
+	elseif (self.temp.casttarget == 3) then
+		return self.temp.context.heal_target	~= nil
+	end
+end
+
+function sm_skill:GetCastTarget()
+	if (self.temp.casttarget == 1) then
+		return self.temp.context.attack_target
+	elseif (self.temp.casttarget == 2) then
+		return self.temp.context.player
+	elseif (self.temp.casttarget == 3) then
+		return self.temp.context.heal_target
+	end
+end
+
 -- For Heal, Utility and Elite Slots, which can have different Skills from the same Set
 -- Shitty flip skills fuck up the logic big time here, so we go the easiest way of just allowing "cancast" to be true when we are having the set actíve for skills 6-10
 function sm_skill:IsEquipped()
 	if (self.temp.context.skillbar) then
 		if (  self.slot < GW2.SKILLBARSLOT.Slot_1 or self.slot > GW2.SKILLBARSLOT.Slot_5 ) then		
-			if ( self.skillpalette:IsActive(self.temp.context) ) then				
+			if ( self.skillpalette:IsActive(self.temp.context) ) then
 				if ( self.slot == GW2.SKILLBARSLOT.Slot_6 and self.temp.context.skillbar[self.slot] and self.temp.context.skillbar[self.slot].id == self.id ) then return true end	-- Heal
 				if ( self.slot == GW2.SKILLBARSLOT.Slot_10 and self.temp.context.skillbar[self.slot]and self.temp.context.skillbar[self.slot].id == self.id ) then return true end  -- Elite
 				-- Utility				
@@ -660,7 +693,7 @@ function sm_skill:IsEquipped()
 						(self.temp.context.skillbar[GW2.SKILLBARSLOT.Slot_8] and self.temp.context.skillbar[GW2.SKILLBARSLOT.Slot_8].id == self.id )or 
 						(self.temp.context.skillbar[GW2.SKILLBARSLOT.Slot_9] and self.temp.context.skillbar[GW2.SKILLBARSLOT.Slot_9].id == self.id)) then
 						return true
-					end			
+					end
 				end
 				-- Toolbelt aka F-shit
 				if ( self.slot >= GW2.SKILLBARSLOT.Slot_12 and self.slot <= GW2.SKILLBARSLOT.Slot_17 ) then
@@ -671,11 +704,11 @@ function sm_skill:IsEquipped()
 						(self.temp.context.skillbar[GW2.SKILLBARSLOT.Slot_16] and self.temp.context.skillbar[GW2.SKILLBARSLOT.Slot_16].id == self.id) or 
 						(self.temp.context.skillbar[GW2.SKILLBARSLOT.Slot_17] and self.temp.context.skillbar[GW2.SKILLBARSLOT.Slot_17].id == self.id)) then
 						return true
-					end			
+					end
 				end
 			end		
 		else
-			-- only return true for NONE-Flip-skills if they are not on our current bar
+			-- Weapon skill 1-5 : only return true for NONE-Flip-skills if they are on our current bar
 			if ( not self.parent or (self.skillpalette:IsActive(self.temp.context) and self.temp.context.skillbar[self.slot].id == self.id))then 			
 				return true
 			end
@@ -686,7 +719,7 @@ end
 
 -- Checks if the skill can be cast -> skillpalette and Conditions and onslot check
 function sm_skill:CanCast()
-	if (self.id and self.skillpalette and self.cancast and (self.skillpalette:IsActive(self.temp.context) or self.skillpalette:CanActivate(self.temp.context)) and self:IsEquipped() ) then
+	if (self.id and self.skillpalette and self.cancast and (self.skillpalette:IsActive(self.temp.context) or self.skillpalette:CanActivate(self.temp.context))) then
 		-- Internal CD when spam casting
 		if ( self.temp.internalcd and (ml_global_information.Now - self.temp.internalcd <= 0) ) then
 			return false

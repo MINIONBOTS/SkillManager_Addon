@@ -370,29 +370,29 @@ set.icon = "Mace"
 set.skills_luacode = {
 [14376] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_1, 
-	 activationtime = 0.0, 
+	 activationtime = 0.5, 
 	 icon = 'Mace Smash',  
  },
  [14377] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_1, 
-	 activationtime = 0.0, 
+	 activationtime = 0.5, 
 	 icon = 'Mace Bash',
 	 parent = 14376,
  },
  [14378] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_1, 
-	 activationtime = 0.0, 
+	 activationtime = 0.75, 
 	 icon = 'Pulverize', 
 	 parent = 14377,
  },
  [14507] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_2, 
-	 activationtime = 0.0, 
+	 activationtime = 0.75, 
 	 icon = 'Counterblow',  
  },
  [14503] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_3, 
-	 activationtime = 0.0, 
+	 activationtime = 0.5, 
 	 icon = 'Pommel Bash',  
  },
 

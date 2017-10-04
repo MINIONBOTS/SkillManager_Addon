@@ -173,33 +173,34 @@ set.icon = "Staff"
 set.skills_luacode = {
 [9122] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_1, 
-	 activationtime = 0.0, 
+	 activationtime = 0.5, 
 	 icon = 'Wave of Wrath',  
  },
  [9140] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_2, 
-	 activationtime = 0.0, 
+	 activationtime = 0.5, 
 	 icon = 'Orb of Light',  
  },
   [9141] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_2, 
 	 activationtime = 0.0, 
-	 icon = 'Detonate Orb of Light',  
+	 icon = 'Detonate Orb of Light',
+	 instantcast = true,
 	 parent = 9140,
  },
  [9143] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_3, 
-	 activationtime = 0.0, 
+	 activationtime = 0.75, 
 	 icon = 'Symbol of Swiftness',  
  },
  [9265] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_4, 
-	 activationtime = 0.0, 
+	 activationtime = 2.5, 
 	 icon = 'Empower',  
  },
  [9144] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_5, 
-	 activationtime = 0.0, 
+	 activationtime = 1.0, 
 	 icon = 'Line of Warding',  
  },
 }
@@ -565,22 +566,22 @@ downed.icon = "Bandage"
 downed.skills_luacode = {
 [9149] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_1, 
-	 activationtime = 0.0, 
+	 activationtime = 3.0, 
 	 icon = 'Wrath',  
  },
  [9096] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_2, 
-	 activationtime = 0.0, 
+	 activationtime = 0.5, 
 	 icon = 'Wave of Light',  
  },
  [9095] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_3, 
-	 activationtime = 0.0, 
+	 activationtime = 0.5, 
 	 icon = 'Symbol of Judgment',  
  },
  [1175] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_4, 
-	 activationtime = 0.0, 
+	 activationtime = 1.0, 
 	 icon = 'Bandage',  
  },
 }
@@ -605,22 +606,22 @@ drowning.icon = "Shackle"
 drowning.skills_luacode = {
 [9212] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_1, 
-	 activationtime = 0.0, 
+	 activationtime = 0.5, 
 	 icon = 'Shackle',  
  },
  [9211] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_2, 
-	 activationtime = 0.0, 
+	 activationtime = 2.0, 
 	 icon = 'Reveal the Depths',  
  },
  [9210] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_3, 
-	 activationtime = 0.0, 
+	 activationtime = 0.5, 
 	 icon = 'Renewing Current',  
  },
  [1175] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_4, 
-	 activationtime = 0.0, 
+	 activationtime = 1.0, 
 	 icon = 'Bandage',  
  },
 }
@@ -740,27 +741,27 @@ set.icon = "Tome of Justice"
 set.skills_luacode = {
 [41258] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_1, 
-	 activationtime = 0.0, 
+	 activationtime = 0.5, 
 	 icon = 'Chapter 1: Searing Spell',  
  },
  [40635] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_2, 
-	 activationtime = 0.0, 
+	 activationtime = 0.75, 
 	 icon = 'Chapter 2: Igniting Burst',  
  },
  [42449] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_3, 
-	 activationtime = 0.0, 
+	 activationtime = 0.75, 
 	 icon = 'Chapter 3: Heated Rebuke',  
  },
  [40015] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_4, 
-	 activationtime = 0.0, 
+	 activationtime = 1.25, 
 	 icon = 'Chapter 4: Scorched Aftermath',  
  },
  [42898] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_5, 
-	 activationtime = 0.0, 
+	 activationtime = 0.75, 
 	 icon = 'Epilogue: Ashes of the Just',  
  },
 }
@@ -791,27 +792,27 @@ set.icon = "Tome of Resolve"
 set.skills_luacode = {
 [45022] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_1, 
-	 activationtime = 0.0, 
+	 activationtime = 0.5, 
 	 icon = 'Chapter 1: Desert Bloom',  
  },
  [40679] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_2, 
-	 activationtime = 0.0, 
+	 activationtime = 1.0, 
 	 icon = 'Chapter 2: Radiant Recovery',  
  },
  [45128] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_3, 
-	 activationtime = 0.0, 
+	 activationtime = 0.75, 
 	 icon = 'Chapter 3: Azure Sun',  
  },
  [42008] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_4, 
-	 activationtime = 0.0, 
+	 activationtime = 0.75, 
 	 icon = 'Chapter 4: Shining River',  
  },
  [42925] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_5, 
-	 activationtime = 0.0, 
+	 activationtime = 0.75, 
 	 icon = 'Epilogue: Eternal Oasis',  
  },
 }
@@ -842,27 +843,27 @@ set.icon = "Tome of Courage"
 set.skills_luacode = {
 [42986] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_1, 
-	 activationtime = 0.0, 
+	 activationtime = 0.5, 
 	 icon = 'Chapter 1: Unflinching Charge',  
  },
  [41968] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_2, 
-	 activationtime = 0.0, 
+	 activationtime = 0.25, 
 	 icon = 'Chapter 2: Daring Challenge',  
  },
  [41836] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_3, 
-	 activationtime = 0.0, 
+	 activationtime = 0.75, 
 	 icon = 'Chapter 3: Valiant Bulwark',  
  },
  [40988] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_4, 
-	 activationtime = 0.0, 
+	 activationtime = 0.25, 
 	 icon = 'Chapter 4: Stalwart Stand',  
  },
  [44455] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_5, 
-	 activationtime = 0.0, 
+	 activationtime = 0.75, 
 	 icon = 'Epilogue: Unbroken Lines',  
  },
 }
