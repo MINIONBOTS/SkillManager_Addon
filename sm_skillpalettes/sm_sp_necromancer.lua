@@ -910,10 +910,20 @@ necromancer.skills_luacode = {
 		activationtime = 0.75,
 		icon = 'Charge',
 	},
+	[10550] = {
+		slot = GW2.SKILLBARSLOT.Slot_10,
+		activationtime = 1,
+		icon = 'Lich Form',
+	},
 	[42355] = {
 		slot = GW2.SKILLBARSLOT.Slot_10,
 		activationtime = 0.75,
 		icon = 'Ghastly Breach',
+	},
+	[30105] = {
+		slot = GW2.SKILLBARSLOT.Slot_10,
+		activationtime = 1.25,
+		icon = '\"Chilled to the Bone!\"',
 	},
 	
 -- END ELITE.
