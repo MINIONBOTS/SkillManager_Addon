@@ -13,7 +13,7 @@ function sm_mgr.GetPlayerProfession() return Player.profession end
 
 -- Register the SM UI Button:
 function sm_mgr.ModuleInit()	
-	_G["ml_gui"].ui_mgr:AddMember({ id = "GW2MINION##SKILLMANAGER", name = "SkillManager", onClick = function() sm_mgr.open = not sm_mgr.open end, tooltip = GetString("Click to open \"Skill Manager\" window."), texture = GetStartupPath().."\\GUI\\UI_Textures\\sword.png"},"GW2MINION##MENU_HEADER")	
+	_G["ml_gui"].ui_mgr:AddMember({ id = "GW2MINION##SKILLMANAGER", name = "SkillManager", onClick = function() sm_mgr.open = not sm_mgr.open end, tooltip = GetString("Open the \"Skill Manager\" window."), texture = GetStartupPath().."\\GUI\\UI_Textures\\sword.png"},"GW2MINION##MENU_HEADER")	
 	sm_mgr.RefreshSkillPalettes()
 end
 RegisterEventHandler("Module.Initalize",sm_mgr.ModuleInit)

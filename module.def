@@ -1,10 +1,10 @@
 [Module]
 Name=SkillManager
-Dependencies=minionlib
+Dependencies=minionlib,GW2Minion
 Version=1
 Enabled=1
 CreateFolders=iconcache,sm_conditions,sm_skillpalettes
 ExportFiles=iconcache/blank.png,iconcache/default.png,iconcache/Axe.png,iconcache/Berserker.png,iconcache/Blowtorch.png,iconcache/Chronomancer.png,iconcache/Dagger.png,iconcache/Daredevil.png,iconcache/Dragonhunter.png,iconcache/Druid.png,iconcache/Elementalist.png,iconcache/Engineer.png,iconcache/Focus.png,iconcache/Greatsword.png,iconcache/Guardian.png,iconcache/Hammer.png,iconcache/Harpoongun.png,iconcache/Herald.png,iconcache/Longbow.png,iconcache/Mace.png,iconcache/Mesmer.png,iconcache/Necromancer.png,iconcache/Pistol.png,iconcache/Ranger.png,iconcache/Revenant.png,iconcache/Rifle.png,iconcache/Scepter.png,iconcache/Scrapper.png,iconcache/Shield.png,iconcache/ShortBow.png,iconcache/Staff.png,iconcache/Spear.png,iconcache/Sword.png,iconcache/Tempest.png,iconcache/Thief.png,iconcache/Torch.png,iconcache/Trident.png,iconcache/Warhorn.png,iconcache/Warrior.png,sm_skillpalettes/sm_sp_elementalist.lua,sm_skillpalettes/sm_sp_engineer.lua,sm_skillpalettes/sm_sp_guardian.lua,sm_skillpalettes/sm_sp_mesmer.lua,sm_skillpalettes/sm_sp_necromancer.lua,sm_skillpalettes/sm_sp_ranger.lua,sm_skillpalettes/sm_sp_revenant.lua,sm_skillpalettes/sm_sp_thief.lua,sm_skillpalettes/sm_sp_warrior.lua,sm_conditions/sm_condition_Health.lua,sm_conditions/sm_condition_Buff_Name.lua
-Files=sm_skillpalette.lua,sm_mgr.lua,sm_webapi.lua,sm_condition.lua,sm_profile.lua,sm_skill.lua
 InternalFiles=sm_skillpalette.lua,sm_mgr.lua,sm_webapi.lua,sm_condition.lua,sm_profile.lua,sm_skill.lua
+Files=sm_skillpalette.lua,sm_mgr.lua,sm_webapi.lua,sm_condition.lua,sm_profile.lua,sm_skill.lua
 EnvironmentLevel=0
