@@ -166,30 +166,39 @@ end
 
 -- Draws the SkillManager window, profile management and calls Profile:Render() to populate stuff
 function sm_mgr.DrawMenu(event,ticks)
-	-- Ingame and rdy
-	ml_global_information.GameState = GetGameState()
-	local p = Player
-	if(p) then
-		ml_global_information.Player_CastInfo = p.castinfo
-	end
-	if ( not ml_global_information.GameState == GW2.GAMESTATE.GAMEPLAY or not ml_global_information.Player_CastInfo ) then 
-		return
+	
+	local updateandcast
+	if ( not sm_mgr.lasttick or ticks - sm_mgr.lasttick > 50 ) then
+		sm_mgr.lasttick = ticks
+		updateandcast = true
 	end
 	
-	-- Check for valid player profession and or changes
-	local profession = sm_mgr.GetPlayerProfession()
-	if ( profession and ( not sm_mgr.lastprofession or sm_mgr.lastprofession ~= profession or not sm_mgr.profile)) then
-		if (sm_mgr.lastprofession ~= profession) then 
-			sm_mgr.RefreshProfileFiles()
+	if ( updateandcast ) then
+		-- Ingame and rdy
+		ml_global_information.GameState = GetGameState()
+		local p = Player
+		if(p) then
+			ml_global_information.Player_CastInfo = p.castinfo
 		end
-		sm_mgr:LoadLastProfileForProfession(profession)
-	end
+		if ( not ml_global_information.GameState == GW2.GAMESTATE.GAMEPLAY or not ml_global_information.Player_CastInfo ) then 
+			return
+		end
 		
-	-- Update GameData & Context & Skills etc.
-	if ( sm_mgr.profile ) then
-		sm_mgr.profile:UpdateContext()
+		-- Check for valid player profession and or changes
+		local profession = sm_mgr.GetPlayerProfession()
+		if ( profession and ( not sm_mgr.lastprofession or sm_mgr.lastprofession ~= profession or not sm_mgr.profile)) then
+			if (sm_mgr.lastprofession ~= profession) then 
+				sm_mgr.RefreshProfileFiles()
+			end
+			sm_mgr:LoadLastProfileForProfession(profession)
+		end
+			
+		-- Update GameData & Context & Skills etc.
+		if ( sm_mgr.profile ) then
+			sm_mgr.profile:UpdateContext()
+		end
 	end
-		
+	
 	-- SkillManager Main Window
 	if (sm_mgr.open) then
 		GUI:SetNextWindowSize(280,150,GUI.SetCond_Once)
@@ -320,7 +329,7 @@ function sm_mgr.DrawMenu(event,ticks)
 	end
 		
 	-- Casting time
-	if ( sm_mgr.profile ) then
+	if ( updateandcast and sm_mgr.profile ) then
 		sm_mgr.profile:Cast()
 	end
 end
@@ -369,9 +378,7 @@ function SkillManager:RenderCodeEditor()
 	end 
 end
 function SkillManager:Cast()
-	if ( sm_mgr.profile ) then
-		sm_mgr.profile:Cast() 
-	end 
+	-- not letting anything outside out "logic" call cast, else shit happens when it is not updated
 end
 
 

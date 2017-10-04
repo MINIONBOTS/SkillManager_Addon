@@ -491,14 +491,14 @@ set.skills_luacode = {
  },
 }
 function set:IsActive(context)
-	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_17] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_17].id == 26650)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_17] ~= nil  and ( context.skillbar[GW2.SKILLBARSLOT.Slot_17].id == 26650 or context.skillbar[GW2.SKILLBARSLOT.Slot_17].id == 28419))
 end
 function set:CanActivate(context)
-	return context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_13] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_13].id == 26650 and context.skillbar[GW2.SKILLBARSLOT.Slot_13].cancast and (not context.stoopidrevenant or ml_global_information.Now - context.stoopidrevenant > 10000)
+	return context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_13] ~= nil  and ( context.skillbar[GW2.SKILLBARSLOT.Slot_17].id == 26650 or context.skillbar[GW2.SKILLBARSLOT.Slot_17].id == 28419) and context.skillbar[GW2.SKILLBARSLOT.Slot_13].cancast and (not context.stoopidrevenant or ml_global_information.Now - context.stoopidrevenant > 10000)
 end
 function set:Activate(context)
 	if ( context.skillbar~=nil ) then
-		if (context.skillbar[GW2.SKILLBARSLOT.Slot_13] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_13].id == 26650) then 
+		if (context.skillbar[GW2.SKILLBARSLOT.Slot_13] ~= nil and ( context.skillbar[GW2.SKILLBARSLOT.Slot_17].id == 26650 or context.skillbar[GW2.SKILLBARSLOT.Slot_17].id == 28419)) then 
 			if ( Player:CastSpell(GW2.SKILLBARSLOT.Slot_13) ) then
 				context.stoopidrevenant  = ml_global_information.Now
 			end
@@ -556,14 +556,14 @@ set.skills_luacode = {
  },
 }
 function set:IsActive(context)
-	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_17] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_17].id == 28141)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_17] ~= nil  and (context.skillbar[GW2.SKILLBARSLOT.Slot_17].id == 28141 or context.skillbar[GW2.SKILLBARSLOT.Slot_17].id == 28195))
 end
 function set:CanActivate(context)
-	return context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_13] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_13].id == 28141 and context.skillbar[GW2.SKILLBARSLOT.Slot_13].cancast and (not context.stoopidrevenant or ml_global_information.Now - context.stoopidrevenant > 10000)
+	return context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_13] ~= nil  and (context.skillbar[GW2.SKILLBARSLOT.Slot_17].id == 28141 or context.skillbar[GW2.SKILLBARSLOT.Slot_17].id == 28195) and context.skillbar[GW2.SKILLBARSLOT.Slot_13].cancast and (not context.stoopidrevenant or ml_global_information.Now - context.stoopidrevenant > 10000)
 end
 function set:Activate(context)
 	if ( context.skillbar~=nil ) then
-		if (context.skillbar[GW2.SKILLBARSLOT.Slot_13] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_13].id == 28141) then 
+		if (context.skillbar[GW2.SKILLBARSLOT.Slot_13] ~= nil and (context.skillbar[GW2.SKILLBARSLOT.Slot_17].id == 28141 or context.skillbar[GW2.SKILLBARSLOT.Slot_17].id == 28195)) then 
 			if ( Player:CastSpell(GW2.SKILLBARSLOT.Slot_13) ) then
 				context.stoopidrevenant  = ml_global_information.Now
 			end
@@ -615,14 +615,14 @@ set.skills_luacode = {
  },
 }
 function set:IsActive(context)
-	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_17] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_17].id == 28376)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_17] ~= nil  and (context.skillbar[GW2.SKILLBARSLOT.Slot_17].id == 28376 or context.skillbar[GW2.SKILLBARSLOT.Slot_17].id == 28494))
 end
 function set:CanActivate(context)
-	return context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_13] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_13].id == 28376 and context.skillbar[GW2.SKILLBARSLOT.Slot_13].cancast and (not context.stoopidrevenant or ml_global_information.Now - context.stoopidrevenant > 10000)
+	return context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_13] ~= nil  and(context.skillbar[GW2.SKILLBARSLOT.Slot_17].id == 28376 or context.skillbar[GW2.SKILLBARSLOT.Slot_17].id == 28494) and context.skillbar[GW2.SKILLBARSLOT.Slot_13].cancast and (not context.stoopidrevenant or ml_global_information.Now - context.stoopidrevenant > 10000)
 end
 function set:Activate(context)
 	if ( context.skillbar~=nil ) then
-		if (context.skillbar[GW2.SKILLBARSLOT.Slot_13] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_13].id == 28376) then 
+		if (context.skillbar[GW2.SKILLBARSLOT.Slot_13] ~= nil and (context.skillbar[GW2.SKILLBARSLOT.Slot_17].id == 28376 or context.skillbar[GW2.SKILLBARSLOT.Slot_17].id == 28494)) then 
 			if ( Player:CastSpell(GW2.SKILLBARSLOT.Slot_13) ) then
 				context.stoopidrevenant  = ml_global_information.Now
 			end
@@ -676,14 +676,14 @@ set.skills_luacode = {
  },
 }
 function set:IsActive(context)
-	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_17] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_17].id == 27659)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_17] ~= nil  and ( context.skillbar[GW2.SKILLBARSLOT.Slot_17].id == 27659 or context.skillbar[GW2.SKILLBARSLOT.Slot_17].id == 28134))
 end
 function set:CanActivate(context)
-	return context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_13] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_13].id == 27659 and context.skillbar[GW2.SKILLBARSLOT.Slot_13].cancast and (not context.stoopidrevenant or ml_global_information.Now - context.stoopidrevenant > 10000)
+	return context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_13] ~= nil  and ( context.skillbar[GW2.SKILLBARSLOT.Slot_17].id == 27659 or context.skillbar[GW2.SKILLBARSLOT.Slot_17].id == 28134) and context.skillbar[GW2.SKILLBARSLOT.Slot_13].cancast and (not context.stoopidrevenant or ml_global_information.Now - context.stoopidrevenant > 10000)
 end
 function set:Activate(context)
 	if ( context.skillbar~=nil ) then
-		if (context.skillbar[GW2.SKILLBARSLOT.Slot_13] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_13].id == 27659) then 
+		if (context.skillbar[GW2.SKILLBARSLOT.Slot_13] ~= nil and ( context.skillbar[GW2.SKILLBARSLOT.Slot_17].id == 27659 or context.skillbar[GW2.SKILLBARSLOT.Slot_17].id == 28134)) then 
 			if ( Player:CastSpell(GW2.SKILLBARSLOT.Slot_13) ) then
 				context.stoopidrevenant  = ml_global_information.Now
 			end
