@@ -184,6 +184,17 @@ end
 
 -- Draws the SkillManager window, profile management and calls Profile:Render() to populate stuff
 function sm_mgr.DrawMenu(event,ticks)
+	-- Ingame and rdy
+	ml_global_information.GameState = GetGameState()
+	if ( not ml_global_information.GameState == GW2.GAMESTATE.GAMEPLAY ) then
+		return
+	end
+	if(Player) then
+		ml_global_information.Player_CastInfo = Player.castinfo
+	end
+	 if( not ml_global_information.Player_CastInfo ) then 
+		return
+	end
 	
 	local updateandcast
 	if ( not sm_mgr.lasttick or ticks - sm_mgr.lasttick > 50 ) then
@@ -192,16 +203,6 @@ function sm_mgr.DrawMenu(event,ticks)
 	end
 	
 	if ( updateandcast ) then
-		-- Ingame and rdy
-		ml_global_information.GameState = GetGameState()
-		local p = Player
-		if(p) then
-			ml_global_information.Player_CastInfo = p.castinfo
-		end
-		if ( not ml_global_information.GameState == GW2.GAMESTATE.GAMEPLAY or not ml_global_information.Player_CastInfo ) then 
-			return
-		end
-		
 		-- Check for valid player profession and or changes
 		local profession = sm_mgr.GetPlayerProfession()
 		if ( profession and ( not sm_mgr.lastprofession or sm_mgr.lastprofession ~= profession or not sm_mgr.profile)) then
@@ -399,8 +400,29 @@ end
 function SkillManager:Cast()
 	-- not letting anything outside out "logic" call cast, else shit happens when it is not updated
 end
-
-
+function SkillManager:Use(targetid) --- old fucntion, backwardcompa
+	if ( sm_mgr.profile ) then
+		sm_mgr.profile:SetTargets(targetid, nil)
+	end
+end
+function SkillManager:SelectProfile(name)
+	local profile
+	for i,p in pairs(sm_mgr.profiles) do
+		if ( p.temp.filename == name) then
+			profile = p
+			break
+		end
+	end
+	if ( profile ) then
+		sm_mgr.profile = sm_profile:new(profile)
+		Settings.SkillManager.lastProfiles[sm_mgr.GetPlayerProfession()] = sm_mgr.profile.temp.filename
+		Settings.SkillManager.lastProfiles = Settings.SkillManager.lastProfiles -- trigger save
+		sm_mgr.lastprofession = sm_mgr.GetPlayerProfession()
+		d("[SkillManager] - Switched to Profile: ".. sm_mgr.profile.temp.filename)
+	else
+		d("[SkillManager] - Could not find Profile: ".. name)
+	end	
+end
 
 
 -- auto generating default profiles, leaving it here for future changes I guess
@@ -508,11 +530,15 @@ function SkillManager:GenetateDefaultProfile()
 		sm_mgr:GenetateDefaultProfile() 
 	end 
 end
+function SkillManager:ToggleHelper()
+	sm_mgr.sethelper.open = not sm_mgr.sethelper.open
+end
+sm_mgr.sethelper.open
 
 
 -- some little helper window to update/see the skill data needed to build the hardcoded skill sets
 sm_mgr.sethelper = {}
-sm_mgr.sethelper.open = true
+sm_mgr.sethelper.open = false
 -- Draws the SkillManager window, profile management and calls Profile:Render() to populate stuff
 function sm_mgr.sethelper.DrawMenu(event,ticks)
 
