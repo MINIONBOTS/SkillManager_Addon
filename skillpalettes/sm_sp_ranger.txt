@@ -1016,6 +1016,21 @@ instantcast = true,
 	 activationtime = 0.5, 
 	 icon = 'Spiritual Reprieve',  
  },
+  [40625] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_13, 
+	 activationtime = 0.5, 
+	 icon = 'Bite',  
+ },
+ [44384] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_13, 
+	 activationtime = 0.5, 
+	 icon = 'Crippling Anguish',  
+ },
+ [40111] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_14, 
+	 activationtime = 0.5, 
+	 icon = 'Narcotic Spores',  
+ },
  [44617] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_13, 
 	 activationtime = 0.5, 
@@ -1026,12 +1041,22 @@ instantcast = true,
 	 activationtime = 0.5, 
 	 icon = 'Frenzied Attack',  
  },
+  [43068] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_13, 
+	 activationtime = 0.5, 
+	 icon = 'Tail Lash',  
+ },
+ [41461] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_14, 
+	 activationtime = 0.5, 
+	 icon = 'Devourer Retreat',  
+ },
  [45797] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_15, 
 	 activationtime = 0.5, 
 	 icon = 'Unflinching Fortitude',  
  },
- [41406] = { 
+ [44514] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_13, 
 	 activationtime = 0.5, 
 	 icon = 'Maul',  
@@ -1040,6 +1065,11 @@ instantcast = true,
 	 slot = GW2.SKILLBARSLOT.Slot_14, 
 	 activationtime = 0.5, 
 	 icon = 'Brutal Charge',  
+ },
+  [41406] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_13, 
+	 activationtime = 0.5, 
+	 icon = 'Maul',  
  },
  [43375] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_15, 
@@ -1051,6 +1081,16 @@ instantcast = true,
 	 activationtime = 0.5, 
 	 icon = 'Kick',  
  },
+ [43788] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_13, 
+	 activationtime = 0.5, 
+	 icon = 'Call Lightning',  
+ },
+ [43701] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_14, 
+	 activationtime = 0.5, 
+	 icon = 'Photosynthesize',  
+ },
  [45743] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_14, 
 	 activationtime = 0.5, 
@@ -1061,10 +1101,60 @@ instantcast = true,
 	 activationtime = 0.5, 
 	 icon = 'Worldly Impact',  
  },
+ [42907] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_13, 
+	 activationtime = 0.5, 
+	 icon = 'Takedown',  
+ },
+ [40255] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_14, 
+	 activationtime = 0.5, 
+	 icon = 'Smoke Assault',  
+ },
+  [46386] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_13, 
+	 activationtime = 0.5, 
+	 icon = 'Tail Lash',  
+ },
+ [41908] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_14, 
+	 activationtime = 0.5, 
+	 icon = 'Wing Buffet',  
+ },
  [41206] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_13, 
 	 activationtime = 0.5, 
 	 icon = 'Rain of Spikes',  
+ },
+  [44097] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_13, 
+	 activationtime = 0.5, 
+	 icon = 'Entangling Web',  
+ },
+ [43671] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_14, 
+	 activationtime = 0.5, 
+	 icon = 'Poison Gas',  
+ },
+  [41537] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_13, 
+	 activationtime = 0.5, 
+	 icon = 'Chomp',  
+ },
+  [44991] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_13, 
+	 activationtime = 0.5, 
+	 icon = 'Swoop',  
+ },
+ [42042] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_14, 
+	 activationtime = 0.5, 
+	 icon = 'Quickening Screech',  
+ },
+ [41575] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_14, 
+	 activationtime = 0.5, 
+	 icon = 'Tail Swipe',  
  },
  [45479] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_14, 
@@ -1085,11 +1175,6 @@ instantcast = true,
 	 slot = GW2.SKILLBARSLOT.Slot_14, 
 	 activationtime = 0.5, 
 	 icon = 'Sharpen Spines',  
- },
- [40588] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_15, 
-	 activationtime = 0.5, 
-	 icon = 'Primal Cry',  
  },
 }
 function set:IsActive(context)

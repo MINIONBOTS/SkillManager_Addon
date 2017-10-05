@@ -40,7 +40,7 @@ end
 function sm_mgr.RefreshSkillPalettes()
 	sm_mgr.skillpalettes = {}
 	if( sm_mgr.ModuleFunctions.GetModuleFiles and sm_mgr.ModuleFunctions.ReadModuleFile ) then
-		local fileinfo = sm_mgr.ModuleFunctions.GetModuleFiles("sm_skillpalettes")				
+		local fileinfo = sm_mgr.ModuleFunctions.GetModuleFiles("skillpalettes")				
 		for _,k in pairs(fileinfo) do
 			local fileString = sm_mgr.ModuleFunctions.ReadModuleFile(k) -- the loaded files are NOT having access to the private stack the rest here is inside
 			if (fileString) then
@@ -48,9 +48,9 @@ function sm_mgr.RefreshSkillPalettes()
 			end
 		end
 	else
-		 local fileinfo = FolderList(sm_mgr.luamodspath .. [[\SkillManager\sm_skillpalettes\]],[[.*lua]])
+		 local fileinfo = FolderList(sm_mgr.luamodspath .. [[\SkillManager\skillpalettes\]],[[.*txt]])
         for _,profileName in pairs(fileinfo) do			
-            local fileFunction, errorMessage  = loadfile(sm_mgr.luamodspath .. [[\SkillManager\sm_skillpalettes\]] .. profileName)
+            local fileFunction, errorMessage  = loadfile(sm_mgr.luamodspath .. [[\SkillManager\skillpalettes\]] .. profileName)
             if (fileFunction) then
 				fileFunction()
             else
@@ -59,6 +59,24 @@ function sm_mgr.RefreshSkillPalettes()
             end
         end
     end
+	
+	-- Make a list of all spells, this is used by the conditions for example, so we get a "id - name" list
+	SkillManager.skilllist = {}
+	for profid,data in pairs(sm_mgr.skillpalettes) do
+		if ( profid ) then
+			for suid, sp in pairs(data) do				
+				for i,k in pairs( sp ) do
+					if ( k.skills_luacode ) then
+						for id,s in pairs (k.skills_luacode) do
+							if ( not SkillManager.skilllist[id] ) then
+								SkillManager.skilllist[id] = { id = id, name = s.icon }
+							end
+						end
+					end				
+				end
+			end
+		end
+	end	
 end
 
 
@@ -112,7 +130,7 @@ RegisterEventHandler("Module.AllInitialized",sm_mgr.RefreshProfileFiles)
 function sm_mgr.RefreshConditions()
 	sm_mgr.conditions = {}
 	if( sm_mgr.ModuleFunctions.GetModuleFiles and sm_mgr.ModuleFunctions.ReadModuleFile ) then
-		local fileinfo = sm_mgr.ModuleFunctions.GetModuleFiles("sm_conditions")				
+		local fileinfo = sm_mgr.ModuleFunctions.GetModuleFiles("conditions")				
 		for _,k in pairs(fileinfo) do
 			local fileString = sm_mgr.ModuleFunctions.ReadModuleFile(k)
 			if (fileString) then
@@ -120,9 +138,9 @@ function sm_mgr.RefreshConditions()
 			end
 		end
 	else
-		 local fileinfo = FolderList(sm_mgr.luamodspath .. [[\SkillManager\sm_conditions\]],[[.*lua]])
+		 local fileinfo = FolderList(sm_mgr.luamodspath .. [[\SkillManager\conditions\]],[[.*txt]])
         for _,profileName in pairs(fileinfo) do
-            local fileFunction, errorMessage  = loadfile(sm_mgr.luamodspath .. [[\SkillManager\sm_conditions\]] .. profileName)
+            local fileFunction, errorMessage  = loadfile(sm_mgr.luamodspath .. [[\SkillManager\conditions\]] .. profileName)
             if (fileFunction) then
 				fileFunction()
             else
@@ -356,6 +374,7 @@ end
 
 -- Exposed API
 _G["SkillManager"] = {}
+SkillManager.skilllist = {} -- holds id - name pair of all skills in our palettes
 function SkillManager:CreateSkillPalette(name)
 	if (string.valid(name)) then
 		return class(name,sm_skillpalette)
@@ -493,7 +512,7 @@ end
 
 -- some little helper window to update/see the skill data needed to build the hardcoded skill sets
 sm_mgr.sethelper = {}
-sm_mgr.sethelper.open = false
+sm_mgr.sethelper.open = true
 -- Draws the SkillManager window, profile management and calls Profile:Render() to populate stuff
 function sm_mgr.sethelper.DrawMenu(event,ticks)
 
@@ -576,4 +595,4 @@ function sm_mgr.sethelper.DrawMenu(event,ticks)
 		GUI:End()
 	end
 end
---RegisterEventHandler("Gameloop.Draw", sm_mgr.sethelper.DrawMenu)
+RegisterEventHandler("Gameloop.Draw", sm_mgr.sethelper.DrawMenu)

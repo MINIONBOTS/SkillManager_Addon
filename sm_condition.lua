@@ -9,7 +9,7 @@ function sm_condition:Save()
 	ml_error("Implement a 'function sm_condition:Save()' in your sm_condition: "..tostring(self.uid))
 end
 -- Evaluates the condition, returns "true" / "false".
-function sm_condition:Evaluate(context)
+function sm_condition:Evaluate(skill,context)
 	ml_error("Implement a 'function sm_condition:Evaluate()' in your sm_condition: "..tostring(self.uid))
 end
 -- Renders the condition UI

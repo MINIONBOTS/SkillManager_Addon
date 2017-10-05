@@ -1484,6 +1484,47 @@ engineer.skills_luacode = {
 		 nounderwater = true,		 
 		 icon = 'Prime Light Beam',  
 	 },
+	 [5812] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_7, 
+		 activationtime = 0.25,	 
+		 icon = 'Bomb Kit',  
+	 },	 
+	 [30800] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_7, 
+		 activationtime = 0.25,	 
+		 icon = 'Elite Mortar Kit',  
+	 },	
+	 [5802] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_7, 
+		 activationtime = 0.25,	 
+		 icon = 'Med Kit',  
+	 },	
+	 [5904] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_7, 
+		 activationtime = 0.25,	 
+		 icon = 'Tool Kit',  
+	 },	
+	 [5927] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_7, 
+		 activationtime = 0.25,	 
+		 icon = 'Flamethrower',  
+	 },	
+	 [5933] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_7, 
+		 activationtime = 0.25,	 
+		 icon = 'Elixier Gun',  
+	 },	
+	 [5805] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_7, 
+		 activationtime = 0.25,	 
+		 icon = 'Grenade Kit',  
+	 },	
+	 [6020] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_7, 
+		 activationtime = 0.25,	 
+		 icon = 'Grenade Kit',  
+	 },	
+	 
 }
 function engineer:IsActive(context)
 	return context.player.transformid == 0

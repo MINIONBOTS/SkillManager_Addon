@@ -187,7 +187,7 @@ function sm_profile:UpdateContext()
 			end
 		end		
 	end
-	
+			
 	
 	-- Check if we (still) have an active target to attack and update that. Make sure it is not our player.
 	local attacktargetvalid = false
@@ -236,6 +236,26 @@ function sm_profile:UpdateContext()
 		self.temp.context.heal_target = nil
 		self.temp.context.heal_targetid = nil
 	end
+	
+		
+	local clist = CharacterList("")
+	local ppos = self.temp.context.player.pos
+	self.temp.context.player.friends_nearby = {}
+	self.temp.context.player.enemies_nearby = {}
+	local cache = {} -- not hammering c++ 6 times, making a local cache here ..hopefully this is faster !?	
+	for i,k in pairs(clist) do 
+		local cpos = k.pos
+		local att = k.attitude
+		cache[i] = { attitude = att, pos = cpos }		
+		if(att < 3 ) then
+			if( att == 0 ) then -- Friendly
+				self.temp.context.player.friends_nearby[i] = { pos = cpos } -- leaving this to be a table, maybe other shit is needed later on
+			else
+				self.temp.context.player.enemies_nearby[i] = { pos = cpos }
+			end
+		end
+	end
+	
 	
 	-- Update Spelldata and attack/heal range and cancast
 	if ( self.actionlist ) then
@@ -327,6 +347,8 @@ function sm_profile:Cast()
 										end
 									
 									else
+										
+										Player:SetTarget(target)
 										Player:SetFacingExact(pos.x, pos.y, pos.z)
 										if ( action.slot == GW2.SKILLBARSLOT.Slot_1 or action.instantcast ) then
 											castresult = Player:CastSpellNoChecks(action.slot , target.id)
@@ -339,7 +361,7 @@ function sm_profile:Cast()
 										-- Add an internal cd, else spam
 										local mincasttime = action.activationtime*1000
 										--if ( mincasttime == 0 ) then mincasttime = 750 end											
-										mincasttime = mincasttime + 450	-- THIS CAN BE EXPOSED TO LUA
+										--mincasttime = mincasttime + 450	-- THIS CAN BE EXPOSED TO LUA
 										action.temp.internalcd = ml_global_information.Now + mincasttime
 										if ( not action.instantcast ) then
 											self.temp.nextcast = ml_global_information.Now + mincasttime

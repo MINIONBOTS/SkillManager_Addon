@@ -124,7 +124,7 @@ function sm_skill:RenderSkillPaletteEditor()
 			local c = 0
 			GUI:BeginChild("##spe_group",120,0, true)											
 				if ( sm_mgr.skillpalettes[sm_mgr.GetPlayerProfession()] ~= nil ) then
-					for i,p in sm_skillpalette.table.pairsByValueAttribute(sm_mgr.skillpalettes[sm_mgr.GetPlayerProfession()], "uid") do											
+					for i,p in sm_skillpalette.table.pairsByValueAttribute(sm_mgr.skillpalettes[sm_mgr.GetPlayerProfession()], "uid") do
 						if ( c == 1 ) then 
 							GUI:SameLine() 
 							c = 0 
@@ -235,8 +235,10 @@ function sm_skill:RenderSkillEditor()
 			GUI:EndChild()
 			
 			
-			-- Middle Part, showing hardcoded Skill Details	
-			self.temp.currentskill:RenderHardcodedSkillDetails()
+			-- Middle Part, showing hardcoded Skill Details
+			if(self.temp.context) then
+				self.temp.currentskill:RenderHardcodedSkillDetails()
+			end
 			-- Delete Button
 			GUI:SameLine(GUI:GetContentRegionAvailWidth()-15)
 			local highlighted
@@ -355,83 +357,84 @@ end
 
 -- Get data from c++ and update this skill's data
 function sm_skill:UpdateData(context, iscombo)
-	self.temp.context = context
-	if (context.skillbar and self.id and self.slot ) then
-		local skilldata
-		if ( self.slot > 3 and self.slot < 10 ) then
-			if (context.skillbar[self.slot] and context.skillbar[self.slot].id == ( self.id or self.oldid )) then
-				skilldata = context.skillbar[self.slot]
-			end
-		else
-			-- Utility Slot, check all 3 slots for the skill id
-			if ( self.slot <= 3 ) then
-				for i=0,3 do
-					if (context.skillbar[i] and context.skillbar[i].id == ( self.id or self.oldid )) then
-						skilldata = context.skillbar[i]
-						self.slot = i
-						break
-					end
+	if ( context ) then
+		self.temp.context = context
+		if (context.skillbar and self.id and self.slot ) then
+			local skilldata
+			if ( self.slot > 3 and self.slot < 10 ) then
+				if (context.skillbar[self.slot] and context.skillbar[self.slot].id == ( self.id or self.oldid )) then
+					skilldata = context.skillbar[self.slot]
 				end
-			
-			elseif ( self.slot>=10 ) then
-				for i=12,16 do
-					if (context.skillbar[i] and context.skillbar[i].id == ( self.id or self.oldid )) then
-						skilldata = context.skillbar[i]
-						self.slot = i
-						break
+			else
+				-- Utility Slot, check all 3 slots for the skill id
+				if ( self.slot <= 3 ) then
+					for i=0,3 do
+						if (context.skillbar[i] and context.skillbar[i].id == ( self.id or self.oldid )) then
+							skilldata = context.skillbar[i]
+							self.slot = i
+							break
+						end
 					end
-				end			
+				
+				elseif ( self.slot>=10 ) then
+					for i=12,16 do
+						if (context.skillbar[i] and context.skillbar[i].id == ( self.id or self.oldid )) then
+							skilldata = context.skillbar[i]
+							self.slot = i
+							break
+						end
+					end			
+				end
 			end
-		end
-		if( not skilldata) then
-			skilldata = Player:GetSpellInfoByID(self.id or self.oldid)			
+			if( not skilldata) then
+				skilldata = Player:GetSpellInfoByID(self.id or self.oldid)			
+			end
+			
+			if ( skilldata ) then
+				-- This skill is equipped, update all info
+				self.cooldown = skilldata.cooldown
+				self.ammo = skilldata.ammo
+				self.ammomax = skilldata.ammomax
+				self.ammocooldown = skilldata.ammocooldown
+				self.cancast = skilldata.cancast
+				-- static ones, would only have to get updated once...how ?
+				self.name = skilldata.name
+				self.cooldownmax = skilldata.cooldownmax
+				self.ammocooldownmax = skilldata.ammocooldownmax
+				self.minrange = skilldata.minrange
+				self.maxrange = skilldata.maxrange
+				self.radius = skilldata.radius
+				self.power = skilldata.power
+				self.isgroundtargeted = skilldata.isgroundtargeted
+				
+			else
+				ml_error("[SkillManager] - No Skill Data found for Skill ID "..tostring(self.temp.currentskillid))	
+			end
 		end
 		
-		if ( skilldata ) then
-			-- This skill is equipped, update all info
-			self.cooldown = skilldata.cooldown
-			self.ammo = skilldata.ammo
-			self.ammomax = skilldata.ammomax
-			self.ammocooldown = skilldata.ammocooldown
-			self.cancast = skilldata.cancast
-			-- static ones, would only have to get updated once...how ?
-			self.name = skilldata.name
-			self.cooldownmax = skilldata.cooldownmax
-			self.ammocooldownmax = skilldata.ammocooldownmax
-			self.minrange = skilldata.minrange
-			self.maxrange = skilldata.maxrange
-			self.radius = skilldata.radius
-			self.power = skilldata.power
-			self.isgroundtargeted = skilldata.isgroundtargeted
-			
-		else
-			ml_error("[SkillManager] - No Skill Data found for Skill ID "..tostring(self.temp.currentskillid))	
+		if ( self.skill_next ) then		
+			self.temp.cancast = self.skill_next:UpdateData(context,true)		
 		end
-	end
-	
-	if ( self.skill_next ) then		
-		self.temp.cancast = self.skill_next:UpdateData(context,true)		
-	end
-	
-	-- Check if we can cast this spell
-	self.temp.cancastflipcombo = nil	
-	if ( self.temp.cancast or not self.skill_next) then
-		local cc = self:CanCast()
-		self.temp.cancastflipcombo = iscombo and cc and self.parent
-		self.temp.cancast = cc and self:IsEquipped()		
-	end
-	
-	-- Update AttackRange	
-	if ( self.setsattackrange and self.maxrange > 0 and self.skillpalette:IsActive(self.temp.context)) then
-		-- Set a maxattackrange and an actual activemaxattackrange
-		if ( not sm_mgr.profile.temp.maxattackrange or sm_mgr.profile.temp.maxattackrange < self.maxrange ) then sm_mgr.profile.temp.maxattackrange = self.maxrange end
-		if ( self.temp.cancast ) then			
-			if ( not sm_mgr.profile.temp.activemaxattackrange or sm_mgr.profile.temp.activemaxattackrange < self.maxrange ) then
-				sm_mgr.profile.temp.activemaxattackrange = self.maxrange
+		
+		-- Check if we can cast this spell
+		self.temp.cancastflipcombo = nil
+		if ( self.temp.cancast or not self.skill_next) then
+			local cc = self:CanCast()
+			self.temp.cancastflipcombo = iscombo and cc and self.parent
+			self.temp.cancast = cc and self:IsEquipped()		
+		end
+		
+		-- Update AttackRange	
+		if ( self.setsattackrange and self.maxrange > 0 and self.skillpalette:IsActive(self.temp.context)) then
+			-- Set a maxattackrange and an actual activemaxattackrange
+			if ( not sm_mgr.profile.temp.maxattackrange or sm_mgr.profile.temp.maxattackrange < self.maxrange ) then sm_mgr.profile.temp.maxattackrange = self.maxrange end
+			if ( self.temp.cancast or self.slot == GW2.SKILLBARSLOT.Slot_1 ) then			
+				if ( not sm_mgr.profile.temp.activemaxattackrange or sm_mgr.profile.temp.activemaxattackrange < self.maxrange ) then
+					sm_mgr.profile.temp.activemaxattackrange = self.maxrange
+				end
 			end
 		end
 	end
-	
 	return self.temp.cancast or self.temp.cancastflipcombo
 end
 
@@ -518,7 +521,7 @@ end
 function sm_skill:RenderConditionComboBox(groupid)
 	local combolist = {}
 	local i = 1
-	for k,v in pairs(sm_mgr.conditions) do
+	for k,v in spairs(sm_mgr.conditions) do
 		combolist[i] = k
 		i = i+1
 	end
@@ -545,6 +548,8 @@ function sm_skill:RenderConditionComboBox(groupid)
 	end
 end
 
+
+
 -- Custom Lua code editor for Condition building. MUST return true/false, always!
 function sm_skill:RenderCustomConditionEditor()
 	local _,maxy = GUI:GetContentRegionAvail()
@@ -557,7 +562,7 @@ function sm_skill:RenderCustomConditionEditor()
 		local x,y = GUI:GetCursorPos()
 		GUI:SetCursorPos(maxy-25,y-20)		
 		GUI:ImageButton( "##ccinfobtn", sm_mgr.texturepath.."\\bt_selector_success_.png", 15, 15)
-		if ( GUI:IsItemHovered() ) then GUI:SetTooltip(GetString("Use the 'context' table which is available here: context.player.pos instead of Player.pos, to save performance. \n Also available: \n context.player.party \n context.player.squad \n context.player.specs \n context.player.buffs \n context.player.transformid \n context.player.lasttransformid \n context.player.weaponset \n context.player.canswapweaponset \n context.player.mainhand \n context.player.mainhand_alt \n context.player.offhand\n context.player.offhand_alt \n context.skillbar \n context.actionlist \n context.casttarget (Result from the Condition Group above that evaluated to 'true'. Overwrite this if you need (1=Enemy, 2=Player, 3=Friend) \n context.attack_targetid (CAN BE NIL!) \n context.attack_target (CAN BE NIL! DO NOT OVERWRITE THIS!)  \n context.attack_targetid_alt (To override the attack_targetid by this lus code)  \n context.heal_targetid (CAN BE NIL!) \n context.heal_target (CAN BE NIL! DO NOT OVERWRITE THIS!)  \n context.heal_targetid_alt (To override the heal_targetid by this lua code)")) end
+		if ( GUI:IsItemHovered() ) then GUI:SetTooltip(GetString("Use the 'skill' and 'context' table which are available here: skill.cooldown etc. for this skill's data. \n context.player.pos instead of Player.pos, to save performance. \n Also available: \n context.player.party \n context.player.squad \n context.player.specs \n context.player.buffs \n context.player.transformid \n context.player.lasttransformid \n context.player.weaponset \n context.player.canswapweaponset \n context.player.mainhand \n context.player.mainhand_alt \n context.player.offhand\n context.player.offhand_alt \n context.skillbar \n context.actionlist \n context.casttarget (Result from the Condition Group above that evaluated to 'true'. Overwrite this if you need (1=Enemy, 2=Player, 3=Friend) \n context.attack_targetid (CAN BE NIL!) \n context.attack_target (CAN BE NIL! DO NOT OVERWRITE THIS!)  \n context.attack_targetid_alt (To override the attack_targetid by this lus code)  \n context.heal_targetid (CAN BE NIL!) \n context.heal_target (CAN BE NIL! DO NOT OVERWRITE THIS!)  \n context.heal_targetid_alt (To override the heal_targetid by this lua code)")) end
 		GUI:SetCursorPos(x,y)
 		local maxx,_ = GUI:GetContentRegionAvail()
 		local changed = false
@@ -622,7 +627,7 @@ function sm_skill:RenderActionButton(currentselectedaction,draggedaction, id1,id
 	end
 	
 	-- Cooldown Overlay
-	if ( not combo and self.cooldown > 0 ) then
+	if ( not combo and self.cooldown and self.cooldown > 0 ) then
 		--local nx,ny = GUI:GetCursorPos()	
 		GUI:SetCursorPos(x,y) -- THIS IS SHIT FIX IT !!!!!
 		GUI:PushStyleColor(GUI.Col_Text,1,1,1,1)
@@ -736,7 +741,7 @@ function sm_skill:CanCast()
 			self.temp.casttarget = 1
 			for k,v in pairs(grp) do
 				if ( k ~= "casttarget") then
-					if ( not v:Evaluate(self.temp.context)) then
+					if ( not v:Evaluate(self,self.temp.context)) then
 						self.temp.casttarget = 0
 						break
 					end
@@ -751,10 +756,10 @@ function sm_skill:CanCast()
 		-- Check custom code
 		if ( self.temp.casttarget > 0 ) then
 			if ( not self.temp.condition_luacode_compiled and not self.temp.condition_luacode_bugged ) then
-				local execstring = 'return function(context) '..self.condition_luacode..' end'
+				local execstring = 'return function(self,context) '..self.condition_luacode..' end'
 				local func = loadstring(execstring)
 				if ( func ) then
-					func()(self.temp.context)
+					func()(self, self.temp.context)
 					self.temp.condition_luacode_compiled = func	
 				else
 					self.temp.condition_luacode_compiled = nil
@@ -764,7 +769,7 @@ function sm_skill:CanCast()
 				end
 			end
 		
-			if ( self.temp.condition_luacode_compiled and not self.temp.condition_luacode_compiled()(self.temp.context) ) then 
+			if ( self.temp.condition_luacode_compiled and not self.temp.condition_luacode_compiled()(self,self.temp.context) ) then 
 				self.temp.casttarget = 0
 			end
 		end

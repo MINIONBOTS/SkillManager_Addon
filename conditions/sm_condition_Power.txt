@@ -15,7 +15,7 @@ function sm_condition_power:Save()
 	return data
 end
 -- Evaluates the condition, returns "true" / "false"
-function sm_condition_power:Evaluate(context)
+function sm_condition_power:Evaluate(skill,context)
 	if ( context.player) then		
 		local mp = context.player.power		
 		if ( type(mp) == "number" ) then						

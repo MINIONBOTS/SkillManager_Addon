@@ -18,7 +18,7 @@ function sm_condition_hp:Save()
 	data.value = self.value
 	return data
 end
-function sm_condition_hp:Evaluate(context)
+function sm_condition_hp:Evaluate(skill,context)
 	-- Use:
 	-- context.player
 	-- context.attack_target	(== "Enemy")

@@ -15,7 +15,7 @@ function sm_condition_contentid:Save()
 	return data
 end
 -- Evaluates the condition, returns "true" / "false"
-function sm_condition_contentid:Evaluate(context)
+function sm_condition_contentid:Evaluate(skill,context)
 	if ( context.attack_target ) then
 		local bb = context.attack_target.contentid
 		if ( self.operator == 1 ) then return bb == self.value 

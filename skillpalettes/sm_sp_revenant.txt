@@ -517,17 +517,27 @@ set.profession = GW2.CHARCLASS.Revenant
 set.icon = "Legendary Centaur Stance"
 set.id = 28141
 set.skills_luacode = {
+[29148] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_6, 
+	 activationtime = 0.5, 
+	 icon = 'Project Tranquility',  
+	 instantcast = true,
+	 nounderwater = true,
+ },
 [28427] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_6, 
 	 activationtime = 0.5, 
 	 icon = 'Ventaris Will',  
 	 instantcast = true,
+	 nounderwater = true,
+	 parent = 29148,
  },
  [26821] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_7, 
 	 activationtime = 0.5, 
 	 icon = 'Protective Solace',
 	 instantcast = true,
+	 nounderwater = true,
  },
   [27628] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_7, 
@@ -535,24 +545,28 @@ set.skills_luacode = {
 	 icon = 'Diminish Solace',
 	 parent = 26821,
 	 instantcast = true,
+	 nounderwater = true,
  },
  [27025] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_8, 
 	 activationtime = 0.5, 
 	 icon = 'Natural Harmony',  
 	 instantcast = true,
+	 nounderwater = true,
  },
  [27715] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_9, 
 	 activationtime = 0.5, 
 	 icon = 'Purifying Essence',  
 	 instantcast = true,
+	 nounderwater = true,
  },
  [27356] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_10, 
 	 activationtime = 0.5, 
 	 icon = 'Energy Expulsion',  
 	 instantcast = true,
+	 nounderwater = true,
  },
 }
 function set:IsActive(context)
@@ -884,7 +898,69 @@ set.skills_luacode = {
 	 icon = 'Orders from Above',
 	 instantcast = true,
  },
+  [27659] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_13, 
+	 activationtime = 0.0, 
+	 icon = 'Legendary Assassin Stance',
+	 instantcast = true,
+ },
+   [28134] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_13, 
+	 activationtime = 0.0, 
+	 icon = 'Legendary Assassin Stance',
+	 instantcast = true,
+ },
+   [28376] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_13, 
+	 activationtime = 0.0, 
+	 icon = 'Legendary Demon Stance',
+	 instantcast = true,
+ },
+   [28494] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_13, 
+	 activationtime = 0.0, 
+	 icon = 'Legendary Demon Stance',
+	 instantcast = true,
+ },
+    [26650] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_13, 
+	 activationtime = 0.0, 
+	 icon = 'Legendary Dwarf Stance',
+	 instantcast = true,
+ },
+   [28419] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_13, 
+	 activationtime = 0.0, 
+	 icon = 'Legendary Dwarf Stance',
+	 instantcast = true,
+ },
+     [28141] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_13, 
+	 activationtime = 0.0, 
+	 icon = 'Legendary Centaur Stance',
+	 instantcast = true,
+ },
+   [28195] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_13, 
+	 activationtime = 0.0, 
+	 icon = 'Legendary Centaur Stance',
+	 instantcast = true,
+ },
+	[28085] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_13, 
+	 activationtime = 0.0, 
+	 icon = 'Legendary Dragon Stance',
+	 instantcast = true,
+ },
+   [46409] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_13, 
+	 activationtime = 0.0, 
+	 icon = 'Legendary Renegade Stance',
+	 instantcast = true,
+ },
+ 
 }
+
 function set:IsActive(context)
 	return (context.player.transformid >= 13 or context.player.transformid <= 18)
 end

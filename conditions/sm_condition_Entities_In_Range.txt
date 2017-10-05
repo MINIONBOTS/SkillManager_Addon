@@ -1,0 +1,101 @@
+-- Entities_In_Range check condition
+local sm_condition_entitycount = class('Entities_In_Range', sm_condition)
+sm_condition_entitycount.uid = "Entities In Range"
+sm_condition_entitycount.types = { [1] = GetString("Enemies"), [2] = GetString("Friends") }
+sm_condition_entitycount.targets = { [1] = GetString("Target"), [2] = GetString("Player") , [3] = GetString("Friend") }
+sm_condition_entitycount.operators = { [1] = "<", [2] = "<=", [3] = "==", [4] = ">=", [5] = ">",  }
+function sm_condition_entitycount:initialize(data)
+	self.type = data.type or 1
+	self.count = data.count or 1
+	self.target = data.target or 1
+	self.operator = data.operator or 1
+	self.distance = data.distance or 500	
+end
+function sm_condition_entitycount:Save()
+	local data = {}
+	data.type = self.type
+	data.count = self.count
+	data.target = self.target
+	data.operator = self.operator
+	data.distance = self.distance
+	return data
+end
+function sm_condition_entitycount:Evaluate(skill,context)	
+	local sourcepos
+	if ( self.target == 1 and context.attack_target ) then
+		sourcepos = context.attack_target.pos
+	elseif ( self.target == 2 and context.player ) then
+		sourcepos = context.player.pos
+	elseif ( self.target == 3 and context.heal_target ) then
+		sourcepos = context.heal_target.pos
+	end
+	if ( sourcepos ) then
+		local list
+		if ( self.type == 1 ) then
+			list = context.player.enemies_nearby
+		else
+			list = context.player.friends_nearby
+		end		
+		local size = table.size(list)
+		
+		local inrange = 0		
+		for i,k in pairs(list) do
+			if( math.distance3d(sourcepos,k.pos) < self.distance ) then
+				inrange = inrange + 1
+			end
+		end
+		
+		--d("InRange : "..tostring(inrange))	
+							
+		if ( self.operator == 1 ) then return inrange < self.count 
+		elseif ( self.operator == 2 ) then return inrange <= self.count 
+		elseif ( self.operator == 3 ) then return inrange == self.count 
+		elseif ( self.operator == 4 ) then return inrange >= self.count
+		elseif ( self.operator == 5 ) then return inrange > self.count
+		end
+	end
+	return false
+end
+-- Renders the condition data into UI, for "presentation" in the SkillManager's Condition Builder. Returns "true" when stuff changed, for saving
+function sm_condition_entitycount:Render(id) -- need to pass an index value here, for the unique IDs used by imgui	
+	local modified
+	local changed
+	GUI:PushItemWidth(40)
+	self.operator, changed = GUI:Combo("##sm_condition_enemiesinrange"..tostring(id),self.operator, self.operators)
+	if ( changed ) then modified = true end
+	GUI:PopItemWidth()
+	
+	GUI:PushItemWidth(75)
+	GUI:SameLine()
+	self.count, changed = GUI:InputInt("##sm_condition_enemiesinrange2"..tostring(id),self.count, 1,10,GUI.InputTextFlags_CharsDecimal+GUI.InputTextFlags_CharsNoBlank)
+	if(self.count < 0 ) then self.count = 0 end
+	if ( changed ) then modified = true end
+	GUI:PopItemWidth()	
+	
+	GUI:PushItemWidth(125)
+	GUI:SameLine()
+	self.type, changed = GUI:Combo("##sm_condition_enemiesinrange3"..tostring(id),self.type, self.types)
+	if ( changed ) then modified = true end
+	GUI:PopItemWidth()
+	
+	GUI:SameLine()
+	GUI:Text("within")
+	
+	GUI:PushItemWidth(75)
+	GUI:SameLine()
+	self.distance, changed = GUI:InputInt("##sm_condition_enemiesinrange4"..tostring(id),self.distance, 1,10,GUI.InputTextFlags_CharsDecimal+GUI.InputTextFlags_CharsNoBlank)
+	if(self.distance < 0 ) then self.distance = 0 end
+	if ( changed ) then modified = true end
+	GUI:PopItemWidth()
+		
+	GUI:SameLine()
+	GUI:Text("near")
+	
+	GUI:PushItemWidth(100)
+	GUI:SameLine()
+	self.target, changed = GUI:Combo("##sm_condition_enemiesinrange5"..tostring(id),self.target, self.targets)
+	if ( changed ) then modified = true end
+	GUI:PopItemWidth()
+	return modified
+end
+SkillManager:AddCondition(sm_condition_entitycount)

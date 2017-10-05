@@ -15,7 +15,7 @@ function sm_condition_endurance:Save()
 	return data
 end
 -- Evaluates the condition, returns "true" / "false"
-function sm_condition_endurance:Evaluate(context)
+function sm_condition_endurance:Evaluate(skill,context)
 	if ( context.player) then	
 		local mp = context.player.endurance		
 		if ( type(mp) == "number" ) then						

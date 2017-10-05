@@ -1393,6 +1393,21 @@ set.skills_luacode = {
 	 activationtime = 1.0, 
 	 icon = 'Glyph of Elemental Harmony',  
  }, 
+ [34743] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_6, 
+	 activationtime = 1.0, 
+	 icon = 'Glyph of Elemental Harmony',  
+ },
+ [34651] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_6, 
+	 activationtime = 1.0, 
+	 icon = 'Glyph of Elemental Harmony',  
+ },
+ [34724] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_6, 
+	 activationtime = 1.0, 
+	 icon = 'Glyph of Elemental Harmony',  
+ },
   [5539] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_7, 
 	 activationtime = 0.0, 
@@ -1599,7 +1614,102 @@ set.skills_luacode = {
 	 icon = 'Twist of Fate',
 	nounderwater = true,
  },
- 
+  [5492] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_13, 
+	 activationtime = 0.0, 
+	 icon = 'Fire Attunement',
+	 instantcast = true,
+ },
+  [5493] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_14, 
+	 activationtime = 0.0, 
+	 icon = 'Water Attunement',
+	 instantcast = true,
+ },
+  [5494] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_15, 
+	 activationtime = 0.0, 
+	 icon = 'Air Attunement',
+	 instantcast = true,
+ },
+   [5495] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_16, 
+	 activationtime = 0.0, 
+	 icon = 'Earth Attunement',
+	 instantcast = true,
+ },
+  [34736] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_7, 
+	 activationtime = 0.5, 
+	 icon = 'Glyph of Elemental Power',
+	 instantcast = true,
+ },
+ [5736] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_8, 
+	 activationtime = 1.25, 
+	 icon = 'Firestorm',  
+	 nounderwater = true,
+ },
+ [25486] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_9, 
+	 activationtime = 1.25, 
+	 icon = 'Glyph of Lesser Elementals', 
+	 nounderwater = true,
+ },
+ [25488] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_10, 
+	 activationtime = 1.2, 
+	 icon = 'Glyph of Elementals',  
+	 nounderwater = true,
+ },
+  [34772] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_7, 
+	 activationtime = 0.5, 
+	 icon = 'Glyph of Elemental Power',
+	  instantcast = true,
+ },
+ [5735] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_8, 
+	 activationtime = 1.25, 
+	 icon = 'Ice Storm',
+	 nounderwater = true,
+ },
+ [25487] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_9, 
+	 activationtime = 1.25, 
+	 icon = 'Glyph of Lesser Elementals',
+	 nounderwater = true,	 
+ },
+ [25491] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_10, 
+	 activationtime = 1.25, 
+	 icon = 'Glyph of Elementals',
+	 nounderwater = true,
+ },
+  [34637] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_7, 
+	 activationtime = 0.5, 
+	 icon = 'Glyph of Elemental Power',
+	 instantcast = true,	 
+ },
+ [5737] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_8, 
+	 activationtime = 1.25, 
+	 icon = 'Lightning Storm',
+	 nounderwater = true,
+ },
+ [25495] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_9, 
+	 activationtime = 1.25, 
+	 icon = 'Glyph of Lesser Elementals',
+	 nounderwater = true,
+ },
+ [25490] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_10, 
+	 activationtime = 1.25, 
+	 icon = 'Glyph of Elementals',
+	 nounderwater = true,
+ },
 }
 function set:IsActive(context)
 	return context.player.transformid >= 1 and context.player.transformid <= 4

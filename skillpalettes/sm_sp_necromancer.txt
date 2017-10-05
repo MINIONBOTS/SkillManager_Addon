@@ -561,6 +561,13 @@ lichform.skills_luacode = {
 		activationtime = 0.5,
 		icon = 'Ripple of Horror',
 	},
+	[45780] = {
+		slot = GW2.SKILLBARSLOT.Slot_3,
+		activationtime = 0.5,
+		icon = 'March of Undeath',
+		parent = 10633,
+		instantcast = true,
+	},
 	[10636] = {
 		slot = GW2.SKILLBARSLOT.Slot_4,
 		activationtime = 1.5,
@@ -679,16 +686,6 @@ deathShroud.profession = GW2.CHARCLASS.Necromancer
 deathShroud.icon = "Death Shroud" -- TODO: this right? ask fx.
 deathShroud.id = 10574 --> set a skill ID if you want it to download an icon for this skillset 
 deathShroud.skills_luacode = {
-	-- [10574] = {
-		-- slot = GW2.SKILLBARSLOT.Slot_13,
-		-- activationtime = 0,
-		-- icon = 'Death Shroud',
-	-- },
-	-- [10585] = {
-		-- slot = GW2.SKILLBARSLOT.Slot_13,
-		-- activationtime = 0,
-		-- icon = 'End Death Shroud',
-	-- },
 	[18504] = {
 		slot = GW2.SKILLBARSLOT.Slot_1,
 		activationtime = 1,
@@ -832,6 +829,13 @@ necromancer.skills_luacode = {
 		activationtime = 1.5,
 		icon = 'Summon Blood Fiend',
 	},
+	[10577] = {
+		slot = GW2.SKILLBARSLOT.Slot_6,
+		activationtime = 1.5,
+		icon = 'Taste of Death',
+		parent = 10547,
+		instantcast = true,
+	},
 	[10548] = {
 		slot = GW2.SKILLBARSLOT.Slot_6,
 		activationtime = 1.25,
@@ -904,11 +908,14 @@ necromancer.skills_luacode = {
 		slot = GW2.SKILLBARSLOT.Slot_10,
 		activationtime = 1.5,
 		icon = 'Summon Flesh Golem',
+		nounderwater = true,
 	},
 	[10647] = {
 		slot = GW2.SKILLBARSLOT.Slot_10,
 		activationtime = 0.75,
 		icon = 'Charge',
+		parent = 10646,
+		instantcast = true,
 	},
 	[10550] = {
 		slot = GW2.SKILLBARSLOT.Slot_10,
@@ -923,7 +930,7 @@ necromancer.skills_luacode = {
 	[30105] = {
 		slot = GW2.SKILLBARSLOT.Slot_10,
 		activationtime = 1.25,
-		icon = '\"Chilled to the Bone!\"',
+		icon = 'Chilled to the Bone!',
 	},
 	
 -- END ELITE.
@@ -1021,6 +1028,13 @@ necromancer.skills_luacode = {
 		activationtime = 0,
 		icon = 'Spectral Walk',
 	},
+	[10687] = {
+		slot = GW2.SKILLBARSLOT.Slot_7,
+		activationtime = 0,
+		icon = 'Spectral Recall',
+		instantcast = true,
+		parent = 10685,
+	},	
 	[10622] = {
 		slot = GW2.SKILLBARSLOT.Slot_7,
 		activationtime = 0.75,
@@ -1046,21 +1060,50 @@ necromancer.skills_luacode = {
 		activationtime = 1.5,
 		icon = 'Summon Bone Minions',
 	},
+	[10540] = {
+		slot = GW2.SKILLBARSLOT.Slot_7,
+		activationtime = 0,
+		icon = 'Putrid Explosion',
+		instantcast = true,
+		parent = 10541,
+	},	
 	[10533] = {
 		slot = GW2.SKILLBARSLOT.Slot_7,
 		activationtime = 1.5,
 		icon = 'Summon Bone Fiend',
+	},
+	[10570] = {
+		slot = GW2.SKILLBARSLOT.Slot_7,
+		activationtime = 0,
+		icon = 'Rigor Mortis',
+		instantcast = true,
+		parent = 10533,
 	},
 	[10589] = {
 		slot = GW2.SKILLBARSLOT.Slot_7,
 		activationtime = 1.5,
 		icon = 'Summon Shadow Fiend',
 	},
+	[10590] = {
+		slot = GW2.SKILLBARSLOT.Slot_7,
+		activationtime = 0,
+		icon = 'Haunt',
+		instantcast = true,
+		parent = 10589,
+	},
 	[10543] = {
 		slot = GW2.SKILLBARSLOT.Slot_7,
 		activationtime = 1.5,
 		icon = 'Summon Flesh Wurm',
+		nounderwater = true,
 	},
+	[10600] = {
+		slot = GW2.SKILLBARSLOT.Slot_7,
+		activationtime = 0,
+		icon = 'Necrotic Traversal',
+		instantcast = true,
+		parent = 10543,
+	},	
 	[10546] = {
 		slot = GW2.SKILLBARSLOT.Slot_7,
 		activationtime = 0.25,
@@ -1081,6 +1124,27 @@ necromancer.skills_luacode = {
 		activationtime = 0.25,
 		icon = 'Well of Darkness',
 	},
+	[10574] = {
+		slot = GW2.SKILLBARSLOT.Slot_13,
+		activationtime = 0,
+		icon = 'Death Shroud',
+	},
+	[10585] = {
+		slot = GW2.SKILLBARSLOT.Slot_13,
+		activationtime = 0,
+		icon = 'End Death Shroud',
+	},
+	[30792] = {
+		slot = GW2.SKILLBARSLOT.Slot_13,
+		activationtime = 0,
+		icon = 'Reapers Shroud',
+	},
+	[30961] = {
+		slot = GW2.SKILLBARSLOT.Slot_13,
+		activationtime = 0,
+		icon = 'Exit Reapers Shroud',
+	},	
+	
 
 -- END UTILITY.
 }
