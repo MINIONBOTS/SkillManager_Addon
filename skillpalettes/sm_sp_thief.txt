@@ -801,6 +801,146 @@ thief.skills_luacode = {
 		 activationtime = 0.5, 
 		 icon = 'Steal Precision',  
 	 },
+	 [1148] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_14, 
+		 activationtime = 0.5, 
+		 icon = 'Blinding Tuft',  
+	 },
+	 [1113] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_14, 
+		 activationtime = 0.25, 
+		 icon = 'Bone Crack',  
+	 },
+	 [1114] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_14, 
+		 activationtime = 0.5, 
+		 icon = 'Branch Bash',  
+	 },
+	 [1119] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_14, 
+		 activationtime = 0.75, 
+		 icon = 'Club Shock Wave',  
+	 },
+	 [1123] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_14, 
+		 activationtime = 1, 
+		 icon = 'Consume Plasma',  
+	 },
+	 [1116] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_14, 
+		 activationtime = 1, 
+		 icon = 'Drink',  
+	 },
+	 [1125] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_14, 
+		 activationtime = 1, 
+		 icon = 'Eat Egg',  
+	 },
+	 [31438] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_14, 
+		 activationtime = 0.5, 
+		 icon = 'Essence Sap',  
+	 },
+	 [1149] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_14, 
+		 activationtime = 0.5, 
+		 icon = 'Exploding Venom Sack',  
+	 },
+	 [1139] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_14, 
+		 activationtime = 0.5, 
+		 icon = 'Healing Seed',  
+	 },
+	 [1129] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_14, 
+		 activationtime = 0, 
+		 icon = 'Ice Shard Stab',  
+	 },
+	 [1131] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_14, 
+		 activationtime = 0.25, 
+		 icon = 'Mace Head Crack',  
+	 },
+	 [1134] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_14, 
+		 activationtime = 0, 
+		 icon = 'Rusty Scrap Strike',  
+	 },
+	 [1132] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_14, 
+		 activationtime = 0, 
+		 icon = 'Shoot Rifle',  
+	 },
+	 [1141] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_14, 
+		 activationtime = 1.25, 
+		 icon = 'Skull Fear',  
+	 },
+	 [1120] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_14, 
+		 activationtime = 0.75, 
+		 icon = 'Throw Coral Shard',  
+	 },
+	 [1121] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_14, 
+		 activationtime = 0.5, 
+		 icon = 'Throw Crystal Shard',  
+	 },
+	 [1126] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_14, 
+		 activationtime = 0.5, 
+		 icon = 'Throw Feathers',  
+	 },
+	 [1127] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_14, 
+		 activationtime = 1, 
+		 icon = 'Throw Gear',  
+	 },
+	 [1110] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_14, 
+		 activationtime = 0.5, 
+		 icon = 'Throw Gunk',  
+	 },
+	 [1130] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_14, 
+		 activationtime = 0.5, 
+		 icon = 'Throw Lava Rock',  
+	 },
+	 [16484] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_14, 
+		 activationtime = 0.5, 
+		 icon = 'Throw Net',  
+	 },
+	 [1133] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_14, 
+		 activationtime = 1, 
+		 icon = 'Throw Rock',  
+	 },
+	 [1135] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_14, 
+		 activationtime = 0.5, 
+		 icon = 'Throw Scale',  
+	 },
+	 [1146] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_14, 
+		 activationtime = 0, 
+		 icon = 'Tooth Stab',  
+	 },
+	 [1138] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_14, 
+		 activationtime = 0, 
+		 icon = 'Use Scepter',  
+	 },
+	 [1144] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_14, 
+		 activationtime = 0, 
+		 icon = 'Use Staff',  
+	 },
+	 [1162] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_14, 
+		 activationtime = 3.25, 
+		 icon = 'Whirling Axe',  
+	 },
 	 
 
 -- END F-Keys.
