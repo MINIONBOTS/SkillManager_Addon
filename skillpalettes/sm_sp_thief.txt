@@ -705,8 +705,6 @@ SkillManager:AddSkillPalette( drowning )
 
 
 
-
-
 -- ALL the skills which do not belong to a set
 local thief = SkillManager:CreateSkillPalette('thief')
 thief.uid = "Thief_Thief"
@@ -752,6 +750,56 @@ thief.skills_luacode = {
 		 slot = GW2.SKILLBARSLOT.Slot_13, 
 		 activationtime = 0.5, 
 		 icon = 'Steal',  
+	 },
+	 [43390] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_13, 
+		 activationtime = 0.5, 
+		 icon = 'Deadeye\'s Mark',  
+	 },
+	 [39960] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_14, 
+		 activationtime = 0.5, 
+		 icon = 'Steal Warmth',  
+	 },
+	 [40133] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_14, 
+		 activationtime = 0.5, 
+		 icon = 'Steal Resistance',  
+	 },
+	 [42863] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_14, 
+		 activationtime = 0.5, 
+		 icon = 'Steal Time',  
+	 },
+	 [40904] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_14, 
+		 activationtime = 0.5, 
+		 icon = 'Steal Strength',  
+	 },
+	 [44526] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_14, 
+		 activationtime = 0.5, 
+		 icon = 'Steal Mobility',  
+	 },
+	 [43768] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_14, 
+		 activationtime = 0.5, 
+		 icon = 'Steal Defenses',  
+	 },
+	 [43373] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_14, 
+		 activationtime = 0.5, 
+		 icon = 'Steal Durability',  
+	 },
+	 [40903] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_14, 
+		 activationtime = 0.5, 
+		 icon = 'Steal Health',  
+	 },
+	 [40888] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_14, 
+		 activationtime = 0.5, 
+		 icon = 'Steal Precision',  
 	 },
 	 
 
