@@ -660,7 +660,7 @@ end
 
 -- If this spell is being cast right now.
 function sm_skill:IsCasting()
-	return self.temp.context.player.castinfo and self.temp.context.player.castinfo.skillid == self.id
+	return self.temp.context and self.temp.context.player and self.temp.context.player.castinfo and self.temp.context.player.castinfo.skillid == self.id
 end
 
 -- Checks if the Target of the Condition group which evaluated to "true"  is actually valid right now

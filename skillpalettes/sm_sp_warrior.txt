@@ -904,6 +904,11 @@ set.skills_luacode = {
 	 activationtime = 0.5, 
 	 icon = 'Arcing Slice',  
  },
+ [42707] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_13, 
+	 activationtime = 0.5, 
+	 icon = 'Arcing Slice',  
+ },
  [14387] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_13, 
 	 activationtime = 0.75, 

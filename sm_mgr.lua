@@ -533,7 +533,6 @@ end
 function SkillManager:ToggleHelper()
 	sm_mgr.sethelper.open = not sm_mgr.sethelper.open
 end
-sm_mgr.sethelper.open
 
 
 -- some little helper window to update/see the skill data needed to build the hardcoded skill sets
@@ -542,7 +541,7 @@ sm_mgr.sethelper.open = false
 -- Draws the SkillManager window, profile management and calls Profile:Render() to populate stuff
 function sm_mgr.sethelper.DrawMenu(event,ticks)
 
-	if (sm_mgr.open) then
+	if (sm_mgr.sethelper.open) then
 		GUI:SetNextWindowSize(300,500,GUI.SetCond_Once)
 		GUI:SetNextWindowPosCenter(GUI.SetCond_Once)
 		sm_mgr.sethelper.visible, sm_mgr.sethelper.open = GUI:Begin(GetString("Skill Set Helper").."##smhelper", sm_mgr.sethelper.open,GUI.WindowFlags_NoSavedSettings)
