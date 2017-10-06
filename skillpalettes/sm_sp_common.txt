@@ -1,0 +1,172 @@
+
+local set = SkillManager:CreateSkillPalette('Common_Tornado')
+set.uid = "zCommon_Tornado"
+set.profession = 0
+set.icon = "Tornado"
+set.id = 5534
+set.skills_luacode = {
+ [5752] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_1, 
+	 activationtime = 0.5, 
+	 icon = 'Electrified Tornado',  
+ },
+ [5753] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_2, 
+	 activationtime = 0.5, 
+	 icon = 'Dust Tornado',  
+ },
+ [5754] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_3, 
+	 activationtime = 0.5, 
+	 icon = 'Debris Tornado',  
+ },
+ [35224] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_4, 
+	 activationtime = 0.5, 
+	 icon = 'Elemental Requiem',  
+ },
+ [35304] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_5, 
+	 activationtime = 1.25, 
+	 icon = 'Dust Charge',  
+ },
+}
+function set:IsActive(context)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 14356)	
+end
+function set:CanActivate(context)
+	return false
+end
+function set:Activate(context)
+end
+function set:Deactivate(context)
+	return false
+end
+SkillManager:AddSkillPalette( set )
+
+local set = SkillManager:CreateSkillPalette('Common_Trebuchet')
+set.uid = "zCommon_Trebuchet"
+set.profession = 0
+set.icon = "Tornado"
+set.id = 1233
+set.skills_luacode = {
+[1231] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_1, 
+	 activationtime = 0.5, 
+	 icon = 'Turn Left',  
+ },
+ [1233] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_2, 
+	 activationtime = 0.5, 
+	 icon = 'Fire',  
+ },
+ [1232] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_3, 
+	 activationtime = 0.5, 
+	 icon = 'Turn Right',  
+ },
+}
+function set:IsActive(context)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 1231)	
+end
+function set:CanActivate(context)
+	return false
+end
+function set:Activate(context)
+end
+function set:Deactivate(context)
+	return Player:SwapWeaponSet()
+end
+SkillManager:AddSkillPalette( set )
+
+local set = SkillManager:CreateSkillPalette('Common_ArrowCart')
+set.uid = "zCommon_ArrowCart"
+set.profession = 0
+set.icon = "ArrowCart"
+set.id = 14617
+set.skills_luacode = {
+[14617] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_1, 
+	 activationtime = 0.5, 
+	 icon = 'Fire',  
+ },
+ [14652] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_2, 
+	 activationtime = 0.5, 
+	 icon = 'Fire Crippling Arrows',  
+ },
+ [14653] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_3, 
+	 activationtime = 0.5, 
+	 icon = 'Fire Barbed Arrows',  
+ },
+}
+function set:IsActive(context)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 14617)	
+end
+function set:CanActivate(context)
+	return false
+end
+function set:Activate(context)
+end
+function set:Deactivate(context)
+	return Player:SwapWeaponSet()
+end
+SkillManager:AddSkillPalette( set )
+
+
+local set = SkillManager:CreateSkillPalette('zCommon_Rampage')
+set.uid = "zCommon_Rampage"
+set.profession = 0
+set.icon = "Rampage"
+set.id = 14617
+set.skills_luacode = {
+[14485] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_1, 
+	 activationtime = 0.5, 
+	 icon = 'Smash',  
+ },
+ [14486] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_1, 
+	 activationtime = 0.5, 
+	 icon = 'Bash', 
+	 parent = 14485,
+ },
+ [14487] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_1, 
+	 activationtime = 0.5, 
+	 icon = 'Uppercut',
+	 parent = 14486,
+ },
+ [14488] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_2, 
+	 activationtime = 0.5, 
+	 icon = 'Kick',  
+ },
+ [14489] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_3, 
+	 activationtime = 0.75, 
+	 icon = 'Dash',  
+ },
+ [14556] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_4, 
+	 activationtime = 1.0, 
+	 icon = 'Throw Boulder',  
+ },
+ [14490] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_5, 
+	 activationtime = 0.75, 
+	 icon = 'Seismic Leap',  
+ },
+}
+function set:IsActive(context)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 14488)	
+end
+function set:CanActivate(context)
+	return false
+end
+function set:Activate(context)
+end
+function set:Deactivate(context)
+end
+SkillManager:AddSkillPalette( set )

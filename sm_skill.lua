@@ -442,7 +442,7 @@ function sm_skill:UpdateData(context, iscombo)
 		end
 		
 		-- Update AttackRange	
-		if ( self.setsattackrange and self.maxrange > 0 and self.skillpalette:IsActive(self.temp.context)) then
+		if ( self.setsattackrange and self.maxrange and self.maxrange > 0 and self.skillpalette:IsActive(self.temp.context)) then
 			-- Set a maxattackrange and an actual activemaxattackrange
 			if ( not sm_mgr.profile.temp.maxattackrange or sm_mgr.profile.temp.maxattackrange < self.maxrange ) then sm_mgr.profile.temp.maxattackrange = self.maxrange end
 			if ( self.temp.cancast or self.slot == GW2.SKILLBARSLOT.Slot_1 ) then			

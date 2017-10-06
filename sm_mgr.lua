@@ -355,10 +355,18 @@ end
 RegisterEventHandler("Gameloop.Draw", sm_mgr.DrawMenu)
 
 function sm_mgr:AddSkillPalette( palette )
-	if ( not sm_mgr.skillpalettes[palette.profession] ) then sm_mgr.skillpalettes[palette.profession] = {} end
-	if ( not sm_mgr.skillpalettes[palette.profession][palette.uid] ) then 
-		sm_mgr.skillpalettes[palette.profession][palette.uid] = palette
-		--d("[SkillManager] - Skill Palette with uid "..palette.uid.." added.")
+	if ( not sm_mgr.skillpalettes[0] ) then 
+		sm_mgr.skillpalettes = { [0] = {}, [1] = {}, [2] = {}, [3] = {}, [4] = {}, [5] = {}, [6] = {}, [7] = {}, [8] = {}, [9] = {}}
+	end	
+	if ( not sm_mgr.skillpalettes[palette.profession][palette.uid] ) then
+		if (palette.profession == 0) then -- common set, add it to all professions
+			for i=1,9 do
+				sm_mgr.skillpalettes[i][palette.uid] = palette
+			end
+		else		
+			sm_mgr.skillpalettes[palette.profession][palette.uid] = palette
+			--d("[SkillManager] - Skill Palette with uid "..palette.uid.." added.")
+		end
 	else
 		ml_error("[SkillManager] - Skill Palette with uid "..palette.uid.." already exists, we got a duplicate here ?")
 	end

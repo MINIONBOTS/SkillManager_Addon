@@ -48,8 +48,9 @@ function sm_profile:Save()
 end
 
 -- Updates all Skilldata and the shared context and metatables and target and and and
-function sm_profile:UpdateContext()
+function sm_profile:UpdateContext()	
 	if ( not self.temp.context ) then self.temp.context = {} end
+		
 	-- reset range
 	self.temp.activemaxattackrange = 154
 	self.temp.maxattackrange = 154
@@ -360,7 +361,7 @@ function sm_profile:Cast()
 									if ( castresult ) then
 										-- Add an internal cd, else spam
 										local mincasttime = action.activationtime*1010										
-										mincasttime = mincasttime + Settings.SkillManager.networklatency
+										mincasttime = mincasttime + (Settings.SkillManager.networklatency or 0)
 										action.temp.internalcd = ml_global_information.Now + mincasttime
 										if ( not action.instantcast ) then
 											self.temp.nextcast = ml_global_information.Now + mincasttime
@@ -391,7 +392,7 @@ function sm_profile:Cast()
 						
 			-- Evade
 			local evaded
-			if ( Settings.GW2Minion.evade and ml_global_information.Player_HealthState == GW2.HEALTHSTATE.Alive and ml_global_information.Player_InCombat and ml_global_information.Player_CastInfo and (ml_global_information.Player_CastInfo.slot == GW2.SKILLBARSLOT.None or ml_global_information.Player_CastInfo.slot == GW2.SKILLBARSLOT.Slot_1 )) then
+			if ( ml_global_information.Player_HealthState == GW2.HEALTHSTATE.Alive and ml_global_information.Player_InCombat and ml_global_information.Player_CastInfo and (ml_global_information.Player_CastInfo.slot == GW2.SKILLBARSLOT.None or ml_global_information.Player_CastInfo.slot == GW2.SKILLBARSLOT.Slot_1 )) then
 				evaded = gw2_common_functions.Evade(self.temp.context.attack_target == nil and 3 or nil) -- if we dont have a target, evade forward. (3 == forward)
 			end
 				
