@@ -359,9 +359,8 @@ function sm_profile:Cast()
 									end
 									if ( castresult ) then
 										-- Add an internal cd, else spam
-										local mincasttime = action.activationtime*1000
-										--if ( mincasttime == 0 ) then mincasttime = 750 end											
-										--mincasttime = mincasttime + 450	-- THIS CAN BE EXPOSED TO LUA
+										local mincasttime = action.activationtime*1010										
+										mincasttime = mincasttime + Settings.SkillManager.networklatency
 										action.temp.internalcd = ml_global_information.Now + mincasttime
 										if ( not action.instantcast ) then
 											self.temp.nextcast = ml_global_information.Now + mincasttime
@@ -431,10 +430,17 @@ function sm_profile:Render()
 	GUI:AlignFirstTextHeightToWidgets()
 	GUI:Text(GetString("Swap Weapons:")) if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("'Automatic'- Automatically switches Weapons/Kits/Stances. 'Manual'-You switch Weapons/Kits/Stances.")) end
 	GUI:SameLine(150)
-	self.weaponswapmode, changed = GUI:Combo("##smweaponswapmode",self.weaponswapmode or 1, { [1] = GetString("Automatic"), [2] = GetString("Manual"), })
+	Settings.SkillManager.weaponswapmode, changed = GUI:Combo("##smweaponswapmode",Settings.SkillManager.weaponswapmode or 1, { [1] = GetString("Automatic"), [2] = GetString("Manual"), })
+	if ( changed ) then self.temp.modified = true end
+	
+	GUI:AlignFirstTextHeightToWidgets()
+	GUI:Text(GetString("Network Latency:")) if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("'This value (in ms) is added to the duration of each Skill that is cast. If you have a high Ping / network latency, increasing this will reduce the Bot from interrupting Skills.")) end
+	GUI:SameLine(150)
+	Settings.SkillManager.networklatency, changed = GUI:SliderInt("##swnetworklatency", Settings.SkillManager.networklatency or 0, 0, 1000)
 	if ( changed ) then self.temp.modified = true end
 	GUI:PopItemWidth()
 	GUI:Separator()
+	
 	
 	-- Main Menu CodeEditor
 	local maxx,maxy = GUI:GetContentRegionAvail()

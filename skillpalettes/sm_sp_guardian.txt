@@ -68,7 +68,7 @@ set.skills_luacode = {
  },
  [9081] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_2, 
-	 activationtime = 0.75, 
+	 activationtime = 2.0, 
 	 icon = 'Whirling Wrath',  
  },
  [9080] = { 
@@ -78,7 +78,7 @@ set.skills_luacode = {
  },
  [9146] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_4, 
-	 activationtime = 0.25, 
+	 activationtime = 0.5, 
 	 icon = 'Symbol of Wrath',  
  },
  [9147] = { 

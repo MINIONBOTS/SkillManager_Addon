@@ -18,7 +18,9 @@ function sm_skill:initialize(data)
 			if(freshdata) then
 				if ( freshdata ~= nil ) then
 					for i,k in pairs(freshdata) do
-						self[i] = k
+						if (( i ~= "activationtime" or self.activationtime == nil) and (i ~= "instantcast" or self.instantcast == nil)) then
+							self[i] = k
+						end
 					end
 				end
 				if ( self.slot >= GW2.SKILLBARSLOT.Slot_1 and self.slot <= GW2.SKILLBARSLOT.Slot_5 ) then
@@ -73,6 +75,8 @@ function sm_skill:Save()
 	copy.skillpaletteuid = self.skillpaletteuid
 	copy.setsattackrange = self.setsattackrange
 	copy.requireslos = self.requireslos-- or true
+	copy.activationtime = self.activationtime
+	copy.instantcast = self.instantcast
 	copy.condition_luacode = self.condition_luacode
 	copy.conditions = {}
 	local gidx = 0
@@ -315,6 +319,7 @@ end
 -- Render a Table/List with the hardcoded skill info
 function sm_skill:RenderHardcodedSkillDetails()
 	GUI:PushStyleVar(GUI.StyleVar_ItemSpacing, 8, 1)
+	GUI:PushStyleVar(GUI.StyleVar_FramePadding, 4, 0)
 	GUI:Text(GetString("Name:")) GUI:SameLine(125) GUI:Text(tostring(self.name))
 	GUI:SameLine(300)
 	GUI:Text(GetString("ID:")) GUI:SameLine(425) GUI:Text(tostring(self.id))
@@ -352,7 +357,19 @@ function sm_skill:RenderHardcodedSkillDetails()
 	GUI:Text(GetString("Requires LoS:")) GUI:SameLine(425) self.requireslos, changed = GUI:Checkbox("##requireslos" , self.requireslos) if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("If Enabled, this Skill will only be cast at the target if it is in Line of Sight." )) end			
 	if ( changed ) then sm_mgr.profile.temp.modified = true end
 	
-	GUI:PopStyleVar()
+	GUI:PushItemWidth(150)
+	local changed
+	GUI:Text(GetString("Cast Time:")) GUI:SameLine(125) self.activationtime, changed = GUI:InputFloat("##casttime" , tonumber(self.activationtime), 0.1, 0.5, 2, GUI.InputTextFlags_CharsDecimal+GUI.InputTextFlags_CharsNoBlank) if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("The Duration this Skill is cast. Setting this too low, can result in the Bot interrupting other Skills." )) end			
+	if ( changed ) then sm_mgr.profile.temp.modified = true end
+	GUI:PopItemWidth()
+	
+	GUI:SameLine(300)
+	local changed
+	if ( self.instantcast == nil ) then self.instantcast = false end
+	GUI:Text(GetString("Instant Cast:")) GUI:SameLine(425) self.instantcast, changed = GUI:Checkbox("##instantcast", self.instantcast) if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("If this is Enabled, the Skill can be cast instantly 'without interrupting' the currently cast Skill." )) end			
+	if ( changed ) then sm_mgr.profile.temp.modified = true end
+	
+	GUI:PopStyleVar(2)
 end
 
 -- Get data from c++ and update this skill's data
