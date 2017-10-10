@@ -80,29 +80,225 @@ end
 SkillManager:AddSkillPalette( set )
 
 local set = SkillManager:CreateSkillPalette('Common_ArrowCart')
-set.uid = "zCommon_ArrowCart"
+set.uid = "zCommon_ArrowCart_Default"
 set.profession = 0
 set.icon = "ArrowCart"
 set.id = 14617
 set.skills_luacode = {
-[14617] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_1, 
-	 activationtime = 0.5, 
-	 icon = 'Fire',  
- },
- [14652] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_2, 
-	 activationtime = 0.5, 
-	 icon = 'Fire Crippling Arrows',  
- },
- [14653] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_3, 
-	 activationtime = 0.5, 
-	 icon = 'Fire Barbed Arrows',  
- },
+	-- slot 1.
+	 [14617] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_1, 
+		 activationtime = 0.5, 
+		 icon = 'Fire',  
+	 },
+	 [14652] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_2, 
+		 activationtime = 0.5, 
+		 icon = 'Fire Crippling Arrows',  
+	 },
+	 [14653] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_3, 
+		 activationtime = 0.5, 
+		 icon = 'Fire Barbed Arrows',  
+	 },
 }
 function set:IsActive(context)
-	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 14617)	
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 14617)
+end
+function set:CanActivate(context)
+	return false
+end
+function set:Activate(context)
+end
+function set:Deactivate(context)
+	return Player:SwapWeaponSet()
+end
+SkillManager:AddSkillPalette( set )
+
+
+
+local set = SkillManager:CreateSkillPalette('Common_ArrowCart')
+set.uid = "zCommon_ArrowCart_Level_1"
+set.profession = 0
+set.icon = "ArrowCart"
+set.id = 18852
+set.skills_luacode = {
+	 [18852] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_1, 
+		 activationtime = 0.5, 
+		 icon = 'Fire Improved Arrows',  
+	 },
+	 [18854] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_2, 
+		 activationtime = 0.5, 
+		 icon = 'Fire Improved Crippling Arrows',  
+	 },
+	 [18856] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_3, 
+		 activationtime = 0.5, 
+		 icon = 'Fire Improved Barbed Arrows',  
+	 },
+}
+function set:IsActive(context)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 18852)
+end
+function set:CanActivate(context)
+	return false
+end
+function set:Activate(context)
+end
+function set:Deactivate(context)
+	return Player:SwapWeaponSet()
+end
+SkillManager:AddSkillPalette( set )
+
+
+
+local set = SkillManager:CreateSkillPalette('Common_ArrowCart')
+set.uid = "zCommon_ArrowCart_Level_2"
+set.profession = 0
+set.icon = "ArrowCart"
+set.id = 18849
+set.skills_luacode = {
+	 [18849] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_1, 
+		 activationtime = 0.5, 
+		 icon = 'Fire Distant Volley',  
+	 },
+	 [18847] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_2, 
+		 activationtime = 0.5, 
+		 icon = 'Fire Reaping Arrows',  
+	 },
+	 [18845] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_3, 
+		 activationtime = 0.5, 
+		 icon = 'Fire Penetrating Sniper Arrows',  
+	 },
+}
+function set:IsActive(context)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 18849)
+end
+function set:CanActivate(context)
+	return false
+end
+function set:Activate(context)
+end
+function set:Deactivate(context)
+	return Player:SwapWeaponSet()
+end
+SkillManager:AddSkillPalette( set )
+
+
+
+local set = SkillManager:CreateSkillPalette('Common_ArrowCart')
+set.uid = "zCommon_ArrowCart_Level_3"
+set.profession = 0
+set.icon = "ArrowCart"
+set.id = 18849
+set.skills_luacode = {
+	 [18849] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_1, 
+		 activationtime = 0.5, 
+		 icon = 'Fire Distant Volley',  
+	 },
+	 [18861] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_2, 
+		 activationtime = 0.5, 
+		 icon = 'Fire Staggering Arrows',  
+	 },
+	 [18859] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_3, 
+		 activationtime = 0.5, 
+		 icon = 'Fire Exsanguinating Arrows',  
+	 },
+}
+function set:IsActive(context)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 18849)
+end
+function set:CanActivate(context)
+	return false
+end
+function set:Activate(context)
+end
+function set:Deactivate(context)
+	return Player:SwapWeaponSet()
+end
+SkillManager:AddSkillPalette( set )
+
+
+
+local set = SkillManager:CreateSkillPalette('Common_ArrowCart')
+set.uid = "zCommon_ArrowCart_Level_4"
+set.profession = 0
+set.icon = "ArrowCart"
+set.id = 18866
+set.skills_luacode = {
+	 [18866] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_1, 
+		 activationtime = 0.5, 
+		 icon = 'Fire Devastating Arrows',  
+	 },
+	 [18864] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_2, 
+		 activationtime = 0.5, 
+		 icon = 'Fire Suffering Arrows',  
+	 },
+	 [18868] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_3, 
+		 activationtime = 0.5, 
+		 icon = 'Fire Merciless Arrows',  
+	 },
+}
+function set:IsActive(context)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 18866)
+end
+function set:CanActivate(context)
+	return false
+end
+function set:Activate(context)
+end
+function set:Deactivate(context)
+	return Player:SwapWeaponSet()
+end
+SkillManager:AddSkillPalette( set )
+
+
+
+local set = SkillManager:CreateSkillPalette('Common_ArrowCart')
+set.uid = "zCommon_ArrowCart_Level_5"
+set.profession = 0
+set.icon = "ArrowCart"
+set.id = 18866
+set.skills_luacode = {
+	 [18866] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_1, 
+		 activationtime = 0.5, 
+		 icon = 'Fire Devastating Arrows',  
+	 },
+	 [18864] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_2, 
+		 activationtime = 0.5, 
+		 icon = 'Fire Suffering Arrows',  
+	 },
+	 [18868] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_3, 
+		 activationtime = 0.5, 
+		 icon = 'Fire Merciless Arrows',  
+	 },
+	 [18871] = { -- 1 skill, 2 id's on wiki, need feedback.
+		 slot = GW2.SKILLBARSLOT.Slot_4, 
+		 activationtime = 0.5, 
+		 icon = 'Toxic Unveiling Volley',  
+	 },
+	 [19632] = { -- 1 skill, 2 id's on wiki, need feedback.
+		 slot = GW2.SKILLBARSLOT.Slot_4, 
+		 activationtime = 0.5, 
+		 icon = 'Toxic Unveiling Volley',  
+	 },
+}
+function set:IsActive(context)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4]~=nil  and (context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 18871 or context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 19632))
 end
 function set:CanActivate(context)
 	return false
