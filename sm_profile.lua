@@ -350,7 +350,9 @@ function sm_profile:Cast()
 									else
 										
 										Player:SetTarget(target)
-										Player:SetFacingExact(pos.x, pos.y, pos.z)
+										if (BehaviorManager:CurrentBTreeName() ~= GetString("AssistMode")) then -- dont face targets in assist mode. Might need more logic for firing skills while using "moveto" or similar task, if that is a thing we do.
+											Player:SetFacingExact(pos.x, pos.y, pos.z)
+										end
 										if ( action.slot == GW2.SKILLBARSLOT.Slot_1 or action.instantcast ) then
 											castresult = Player:CastSpellNoChecks(action.slot , target.id)
 											

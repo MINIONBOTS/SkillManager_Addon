@@ -79,6 +79,9 @@ function set:Deactivate(context)
 end
 SkillManager:AddSkillPalette( set )
 
+
+
+-- Arrow Cart.
 local set = SkillManager:CreateSkillPalette('Common_ArrowCart')
 set.uid = "zCommon_ArrowCart_Default"
 set.profession = 0
@@ -309,8 +312,484 @@ function set:Deactivate(context)
 	return Player:SwapWeaponSet()
 end
 SkillManager:AddSkillPalette( set )
+-- END Arrow Cart.
 
 
+
+-- Ballista.
+local set = SkillManager:CreateSkillPalette('Common_Ballista')
+set.uid = "zCommon_Ballista_Default"
+set.profession = 0
+set.icon = "Ballista"
+set.id = 14621
+set.skills_luacode = {
+	 [14621] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_1, 
+		 activationtime = 0.5, 
+		 icon = 'Fire',  
+	 },
+	 [14656] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_2, 
+		 activationtime = 0.5, 
+		 icon = 'Fire Shattering Bolt',  
+	 },
+	 [14657] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_3, 
+		 activationtime = 0.5, 
+		 icon = 'Fire Reinforced Shot',  
+	 },
+}
+function set:IsActive(context)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 14621)
+end
+function set:CanActivate(context)
+	return false
+end
+function set:Activate(context)
+end
+function set:Deactivate(context)
+	return Player:SwapWeaponSet()
+end
+SkillManager:AddSkillPalette( set )
+
+
+
+local set = SkillManager:CreateSkillPalette('Common_Ballista')
+set.uid = "zCommon_Ballista_Level_1"
+set.profession = 0
+set.icon = "Ballista"
+set.id = 14621
+set.skills_luacode = {
+	 [14621] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_1, 
+		 activationtime = 0.5, 
+		 icon = 'Fire',  
+	 },
+	 [14656] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_2, 
+		 activationtime = 0.5, 
+		 icon = 'Fire Shattering Bolt',  
+	 },
+	 [14657] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_3, 
+		 activationtime = 0.5, 
+		 icon = 'Fire Reinforced Shot',  
+	 },
+	 [17055] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_4, 
+		 activationtime = 0.5, 
+		 icon = 'Spread Shot',  
+	 },
+}
+function set:IsActive(context)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 17055)
+end
+function set:CanActivate(context)
+	return false
+end
+function set:Activate(context)
+end
+function set:Deactivate(context)
+	return Player:SwapWeaponSet()
+end
+SkillManager:AddSkillPalette( set )
+
+
+
+local set = SkillManager:CreateSkillPalette('Common_Ballista')
+set.uid = "zCommon_Ballista_Level_2"
+set.profession = 0
+set.icon = "Ballista"
+set.id = 18565
+set.skills_luacode = {
+	 [18565] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_1, 
+		 activationtime = 0.5, 
+		 icon = 'Improved Ballista Shot',  
+	 },
+	 [18567] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_2, 
+		 activationtime = 0.5, 
+		 icon = 'Improved Shattering Bolt',  
+	 },
+	 [18563] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_3, 
+		 activationtime = 0.5, 
+		 icon = 'Improved Reinforced Shot',  
+	 },
+	 [18561] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_4, 
+		 activationtime = 0.5, 
+		 icon = 'Improved Spread Shot',  
+	 },
+}
+function set:IsActive(context)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 18565)
+end
+function set:CanActivate(context)
+	return false
+end
+function set:Activate(context)
+end
+function set:Deactivate(context)
+	return Player:SwapWeaponSet()
+end
+SkillManager:AddSkillPalette( set )
+
+
+
+local set = SkillManager:CreateSkillPalette('Common_Ballista')
+set.uid = "zCommon_Ballista_Level_3"
+set.profession = 0
+set.icon = "Ballista"
+set.id = 18569
+set.skills_luacode = {
+	 [18569] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_1, 
+		 activationtime = 0.5, 
+		 icon = 'Swift Bolt',  
+	 },
+	 [18567] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_2, 
+		 activationtime = 0.5, 
+		 icon = 'Improved Shattering Bolt',  
+	 },
+	 [18563] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_3, 
+		 activationtime = 0.5, 
+		 icon = 'Improved Reinforced Shot',  
+	 },
+	 [18561] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_4, 
+		 activationtime = 0.5, 
+		 icon = 'Improved Spread Shot',  
+	 },
+}
+function set:IsActive(context)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 18569)
+end
+function set:CanActivate(context)
+	return false
+end
+function set:Activate(context)
+end
+function set:Deactivate(context)
+	return Player:SwapWeaponSet()
+end
+SkillManager:AddSkillPalette( set )
+
+
+
+local set = SkillManager:CreateSkillPalette('Common_Ballista')
+set.uid = "zCommon_Ballista_Level_4"
+set.profession = 0
+set.icon = "Ballista"
+set.id = 18573
+set.skills_luacode = {
+	 [18573] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_1, 
+		 activationtime = 0.5, 
+		 icon = 'Sniper Bolt',  
+	 },
+	 [18577] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_2, 
+		 activationtime = 0.5, 
+		 icon = 'Greater Shattering Bolt',  
+	 },
+	 [18575] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_3, 
+		 activationtime = 0.5, 
+		 icon = 'Greater Reinforced Shot',  
+	 },
+	 [18571] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_4, 
+		 activationtime = 0.5, 
+		 icon = 'Greater Spread Shot',  
+	 },
+}
+function set:IsActive(context)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 18573)
+end
+function set:CanActivate(context)
+	return false
+end
+function set:Activate(context)
+end
+function set:Deactivate(context)
+	return Player:SwapWeaponSet()
+end
+SkillManager:AddSkillPalette( set )
+
+
+
+local set = SkillManager:CreateSkillPalette('Common_Ballista')
+set.uid = "zCommon_Ballista_Level_5"
+set.profession = 0
+set.icon = "Ballista"
+set.id = 18579
+set.skills_luacode = {
+	 [18573] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_1, 
+		 activationtime = 0.5, 
+		 icon = 'Sniper Bolt',  
+	 },
+	 [18579] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_2, 
+		 activationtime = 0.5, 
+		 icon = 'Devastating Shattering Shot',  
+	 },
+	 [18575] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_3, 
+		 activationtime = 0.5, 
+		 icon = 'Greater Reinforced Shot',  
+	 },
+	 [18571] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_4, 
+		 activationtime = 0.5, 
+		 icon = 'Greater Spread Shot',  
+	 },
+}
+function set:IsActive(context)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 18579)
+end
+function set:CanActivate(context)
+	return false
+end
+function set:Activate(context)
+end
+function set:Deactivate(context)
+	return Player:SwapWeaponSet()
+end
+SkillManager:AddSkillPalette( set )
+-- END Ballista.
+
+
+
+-- Cannon.
+local set = SkillManager:CreateSkillPalette('Common_Cannon')
+set.uid = "zCommon_Cannon_Default"
+set.profession = 0
+set.icon = "Cannon"
+set.id = 14625
+set.skills_luacode = {
+	 [14625] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_1, 
+		 activationtime = 0.5, 
+		 icon = 'Fire',  
+	 },
+	 [14660] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_2, 
+		 activationtime = 0.5, 
+		 icon = 'Fire Grapeshot',  
+	 },
+	 [14661] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_3, 
+		 activationtime = 0.5, 
+		 icon = 'Ice Shot',  
+	 },
+}
+function set:IsActive(context)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 14625)
+end
+function set:CanActivate(context)
+	return false
+end
+function set:Activate(context)
+end
+function set:Deactivate(context)
+	return Player:SwapWeaponSet()
+end
+SkillManager:AddSkillPalette( set )
+
+
+
+local set = SkillManager:CreateSkillPalette('Common_Cannon')
+set.uid = "zCommon_Cannon_Level_1"
+set.profession = 0
+set.icon = "Cannon"
+set.id = 18525
+set.skills_luacode = {
+	 [18525] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_1, 
+		 activationtime = 0.5, 
+		 icon = 'Improved Shot',  
+	 },
+	 [14660] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_2, 
+		 activationtime = 0.5, 
+		 icon = 'Fire Grapeshot',  
+	 },
+	 [14661] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_3, 
+		 activationtime = 0.5, 
+		 icon = 'Ice Shot',  
+	 },
+}
+function set:IsActive(context)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 18525)
+end
+function set:CanActivate(context)
+	return false
+end
+function set:Activate(context)
+end
+function set:Deactivate(context)
+	return Player:SwapWeaponSet()
+end
+SkillManager:AddSkillPalette( set )
+
+
+
+local set = SkillManager:CreateSkillPalette('Common_Cannon')
+set.uid = "zCommon_Cannon_Level_2"
+set.profession = 0
+set.icon = "Cannon"
+set.id = 18536
+set.skills_luacode = {
+	 [18536] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_1, 
+		 activationtime = 0.5, 
+		 icon = 'Disheartening Shot',  
+	 },
+	 [18528] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_2, 
+		 activationtime = 0.5, 
+		 icon = 'Improved Grapeshot',  
+	 },
+	 [18538] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_3, 
+		 activationtime = 0.5, 
+		 icon = 'Improved Ice Shot',  
+	 },
+}
+function set:IsActive(context)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 18536)
+end
+function set:CanActivate(context)
+	return false
+end
+function set:Activate(context)
+end
+function set:Deactivate(context)
+	return Player:SwapWeaponSet()
+end
+SkillManager:AddSkillPalette( set )
+
+
+
+local set = SkillManager:CreateSkillPalette('Common_Cannon')
+set.uid = "zCommon_Cannon_Level_3"
+set.profession = 0
+set.icon = "Cannon"
+set.id = 18536
+set.skills_luacode = {
+	 [18536] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_1, 
+		 activationtime = 0.5, 
+		 icon = 'Disheartening Shot',  
+	 },
+	 [18532] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_2, 
+		 activationtime = 0.5, 
+		 icon = 'Piercing Grapeshot',  
+	 },
+	 [18538] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_3, 
+		 activationtime = 0.5, 
+		 icon = 'Improved Ice Shot',  
+	 },
+}
+function set:IsActive(context)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 18532)
+end
+function set:CanActivate(context)
+	return false
+end
+function set:Activate(context)
+end
+function set:Deactivate(context)
+	return Player:SwapWeaponSet()
+end
+SkillManager:AddSkillPalette( set )
+
+
+
+local set = SkillManager:CreateSkillPalette('Common_Cannon')
+set.uid = "zCommon_Cannon_Level_4"
+set.profession = 0
+set.icon = "Cannon"
+set.id = 18534
+set.skills_luacode = {
+	 [18534] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_1, 
+		 activationtime = 0.5, 
+		 icon = 'Devastating Shot',  
+	 },
+	 [18530] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_2, 
+		 activationtime = 0.5, 
+		 icon = 'Shredding Grapeshot',  
+	 },
+	 [18540] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_3, 
+		 activationtime = 0.5, 
+		 icon = 'Debilitating Ice Shot',  
+	 },
+}
+function set:IsActive(context)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 18534)
+end
+function set:CanActivate(context)
+	return false
+end
+function set:Activate(context)
+end
+function set:Deactivate(context)
+	return Player:SwapWeaponSet()
+end
+SkillManager:AddSkillPalette( set )
+
+
+
+local set = SkillManager:CreateSkillPalette('Common_Cannon')
+set.uid = "zCommon_Cannon_Level_5"
+set.profession = 0
+set.icon = "Cannon"
+set.id = 18534
+set.skills_luacode = {
+	 [18534] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_1, 
+		 activationtime = 0.5, 
+		 icon = 'Devastating Shot',  
+	 },
+	 [18530] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_2, 
+		 activationtime = 0.5, 
+		 icon = 'Shredding Grapeshot',  
+	 },
+	 [18542] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_3, 
+		 activationtime = 0.5, 
+		 icon = 'Bone-shattering Ice Shot',  
+	 },
+}
+function set:IsActive(context)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 18534)
+end
+function set:CanActivate(context)
+	return false
+end
+function set:Activate(context)
+end
+function set:Deactivate(context)
+	return Player:SwapWeaponSet()
+end
+SkillManager:AddSkillPalette( set )
+-- END Cannon.
+
+
+
+--
 local set = SkillManager:CreateSkillPalette('zCommon_Rampage')
 set.uid = "zCommon_Rampage"
 set.profession = 0
