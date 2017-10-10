@@ -75,7 +75,7 @@ function axe:IsActive(context)
 	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 10561)	
 end
 function axe:CanActivate(context)
-	return context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.mainhand == GW2.WEAPONTYPE.Axe or context.player.mainhand_alt == GW2.WEAPONTYPE.Axe) and (context.player.weaponset == 4 or context.player.weaponset == 5) and context.player.transformid == 0 -- we have an axe and a kit currently equipped
+	return context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.mainhand == GW2.WEAPONTYPE.Axe or context.player.mainhand_alt == GW2.WEAPONTYPE.Axe) and (context.player.weaponset == 4 or context.player.weaponset == 5)-- and context.player.transformid == 0 -- we have an axe and a kit currently equipped
 end
 function axe:Activate(context)
 	Player:SwapWeaponSet()
@@ -108,7 +108,7 @@ function warhorn:IsActive(context)
 	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 10556)
 end
 function warhorn:CanActivate(context)
-	return context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.offhand == GW2.WEAPONTYPE.Warhorn or context.player.offhand_alt == GW2.WEAPONTYPE.Warhorn) and (context.player.weaponset == 4 or context.player.weaponset == 5) and context.player.transformid == 0
+	return context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.offhand == GW2.WEAPONTYPE.Warhorn or context.player.offhand_alt == GW2.WEAPONTYPE.Warhorn) and (context.player.weaponset == 4 or context.player.weaponset == 5)-- and context.player.transformid == 0
 end
 function warhorn:Activate(context)
 	Player:SwapWeaponSet()
@@ -139,7 +139,7 @@ function torch:IsActive(context)
 	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 45846)
 end
 function torch:CanActivate(context)
-	return context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.offhand == GW2.WEAPONTYPE.Torch or context.player.offhand_alt == GW2.WEAPONTYPE.Torch) and (context.player.weaponset == 4 or context.player.weaponset == 5) and context.player.transformid == 0
+	return context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.offhand == GW2.WEAPONTYPE.Torch or context.player.offhand_alt == GW2.WEAPONTYPE.Torch) and (context.player.weaponset == 4 or context.player.weaponset == 5)-- and context.player.transformid == 0
 end
 function torch:Activate(context)
 	Player:SwapWeaponSet()
@@ -186,7 +186,7 @@ function staff:IsActive(context)
 	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 10596)
 end
 function staff:CanActivate(context)
-	return context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.mainhand == GW2.WEAPONTYPE.Staff or context.player.mainhand_alt == GW2.WEAPONTYPE.Staff) and (context.player.weaponset == 4 or context.player.weaponset == 5) and context.player.transformid == 0
+	return context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.mainhand == GW2.WEAPONTYPE.Staff or context.player.mainhand_alt == GW2.WEAPONTYPE.Staff) and (context.player.weaponset == 4 or context.player.weaponset == 5)-- and context.player.transformid == 0
 end
 function staff:Activate(context)
 	Player:SwapWeaponSet()
@@ -236,7 +236,7 @@ function dagger_mh:IsActive(context)
 	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 10563)
 end
 function dagger_mh:CanActivate(context)
-	return context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.mainhand == GW2.WEAPONTYPE.Dagger or context.player.mainhand_alt == GW2.WEAPONTYPE.Dagger) and (context.player.weaponset == 4 or context.player.weaponset == 5) and context.player.transformid == 0
+	return context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.mainhand == GW2.WEAPONTYPE.Dagger or context.player.mainhand_alt == GW2.WEAPONTYPE.Dagger) and (context.player.weaponset == 4 or context.player.weaponset == 5)-- and context.player.transformid == 0
 end
 function dagger_mh:Activate(context)
 	Player:SwapWeaponSet()
@@ -269,7 +269,7 @@ function dagger_oh:IsActive(context)
 	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 10705)
 end
 function dagger_oh:CanActivate(context)
-	return context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.offhand == GW2.WEAPONTYPE.Dagger or context.player.offhand_alt == GW2.WEAPONTYPE.Dagger) and (context.player.weaponset == 4 or context.player.weaponset == 5) and context.player.transformid == 0
+	return context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.offhand == GW2.WEAPONTYPE.Dagger or context.player.offhand_alt == GW2.WEAPONTYPE.Dagger) and (context.player.weaponset == 4 or context.player.weaponset == 5)-- and context.player.transformid == 0
 end
 function dagger_oh:Activate(context)
 	Player:SwapWeaponSet()
@@ -329,7 +329,7 @@ function greatsword:IsActive(context)
 	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 30163)
 end
 function greatsword:CanActivate(context)
-	return context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.mainhand == GW2.WEAPONTYPE.Greatsword or context.player.mainhand_alt == GW2.WEAPONTYPE.Greatsword) and (context.player.weaponset == 4 or context.player.weaponset == 5) and context.player.transformid == 0
+	return context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.mainhand == GW2.WEAPONTYPE.Greatsword or context.player.mainhand_alt == GW2.WEAPONTYPE.Greatsword) and (context.player.weaponset == 4 or context.player.weaponset == 5)-- and context.player.transformid == 0
 end
 function greatsword:Activate(context)
 	Player:SwapWeaponSet()
@@ -379,7 +379,7 @@ function scepter:IsActive(context)
 	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 10532)
 end
 function scepter:CanActivate(context)
-	return context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.mainhand == GW2.WEAPONTYPE.Scepter or context.player.mainhand_alt == GW2.WEAPONTYPE.Scepter) and (context.player.weaponset == 4 or context.player.weaponset == 5) and context.player.transformid == 0
+	return context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.mainhand == GW2.WEAPONTYPE.Scepter or context.player.mainhand_alt == GW2.WEAPONTYPE.Scepter) and (context.player.weaponset == 4 or context.player.weaponset == 5)-- and context.player.transformid == 0
 end
 function scepter:Activate(context)
 	Player:SwapWeaponSet()
@@ -411,7 +411,7 @@ function focus:IsActive(context)
 	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 10707)
 end
 function focus:CanActivate(context)
-	return context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.offhand == GW2.WEAPONTYPE.Focus or context.player.offhand_alt == GW2.WEAPONTYPE.Focus) and (context.player.weaponset == 4 or context.player.weaponset == 5) and context.player.transformid == 0
+	return context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.offhand == GW2.WEAPONTYPE.Focus or context.player.offhand_alt == GW2.WEAPONTYPE.Focus) and (context.player.weaponset == 4 or context.player.weaponset == 5)-- and context.player.transformid == 0
 end
 function focus:Activate(context)
 	Player:SwapWeaponSet()
@@ -459,7 +459,7 @@ function trident:IsActive(context)
 	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 10623)
 end
 function trident:CanActivate(context)
-	return context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.Diving and (context.player.aquatic == GW2.WEAPONTYPE.Trident or context.player.aquatic_alt == GW2.WEAPONTYPE.Trident) and (context.player.weaponset == 0 or context.player.weaponset == 1) and context.player.transformid == 0
+	return context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.Diving and (context.player.aquatic == GW2.WEAPONTYPE.Trident or context.player.aquatic_alt == GW2.WEAPONTYPE.Trident) and (context.player.weaponset == 0 or context.player.weaponset == 1)-- and context.player.transformid == 0
 end
 function trident:Activate(context)
 	Player:SwapWeaponSet()
@@ -518,7 +518,7 @@ function spear:IsActive(context)
 	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 10692)
 end
 function spear:CanActivate(context)
-	return context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.Diving and (context.player.aquatic == GW2.WEAPONTYPE.Spear or context.player.aquatic_alt == GW2.WEAPONTYPE.Spear) and (context.player.weaponset == 0 or context.player.weaponset == 1) and context.player.transformid == 0
+	return context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.Diving and (context.player.aquatic == GW2.WEAPONTYPE.Spear or context.player.aquatic_alt == GW2.WEAPONTYPE.Spear) and (context.player.weaponset == 0 or context.player.weaponset == 1)-- and context.player.transformid == 0
 end
 function spear:Activate(context)
 	Player:SwapWeaponSet()
@@ -689,7 +689,13 @@ deathShroud.skills_luacode = {
 	[18504] = {
 		slot = GW2.SKILLBARSLOT.Slot_1,
 		activationtime = 1,
+		parent = 1, -- only with spacialisation.
 		icon = 'Dhuumfire',
+	},
+	[10554] = {
+		slot = GW2.SKILLBARSLOT.Slot_1,
+		activationtime = 1,
+		icon = 'Life Blast',
 	},
 	[10604] = {
 		slot = GW2.SKILLBARSLOT.Slot_2,
@@ -710,6 +716,11 @@ deathShroud.skills_luacode = {
 		slot = GW2.SKILLBARSLOT.Slot_5,
 		activationtime = 0.25,
 		icon = 'Tainted Shackles',
+	},
+	[30961] = {
+		slot = GW2.SKILLBARSLOT.Slot_13,
+		activationtime = 0,
+		icon = 'Exit Reapers Shroud',
 	},
 }
 function deathShroud:IsActive(context)
@@ -1144,11 +1155,11 @@ necromancer.skills_luacode = {
 		activationtime = 0,
 		icon = 'Reapers Shroud',
 	},
-	[30961] = {
-		slot = GW2.SKILLBARSLOT.Slot_13,
-		activationtime = 0,
-		icon = 'Exit Reapers Shroud',
-	},	
+	-- [30961] = {
+		-- slot = GW2.SKILLBARSLOT.Slot_13,
+		-- activationtime = 0,
+		-- icon = 'Exit Reapers Shroud',
+	-- },	
 	
 
 -- END UTILITY.
