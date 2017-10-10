@@ -23,9 +23,6 @@ function sm_skill:initialize(data)
 						end
 					end
 				end
-				if ( self.slot >= GW2.SKILLBARSLOT.Slot_1 and self.slot <= GW2.SKILLBARSLOT.Slot_5 ) then
-					self.setsattackrange = true
-				end
 			else
 				ml_error("[SkillManager] - Could not find Skill ID "..tostring(data.id).." in SkillPalette: "..tostring(data.skillpaletteuid)..". Skill IDs Changed !?.")
 			end			
@@ -175,6 +172,9 @@ function sm_skill:RenderSkillPaletteEditor()
 					end
 					self.skill_next = tmpnext
 					self.skill_prev = tmpprev
+					if ( self.slot >= GW2.SKILLBARSLOT.Slot_1 and self.slot <= GW2.SKILLBARSLOT.Slot_5 ) then
+						self.setsattackrange = true
+					end
 					if ( not sm_mgr.profile.temp.activeskillpalettes ) then sm_mgr.profile.temp.activeskillpalettes = {} end
 					if ( not sm_mgr.profile.temp.activeskillpalettes[self.skillpaletteuid] ) then
 						sm_mgr.profile.temp.activeskillpalettes[self.skillpaletteuid] = sm_mgr.skillpalettes[sm_mgr.GetPlayerProfession()][self.skillpaletteuid]

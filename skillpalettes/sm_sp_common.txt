@@ -170,3 +170,254 @@ end
 function set:Deactivate(context)
 end
 SkillManager:AddSkillPalette( set )
+
+
+local set = SkillManager:CreateSkillPalette('zFiery Greatsword')
+set.uid = "zFiery Greatsword"
+set.profession = 0
+set.icon = "Fiery Greatsword"
+set.id = 5516
+set.skills_luacode = {
+[5532] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_1, 
+	 activationtime = 2.75, 
+	 icon = 'Flame Wave',  
+ },
+ [5533] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_2, 
+	 activationtime = 1.25, 
+	 icon = 'Fiery Eruption',  
+ },
+ [5697] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_3, 
+	 activationtime = 0.25, 
+	 icon = 'Fiery Whirl',  
+ },
+ [5517] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_4, 
+	 activationtime = 0.25, 
+	 icon = 'Fiery Rush',  
+ },
+ [5531] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_5, 
+	 activationtime = 0.75, 
+	 icon = 'Firestorm',  
+ },
+}
+function set:IsActive(context)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 5533)	
+end
+function set:CanActivate(context)
+	return false
+end
+function set:Activate(context)
+end
+function set:Deactivate(context)
+end
+SkillManager:AddSkillPalette( set )
+
+
+local set = SkillManager:CreateSkillPalette('zFrost Bow')
+set.uid = "zFrost Bow"
+set.profession = 0
+set.icon = "Frost Bow"
+set.id = 5567
+set.skills_luacode = {
+[5595] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_1, 
+	 activationtime = 0.75, 
+	 icon = 'Water Arrow',  
+ },
+ [5720] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_2, 
+	 activationtime = 2.0, 
+	 icon = 'Frost Volley',  
+ },
+ [5568] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_3, 
+	 activationtime = 0.25, 
+	 icon = 'Frost Fan',  
+ },
+ [5723] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_4, 
+	 activationtime = 2.75, 
+	 icon = 'Ice Storm',  
+ },
+ [5721] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_5, 
+	 activationtime = 1.5, 
+	 icon = 'Deep Freeze',  
+ },
+}
+function set:IsActive(context)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 5720)	
+end
+function set:CanActivate(context)
+	return false
+end
+function set:Activate(context)
+end
+function set:Deactivate(context)
+end
+SkillManager:AddSkillPalette( set )
+
+
+local set = SkillManager:CreateSkillPalette('zFlame Axe')
+set.uid = "zFlame Axe"
+set.profession = 0
+set.icon = "Flame Axe"
+set.id = 5540
+set.skills_luacode = {
+[5541] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_1, 
+	 activationtime = 0.5, 
+	 icon = 'Lava Axe',  
+ },
+ [5593] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_2, 
+	 activationtime = 0.5, 
+	 icon = 'Explosive Lava Axe',  
+ },
+ [5717] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_3, 
+	 activationtime = 0.5, 
+	 icon = 'Burning Retreat',  
+ },
+ [5718] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_4, 
+	 activationtime = 0.5, 
+	 icon = 'Ring of Fire',  
+ },
+ [5719] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_5, 
+	 activationtime = 0.5, 
+	 icon = 'Flame Leap',  
+ },
+}
+function set:IsActive(context)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 5593)	
+end
+function set:CanActivate(context)
+	return false
+end
+function set:Activate(context)
+end
+function set:Deactivate(context)
+end
+SkillManager:AddSkillPalette( set )
+
+
+
+local set = SkillManager:CreateSkillPalette('zEarth Shield')
+set.uid = "zEarth Shield"
+set.profession = 0
+set.icon = "Earth Shield"
+set.id = 5546
+set.skills_luacode = {
+[5621] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_1, 
+	 activationtime = 0.5, 
+	 icon = 'Shield Smack',  
+ },
+ [21646] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_1, 
+	 activationtime = 0.75, 
+	 icon = 'Shield Smash',  
+	 parent = 5621,
+ },
+ [5746] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_1, 
+	 activationtime = 0.75, 
+	 icon = 'Crippling Shield',
+	 parent = 21646,
+ },
+ [21647] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_2, 
+	 activationtime = 2.25, 
+	 icon = 'Stone Sheath',  
+ },
+ [5547] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_3, 
+	 activationtime = 0.75, 
+	 icon = 'Magnetic Surge',  
+ },
+ [5747] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_4, 
+	 activationtime = 1.5, 
+	 icon = 'Magnetic Shield',  
+ },
+ [5623] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_5, 
+	 activationtime = 3.0, 
+	 icon = 'Fortify',  
+ },
+}
+function set:IsActive(context)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 21647)	
+end
+function set:CanActivate(context)
+	return false
+end
+function set:Activate(context)
+end
+function set:Deactivate(context)
+end
+SkillManager:AddSkillPalette( set )
+
+
+
+local set = SkillManager:CreateSkillPalette('zLightning Hammer')
+set.uid = "zLightning Hammer"
+set.profession = 0
+set.icon = "Lightning Hammer"
+set.id = 5624
+set.skills_luacode = {
+[5726] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_1, 
+	 activationtime = 0.5, 
+	 icon = 'Lightning Swing',  
+ },
+ [5727] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_1, 
+	 activationtime = 0.5, 
+	 icon = 'Static Swing',
+	 parent = 5726,
+ },
+ [5728] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_1, 
+	 activationtime = 0.5, 
+	 icon = 'Thunderclap',  
+	 parent = 5727,
+ },
+ [5625] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_2, 
+	 activationtime = 0.75, 
+	 icon = 'Lightning Leap',  
+ },
+ [5733] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_3, 
+	 activationtime = 1.0, 
+	 icon = 'Wind Blast',  
+ },
+ [5725] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_4, 
+	 activationtime = 1.25, 
+	 icon = 'Lightning Storm',  
+ },
+ [5732] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_5, 
+	 activationtime = 0.75, 
+	 icon = 'Static Field',  
+ },
+}
+function set:IsActive(context)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 5625)	
+end
+function set:CanActivate(context)
+	return false
+end
+function set:Activate(context)
+end
+function set:Deactivate(context)
+end
+SkillManager:AddSkillPalette( set )

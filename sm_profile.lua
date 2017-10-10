@@ -309,7 +309,7 @@ function sm_profile:Cast()
 					
 					if( (cancastnormal or action.instantcast) and  action:IsCastTargetValid()) then
 						if ( not action.skillpalette:IsActive(self.temp.context)) then
-							if ( self.weaponswapmode == 1 ) then
+							if ( Settings.SkillManager.weaponswapmode and Settings.SkillManager.weaponswapmode == 1 ) then
 								local deactivated
 								for uid, sp in pairs (sm_mgr.profile.temp.activeskillpalettes) do
 									if ( sp:IsActive(self.temp.context) ) then

@@ -1524,7 +1524,16 @@ engineer.skills_luacode = {
 		 activationtime = 0.25,	 
 		 icon = 'Grenade Kit',  
 	 },	
-	 
+	[42938] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_17, 
+		 activationtime = 0.25, 
+		 icon = 'Engage Photon Forge',  
+	 }, 
+	 [41123] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_17, 
+		 activationtime = 0.25, 
+		 icon = 'Deactivate Photon Forge',  
+	 },
 }
 function engineer:IsActive(context)
 	return context.player.transformid == 0

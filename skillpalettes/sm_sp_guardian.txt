@@ -820,11 +820,11 @@ function set:IsActive(context)
 	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 45022)	
 end
 function set:CanActivate(context)
-	return context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_14]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_14].id == 41780 and context.skillbar[GW2.SKILLBARSLOT.Slot_14].cancast and context.player.transformid == 0
+	return context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_14]~=nil  and ( context.skillbar[GW2.SKILLBARSLOT.Slot_14].id == 41780 or context.skillbar[GW2.SKILLBARSLOT.Slot_14].id == 45023 ) and context.skillbar[GW2.SKILLBARSLOT.Slot_14].cancast and context.player.transformid == 0
 end
 function set:Activate(context)
 	if ( context.skillbar~=nil ) then
-		if (context.skillbar[GW2.SKILLBARSLOT.Slot_14]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_14].id == 41780) then Player:CastSpell(GW2.SKILLBARSLOT.Slot_14) end
+		if (context.skillbar[GW2.SKILLBARSLOT.Slot_14]~=nil and ( context.skillbar[GW2.SKILLBARSLOT.Slot_14].id == 41780 or context.skillbar[GW2.SKILLBARSLOT.Slot_14].id == 45023)) then Player:CastSpell(GW2.SKILLBARSLOT.Slot_14) end
 	end
 end
 function set:Deactivate(context)
@@ -1218,6 +1218,18 @@ set.skills_luacode = {
 		 icon = 'Shield of Courage',  
 		 instantcast = true,
 	 },
+	 [30225] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_14, 
+		 activationtime = 0.0, 
+		 icon = 'Wings of Resolve',  
+		 instantcast = true,
+	 },
+	 [30039] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_15, 
+		 activationtime = 0.0, 
+		 icon = 'Shield of Courage',  
+		 instantcast = true,
+	 },
 	 [9115] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_13, 
 		 activationtime = 0.0, 
@@ -1252,8 +1264,6 @@ set.skills_luacode = {
 		 icon = 'Tome of Courage',  
 	 },
 -- END F KEYS.
-	
-	
 }
 function set:IsActive(context)
 	return context.player.transformid == 0
