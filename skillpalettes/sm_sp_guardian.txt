@@ -1242,6 +1242,11 @@ set.skills_luacode = {
 		 icon = 'Virtue of Resolve',
 		 instantcast = true,
 	 },
+	 [9250] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_14, 
+		 activationtime = 0.0, 
+		 icon = 'Virtue of Resolve',  
+	 },
 	 [9118] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_15, 
 		 activationtime = 0.0, 
