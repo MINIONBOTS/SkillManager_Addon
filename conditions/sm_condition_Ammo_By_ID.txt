@@ -5,9 +5,9 @@ sm_condition_cooldown.operators = { [1] = "<", [2] = "<=", [3] = "==", [4] = ">=
 
 -- Initialize new class, - gets called when :new(..) is called
 function sm_condition_cooldown:initialize(data)
-	self.skillid = data.skillid or 1
+	self.skillid = data.skillid or 1175
 	self.operator = data.operator or 1
-	self.value = data.value or 50
+	self.value = data.value or 3
 end
 -- Save  the condition data into a table and returns that
 function sm_condition_cooldown:Save()
@@ -20,7 +20,7 @@ end
 -- Evaluates the condition, returns "true" / "false"
 function sm_condition_cooldown:Evaluate(skill, context)
 	if ( self.skillid > 1000 and self.skillid < 99999 ) then
-		local skillinfo = Player:GetSpellInfoByID(self.skillid) -- THIS CRASHES ON BAD IDs
+		local skillinfo = Player:GetSpellInfoByID(self.skillid)
 		if(skillinfo) then
 			local val = skillinfo.ammo
 			if ( val ) then
@@ -45,20 +45,20 @@ function sm_condition_cooldown:Render(id) -- need to pass an index value here, f
 	GUI:SameLine()
 	
 	GUI:PushItemWidth(100)
-	self.skillid, changed = GUI:InputInt("##sm_condition_cooldown1"..tostring(id),self.skillid, 1,2,GUI.InputTextFlags_CharsDecimal+GUI.InputTextFlags_CharsNoBlank)	
+	self.skillid, changed = GUI:InputInt("##sm_condition_ammo1"..tostring(id),self.skillid, 1,2,GUI.InputTextFlags_CharsDecimal+GUI.InputTextFlags_CharsNoBlank)	
 	if ( self.skillid <= 1000 or self.skillid > 99999 ) then self.skillid = 10560 end
 	if ( changed ) then modified = true end
 	GUI:PopItemWidth()	
 	
 	GUI:PushItemWidth(50)
 	GUI:SameLine()
-	self.operator, changed = GUI:Combo("##sm_condition_cooldown2"..tostring(id),self.operator, self.operators)
+	self.operator, changed = GUI:Combo("##sm_condition_ammo2"..tostring(id),self.operator, self.operators)
 	if ( changed ) then modified = true end
 	GUI:PopItemWidth()
 		
 	GUI:PushItemWidth(120)
 	GUI:SameLine()	
-	self.value, changed = GUI:InputInt("##sm_condition_cooldown3"..tostring(id),self.value, 1,2,GUI.InputTextFlags_CharsDecimal+GUI.InputTextFlags_CharsNoBlank)	
+	self.value, changed = GUI:InputInt("##sm_condition_ammo3"..tostring(id),self.value, 1,2,GUI.InputTextFlags_CharsDecimal+GUI.InputTextFlags_CharsNoBlank)	
 	if ( changed ) then modified = true end
 	GUI:PopItemWidth()
 	

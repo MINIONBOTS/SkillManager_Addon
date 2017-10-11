@@ -47,7 +47,7 @@ SkillManager:AddSkillPalette( set )
 local set = SkillManager:CreateSkillPalette('Common_Trebuchet')
 set.uid = "zCommon_Trebuchet"
 set.profession = 0
-set.icon = "Tornado"
+set.icon = "Trebuchet"
 set.id = 1233
 set.skills_luacode = {
 [1231] = { 

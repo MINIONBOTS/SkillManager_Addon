@@ -718,13 +718,14 @@ function sm_skill:IsEquipped()
 					end
 				end
 				-- Toolbelt aka F-shit
-				if ( self.slot >= GW2.SKILLBARSLOT.Slot_12 and self.slot <= GW2.SKILLBARSLOT.Slot_17 ) then
+				if ( self.slot >= GW2.SKILLBARSLOT.Slot_12 and self.slot <= GW2.SKILLBARSLOT.Slot_18 ) then
 					if ( (self.temp.context.skillbar[GW2.SKILLBARSLOT.Slot_12] and self.temp.context.skillbar[GW2.SKILLBARSLOT.Slot_12].id == self.id) or 
 						(self.temp.context.skillbar[GW2.SKILLBARSLOT.Slot_13] and self.temp.context.skillbar[GW2.SKILLBARSLOT.Slot_13].id == self.id ) or 
 						(self.temp.context.skillbar[GW2.SKILLBARSLOT.Slot_14] and self.temp.context.skillbar[GW2.SKILLBARSLOT.Slot_14].id == self.id) or
 						(self.temp.context.skillbar[GW2.SKILLBARSLOT.Slot_15] and self.temp.context.skillbar[GW2.SKILLBARSLOT.Slot_15].id == self.id) or
 						(self.temp.context.skillbar[GW2.SKILLBARSLOT.Slot_16] and self.temp.context.skillbar[GW2.SKILLBARSLOT.Slot_16].id == self.id) or 
-						(self.temp.context.skillbar[GW2.SKILLBARSLOT.Slot_17] and self.temp.context.skillbar[GW2.SKILLBARSLOT.Slot_17].id == self.id)) then
+						(self.temp.context.skillbar[GW2.SKILLBARSLOT.Slot_17] and self.temp.context.skillbar[GW2.SKILLBARSLOT.Slot_17].id == self.id) or
+						(self.temp.context.skillbar[GW2.SKILLBARSLOT.Slot_18] and self.temp.context.skillbar[GW2.SKILLBARSLOT.Slot_18].id == self.id)) then
 						return true
 					end
 				end
