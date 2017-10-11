@@ -1321,7 +1321,7 @@ set.skills_luacode = {
 	-- END Other.
 }
 function set:IsActive(context)
-	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 14621)
+	return context.player.transformid == 0
 end
 function set:CanActivate(context)
 	return false
