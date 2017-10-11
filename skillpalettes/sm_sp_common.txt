@@ -1321,7 +1321,7 @@ set.skills_luacode = {
 	-- END Other.
 }
 function set:IsActive(context)
-	return context.player.transformid == 0
+	return true
 end
 function set:CanActivate(context)
 	return false
