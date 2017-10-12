@@ -486,11 +486,19 @@ function sm_profile:Render()
 				self.temp.draggedactionidx = i
 				
 			elseif(released) then
-				if( self.temp.draggedaction and self.temp.draggedaction ~= a and self.temp.draggedactionidx ~= i)then					
-					table.insert(self.actionlist,i,table.remove(self.actionlist, self.temp.draggedactionidx))					
+				if ( self.temp.draggedactionidx ) then -- sometimes nil					
+					if( self.temp.draggedaction and self.temp.draggedaction ~= a and self.temp.draggedactionidx ~= i)then
+						table.insert(self.actionlist,i,table.remove(self.actionlist, self.temp.draggedactionidx))					
+					end
+					local tmp = self.actionlist
+					self.actionlist = {}
+					for i,k in pairs(tmp) do
+						table.insert(self.actionlist,k)
+					end
 				end
 				self.temp.draggedaction = nil
-				self.temp.draggedactionidx = nil
+				self.temp.draggedactionidx = nil				
+				break
 			end
 		end		
 		-- Draw an icon for the dragging
