@@ -32,11 +32,11 @@ function sm_condition_distance:Evaluate(skill,context)
 	if ( t ) then
 		local radius = t.radius
 		local bb = t.distance		
-		if ( self.operator == 1 ) then return (bb+radius) < self.value 
-		elseif ( self.operator == 2 ) then return (bb+radius) <= self.value 
-		elseif ( self.operator == 3 ) then return (bb+radius) == self.value 
-		elseif ( self.operator == 4 ) then return (bb+radius) >= self.value
-		elseif ( self.operator == 5 ) then return (bb+radius) > self.value		
+		if ( self.operator == 1 ) then return (bb-radius) < self.value 
+		elseif ( self.operator == 2 ) then return (bb-radius) <= self.value 
+		elseif ( self.operator == 3 ) then return (bb-radius) == self.value 
+		elseif ( self.operator == 4 ) then return (bb-radius) >= self.value
+		elseif ( self.operator == 5 ) then return (bb-radius) > self.value		
 		end	
 	end
 	return false
