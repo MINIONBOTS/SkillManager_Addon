@@ -9,24 +9,23 @@
 	},
 	
 	self.temp.context.player.transformid = {
-		0	NONE,
 		1	ELE_FIRE, Kits, bundles , pickup weapons
 		2	ELE_WATER,
 		3	ELE_AIR,
 		4	ELE_EARTH,
-		5	UNKNOWN1,
+		5	ENGI_PHOTON,
 		6	NECRO_SHROUD,
 		7	WAR_ADREN1,
 		8	WAR_ADREN2,
 		9	WAR_ADREN3,
 		10	RANGER_DRUID,
 		11	RANGER_ASTRAL,
-		12	UNKNOWN2,
+		12	RANGER_BEASTMODE,
 		13	REV_DRAGON,
 		14	REV_ASSASSIN,
 		15	REV_DWARF,
 		16	REV_DEMON,
-		17	UNKNOWN3,
+		17	REV_RENEGATE,
 		18	REV_CENTAUR	
 	},]]
 
@@ -69,7 +68,7 @@ function pistol_mh:IsActive(context)
 	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 5827)	
 end
 function pistol_mh:CanActivate(context)
-	return context.player.swimming == GW2.SWIMSTATE.NotInWater and context.player.mainhand == GW2.WEAPONTYPE.Pistol and context.player.weaponset == 2 and context.player.transformid == 0 -- we have a pistol and a kit currently equipped
+	return context.player.swimming == GW2.SWIMSTATE.NotInWater and context.player.mainhand == GW2.WEAPONTYPE.Pistol and context.player.weaponset == 2 and (context.player.transformid == 0 or context.player.transformid == 5) -- we have a pistol and a kit currently equipped
 end
 function pistol_mh:Activate(context)
 end
@@ -100,7 +99,7 @@ function pistol_oh:IsActive(context)
 	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 5831)	
 end
 function pistol_oh:CanActivate(context)
-	return context.player.swimming == GW2.SWIMSTATE.NotInWater and context.player.offhand == GW2.WEAPONTYPE.Pistol and context.player.weaponset == 2 and context.player.transformid == 0 -- we have a pistol and a kit currently equipped
+	return context.player.swimming == GW2.SWIMSTATE.NotInWater and context.player.offhand == GW2.WEAPONTYPE.Pistol and context.player.weaponset == 2 and (context.player.transformid == 0 or context.player.transformid == 5) -- we have a pistol and a kit currently equipped
 end
 function pistol_oh:Activate(context)
 end
@@ -146,7 +145,7 @@ function rifle:IsActive(context)
 	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 6003)	
 end
 function rifle:CanActivate(context)
-	return context.player.swimming == GW2.SWIMSTATE.NotInWater and context.player.mainhand == GW2.WEAPONTYPE.Rifle and context.player.weaponset == 2 and context.player.transformid == 0 -- we have a pistol and a kit currently equipped
+	return context.player.swimming == GW2.SWIMSTATE.NotInWater and context.player.mainhand == GW2.WEAPONTYPE.Rifle and context.player.weaponset == 2 and (context.player.transformid == 0 or context.player.transformid == 5) -- we have a pistol and a kit currently equipped
 end
 function rifle:Activate(context)
 end
@@ -189,7 +188,7 @@ function shield:IsActive(context)
 	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4]~=nil and (context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 6053 or context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 6126))	
 end
 function shield:CanActivate(context)
-	return context.player.swimming == GW2.SWIMSTATE.NotInWater and context.player.offhand == GW2.WEAPONTYPE.Shield and context.player.weaponset == 2 and context.player.transformid == 0 -- we have a pistol and a kit currently equipped
+	return context.player.swimming == GW2.SWIMSTATE.NotInWater and context.player.offhand == GW2.WEAPONTYPE.Shield and context.player.weaponset == 2 and (context.player.transformid == 0 or context.player.transformid == 5) -- we have a pistol and a kit currently equipped
 end
 function shield:Activate(context)
 end
@@ -247,7 +246,7 @@ function harpoon:IsActive(context)
 	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 6148)	
 end
 function harpoon:CanActivate(context)
-	return context.player.swimming == GW2.SWIMSTATE.Diving and context.player.aquatic == GW2.WEAPONTYPE.HarpoonGun and context.player.weaponset == 2 and context.player.transformid == 0 -- we have a pistol and a kit currently equipped
+	return context.player.swimming == GW2.SWIMSTATE.Diving and context.player.aquatic == GW2.WEAPONTYPE.HarpoonGun and context.player.weaponset == 2 and (context.player.transformid == 0 or context.player.transformid == 5) -- we have a pistol and a kit currently equipped
 end
 function harpoon:Activate(context)
 end
@@ -377,7 +376,7 @@ function bombkit:IsActive(context)
 	)
 end
 function bombkit:CanActivate(context)
-	return context.player.transformid == 0 and context.skillbar~=nil  and (
+	return (context.player.transformid == 0 or context.player.transformid == 5) and context.skillbar~=nil  and (
 	(context.skillbar[GW2.SKILLBARSLOT.Slot_7]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_7].id == 5812) or
 	(context.skillbar[GW2.SKILLBARSLOT.Slot_8]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_8].id == 5812) or
 	(context.skillbar[GW2.SKILLBARSLOT.Slot_9]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_9].id == 5812))
@@ -433,7 +432,7 @@ function bombkit:IsActive(context)
 	return context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_10]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_10].id == 29905
 end
 function bombkit:CanActivate(context)
-	return context.player.transformid == 0 and context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_10]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_10].id == 30800
+	return (context.player.transformid == 0 or context.player.transformid == 5) and context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_10]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_10].id == 30800
 end
 function bombkit:Activate(context)
 	Player:CastSpell(GW2.SKILLBARSLOT.Slot_10)
@@ -484,7 +483,7 @@ function elixiergun:IsActive(context)
 	(context.skillbar[GW2.SKILLBARSLOT.Slot_9]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_9].id == 6115))
 end
 function elixiergun:CanActivate(context)
-	return context.player.transformid == 0 and context.player.swimming == GW2.SWIMSTATE.NotInWater and context.skillbar~=nil  and (
+	return (context.player.transformid == 0 or context.player.transformid == 5) and context.player.swimming == GW2.SWIMSTATE.NotInWater and context.skillbar~=nil  and (
 	(context.skillbar[GW2.SKILLBARSLOT.Slot_7]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_7].id == 5933) or
 	(context.skillbar[GW2.SKILLBARSLOT.Slot_8]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_8].id == 5933) or
 	(context.skillbar[GW2.SKILLBARSLOT.Slot_9]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_9].id == 5933))
@@ -551,7 +550,7 @@ function flamethrower:IsActive(context)
 	(context.skillbar[GW2.SKILLBARSLOT.Slot_9]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_9].id == 6114))
 end
 function flamethrower:CanActivate(context)
-	return context.player.transformid == 0 and context.player.swimming == GW2.SWIMSTATE.NotInWater and context.skillbar~=nil  and (
+	return (context.player.transformid == 0 or context.player.transformid == 5) and context.player.swimming == GW2.SWIMSTATE.NotInWater and context.skillbar~=nil  and (
 	(context.skillbar[GW2.SKILLBARSLOT.Slot_7]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_7].id == 5927) or
 	(context.skillbar[GW2.SKILLBARSLOT.Slot_8]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_8].id == 5927) or
 	(context.skillbar[GW2.SKILLBARSLOT.Slot_9]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_9].id == 5927))
@@ -609,7 +608,7 @@ function grenadekit:IsActive(context)
 	(context.skillbar[GW2.SKILLBARSLOT.Slot_9]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_9].id == 6110))
 end
 function grenadekit:CanActivate(context)
-	return context.player.transformid == 0 and context.skillbar~=nil  and (
+	return (context.player.transformid == 0 or context.player.transformid == 5) and context.skillbar~=nil  and (
 	(context.skillbar[GW2.SKILLBARSLOT.Slot_7]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_7].id == 5805) or
 	(context.skillbar[GW2.SKILLBARSLOT.Slot_8]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_8].id == 5805) or
 	(context.skillbar[GW2.SKILLBARSLOT.Slot_9]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_9].id == 5805))
@@ -664,7 +663,7 @@ function medkit:IsActive(context)
 	return context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_6]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_6].id == 6109
 end
 function medkit:CanActivate(context)
-	return context.player.transformid == 0 and context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_6]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_6].id == 5802
+	return (context.player.transformid == 0 or context.player.transformid == 5) and context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_6]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_6].id == 5802
 end
 function medkit:Activate(context)
 	if ( context.skillbar~=nil ) then
@@ -734,7 +733,7 @@ function toolkit:IsActive(context)
 	(context.skillbar[GW2.SKILLBARSLOT.Slot_9]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_9].id == 6113))
 end
 function toolkit:CanActivate(context)
-	return context.player.transformid == 0 and context.skillbar~=nil  and (
+	return (context.player.transformid == 0 or context.player.transformid == 5) and context.skillbar~=nil  and (
 	(context.skillbar[GW2.SKILLBARSLOT.Slot_7]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_7].id == 5904) or
 	(context.skillbar[GW2.SKILLBARSLOT.Slot_8]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_8].id == 5904) or
 	(context.skillbar[GW2.SKILLBARSLOT.Slot_9]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_9].id == 5904))
@@ -849,7 +848,7 @@ function sword:IsActive(context)
 	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 44110)	
 end
 function sword:CanActivate(context)
-	return context.player.swimming == GW2.SWIMSTATE.NotInWater and context.player.mainhand == GW2.WEAPONTYPE.Sword and context.player.weaponset == 2 and context.player.transformid == 0 -- we have a pistol and a kit currently equipped
+	return context.player.swimming == GW2.SWIMSTATE.NotInWater and context.player.mainhand == GW2.WEAPONTYPE.Sword and context.player.weaponset == 2 and (context.player.transformid == 0 or context.player.transformid == 5) -- we have a pistol and a kit currently equipped
 end
 function sword:Activate(context)
 end
@@ -1536,7 +1535,7 @@ engineer.skills_luacode = {
 	 },
 }
 function engineer:IsActive(context)
-	return context.player.transformid == 0
+	return context.player.transformid == 0 or context.player.transformid == 5
 end
 function engineer:CanActivate(context)
 	return false

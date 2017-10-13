@@ -378,12 +378,13 @@ function sm_skill:UpdateData(context, iscombo)
 		self.temp.context = context
 		if (context.skillbar and self.id and self.slot ) then
 			local skilldata
+			-- Elite + Weapons 1 - 5
 			if ( self.slot > 3 and self.slot < 10 ) then
 				if (context.skillbar[self.slot] and context.skillbar[self.slot].id == ( self.id or self.oldid )) then
 					skilldata = context.skillbar[self.slot]
 				end
 			else
-				-- Utility Slot, check all 3 slots for the skill id
+				-- Heal & Utility Slot, check all 3 slots for the skill id
 				if ( self.slot <= 3 ) then
 					for i=0,3 do
 						if (context.skillbar[i] and context.skillbar[i].id == ( self.id or self.oldid )) then
@@ -394,7 +395,7 @@ function sm_skill:UpdateData(context, iscombo)
 					end
 				
 				elseif ( self.slot>=10 ) then
-					for i=12,16 do
+					for i=12,18 do
 						if (context.skillbar[i] and context.skillbar[i].id == ( self.id or self.oldid )) then
 							skilldata = context.skillbar[i]
 							self.slot = i
@@ -743,6 +744,7 @@ end
 -- Checks if the skill can be cast -> skillpalette and Conditions and onslot check
 function sm_skill:CanCast()
 	if (self.id and self.skillpalette and self.cancast and (self.skillpalette:IsActive(self.temp.context) or self.skillpalette:CanActivate(self.temp.context))) then
+				
 		-- Internal CD when spam casting
 		if ( self.temp.internalcd and (ml_global_information.Now - self.temp.internalcd <= 0) ) then
 			return false
