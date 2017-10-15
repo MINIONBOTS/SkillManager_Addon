@@ -606,16 +606,6 @@ reaperShroud.profession = GW2.CHARCLASS.Necromancer
 reaperShroud.icon = "Reaper Shroud" -- TODO: this right? ask fx.
 reaperShroud.id = 30792 --> set a skill ID if you want it to download an icon for this skillset 
 reaperShroud.skills_luacode = {
-	-- [30792] = {
-		-- slot = GW2.SKILLBARSLOT.Slot_13,
-		-- activationtime = 0,
-		-- icon = 'Reapers Shroud',
-	-- },
-	-- [30961] = {
-		-- slot = GW2.SKILLBARSLOT.Slot_13,
-		-- activationtime = 0,
-		-- icon = 'Exit Reapers Shroud',
-	-- },
 	[29442] = {
 		slot = GW2.SKILLBARSLOT.Slot_1,
 		activationtime = 0.5,
@@ -657,6 +647,11 @@ reaperShroud.skills_luacode = {
 		slot = GW2.SKILLBARSLOT.Slot_5,
 		activationtime = 1.25,
 		icon = 'Executioners Scythe',
+	},
+	[30961] = {
+		slot = GW2.SKILLBARSLOT.Slot_13,
+		activationtime = 0,
+		icon = 'Exit Reapers Shroud',
 	},
 }
 function reaperShroud:IsActive(context)
@@ -717,10 +712,10 @@ deathShroud.skills_luacode = {
 		activationtime = 0.25,
 		icon = 'Tainted Shackles',
 	},
-	[30961] = {
+	[10585] = {
 		slot = GW2.SKILLBARSLOT.Slot_13,
 		activationtime = 0,
-		icon = 'Exit Reapers Shroud',
+		icon = 'End Death Shroud',
 	},
 }
 function deathShroud:IsActive(context)
@@ -1145,11 +1140,11 @@ necromancer.skills_luacode = {
 		activationtime = 0,
 		icon = 'Death Shroud',
 	},
-	[10585] = {
-		slot = GW2.SKILLBARSLOT.Slot_13,
-		activationtime = 0,
-		icon = 'End Death Shroud',
-	},
+	-- [10585] = {
+		-- slot = GW2.SKILLBARSLOT.Slot_13,
+		-- activationtime = 0,
+		-- icon = 'End Death Shroud',
+	-- },
 	[30792] = {
 		slot = GW2.SKILLBARSLOT.Slot_13,
 		activationtime = 0,
