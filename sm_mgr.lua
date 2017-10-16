@@ -384,6 +384,16 @@ end
 -- Exposed API
 _G["SkillManager"] = {}
 SkillManager.skilllist = {} -- holds id - name pair of all skills in our palettes
+-- if the BTree is calling Player:Interact or Player:Gather, this one is called right after, using it to delay casting spells
+function SkillManager.PlayerIsInteracting()
+	d("SkillManager.PlayerIsInteracting")
+	if(sm_mgr.profile and sm_mgr.profile.temp.lasttick) then
+		sm_mgr.profile.temp.lasttick = ml_global_information.Now + 500
+		sm_mgr.profile.temp.interactionstart = sm_mgr.profile.temp.lasttick 
+	end
+end
+RegisterEventHandler("Gameloop.Interact",SkillManager.PlayerIsInteracting)
+
 function SkillManager:CreateSkillPalette(name)
 	if (string.valid(name)) then
 		return class(name,sm_skillpalette)

@@ -49,10 +49,10 @@ set.skills_luacode = {
  },
 }
 function set:IsActive(context)
-	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 12525)	
+	return context.player.alive and (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 12525)	
 end
 function set:CanActivate(context)
-	return context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.mainhand == GW2.WEAPONTYPE.Greatsword or context.player.mainhand_alt == GW2.WEAPONTYPE.Greatsword) and (context.player.weaponset == 4 or context.player.weaponset == 5) and (context.player.transformid == 0 or context.player.transformid == 10 or context.player.transformid == 12)
+	return context.player.alive and context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.mainhand == GW2.WEAPONTYPE.Greatsword or context.player.mainhand_alt == GW2.WEAPONTYPE.Greatsword) and (context.player.weaponset == 4 or context.player.weaponset == 5) and (context.player.transformid == 0 or context.player.transformid == 10 or context.player.transformid == 12)
 end
 function set:Activate(context)
 	Player:SwapWeaponSet()
@@ -96,10 +96,10 @@ set.skills_luacode = {
  },
 }
 function set:IsActive(context)
-	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 12510)	
+	return context.player.alive and (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 12510)	
 end
 function set:CanActivate(context)
-	return context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.mainhand == GW2.WEAPONTYPE.Longbow or context.player.mainhand_alt == GW2.WEAPONTYPE.Longbow) and (context.player.weaponset == 4 or context.player.weaponset == 5) and (context.player.transformid == 0 or context.player.transformid == 10 or context.player.transformid == 12)
+	return context.player.alive and context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.mainhand == GW2.WEAPONTYPE.Longbow or context.player.mainhand_alt == GW2.WEAPONTYPE.Longbow) and (context.player.weaponset == 4 or context.player.weaponset == 5) and (context.player.transformid == 0 or context.player.transformid == 10 or context.player.transformid == 12)
 end
 function set:Activate(context)
 	Player:SwapWeaponSet()
@@ -142,10 +142,10 @@ set.skills_luacode = {
  },
 }
 function set:IsActive(context)
-	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 12470)	
+	return context.player.alive and (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 12470)	
 end
 function set:CanActivate(context)
-	return context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.mainhand == GW2.WEAPONTYPE.Shortbow or context.player.mainhand_alt == GW2.WEAPONTYPE.Shortbow) and (context.player.weaponset == 4 or context.player.weaponset == 5) and (context.player.transformid == 0 or context.player.transformid == 10 or context.player.transformid == 12)
+	return context.player.alive and context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.mainhand == GW2.WEAPONTYPE.Shortbow or context.player.mainhand_alt == GW2.WEAPONTYPE.Shortbow) and (context.player.weaponset == 4 or context.player.weaponset == 5) and (context.player.transformid == 0 or context.player.transformid == 10 or context.player.transformid == 12)
 end
 function set:Activate(context)
 	Player:SwapWeaponSet()
@@ -196,10 +196,10 @@ set.skills_luacode = {
  },
 }
 function set:IsActive(context)
-	return context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_3]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_3].id == 12481
+	return context.player.alive and context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_3]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_3].id == 12481
 end
 function set:CanActivate(context)
-	return context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.mainhand == GW2.WEAPONTYPE.Sword or context.player.mainhand_alt == GW2.WEAPONTYPE.Sword) and (context.player.weaponset == 4 or context.player.weaponset == 5) and (context.player.transformid == 0 or context.player.transformid == 10 or context.player.transformid == 12)
+	return context.player.alive and context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.mainhand == GW2.WEAPONTYPE.Sword or context.player.mainhand_alt == GW2.WEAPONTYPE.Sword) and (context.player.weaponset == 4 or context.player.weaponset == 5) and (context.player.transformid == 0 or context.player.transformid == 10 or context.player.transformid == 12)
 end
 function set:Activate(context)
 	Player:SwapWeaponSet()
@@ -227,10 +227,10 @@ set.skills_luacode = {
  },
 }
 function set:IsActive(context)
-	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 12638)	
+	return context.player.alive and (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 12638)	
 end
 function set:CanActivate(context)
-	return context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.offhand == GW2.WEAPONTYPE.Axe or context.player.offhand_alt == GW2.WEAPONTYPE.Axe) and (context.player.weaponset == 4 or context.player.weaponset == 5) and (context.player.transformid == 0 or context.player.transformid == 10 or context.player.transformid == 12)
+	return context.player.alive and context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.offhand == GW2.WEAPONTYPE.Axe or context.player.offhand_alt == GW2.WEAPONTYPE.Axe) and (context.player.weaponset == 4 or context.player.weaponset == 5) and (context.player.transformid == 0 or context.player.transformid == 10 or context.player.transformid == 12)
 end
 function set:Activate(context)
 	Player:SwapWeaponSet()
@@ -264,10 +264,10 @@ set.skills_luacode = {
  },
 }
 function set:IsActive(context)
-	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 12466)	
+	return context.player.alive and (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 12466)	
 end
 function set:CanActivate(context)
-	return context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.mainhand == GW2.WEAPONTYPE.Axe or context.player.mainhand_alt == GW2.WEAPONTYPE.Axe) and (context.player.weaponset == 4 or context.player.weaponset == 5) and (context.player.transformid == 0 or context.player.transformid == 10 or context.player.transformid == 12)
+	return context.player.alive and context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.mainhand == GW2.WEAPONTYPE.Axe or context.player.mainhand_alt == GW2.WEAPONTYPE.Axe) and (context.player.weaponset == 4 or context.player.weaponset == 5) and (context.player.transformid == 0 or context.player.transformid == 10 or context.player.transformid == 12)
 end
 function set:Activate(context)
 	Player:SwapWeaponSet()
@@ -295,10 +295,10 @@ set.skills_luacode = {
  },
 }
 function set:IsActive(context)
-	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 12635)	
+	return context.player.alive and (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 12635)	
 end
 function set:CanActivate(context)
-	return context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.offhand == GW2.WEAPONTYPE.Torch or context.player.offhand_alt == GW2.WEAPONTYPE.Torch) and (context.player.weaponset == 4 or context.player.weaponset == 5) and (context.player.transformid == 0 or context.player.transformid == 10 or context.player.transformid == 12)
+	return context.player.alive and context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.offhand == GW2.WEAPONTYPE.Torch or context.player.offhand_alt == GW2.WEAPONTYPE.Torch) and (context.player.weaponset == 4 or context.player.weaponset == 5) and (context.player.transformid == 0 or context.player.transformid == 10 or context.player.transformid == 12)
 end
 function set:Activate(context)
 	Player:SwapWeaponSet()
@@ -349,10 +349,10 @@ set.skills_luacode = {
  },
 }
 function set:IsActive(context)
-	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 43536)	
+	return context.player.alive and (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 43536)	
 end
 function set:CanActivate(context)
-	return context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.mainhand == GW2.WEAPONTYPE.Dagger or context.player.mainhand_alt == GW2.WEAPONTYPE.Dagger) and (context.player.weaponset == 4 or context.player.weaponset == 5) and (context.player.transformid == 0 or context.player.transformid == 10 or context.player.transformid == 12)
+	return context.player.alive and context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.mainhand == GW2.WEAPONTYPE.Dagger or context.player.mainhand_alt == GW2.WEAPONTYPE.Dagger) and (context.player.weaponset == 4 or context.player.weaponset == 5) and (context.player.transformid == 0 or context.player.transformid == 10 or context.player.transformid == 12)
 end
 function set:Activate(context)
 	Player:SwapWeaponSet()
@@ -380,10 +380,10 @@ set.skills_luacode = {
  },
 }
 function set:IsActive(context)
-	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 12478)	
+	return context.player.alive and (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 12478)	
 end
 function set:CanActivate(context)
-	return context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.offhand == GW2.WEAPONTYPE.Dagger or context.player.offhand_alt == GW2.WEAPONTYPE.Dagger) and (context.player.weaponset == 4 or context.player.weaponset == 5) and (context.player.transformid == 0 or context.player.transformid == 10 or context.player.transformid == 12)
+	return context.player.alive and context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.offhand == GW2.WEAPONTYPE.Dagger or context.player.offhand_alt == GW2.WEAPONTYPE.Dagger) and (context.player.weaponset == 4 or context.player.weaponset == 5) and (context.player.transformid == 0 or context.player.transformid == 10 or context.player.transformid == 12)
 end
 function set:Activate(context)
 	Player:SwapWeaponSet()
@@ -412,10 +412,10 @@ set.skills_luacode = {
  },
 }
 function set:IsActive(context)
-	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 12620)	
+	return context.player.alive and (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 12620)	
 end
 function set:CanActivate(context)
-	return context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.offhand == GW2.WEAPONTYPE.Warhorn or context.player.offhand_alt == GW2.WEAPONTYPE.Warhorn) and (context.player.weaponset == 4 or context.player.weaponset == 5) and (context.player.transformid == 0 or context.player.transformid == 10 or context.player.transformid == 12)
+	return context.player.alive and context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.offhand == GW2.WEAPONTYPE.Warhorn or context.player.offhand_alt == GW2.WEAPONTYPE.Warhorn) and (context.player.weaponset == 4 or context.player.weaponset == 5) and (context.player.transformid == 0 or context.player.transformid == 10 or context.player.transformid == 12)
 end
 function set:Activate(context)
 	Player:SwapWeaponSet()
@@ -458,10 +458,10 @@ set.skills_luacode = {
  },
 }
 function set:IsActive(context)
-	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 31889)	
+	return context.player.alive and (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 31889)	
 end
 function set:CanActivate(context)
-	return context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.mainhand == GW2.WEAPONTYPE.Staff or context.player.mainhand_alt == GW2.WEAPONTYPE.Staff) and (context.player.weaponset == 4 or context.player.weaponset == 5) and (context.player.transformid == 0 or context.player.transformid == 10)
+	return context.player.alive and context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.mainhand == GW2.WEAPONTYPE.Staff or context.player.mainhand_alt == GW2.WEAPONTYPE.Staff) and (context.player.weaponset == 4 or context.player.weaponset == 5) and (context.player.transformid == 0 or context.player.transformid == 10)
 end
 function set:Activate(context)
 	Player:SwapWeaponSet()
@@ -505,10 +505,10 @@ set.skills_luacode = {
  },
 }
 function set:IsActive(context)
-	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 31796)
+	return context.player.alive and (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 31796)
 end
 function set:CanActivate(context)
-	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_17] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_17].id == 31796 and context.skillbar[GW2.SKILLBARSLOT.Slot_17].cancast)
+	return context.player.alive and (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_17] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_17].id == 31796 and context.skillbar[GW2.SKILLBARSLOT.Slot_17].cancast)
 end
 function set:Activate(context)
 	if ( context.skillbar~=nil ) then
@@ -556,10 +556,10 @@ set.skills_luacode = {
  },
 }
 function set:IsActive(context)
-	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 12526)	
+	return context.player.alive and (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 12526)	
 end
 function set:CanActivate(context)
-	return context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.Diving and (context.player.aquatic == GW2.WEAPONTYPE.Harpoongun or context.player.aquatic_alt == GW2.WEAPONTYPE.Harpoongun) and (context.player.weaponset == 0 or context.player.weaponset == 1) and (context.player.transformid == 0 or context.player.transformid == 10 or context.player.transformid == 12)
+	return context.player.alive and context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.Diving and (context.player.aquatic == GW2.WEAPONTYPE.Harpoongun or context.player.aquatic_alt == GW2.WEAPONTYPE.Harpoongun) and (context.player.weaponset == 0 or context.player.weaponset == 1) and (context.player.transformid == 0 or context.player.transformid == 10 or context.player.transformid == 12)
 end
 function set:Activate(context)
 	Player:SwapWeaponSet()
@@ -620,10 +620,10 @@ set.skills_luacode = {
  },
 }
 function set:IsActive(context)
-	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 12559)	
+	return context.player.alive and (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 12559)	
 end
 function set:CanActivate(context)
-	return context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.Diving and (context.player.aquatic == GW2.WEAPONTYPE.Spear or context.player.aquatic_alt == GW2.WEAPONTYPE.Spear) and (context.player.weaponset == 0 or context.player.weaponset == 1) and (context.player.transformid == 0 or context.player.transformid == 10 or context.player.transformid == 12)
+	return context.player.alive and context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.Diving and (context.player.aquatic == GW2.WEAPONTYPE.Spear or context.player.aquatic_alt == GW2.WEAPONTYPE.Spear) and (context.player.weaponset == 0 or context.player.weaponset == 1) and (context.player.transformid == 0 or context.player.transformid == 10 or context.player.transformid == 12)
 end
 function set:Activate(context)
 	Player:SwapWeaponSet()
@@ -1178,7 +1178,7 @@ instantcast = true,
  },
 }
 function set:IsActive(context)
-	return context.player.transformid == 0 or context.player.transformid == 10 or context.player.transformid == 11 or context.player.transformid == 12
+	return context.player.alive and context.player.transformid == 0 or context.player.transformid == 10 or context.player.transformid == 11 or context.player.transformid == 12
 end
 function set:CanActivate(context)
 	return false

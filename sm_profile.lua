@@ -285,9 +285,9 @@ end
 function sm_profile:Cast()
 	if ( not self.temp.lasttick or ml_global_information.Now - self.temp.lasttick > 100 ) then	-- Expost 100 to lua ?
 		self.temp.lasttick = ml_global_information.Now
-
+		
 		local gw2_common_functions = _G["gw2_common_functions"]
-		if ( BehaviorManager:Running() and ml_global_information.Player_HealthState ~= GW2.HEALTHSTATE.Dead) then
+		if ( BehaviorManager:Running() and ml_global_information.Player_HealthState ~= GW2.HEALTHSTATE.Dead and not self.temp.interactionstart) then
 			
 			for i,a in pairs(self.actionlist) do
 				local action 
@@ -350,8 +350,8 @@ function sm_profile:Cast()
 									else
 										
 										Player:SetTarget(target)
-										if (BehaviorManager:CurrentBTreeName() ~= GetString("AssistMode")) then -- dont face targets in assist mode. Might need more logic for firing skills while using "moveto" or similar task, if that is a thing we do.
-											Player:SetFacingExact(pos.x, pos.y, pos.z)
+										if ( target.distance > 154 and BehaviorManager:CurrentBTreeName() ~= GetString("AssistMode")) then -- dont face targets in assist mode. Might need more logic for firing skills while using "moveto" or similar task, if that is a thing we do.
+											Player:SetFacing(pos.x, pos.y, pos.z)
 										end
 										if ( action.slot == GW2.SKILLBARSLOT.Slot_1 or action.instantcast ) then
 											castresult = Player:CastSpellNoChecks(action.slot , target.id)
@@ -394,20 +394,38 @@ function sm_profile:Cast()
 						
 			-- Evade
 			local evaded
-			if ( ml_global_information.Player_HealthState == GW2.HEALTHSTATE.Alive and ml_global_information.Player_InCombat and ml_global_information.Player_CastInfo and (ml_global_information.Player_CastInfo.slot == GW2.SKILLBARSLOT.None or ml_global_information.Player_CastInfo.slot == GW2.SKILLBARSLOT.Slot_1 )) then
-				evaded = gw2_common_functions.Evade(self.temp.context.attack_target == nil and 3 or nil) -- if we dont have a target, evade forward. (3 == forward)
+			if( ml_global_information.Player_HealthState == GW2.HEALTHSTATE.Alive ) then
+				if ( ml_global_information.Player_InCombat and ml_global_information.Player_CastInfo and (ml_global_information.Player_CastInfo.slot == GW2.SKILLBARSLOT.None or ml_global_information.Player_CastInfo.slot == GW2.SKILLBARSLOT.Slot_1 )) then
+					evaded = gw2_common_functions.Evade(self.temp.context.attack_target == nil and 3 or nil) -- if we dont have a target, evade forward. (3 == forward)
+				end
+					
+				-- Combatmovement			
+				if ( not evaded and Settings.GW2Minion.combatmovement ) then
+					gw2_common_functions:DoCombatMovement(self.temp.context.attack_target)
+				end
 			end
-				
-			-- Combatmovement			
-			if ( not evaded and ml_global_information.Player_HealthState == GW2.HEALTHSTATE.Alive and Settings.GW2Minion.combatmovement ) then
-				gw2_common_functions:DoCombatMovement(self.temp.context.attack_target)
-			end
-
+			
 		else
 			if ( gw2_common_functions.combatmovement.combat ) then
 				Player:StopMovement()
 				gw2_common_functions.combatmovement.combat = false
-			end		
+			end
+			
+			-- Handling that the player is Interacting / finishing / stuff
+			if ( self.temp.interactionstart and ml_global_information.Player_CastInfo) then
+				local interactiontime = ml_global_information.Now - self.temp.interactionstart
+				
+				-- when to stop the interaction
+				if ( interactiontime > 250 ) then
+					if ( ml_global_information.Player_CastInfo.slot == GW2.SKILLBARSLOT.None and ml_global_information.Player_CastInfo.skillid == 0 ) then
+						self.temp.interactionstart = nil
+					end
+				end
+				
+				if ( interactiontime > 5000 ) then -- fallback for whatever crazy shit may happen
+					self.temp.interactionstart = nil
+				end				
+			end
 		end
 	end
 end
