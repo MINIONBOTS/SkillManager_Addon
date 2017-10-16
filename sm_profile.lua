@@ -350,7 +350,7 @@ function sm_profile:Cast()
 									else
 										
 										Player:SetTarget(target)
-										if ( target.distance > 154 and BehaviorManager:CurrentBTreeName() ~= GetString("AssistMode")) then -- dont face targets in assist mode. Might need more logic for firing skills while using "moveto" or similar task, if that is a thing we do.
+										if ( target.distance > 100 and BehaviorManager:CurrentBTreeName() ~= GetString("AssistMode")) then -- dont face targets in assist mode. Might need more logic for firing skills while using "moveto" or similar task, if that is a thing we do.
 											Player:SetFacing(pos.x, pos.y, pos.z)
 										end
 										if ( action.slot == GW2.SKILLBARSLOT.Slot_1 or action.instantcast ) then
