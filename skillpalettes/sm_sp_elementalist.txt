@@ -1710,6 +1710,30 @@ set.skills_luacode = {
 	 icon = 'Glyph of Elementals',
 	 nounderwater = true,
  },
+  [25499] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_10, 
+	 activationtime = 0.25, 
+	 icon = 'Flame Barrage',
+	 nounderwater = true,
+ },
+  [25492] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_10, 
+	 activationtime = 0.25, 
+	 icon = 'Crashing Waves',
+ },
+  [25480] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_10, 
+	 activationtime = 0.5, 
+	 icon = 'Shocking Bolt', 
+	 nounderwater = true,
+ },
+  [25498] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_10, 
+	 activationtime = 0.5, 
+	 icon = 'Stomp',
+	 nounderwater = true,
+ },
+ 
 }
 function set:IsActive(context)
 	return context.player.transformid >= 1 and context.player.transformid <= 4

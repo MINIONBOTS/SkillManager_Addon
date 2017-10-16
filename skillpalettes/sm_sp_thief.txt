@@ -286,13 +286,30 @@ sword.skills_luacode = {
 	 [13128] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_2, 
 		 activationtime = 0.5, 
-		 icon = 'Infiltrator\'s Return',  
+		 icon = 'Infiltrator\'s Return',
+		 parent = 13015,
 	 },
 	 [13112] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_3, 
 		 activationtime = 0.5, 
 		 icon = 'Stab',  
 	 },
+	 [13016] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_3, 
+		 activationtime = 0.5, 
+		 icon = 'Flanking Strike',  
+	 },
+	 [13112] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_3, 
+		 activationtime = 0.5, 
+		 icon = 'Larcenous Strike',
+		 parent = 13007,
+	 },	 
+	 [13031] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_3, 
+		 activationtime = 0.5, 
+		 icon = 'Pistol Whip',  
+	 }, 
 }
 function sword:IsActive(context)
 	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2] ~= nil  and (context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 13015 or context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 13128))
