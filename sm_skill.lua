@@ -408,7 +408,7 @@ function sm_skill:UpdateData(context, iscombo)
 				skilldata = Player:GetSpellInfoByID(self.id or self.oldid)			
 			end
 			
-			if ( skilldata ) then
+			if ( skilldata ) then				
 				-- This skill is equipped, update all info
 				self.cooldown = skilldata.cooldown
 				self.ammo = skilldata.ammo
@@ -431,9 +431,9 @@ function sm_skill:UpdateData(context, iscombo)
 		end
 		
 		if ( self.skill_next ) then		
-			self.temp.cancast = self.skill_next:UpdateData(context,true)		
+			self.temp.cancast = self.skill_next:UpdateData(context,true)
 		end
-		
+				
 		-- Check if we can cast this spell
 		self.temp.cancastflipcombo = nil
 		if ( self.temp.cancast or not self.skill_next) then
@@ -453,7 +453,7 @@ function sm_skill:UpdateData(context, iscombo)
 			end
 		end
 	end
-	return self.temp.cancast or self.temp.cancastflipcombo
+	return self.temp.cancast or ( self.temp.cancastflipcombo ~= nil and self.temp.cancastflipcombo or false)
 end
 
 -- Take a fucking wild guess, returns true for modified conditions

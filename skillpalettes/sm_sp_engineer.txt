@@ -602,13 +602,13 @@ grenadekit.skills_luacode = {
  },
 }
 function grenadekit:IsActive(context)
-	return context.player.alive and context.skillbar~=nil  and (
+	return context.player.swimming == GW2.SWIMSTATE.NotInWater and context.player.alive and context.skillbar~=nil  and (
 	(context.skillbar[GW2.SKILLBARSLOT.Slot_7]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_7].id == 6110) or
 	(context.skillbar[GW2.SKILLBARSLOT.Slot_8]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_8].id == 6110) or
 	(context.skillbar[GW2.SKILLBARSLOT.Slot_9]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_9].id == 6110))
 end
 function grenadekit:CanActivate(context)
-	return context.player.alive and (context.player.transformid == 0 or context.player.transformid == 5) and context.skillbar~=nil  and (
+	return context.player.swimming == GW2.SWIMSTATE.NotInWater and context.player.alive and (context.player.transformid == 0 or context.player.transformid == 5) and context.skillbar~=nil  and (
 	(context.skillbar[GW2.SKILLBARSLOT.Slot_7]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_7].id == 5805) or
 	(context.skillbar[GW2.SKILLBARSLOT.Slot_8]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_8].id == 5805) or
 	(context.skillbar[GW2.SKILLBARSLOT.Slot_9]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_9].id == 5805))
@@ -625,6 +625,65 @@ function grenadekit:Deactivate(context)
 	return true
 end
 SkillManager:AddSkillPalette( grenadekit )
+
+
+local grenadekit = SkillManager:CreateSkillPalette('Grenade Kit Water')
+grenadekit.uid = "Engi_Grenade Kit Water"
+grenadekit.profession = GW2.CHARCLASS.Engineer
+grenadekit.icon = "Grenade Kit"
+grenadekit.id = 5805
+grenadekit.skills_luacode = {
+[6171] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_1, 
+	 activationtime = 0.5, 
+	 icon = 'Grenade',  
+ },
+ [6170] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_2, 
+	 activationtime = 0.5, 
+	 icon = 'Shrapnel Grenade',  
+ },
+ [6169] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_3, 
+	 activationtime = 0.5, 
+	 icon = 'Flash Grenade',  
+ },
+ [6168] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_4, 
+	 activationtime = 0.5, 
+	 icon = 'Freeze Grenade',  
+ },
+ [6167] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_5, 
+	 activationtime = 0.5, 
+	 icon = 'Poison Grenade',  
+ },
+}
+function grenadekit:IsActive(context)
+	return context.player.swimming == GW2.SWIMSTATE.Diving and context.player.alive and context.skillbar~=nil  and (
+	(context.skillbar[GW2.SKILLBARSLOT.Slot_7]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_7].id == 6110) or
+	(context.skillbar[GW2.SKILLBARSLOT.Slot_8]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_8].id == 6110) or
+	(context.skillbar[GW2.SKILLBARSLOT.Slot_9]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_9].id == 6110))
+end
+function grenadekit:CanActivate(context)
+	return context.player.swimming == GW2.SWIMSTATE.Diving and context.player.alive and (context.player.transformid == 0 or context.player.transformid == 5) and context.skillbar~=nil  and (
+	(context.skillbar[GW2.SKILLBARSLOT.Slot_7]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_7].id == 5805) or
+	(context.skillbar[GW2.SKILLBARSLOT.Slot_8]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_8].id == 5805) or
+	(context.skillbar[GW2.SKILLBARSLOT.Slot_9]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_9].id == 5805))
+end
+function grenadekit:Activate(context)
+	if ( context.skillbar~=nil ) then
+		if (context.skillbar[GW2.SKILLBARSLOT.Slot_7]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_7].id == 5805) then Player:CastSpell(GW2.SKILLBARSLOT.Slot_7) end
+		if (context.skillbar[GW2.SKILLBARSLOT.Slot_8]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_8].id == 5805) then Player:CastSpell(GW2.SKILLBARSLOT.Slot_8) end
+		if (context.skillbar[GW2.SKILLBARSLOT.Slot_9]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_9].id == 5805) then Player:CastSpell(GW2.SKILLBARSLOT.Slot_9) end
+	end
+end
+function grenadekit:Deactivate(context)
+	Player:SwapWeaponSet()
+	return true
+end
+SkillManager:AddSkillPalette( grenadekit )
+
 
 
 local medkit = SkillManager:CreateSkillPalette('Med Kit')

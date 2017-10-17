@@ -1176,6 +1176,11 @@ instantcast = true,
 	 activationtime = 0.5, 
 	 icon = 'Sharpen Spines',  
  },
+ [31869] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_17, 
+	 activationtime = 0.5, 
+	 icon = 'Celestial Avatar',  
+ },
 }
 function set:IsActive(context)
 	return context.player.alive and context.player.transformid == 0 or context.player.transformid == 10 or context.player.transformid == 11 or context.player.transformid == 12
