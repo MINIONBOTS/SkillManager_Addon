@@ -24,7 +24,7 @@ function sm_skillpalette:RenderIcon(currentselectedsetuid)
 	if (self.icon and FileExists(sm_mgr.iconpath.."\\"..self.icon..".png") ) then
 		result = GUI:ImageButton("##"..self.uid, sm_mgr.iconpath.."\\"..self.icon..".png",40,40)
 	else
-		sm_webapi.getimage( self.id, sm_mgr.iconpath.."\\"..self.icon..".png" )
+		sm_webapi.getimage( self)
 		result = GUI:ImageButton("##"..self.uid, sm_mgr.iconpath.."\\default.png",40,40)
 	end
 	if ( highlighted ) then GUI:PopStyleColor(3) end
@@ -61,7 +61,7 @@ function sm_skillpalette:RenderSkills(currentselectedid)
 					selected = GUI:ImageButton("##"..tostring(s.id), sm_mgr.iconpath.."\\"..s.icon..".png",30,30)
 				
 				else					
-					sm_webapi.getimage( s.id, sm_mgr.iconpath.."\\"..s.icon..".png" )
+					sm_webapi.getimage( s)
 					selected = GUI:ImageButton("##"..tostring(s.id), sm_mgr.iconpath.."\\default.png",30,30)
 				end
 				if ( selected ) then currentselectedid = s.id end

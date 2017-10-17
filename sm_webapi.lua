@@ -3,9 +3,11 @@ sm_webapi.json = _G["json"]
 sm_webapi.queue = {}
 sm_webapi.ready = true
 
-function sm_webapi.getimage( skillid, imagedestination )	
-	if (skillid and not sm_webapi.queue[skillid] ) then
-		sm_webapi.queue[skillid] = { status = 0, path = imagedestination}
+function sm_webapi.getimage(imageData)
+	if (imageData.iconurl) then
+		sm_webapi.queue[imageData.iconurl] = { status = 2, url = imageData.iconurl, path = sm_mgr.iconpath.."\\"..imageData.icon..".png"}
+	elseif (imageData.id and not sm_webapi.queue[imageData.id]) then
+		sm_webapi.queue[imageData.id] = { status = 0, path = sm_mgr.iconpath.."\\"..imageData.icon..".png"}
 	end
 end
 
