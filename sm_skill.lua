@@ -383,6 +383,24 @@ function sm_skill:UpdateData(context, iscombo)
 				if (context.skillbar[self.slot] and context.skillbar[self.slot].id == ( self.id or self.oldid )) then
 					skilldata = context.skillbar[self.slot]
 				end
+			-- Check for slot 555, the fictional non skill slot and set hardcoded data. TODO: make this easyer for global changes.
+			elseif (self.slot == 555) then
+				skilldata = {
+					cooldown = 0,
+					ammo = 0,
+					ammomax = 0,
+					ammocooldown = 0,
+					cancast = true,
+					
+					name = (self.id == 10 and GetString("Dodge") or self.id == 20 and GetString("Swap Weaponset")),
+					cooldownmax = 0,
+					ammocooldownmax = 0,
+					minrange = 0,
+					maxrange = 0,
+					radius = 0,
+					power = 0,
+					isgroundtargeted = false,
+				}
 			else
 				-- Heal & Utility Slot, check all 3 slots for the skill id
 				if ( self.slot <= 3 ) then
@@ -416,14 +434,17 @@ function sm_skill:UpdateData(context, iscombo)
 				self.ammocooldown = skilldata.ammocooldown
 				self.cancast = skilldata.cancast
 				-- static ones, would only have to get updated once...how ?
-				self.name = skilldata.name
-				self.cooldownmax = skilldata.cooldownmax
-				self.ammocooldownmax = skilldata.ammocooldownmax
-				self.minrange = skilldata.minrange
-				self.maxrange = skilldata.maxrange
-				self.radius = skilldata.radius
-				self.power = skilldata.power
-				self.isgroundtargeted = skilldata.isgroundtargeted
+				-- this string valid check should make it only set this static data once. ^^
+				if (not string.valid(self.name)) then
+					self.name = skilldata.name
+					self.cooldownmax = skilldata.cooldownmax
+					self.ammocooldownmax = skilldata.ammocooldownmax
+					self.minrange = skilldata.minrange
+					self.maxrange = skilldata.maxrange
+					self.radius = skilldata.radius
+					self.power = skilldata.power
+					self.isgroundtargeted = skilldata.isgroundtargeted
+				end
 				
 			else
 				ml_error("[SkillManager] - No Skill Data found for Skill ID "..tostring(self.temp.currentskillid))	
@@ -706,7 +727,10 @@ end
 -- Shitty flip skills fuck up the logic big time here, so we go the easiest way of just allowing "cancast" to be true when we are having the set actíve for skills 6-10
 function sm_skill:IsEquipped()
 	if (self.temp.context.skillbar) then
-		if (  self.slot < GW2.SKILLBARSLOT.Slot_1 or self.slot > GW2.SKILLBARSLOT.Slot_5 ) then		
+		-- Check for slot 555, fictional non skill slot. Used for dodge and swap weapons.
+		if (self.slot == 555) then
+			return true
+		elseif (  self.slot < GW2.SKILLBARSLOT.Slot_1 or self.slot > GW2.SKILLBARSLOT.Slot_5 ) then		
 			if ( self.skillpalette:IsActive(self.temp.context) ) then
 				if ( self.slot == GW2.SKILLBARSLOT.Slot_6 and self.temp.context.skillbar[self.slot] and self.temp.context.skillbar[self.slot].id == self.id ) then return true end	-- Heal
 				if ( self.slot == GW2.SKILLBARSLOT.Slot_10 and self.temp.context.skillbar[self.slot]and self.temp.context.skillbar[self.slot].id == self.id ) then return true end  -- Elite

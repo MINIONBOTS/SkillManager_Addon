@@ -1333,3 +1333,66 @@ function set:Deactivate(context)
 end
 SkillManager:AddSkillPalette( set )
 -- END special action skills.
+
+
+
+-- Dodge Skill.
+local set = SkillManager:CreateSkillPalette('Dodge_skills')
+set.uid = "Z1-Dodge_skills"
+set.profession = 0
+set.icon = "Dodge_skills"
+-- set.id = 
+set.skills_luacode = {
+	 [10] = {
+		 slot = 555, 
+		 activationtime = 0, 
+		 icon = 'Dodge', 
+	 },
+	 -- [11] = { -- TODO: add dodge-roll skill? (make sure it all works first.)
+		 -- slot = 555, 
+		 -- activationtime = 0, 
+		 -- icon = 'Dodge-Roll', 
+	 -- },
+}
+function set:IsActive(context)
+	return context.player.alive and context.player.endurance >= 50 and (context.player.movementstate ~= GW2.MOVEMENTSTATE.AboveWaterMoving or context.player.movementstate ~= GW2.MOVEMENTSTATE.AboveWaterNotMoving or context.player.movementstate ~= GW2.MOVEMENTSTATE.Falling or context.player.movementstate ~= GW2.MOVEMENTSTATE.Jumping)
+end
+function set:CanActivate(context)
+	return false
+end
+function set:Activate(context)
+end
+function set:Deactivate(context)
+	return false
+end
+SkillManager:AddSkillPalette( set )
+-- END Dodge Skill.
+
+
+
+-- Swap Skill.
+local set = SkillManager:CreateSkillPalette('Swap_Skills')
+set.uid = "Z1-Swap_Skills"
+set.profession = 0
+set.icon = "Swap_Skills"
+-- set.id = 
+set.skills_luacode = {
+	 [20] = {
+		 slot = 555, 
+		 activationtime = 0, 
+		 icon = 'Swap-Weapon',  
+	 },
+}
+function set:IsActive(context)
+	return context.player.alive and context.player.canswapweaponset
+end
+function set:CanActivate(context)
+	return false
+end
+function set:Activate(context)
+end
+function set:Deactivate(context)
+	return false
+end
+SkillManager:AddSkillPalette( set )
+-- END Swap Skill.

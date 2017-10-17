@@ -340,7 +340,15 @@ function sm_profile:Cast()
 								if (target) then
 									local castresult
 									local pos = target.pos
-									if ( action.isgroundtargeted ) then									
+									-- check for slot 555 first, fictional slot for non skill skills.
+									-- needed for things like dodge and swap, maybe others too.
+									if (action.slot == 555) then
+										if (action.id == 10) then -- id 10 == normal dodge forward. (todo, need some directional stuff?)
+											Player:Evade(3)
+										elseif (action.id == 20) then -- id 20 == swap weaponset.
+											Player:SwapWeaponSet()
+										end
+									elseif ( action.isgroundtargeted ) then									
 										if (target.isgadget) then
 											castresult = Player:CastSpell(action.slot , pos.x, pos.y, (pos.z - target.height)) -- need to cast at the top of the gadget, else no los errors on larger things
 										else
