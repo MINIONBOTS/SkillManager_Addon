@@ -1268,6 +1268,11 @@ set.skills_luacode = {
 		 activationtime = 0.25, 
 		 icon = 'Tome of Courage',  
 	 },
+	 [33134] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_13, 
+		 activationtime = 0.5, 
+		 icon = 'Hunters Verdict',  
+	 },
 -- END F KEYS.
 }
 function set:IsActive(context)
