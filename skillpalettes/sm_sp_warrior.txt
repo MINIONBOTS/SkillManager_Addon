@@ -929,6 +929,11 @@ set.skills_luacode = {
 	 activationtime = 0.75, 
 	 icon = 'Earthshaker',  
  },
+  [40601] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_13, 
+	 activationtime = 0.75, 
+	 icon = 'Earthshaker',  
+ }, 
  [14506] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_13, 
 	 activationtime = 0.75, 

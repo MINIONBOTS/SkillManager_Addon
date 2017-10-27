@@ -1139,11 +1139,16 @@ engineer.skills_luacode = {
 		 instantcast = true,
 		 icon = 'Detonate Elixir S',  
 	 },
-	 [6089] = { 
+	 [5970] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_14, 
 		 activationtime = 0.5, 
 		 icon = 'Toss Elixir U',  
 	 },
+	 [6089] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_14, 
+		 activationtime = 0.5, 
+		 icon = 'Toss Elixir U',  
+	 },	 
 	 [6088] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_14, 
 		 activationtime = 0.0, 
@@ -1594,7 +1599,7 @@ engineer.skills_luacode = {
 	 },
 }
 function engineer:IsActive(context)
-	return context.player.alive and context.player.transformid == 0 or context.player.transformid == 5
+	return context.player.alive and (context.player.transformid == 0 or context.player.transformid == 5)
 end
 function engineer:CanActivate(context)
 	return false
