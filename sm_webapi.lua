@@ -81,10 +81,10 @@ RegisterEventHandler("Gameloop.Update",sm_webapi.Update)
 
 -- API callback eventhandler.
 function sm_webapi.ApiCallback(Event, ID, Data)
-	d("sm_webapi.ApiCallback()")
 	if (Data and type(Data) == "string" and ID and type(ID) == "string") then
 		--d("Check if it is a skilldata table or the folderpath the image got saved under")		
 		if ( ID == "sm_data_req" ) then			
+			d("sm_webapi.ApiCallback()")
 			local decodedData = sm_webapi.json.decode(Data)
 			if (decodedData and type(decodedData) == "table") then
 				if ( not decodedData.id ) then -- the result table has multiple entries
@@ -106,6 +106,7 @@ function sm_webapi.ApiCallback(Event, ID, Data)
 			sm_webapi.ready = true
 		
 		elseif ( ID == "sm_image_req" ) then -- image should be downloaded now
+			d("sm_webapi.ApiCallback()")
 			for i,k in pairs(sm_webapi.queue) do
 				if (k.status == 3 and k.path and k.path == Data) then
 					d("Sucessfully loaded image, removing it from queue "..tostring(data))
