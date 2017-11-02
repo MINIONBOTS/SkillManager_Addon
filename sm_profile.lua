@@ -130,17 +130,17 @@ function sm_profile:UpdateContext()
 		self.temp.context.player.lasttransformid = Player:GetLastTransformID() -- ele's Weaver crap
 	end
 	
-	-- Default targets
-	local target = Player:GetTarget()
-	if ( target ) then
-		if ( target.attitude ~= GW2.ATTITUDE.Friendly ) then			
-			self.temp.attack_targetid = target.id
-			self.temp.attack_target_lastupdate = ml_global_information.Now
-		elseif( target.attitude == GW2.ATTITUDE.Friendly ) then
-			self.temp.heal_targetid = target.id
-			self.temp.heal_target_lastupdate = ml_global_information.Now
-		end		
-	end
+	-- Default targets -- TODO: needed? it will keep setting a target. Let the bot set targets.
+	-- local target = Player:GetTarget()
+	-- if ( target ) then
+		-- if ( target.attitude ~= GW2.ATTITUDE.Friendly ) then			
+			-- self.temp.attack_targetid = target.id
+			-- self.temp.attack_target_lastupdate = ml_global_information.Now
+		-- elseif( target.attitude == GW2.ATTITUDE.Friendly ) then
+			-- self.temp.heal_targetid = target.id
+			-- self.temp.heal_target_lastupdate = ml_global_information.Now
+		-- end		
+	-- end
 	
 	-- 
 	if ( not self.temp.heal_targetid ) then
@@ -266,9 +266,9 @@ function sm_profile:UpdateContext()
 	end
 	
 	if ( self.fightrangetype == 1 ) then -- Dynamic fight range
-		ml_global_information.AttackRange = (self.temp.activemaxattackrange and self.temp.activemaxattackrange >= 154) and self.temp.activemaxattackrange or (self.temp.maxattackrange or 154)
+		ml_global_information.AttackRange = (self.temp.activemaxattackrange and self.temp.activemaxattackrange >= 154) and self.temp.activemaxattackrange or 154 -- (self.temp.maxattackrange or 154)
 	else -- fixed fight range
-		ml_global_information.AttackRange = self.fixedfightrange or ((self.temp.activemaxattackrange and self.temp.activemaxattackrange > 154) and self.temp.activemaxattackrange  or self.temp.maxattackrange or 154)
+		ml_global_information.AttackRange = self.fixedfightrange or ((self.temp.activemaxattackrange and self.temp.activemaxattackrange > 154) and self.temp.activemaxattackrange  or 154) -- self.temp.maxattackrange or 154)
 	end	
 	--d(tostring(self.temp.activemaxattackrange) .. " - STATIC:" ..tostring(self.temp.maxattackrange))
 end
@@ -317,15 +317,18 @@ function sm_profile:Cast()
 										if ( sp:Deactivate(self.temp.context) ) then
 											self.temp.lasttick = self.temp.lasttick + 250	-- do not allow anything ,not even instant casts
 											deactivated = true
-											return
+											-- return
 										end
 									end
 								end
-								if ( not deactivated ) then
+								if (deactivated) then
+									break
+								elseif ( not deactivated ) then
 									d("[SkillManager] - Activating Skill Set "..tostring(action.skillpaletteuid).. " to cast "..tostring(action.name))
 									action.skillpalette:Activate(self.temp.context)
 									self.temp.lasttick = self.temp.lasttick + 250	-- do not allow anything ,not even instant casts
-									return
+									-- return
+									break
 								end
 							end
 						
@@ -414,10 +417,8 @@ function sm_profile:Cast()
 			end
 			
 		else
-			if ( gw2_common_functions.combatmovement.combat ) then
-				Player:StopMovement()
-				gw2_common_functions.combatmovement.combat = false
-			end
+			-- Call combatmovement without a target to stop all combatmovement related movement.
+			gw2_common_functions:DoCombatMovement()
 			
 			-- Handling that the player is Interacting / finishing / stuff
 			if ( self.temp.interactionstart and ml_global_information.Player_CastInfo) then

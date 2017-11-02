@@ -457,17 +457,18 @@ function sm_skill:UpdateData(context, iscombo)
 				
 		-- Check if we can cast this spell
 		self.temp.cancastflipcombo = nil
+		local canCastResult = self:CanCast()
 		if ( self.temp.cancast or not self.skill_next) then
-			local cc = self:CanCast()
-			self.temp.cancastflipcombo = iscombo and cc and self.parent
-			self.temp.cancast = cc and self:IsEquipped()		
+			-- local cc = self:CanCast()
+			self.temp.cancastflipcombo = iscombo and canCastResult and self.parent
+			self.temp.cancast = canCastResult and self:IsEquipped()		
 		end
 		
 		-- Update AttackRange	
 		if ( self.setsattackrange and self.maxrange and self.maxrange > 0 and self.skillpalette:IsActive(self.temp.context)) then
 			-- Set a maxattackrange and an actual activemaxattackrange
 			if ( not sm_mgr.profile.temp.maxattackrange or sm_mgr.profile.temp.maxattackrange < self.maxrange ) then sm_mgr.profile.temp.maxattackrange = self.maxrange end
-			if ( self.temp.cancast or self.slot == GW2.SKILLBARSLOT.Slot_1 ) then			
+			if ( self.temp.cancast or (self.slot == GW2.SKILLBARSLOT.Slot_1 and canCastResult)) then
 				if ( not sm_mgr.profile.temp.activemaxattackrange or sm_mgr.profile.temp.activemaxattackrange < self.maxrange ) then
 					sm_mgr.profile.temp.activemaxattackrange = self.maxrange
 				end
