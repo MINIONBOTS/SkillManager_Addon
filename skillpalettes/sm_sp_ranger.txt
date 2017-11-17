@@ -1191,6 +1191,16 @@ instantcast = true,
 	 activationtime = 0.5, 
 	 icon = 'Celestial Avatar',  
  },
+[12680] = { 
+     slot = GW2.SKILLBARSLOT.Slot_12, 
+     activationtime = 0.5, 
+     icon = 'Rending Pounce',
+ },
+ [12755] = { 
+     slot = GW2.SKILLBARSLOT.Slot_12, 
+     activationtime = 0.5, 
+     icon = 'Forage',
+ },
 }
 function set:IsActive(context)
 	return context.player.alive and context.player.transformid == 0 or context.player.transformid == 10 or context.player.transformid == 11 or context.player.transformid == 12
