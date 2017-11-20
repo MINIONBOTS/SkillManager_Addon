@@ -282,11 +282,11 @@ function sm_profile:SetTargets(attacktargetid, healtargetid)
 end
 
 -- The actual casting part
+local gw2_common_functions = _G.gw2_common_functions -- set this here. wont ever change and setting it each 'Cast()' call is insanity.
 function sm_profile:Cast()
 	if ( not self.temp.lasttick or ml_global_information.Now - self.temp.lasttick > 100 ) then	-- Expost 100 to lua ?
 		self.temp.lasttick = ml_global_information.Now
 		
-		local gw2_common_functions = _G["gw2_common_functions"]
 		if ( BehaviorManager:Running() and ml_global_information.Player_HealthState ~= GW2.HEALTHSTATE.Dead and not self.temp.interactionstart) then
 			
 			for i,a in pairs(self.actionlist) do
