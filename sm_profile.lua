@@ -317,17 +317,14 @@ function sm_profile:Cast()
 										if ( sp:Deactivate(self.temp.context) ) then
 											self.temp.lasttick = self.temp.lasttick + 250	-- do not allow anything ,not even instant casts
 											deactivated = true
-											-- return
+											break
 										end
 									end
 								end
-								if (deactivated) then
-									break
-								elseif ( not deactivated ) then
+								if ( not deactivated ) then
 									d("[SkillManager] - Activating Skill Set "..tostring(action.skillpaletteuid).. " to cast "..tostring(action.name))
 									action.skillpalette:Activate(self.temp.context)
 									self.temp.lasttick = self.temp.lasttick + 250	-- do not allow anything ,not even instant casts
-									-- return
 									break
 								end
 							end

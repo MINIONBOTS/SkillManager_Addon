@@ -172,7 +172,7 @@ set.skills_luacode = {
  [27074] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_5, 
 	 activationtime = 0.5, 
-	 icon = 'Grasping Shadow',  
+	 icon = 'Deathstrike',  
  },
 }
 function set:IsActive(context)

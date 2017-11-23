@@ -1734,7 +1734,19 @@ set.skills_luacode = {
 	 nounderwater = true,
  },
  
+ -- WEAVER SKILLS HERE, I cannot put them in "proper", that would mean having to add a gazillion different "sets", so I'll just put em here...for now
+ [43074] = { 
+     slot = GW2.SKILLBARSLOT.Slot_3, 
+     activationtime = 0.5, 
+     icon = 'Pyro Vortex',
+ },
+[40170] = { 
+     slot = GW2.SKILLBARSLOT.Slot_3, 
+     activationtime = 0.5, 
+     icon = 'Natural Frenzy',
+	}, 
 }
+
 function set:IsActive(context)
 	return context.player.alive and context.player.transformid >= 1 and context.player.transformid <= 4
 end

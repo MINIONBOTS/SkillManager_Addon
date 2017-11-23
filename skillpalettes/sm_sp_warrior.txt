@@ -1363,7 +1363,11 @@ set.skills_luacode = {
 	 activationtime = 1.5, 
 	 icon = 'Full Counter',  
  },
- 
+[43566] = { 
+     slot = GW2.SKILLBARSLOT.Slot_13, 
+     activationtime = 0.5, 
+     icon = 'Eviscerate',
+ },
 }
 function set:IsActive(context)
 	return context.player.alive and (context.player.transformid == 0 or context.player.transformid == 7 or context.player.transformid == 8 or context.player.transformid == 9)
