@@ -48,8 +48,9 @@ function sm_profile:Save()
 end
 
 -- Updates all Skilldata and the shared context and metatables and target and and and
-function sm_profile:UpdateContext()
+function sm_profile:UpdateContext()	
 	if ( not self.temp.context ) then self.temp.context = {} end
+		
 	-- reset range
 	self.temp.activemaxattackrange = 154
 	self.temp.maxattackrange = 154
@@ -129,17 +130,17 @@ function sm_profile:UpdateContext()
 		self.temp.context.player.lasttransformid = Player:GetLastTransformID() -- ele's Weaver crap
 	end
 	
-	-- Default targets
-	local target = Player:GetTarget()
-	if ( target ) then
-		if ( target.attitude ~= GW2.ATTITUDE.Friendly ) then			
-			self.temp.attack_targetid = target.id
-			self.temp.attack_target_lastupdate = ml_global_information.Now
-		elseif( target.attitude == GW2.ATTITUDE.Friendly ) then
-			self.temp.heal_targetid = target.id
-			self.temp.heal_target_lastupdate = ml_global_information.Now
-		end		
-	end
+	-- Default targets -- TODO: needed? it will keep setting a target. Let the bot set targets.
+	-- local target = Player:GetTarget()
+	-- if ( target ) then
+		-- if ( target.attitude ~= GW2.ATTITUDE.Friendly ) then			
+			-- self.temp.attack_targetid = target.id
+			-- self.temp.attack_target_lastupdate = ml_global_information.Now
+		-- elseif( target.attitude == GW2.ATTITUDE.Friendly ) then
+			-- self.temp.heal_targetid = target.id
+			-- self.temp.heal_target_lastupdate = ml_global_information.Now
+		-- end		
+	-- end
 	
 	-- 
 	if ( not self.temp.heal_targetid ) then
@@ -265,9 +266,9 @@ function sm_profile:UpdateContext()
 	end
 	
 	if ( self.fightrangetype == 1 ) then -- Dynamic fight range
-		ml_global_information.AttackRange = (self.temp.activemaxattackrange and self.temp.activemaxattackrange >= 154) and self.temp.activemaxattackrange or (self.temp.maxattackrange or 154)
+		ml_global_information.AttackRange = (self.temp.activemaxattackrange and self.temp.activemaxattackrange >= 154) and self.temp.activemaxattackrange or 154 -- (self.temp.maxattackrange or 154)
 	else -- fixed fight range
-		ml_global_information.AttackRange = self.fixedfightrange or ((self.temp.activemaxattackrange and self.temp.activemaxattackrange > 154) and self.temp.activemaxattackrange  or self.temp.maxattackrange or 154)
+		ml_global_information.AttackRange = self.fixedfightrange or ((self.temp.activemaxattackrange and self.temp.activemaxattackrange > 154) and self.temp.activemaxattackrange  or 154) -- self.temp.maxattackrange or 154)
 	end	
 	--d(tostring(self.temp.activemaxattackrange) .. " - STATIC:" ..tostring(self.temp.maxattackrange))
 end
@@ -281,12 +282,12 @@ function sm_profile:SetTargets(attacktargetid, healtargetid)
 end
 
 -- The actual casting part
+local gw2_common_functions = _G.gw2_common_functions -- set this here. wont ever change and setting it each 'Cast()' call is insanity.
 function sm_profile:Cast()
 	if ( not self.temp.lasttick or ml_global_information.Now - self.temp.lasttick > 100 ) then	-- Expost 100 to lua ?
 		self.temp.lasttick = ml_global_information.Now
-
-		local gw2_common_functions = _G["gw2_common_functions"]
-		if ( BehaviorManager:Running() and ml_global_information.Player_HealthState ~= GW2.HEALTHSTATE.Dead) then
+		
+		if ( BehaviorManager:Running() and ml_global_information.Player_HealthState ~= GW2.HEALTHSTATE.Dead and not self.temp.interactionstart) then
 			
 			for i,a in pairs(self.actionlist) do
 				local action 
@@ -308,7 +309,7 @@ function sm_profile:Cast()
 					
 					if( (cancastnormal or action.instantcast) and  action:IsCastTargetValid()) then
 						if ( not action.skillpalette:IsActive(self.temp.context)) then
-							if ( self.weaponswapmode == 1 ) then
+							if ( Settings.SkillManager.weaponswapmode and Settings.SkillManager.weaponswapmode == 1 ) then
 								local deactivated
 								for uid, sp in pairs (sm_mgr.profile.temp.activeskillpalettes) do
 									if ( sp:IsActive(self.temp.context) ) then
@@ -316,7 +317,7 @@ function sm_profile:Cast()
 										if ( sp:Deactivate(self.temp.context) ) then
 											self.temp.lasttick = self.temp.lasttick + 250	-- do not allow anything ,not even instant casts
 											deactivated = true
-											return
+											break
 										end
 									end
 								end
@@ -324,7 +325,7 @@ function sm_profile:Cast()
 									d("[SkillManager] - Activating Skill Set "..tostring(action.skillpaletteuid).. " to cast "..tostring(action.name))
 									action.skillpalette:Activate(self.temp.context)
 									self.temp.lasttick = self.temp.lasttick + 250	-- do not allow anything ,not even instant casts
-									return
+									break
 								end
 							end
 						
@@ -339,7 +340,15 @@ function sm_profile:Cast()
 								if (target) then
 									local castresult
 									local pos = target.pos
-									if ( action.isgroundtargeted ) then									
+									-- check for slot 555 first, fictional slot for non skill skills.
+									-- needed for things like dodge and swap, maybe others too.
+									if (action.slot == 555) then
+										if (action.id == 10) then -- id 10 == normal dodge forward. (todo, need some directional stuff?)
+											Player:Evade(3)
+										elseif (action.id == 20) then -- id 20 == swap weaponset.
+											Player:SwapWeaponSet()
+										end
+									elseif ( action.isgroundtargeted ) then									
 										if (target.isgadget) then
 											castresult = Player:CastSpell(action.slot , pos.x, pos.y, (pos.z - target.height)) -- need to cast at the top of the gadget, else no los errors on larger things
 										else
@@ -348,8 +357,10 @@ function sm_profile:Cast()
 									
 									else
 										
-										Player:SetTarget(target)
-										Player:SetFacingExact(pos.x, pos.y, pos.z)
+										Player:SetTarget(target.id)
+										--if (  and target.distance > 100 and BehaviorManager:CurrentBTreeName() ~= GetString("AssistMode")) then -- dont face targets in assist mode. Might need more logic for firing skills while using "moveto" or similar task, if that is a thing we do.
+											--Player:SetFacing(pos.x, pos.y, pos.z)
+										--end
 										if ( action.slot == GW2.SKILLBARSLOT.Slot_1 or action.instantcast ) then
 											castresult = Player:CastSpellNoChecks(action.slot , target.id)
 											
@@ -360,7 +371,7 @@ function sm_profile:Cast()
 									if ( castresult ) then
 										-- Add an internal cd, else spam
 										local mincasttime = action.activationtime*1010										
-										mincasttime = mincasttime + Settings.SkillManager.networklatency
+										mincasttime = mincasttime + (Settings.SkillManager.networklatency or 0)
 										action.temp.internalcd = ml_global_information.Now + mincasttime
 										if ( not action.instantcast ) then
 											self.temp.nextcast = ml_global_information.Now + mincasttime
@@ -391,20 +402,36 @@ function sm_profile:Cast()
 						
 			-- Evade
 			local evaded
-			if ( Settings.GW2Minion.evade and ml_global_information.Player_HealthState == GW2.HEALTHSTATE.Alive and ml_global_information.Player_InCombat and ml_global_information.Player_CastInfo and (ml_global_information.Player_CastInfo.slot == GW2.SKILLBARSLOT.None or ml_global_information.Player_CastInfo.slot == GW2.SKILLBARSLOT.Slot_1 )) then
-				evaded = gw2_common_functions.Evade(self.temp.context.attack_target == nil and 3 or nil) -- if we dont have a target, evade forward. (3 == forward)
+			if( ml_global_information.Player_HealthState == GW2.HEALTHSTATE.Alive ) then
+				if ( ml_global_information.Player_InCombat and ml_global_information.Player_CastInfo and (ml_global_information.Player_CastInfo.slot == GW2.SKILLBARSLOT.None or ml_global_information.Player_CastInfo.slot == GW2.SKILLBARSLOT.Slot_1 )) then
+					evaded = gw2_common_functions.Evade(self.temp.context.attack_target == nil and 3 or nil) -- if we dont have a target, evade forward. (3 == forward)
+				end
+					
+				-- Combatmovement			
+				if ( not evaded and Settings.GW2Minion.combatmovement ) then
+					gw2_common_functions:DoCombatMovement(self.temp.context.attack_target)
+				end
 			end
-				
-			-- Combatmovement			
-			if ( not evaded and ml_global_information.Player_HealthState == GW2.HEALTHSTATE.Alive and Settings.GW2Minion.combatmovement ) then
-				gw2_common_functions:DoCombatMovement(self.temp.context.attack_target)
-			end
-
+			
 		else
-			if ( gw2_common_functions.combatmovement.combat ) then
-				Player:StopMovement()
-				gw2_common_functions.combatmovement.combat = false
-			end		
+			-- Call combatmovement without a target to stop all combatmovement related movement.
+			gw2_common_functions:DoCombatMovement()
+			
+			-- Handling that the player is Interacting / finishing / stuff
+			if ( self.temp.interactionstart and ml_global_information.Player_CastInfo) then
+				local interactiontime = ml_global_information.Now - self.temp.interactionstart
+				
+				-- when to stop the interaction
+				if ( interactiontime > 250 ) then
+					if ( ml_global_information.Player_CastInfo.slot == GW2.SKILLBARSLOT.None and ml_global_information.Player_CastInfo.skillid == 0 ) then
+						self.temp.interactionstart = nil
+					end
+				end
+				
+				if ( interactiontime > 5000 ) then -- fallback for whatever crazy shit may happen
+					self.temp.interactionstart = nil
+				end				
+			end
 		end
 	end
 end
@@ -483,11 +510,19 @@ function sm_profile:Render()
 				self.temp.draggedactionidx = i
 				
 			elseif(released) then
-				if( self.temp.draggedaction and self.temp.draggedaction ~= a and self.temp.draggedactionidx ~= i)then					
-					table.insert(self.actionlist,i,table.remove(self.actionlist, self.temp.draggedactionidx))					
+				if ( self.temp.draggedactionidx ) then -- sometimes nil					
+					if( self.temp.draggedaction and self.temp.draggedaction ~= a and self.temp.draggedactionidx ~= i)then
+						table.insert(self.actionlist,i,table.remove(self.actionlist, self.temp.draggedactionidx))					
+					end
+					local tmp = self.actionlist
+					self.actionlist = {}
+					for i,k in pairs(tmp) do
+						table.insert(self.actionlist,k)
+					end
 				end
 				self.temp.draggedaction = nil
-				self.temp.draggedactionidx = nil
+				self.temp.draggedactionidx = nil				
+				break
 			end
 		end		
 		-- Draw an icon for the dragging

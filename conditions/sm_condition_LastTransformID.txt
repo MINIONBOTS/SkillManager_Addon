@@ -1,6 +1,6 @@
 -- Endurance check condition
-local sm_condition_transformid = class('Transform ID', sm_condition)
-sm_condition_transformid.uid = "Transform ID"
+local sm_condition_transformid = class('Last Transform ID', sm_condition)
+sm_condition_transformid.uid = "Last Transform ID"
 -- Initialize new class, - gets called when :new(..) is called
 function sm_condition_transformid:initialize(data)
 	self.value = data.value or 1
@@ -19,7 +19,7 @@ end
 function sm_condition_transformid:Render(id) -- need to pass an index value here, for the unique IDs used by imgui	
 	local modified
 	local changed
-	GUI:Text(GetString("Transform ID is "))
+	GUI:Text(GetString("Last Transform ID is "))
 	
 	GUI:PushItemWidth(100)
 	GUI:SameLine()

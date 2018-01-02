@@ -23,9 +23,6 @@ function sm_skill:initialize(data)
 						end
 					end
 				end
-				if ( self.slot >= GW2.SKILLBARSLOT.Slot_1 and self.slot <= GW2.SKILLBARSLOT.Slot_5 ) then
-					self.setsattackrange = true
-				end
 			else
 				ml_error("[SkillManager] - Could not find Skill ID "..tostring(data.id).." in SkillPalette: "..tostring(data.skillpaletteuid)..". Skill IDs Changed !?.")
 			end			
@@ -175,6 +172,9 @@ function sm_skill:RenderSkillPaletteEditor()
 					end
 					self.skill_next = tmpnext
 					self.skill_prev = tmpprev
+					if ( self.slot >= GW2.SKILLBARSLOT.Slot_1 and self.slot <= GW2.SKILLBARSLOT.Slot_5 ) then
+						self.setsattackrange = true
+					end
 					if ( not sm_mgr.profile.temp.activeskillpalettes ) then sm_mgr.profile.temp.activeskillpalettes = {} end
 					if ( not sm_mgr.profile.temp.activeskillpalettes[self.skillpaletteuid] ) then
 						sm_mgr.profile.temp.activeskillpalettes[self.skillpaletteuid] = sm_mgr.skillpalettes[sm_mgr.GetPlayerProfession()][self.skillpaletteuid]
@@ -308,7 +308,7 @@ function sm_skill:RenderIcon(currentselected, counter)
 	if (self.icon and FileExists(sm_mgr.iconpath.."\\"..self.icon..".png") ) then
 		clicked = GUI:ImageButton("##"..tostring(counter), sm_mgr.iconpath.."\\"..self.icon..".png",40,40)
 	else
-		sm_webapi.getimage( self.id, sm_mgr.iconpath.."\\"..self.icon..".png" )
+		sm_webapi.getimage( self)
 		clicked = GUI:ImageButton("##"..tostring(counter), sm_mgr.iconpath.."\\default.png",40,40)
 	end
 	if ( highlighted ) then GUI:PopStyleColor(3) end
@@ -378,12 +378,31 @@ function sm_skill:UpdateData(context, iscombo)
 		self.temp.context = context
 		if (context.skillbar and self.id and self.slot ) then
 			local skilldata
+			-- Elite + Weapons 1 - 5
 			if ( self.slot > 3 and self.slot < 10 ) then
 				if (context.skillbar[self.slot] and context.skillbar[self.slot].id == ( self.id or self.oldid )) then
 					skilldata = context.skillbar[self.slot]
 				end
+			-- Check for slot 555, the fictional non skill slot and set hardcoded data. TODO: make this easyer for global changes.
+			elseif (self.slot == 555) then
+				skilldata = {
+					cooldown = 0,
+					ammo = 0,
+					ammomax = 0,
+					ammocooldown = 0,
+					cancast = true,
+					
+					name = (self.id == 10 and GetString("Dodge") or self.id == 20 and GetString("Swap Weaponset")),
+					cooldownmax = 0,
+					ammocooldownmax = 0,
+					minrange = 0,
+					maxrange = 0,
+					radius = 0,
+					power = 0,
+					isgroundtargeted = false,
+				}
 			else
-				-- Utility Slot, check all 3 slots for the skill id
+				-- Heal & Utility Slot, check all 3 slots for the skill id
 				if ( self.slot <= 3 ) then
 					for i=0,3 do
 						if (context.skillbar[i] and context.skillbar[i].id == ( self.id or self.oldid )) then
@@ -394,7 +413,7 @@ function sm_skill:UpdateData(context, iscombo)
 					end
 				
 				elseif ( self.slot>=10 ) then
-					for i=12,16 do
+					for i=12,18 do
 						if (context.skillbar[i] and context.skillbar[i].id == ( self.id or self.oldid )) then
 							skilldata = context.skillbar[i]
 							self.slot = i
@@ -407,7 +426,7 @@ function sm_skill:UpdateData(context, iscombo)
 				skilldata = Player:GetSpellInfoByID(self.id or self.oldid)			
 			end
 			
-			if ( skilldata ) then
+			if ( skilldata ) then				
 				-- This skill is equipped, update all info
 				self.cooldown = skilldata.cooldown
 				self.ammo = skilldata.ammo
@@ -415,14 +434,17 @@ function sm_skill:UpdateData(context, iscombo)
 				self.ammocooldown = skilldata.ammocooldown
 				self.cancast = skilldata.cancast
 				-- static ones, would only have to get updated once...how ?
-				self.name = skilldata.name
-				self.cooldownmax = skilldata.cooldownmax
-				self.ammocooldownmax = skilldata.ammocooldownmax
-				self.minrange = skilldata.minrange
-				self.maxrange = skilldata.maxrange
-				self.radius = skilldata.radius
-				self.power = skilldata.power
-				self.isgroundtargeted = skilldata.isgroundtargeted
+				-- this string valid check should make it only set this static data once. ^^
+				if (not string.valid(self.name)) then
+					self.name = skilldata.name
+					self.cooldownmax = skilldata.cooldownmax
+					self.ammocooldownmax = skilldata.ammocooldownmax
+					self.minrange = skilldata.minrange
+					self.maxrange = skilldata.maxrange
+					self.radius = skilldata.radius
+					self.power = skilldata.power
+					self.isgroundtargeted = skilldata.isgroundtargeted
+				end
 				
 			else
 				ml_error("[SkillManager] - No Skill Data found for Skill ID "..tostring(self.temp.currentskillid))	
@@ -430,29 +452,30 @@ function sm_skill:UpdateData(context, iscombo)
 		end
 		
 		if ( self.skill_next ) then		
-			self.temp.cancast = self.skill_next:UpdateData(context,true)		
+			self.temp.cancast = self.skill_next:UpdateData(context,true)
 		end
-		
+				
 		-- Check if we can cast this spell
 		self.temp.cancastflipcombo = nil
+		local canCastResult = self:CanCast()
 		if ( self.temp.cancast or not self.skill_next) then
-			local cc = self:CanCast()
-			self.temp.cancastflipcombo = iscombo and cc and self.parent
-			self.temp.cancast = cc and self:IsEquipped()		
+			-- local cc = self:CanCast()
+			self.temp.cancastflipcombo = iscombo and canCastResult and self.parent
+			self.temp.cancast = canCastResult and self:IsEquipped()		
 		end
 		
 		-- Update AttackRange	
-		if ( self.setsattackrange and self.maxrange > 0 and self.skillpalette:IsActive(self.temp.context)) then
+		if ( self.setsattackrange and self.maxrange and self.maxrange > 0 and self.skillpalette:IsActive(self.temp.context)) then
 			-- Set a maxattackrange and an actual activemaxattackrange
 			if ( not sm_mgr.profile.temp.maxattackrange or sm_mgr.profile.temp.maxattackrange < self.maxrange ) then sm_mgr.profile.temp.maxattackrange = self.maxrange end
-			if ( self.temp.cancast or self.slot == GW2.SKILLBARSLOT.Slot_1 ) then			
+			if ( self.temp.cancast or (self.slot == GW2.SKILLBARSLOT.Slot_1 and canCastResult)) then
 				if ( not sm_mgr.profile.temp.activemaxattackrange or sm_mgr.profile.temp.activemaxattackrange < self.maxrange ) then
 					sm_mgr.profile.temp.activemaxattackrange = self.maxrange
 				end
 			end
 		end
 	end
-	return self.temp.cancast or self.temp.cancastflipcombo
+	return self.temp.cancast or ( self.temp.cancastflipcombo ~= nil and self.temp.cancastflipcombo or false)
 end
 
 -- Take a fucking wild guess, returns true for modified conditions
@@ -631,7 +654,7 @@ function sm_skill:RenderActionButton(currentselectedaction,draggedaction, id1,id
 			clicked = GUI:ImageButton("##"..tostring(self.id)..tostring(id1)..tostring(id2), sm_mgr.iconpath.."\\"..self.icon..".png",iconsize,iconsize)	
 		end
 	else
-		sm_webapi.getimage( self.id, sm_mgr.iconpath.."\\"..self.icon..".png" )
+		sm_webapi.getimage( self)
 		clicked = GUI:ImageButton("##"..tostring(self.id)..tostring(id1)..tostring(id2), sm_mgr.iconpath.."\\default.png",iconsize,iconsize)
 	end
 	GUI:PopStyleColor(3)
@@ -705,7 +728,10 @@ end
 -- Shitty flip skills fuck up the logic big time here, so we go the easiest way of just allowing "cancast" to be true when we are having the set actíve for skills 6-10
 function sm_skill:IsEquipped()
 	if (self.temp.context.skillbar) then
-		if (  self.slot < GW2.SKILLBARSLOT.Slot_1 or self.slot > GW2.SKILLBARSLOT.Slot_5 ) then		
+		-- Check for slot 555, fictional non skill slot. Used for dodge and swap weapons.
+		if (self.slot == 555) then
+			return true
+		elseif (  self.slot < GW2.SKILLBARSLOT.Slot_1 or self.slot > GW2.SKILLBARSLOT.Slot_5 ) then		
 			if ( self.skillpalette:IsActive(self.temp.context) ) then
 				if ( self.slot == GW2.SKILLBARSLOT.Slot_6 and self.temp.context.skillbar[self.slot] and self.temp.context.skillbar[self.slot].id == self.id ) then return true end	-- Heal
 				if ( self.slot == GW2.SKILLBARSLOT.Slot_10 and self.temp.context.skillbar[self.slot]and self.temp.context.skillbar[self.slot].id == self.id ) then return true end  -- Elite
@@ -718,13 +744,14 @@ function sm_skill:IsEquipped()
 					end
 				end
 				-- Toolbelt aka F-shit
-				if ( self.slot >= GW2.SKILLBARSLOT.Slot_12 and self.slot <= GW2.SKILLBARSLOT.Slot_17 ) then
+				if ( self.slot >= GW2.SKILLBARSLOT.Slot_12 and self.slot <= GW2.SKILLBARSLOT.Slot_18 ) then
 					if ( (self.temp.context.skillbar[GW2.SKILLBARSLOT.Slot_12] and self.temp.context.skillbar[GW2.SKILLBARSLOT.Slot_12].id == self.id) or 
 						(self.temp.context.skillbar[GW2.SKILLBARSLOT.Slot_13] and self.temp.context.skillbar[GW2.SKILLBARSLOT.Slot_13].id == self.id ) or 
 						(self.temp.context.skillbar[GW2.SKILLBARSLOT.Slot_14] and self.temp.context.skillbar[GW2.SKILLBARSLOT.Slot_14].id == self.id) or
 						(self.temp.context.skillbar[GW2.SKILLBARSLOT.Slot_15] and self.temp.context.skillbar[GW2.SKILLBARSLOT.Slot_15].id == self.id) or
 						(self.temp.context.skillbar[GW2.SKILLBARSLOT.Slot_16] and self.temp.context.skillbar[GW2.SKILLBARSLOT.Slot_16].id == self.id) or 
-						(self.temp.context.skillbar[GW2.SKILLBARSLOT.Slot_17] and self.temp.context.skillbar[GW2.SKILLBARSLOT.Slot_17].id == self.id)) then
+						(self.temp.context.skillbar[GW2.SKILLBARSLOT.Slot_17] and self.temp.context.skillbar[GW2.SKILLBARSLOT.Slot_17].id == self.id) or
+						(self.temp.context.skillbar[GW2.SKILLBARSLOT.Slot_18] and self.temp.context.skillbar[GW2.SKILLBARSLOT.Slot_18].id == self.id)) then
 						return true
 					end
 				end
@@ -742,6 +769,7 @@ end
 -- Checks if the skill can be cast -> skillpalette and Conditions and onslot check
 function sm_skill:CanCast()
 	if (self.id and self.skillpalette and self.cancast and (self.skillpalette:IsActive(self.temp.context) or self.skillpalette:CanActivate(self.temp.context))) then
+				
 		-- Internal CD when spam casting
 		if ( self.temp.internalcd and (ml_global_information.Now - self.temp.internalcd <= 0) ) then
 			return false

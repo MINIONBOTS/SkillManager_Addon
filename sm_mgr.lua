@@ -355,10 +355,18 @@ end
 RegisterEventHandler("Gameloop.Draw", sm_mgr.DrawMenu)
 
 function sm_mgr:AddSkillPalette( palette )
-	if ( not sm_mgr.skillpalettes[palette.profession] ) then sm_mgr.skillpalettes[palette.profession] = {} end
-	if ( not sm_mgr.skillpalettes[palette.profession][palette.uid] ) then 
-		sm_mgr.skillpalettes[palette.profession][palette.uid] = palette
-		--d("[SkillManager] - Skill Palette with uid "..palette.uid.." added.")
+	if ( not sm_mgr.skillpalettes[0] ) then 
+		sm_mgr.skillpalettes = { [0] = {}, [1] = {}, [2] = {}, [3] = {}, [4] = {}, [5] = {}, [6] = {}, [7] = {}, [8] = {}, [9] = {}}
+	end	
+	if ( not sm_mgr.skillpalettes[palette.profession][palette.uid] ) then
+		if (palette.profession == 0) then -- common set, add it to all professions
+			for i=1,9 do
+				sm_mgr.skillpalettes[i][palette.uid] = palette
+			end
+		else		
+			sm_mgr.skillpalettes[palette.profession][palette.uid] = palette
+			--d("[SkillManager] - Skill Palette with uid "..palette.uid.." added.")
+		end
 	else
 		ml_error("[SkillManager] - Skill Palette with uid "..palette.uid.." already exists, we got a duplicate here ?")
 	end
@@ -376,6 +384,16 @@ end
 -- Exposed API
 _G["SkillManager"] = {}
 SkillManager.skilllist = {} -- holds id - name pair of all skills in our palettes
+-- if the BTree is calling Player:Interact or Player:Gather, this one is called right after, using it to delay casting spells
+function SkillManager.PlayerIsInteracting()
+	if(sm_mgr.profile and sm_mgr.profile.temp.lasttick) then
+		-- sm_mgr.profile.temp.lasttick = ml_global_information.Now + 500
+		-- sm_mgr.profile.temp.interactionstart = sm_mgr.profile.temp.lasttick 
+		sm_mgr.profile.temp.interactionstart = ml_global_information.Now + 500
+	end
+end
+RegisterEventHandler("Gameloop.Interact",SkillManager.PlayerIsInteracting)
+
 function SkillManager:CreateSkillPalette(name)
 	if (string.valid(name)) then
 		return class(name,sm_skillpalette)
