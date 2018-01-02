@@ -89,7 +89,7 @@ function sm_skillpalette:GetSkillData( id )
 			ml_error("TODO: ADD STRING LOAD HANDLER FOR PUBLIC SKILL SETS  IN sm_skillpalette:GetSkill")
 			
 		end
-		if ( skilldata ) then
+		if ( skilldata and skilldata[id]) then
 			local data = {}
 			for i,k in pairs (skilldata[id]) do
 				data[i] = k
