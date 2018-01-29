@@ -488,11 +488,11 @@ rifle_kneel.skills_luacode = {
 		 activationtime = 0.75, 
 		 icon = 'Death\'s Judgment',  
 	 },
-	 -- [41068] = { 
-		 -- slot = GW2.SKILLBARSLOT.Slot_5, 
-		 -- activationtime = 0, 
-		 -- icon = 'Free Action',  
-	 -- },
+	  [41068] = { 
+		  slot = GW2.SKILLBARSLOT.Slot_5, 
+		  activationtime = 0, 
+		  icon = 'Free Action',  
+	},
 }
 function rifle_kneel:IsActive(context)
 	return context.player.alive and (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 44591)

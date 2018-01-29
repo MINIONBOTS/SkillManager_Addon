@@ -907,6 +907,11 @@ necromancer.skills_luacode = {
 		 activationtime = 0,
 		 icon = 'Desert Shroud',
 	},
+	[46058] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_17, 
+		 activationtime = 0, 
+		 icon = 'Desert Shroud',  
+	 },
 
 -- END F-Keys.
 
