@@ -130,19 +130,21 @@ function sm_profile:UpdateContext()
 		self.temp.context.player.lasttransformid = Player:GetLastTransformID() -- ele's Weaver crap
 	end
 	
-	-- Default targets -- TODO: needed? it will keep setting a target. Let the bot set targets.
-	-- local target = Player:GetTarget()
-	-- if ( target ) then
-		-- if ( target.attitude ~= GW2.ATTITUDE.Friendly ) then			
-			-- self.temp.attack_targetid = target.id
-			-- self.temp.attack_target_lastupdate = ml_global_information.Now
-		-- elseif( target.attitude == GW2.ATTITUDE.Friendly ) then
-			-- self.temp.heal_targetid = target.id
-			-- self.temp.heal_target_lastupdate = ml_global_information.Now
-		-- end		
-	-- end
-	
-	-- 
+	-- If the bot is not active, we still need a target set in order to see the skills can be cast or not
+	if(self.temp.open) then
+		 local target = Player:GetTarget()
+		 if ( target ) then
+			 if ( target.attitude ~= GW2.ATTITUDE.Friendly ) then			
+				 self.temp.attack_targetid = target.id
+				 self.temp.attack_target_lastupdate = ml_global_information.Now
+			 elseif( target.attitude == GW2.ATTITUDE.Friendly ) then
+				 self.temp.heal_targetid = target.id
+				 self.temp.heal_target_lastupdate = ml_global_information.Now
+			 end		
+		 end
+	 end
+	 
+	 
 	if ( not self.temp.heal_targetid ) then
 		local lowesthp = 101
 		if ( self.temp.context.player.party ) then

@@ -376,6 +376,7 @@ end
 function sm_skill:UpdateData(context, iscombo)
 	if ( context ) then
 		self.temp.context = context
+		self.temp.iscombo = iscombo
 		if (context.skillbar and self.id and self.slot ) then
 			local skilldata
 			-- Elite + Weapons 1 - 5

@@ -340,6 +340,7 @@ function sm_mgr.DrawMenu(event,ticks)
 
 			-- Render 
 			if (not changed and sm_mgr.profile ) then
+				sm_mgr.profile.temp.open = true
 				sm_mgr.profile:Render()
 			end
 			
@@ -349,6 +350,7 @@ function sm_mgr.DrawMenu(event,ticks)
 		
 	-- Casting time
 	if ( updateandcast and sm_mgr.profile ) then
+		sm_mgr.profile.temp.open = false	-- this is needed to set the target(s) in order to be able to check the skill cancast in the UI without the bot running
 		sm_mgr.profile:Cast()
 	end
 end

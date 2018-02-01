@@ -23,6 +23,11 @@ function sm_condition_distance:Evaluate(skill,context)
 	-- context.player
 	-- context.attack_target	(== "Enemy")
 	-- context.heal_target	(== "Friend")
+	-- We are ignoring this distance check if this is a comboskill, this way the first skill in the combo defines the range when it starts, and all others can individually be cast if they are in range
+	if(skill.temp.iscombo)then
+		return true
+	end
+	
 	local t
 	if ( self.target == 1 ) then 
 		t = context.attack_target
