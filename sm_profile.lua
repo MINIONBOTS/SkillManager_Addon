@@ -334,9 +334,7 @@ function sm_profile:Cast()
 						else											
 							if ( ml_global_information.Player_CastInfo.id ~= action.id ) then
 								local dbug = { [1] = "Enemy", [2] = "Player", [3] = "Friend"}
-								local ttlc = self.temp.lastcast and (ml_global_information.Now-self.temp.lastcast )or 0
-								d("[SkillManager] - Casting "..tostring(action.name).. " at "..tostring(dbug[action.temp.casttarget]) .. " - " .. tostring(ttlc))
-								
+								local ttlc = self.temp.lastcast and (ml_global_information.Now-self.temp.lastcast )or 0																
 								local target = action:GetCastTarget()
 								
 								if (target) then
@@ -371,6 +369,8 @@ function sm_profile:Cast()
 										end										
 									end
 									if ( castresult ) then
+										d("[SkillManager] - Casting "..tostring(action.name).. " at "..tostring(dbug[action.temp.casttarget]) .. " - " .. tostring(ttlc))
+										
 										-- Add an internal cd, else spam
 										local mincasttime = action.activationtime*1010										
 										mincasttime = mincasttime + (Settings.SkillManager.networklatency or 0)
@@ -494,41 +494,44 @@ function sm_profile:Render()
 				
 	-- Action List Rendering
 	GUI:BeginChild("##skilllistgrp",0,self.temp.skilllistgrpheight or 100)
+	self.temp.skillfilter = GUI:InputText(GetString("Filter").."##skfilter1",self.temp.skillfilter or "") if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("'To filter the List of Skills below. You cannot drag / drop / sort the list while this filter is active!")) end	
 	local _,height = GUI:GetCursorPos()
 	if ( self.actionlist ) then
 		--GUI:PushStyleVar(GUI.StyleVar_ItemSpacing, 2, 4)
 		GUI:PushStyleVar(GUI.StyleVar_FramePadding, 2, 2)
 		
 		for i,a in pairs (self.actionlist) do
-			local clicked, dragged, released = a:RenderActionButton(self.temp.selectedaction, self.temp.draggedaction,i)
-			if (clicked) then
-				self.temp.selectedactionidx = i
-				self.temp.selectedaction = a
-				self.temp.draggedaction = nil
-				self.temp.draggedactionidx = nil
-				
-			elseif(dragged) then
-				self.temp.draggedaction = a
-				self.temp.draggedactionidx = i
-				
-			elseif(released) then
-				if ( self.temp.draggedactionidx ) then -- sometimes nil					
-					if( self.temp.draggedaction and self.temp.draggedaction ~= a and self.temp.draggedactionidx ~= i)then
-						table.insert(self.actionlist,i,table.remove(self.actionlist, self.temp.draggedactionidx))					
+			if(self.temp.skillfilter == "" or string.contains(string.lower(a.name), string.lower(self.temp.skillfilter)))then
+				local clicked, dragged, released = a:RenderActionButton(self.temp.selectedaction, self.temp.draggedaction,i)
+				if (clicked) then
+					self.temp.selectedactionidx = i
+					self.temp.selectedaction = a
+					self.temp.draggedaction = nil
+					self.temp.draggedactionidx = nil
+					
+				elseif(self.temp.skillfilter == "" and dragged) then
+					self.temp.draggedaction = a
+					self.temp.draggedactionidx = i
+					
+				elseif(self.temp.skillfilter == "" and released) then
+					if ( self.temp.draggedactionidx ) then -- sometimes nil					
+						if( self.temp.draggedaction and self.temp.draggedaction ~= a and self.temp.draggedactionidx ~= i)then
+							table.insert(self.actionlist,i,table.remove(self.actionlist, self.temp.draggedactionidx))					
+						end
+						local tmp = self.actionlist
+						self.actionlist = {}
+						for i,k in pairs(tmp) do
+							table.insert(self.actionlist,k)
+						end
 					end
-					local tmp = self.actionlist
-					self.actionlist = {}
-					for i,k in pairs(tmp) do
-						table.insert(self.actionlist,k)
-					end
+					self.temp.draggedaction = nil
+					self.temp.draggedactionidx = nil				
+					break
 				end
-				self.temp.draggedaction = nil
-				self.temp.draggedactionidx = nil				
-				break
 			end
 		end		
 		-- Draw an icon for the dragging
-		if ( self.temp.draggedaction ) then
+		if ( self.temp.skillfilter == "" and self.temp.draggedaction ) then
 			if ( GUI:IsMouseReleased(0) or not GUI:IsWindowHovered() ) then
 				self.temp.draggedaction = nil
 				self.temp.draggedactionidx = nil
