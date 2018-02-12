@@ -905,6 +905,11 @@ mesmer.skills_luacode = {
 -- END HEALING.
 
 -- F-Keys.
+	[49068] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_13, 
+		 activationtime = 0.5, 
+		 icon = 'Mind Wrack',
+	 },
 	[10191] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_13, 
 		 activationtime = 0, 
