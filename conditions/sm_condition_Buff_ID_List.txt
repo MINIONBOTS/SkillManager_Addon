@@ -1,0 +1,91 @@
+-- Single Custom Buff ID check condition
+local sm_condition_buffid = class('Buff (ID-List)', sm_condition)
+sm_condition_buffid.uid = "Buff (ID-List)"
+sm_condition_buffid.targets = { [1] = GetString("Target"), [2] = GetString("Player"), [3] = GetString("Friend"),  }
+sm_condition_buffid.operators = { [1] = GetString("has one of the Buff IDs"), [2] = GetString("has all of the Buff IDs"), [3] = GetString("has none of the Buff IDs"), }
+
+-- Initialize new class, - gets called when :new(..) is called
+function sm_condition_buffid:initialize(data)
+	self.target = data.target or 1
+	self.operator = data.operator or 1
+	self.buffids = data.buffids or "743"
+end
+-- Save  the condition data into a table and returns that
+function sm_condition_buffid:Save()
+	local data = {}
+	data.target = self.target
+	data.operator = self.operator
+	data.buffids = self.buffids
+	return data
+end
+-- Evaluates the condition, returns "true" / "false"
+function sm_condition_buffid:Evaluate(skill,context)
+	-- Use:
+	-- context.player
+	-- context.attack_target	(== "Enemy")
+	-- context.heal_target	(== "Friend")
+	local t
+	if ( self.target == 1 ) then 
+		t = context.attack_target
+	elseif ( self.target == 2 ) then
+		t = context.player
+	elseif ( self.target == 3 ) then
+		t = context.heal_target
+	end
+		
+	if ( t ) then	
+		local buffs = t.buffs		
+		if ( buffs ) then
+			if ( self.operator == 1 ) then 
+				for i,k in pairs ( buffs ) do
+					if ( string.contains(self.buffids, tostring(i)) ) then
+						return true
+					end
+				end
+				
+			elseif ( self.operator == 2 ) then
+				for i,k in pairs ( buffs ) do
+					if ( not string.contains(self.buffids, tostring(i)) ) then
+						return false
+					end
+				end
+				return true
+				
+			elseif ( self.operator == 3 ) then
+				for i,k in pairs ( buffs ) do
+					if ( string.contains(self.buffids, tostring(i)) ) then
+						return false
+					end
+				end
+				return true
+				
+			end
+		end
+	end
+	return false
+end
+
+-- Renders the condition data into UI, for "presentation" in the SkillManager's Condition Builder. Returns "true" when stuff changed, for saving
+function sm_condition_buffid:Render(id) -- need to pass an index value here, for the unique IDs used by imgui	
+	local modified
+	local changed
+	GUI:PushItemWidth(100)
+	self.target, changed = GUI:Combo("##sm_condition_buffids"..tostring(id),self.target, self.targets)
+	if ( changed ) then modified = true end
+	GUI:PopItemWidth()	
+	
+	GUI:PushItemWidth(185)
+	GUI:SameLine()
+	self.operator, changed = GUI:Combo("##sm_condition_buffids2"..tostring(id),self.operator, self.operators)
+	if ( changed ) then modified = true end
+	GUI:PopItemWidth()
+		
+	GUI:PushItemWidth(200)
+	GUI:SameLine()	
+	self.buffids, changed = GUI:InputText("##sm_condition_buffids3"..tostring(id),self.buffids, GUI.InputTextFlags_CharsNoBlank)
+	if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("Add BuffIDs in a comma separated list! :  2345, 32244, 8764") ) end
+	if ( changed ) then modified = true end
+	GUI:PopItemWidth()
+	return modified
+end
+SkillManager:AddCondition(sm_condition_buffid) 

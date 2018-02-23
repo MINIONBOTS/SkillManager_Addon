@@ -321,6 +321,12 @@ set.skills_luacode = {
 	 activationtime = 1.0, 
 	 icon = 'Rock Barrier',  
  },
+  [5780] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_2, 
+	 activationtime = 0.5, 
+	 icon = 'Hurl',  
+	 parent = 5695,
+ },
  [5696] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_3, 
 	 activationtime = 0.5, 
@@ -1745,6 +1751,71 @@ set.skills_luacode = {
      activationtime = 0.5, 
      icon = 'Natural Frenzy',
 	}, 
+[42954] = { 
+	slot = GW2.SKILLBARSLOT.Slot_3, 
+	activationtime = 0.5, 
+	icon = 'Fracturing Strike',
+},
+[42181] = { 
+	slot = GW2.SKILLBARSLOT.Slot_3, 
+	activationtime = 0.5, 
+	icon = 'Fiery Frost',
+ },
+[45742] = { 
+	slot = GW2.SKILLBARSLOT.Slot_3, 
+	activationtime = 0.5, 
+	icon = 'Glacial Drift', 
+},
+[40794] = { 
+	slot = GW2.SKILLBARSLOT.Slot_3, 
+	activationtime = 0.5, 
+	icon = 'Earthen Synergy',
+},
+[46014] = { 
+	slot = GW2.SKILLBARSLOT.Slot_3, 
+	activationtime = 0.5, 
+	icon = 'Stone Tide',  
+},
+[43576] = { 
+	slot = GW2.SKILLBARSLOT.Slot_3, 
+	activationtime = 0.5, 
+	icon = 'Plasma Beam',  
+},
+[5780] = { 
+	slot = GW2.SKILLBARSLOT.Slot_2, 
+	activationtime = 0.5, 
+	icon = 'Hurl', 
+},
+[41125] = { 
+	slot = GW2.SKILLBARSLOT.Slot_3, 
+	activationtime = 0.5, 
+	icon = 'Plasma Blast', 
+},
+[43762] = { 
+	slot = GW2.SKILLBARSLOT.Slot_3, 
+	activationtime = 0.5, 
+	icon = 'Pyroclastic Blast',
+},
+[40332] = { 
+	slot = GW2.SKILLBARSLOT.Slot_3, 
+	activationtime = 0.5, 
+	icon = 'Pressure Blast', 
+},
+[44550] = { 
+	slot = GW2.SKILLBARSLOT.Slot_3, 
+	activationtime = 0.5, 
+	icon = 'Lahar', 
+},
+[41184] = { 
+	slot = GW2.SKILLBARSLOT.Slot_3, 
+	activationtime = 0.5, 
+	icon = 'Monsoon',
+},
+[42321] = { 
+	slot = GW2.SKILLBARSLOT.Slot_3, 
+	activationtime = 0.5, 
+	icon = 'Pile Driver', 
+}
 }
 
 function set:IsActive(context)
