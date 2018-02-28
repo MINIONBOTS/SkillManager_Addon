@@ -24,7 +24,7 @@ function sm_condition_entitycount:Evaluate(skill,context)
 	
 	
 	if ( castinfo and castinfo.skillid ) then 
-		local skid = castinfo.skillid 
+		local skid = tostring(castinfo.skillid)
 		return string.contains(self.skillids, skid)
 	end
 	return false
