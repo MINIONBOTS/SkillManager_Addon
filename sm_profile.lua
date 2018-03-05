@@ -42,6 +42,7 @@ function sm_profile:Save()
 		self.temp.modified = nil		
 		d("[SkillManager::sm_profile] - Saved Profile : "..self.temp.filename)
 		self.temp.botmainmenu_luacode_bugged = nil
+		self.temp.botmainmenu_luacode_compiled = nil
 	else
 		ml_error("[SkillManager::sm_profile] - Could not save Profile, invalid Profile folder: "..self.temp.folderpath)
 	end		
@@ -286,10 +287,53 @@ end
 -- The actual casting part
 local gw2_common_functions = _G.gw2_common_functions -- set this here. wont ever change and setting it each 'Cast()' call is insanity.
 function sm_profile:Cast()
-	if ( not self.temp.lasttick or ml_global_information.Now - self.temp.lasttick > 100 ) then	-- Expost 100 to lua ?
+	
+	local runloop = true
+	
+	-- Hold the casting until the to-be-deactivated palett is not active or max 500ms
+	if ( self.temp.deactivateSkillPalette ) then
+		runloop = false
+		if ( not self.temp.deactivateSkillPalette:IsActive(self.temp.context) ) then
+			runloop = true
+			self.temp.deactivateSkillPalette = nil
+			self.temp.deactivateSkillPalette_start = nil
+			--self.temp.lasttick = ml_global_information.Now + 150 -- wait one more tick, else stuff is too fast sometimes
+			
+		else
+			if ( ml_global_information.Now - self.temp.deactivateSkillPalette_start > 500 ) then
+				-- fallback check to not get stuck
+				runloop = true
+				self.temp.deactivateSkillPalette = nil
+				self.temp.deactivateSkillPalette_start = nil
+			end
+		end
+	end
+	
+	-- Hold the casting until the targeted skill palette is active or max 500ms
+	if ( not self.temp.deactivateSkillPalette and self.temp.switchToSkillPalette ) then
+		runloop = false
+		if ( self.temp.switchToSkillPalette:IsActive(self.temp.context) ) then
+			runloop = true
+			self.temp.switchToSkillPalette = nil
+			self.temp.switchToSkillPalette_start = nil
+			--self.temp.lasttick = ml_global_information.Now + 150 -- wait one more tick, else stuff is too fast sometimes
+			
+		else
+			if ( ml_global_information.Now - self.temp.switchToSkillPalette_start > 500 ) then
+				-- fallback check to not get stuck
+				runloop = true
+				self.temp.switchToSkillPalette = nil
+				self.temp.switchToSkillPalette_start = nil
+			end
+		end
+	end
+	
+	if ( runloop and (not self.temp.lasttick or ml_global_information.Now - self.temp.lasttick > 50 )) then -- Expose this 100 to lua to make shit even faster ?) then
 		self.temp.lasttick = ml_global_information.Now
 		
 		if ( BehaviorManager:Running() and ml_global_information.Player_HealthState ~= GW2.HEALTHSTATE.Dead and not self.temp.interactionstart) then
+			
+			local skipnoneinstantactions
 			
 			for i,a in pairs(self.actionlist) do
 				local action 
@@ -305,28 +349,34 @@ function sm_profile:Cast()
 				if ( not action ) then action = a end
 				
 				ml_global_information.Player_CastInfo = Player.castinfo
-				if ( action.temp.cancast and ((ml_global_information.Player_CastInfo.id ~= action.id ) or action.instantcast )) then  -- .cancast includes Cooldown, Power and "Do we have that set and skill at all" checks
+				if ( action.temp.cancast and ((ml_global_information.Player_CastInfo.id ~= action.id  and not skipnoneinstantactions ) or action.instantcast )) then  -- .cancast includes Cooldown, Power and "Do we have that set and skill at all" checks
 					
 					local cancastnormal = ( not self.temp.nextcast or ml_global_information.Now - self.temp.nextcast > 0 )
-					
-					if( (cancastnormal or action.instantcast) and  action:IsCastTargetValid()) then
+										
+					if( (cancastnormal or action.instantcast) and action:IsCastTargetValid()) then
 						if ( not action.skillpalette:IsActive(self.temp.context)) then
 							if ( Settings.SkillManager.weaponswapmode and Settings.SkillManager.weaponswapmode == 1 ) then
 								local deactivated
 								for uid, sp in pairs (sm_mgr.profile.temp.activeskillpalettes) do
-									if ( sp:IsActive(self.temp.context) ) then
-										d("[SkillManager] - Deactivating Skill Set "..tostring(uid))
-										if ( sp:Deactivate(self.temp.context) ) then
-											self.temp.lasttick = self.temp.lasttick + 250	-- do not allow anything ,not even instant casts
-											deactivated = true
-											break
+									if ( action.skillpalette.uid ~= uid ) then
+										if ( sp:IsActive(self.temp.context) ) then
+											d("[SkillManager] - Deactivating Skill Set "..tostring(uid))
+											if ( sp:Deactivate(self.temp.context) ) then												
+												self.temp.deactivateSkillPalette_start = self.temp.lasttick
+												self.temp.deactivateSkillPalette = sp
+												deactivated = true
+												skipnoneinstantactions = true
+												break
+											end
 										end
 									end
 								end
 								if ( not deactivated ) then
 									d("[SkillManager] - Activating Skill Set "..tostring(action.skillpaletteuid).. " to cast "..tostring(action.name))
 									action.skillpalette:Activate(self.temp.context)
-									self.temp.lasttick = self.temp.lasttick + 250	-- do not allow anything ,not even instant casts
+									self.temp.switchToSkillPalette_start = self.temp.lasttick
+									self.temp.switchToSkillPalette = action.skillpalette
+									skipnoneinstantactions = true
 									break
 								end
 							end
@@ -482,7 +532,7 @@ function sm_profile:Render()
 		if ( maxx < 650 ) then maxx = x end
 		local changed = false		
 		self.botmainmenu_luacode, changed = GUI:InputTextEditor( "##smmainmenueditor", self.botmainmenu_luacode or "", maxx, 450, GUI.InputTextFlags_AllowTabInput)
-		if ( changed ) then self.temp.modified = true self.temp.botmainmenu_luacode_bugged = true end
+		if ( changed ) then self.temp.modified = true end
 		GUI:TreePop()
 	else		
 		x = 280
@@ -578,17 +628,21 @@ end
 -- Renders Custom Profile UI Elements into the Main Menu of the Bot
 function sm_profile:RenderCodeEditor()
 	if ( self.botmainmenu_luacode and self.botmainmenu_luacode ~= "" ) then
-		if ( not self.temp.botmainmenu_luacode_compiled and not self.temp.botmainmenu_luacode_bugged ) then					
-			local execstring = 'return function(context) '..self.botmainmenu_luacode..' end'
-			local func = loadstring(execstring)
-			if ( func ) then
-				func()(self.temp.context)
-				self.temp.botmainmenu_luacode_compiled = func	
-			else
-				self.temp.botmainmenu_luacode_compiled = nil
-				self.temp.botmainmenu_luacode_bugged = true
-				ml_error("[SkillManager] - Main Menu Code has a BUG !!")
-				assert(loadstring(execstring)) -- print out the actual error
+		if ( not self.temp.botmainmenu_luacode_compiled ) then					
+			if ( not self.temp.modified ) then
+				local execstring = 'return function(context) '..self.botmainmenu_luacode..' end'
+				local func = loadstring(execstring)
+				if ( func ) then
+					func()(self.temp.context)
+					self.temp.botmainmenu_luacode_compiled = func	
+				else
+					self.temp.botmainmenu_luacode_compiled = nil
+					if ( not self.temp.botmainmenu_luacode_bugged ) then
+						ml_error("[SkillManager] - Main Menu Code has a BUG !!")
+						assert(loadstring(execstring)) -- print out the actual error
+						self.temp.botmainmenu_luacode_bugged = true
+					end
+				end
 			end
 		else
 			--executing the already loaded function
