@@ -23,8 +23,8 @@ function sm_condition_entitycount:Evaluate(skill,context)
 	end
 	
 	
-	if ( castinfo and castinfo.skillid ) then 
-		local skid = tostring(castinfo.skillid)
+	if ( castinfo and castinfo.skillid and castinfo.skillid > 999) then 
+		local skid = tostring(castinfo.skillid)		
 		return string.contains(self.skillids, skid)
 	end
 	return false
