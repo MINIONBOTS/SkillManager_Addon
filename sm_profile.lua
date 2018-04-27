@@ -300,7 +300,7 @@ function sm_profile:Cast()
 			--self.temp.lasttick = ml_global_information.Now + 150 -- wait one more tick, else stuff is too fast sometimes
 			
 		else
-			if ( ml_global_information.Now - self.temp.deactivateSkillPalette_start > 500 ) then
+			if ( ml_global_information.Now - self.temp.deactivateSkillPalette_start > 300 ) then
 				-- fallback check to not get stuck
 				runloop = true
 				self.temp.deactivateSkillPalette = nil
@@ -319,7 +319,7 @@ function sm_profile:Cast()
 			--self.temp.lasttick = ml_global_information.Now + 150 -- wait one more tick, else stuff is too fast sometimes
 			
 		else
-			if ( ml_global_information.Now - self.temp.switchToSkillPalette_start > 500 ) then
+			if ( ml_global_information.Now - self.temp.switchToSkillPalette_start > 300 ) then
 				-- fallback check to not get stuck
 				runloop = true
 				self.temp.switchToSkillPalette = nil
@@ -339,7 +339,7 @@ function sm_profile:Cast()
 				local action 
 				--override the action to cast our combos					
 				if ( self.temp.nextcomboaction ) then
-					if (ml_global_information.Now - self.temp.nextcomboactionEndTime > 500 ) then -- we did not cast the combo yet, something went probably wrong so we stop attempting to finish the combo
+					if (ml_global_information.Now - self.temp.nextcomboactionEndTime > 300 ) then -- we did not cast the combo yet, something went probably wrong so we stop attempting to finish the combo
 						self.temp.nextcomboaction = nil
 						self.temp.nextcomboactionEndTime = nil
 					else
@@ -376,8 +376,7 @@ function sm_profile:Cast()
 									action.skillpalette:Activate(self.temp.context)
 									self.temp.switchToSkillPalette_start = self.temp.lasttick
 									self.temp.switchToSkillPalette = action.skillpalette
-									skipnoneinstantactions = true
-									break
+									break -- breaks the main actionlist loop !
 								end
 							end
 						
@@ -582,7 +581,7 @@ function sm_profile:Render()
 		end		
 		-- Draw an icon for the dragging
 		if ( self.temp.skillfilter == "" and self.temp.draggedaction ) then
-			if ( GUI:IsMouseReleased(0) or not GUI:IsWindowHovered() ) then
+			if ( GUI:IsMouseReleased(0) or not GUI:IsWindowFocused() ) then
 				self.temp.draggedaction = nil
 				self.temp.draggedactionidx = nil
 				

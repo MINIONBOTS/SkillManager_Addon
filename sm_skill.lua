@@ -660,13 +660,12 @@ function sm_skill:RenderActionButton(currentselectedaction,draggedaction, id1,id
 	end
 	GUI:PopStyleColor(3)
 	if (GUI:IsItemHovered()) then GUI:SetTooltip( self.name or self.icon) end
-		
-	-- Drag n Drop to switch places
-	if ( not clicked ) then
-		if ( GUI:IsItemClicked() ) then dragged = true end
-		if ( GUI:IsMouseReleased(0) and GUI:IsItemHoveredRect() ) then released = true end
-	end
 	
+	-- Drag n Drop to switch places
+	if ( not clicked ) then	
+		if ( GUI:IsItemClicked() or GUI:IsItemActive() ) then dragged = true end
+		if ( GUI:IsMouseReleased(0) and (GUI:IsItemHovered() or GUI:IsItemHovered(GUI.HoveredFlags_AllowWhenBlockedByActiveItem))) then released = true end
+	end
 	-- Cooldown Overlay
 	if ( not combo and self.cooldown and self.cooldown > 0 ) then
 		--local nx,ny = GUI:GetCursorPos()	
