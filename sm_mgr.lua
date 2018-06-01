@@ -413,8 +413,8 @@ function SkillManager:SetTarget(targetid, healtargetid)
 	end
 end
 function SkillManager:RenderCodeEditor() 
-	if ( sm_mgr.profile ) then
-		sm_mgr.profile:RenderCodeEditor() 
+	if ( sm_mgr.profile and GetGameState() == GW2.GAMESTATE.GAMEPLAY ) then
+		sm_mgr.profile:RenderCodeEditor()
 	end 
 end
 function SkillManager:Cast()

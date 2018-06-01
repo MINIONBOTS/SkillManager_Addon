@@ -4,10 +4,12 @@ sm_webapi.queue = {}
 sm_webapi.ready = true
 
 function sm_webapi.getimage(imageData)
-	if (imageData.iconurl) then
-		sm_webapi.queue[imageData.iconurl] = { status = 2, url = imageData.iconurl, path = sm_mgr.iconpath.."\\"..imageData.icon..".png"}
-	elseif (imageData.id and not sm_webapi.queue[imageData.id]) then
-		sm_webapi.queue[imageData.id] = { status = 0, path = sm_mgr.iconpath.."\\"..imageData.icon..".png"}
+	if(imageData.icon) then
+		if (imageData.iconurl) then
+			sm_webapi.queue[imageData.iconurl] = { status = 2, url = imageData.iconurl, path = sm_mgr.iconpath.."\\"..imageData.icon..".png"}
+		elseif (imageData.id and not sm_webapi.queue[imageData.id]) then
+			sm_webapi.queue[imageData.id] = { status = 0, path = sm_mgr.iconpath.."\\"..imageData.icon..".png"}
+		end
 	end
 end
 
