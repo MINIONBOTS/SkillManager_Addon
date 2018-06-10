@@ -1211,6 +1211,39 @@ instantcast = true,
 	activationtime = 0.5,
 	icon = 'Release Celestial Avatar',  
  },
+ [12363] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_10, 
+	 activationtime = 0.5, 
+	 icon = 'Hounds of Balthazar',  
+ },
+ [12362] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_7, 
+	 activationtime = 0.5, 
+	 icon = 'Prayer to Lyssa',  
+ },
+ [12361] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_8, 
+	 activationtime = 0.5, 
+	 icon = 'Prayer to Kormir',  
+ },
+ [12367] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_10, 
+	 activationtime = 0.5, 
+	 icon = 'Reaper of Grenth',  
+ },
+ [12569] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_10, 
+	 activationtime = 0.5, 
+	 icon = 'Spirit of Nature',  
+ },
+ [12373] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_10, 
+	 activationtime = 0.5, 
+	 icon = 'Avatar of Melandru',  
+ },
+ --[[ needs 
+Mistfire Wolf
+Strength of the Pack]]
 }
 function set:IsActive(context)
 	return context.player.alive and context.player.transformid == 0 or context.player.transformid == 10 or context.player.transformid == 11 or context.player.transformid == 12
