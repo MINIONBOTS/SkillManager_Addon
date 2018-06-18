@@ -1,9 +1,62 @@
 
+local set = SkillManager:CreateSkillPalette('Drink')
+set.uid = "zDrink"
+set.profession = 0
+set.icon = "Ranger"
+set.id = 9905
+set.skills_luacode = {
+[7024] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_1, 
+	 activationtime = 0.5, 
+	 icon = 'Drink',  
+ },
+}
+function set:IsActive(context)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 7024)	
+end
+function set:CanActivate(context)
+	return false
+end
+function set:Activate(context)
+end
+function set:Deactivate(context)
+	return false
+end
+SkillManager:AddSkillPalette( set )
+local set = SkillManager:CreateSkillPalette('Branch')
+set.uid = "zBranch"
+set.profession = 0
+set.icon = "Ranger"
+set.id = 9905
+set.skills_luacode = {
+[991] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_1, 
+	 activationtime = 0.5, 
+	 icon = 'Bash',  
+ },
+ [993] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_2, 
+	 activationtime = 0.5, 
+	 icon = 'Smash',  
+ },
+}
+function set:IsActive(context)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 991)	
+end
+function set:CanActivate(context)
+	return false
+end
+function set:Activate(context)
+end
+function set:Deactivate(context)
+	return false
+end
+SkillManager:AddSkillPalette( set )
 local set = SkillManager:CreateSkillPalette('Raven')
 set.uid = "zRaven"
 set.profession = 0
 set.icon = "Ranger"
-set.id = 9900
+set.id = 9904
 set.skills_luacode = {
 [12410] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_1, 
@@ -47,7 +100,7 @@ local set = SkillManager:CreateSkillPalette('ImpGun')
 set.uid = "zImpGun"
 set.profession = 0
 set.icon = "Ranger"
-set.id = 9900
+set.id = 9903
 set.skills_luacode = {
 [6763] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_1, 
@@ -86,7 +139,7 @@ local set = SkillManager:CreateSkillPalette('BugSpray')
 set.uid = "zBugSpray"
 set.profession = 0
 set.icon = "Ranger"
-set.id = 9900
+set.id = 9902
 set.skills_luacode = {
 [6478] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_1, 
