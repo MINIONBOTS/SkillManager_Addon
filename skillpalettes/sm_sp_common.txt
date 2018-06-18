@@ -1,4 +1,165 @@
 
+local set = SkillManager:CreateSkillPalette('Raven')
+set.uid = "zRaven"
+set.profession = 0
+set.icon = "Ranger"
+set.id = 9900
+set.skills_luacode = {
+[12410] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_1, 
+	 activationtime = 0.5, 
+	 icon = 'Wind Blast',  
+ },
+ [12406] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_2, 
+	 activationtime = 0.5, 
+	 icon = 'Wind Blast',  
+ },
+ [12409] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_3, 
+	 activationtime = 0.5, 
+	 icon = 'Swoop',  
+ },
+ [12408] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_4, 
+	 activationtime = 0.5, 
+	 icon = 'Wind Blast',  
+ },
+ [12407] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_5, 
+	 activationtime = 0.5, 
+	 icon = 'Wind Blast',  
+ },
+}
+function set:IsActive(context)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 12410)	
+end
+function set:CanActivate(context)
+	return false
+end
+function set:Activate(context)
+end
+function set:Deactivate(context)
+	return false
+end
+SkillManager:AddSkillPalette( set )
+local set = SkillManager:CreateSkillPalette('ImpGun')
+set.uid = "zImpGun"
+set.profession = 0
+set.icon = "Ranger"
+set.id = 9900
+set.skills_luacode = {
+[6763] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_1, 
+	 activationtime = 0.5, 
+	 icon = 'Coagulation Shot',  
+ },
+ [6762] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_2, 
+	 activationtime = 0.5, 
+	 icon = 'Coagulation Blast',  
+ },
+ [6765] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_3, 
+	 activationtime = 0.5, 
+	 icon = 'Coagulation Touch',  
+ },
+ [6764] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_4, 
+	 activationtime = 0.5, 
+	 icon = 'Rifle Butt',  
+ },
+}
+function set:IsActive(context)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 6763)	
+end
+function set:CanActivate(context)
+	return false
+end
+function set:Activate(context)
+end
+function set:Deactivate(context)
+	return false
+end
+SkillManager:AddSkillPalette( set )
+local set = SkillManager:CreateSkillPalette('BugSpray')
+set.uid = "zBugSpray"
+set.profession = 0
+set.icon = "Ranger"
+set.id = 9900
+set.skills_luacode = {
+[6478] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_1, 
+	 activationtime = 0.5, 
+	 icon = 'Poison Cloud',  
+ },
+ [6480] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_2, 
+	 activationtime = 0.5, 
+	 icon = 'Dart Volley',  
+ },
+ [6479] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_3, 
+	 activationtime = 0.5, 
+	 icon = 'Sedative Dart',  
+ },
+}
+function set:IsActive(context)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 6478)	
+end
+function set:CanActivate(context)
+	return false
+end
+function set:Activate(context)
+end
+function set:Deactivate(context)
+	return false
+end
+SkillManager:AddSkillPalette( set )
+local set = SkillManager:CreateSkillPalette('Leopard')
+set.uid = "zLeopard"
+set.profession = 0
+set.icon = "Ranger"
+set.id = 9901
+set.skills_luacode = {
+ [6655] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_1, 
+	 activationtime = 0.5, 
+	 icon = 'Slash',  
+ },
+ [6654] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_2, 
+	 activationtime = 0.5, 
+	 icon = 'Pounce',  
+ },
+ [6652] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_3, 
+	 activationtime = 0.5, 
+	 icon = 'Maul',  
+ },
+ [6656] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_4, 
+	 activationtime = 0.5, 
+	 icon = 'Snarl',  
+ },
+ [14349] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_5, 
+	 activationtime = 0.5, 
+	 icon = 'Return',  
+ },
+}
+function set:IsActive(context)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 6655)	
+end
+function set:CanActivate(context)
+	return false
+end
+function set:Activate(context)
+end
+function set:Deactivate(context)
+	return false
+end
+SkillManager:AddSkillPalette( set )
 local set = SkillManager:CreateSkillPalette('Common_Tornado')
 set.uid = "zCommon_Tornado"
 set.profession = 0
@@ -32,7 +193,7 @@ set.skills_luacode = {
  },
 }
 function set:IsActive(context)
-	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 14356)	
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 5752)	
 end
 function set:CanActivate(context)
 	return false
