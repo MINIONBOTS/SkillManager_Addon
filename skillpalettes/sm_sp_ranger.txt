@@ -1241,9 +1241,26 @@ instantcast = true,
 	 activationtime = 0.5, 
 	 icon = 'Avatar of Melandru',  
  },
- --[[ needs 
-Mistfire Wolf
-Strength of the Pack]]
+ 
+[10800] = { 
+	 
+	slot = GW2.SKILLBARSLOT.Slot_10, 
+	 
+	activationtime = 0.5, 
+	
+	icon = 'Mistfire Wolf',  
+ 
+ },
+ 
+[12516] = { 
+	 
+	slot = GW2.SKILLBARSLOT.Slot_10, 
+	 
+	activationtime = 0.5, 
+	 
+	icon = '"Strength of the Pack!"',  
+ 
+ },
 }
 function set:IsActive(context)
 	return context.player.alive and context.player.transformid == 0 or context.player.transformid == 10 or context.player.transformid == 11 or context.player.transformid == 12
