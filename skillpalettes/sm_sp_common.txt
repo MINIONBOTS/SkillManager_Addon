@@ -1,4 +1,121 @@
 
+local set = SkillManager:CreateSkillPalette('Experimental')
+set.uid = "zExperimental"
+set.profession = 0
+set.icon = "Ranger"
+set.id = 9907
+set.skills_luacode = {
+[8752] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_1, 
+	 activationtime = 0.5, 
+	 icon = 'Fireball',  
+ },
+ [8753] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_2, 
+	 activationtime = 0.5, 
+	 icon = 'Ice Spray',  
+ },
+ [8754] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_3, 
+	 activationtime = 0.5, 
+	 icon = 'Arc Lightning',  
+ },
+ [8755] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_4, 
+	 activationtime = 0.5, 
+	 icon = 'Arcane Beam',  
+ },
+ [8756] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_5, 
+	 activationtime = 0.5, 
+	 icon = 'Eject Coolant',  
+ },
+}
+function set:IsActive(context)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 8752)	
+end
+function set:CanActivate(context)
+	return false
+end
+function set:Activate(context)
+end
+function set:Deactivate(context)
+	return false
+end
+SkillManager:AddSkillPalette( set )
+local set = SkillManager:CreateSkillPalette('Bird')
+set.uid = "zBird"
+set.profession = 0
+set.icon = "Ranger"
+set.id = 9906
+set.skills_luacode = {
+[8764] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_1, 
+	 activationtime = 0.5, 
+	 icon = 'Peck',  
+ },
+ [8762] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_2, 
+	 activationtime = 0.5, 
+	 icon = 'Deadly Kick',  
+ },
+ [8761] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_3, 
+	 activationtime = 0.5, 
+	 icon = 'Frenzied Peck',  
+ },
+ [8763] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_4, 
+	 activationtime = 0.5, 
+	 icon = 'Screech',  
+ },
+ [8765] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_5, 
+	 activationtime = 0.5, 
+	 icon = 'Return',  
+ },
+}
+function set:IsActive(context)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 8764)	
+end
+function set:CanActivate(context)
+	return false
+end
+function set:Activate(context)
+end
+function set:Deactivate(context)
+	return false
+end
+SkillManager:AddSkillPalette( set )
+local set = SkillManager:CreateSkillPalette('Flamethrower')
+set.uid = "zFlamethrower"
+set.profession = 0
+set.icon = "Ranger"
+set.id = 9906
+set.skills_luacode = {
+[8721] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_1, 
+	 activationtime = 0.5, 
+	 icon = 'Flame Jet',  
+ },
+ [8722] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_2, 
+	 activationtime = 0.5, 
+	 icon = 'Red Button',  
+ },
+}
+function set:IsActive(context)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 8721)	
+end
+function set:CanActivate(context)
+	return false
+end
+function set:Activate(context)
+end
+function set:Deactivate(context)
+	return false
+end
+SkillManager:AddSkillPalette( set )
 local set = SkillManager:CreateSkillPalette('Drink')
 set.uid = "zDrink"
 set.profession = 0
