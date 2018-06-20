@@ -47,6 +47,21 @@ set.skills_luacode = {
 	 activationtime = 0.5, 
 	 icon = 'Hilt Bash',  
  },
+ [12450] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_10, 
+	 activationtime = 0.5, 
+	 icon = 'Summon Sylvan Hound',  
+ },
+ [12447] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_10, 
+	 activationtime = 0.5, 
+	 icon = 'Summon Druid Spirit',  
+ },
+ [12457] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_10, 
+	 activationtime = 0.5, 
+	 icon = 'Take Root',  
+ },
 }
 function set:IsActive(context)
 	return context.player.alive and (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 12525)	
