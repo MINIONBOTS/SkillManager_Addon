@@ -6,6 +6,7 @@ sm_mgr.iconpath = sm_mgr.luamodspath .. "\\SkillManager\\iconcache"
 sm_mgr.profiles = {}				-- SM profiles
 sm_mgr.conditions = {}		-- SM condition "classes" which are used in the condition builder/editor for the "cast if ..." check per skill
 sm_mgr.skillpalettes = {}		-- For each Profession, a different set of palettes are "hardcoded" and available in here. These include the functions to swap to the palette in order to cast the spell on it
+sm_mgr.filesizefunc = _G["FileSize"]
 
 -- Extend this or overwrite this for other games::
 sm_mgr.profilepath = GetLuaModsPath()  .. "GW2Minion\\\SkillManagerProfiles"
@@ -38,12 +39,12 @@ function sm_mgr:SetDefaultProfileFolder( folderpath )
 end
 
 function sm_mgr.CheckImageFiles()
-	-- image files can be corrupted sometimes due to whatever reason 
+	-- image files can be corrupted sometimes due to whatever reason 	
 	if ( FolderExists(sm_mgr.iconpath)) then
 		local files = FolderList(sm_mgr.iconpath)
 		if ( files and type(files) == "table" and #files > 0 ) then
 			for i,k in pairs ( files ) do
-				if ( string.sub(k,-string.len("_tmp"))=="_tmp" or FileSize(sm_mgr.iconpath.."\\"..k) < 100 ) then
+				if ( string.sub(k,-string.len("_tmp"))=="_tmp" or sm_mgr.filesizefunc(sm_mgr.iconpath.."\\"..k) < 100 ) then
 					d("[SkillManager] - Deleting invalid or corrupted image " ..sm_mgr.iconpath.."\\"..k)
 					FileDelete(sm_mgr.iconpath.."\\"..k)
 				end
