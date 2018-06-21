@@ -14,6 +14,7 @@ function sm_mgr.GetPlayerProfession() return Player.profession end
 -- Register the SM UI Button:
 function sm_mgr.ModuleInit()	
 	_G["ml_gui"].ui_mgr:AddMember({ id = "GW2MINION##SKILLMANAGER", name = "SkillManager", onClick = function() sm_mgr.open = not sm_mgr.open end, tooltip = GetString("Open the \"Skill Manager\" window."), texture = GetStartupPath().."\\GUI\\UI_Textures\\sword.png"},"GW2MINION##MENU_HEADER")	
+	sm_mgr.CheckImageFiles()
 	sm_mgr.RefreshSkillPalettes()
 end
 RegisterEventHandler("Module.Initalize",sm_mgr.ModuleInit)
@@ -35,6 +36,22 @@ function sm_mgr:SetDefaultProfileFolder( folderpath )
 		ml_error("[SkillManager] - Invalid default Profile folder: "..tostring(folderpath))
 	end
 end
+
+function sm_mgr.CheckImageFiles()
+	-- image files can be corrupted sometimes due to whatever reason 
+	if ( FolderExists(sm_mgr.iconpath)) then
+		local files = FolderList(sm_mgr.iconpath)
+		if ( files and type(files) == "table" and #files > 0 ) then
+			for i,k in pairs ( files ) do
+				if ( string.sub(k,-string.len("_tmp"))=="_tmp" or FileSize(sm_mgr.iconpath.."\\"..k) < 100 ) then
+					d("[SkillManager] - Deleting invalid or corrupted image " ..sm_mgr.iconpath.."\\"..k)
+					FileDelete(sm_mgr.iconpath.."\\"..k)
+				end
+			end
+		end
+	end
+end
+
 
 -- Get all SkillSets / Palettes from the local folder
 function sm_mgr.RefreshSkillPalettes()

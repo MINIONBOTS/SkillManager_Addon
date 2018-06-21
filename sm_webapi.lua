@@ -44,7 +44,7 @@ function sm_webapi.Update(Event, ticks)
 					for i,k in pairs (processed) do
 						sm_webapi.queue[k].status = 1
 					end					
-					d("Requesting skill infos for  "..'/v2/skills?ids='..idstring)				
+					--d("Requesting skill infos for  "..'/v2/skills?ids='..idstring)				
 					sm_webapi.ready = false
 				end
 				
@@ -61,7 +61,7 @@ function sm_webapi.Update(Event, ticks)
 							else
 								k.tries = k.tries + 1
 							end
-							d("Requesting skill Icon from  "..tostring(k.url))							
+							--d("Requesting skill Icon from  "..tostring(k.url))							
 							break
 						end
 					end				 
@@ -86,7 +86,7 @@ function sm_webapi.ApiCallback(Event, ID, Data)
 	if (Data and type(Data) == "string" and ID and type(ID) == "string") then
 		--d("Check if it is a skilldata table or the folderpath the image got saved under")		
 		if ( ID == "sm_data_req" ) then			
-			d("sm_webapi.ApiCallback()")
+			--d("[sm_webapi.ApiCallback()] - sm_data_req")
 			local decodedData = sm_webapi.json.decode(Data)
 			if (decodedData and type(decodedData) == "table") then
 				if ( not decodedData.id ) then -- the result table has multiple entries
@@ -98,7 +98,7 @@ function sm_webapi.ApiCallback(Event, ID, Data)
 						end
 					end
 				else
-					d("Icon for "..tostring(decodedData.id) .. " is "..tostring(decodedData.icon))
+					--d("Icon for "..tostring(decodedData.id) .. " is "..tostring(decodedData.icon))
 					if(decodedData.icon and decodedData.id and sm_webapi.queue[decodedData.id]) then
 						sm_webapi.queue[decodedData.id].status = 2
 						sm_webapi.queue[decodedData.id].url = decodedData.icon
@@ -108,10 +108,15 @@ function sm_webapi.ApiCallback(Event, ID, Data)
 			sm_webapi.ready = true
 		
 		elseif ( ID == "sm_image_req" ) then -- image should be downloaded now
-			d("sm_webapi.ApiCallback()")
+			--d("[sm_webapi.ApiCallback()] - sm_image_req" )
 			for i,k in pairs(sm_webapi.queue) do
 				if (k.status == 3 and k.path and k.path == Data) then
-					d("Sucessfully loaded image, removing it from queue "..tostring(data))
+					if ( FileIsValidImage(k.path) ) then
+						--d("[SkillManager] - Sucessfully loaded image, removing it from queue "..tostring(data))
+					else
+						--d("[SkillManager] - Invalid or corrupted image downloaded, deleting it..")
+						FileDelete(k.path)
+					end
 					sm_webapi.queue[i] = nil
 					sm_webapi.lasttick = sm_webapi.lasttick - 1500
 				end
