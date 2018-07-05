@@ -18,7 +18,7 @@ function sm_mgr.ModuleInit()
 	sm_mgr.CheckImageFiles()
 	sm_mgr.RefreshSkillPalettes()
 end
-RegisterEventHandler("Module.Initalize",sm_mgr.ModuleInit)
+RegisterEventHandler("Module.Initalize",sm_mgr.ModuleInit,"sm_mgr.ModuleInit")
 
 
 -- On first load of all lua modules, if this is an internal module, the functions differ and allow access to the "QuestProfiles" or other EQUALLY NAMED FOLDERS IN ALL ADDONS!!
@@ -142,7 +142,7 @@ function sm_mgr.RefreshProfileFiles()
         end
     end
 end
-RegisterEventHandler("Module.AllInitialized",sm_mgr.RefreshProfileFiles)
+RegisterEventHandler("Module.AllInitialized",sm_mgr.RefreshProfileFiles,"sm_mgr.RefreshProfileFiles")
 
 -- Gets all skill conditions from all "sm_conditions" folders
 function sm_mgr.RefreshConditions()
@@ -168,7 +168,7 @@ function sm_mgr.RefreshConditions()
         end
     end
 end
-RegisterEventHandler("Module.AllInitialized",sm_mgr.RefreshConditions)
+RegisterEventHandler("Module.AllInitialized",sm_mgr.RefreshConditions, "sm_mgr.RefreshConditions")
 
 
 -- Load the default/last used SM profile for our profession
@@ -372,7 +372,7 @@ function sm_mgr.DrawMenu(event,ticks)
 		sm_mgr.profile:Cast()
 	end
 end
-RegisterEventHandler("Gameloop.Draw", sm_mgr.DrawMenu)
+RegisterEventHandler("Gameloop.Draw", sm_mgr.DrawMenu,"sm_mgr.DrawMenu")
 
 function sm_mgr:AddSkillPalette( palette )
 	if ( not sm_mgr.skillpalettes[0] ) then 
@@ -412,7 +412,7 @@ function SkillManager.PlayerIsInteracting()
 		sm_mgr.profile.temp.interactionstart = ml_global_information.Now + 500
 	end
 end
-RegisterEventHandler("Gameloop.Interact",SkillManager.PlayerIsInteracting)
+RegisterEventHandler("Gameloop.Interact",SkillManager.PlayerIsInteracting,"SkillManager.PlayerIsInteracting")
 
 function SkillManager:CreateSkillPalette(name)
 	if (string.valid(name)) then
@@ -658,4 +658,4 @@ function sm_mgr.sethelper.DrawMenu(event,ticks)
 		GUI:End()
 	end
 end
-RegisterEventHandler("Gameloop.Draw", sm_mgr.sethelper.DrawMenu)
+RegisterEventHandler("Gameloop.Draw", sm_mgr.sethelper.DrawMenu,"sm_mgr.sethelper.DrawMenu")

@@ -79,7 +79,7 @@ function sm_webapi.Update(Event, ticks)
 	end
 end
 
-RegisterEventHandler("Gameloop.Update",sm_webapi.Update)
+RegisterEventHandler("Gameloop.Update",sm_webapi.Update,"sm_webapi.Update")
 
 -- API callback eventhandler.
 function sm_webapi.ApiCallback(Event, ID, Data)
@@ -125,4 +125,4 @@ function sm_webapi.ApiCallback(Event, ID, Data)
 		end
 	end
 end
-RegisterEventHandler("API.Callback",sm_webapi.ApiCallback)
+RegisterEventHandler("API.Callback",sm_webapi.ApiCallback,"sm_webapi.ApiCallback")
