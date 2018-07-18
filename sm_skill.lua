@@ -448,7 +448,8 @@ function sm_skill:UpdateData(context, iscombo)
 				end
 				
 			else
-				ml_error("[SkillManager] - No Skill Data found for Skill ID "..tostring(self.temp.currentskillid))	
+				local id = self.id or self.oldid
+				ml_warning("[SkillManager] - No Skill Data found for Skill ID "..tostring(id))
 			end
 		end
 		
