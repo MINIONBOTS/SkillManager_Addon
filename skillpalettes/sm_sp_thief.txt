@@ -425,16 +425,16 @@ rifle_freeaction.skills_luacode = {
 		 activationtime = 0.25, 
 		 icon = 'Death\'s Retreat',  
 	 },
-	 -- [40600] = { 
-		 -- slot = GW2.SKILLBARSLOT.Slot_5, 
-		 -- activationtime = 0.5, 
-		 -- icon = 'Kneel',  
-	 -- },
-	 -- [45218] = { 
-		 -- slot = GW2.SKILLBARSLOT.Slot_5, 
-		 -- activationtime = 0.5, 
+	 [40600] = { 
+		  slot = GW2.SKILLBARSLOT.Slot_5, 
+		  activationtime = 0.5, 
+		  icon = 'Kneel',  
+	  },
+	  -- [45218] = { 
+		-- slot = GW2.SKILLBARSLOT.Slot_5, 
+		-- activationtime = 0.5, 
 		 -- icon = 'Sniper's Cover',  
-	 -- },
+	--},
 }
 function rifle_freeaction:IsActive(context)
 	return context.player.alive and (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 41494)
