@@ -16,17 +16,18 @@ function sm_condition_power:Save()
 end
 -- Evaluates the condition, returns "true" / "false"
 function sm_condition_power:Evaluate(skill,context)
-	if ( context.player) then		
-		local mp = context.player.power		
-		if ( type(mp) == "number" ) then						
-			if ( self.operator == 1 ) then return mp < self.value 
-			elseif ( self.operator == 2 ) then return mp <= self.value 
-			elseif ( self.operator == 3 ) then return mp == self.value 
+	if ( context.player) then
+		local mp = context.player.power
+		if ( type(mp) == "number" ) then
+			if ( self.operator == 1 ) then return mp < self.value
+			elseif ( self.operator == 2 ) then return mp <= self.value
+			elseif ( self.operator == 3 ) then return mp == self.value
 			elseif ( self.operator == 4 ) then return mp >= self.value
 			elseif ( self.operator == 5 ) then return mp > self.value
 			end
 		end
 	end
+	return false
 end
 -- Renders the condition data into UI, for "presentation" in the SkillManager's Condition Builder. Returns "true" when stuff changed, for saving
 function sm_condition_power:Render(id) -- need to pass an index value here, for the unique IDs used by imgui	

@@ -22,21 +22,16 @@ function sm_condition_aggro:Evaluate(skill,context)
 	-- context.attack_target	(== "Enemy")
 	-- context.heal_target	(== "Friend")
 	local t
-	if ( self.target == 1 ) then 
+	if ( self.target == 1 ) then
 		t = context.attack_target
 	elseif ( self.target == 2 ) then
 		t = context.player
 	elseif ( self.target == 3 ) then
 		t = context.heal_target
 	end
-	if ( t ) then
-		local value = t.isaggro				
-		if ( self.operator == 1 ) then return value == true
-		elseif ( self.operator == 2 ) then return value == false
-		end
-		return false
-	end
-	return false
+
+	local hasaggro = t and t.isaggro
+	return self.operator == 1 and hasaggro or	self.operator == 2 and not hasaggro
 end
 function sm_condition_aggro:Render(id) -- need to pass an index value here, for the unique IDs used by imgui	
 	local modified
