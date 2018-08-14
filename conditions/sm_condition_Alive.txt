@@ -22,12 +22,8 @@ function sm_condition_combatstate:Evaluate(skill,context)
 	elseif ( self.target == 3 and context.heal_target ) then
 		state = context.heal_target.alive
 	end
-	if (state~=nil) then
-		if ( self.operator == 1 ) then return state == true
-		elseif ( self.operator == 2 ) then return state == false
-		end		
-	end
-	return false
+	local isalive = state~=nil;
+	return self.operator == 1 and isalive or self.operator == 2 and not isalive
 end
 -- Renders the condition data into UI, for "presentation" in the SkillManager's Condition Builder. Returns "true" when stuff changed, for saving
 function sm_condition_combatstate:Render(id) -- need to pass an index value here, for the unique IDs used by imgui	

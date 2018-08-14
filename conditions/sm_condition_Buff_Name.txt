@@ -77,23 +77,24 @@ function sm_condition_buff:Evaluate(skill,context)
 	-- context.attack_target	(== "Enemy")
 	-- context.heal_target	(== "Friend")
 	local t
-	if ( self.target == 1 ) then 
+	if ( self.target == 1 ) then
 		t = context.attack_target
 	elseif ( self.target == 2 ) then
 		t = context.player
 	elseif ( self.target == 3 ) then
 		t = context.heal_target
 	end
-		
-	if ( t ) then	
-		local buffs = t.buffs		
-		if ( buffs ) then			
-			if ( self.operator == 1 ) then return buffs[self.buffid] ~= nil
-			elseif ( self.operator == 2 ) then return buffs[self.buffid] == nil
-			end
+
+	local hasbuff = false
+
+	if ( t ) then
+		local buffs = t.buffs
+		if ( buffs ) then
+			hasbuff = buffs[self.buffid] ~= nil
 		end
 	end
-	return false
+
+	return self.operator == 1 and hasbuff or self.operator == 2 and not hasbuff
 end
 
 -- Renders the condition data into UI, for "presentation" in the SkillManager's Condition Builder. Returns "true" when stuff changed, for saving
