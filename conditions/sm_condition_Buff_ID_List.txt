@@ -48,7 +48,8 @@ function sm_condition_buffid:Evaluate(skill,context)
 			else
 				-- contains all of the buff ids
 				hasbuffs = true
-				for buffid in split(self.buffids, "%s*,") do
+				local buffIDsWithoutSpaces = string.gsub(self.buffids, "%s+", "")
+				for buffid in split(buffIDsWithoutSpaces, ",") do
 					local foundbuff = false
 					for i,k in pairs ( buffs ) do
 						if (buffid == tostring(i)) then
