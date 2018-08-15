@@ -9,6 +9,12 @@ function sm_condition_buffid:initialize(data)
 	self.target = data.target or 1
 	self.operator = data.operator or 1
 	self.buffids = data.buffids or "743"
+	local inputBuffIdStrs = split(string.gsub(self.buffids, "%s", ""), ",");
+	local inputBuffIds = {}
+	for i,buffIdStr in ipairs(inputBuffIdStrs) do
+		inputBuffIds[i] = tonumber(buffIdStr)
+	end
+	self.buffids_numeric_list = inputBuffIds
 end
 -- Save  the condition data into a table and returns that
 function sm_condition_buffid:Save()
@@ -39,8 +45,9 @@ function sm_condition_buffid:Evaluate(skill,context)
 		local buffs = t.buffs
 		if ( buffs ) then
 			if ( self.operator == 1 or self.operator == 3) then
-				for i,k in pairs ( buffs ) do
-					if ( string.contains(self.buffids, tostring(i)) ) then
+				-- contains at least 1 buff id
+				for buffid in buffs do
+					if (self.buffids_numeric_list[buffid] ~= nil) then
 						hasbuffs = true
 						break
 					end
@@ -48,16 +55,8 @@ function sm_condition_buffid:Evaluate(skill,context)
 			else
 				-- contains all of the buff ids
 				hasbuffs = true
-				local buffIDsWithoutSpaces = string.gsub(self.buffids, "%s+", "")
-				for buffid in split(buffIDsWithoutSpaces, ",") do
-					local foundbuff = false
-					for i,k in pairs ( buffs ) do
-						if (buffid == tostring(i)) then
-							foundbuff = true
-							break
-						end
-					end
-					if (not foundbuff) then
+				for buffid in self.buffids_numeric_list do
+					if (buffs[buffid] == nil) then
 						hasbuffs = false
 						break
 					end
@@ -74,26 +73,26 @@ function sm_condition_buffid:Evaluate(skill,context)
 end
 
 -- Renders the condition data into UI, for "presentation" in the SkillManager's Condition Builder. Returns "true" when stuff changed, for saving
-function sm_condition_buffid:Render(id) -- need to pass an index value here, for the unique IDs used by imgui	
+function sm_condition_buffid:Render(id) -- need to pass an index value here, for the unique IDs used by imgui
 	local modified
 	local changed
 	GUI:PushItemWidth(100)
 	self.target, changed = GUI:Combo("##sm_condition_buffids"..tostring(id),self.target, self.targets)
 	if ( changed ) then modified = true end
-	GUI:PopItemWidth()	
-	
+	GUI:PopItemWidth()
+
 	GUI:PushItemWidth(185)
 	GUI:SameLine()
 	self.operator, changed = GUI:Combo("##sm_condition_buffids2"..tostring(id),self.operator, self.operators)
 	if ( changed ) then modified = true end
 	GUI:PopItemWidth()
-		
+
 	GUI:PushItemWidth(200)
-	GUI:SameLine()	
+	GUI:SameLine()
 	self.buffids, changed = GUI:InputText("##sm_condition_buffids3"..tostring(id),self.buffids, GUI.InputTextFlags_CharsNoBlank)
 	if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("Add BuffIDs in a comma separated list! :  2345, 32244, 8764") ) end
 	if ( changed ) then modified = true end
 	GUI:PopItemWidth()
 	return modified
 end
-SkillManager:AddCondition(sm_condition_buffid) 
+SkillManager:AddCondition(sm_condition_buffid)
