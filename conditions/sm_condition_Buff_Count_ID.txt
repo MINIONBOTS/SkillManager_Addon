@@ -27,29 +27,31 @@ function sm_condition_buffs:Evaluate(skill,context)
 	-- context.attack_target	(== "Enemy")
 	-- context.heal_target	(== "Friend")
 	local t
-	if ( self.target == 1 ) then 
+	if ( self.target == 1 ) then
 		t = context.attack_target
 	elseif ( self.target == 2 ) then
 		t = context.player
 	elseif ( self.target == 3 ) then
 		t = context.heal_target
 	end
-		
-	if ( t ) then	
-		local buffs = t.buffs		
-		if ( buffs ) then	
+	local count = 0
+	if ( t ) then
+		local buffs = t.buffs
+		if ( buffs ) then
 			local entry = buffs[self.buffid]
 			if ( entry ) then
-				local count = entry.stacks
-				if ( self.operator == 1 ) then return count < self.value 
-				elseif ( self.operator == 2 ) then return count <= self.value 
-				elseif ( self.operator == 3 ) then return count == self.value 
-				elseif ( self.operator == 4 ) then return count >= self.value
-				elseif ( self.operator == 5 ) then return count > self.value
-				end
+				count = entry.stacks
 			end
 		end
 	end
+
+	if ( self.operator == 1 ) then return count < self.value
+	elseif ( self.operator == 2 ) then return count <= self.value
+	elseif ( self.operator == 3 ) then return count == self.value
+	elseif ( self.operator == 4 ) then return count >= self.value
+	elseif ( self.operator == 5 ) then return count > self.value
+	end
+
 	return false
 end
 

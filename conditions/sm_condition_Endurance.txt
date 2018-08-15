@@ -27,6 +27,7 @@ function sm_condition_endurance:Evaluate(skill,context)
 			end
 		end
 	end
+	return false
 end
 -- Renders the condition data into UI, for "presentation" in the SkillManager's Condition Builder. Returns "true" when stuff changed, for saving
 function sm_condition_endurance:Render(id) -- need to pass an index value here, for the unique IDs used by imgui	

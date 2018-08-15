@@ -28,35 +28,36 @@ function sm_condition_buffs:Evaluate(skill,context)
 	-- context.attack_target	(== "Enemy")
 	-- context.heal_target	(== "Friend")
 	local t
-	if ( self.target == 1 ) then 
+	if ( self.target == 1 ) then
 		t = context.attack_target
 	elseif ( self.target == 2 ) then
 		t = context.player
 	elseif ( self.target == 3 ) then
 		t = context.heal_target
 	end
-		
-	if ( t ) then	
-		local buffs = t.buffs		
-		if ( buffs ) then	
-			local count = 0
+
+	local count = 0
+
+	if ( t ) then
+		local buffs = t.buffs
+		if ( buffs ) then
 			if (self.bufftype == 1) then count = self:CountBuffsInList(ml_global_information.BoonsEnum, buffs)
 			elseif (self.bufftype == 2) then count = self:CountBuffsInList(ml_global_information.ConditionsEnum, buffs)
 			elseif (self.bufftype == 3) then count = self:CountBuffsInList(ml_global_information.SpeedBoons, buffs)
 			elseif (self.bufftype == 4) then count = self:CountBuffsInList(ml_global_information.SlowConditions, buffs)
 			elseif (self.bufftype == 5) then count = self:CountBuffsInList(ml_global_information.ImmobilizeConditions, buffs)
 			end
-			
-			if ( self.operator == 1 ) then return count < self.value 
-			elseif ( self.operator == 2 ) then return count <= self.value 
-			elseif ( self.operator == 3 ) then return count == self.value 
-			elseif ( self.operator == 4 ) then return count >= self.value
-			elseif ( self.operator == 5 ) then return count > self.value
-			end
-		else
-			return false
 		end
-	end	
+	end
+
+	if ( self.operator == 1 ) then return count < self.value
+	elseif ( self.operator == 2 ) then return count <= self.value
+	elseif ( self.operator == 3 ) then return count == self.value
+	elseif ( self.operator == 4 ) then return count >= self.value
+	elseif ( self.operator == 5 ) then return count > self.value
+	end
+
+	return false
 end
 --Helper func
 function sm_condition_buffs:CountBuffsInList(listtocheckagainst,buffs)

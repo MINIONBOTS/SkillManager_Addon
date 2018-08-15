@@ -158,16 +158,10 @@ set.uid = "Revenant_Sword_Offhand"
 set.profession = GW2.CHARCLASS.Revenant
 set.icon = "Sword"
 set.skills_luacode = {
- [28571] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_4, 
-	 activationtime = 2.25, 
-	 icon = 'Duelists Preparation',  
- },
-  [28472] = { 
+ [28472] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_4, 
 	 activationtime = 0.5, 
-	 icon = 'Shackling Wave',
-	 parent = 28571,
+	 icon = 'Shackling Wave'
  },
  [27074] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_5, 
