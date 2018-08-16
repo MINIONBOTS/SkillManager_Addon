@@ -1,3 +1,6 @@
+-- Import minionlib's string extensions
+local string = _G["string"]
+
 -- Single Custom Buff ID check condition
 local sm_condition_buffid = class('Buff (ID-List)', sm_condition)
 sm_condition_buffid.uid = "Buff (ID-List)"
@@ -9,9 +12,9 @@ function sm_condition_buffid:initialize(data)
 	self.target = data.target or 1
 	self.operator = data.operator or 1
 	self.buffids = data.buffids or "743"
-	local inputBuffIdStrs = split(string.gsub(self.buffids, "%s", ""), ",");
+	local inputBuffIdStrs = string.split(self.buffids, ",") -- returns an iterator
 	local inputBuffIds = {}
-	for i,buffIdStr in ipairs(inputBuffIdStrs) do
+	for i,buffIdStr in inputBuffIdStrs do
 		inputBuffIds[i] = tonumber(buffIdStr)
 	end
 	self.buffids_numeric_list = inputBuffIds
