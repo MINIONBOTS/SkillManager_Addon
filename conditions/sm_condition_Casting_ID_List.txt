@@ -1,3 +1,6 @@
+-- Import minionlib's string extensions
+local string = _G["string"]
+
 -- Entities_In_Range check condition
 local sm_condition_entitycount = class('Casting (ID-List)', sm_condition)
 sm_condition_entitycount.uid = "Casting (ID-List)"
@@ -5,9 +8,9 @@ sm_condition_entitycount.targets = { [1] = GetString("Target"), [2] = GetString(
 function sm_condition_entitycount:initialize(data)
 	self.target = data.target or 1
 	self.skillids = data.skillids or "1"
-	local inputSkillIdStrs = split(string.gsub(self.skillids, "%s", ""), ",")
+	local inputSkillIdStrs = string.split(self.skillids, ",") -- returns an iterator
 	local inputSkillIds = {}
-	for i,skillIdStr in ipairs(inputSkillIdStrs) do
+	for i,skillIdStr in inputSkillIdStrs do
 		inputSkillIds[i] = tonumber(skillIdStr)
 	end
 	self.skillids_numeric_list = inputSkillIds

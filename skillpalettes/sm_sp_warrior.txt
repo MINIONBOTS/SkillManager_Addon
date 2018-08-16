@@ -865,7 +865,7 @@ function set:CanActivate(context)
 end
 function set:Activate(context)
 	if ( context.skillbar~=nil ) then
-		if (context.skillbar[GW2.SKILLBARSLOT.Slot_10]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_10].id == 30792) then Player:CastSpell(GW2.SKILLBARSLOT.Slot_10) end
+		if (context.skillbar[GW2.SKILLBARSLOT.Slot_10]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_10].id == 14483) then Player:CastSpell(GW2.SKILLBARSLOT.Slot_10) end
 	end
 end
 function set:Deactivate(context)
