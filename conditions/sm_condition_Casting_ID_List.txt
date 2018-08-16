@@ -10,8 +10,8 @@ function sm_condition_entitycount:initialize(data)
 	self.skillids = data.skillids or "1"
 	local inputSkillIdStrs = string.split(self.skillids, ",") -- returns an iterator
 	local inputSkillIds = {}
-	for i,skillIdStr in inputSkillIdStrs do
-		inputSkillIds[i] = tonumber(skillIdStr)
+	for skillIdStr in inputSkillIdStrs do
+		inputSkillIds[tonumber(skillIdStr)] = skillIdStr
 	end
 	self.skillids_numeric_list = inputSkillIds
 end
