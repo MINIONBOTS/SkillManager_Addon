@@ -14,10 +14,10 @@ function sm_condition_buffid:initialize(data)
 	self.buffids = data.buffids or "743"
 	local inputBuffIdStrs = string.split(self.buffids, ",") -- returns an iterator
 	local inputBuffIds = {}
-	for i,buffIdStr in inputBuffIdStrs do
-		inputBuffIds[i] = tonumber(buffIdStr)
+	for buffIdStr in inputBuffIdStrs do
+		inputBuffIds[tonumber(buffIdStr)] = buffIdStr
 	end
-	self.buffids_numeric_list = inputBuffIds
+	self.buffids_numeric = inputBuffIds
 end
 -- Save  the condition data into a table and returns that
 function sm_condition_buffid:Save()
@@ -49,8 +49,8 @@ function sm_condition_buffid:Evaluate(skill,context)
 		if ( buffs ) then
 			if ( self.operator == 1 or self.operator == 3) then
 				-- contains at least 1 buff id
-				for buffid in buffs do
-					if (self.buffids_numeric_list[buffid] ~= nil) then
+				for buffid,_ in pairs(buffs) do
+					if (self.buffids_numeric[buffid] ~= nil) then
 						hasbuffs = true
 						break
 					end
@@ -58,7 +58,7 @@ function sm_condition_buffid:Evaluate(skill,context)
 			else
 				-- contains all of the buff ids
 				hasbuffs = true
-				for buffid in self.buffids_numeric_list do
+				for buffid,_ in pairs(self.buffids_numeric) do
 					if (buffs[buffid] == nil) then
 						hasbuffs = false
 						break
