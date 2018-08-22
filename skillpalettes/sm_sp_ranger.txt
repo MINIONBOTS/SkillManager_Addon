@@ -69,7 +69,7 @@ set.skills_luacode = {
  },
 }
 function set:IsActive(context)
-	return context.player.alive and (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2]~=nil  and (context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 12525 or context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == [46629)	)
+	return context.player.alive and (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2]~=nil  and (context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 12525 or context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 46629)	)
 end
 function set:CanActivate(context)
 	return context.player.alive and context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.mainhand == GW2.WEAPONTYPE.Greatsword or context.player.mainhand_alt == GW2.WEAPONTYPE.Greatsword) and (context.player.weaponset == 4 or context.player.weaponset == 5) and (context.player.transformid == 0 or context.player.transformid == 10 or context.player.transformid == 12)
