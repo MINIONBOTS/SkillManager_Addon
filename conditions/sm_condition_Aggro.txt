@@ -31,16 +31,16 @@ function sm_condition_aggro:Evaluate(skill,context)
 	end
 
 	local hasaggro = t and t.isaggro
-	return self.operator == 1 and hasaggro or	self.operator == 2 and not hasaggro
+	return self.operator == 1 and hasaggro or self.operator == 2 and not hasaggro
 end
-function sm_condition_aggro:Render(id) -- need to pass an index value here, for the unique IDs used by imgui	
+function sm_condition_aggro:Render(id) -- need to pass an index value here, for the unique IDs used by imgui
 	local modified
 	local changed
 	GUI:PushItemWidth(100)
 	self.target, changed = GUI:Combo("##sm_condition_aggro"..tostring(id),self.target, self.targets)
 	if ( changed ) then modified = true end
-	GUI:PopItemWidth()	
-	
+	GUI:PopItemWidth()
+
 	GUI:PushItemWidth(100)
 	GUI:SameLine()
 	self.operator, changed = GUI:Combo("##sm_condition_aggro_2"..tostring(id),self.operator, self.operators)
@@ -48,4 +48,4 @@ function sm_condition_aggro:Render(id) -- need to pass an index value here, for 
 	GUI:PopItemWidth()
 	return modified
 end
-SkillManager:AddCondition(sm_condition_aggro) 
+SkillManager:AddCondition(sm_condition_aggro)
