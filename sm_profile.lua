@@ -355,7 +355,7 @@ function sm_profile:Cast()
 										
 					if( (cancastnormal or action.instantcast) and action:IsCastTargetValid()) then
 						if ( not action.skillpalette:IsActive(self.temp.context)) then
-							if ( Settings.SkillManager.weaponswapmode and Settings.SkillManager.weaponswapmode == 1 ) then
+							if ( self.weaponswapmode and self.weaponswapmode == 1 ) then
 								local deactivated
 								for uid, sp in pairs (sm_mgr.profile.temp.activeskillpalettes) do
 									if ( action.skillpalette.uid ~= uid ) then
@@ -508,7 +508,7 @@ function sm_profile:Render()
 	GUI:AlignFirstTextHeightToWidgets()
 	GUI:Text(GetString("Swap Weapons:")) if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("'Automatic'- Automatically switches Weapons/Kits/Stances. 'Manual'-You switch Weapons/Kits/Stances.")) end
 	GUI:SameLine(150)
-	Settings.SkillManager.weaponswapmode, changed = GUI:Combo("##smweaponswapmode",Settings.SkillManager.weaponswapmode or 1, { [1] = GetString("Automatic"), [2] = GetString("Manual"), })
+	self.weaponswapmode, changed = GUI:Combo("##smweaponswapmode",self.weaponswapmode or 1, { [1] = GetString("Automatic"), [2] = GetString("Manual"), })
 	if ( changed ) then self.temp.modified = true end
 	
 	GUI:AlignFirstTextHeightToWidgets()
@@ -649,9 +649,3 @@ function sm_profile:RenderCodeEditor()
 		end
 	end
 end
-
-
-
-
-
-
