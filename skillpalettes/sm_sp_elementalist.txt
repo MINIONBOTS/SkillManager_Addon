@@ -652,9 +652,9 @@ set.skills_luacode = {
  },
  [51711] = {
 	 slot = GW2.SKILLBARSLOT.Slot_5,
-	 parent = 5678
+	 parent = 5678,
 	 activationtime = 0.5,
-	 icon = 'Transmute Fire',
+	 icon = 'Transmute Fire'
  }
 }
 function set:IsActive(context)

@@ -19,10 +19,7 @@ function sm_profile:initialize(profiledata)
 		["Thief.sm"]=true,
 		["Warrior.sm"]=true
 	}
-	self.temp.isdefaultprofile = default_profiles[self.temp.filename] ~= nil
-	self.temp.weaponswapmode = self.temp.isdefaultprofile and Settings.SkillManager.weaponswapmode or self.weaponswapmode
-	self.temp.fightrangetype = self.temp.isdefaultprofile and Settings.SkillManager.fightrangetype or self.fightrangetype
-	self.temp.networklatency = self.temp.isdefaultprofile and Settings.SkillManager.networklatency or self.networklatency
+
 
 	for i,k in pairs(profiledata) do
 		if ( i ~= "actionlist" ) then
@@ -40,6 +37,11 @@ function sm_profile:initialize(profiledata)
 			end
 		end
 	end
+
+	self.temp.isdefaultprofile = default_profiles[profiledata.temp.filename]
+	self.temp.weaponswapmode = self.temp.isdefaultprofile and Settings.SkillManager.weaponswapmode or self.weaponswapmode
+	self.temp.fightrangetype = self.temp.isdefaultprofile and Settings.SkillManager.fightrangetype or self.fightrangetype
+	self.temp.networklatency = self.temp.isdefaultprofile and Settings.SkillManager.networklatency or self.networklatency
 end
 
 function sm_profile:Save()
@@ -517,8 +519,10 @@ function sm_profile:Render()
 	GUI:SameLine(150)
 	if (self.temp.isdefaultprofile) then
 		Settings.SkillManager.fightrangetype, changed = GUI:Combo("##smfightrangetype",Settings.SkillManager.fightrangetype or 1, { [1] = GetString("Dynamic"), [2] = GetString("Custom"), })
+		self.temp.fightrangetype = Settings.SkillManager.fightrangetype
 	else
 		self.fightrangetype, changed = GUI:Combo("##smfightrangetype",self.fightrangetype or 1, { [1] = GetString("Dynamic"), [2] = GetString("Custom"), })
+		self.temp.fightrangetype = self.fightrangetype
 	end
 	if ( changed ) then self.temp.modified = true end
 
@@ -536,8 +540,10 @@ function sm_profile:Render()
 	GUI:SameLine(150)
 	if (self.temp.isdefaultprofile) then
 		Settings.SkillManager.weaponswapmode, changed = GUI:Combo("##smweaponswapmode",Settings.SkillManager.weaponswapmode or 1, { [1] = GetString("Automatic"), [2] = GetString("Manual"), })
+		self.temp.weaponswapmode = Settings.SkillManager.weaponswapmode
 	else
 		self.weaponswapmode, changed = GUI:Combo("##smweaponswapmode",self.weaponswapmode or 1, { [1] = GetString("Automatic"), [2] = GetString("Manual"), })
+		self.temp.weaponswapmode = self.weaponswapmode
 	end
 	if ( changed ) then self.temp.modified = true end
 
@@ -546,8 +552,10 @@ function sm_profile:Render()
 	GUI:SameLine(150)
 	if (self.temp.isdefaultprofile) then
 		Settings.SkillManager.networklatency, changed = GUI:SliderInt("##swnetworklatency", Settings.SkillManager.networklatency or 0, 0, 1000)
+		self.temp.networklatency = Settings.SkillManager.networklatency
 	else
 		self.networklatency, changed = GUI:SliderInt("##swnetworklatency", self.networklatency or 0, 0, 1000)
+		self.temp.networklatency = self.networklatency
 	end
 	if ( changed ) then self.temp.modified = true end
 	GUI:PopItemWidth()
