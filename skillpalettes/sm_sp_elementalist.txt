@@ -5,29 +5,29 @@ set.uid = "Elementalist_Staff_Fire"
 set.profession = GW2.CHARCLASS.Elementalist
 set.icon = "Staff"
 set.skills_luacode = {
-[5491] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_1, 
-	 activationtime = 1.0, 
-	 icon = 'Fireball',  
+[5491] = {
+	 slot = GW2.SKILLBARSLOT.Slot_1,
+	 activationtime = 1.0,
+	 icon = 'Fireball',
  },
- [5548] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_2, 
-	 activationtime = 0.5, 
-	 icon = 'Lava Font',  
+ [5548] = {
+	 slot = GW2.SKILLBARSLOT.Slot_2,
+	 activationtime = 0.5,
+	 icon = 'Lava Font',
  },
- [5679] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_3, 
-	 activationtime = 0.5, 
-	 icon = 'Flame Burst',  
+ [5679] = {
+	 slot = GW2.SKILLBARSLOT.Slot_3,
+	 activationtime = 0.5,
+	 icon = 'Flame Burst',
  },
- [5680] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_4, 
-	 activationtime = 0.5, 
-	 icon = 'Burning Retreat',  
+ [5680] = {
+	 slot = GW2.SKILLBARSLOT.Slot_4,
+	 activationtime = 0.5,
+	 icon = 'Burning Retreat',
  },
- [5501] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_5, 
-	 activationtime = 3.75, 
+ [5501] = {
+	 slot = GW2.SKILLBARSLOT.Slot_5,
+	 activationtime = 3.75,
 	 icon = 'Meteor Shower',
  },
 }
@@ -53,30 +53,30 @@ set.uid = "Elementalist_Staff_Water"
 set.profession = GW2.CHARCLASS.Elementalist
 set.icon = "Staff"
 set.skills_luacode = {
-[5549] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_1, 
-	 activationtime = 0.75, 
-	 icon = 'Water Blast',  
+[5549] = {
+	 slot = GW2.SKILLBARSLOT.Slot_1,
+	 activationtime = 0.75,
+	 icon = 'Water Blast',
  },
- [5550] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_2, 
-	 activationtime = 0.75, 
-	 icon = 'Ice Spike',  
+ [5550] = {
+	 slot = GW2.SKILLBARSLOT.Slot_2,
+	 activationtime = 0.75,
+	 icon = 'Ice Spike',
  },
- [5681] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_3, 
-	 activationtime = 0.75, 
-	 icon = 'Geyser',  
+ [5681] = {
+	 slot = GW2.SKILLBARSLOT.Slot_3,
+	 activationtime = 0.75,
+	 icon = 'Geyser',
  },
- [5515] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_4, 
-	 activationtime = 0.5, 
-	 icon = 'Frozen Ground',  
+ [5515] = {
+	 slot = GW2.SKILLBARSLOT.Slot_4,
+	 activationtime = 0.5,
+	 icon = 'Frozen Ground',
  },
- [5551] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_5, 
-	 activationtime = 1.0, 
-	 icon = 'Healing Rain',  
+ [5551] = {
+	 slot = GW2.SKILLBARSLOT.Slot_5,
+	 activationtime = 1.0,
+	 icon = 'Healing Rain',
  },
 }
 function set:IsActive(context)
@@ -101,30 +101,30 @@ set.uid = "Elementalist_Staff_Air"
 set.profession = GW2.CHARCLASS.Elementalist
 set.icon = "Staff"
 set.skills_luacode = {
-[5518] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_1, 
-	 activationtime = 0.75, 
-	 icon = 'Chain Lightning',  
+[5518] = {
+	 slot = GW2.SKILLBARSLOT.Slot_1,
+	 activationtime = 0.75,
+	 icon = 'Chain Lightning',
  },
- [5552] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_2, 
-	 activationtime = 1.0, 
-	 icon = 'Lightning Surge',  
+ [5552] = {
+	 slot = GW2.SKILLBARSLOT.Slot_2,
+	 activationtime = 1.0,
+	 icon = 'Lightning Surge',
  },
- [5553] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_3, 
-	 activationtime = 0.25, 
-	 icon = 'Gust',  
+ [5553] = {
+	 slot = GW2.SKILLBARSLOT.Slot_3,
+	 activationtime = 0.25,
+	 icon = 'Gust',
  },
- [5682] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_4, 
-	 activationtime = 0.25, 
-	 icon = 'Windborne Speed',  
+ [5682] = {
+	 slot = GW2.SKILLBARSLOT.Slot_4,
+	 activationtime = 0.25,
+	 icon = 'Windborne Speed',
  },
- [5671] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_5, 
-	 activationtime = 0.75, 
-	 icon = 'Static Field',  
+ [5671] = {
+	 slot = GW2.SKILLBARSLOT.Slot_5,
+	 activationtime = 0.75,
+	 icon = 'Static Field',
  },
 }
 function set:IsActive(context)
@@ -149,30 +149,30 @@ set.uid = "Elementalist_Staff_Earth"
 set.profession = GW2.CHARCLASS.Elementalist
 set.icon = "Staff"
 set.skills_luacode = {
-[5519] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_1, 
-	 activationtime = 0.75, 
-	 icon = 'Stoning',  
+[5519] = {
+	 slot = GW2.SKILLBARSLOT.Slot_1,
+	 activationtime = 0.75,
+	 icon = 'Stoning',
  },
- [5528] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_2, 
-	 activationtime = 1.25, 
-	 icon = 'Eruption',  
+ [5528] = {
+	 slot = GW2.SKILLBARSLOT.Slot_2,
+	 activationtime = 1.25,
+	 icon = 'Eruption',
  },
- [5685] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_3, 
-	 activationtime = 0.5, 
-	 icon = 'Magnetic Aura',  
+ [5685] = {
+	 slot = GW2.SKILLBARSLOT.Slot_3,
+	 activationtime = 0.5,
+	 icon = 'Magnetic Aura',
  },
- [5683] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_4, 
-	 activationtime = 0.25, 
-	 icon = 'Unsteady Ground',  
+ [5683] = {
+	 slot = GW2.SKILLBARSLOT.Slot_4,
+	 activationtime = 0.25,
+	 icon = 'Unsteady Ground',
  },
- [5686] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_5, 
-	 activationtime = 0.75, 
-	 icon = 'Shock Wave',  
+ [5686] = {
+	 slot = GW2.SKILLBARSLOT.Slot_5,
+	 activationtime = 0.75,
+	 icon = 'Shock Wave',
  },
 }
 function set:IsActive(context)
@@ -197,20 +197,20 @@ set.uid = "Elementalist_Scepter_Fire"
 set.profession = GW2.CHARCLASS.Elementalist
 set.icon = "Scepter"
 set.skills_luacode = {
-[5508] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_1, 
-	 activationtime = 1.0, 
-	 icon = 'Flamestrike',  
+[5508] = {
+	 slot = GW2.SKILLBARSLOT.Slot_1,
+	 activationtime = 1.0,
+	 icon = 'Flamestrike',
  },
- [5692] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_2, 
-	 activationtime = 1.0, 
-	 icon = 'Dragons Tooth',  
+ [5692] = {
+	 slot = GW2.SKILLBARSLOT.Slot_2,
+	 activationtime = 1.0,
+	 icon = 'Dragon\'s Tooth',
  },
- [5675] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_3, 
-	 activationtime = 0.25, 
-	 icon = 'Phoenix',  
+ [5675] = {
+	 slot = GW2.SKILLBARSLOT.Slot_3,
+	 activationtime = 0.25,
+	 icon = 'Phoenix',
  },
 }
 function set:IsActive(context)
@@ -235,20 +235,20 @@ set.uid = "Elementalist_Scepter_Water"
 set.profession = GW2.CHARCLASS.Elementalist
 set.icon = "Scepter"
 set.skills_luacode = {
-[5693] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_1, 
-	 activationtime = 0.75, 
-	 icon = 'Ice Shards',  
+[5693] = {
+	 slot = GW2.SKILLBARSLOT.Slot_1,
+	 activationtime = 0.75,
+	 icon = 'Ice Shards',
  },
- [5538] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_2, 
-	 activationtime = 0.5, 
-	 icon = 'Shatterstone',  
+ [5538] = {
+	 slot = GW2.SKILLBARSLOT.Slot_2,
+	 activationtime = 0.5,
+	 icon = 'Shatterstone',
  },
- [5510] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_3, 
-	 activationtime = 0.5, 
-	 icon = 'Water Trident',  
+ [5510] = {
+	 slot = GW2.SKILLBARSLOT.Slot_3,
+	 activationtime = 0.5,
+	 icon = 'Water Trident',
  },
 }
 function set:IsActive(context)
@@ -273,20 +273,20 @@ set.uid = "Elementalist_Scepter_Air"
 set.profession = GW2.CHARCLASS.Elementalist
 set.icon = "Scepter"
 set.skills_luacode = {
-[5526] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_1, 
-	 activationtime = 3.5, 
-	 icon = 'Arc Lightning',  
+[5526] = {
+	 slot = GW2.SKILLBARSLOT.Slot_1,
+	 activationtime = 3.5,
+	 icon = 'Arc Lightning',
  },
- [5561] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_2, 
-	 activationtime = 0.5, 
-	 icon = 'Lightning Strike',  
+ [5561] = {
+	 slot = GW2.SKILLBARSLOT.Slot_2,
+	 activationtime = 0.0,
+	 icon = 'Lightning Strike',
  },
- [5694] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_3, 
-	 activationtime = 0.5, 
-	 icon = 'Blinding Flash',  
+ [5694] = {
+	 slot = GW2.SKILLBARSLOT.Slot_3,
+	 activationtime = 0.0,
+	 icon = 'Blinding Flash',
  },
 }
 function set:IsActive(context)
@@ -311,26 +311,26 @@ set.uid = "Elementalist_Scepter_Earth"
 set.profession = GW2.CHARCLASS.Elementalist
 set.icon = "Scepter"
 set.skills_luacode = {
-[5500] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_1, 
-	 activationtime = 1.5, 
-	 icon = 'Stone Shards',  
+[5500] = {
+	 slot = GW2.SKILLBARSLOT.Slot_1,
+	 activationtime = 1.5,
+	 icon = 'Stone Shards',
  },
- [5695] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_2, 
-	 activationtime = 1.0, 
-	 icon = 'Rock Barrier',  
+ [5695] = {
+	 slot = GW2.SKILLBARSLOT.Slot_2,
+	 activationtime = 1.0,
+	 icon = 'Rock Barrier',
  },
-  [5780] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_2, 
-	 activationtime = 0.5, 
-	 icon = 'Hurl',  
+  [5780] = {
+	 slot = GW2.SKILLBARSLOT.Slot_2,
+	 activationtime = 0.0,
+	 icon = 'Hurl',
 	 parent = 5695,
  },
- [5696] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_3, 
-	 activationtime = 0.5, 
-	 icon = 'Dust Devil',  
+ [5696] = {
+	 slot = GW2.SKILLBARSLOT.Slot_3,
+	 activationtime = 0.0,
+	 icon = 'Dust Devil',
  },
 }
 function set:IsActive(context)
@@ -355,20 +355,20 @@ set.uid = "Elementalist_Dagger_Fire"
 set.profession = GW2.CHARCLASS.Elementalist
 set.icon = "Dagger"
 set.skills_luacode = {
-[15718] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_1, 
-	 activationtime = 0.5, 
-	 icon = 'Dragons Claw',  
+[15718] = {
+	 slot = GW2.SKILLBARSLOT.Slot_1,
+	 activationtime = 0.5,
+	 icon = 'Dragons Claw',
  },
- [5496] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_2, 
-	 activationtime = 2.25, 
-	 icon = 'Drakes Breath',  
+ [5496] = {
+	 slot = GW2.SKILLBARSLOT.Slot_2,
+	 activationtime = 2.25,
+	 icon = 'Drakes Breath',
  },
- [5644] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_3, 
-	 activationtime = 0.75, 
-	 icon = 'Burning Speed',  
+ [5644] = {
+	 slot = GW2.SKILLBARSLOT.Slot_3,
+	 activationtime = 0.75,
+	 icon = 'Burning Speed',
  },
 }
 function set:IsActive(context)
@@ -393,20 +393,20 @@ set.uid = "Elementalist_Dagger_Water"
 set.profession = GW2.CHARCLASS.Elementalist
 set.icon = "Dagger"
 set.skills_luacode = {
-[15716] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_1, 
-	 activationtime = 0.5, 
-	 icon = 'Vapor Blade',  
+[15716] = {
+	 slot = GW2.SKILLBARSLOT.Slot_1,
+	 activationtime = 0.5,
+	 icon = 'Vapor Blade',
  },
- [5537] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_2, 
-	 activationtime = 2.25, 
-	 icon = 'Cone of Cold',  
+ [5537] = {
+	 slot = GW2.SKILLBARSLOT.Slot_2,
+	 activationtime = 2.25,
+	 icon = 'Cone of Cold',
  },
- [5487] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_3, 
-	 activationtime = 0.25, 
-	 icon = 'Frozen Burst',  
+ [5487] = {
+	 slot = GW2.SKILLBARSLOT.Slot_3,
+	 activationtime = 0.25,
+	 icon = 'Frozen Burst',
  },
 }
 function set:IsActive(context)
@@ -431,19 +431,19 @@ set.uid = "Elementalist_Dagger_Air"
 set.profession = GW2.CHARCLASS.Elementalist
 set.icon = "Dagger"
 set.skills_luacode = {
-[5489] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_1, 
-	 activationtime = 0.75, 
-	 icon = 'Lightning Whip',  
+[5489] = {
+	 slot = GW2.SKILLBARSLOT.Slot_1,
+	 activationtime = 0.75,
+	 icon = 'Lightning Whip',
  },
- [5646] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_2, 
-	 activationtime = 0.75, 
-	 icon = 'Lightning Touch',  
+ [5646] = {
+	 slot = GW2.SKILLBARSLOT.Slot_2,
+	 activationtime = 0.75,
+	 icon = 'Lightning Touch',
  },
- [5527] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_3, 
-	 activationtime = 0.5, 
+ [5527] = {
+	 slot = GW2.SKILLBARSLOT.Slot_3,
+	 activationtime = 0.5,
 	 icon = 'Shocking Aura',
 	 instantcast = true,
  },
@@ -470,20 +470,20 @@ set.uid = "Elementalist_Dagger_Earth"
 set.profession = GW2.CHARCLASS.Elementalist
 set.icon = "Dagger"
 set.skills_luacode = {
-[15717] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_1, 
-	 activationtime = 0.75, 
-	 icon = 'Impale',  
+[15717] = {
+	 slot = GW2.SKILLBARSLOT.Slot_1,
+	 activationtime = 0.75,
+	 icon = 'Impale',
  },
- [5525] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_2, 
-	 activationtime = 0.75, 
-	 icon = 'Ring of Earth',  
+ [5525] = {
+	 slot = GW2.SKILLBARSLOT.Slot_2,
+	 activationtime = 0.75,
+	 icon = 'Ring of Earth',
  },
- [5559] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_3, 
-	 activationtime = 0.5, 
-	 icon = 'Magnetic Grasp',  
+ [5559] = {
+	 slot = GW2.SKILLBARSLOT.Slot_3,
+	 activationtime = 0.5,
+	 icon = 'Magnetic Grasp',
  },
 }
 function set:IsActive(context)
@@ -508,15 +508,15 @@ set.uid = "Elementalist_Dagger_Offhand_Fire"
 set.profession = GW2.CHARCLASS.Elementalist
 set.icon = "Dagger"
 set.skills_luacode = {
-[5691] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_4, 
-	 activationtime = 0.25, 
-	 icon = 'Ring of Fire',  
+[5691] = {
+	 slot = GW2.SKILLBARSLOT.Slot_4,
+	 activationtime = 0.25,
+	 icon = 'Ring of Fire',
  },
- [5557] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_5, 
-	 activationtime = 0.75, 
-	 icon = 'Fire Grab',  
+ [5557] = {
+	 slot = GW2.SKILLBARSLOT.Slot_5,
+	 activationtime = 0.75,
+	 icon = 'Fire Grab',
  },
 }
 function set:IsActive(context)
@@ -541,15 +541,15 @@ set.uid = "Elementalist_Dagger_Offhand_Water"
 set.profession = GW2.CHARCLASS.Elementalist
 set.icon = "Dagger"
 set.skills_luacode = {
-[5520] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_4, 
-	 activationtime = 0.5, 
-	 icon = 'Frost Aura',	 
+[5520] = {
+	 slot = GW2.SKILLBARSLOT.Slot_4,
+	 activationtime = 0.5,
+	 icon = 'Frost Aura',
  },
- [5558] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_5, 
-	 activationtime = 0.75, 
-	 icon = 'Cleansing Wave',  
+ [5558] = {
+	 slot = GW2.SKILLBARSLOT.Slot_5,
+	 activationtime = 0.75,
+	 icon = 'Cleansing Wave',
  },
 }
 function set:IsActive(context)
@@ -574,15 +574,15 @@ set.uid = "Elementalist_Dagger_Offhand_Air"
 set.profession = GW2.CHARCLASS.Elementalist
 set.icon = "Dagger"
 set.skills_luacode = {
-[5529] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_4, 
-	 activationtime = 0.5, 
-	 icon = 'Ride the Lightning',  
+[5529] = {
+	 slot = GW2.SKILLBARSLOT.Slot_4,
+	 activationtime = 0.5,
+	 icon = 'Ride the Lightning',
  },
- [5687] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_5, 
-	 activationtime = 0.5, 
-	 icon = 'Updraft',  
+ [5687] = {
+	 slot = GW2.SKILLBARSLOT.Slot_5,
+	 activationtime = 0.5,
+	 icon = 'Updraft',
  },
 }
 function set:IsActive(context)
@@ -607,15 +607,15 @@ set.uid = "Elementalist_Dagger_Offhand_Earth"
 set.profession = GW2.CHARCLASS.Elementalist
 set.icon = "Dagger"
 set.skills_luacode = {
-[5690] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_4, 
-	 activationtime = 0.5, 
-	 icon = 'Earthquake',  
+[5690] = {
+	 slot = GW2.SKILLBARSLOT.Slot_4,
+	 activationtime = 0.5,
+	 icon = 'Earthquake',
  },
- [5522] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_5, 
-	 activationtime = 0.5, 
-	 icon = 'Churning Earth',  
+ [5522] = {
+	 slot = GW2.SKILLBARSLOT.Slot_5,
+	 activationtime = 0.5,
+	 icon = 'Churning Earth',
  },
 }
 function set:IsActive(context)
@@ -640,16 +640,22 @@ set.uid = "Elementalist_Focus_Offhand_Fire"
 set.profession = GW2.CHARCLASS.Elementalist
 set.icon = "Focus"
 set.skills_luacode = {
-[5497] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_4, 
-	 activationtime = 0.75, 
-	 icon = 'Flamewall',  
+[5497] = {
+	 slot = GW2.SKILLBARSLOT.Slot_4,
+	 activationtime = 0.75,
+	 icon = 'Flamewall',
  },
- [5678] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_5, 
-	 activationtime = 0.25, 
-	 icon = 'Fire Shield',  
+ [5678] = {
+	 slot = GW2.SKILLBARSLOT.Slot_5,
+	 activationtime = 0.0,
+	 icon = 'Fire Shield',
  },
+ [51711] = {
+	 slot = GW2.SKILLBARSLOT.Slot_5,
+	 parent = 5678,
+	 activationtime = 0.5,
+	 icon = 'Transmute Fire'
+ }
 }
 function set:IsActive(context)
 	return context.player.alive and context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 5497	and context.player.transformid == 1 and not context.player.isweaver
@@ -673,15 +679,15 @@ set.uid = "Elementalist_Focus_Offhand_Water"
 set.profession = GW2.CHARCLASS.Elementalist
 set.icon = "Focus"
 set.skills_luacode = {
-[5556] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_4, 
-	 activationtime = 0.5, 
-	 icon = 'Freezing Gust',  
+[5556] = {
+	 slot = GW2.SKILLBARSLOT.Slot_4,
+	 activationtime = 0.5,
+	 icon = 'Freezing Gust',
  },
- [5490] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_5, 
-	 activationtime = 0.75, 
-	 icon = 'Comet',  
+ [5490] = {
+	 slot = GW2.SKILLBARSLOT.Slot_5,
+	 activationtime = 0.75,
+	 icon = 'Comet',
  },
 }
 function set:IsActive(context)
@@ -706,15 +712,15 @@ set.uid = "Elementalist_Focus_Offhand_Air"
 set.profession = GW2.CHARCLASS.Elementalist
 set.icon = "Focus"
 set.skills_luacode = {
-[5530] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_4, 
-	 activationtime = 0.5, 
-	 icon = 'Swirling Winds',  
+[5530] = {
+	 slot = GW2.SKILLBARSLOT.Slot_4,
+	 activationtime = 0.5,
+	 icon = 'Swirling Winds',
  },
- [5562] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_5, 
-	 activationtime = 0.75, 
-	 icon = 'Gale',  
+ [5562] = {
+	 slot = GW2.SKILLBARSLOT.Slot_5,
+	 activationtime = 0.75,
+	 icon = 'Gale',
  },
 }
 function set:IsActive(context)
@@ -739,15 +745,15 @@ set.uid = "Elementalist_Focus_Offhand_Earth"
 set.profession = GW2.CHARCLASS.Elementalist
 set.icon = "Focus"
 set.skills_luacode = {
-[5555] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_4, 
-	 activationtime = 0.25, 
-	 icon = 'Magnetic Wave',  
+[5555] = {
+	 slot = GW2.SKILLBARSLOT.Slot_4,
+	 activationtime = 0.0,
+	 icon = 'Magnetic Wave',
  },
- [5521] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_5, 
-	 activationtime = 0.25, 
-	 icon = 'Obsidian Flesh',  
+ [5521] = {
+	 slot = GW2.SKILLBARSLOT.Slot_5,
+	 activationtime = 0.0,
+	 icon = 'Obsidian Flesh',
  },
 }
 function set:IsActive(context)
@@ -772,15 +778,15 @@ set.uid = "Elementalist_Warhorn_Offhand_Fire"
 set.profession = GW2.CHARCLASS.Elementalist
 set.icon = "Warhorn"
 set.skills_luacode = {
-[29548] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_4, 
-	 activationtime = 0.75, 
-	 icon = 'Heat Sync',  
+[29548] = {
+	 slot = GW2.SKILLBARSLOT.Slot_4,
+	 activationtime = 0.75,
+	 icon = 'Heat Sync',
  },
- [29533] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_5, 
-	 activationtime = 0.75, 
-	 icon = 'Wildfire',  
+ [29533] = {
+	 slot = GW2.SKILLBARSLOT.Slot_5,
+	 activationtime = 0.75,
+	 icon = 'Wildfire',
  },
 }
 function set:IsActive(context)
@@ -805,15 +811,15 @@ set.uid = "Elementalist_Warhorn_Offhand_Water"
 set.profession = GW2.CHARCLASS.Elementalist
 set.icon = "Warhorn"
 set.skills_luacode = {
-[30864] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_4, 
-	 activationtime = 0.25, 
-	 icon = 'Tidal Surge',  
+[30864] = {
+	 slot = GW2.SKILLBARSLOT.Slot_4,
+	 activationtime = 0.25,
+	 icon = 'Tidal Surge',
  },
- [30446] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_5, 
-	 activationtime = 0.5, 
-	 icon = 'Water Globe',  
+ [30446] = {
+	 slot = GW2.SKILLBARSLOT.Slot_5,
+	 activationtime = 0.5,
+	 icon = 'Water Globe',
  },
 }
 function set:IsActive(context)
@@ -838,15 +844,15 @@ set.uid = "Elementalist_Warhorn_Offhand_Air"
 set.profession = GW2.CHARCLASS.Elementalist
 set.icon = "Warhorn"
 set.skills_luacode = {
-[30008] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_4, 
-	 activationtime = 1.0, 
-	 icon = 'Cyclone',  
+[30008] = {
+	 slot = GW2.SKILLBARSLOT.Slot_4,
+	 activationtime = 1.0,
+	 icon = 'Cyclone',
  },
- [30795] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_5, 
-	 activationtime = 0.5, 
-	 icon = 'Lightning Orb',  
+ [30795] = {
+	 slot = GW2.SKILLBARSLOT.Slot_5,
+	 activationtime = 0.5,
+	 icon = 'Lightning Orb',
  },
 }
 function set:IsActive(context)
@@ -871,15 +877,15 @@ set.uid = "Elementalist_Warhorn_Offhand_Earth"
 set.profession = GW2.CHARCLASS.Elementalist
 set.icon = "Warhorn"
 set.skills_luacode = {
-[29453] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_4, 
-	 activationtime = 0.75, 
-	 icon = 'Sand Squall',  
+[29453] = {
+	 slot = GW2.SKILLBARSLOT.Slot_4,
+	 activationtime = 0.75,
+	 icon = 'Sand Squall',
  },
- [30336] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_5, 
-	 activationtime = 0.75, 
-	 icon = 'Dust Storm',  
+ [30336] = {
+	 slot = GW2.SKILLBARSLOT.Slot_5,
+	 activationtime = 0.75,
+	 icon = 'Dust Storm',
  },
 }
 function set:IsActive(context)
@@ -904,32 +910,32 @@ set.uid = "Elementalist_Sword_Fire"
 set.profession = GW2.CHARCLASS.Elementalist
 set.icon = "Sword"
 set.skills_luacode = {
-[39964] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_1, 
-	 activationtime = 0.5, 
-	 icon = 'Fire Strike',  
+[39964] = {
+	 slot = GW2.SKILLBARSLOT.Slot_1,
+	 activationtime = 0.5,
+	 icon = 'Fire Strike',
  },
- [40326] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_1, 
-	 activationtime = 0.75, 
-	 icon = 'Fire Swipe',  
+ [40326] = {
+	 slot = GW2.SKILLBARSLOT.Slot_1,
+	 activationtime = 0.75,
+	 icon = 'Fire Swipe',
 	 parent = 39964,
  },
- [43657] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_1, 
-	 activationtime = 0.75, 
-	 icon = 'Searing Slash', 
+ [43657] = {
+	 slot = GW2.SKILLBARSLOT.Slot_1,
+	 activationtime = 0.75,
+	 icon = 'Searing Slash',
 	parent = 40326,
  },
- [45313] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_2, 
-	 activationtime = 0.75, 
-	 icon = 'Flame Uprising',  
+ [45313] = {
+	 slot = GW2.SKILLBARSLOT.Slot_2,
+	 activationtime = 0.75,
+	 icon = 'Flame Uprising',
  },
- [46447] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_3, 
-	 activationtime = 0.75, 
-	 icon = 'Lava Skin',  
+ [46447] = {
+	 slot = GW2.SKILLBARSLOT.Slot_3,
+	 activationtime = 0.75,
+	 icon = 'Lava Skin',
  },
 }
 function set:IsActive(context)
@@ -954,36 +960,36 @@ set.uid = "Elementalist_Sword_Water"
 set.profession = GW2.CHARCLASS.Elementalist
 set.icon = "Sword"
 set.skills_luacode = {
-[41052] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_1, 
-	 activationtime = 0.5, 
-	 icon = 'Seiche',  
+[41052] = {
+	 slot = GW2.SKILLBARSLOT.Slot_1,
+	 activationtime = 0.5,
+	 icon = 'Seiche',
  },
- [45983] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_1, 
-	 activationtime = 0.75, 
-	 icon = 'Clapotis',  
+ [45983] = {
+	 slot = GW2.SKILLBARSLOT.Slot_1,
+	 activationtime = 0.75,
+	 icon = 'Clapotis',
 	 parent = 41052,
  },
- [43199] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_1, 
-	 activationtime = 0.75, 
-	 icon = 'Breaking Wave',  
+ [43199] = {
+	 slot = GW2.SKILLBARSLOT.Slot_1,
+	 activationtime = 0.75,
+	 icon = 'Breaking Wave',
 	 parent = 45983,
  },
- [44405] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_2, 
-	 activationtime = 1.0, 
-	 icon = 'Riptide',  
+ [44405] = {
+	 slot = GW2.SKILLBARSLOT.Slot_2,
+	 activationtime = 1.0,
+	 icon = 'Riptide',
  },
- [42271] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_3, 
-	 activationtime = 0.75, 
-	 icon = 'Twin Strike',  
+ [42271] = {
+	 slot = GW2.SKILLBARSLOT.Slot_3,
+	 activationtime = 0.75,
+	 icon = 'Twin Strike',
  },
 }
 function set:IsActive(context)
-	return context.player.alive and context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 44405	and context.player.transformid == 2 
+	return context.player.alive and context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 44405	and context.player.transformid == 2
 end
 function set:CanActivate(context)
 	return context.player.alive and context.player.swimming == GW2.SWIMSTATE.NotInWater and context.player.mainhand == GW2.WEAPONTYPE.Sword and context.player.weaponset == 4 and context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_14] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_14].id == 5493 and context.skillbar[GW2.SKILLBARSLOT.Slot_14].cancast
@@ -1004,36 +1010,36 @@ set.uid = "Elementalist_Sword_Air"
 set.profession = GW2.CHARCLASS.Elementalist
 set.icon = "Sword"
 set.skills_luacode = {
-[44681] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_1, 
-	 activationtime = 0.5, 
-	 icon = 'Charged Strike',  
+[44681] = {
+	 slot = GW2.SKILLBARSLOT.Slot_1,
+	 activationtime = 0.5,
+	 icon = 'Charged Strike',
  },
- [45259] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_1, 
-	 activationtime = 0.75, 
-	 icon = 'Polaric Slash',  
+ [45259] = {
+	 slot = GW2.SKILLBARSLOT.Slot_1,
+	 activationtime = 0.75,
+	 icon = 'Polaric Slash',
 	 parent = 44681,
  },
- [45216] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_1, 
-	 activationtime = 0.75, 
-	 icon = 'Call Lightning',  
+ [45216] = {
+	 slot = GW2.SKILLBARSLOT.Slot_1,
+	 activationtime = 0.75,
+	 icon = 'Call Lightning',
 	 parent = 45259,
  },
- [44998] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_2, 
-	 activationtime = 0.5, 
-	 icon = 'Polaric Leap',  
+ [44998] = {
+	 slot = GW2.SKILLBARSLOT.Slot_2,
+	 activationtime = 0.5,
+	 icon = 'Polaric Leap',
  },
- [42867] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_3, 
-	 activationtime = 0.75, 
-	 icon = 'Shearing Edge',  
+ [42867] = {
+	 slot = GW2.SKILLBARSLOT.Slot_3,
+	 activationtime = 0.75,
+	 icon = 'Shearing Edge',
  },
 }
 function set:IsActive(context)
-	return context.player.alive and context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 44998	and context.player.transformid == 3 
+	return context.player.alive and context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 44998	and context.player.transformid == 3
 end
 function set:CanActivate(context)
 	return context.player.alive and context.player.swimming == GW2.SWIMSTATE.NotInWater and context.player.mainhand == GW2.WEAPONTYPE.Sword and context.player.weaponset == 4 and context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_15] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_15].id == 5494 and context.skillbar[GW2.SKILLBARSLOT.Slot_15].cancast
@@ -1054,36 +1060,36 @@ set.uid = "Elementalist_Sword_Earth"
 set.profession = GW2.CHARCLASS.Elementalist
 set.icon = "Sword"
 set.skills_luacode = {
-[43616] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_1, 
-	 activationtime = 0.5, 
-	 icon = 'Crystal Slash',  
+[43616] = {
+	 slot = GW2.SKILLBARSLOT.Slot_1,
+	 activationtime = 0.5,
+	 icon = 'Crystal Slash',
  },
- [43080] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_1, 
-	 activationtime = 0.5, 
-	 icon = 'Crystalline Strike', 
+ [43080] = {
+	 slot = GW2.SKILLBARSLOT.Slot_1,
+	 activationtime = 0.5,
+	 icon = 'Crystalline Strike',
 	 parent = 43616,
  },
- [46024] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_1, 
-	 activationtime = 0.5, 
-	 icon = 'Crystalline Sunder',  
+ [46024] = {
+	 slot = GW2.SKILLBARSLOT.Slot_1,
+	 activationtime = 0.5,
+	 icon = 'Crystalline Sunder',
 	 parent = 46024,
  },
- [40709] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_2, 
-	 activationtime = 0.5, 
-	 icon = 'Earthen Vortex',  
+ [40709] = {
+	 slot = GW2.SKILLBARSLOT.Slot_2,
+	 activationtime = 0.5,
+	 icon = 'Earthen Vortex',
  },
- [46295] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_3, 
-	 activationtime = 0.5, 
-	 icon = 'Gale Strike',  
+ [46295] = {
+	 slot = GW2.SKILLBARSLOT.Slot_3,
+	 activationtime = 0.5,
+	 icon = 'Gale Strike',
  },
 }
 function set:IsActive(context)
-	return context.player.alive and context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 40709	and context.player.transformid == 4 
+	return context.player.alive and context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 40709	and context.player.transformid == 4
 end
 function set:CanActivate(context)
 	return context.player.alive and context.player.swimming == GW2.SWIMSTATE.NotInWater and context.player.mainhand == GW2.WEAPONTYPE.Sword and context.player.weaponset == 4 and context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_16] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_16].id == 5495 and context.skillbar[GW2.SKILLBARSLOT.Slot_16].cancast
@@ -1104,30 +1110,30 @@ set.uid = "Elementalist_Trident_Fire"
 set.profession = GW2.CHARCLASS.Elementalist
 set.icon = "Trident"
 set.skills_luacode = {
-[5598] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_1, 
-	 activationtime = 0.5, 
-	 icon = 'Magma Orb',  
+[5598] = {
+	 slot = GW2.SKILLBARSLOT.Slot_1,
+	 activationtime = 0.5,
+	 icon = 'Magma Orb',
  },
- [5597] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_2, 
-	 activationtime = 0.5, 
-	 icon = 'Boil',  
+ [5597] = {
+	 slot = GW2.SKILLBARSLOT.Slot_2,
+	 activationtime = 0.5,
+	 icon = 'Boil',
  },
- [5566] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_3, 
-	 activationtime = 0.5, 
-	 icon = 'Steam',  
+ [5566] = {
+	 slot = GW2.SKILLBARSLOT.Slot_3,
+	 activationtime = 0.5,
+	 icon = 'Steam',
  },
- [5599] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_4, 
-	 activationtime = 0.5, 
-	 icon = 'Lava Chains',  
+ [5599] = {
+	 slot = GW2.SKILLBARSLOT.Slot_4,
+	 activationtime = 0.5,
+	 icon = 'Lava Chains',
  },
- [5600] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_5, 
-	 activationtime = 1.0, 
-	 icon = 'Heat Wave',  
+ [5600] = {
+	 slot = GW2.SKILLBARSLOT.Slot_5,
+	 activationtime = 1.0,
+	 icon = 'Heat Wave',
  },
 }
 function set:IsActive(context)
@@ -1152,34 +1158,34 @@ set.uid = "Elementalist_Trident_Water"
 set.profession = GW2.CHARCLASS.Elementalist
 set.icon = "Trident"
 set.skills_luacode = {
-[5604] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_1, 
-	 activationtime = 0.5, 
-	 icon = 'Water Missile',  
+[5604] = {
+	 slot = GW2.SKILLBARSLOT.Slot_1,
+	 activationtime = 0.5,
+	 icon = 'Water Missile',
  },
- [5605] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_2, 
-	 activationtime = 0.5, 
-	 icon = 'Ice Globe',  
+ [5605] = {
+	 slot = GW2.SKILLBARSLOT.Slot_2,
+	 activationtime = 0.5,
+	 icon = 'Ice Globe',
  },
- [5606] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_3, 
-	 activationtime = 0.5, 
-	 icon = 'Ice Wall',  
+ [5606] = {
+	 slot = GW2.SKILLBARSLOT.Slot_3,
+	 activationtime = 0.5,
+	 icon = 'Ice Wall',
  },
- [5748] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_4, 
-	 activationtime = 1.25, 
-	 icon = 'Undercurrent',  
+ [5748] = {
+	 slot = GW2.SKILLBARSLOT.Slot_4,
+	 activationtime = 1.25,
+	 icon = 'Undercurrent',
  },
- [5607] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_5, 
-	 activationtime = 1.75, 
-	 icon = 'Tidal Wave',  
+ [5607] = {
+	 slot = GW2.SKILLBARSLOT.Slot_5,
+	 activationtime = 1.75,
+	 icon = 'Tidal Wave',
  },
 }
 function set:IsActive(context)
-	return context.player.alive and context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 5604	and context.player.transformid == 2 
+	return context.player.alive and context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 5604	and context.player.transformid == 2
 end
 function set:CanActivate(context)
 	return context.player.alive and context.player.swimming == GW2.SWIMSTATE.Diving and context.player.aquatic == GW2.WEAPONTYPE.Trident and context.player.weaponset == 0 and context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_14] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_14].id == 5493 and context.skillbar[GW2.SKILLBARSLOT.Slot_14].cancast
@@ -1200,34 +1206,34 @@ set.uid = "Elementalist_Trident_Air"
 set.profession = GW2.CHARCLASS.Elementalist
 set.icon = "Trident"
 set.skills_luacode = {
-[5656] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_1, 
-	 activationtime = 0.5, 
-	 icon = 'Forked Lightning',  
+[5656] = {
+	 slot = GW2.SKILLBARSLOT.Slot_1,
+	 activationtime = 0.5,
+	 icon = 'Forked Lightning',
  },
- [5655] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_2, 
-	 activationtime = 0.5, 
-	 icon = 'Electrocute',  
+ [5655] = {
+	 slot = GW2.SKILLBARSLOT.Slot_2,
+	 activationtime = 0.5,
+	 icon = 'Electrocute',
  },
- [5652] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_3, 
-	 activationtime = 0.5, 
-	 icon = 'Air Pocket',  
+ [5652] = {
+	 slot = GW2.SKILLBARSLOT.Slot_3,
+	 activationtime = 0.5,
+	 icon = 'Air Pocket',
  },
- [5648] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_4, 
-	 activationtime = 1.0, 
-	 icon = 'Air Bubble',  
+ [5648] = {
+	 slot = GW2.SKILLBARSLOT.Slot_4,
+	 activationtime = 1.0,
+	 icon = 'Air Bubble',
  },
- [5650] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_5, 
-	 activationtime = 0.5, 
-	 icon = 'Lightning Cage',  
+ [5650] = {
+	 slot = GW2.SKILLBARSLOT.Slot_5,
+	 activationtime = 0.5,
+	 icon = 'Lightning Cage',
  },
 }
 function set:IsActive(context)
-	return context.player.alive and context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 5655	and context.player.transformid == 3 
+	return context.player.alive and context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 5655	and context.player.transformid == 3
 end
 function set:CanActivate(context)
 	return context.player.alive and context.player.swimming == GW2.SWIMSTATE.Diving and context.player.aquatic == GW2.WEAPONTYPE.Trident and context.player.weaponset == 0 and context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_15] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_15].id == 5494 and context.skillbar[GW2.SKILLBARSLOT.Slot_15].cancast
@@ -1248,34 +1254,34 @@ set.uid = "Elementalist_Trident_Earth"
 set.profession = GW2.CHARCLASS.Elementalist
 set.icon = "Trident"
 set.skills_luacode = {
-[5657] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_1, 
-	 activationtime = 0.5, 
-	 icon = 'Rock Blade',  
+[5657] = {
+	 slot = GW2.SKILLBARSLOT.Slot_1,
+	 activationtime = 0.5,
+	 icon = 'Rock Blade',
  },
- [5658] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_2, 
-	 activationtime = 0.5, 
-	 icon = 'Rock Spray',  
+ [5658] = {
+	 slot = GW2.SKILLBARSLOT.Slot_2,
+	 activationtime = 0.5,
+	 icon = 'Rock Spray',
  },
- [5662] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_3, 
-	 activationtime = 0.5, 
-	 icon = 'Magnetic Current',  
+ [5662] = {
+	 slot = GW2.SKILLBARSLOT.Slot_3,
+	 activationtime = 0.5,
+	 icon = 'Magnetic Current',
  },
- [5659] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_4, 
-	 activationtime = 1.0, 
-	 icon = 'Rock Anchor',  
+ [5659] = {
+	 slot = GW2.SKILLBARSLOT.Slot_4,
+	 activationtime = 1.0,
+	 icon = 'Rock Anchor',
  },
- [5661] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_5, 
-	 activationtime = 1.25, 
-	 icon = 'Murky Water',  
+ [5661] = {
+	 slot = GW2.SKILLBARSLOT.Slot_5,
+	 activationtime = 1.25,
+	 icon = 'Murky Water',
  },
 }
 function set:IsActive(context)
-	return context.player.alive and context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 5658	and context.player.transformid == 4 
+	return context.player.alive and context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 5658	and context.player.transformid == 4
 end
 function set:CanActivate(context)
 	return context.player.alive and context.player.swimming == GW2.SWIMSTATE.Diving and context.player.aquatic == GW2.WEAPONTYPE.Trident and context.player.weaponset == 0 and context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_16] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_16].id == 5495 and context.skillbar[GW2.SKILLBARSLOT.Slot_16].cancast
@@ -1297,36 +1303,36 @@ downed.uid = "Elementalist_Downed"
 downed.profession = GW2.CHARCLASS.Elementalist
 downed.icon = "Bandage"
 downed.skills_luacode = {
-[5504] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_1, 
-	 activationtime = 0.5, 
-	 icon = 'Discharge Lightning',  
+[5504] = {
+	 slot = GW2.SKILLBARSLOT.Slot_1,
+	 activationtime = 0.5,
+	 icon = 'Discharge Lightning',
  },
- [5564] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_2, 
-	 activationtime = 0.25, 
-	 icon = 'Vapor Form',  
+ [5564] = {
+	 slot = GW2.SKILLBARSLOT.Slot_2,
+	 activationtime = 0.25,
+	 icon = 'Vapor Form',
  },
- [5505] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_3, 
-	 activationtime =3.5, 
-	 icon = 'Grasping Earth',  
+ [5505] = {
+	 slot = GW2.SKILLBARSLOT.Slot_3,
+	 activationtime =3.5,
+	 icon = 'Grasping Earth',
  },
- [1175] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_4, 
-	 activationtime = 1.5, 
-	 icon = 'Bandage',  
+ [1175] = {
+	 slot = GW2.SKILLBARSLOT.Slot_4,
+	 activationtime = 1.5,
+	 icon = 'Bandage',
  },
 }
 function downed:IsActive(context)
-	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 5504)	
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 5504)
 end
 function downed:CanActivate(context)
 	return false
 end
 function downed:Activate(context)
 end
-function downed:Deactivate(context)	
+function downed:Deactivate(context)
 	return false
 end
 SkillManager:AddSkillPalette( downed )
@@ -1337,29 +1343,29 @@ drowning.uid = "Elementalist_Drowning"
 drowning.profession = GW2.CHARCLASS.Elementalist
 drowning.icon = "Vengeance"
 drowning.skills_luacode = {
-[5608] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_1, 
-	 activationtime = 0.5, 
-	 icon = 'Water Fist',  
+[5608] = {
+	 slot = GW2.SKILLBARSLOT.Slot_1,
+	 activationtime = 0.5,
+	 icon = 'Water Fist',
  },
- [5609] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_2, 
-	 activationtime = 0.75, 
-	 icon = 'Stone Kick',  
+ [5609] = {
+	 slot = GW2.SKILLBARSLOT.Slot_2,
+	 activationtime = 0.75,
+	 icon = 'Stone Kick',
  },
- [5610] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_3, 
-	 activationtime = 3.0, 
-	 icon = 'Steam Vent',  
+ [5610] = {
+	 slot = GW2.SKILLBARSLOT.Slot_3,
+	 activationtime = 3.0,
+	 icon = 'Steam Vent',
  },
- [1175] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_4, 
+ [1175] = {
+	 slot = GW2.SKILLBARSLOT.Slot_4,
 	 activationtime = 1.0 ,
-	 icon = 'Bandage',  
+	 icon = 'Bandage',
  },
 }
 function drowning:IsActive(context)
-	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 5608)	
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 5608)
 end
 function drowning:CanActivate(context)
 	return false
@@ -1379,442 +1385,442 @@ set.uid = "Elementalist"
 set.profession = GW2.CHARCLASS.Elementalist
 set.icon = "Elementalist"
 set.skills_luacode = {
-[5503] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_6, 
-	 activationtime = 1.0, 
-	 icon = 'Signet of Restoration',  
+[5503] = {
+	 slot = GW2.SKILLBARSLOT.Slot_6,
+	 activationtime = 1.0,
+	 icon = 'Signet of Restoration',
  },
-[21656] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_6, 
-	 activationtime = 0.75, 
-	 icon = 'Arcane Brilliance',  
+[21656] = {
+	 slot = GW2.SKILLBARSLOT.Slot_6,
+	 activationtime = 0.75,
+	 icon = 'Arcane Brilliance',
  },
-[5507] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_6, 
-	 activationtime = 2.75, 
-	 icon = 'Ether Renewal',  
+[5507] = {
+	 slot = GW2.SKILLBARSLOT.Slot_6,
+	 activationtime = 2.75,
+	 icon = 'Ether Renewal',
  },
- [34609] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_6, 
-	 activationtime = 1.0, 
-	 icon = 'Glyph of Elemental Harmony',  
- }, 
- [34743] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_6, 
-	 activationtime = 1.0, 
-	 icon = 'Glyph of Elemental Harmony',  
+ [34609] = {
+	 slot = GW2.SKILLBARSLOT.Slot_6,
+	 activationtime = 1.0,
+	 icon = 'Glyph of Elemental Harmony',
  },
- [34651] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_6, 
-	 activationtime = 1.0, 
-	 icon = 'Glyph of Elemental Harmony',  
+ [34743] = {
+	 slot = GW2.SKILLBARSLOT.Slot_6,
+	 activationtime = 1.0,
+	 icon = 'Glyph of Elemental Harmony',
  },
- [34724] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_6, 
-	 activationtime = 1.0, 
-	 icon = 'Glyph of Elemental Harmony',  
+ [34651] = {
+	 slot = GW2.SKILLBARSLOT.Slot_6,
+	 activationtime = 1.0,
+	 icon = 'Glyph of Elemental Harmony',
  },
-  [5539] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_7, 
-	 activationtime = 0.0, 
-	 icon = 'Arcane Blast', 
+ [34724] = {
+	 slot = GW2.SKILLBARSLOT.Slot_6,
+	 activationtime = 1.0,
+	 icon = 'Glyph of Elemental Harmony',
+ },
+  [5539] = {
+	 slot = GW2.SKILLBARSLOT.Slot_7,
+	 activationtime = 0.0,
+	 icon = 'Arcane Blast',
 	 instantcast = true,
  },
- [5635] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_8, 
-	 activationtime = 0.0, 
-	 icon = 'Arcane Power',  
+ [5635] = {
+	 slot = GW2.SKILLBARSLOT.Slot_8,
+	 activationtime = 0.0,
+	 icon = 'Arcane Power',
 	 instantcast = true,
  },
- [5641] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_9, 
-	 activationtime = 0.0, 
-	 icon = 'Arcane Shield',  
+ [5641] = {
+	 slot = GW2.SKILLBARSLOT.Slot_9,
+	 activationtime = 0.0,
+	 icon = 'Arcane Shield',
 	 instantcast = true,
  },
- [25489] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_10, 
-	 activationtime = 1.25, 
-	 icon = 'Glyph of Elementals',  
+ [25489] = {
+	 slot = GW2.SKILLBARSLOT.Slot_10,
+	 activationtime = 1.25,
+	 icon = 'Glyph of Elementals',
  },
-  [5638] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_7, 
-	 activationtime = 0.0, 
-	 icon = 'Arcane Wave', 
+  [5638] = {
+	 slot = GW2.SKILLBARSLOT.Slot_7,
+	 activationtime = 0.0,
+	 icon = 'Arcane Wave',
 		instantcast = true,
  },
- [5639] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_8, 
-	 activationtime = 0.0, 
+ [5639] = {
+	 slot = GW2.SKILLBARSLOT.Slot_8,
+	 activationtime = 0.0,
 	 icon = 'Armor of Earth',
 	 instantcast = true,
 },
- [5536] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_9, 
-	 activationtime = 0.0, 
+ [5536] = {
+	 slot = GW2.SKILLBARSLOT.Slot_9,
+	 activationtime = 0.0,
 	 icon = 'Lightning Flash',
 	 instantcast = true,
  },
- [5516] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_10, 
-	 activationtime = 1.0, 
-	 icon = 'Conjure Fiery Greatsword',  
+ [5516] = {
+	 slot = GW2.SKILLBARSLOT.Slot_10,
+	 activationtime = 1.0,
+	 icon = 'Conjure Fiery Greatsword',
  },
-  [5554] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_7, 
-	 activationtime = 0.0, 
+  [5554] = {
+	 slot = GW2.SKILLBARSLOT.Slot_7,
+	 activationtime = 0.0,
 	 icon = 'Mist Form',
 	 instantcast = true,
  },
- [5546] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_8, 
-	 activationtime = 0.75, 
-	 icon = 'Conjure Earth Shield',  
+ [5546] = {
+	 slot = GW2.SKILLBARSLOT.Slot_8,
+	 activationtime = 0.75,
+	 icon = 'Conjure Earth Shield',
  },
- [5540] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_9, 
-	 activationtime = 0.25, 
-	 icon = 'Conjure Flame Axe',  
+ [5540] = {
+	 slot = GW2.SKILLBARSLOT.Slot_9,
+	 activationtime = 0.25,
+	 icon = 'Conjure Flame Axe',
  },
- [5534] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_10, 
-	 activationtime = 1.0, 
-	 icon = 'Tornado',  
+ [5534] = {
+	 slot = GW2.SKILLBARSLOT.Slot_10,
+	 activationtime = 1.0,
+	 icon = 'Tornado',
  },
-  [5567] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_7, 
-	 activationtime = 0.25, 
-	 icon = 'Conjure Frost Bow',  
+  [5567] = {
+	 slot = GW2.SKILLBARSLOT.Slot_7,
+	 activationtime = 0.25,
+	 icon = 'Conjure Frost Bow',
  },
- [5624] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_8, 
-	 activationtime = 0.75, 
-	 icon = 'Conjure Lightning Hammer',  
+ [5624] = {
+	 slot = GW2.SKILLBARSLOT.Slot_8,
+	 activationtime = 0.75,
+	 icon = 'Conjure Lightning Hammer',
  },
- [34714] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_9, 
-	 activationtime = 0.0, 
+ [34714] = {
+	 slot = GW2.SKILLBARSLOT.Slot_9,
+	 activationtime = 0.0,
 	 icon = 'Glyph of Elemental Power',
 	 instantcast = true,
  },
-  [25497] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_7, 
-	 activationtime = 1.25, 
-	 icon = 'Glyph of Lesser Elementals',  
+  [25497] = {
+	 slot = GW2.SKILLBARSLOT.Slot_7,
+	 activationtime = 1.25,
+	 icon = 'Glyph of Lesser Elementals',
  },
- [5761] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_8, 
-	 activationtime = 3.25, 
-	 icon = 'Renewal of Earth',  
+ [5761] = {
+	 slot = GW2.SKILLBARSLOT.Slot_8,
+	 activationtime = 3.25,
+	 icon = 'Renewal of Earth',
  },
- [5738] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_9, 
-	 activationtime = 1.25, 
-	 icon = 'Sandstorm',  
+ [5738] = {
+	 slot = GW2.SKILLBARSLOT.Slot_9,
+	 activationtime = 1.25,
+	 icon = 'Sandstorm',
  },
-  [5572] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_7, 
-	 activationtime = 0.0, 
+  [5572] = {
+	 slot = GW2.SKILLBARSLOT.Slot_7,
+	 activationtime = 0.0,
 	 icon = 'Signet of Air',
 	 instantcast = true,
  },
- [5571] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_8, 
-	 activationtime = 0.5, 
-	 icon = 'Signet of Earth',  
+ [5571] = {
+	 slot = GW2.SKILLBARSLOT.Slot_8,
+	 activationtime = 0.5,
+	 icon = 'Signet of Earth',
  },
- [5542] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_9, 
-	 activationtime = 0.5, 
-	 icon = 'Signet of Fire',  
+ [5542] = {
+	 slot = GW2.SKILLBARSLOT.Slot_9,
+	 activationtime = 0.5,
+	 icon = 'Signet of Fire',
  },
-  [5570] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_9, 
-	 activationtime = 0.5, 
-	 icon = 'Signet of Water',  
+  [5570] = {
+	 slot = GW2.SKILLBARSLOT.Slot_9,
+	 activationtime = 0.5,
+	 icon = 'Signet of Water',
  },
- [29535] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_6, 
-	 activationtime = 1.5, 
-	 icon = 'Wash the Pain Away!',  
+ [29535] = {
+	 slot = GW2.SKILLBARSLOT.Slot_6,
+	 activationtime = 1.5,
+	 icon = 'Wash the Pain Away!',
  },
- [30662] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_7, 
-	 activationtime = 0.0, 
-	 icon = 'Feel the Burn!', 
+ [30662] = {
+	 slot = GW2.SKILLBARSLOT.Slot_7,
+	 activationtime = 0.0,
+	 icon = 'Feel the Burn!',
 	 instantcast = true,
  },
- [30047] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_8, 
-	 activationtime = 0.0, 
+ [30047] = {
+	 slot = GW2.SKILLBARSLOT.Slot_8,
+	 activationtime = 0.0,
 	 icon = 'Eye of the Storm!',
 	 instantcast = true,
  },
- [30432] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_9, 
-	 activationtime = 0.25, 
-	 icon = 'Aftershock!',  
+ [30432] = {
+	 slot = GW2.SKILLBARSLOT.Slot_9,
+	 activationtime = 0.25,
+	 icon = 'Aftershock!',
  },
- [29968] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_10, 
-	 activationtime = 0.25, 
-	 icon = 'Rebound!',  
+ [29968] = {
+	 slot = GW2.SKILLBARSLOT.Slot_10,
+	 activationtime = 0.25,
+	 icon = 'Rebound!',
  },
-  [29948] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_9, 
-	 activationtime = 0.25, 
-	 icon = 'Flash-Freeze!',  
+  [29948] = {
+	 slot = GW2.SKILLBARSLOT.Slot_9,
+	 activationtime = 0.25,
+	 icon = 'Flash-Freeze!',
  },
-  [29618] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_16, 
-	 activationtime = 4.0, 
-	 icon = 'Overload Earth',  
+  [29618] = {
+	 slot = GW2.SKILLBARSLOT.Slot_16,
+	 activationtime = 4.0,
+	 icon = 'Overload Earth',
  },
-  [29719] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_15, 
-	 activationtime = 4.0, 
-	 icon = 'Overload Air',  
+  [29719] = {
+	 slot = GW2.SKILLBARSLOT.Slot_15,
+	 activationtime = 4.0,
+	 icon = 'Overload Air',
  },
-  [29415] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_14, 
-	 activationtime = 4.0, 
-	 icon = 'Overload Water',  
+  [29415] = {
+	 slot = GW2.SKILLBARSLOT.Slot_14,
+	 activationtime = 4.0,
+	 icon = 'Overload Water',
  },
- [29706] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_13, 
-	 activationtime = 4.0, 
-	 icon = 'Overload Fire',  
+ [29706] = {
+	 slot = GW2.SKILLBARSLOT.Slot_13,
+	 activationtime = 4.0,
+	 icon = 'Overload Fire',
  },
- [44239] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_6, 
-	 activationtime = 0.75, 
+ [44239] = {
+	 slot = GW2.SKILLBARSLOT.Slot_6,
+	 activationtime = 0.75,
 	 icon = 'Aquatic Stance',
 	 nounderwater = true,
  },
- [40183] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_7, 
-	 activationtime = 0.5, 
+ [40183] = {
+	 slot = GW2.SKILLBARSLOT.Slot_7,
+	 activationtime = 0.5,
 	 icon = 'Primordial Stance',
 	 instantcast = true,
  },
- [44926] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_8, 
-	 activationtime = 0.5, 
+ [44926] = {
+	 slot = GW2.SKILLBARSLOT.Slot_8,
+	 activationtime = 0.5,
 	 icon = 'Stone Resonance',
 	 instantcast = true,
  },
- [44612] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_9, 
-	 activationtime = 0.5, 
-	 icon = 'Unravel', 
+ [44612] = {
+	 slot = GW2.SKILLBARSLOT.Slot_9,
+	 activationtime = 0.5,
+	 icon = 'Unravel',
 	 instantcast = true,
  },
- [43638] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_10, 
-	 activationtime = 0.75, 
-	 icon = 'Weave Self',  
+ [43638] = {
+	 slot = GW2.SKILLBARSLOT.Slot_10,
+	 activationtime = 0.75,
+	 icon = 'Weave Self',
  },
-  [45746] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_9, 
-	 activationtime = 1.0, 
+  [45746] = {
+	 slot = GW2.SKILLBARSLOT.Slot_9,
+	 activationtime = 1.0,
 	 icon = 'Twist of Fate',
 	nounderwater = true,
  },
-  [5492] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_13, 
-	 activationtime = 0.0, 
+  [5492] = {
+	 slot = GW2.SKILLBARSLOT.Slot_13,
+	 activationtime = 0.0,
 	 icon = 'Fire Attunement',
 	 instantcast = true,
  },
-  [5493] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_14, 
-	 activationtime = 0.0, 
+  [5493] = {
+	 slot = GW2.SKILLBARSLOT.Slot_14,
+	 activationtime = 0.0,
 	 icon = 'Water Attunement',
 	 instantcast = true,
  },
-  [5494] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_15, 
-	 activationtime = 0.0, 
+  [5494] = {
+	 slot = GW2.SKILLBARSLOT.Slot_15,
+	 activationtime = 0.0,
 	 icon = 'Air Attunement',
 	 instantcast = true,
  },
-   [5495] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_16, 
-	 activationtime = 0.0, 
+   [5495] = {
+	 slot = GW2.SKILLBARSLOT.Slot_16,
+	 activationtime = 0.0,
 	 icon = 'Earth Attunement',
 	 instantcast = true,
  },
-  [34736] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_7, 
-	 activationtime = 0.5, 
+  [34736] = {
+	 slot = GW2.SKILLBARSLOT.Slot_7,
+	 activationtime = 0.5,
 	 icon = 'Glyph of Elemental Power',
 	 instantcast = true,
  },
- [5736] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_8, 
-	 activationtime = 1.25, 
-	 icon = 'Firestorm',  
+ [5736] = {
+	 slot = GW2.SKILLBARSLOT.Slot_8,
+	 activationtime = 1.25,
+	 icon = 'Firestorm',
 	 nounderwater = true,
  },
- [25486] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_9, 
-	 activationtime = 1.25, 
-	 icon = 'Glyph of Lesser Elementals', 
+ [25486] = {
+	 slot = GW2.SKILLBARSLOT.Slot_9,
+	 activationtime = 1.25,
+	 icon = 'Glyph of Lesser Elementals',
 	 nounderwater = true,
  },
- [25488] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_10, 
-	 activationtime = 1.2, 
-	 icon = 'Glyph of Elementals',  
+ [25488] = {
+	 slot = GW2.SKILLBARSLOT.Slot_10,
+	 activationtime = 1.2,
+	 icon = 'Glyph of Elementals',
 	 nounderwater = true,
  },
-  [34772] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_7, 
-	 activationtime = 0.5, 
+  [34772] = {
+	 slot = GW2.SKILLBARSLOT.Slot_7,
+	 activationtime = 0.5,
 	 icon = 'Glyph of Elemental Power',
 	  instantcast = true,
  },
- [5735] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_8, 
-	 activationtime = 1.25, 
+ [5735] = {
+	 slot = GW2.SKILLBARSLOT.Slot_8,
+	 activationtime = 1.25,
 	 icon = 'Ice Storm',
 	 nounderwater = true,
  },
- [25487] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_9, 
-	 activationtime = 1.25, 
+ [25487] = {
+	 slot = GW2.SKILLBARSLOT.Slot_9,
+	 activationtime = 1.25,
 	 icon = 'Glyph of Lesser Elementals',
-	 nounderwater = true,	 
+	 nounderwater = true,
  },
- [25491] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_10, 
-	 activationtime = 1.25, 
+ [25491] = {
+	 slot = GW2.SKILLBARSLOT.Slot_10,
+	 activationtime = 1.25,
 	 icon = 'Glyph of Elementals',
 	 nounderwater = true,
  },
-  [34637] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_7, 
-	 activationtime = 0.5, 
+  [34637] = {
+	 slot = GW2.SKILLBARSLOT.Slot_7,
+	 activationtime = 0.5,
 	 icon = 'Glyph of Elemental Power',
-	 instantcast = true,	 
+	 instantcast = true,
  },
- [5737] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_8, 
-	 activationtime = 1.25, 
+ [5737] = {
+	 slot = GW2.SKILLBARSLOT.Slot_8,
+	 activationtime = 1.25,
 	 icon = 'Lightning Storm',
 	 nounderwater = true,
  },
- [25495] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_9, 
-	 activationtime = 1.25, 
+ [25495] = {
+	 slot = GW2.SKILLBARSLOT.Slot_9,
+	 activationtime = 1.25,
 	 icon = 'Glyph of Lesser Elementals',
 	 nounderwater = true,
  },
- [25490] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_10, 
-	 activationtime = 1.25, 
+ [25490] = {
+	 slot = GW2.SKILLBARSLOT.Slot_10,
+	 activationtime = 1.25,
 	 icon = 'Glyph of Elementals',
 	 nounderwater = true,
  },
-  [25499] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_10, 
-	 activationtime = 0.25, 
+  [25499] = {
+	 slot = GW2.SKILLBARSLOT.Slot_10,
+	 activationtime = 0.25,
 	 icon = 'Flame Barrage',
 	 nounderwater = true,
  },
-  [25492] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_10, 
-	 activationtime = 0.25, 
+  [25492] = {
+	 slot = GW2.SKILLBARSLOT.Slot_10,
+	 activationtime = 0.25,
 	 icon = 'Crashing Waves',
  },
-  [25480] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_10, 
-	 activationtime = 0.5, 
-	 icon = 'Shocking Bolt', 
+  [25480] = {
+	 slot = GW2.SKILLBARSLOT.Slot_10,
+	 activationtime = 0.5,
+	 icon = 'Shocking Bolt',
 	 nounderwater = true,
  },
-  [25498] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_10, 
-	 activationtime = 0.5, 
+  [25498] = {
+	 slot = GW2.SKILLBARSLOT.Slot_10,
+	 activationtime = 0.5,
 	 icon = 'Stomp',
 	 nounderwater = true,
  },
- 
+
  -- WEAVER SKILLS HERE, I cannot put them in "proper", that would mean having to add a gazillion different "sets", so I'll just put em here...for now
- [43074] = { 
-     slot = GW2.SKILLBARSLOT.Slot_3, 
-     activationtime = 0.5, 
+ [43074] = {
+     slot = GW2.SKILLBARSLOT.Slot_3,
+     activationtime = 0.5,
      icon = 'Pyro Vortex',
  },
-[40170] = { 
-     slot = GW2.SKILLBARSLOT.Slot_3, 
-     activationtime = 0.5, 
+[40170] = {
+     slot = GW2.SKILLBARSLOT.Slot_3,
+     activationtime = 0.5,
      icon = 'Natural Frenzy',
-	}, 
-[42954] = { 
-	slot = GW2.SKILLBARSLOT.Slot_3, 
-	activationtime = 0.5, 
+	},
+[42954] = {
+	slot = GW2.SKILLBARSLOT.Slot_3,
+	activationtime = 0.5,
 	icon = 'Fracturing Strike',
 },
-[42181] = { 
-	slot = GW2.SKILLBARSLOT.Slot_3, 
-	activationtime = 0.5, 
+[42181] = {
+	slot = GW2.SKILLBARSLOT.Slot_3,
+	activationtime = 0.5,
 	icon = 'Fiery Frost',
  },
-[45742] = { 
-	slot = GW2.SKILLBARSLOT.Slot_3, 
-	activationtime = 0.5, 
-	icon = 'Glacial Drift', 
+[45742] = {
+	slot = GW2.SKILLBARSLOT.Slot_3,
+	activationtime = 0.5,
+	icon = 'Glacial Drift',
 },
-[40794] = { 
-	slot = GW2.SKILLBARSLOT.Slot_3, 
-	activationtime = 0.5, 
+[40794] = {
+	slot = GW2.SKILLBARSLOT.Slot_3,
+	activationtime = 0.5,
 	icon = 'Earthen Synergy',
 },
-[46014] = { 
-	slot = GW2.SKILLBARSLOT.Slot_3, 
-	activationtime = 0.5, 
-	icon = 'Stone Tide',  
+[46014] = {
+	slot = GW2.SKILLBARSLOT.Slot_3,
+	activationtime = 0.5,
+	icon = 'Stone Tide',
 },
-[43576] = { 
-	slot = GW2.SKILLBARSLOT.Slot_3, 
-	activationtime = 0.5, 
-	icon = 'Plasma Beam',  
+[43576] = {
+	slot = GW2.SKILLBARSLOT.Slot_3,
+	activationtime = 0.5,
+	icon = 'Plasma Beam',
 },
-[5780] = { 
-	slot = GW2.SKILLBARSLOT.Slot_2, 
-	activationtime = 0.5, 
-	icon = 'Hurl', 
+[5780] = {
+	slot = GW2.SKILLBARSLOT.Slot_2,
+	activationtime = 0.5,
+	icon = 'Hurl',
 },
-[41125] = { 
-	slot = GW2.SKILLBARSLOT.Slot_3, 
-	activationtime = 0.5, 
-	icon = 'Plasma Blast', 
+[41125] = {
+	slot = GW2.SKILLBARSLOT.Slot_3,
+	activationtime = 0.5,
+	icon = 'Plasma Blast',
 },
-[43762] = { 
-	slot = GW2.SKILLBARSLOT.Slot_3, 
-	activationtime = 0.5, 
+[43762] = {
+	slot = GW2.SKILLBARSLOT.Slot_3,
+	activationtime = 0.5,
 	icon = 'Pyroclastic Blast',
 },
-[40332] = { 
-	slot = GW2.SKILLBARSLOT.Slot_3, 
-	activationtime = 0.5, 
-	icon = 'Pressure Blast', 
+[40332] = {
+	slot = GW2.SKILLBARSLOT.Slot_3,
+	activationtime = 0.5,
+	icon = 'Pressure Blast',
 },
-[44550] = { 
-	slot = GW2.SKILLBARSLOT.Slot_3, 
-	activationtime = 0.5, 
-	icon = 'Lahar', 
+[44550] = {
+	slot = GW2.SKILLBARSLOT.Slot_3,
+	activationtime = 0.5,
+	icon = 'Lahar',
 },
-[41184] = { 
-	slot = GW2.SKILLBARSLOT.Slot_3, 
-	activationtime = 0.5, 
+[41184] = {
+	slot = GW2.SKILLBARSLOT.Slot_3,
+	activationtime = 0.5,
 	icon = 'Monsoon',
 },
-[42321] = { 
-	slot = GW2.SKILLBARSLOT.Slot_3, 
-	activationtime = 0.5, 
-	icon = 'Pile Driver', 
+[42321] = {
+	slot = GW2.SKILLBARSLOT.Slot_3,
+	activationtime = 0.5,
+	icon = 'Pile Driver',
 }
 }
 
