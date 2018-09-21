@@ -7,7 +7,7 @@
 		[4] = "Weapon1",
 		[5] = "Weapon2",
 	},
-	
+
 	self.temp.context.player.transformid = {
 		0	NONE,
 		1	ELE_FIRE, Kits, bundles , pickup weapons
@@ -27,14 +27,14 @@
 		15	REV_DWARF,
 		16	REV_DEMON,
 		17	REV_RENEGATE,
-		18	REV_CENTAUR	
+		18	REV_CENTAUR
 	},]]
 
 local axe = SkillManager:CreateSkillPalette('axe')
 axe.uid = "Necromancer_Axe"
 axe.profession = GW2.CHARCLASS.Necromancer
 axe.icon = "Axe"
--- axe.id =   --> set a skill ID if you want it to download an icon for this skillset 
+-- axe.id =   --> set a skill ID if you want it to download an icon for this skillset
 axe.skills_luacode = {
 	[10561] = {
 		slot = GW2.SKILLBARSLOT.Slot_1,
@@ -61,9 +61,9 @@ axe.skills_luacode = {
 -- context.player
 -- context.player.transformid
 -- context.player.weaponset
--- context.player.canswapweaponset 
+-- context.player.canswapweaponset
 -- context.player.mainhand
--- context.player.mainhand_alt 
+-- context.player.mainhand_alt
 -- context.player.offhand
 -- context.player.offhand_alt
 -- context.player.aquatic
@@ -72,7 +72,7 @@ axe.skills_luacode = {
 -- others, check ingame the green ? in CUSTOM LUA CONDITION EDITOR to see all
 -- IF YOU NEED OTHERS, TELL ME OR ADD THEM YOURSELF AT sm_profile.lua line ~51 -> function sm_profile:UpdateContext()
 function axe:IsActive(context)
-	return context.player.alive and (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 10561)	
+	return context.player.alive and (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 10561)
 end
 function axe:CanActivate(context)
 	return context.player.alive and context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.mainhand == GW2.WEAPONTYPE.Axe or context.player.mainhand_alt == GW2.WEAPONTYPE.Axe) and (context.player.weaponset == 4 or context.player.weaponset == 5)-- and context.player.transformid == 0 -- we have an axe and a kit currently equipped
@@ -91,7 +91,7 @@ local warhorn = SkillManager:CreateSkillPalette('warhorn')
 warhorn.uid = "Necromancer_Warhorn"
 warhorn.profession = GW2.CHARCLASS.Necromancer
 warhorn.icon = "Warhorn"
--- warhorn.id =   --> set a skill ID if you want it to download an icon for this skillset 
+-- warhorn.id =   --> set a skill ID if you want it to download an icon for this skillset
 warhorn.skills_luacode = {
 	[10556] = {
 		slot = GW2.SKILLBARSLOT.Slot_4,
@@ -154,7 +154,7 @@ local staff = SkillManager:CreateSkillPalette('staff')
 staff.uid = "Necromancer_Staff"
 staff.profession = GW2.CHARCLASS.Necromancer
 staff.icon = "Staff"
--- staff.id =   --> set a skill ID if you want it to download an icon for this skillset 
+-- staff.id =   --> set a skill ID if you want it to download an icon for this skillset
 staff.skills_luacode = {
 	[10596] = {
 		slot = GW2.SKILLBARSLOT.Slot_1,
@@ -202,7 +202,7 @@ local dagger_mh = SkillManager:CreateSkillPalette('dagger_mh')
 dagger_mh.uid = "Necromancer_Dagger_mh"
 dagger_mh.profession = GW2.CHARCLASS.Necromancer
 dagger_mh.icon = "Dagger"
--- dagger_mh.id =   --> set a skill ID if you want it to download an icon for this skillset 
+-- dagger_mh.id =   --> set a skill ID if you want it to download an icon for this skillset
 dagger_mh.skills_luacode = {
 	[10702] = {
 		slot = GW2.SKILLBARSLOT.Slot_1,
@@ -223,7 +223,7 @@ dagger_mh.skills_luacode = {
 	},
 	[10563] = {
 		slot = GW2.SKILLBARSLOT.Slot_2,
-		activationtime = 3,
+		activationtime = 1.75,
 		icon = 'Life Siphon',
 	},
 	[10529] = {
@@ -252,7 +252,7 @@ local dagger_oh = SkillManager:CreateSkillPalette('dagger_oh')
 dagger_oh.uid = "Necromancer_Dagger_oh"
 dagger_oh.profession = GW2.CHARCLASS.Necromancer
 dagger_oh.icon = "Dagger"
--- dagger_oh.id =   --> set a skill ID if you want it to download an icon for this skillset 
+-- dagger_oh.id =   --> set a skill ID if you want it to download an icon for this skillset
 dagger_oh.skills_luacode = {
 	[10705] = {
 		slot = GW2.SKILLBARSLOT.Slot_4,
@@ -285,7 +285,7 @@ local greatsword = SkillManager:CreateSkillPalette('greatsword')
 greatsword.uid = "Necromancer_Greatsword"
 greatsword.profession = GW2.CHARCLASS.Necromancer
 greatsword.icon = "Greatsword"
--- greatsword.id =   --> set a skill ID if you want it to download an icon for this skillset 
+-- greatsword.id =   --> set a skill ID if you want it to download an icon for this skillset
 greatsword.skills_luacode = {
 	[29705] = {
 		 slot = GW2.SKILLBARSLOT.Slot_1,
@@ -319,7 +319,7 @@ greatsword.skills_luacode = {
 		activationtime = 0.5,
 		icon = 'Nightfall',
 	},
-	[29740] = { 
+	[29740] = {
 		slot = GW2.SKILLBARSLOT.Slot_5,
 		activationtime = 0.75,
 		icon = 'Grasping Darkness',
@@ -345,7 +345,7 @@ local scepter = SkillManager:CreateSkillPalette('scepter')
 scepter.uid = "Necromancer_Scepter"
 scepter.profession = GW2.CHARCLASS.Necromancer
 scepter.icon = "Scepter"
--- scepter.id =   --> set a skill ID if you want it to download an icon for this skillset 
+-- scepter.id =   --> set a skill ID if you want it to download an icon for this skillset
 scepter.skills_luacode = {
 	[10698] = {
 		slot = GW2.SKILLBARSLOT.Slot_1,
@@ -394,7 +394,7 @@ local focus = SkillManager:CreateSkillPalette('focus')
 focus.uid = "Necromancer_Focus"
 focus.profession = GW2.CHARCLASS.Necromancer
 focus.icon = "Focus"
--- focus.id =   --> set a skill ID if you want it to download an icon for this skillset 
+-- focus.id =   --> set a skill ID if you want it to download an icon for this skillset
 focus.skills_luacode = {
 	[10707] = {
 		slot = GW2.SKILLBARSLOT.Slot_4,
@@ -427,11 +427,11 @@ local trident = SkillManager:CreateSkillPalette('trident')
 trident.uid = "Necromancer_Trident"
 trident.profession = GW2.CHARCLASS.Necromancer
 trident.icon = "Trident"
--- trident.id =   --> set a skill ID if you want it to download an icon for this skillset 
+-- trident.id =   --> set a skill ID if you want it to download an icon for this skillset
 trident.skills_luacode = {
 	[10623] = {
 		slot = GW2.SKILLBARSLOT.Slot_1,
-		activationtime = 0.5,
+		activationtime = 0.75,
 		icon = 'Crimson Tide',
 	},
 	[10624] = {
@@ -441,7 +441,7 @@ trident.skills_luacode = {
 	},
 	[10625] = {
 		slot = GW2.SKILLBARSLOT.Slot_3,
-		activationtime = 1.0,
+		activationtime = 1.75,
 		icon = 'Foul Current',
 	},
 	[10628] = {
@@ -474,7 +474,7 @@ local spear = SkillManager:CreateSkillPalette('spear')
 spear.uid = "Necromancer_Spear"
 spear.profession = GW2.CHARCLASS.Necromancer
 spear.icon = "Spear"
--- spear.id =   --> set a skill ID if you want it to download an icon for this skillset 
+-- spear.id =   --> set a skill ID if you want it to download an icon for this skillset
 spear.skills_luacode = {
 	[10692] = {
 		slot = GW2.SKILLBARSLOT.Slot_1,
@@ -534,7 +534,7 @@ local lichform = SkillManager:CreateSkillPalette('lichform')
 lichform.uid = "Lich-Form"
 lichform.profession = GW2.CHARCLASS.Necromancer
 lichform.icon = "Lich Form"
-lichform.id = 10550 --> set a skill ID if you want it to download an icon for this skillset 
+lichform.id = 10550 --> set a skill ID if you want it to download an icon for this skillset
 lichform.skills_luacode = {
 	-- [10550] = {
 		-- slot = GW2.SKILLBARSLOT.Slot_10,
@@ -553,8 +553,9 @@ lichform.skills_luacode = {
 	},
 	[10635] = {
 		slot = GW2.SKILLBARSLOT.Slot_2,
-		activationtime = 0.25,
+		activationtime = 0,
 		icon = 'Lich\'s Gaze',
+		instantcast = true
 	},
 	[10633] = {
 		slot = GW2.SKILLBARSLOT.Slot_3,
@@ -563,7 +564,7 @@ lichform.skills_luacode = {
 	},
 	[45780] = {
 		slot = GW2.SKILLBARSLOT.Slot_3,
-		activationtime = 0.5,
+		activationtime = 0.0,
 		icon = 'March of Undeath',
 		parent = 10633,
 		instantcast = true,
@@ -604,7 +605,7 @@ local reaperShroud = SkillManager:CreateSkillPalette('reaperShroud')
 reaperShroud.uid = "Necromancer_ReaperShroud"
 reaperShroud.profession = GW2.CHARCLASS.Necromancer
 reaperShroud.icon = "Reaper Shroud" -- TODO: this right? ask fx.
-reaperShroud.id = 30792 --> set a skill ID if you want it to download an icon for this skillset 
+reaperShroud.id = 30792 --> set a skill ID if you want it to download an icon for this skillset
 reaperShroud.skills_luacode = {
 	[29442] = {
 		slot = GW2.SKILLBARSLOT.Slot_1,
@@ -632,6 +633,7 @@ reaperShroud.skills_luacode = {
 		slot = GW2.SKILLBARSLOT.Slot_3,
 		activationtime = 0.0,
 		icon = 'Infusing Terror',
+		instantcast = true
 	},
 	[29709] = {
 		slot = GW2.SKILLBARSLOT.Slot_3,
@@ -680,7 +682,7 @@ local deathShroud = SkillManager:CreateSkillPalette('deathShroud')
 deathShroud.uid = "Necromancer_DeathShroud"
 deathShroud.profession = GW2.CHARCLASS.Necromancer
 deathShroud.icon = "Death Shroud" -- TODO: this right? ask fx.
-deathShroud.id = 10574 --> set a skill ID if you want it to download an icon for this skillset 
+deathShroud.id = 10574 --> set a skill ID if you want it to download an icon for this skillset
 deathShroud.skills_luacode = {
 	[18504] = {
 		slot = GW2.SKILLBARSLOT.Slot_1,
@@ -702,6 +704,7 @@ deathShroud.skills_luacode = {
 		slot = GW2.SKILLBARSLOT.Slot_3,
 		activationtime = 0,
 		icon = 'Doom',
+		instantcast = true
 	},
 	[10594] = {
 		slot = GW2.SKILLBARSLOT.Slot_4,
@@ -744,7 +747,7 @@ local downed = SkillManager:CreateSkillPalette('Downed')
 downed.uid = "Necromancer_Downed"
 downed.profession = GW2.CHARCLASS.Necromancer
 downed.icon = "Bandage"
-downed.id = 10560 --> set a skill ID if you want it to download an icon for this skillset 
+downed.id = 10560 --> set a skill ID if you want it to download an icon for this skillset
 downed.skills_luacode = {
 	[10560] = {
 		 slot = GW2.SKILLBARSLOT.Slot_1,
@@ -775,7 +778,7 @@ function downed:CanActivate(context)
 end
 function downed:Activate(context)
 end
-function downed:Deactivate(context)	
+function downed:Deactivate(context)
 	return false
 end
 SkillManager:AddSkillPalette( downed )
@@ -786,7 +789,7 @@ local drowning = SkillManager:CreateSkillPalette('Drowning')
 drowning.uid = "Necromancer_Drowning"
 drowning.profession = GW2.CHARCLASS.Necromancer
 drowning.icon = "Anchor"
-drowning.id = 10640 --> set a skill ID if you want it to download an icon for this skillset 
+drowning.id = 10640 --> set a skill ID if you want it to download an icon for this skillset
 drowning.skills_luacode = {
 	[10640] = {
 		slot = GW2.SKILLBARSLOT.Slot_1,
@@ -810,7 +813,7 @@ drowning.skills_luacode = {
 	},
 }
 function drowning:IsActive(context)
-	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 10640)	
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 10640)
 end
 function drowning:CanActivate(context)
 	return false
@@ -838,10 +841,9 @@ necromancer.skills_luacode = {
 	},
 	[10577] = {
 		slot = GW2.SKILLBARSLOT.Slot_6,
-		activationtime = 1.5,
+		activationtime = 0.75,
 		icon = 'Taste of Death',
 		parent = 10547,
-		instantcast = true,
 	},
 	[10548] = {
 		slot = GW2.SKILLBARSLOT.Slot_6,
@@ -873,7 +875,7 @@ necromancer.skills_luacode = {
 		activationtime = 0.75,
 		icon = 'Sand Flare',
 	},
-	
+
 -- END HEALING.
 
 -- F-Keys.
@@ -882,35 +884,40 @@ necromancer.skills_luacode = {
 		 activationtime = 0.5,
 		 icon = 'Manifest Sand Shade',
 	},
-	[42297] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_13, 
-		 activationtime = 0.5, 
-		 icon = 'Manifest Sand Shade',  
+	[42297] = {
+		 slot = GW2.SKILLBARSLOT.Slot_13,
+		 activationtime = 0.5,
+		 icon = 'Manifest Sand Shade',
 	 },
 	[40813] = {
 		 slot = GW2.SKILLBARSLOT.Slot_14,
 		 activationtime = 0,
 		 icon = 'Nefarious Favor',
+		 instantcast = true
 	},
 	[43448] = {
 		 slot = GW2.SKILLBARSLOT.Slot_15,
 		 activationtime = 0,
 		 icon = 'Sand Cascade',
+		 instantcast = true
 	},
 	[44428] = {
 		 slot = GW2.SKILLBARSLOT.Slot_16,
 		 activationtime = 0,
 		 icon = 'Garish Pillar',
+		 instantcast = true
 	},
 	[44663] = {
 		 slot = GW2.SKILLBARSLOT.Slot_17,
 		 activationtime = 0,
 		 icon = 'Desert Shroud',
+		 instantcast = true
 	},
-	[46058] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_17, 
-		 activationtime = 0, 
-		 icon = 'Desert Shroud',  
+	[46058] = {
+		 slot = GW2.SKILLBARSLOT.Slot_17,
+		 activationtime = 0,
+		 icon = 'Desert Shroud',
+		 instantcast = true
 	 },
 
 -- END F-Keys.
@@ -931,8 +938,7 @@ necromancer.skills_luacode = {
 		slot = GW2.SKILLBARSLOT.Slot_10,
 		activationtime = 0.75,
 		icon = 'Charge',
-		parent = 10646,
-		instantcast = true,
+		parent = 10646
 	},
 	[10550] = {
 		slot = GW2.SKILLBARSLOT.Slot_10,
@@ -949,7 +955,7 @@ necromancer.skills_luacode = {
 		activationtime = 1.25,
 		icon = 'Chilled to the Bone!',
 	},
-	
+
 -- END ELITE.
 
 -- UTILITY.
@@ -958,6 +964,7 @@ necromancer.skills_luacode = {
 		activationtime = 0.0,
 		icon = 'Trail of Anguish',
 		nounderwater = true,
+		instantcast = true
 	 },
 	[42935] = {
 		slot = GW2.SKILLBARSLOT.Slot_8,
@@ -966,7 +973,7 @@ necromancer.skills_luacode = {
 	 },
 	[42917] = {
 		slot = GW2.SKILLBARSLOT.Slot_9,
-		activationtime = 0.75,
+		activationtime = 1.0,
 		icon = 'Sand Swell',
 	},
 	[41615] = {
@@ -979,11 +986,13 @@ necromancer.skills_luacode = {
 		slot = GW2.SKILLBARSLOT.Slot_7,
 		activationtime = 0,
 		icon = 'You Are All Weaklings!',
+		instantcast = true
 	},
 	[30670] = {
 		slot = GW2.SKILLBARSLOT.Slot_7,
 		activationtime = 0,
 		icon = 'Suffer!',
+		instantcast = true
 	},
 	[29666] = {
 		slot = GW2.SKILLBARSLOT.Slot_8,
@@ -994,6 +1003,7 @@ necromancer.skills_luacode = {
 		slot = GW2.SKILLBARSLOT.Slot_8,
 		activationtime = 0,
 		icon = 'Rise!',
+		instantcast = true
 	},
 	[12453] = {
 		slot = GW2.SKILLBARSLOT.Slot_7,
@@ -1029,6 +1039,7 @@ necromancer.skills_luacode = {
 		slot = GW2.SKILLBARSLOT.Slot_7,
 		activationtime = 0,
 		icon = 'Spectral Armor',
+		instantcast = true
 	},
 	[10620] = {
 		slot = GW2.SKILLBARSLOT.Slot_7,
@@ -1044,6 +1055,7 @@ necromancer.skills_luacode = {
 		slot = GW2.SKILLBARSLOT.Slot_7,
 		activationtime = 0,
 		icon = 'Spectral Walk',
+		instantcast = true
 	},
 	[10687] = {
 		slot = GW2.SKILLBARSLOT.Slot_7,
@@ -1051,7 +1063,7 @@ necromancer.skills_luacode = {
 		icon = 'Spectral Recall',
 		instantcast = true,
 		parent = 10685,
-	},	
+	},
 	[10622] = {
 		slot = GW2.SKILLBARSLOT.Slot_7,
 		activationtime = 0.75,
@@ -1066,6 +1078,7 @@ necromancer.skills_luacode = {
 		slot = GW2.SKILLBARSLOT.Slot_7,
 		activationtime = 0,
 		icon = 'Plague Signet',
+		instantcast = true
 	},
 	[10611] = {
 		slot = GW2.SKILLBARSLOT.Slot_7,
@@ -1083,7 +1096,7 @@ necromancer.skills_luacode = {
 		icon = 'Putrid Explosion',
 		instantcast = true,
 		parent = 10541,
-	},	
+	},
 	[10533] = {
 		slot = GW2.SKILLBARSLOT.Slot_7,
 		activationtime = 1.5,
@@ -1120,7 +1133,7 @@ necromancer.skills_luacode = {
 		icon = 'Necrotic Traversal',
 		instantcast = true,
 		parent = 10543,
-	},	
+	},
 	[10546] = {
 		slot = GW2.SKILLBARSLOT.Slot_7,
 		activationtime = 0.25,
@@ -1160,8 +1173,8 @@ necromancer.skills_luacode = {
 		-- slot = GW2.SKILLBARSLOT.Slot_13,
 		-- activationtime = 0,
 		-- icon = 'Exit Reapers Shroud',
-	-- },	
-	
+	-- },
+
 
 -- END UTILITY.
 }
