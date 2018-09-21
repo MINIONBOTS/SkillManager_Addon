@@ -417,12 +417,6 @@ scepter.skills_luacode = {
 		parent = 10276,
 		icon = "Counterspell"
 	},
-	[10314] = {
-		slot = GW2.SKILLBARSLOT.Slot_2,
-		activationtime = 0.5,
-		parent = 10276,
-		icon = "Counterspell"
-	},
 	[10168] = {
 		slot = GW2.SKILLBARSLOT.Slot_3,
 		activationtime = 2.25,
@@ -463,6 +457,12 @@ scepter_ambush.skills_luacode = {
 		slot = GW2.SKILLBARSLOT.Slot_2,
 		activationtime = 2,
 		icon = "Illusionary Counter"
+	},
+	[10314] = {
+		slot = GW2.SKILLBARSLOT.Slot_2,
+		activationtime = 0.5,
+		parent = 10276,
+		icon = "Counterspell"
 	},
 	[10168] = {
 		slot = GW2.SKILLBARSLOT.Slot_3,
