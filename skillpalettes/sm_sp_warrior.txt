@@ -253,7 +253,7 @@ set.skills_luacode = {
 	},
 	[44937] = {
 		slot = GW2.SKILLBARSLOT.Slot_3,
-		activationtime = 0.5,
+		activationtime = 0.0,
 		icon = "Disrupting Stab"
 	}
 }
@@ -285,7 +285,7 @@ set.skills_luacode = {
 	[44004] = {
 		slot = GW2.SKILLBARSLOT.Slot_4,
 		activationtime = 0.5,
-		icon = "Wastrels Ruin"
+		icon = "Wastrel\'s Ruin"
 	},
 	[45160] = {
 		slot = GW2.SKILLBARSLOT.Slot_5,
@@ -325,7 +325,7 @@ set.skills_luacode = {
 	},
 	[14370] = {
 		slot = GW2.SKILLBARSLOT.Slot_1,
-		activationtime = 0.25,
+		activationtime = 0.0,
 		icon = "Double Chop",
 		parent = 14369
 	},
@@ -378,7 +378,7 @@ set.skills_luacode = {
 	},
 	[14399] = {
 		slot = GW2.SKILLBARSLOT.Slot_5,
-		activationtime = 3.25,
+		activationtime = 3.5,
 		icon = "Whirling Axe"
 	}
 }
@@ -429,9 +429,16 @@ set.skills_luacode = {
 		activationtime = 0.75,
 		icon = "Counterblow"
 	},
+	[14548] = {
+		slot = GW2.SKILLBARSLOT.Slot_2,
+		activationtime = 0.0,
+		instantcast = true,
+		icon = "Adrenaline Rush",
+		parent = 14507
+	},
 	[14503] = {
 		slot = GW2.SKILLBARSLOT.Slot_3,
-		activationtime = 0.5,
+		activationtime = 0.0,
 		icon = "Pommel Bash"
 	}
 }
@@ -626,16 +633,16 @@ set.skills_luacode = {
 		activationtime = 0.5,
 		icon = "Impale"
 	},
-	[14400] = {
-		slot = GW2.SKILLBARSLOT.Slot_5,
-		activationtime = 2.25,
-		icon = "Riposte"
-	},
 	[14501] = {
 		slot = GW2.SKILLBARSLOT.Slot_4,
 		activationtime = 0.75,
 		icon = "Rip",
 		parent = 14498
+	},
+	[14400] = {
+		slot = GW2.SKILLBARSLOT.Slot_5,
+		activationtime = 2.25,
+		icon = "Riposte"
 	},
 	[14557] = {
 		slot = GW2.SKILLBARSLOT.Slot_5,
@@ -708,12 +715,12 @@ set.skills_luacode = {
 	[14552] = {
 		slot = GW2.SKILLBARSLOT.Slot_1,
 		activationtime = 0.25,
-		icon = "Mariners Shot"
+		icon = "Mariner\'s Shot"
 	},
 	[14466] = {
 		slot = GW2.SKILLBARSLOT.Slot_2,
 		activationtime = 0.25,
-		icon = "Brutal Shot"
+		icon = "Puncture Shot"
 	},
 	[14481] = {
 		slot = GW2.SKILLBARSLOT.Slot_3,
@@ -722,7 +729,7 @@ set.skills_luacode = {
 	},
 	[14467] = {
 		slot = GW2.SKILLBARSLOT.Slot_4,
-		activationtime = 0.25,
+		activationtime = 0.5,
 		icon = "Knot Shot"
 	},
 	[14465] = {
@@ -781,11 +788,11 @@ set.skills_luacode = {
 	[14448] = {
 		slot = GW2.SKILLBARSLOT.Slot_3,
 		activationtime = 0.5,
-		icon = "Harpoon Pull"
+		icon = "Barbed Pull"
 	},
 	[14441] = {
 		slot = GW2.SKILLBARSLOT.Slot_4,
-		activationtime = 1.25,
+		activationtime = 1.5,
 		icon = "Parry"
 	},
 	[14480] = {
@@ -1232,12 +1239,6 @@ set.skills_luacode = {
 		activationtime = 0.5,
 		icon = "Throw Bolas",
 		nounderwater = true
-	},
-	[14409] = {
-		slot = GW2.SKILLBARSLOT.Slot_9,
-		activationtime = 0.0,
-		icon = "Fear Me!",
-		instantcast = true
 	},
 	[14483] = {
 		slot = GW2.SKILLBARSLOT.Slot_10,
