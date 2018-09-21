@@ -47,9 +47,8 @@ pistol_mh.skills_luacode = {
 	},
 	[5829] = {
 		slot = GW2.SKILLBARSLOT.Slot_3,
-		activationtime = 0,
-		icon = "Static Shot",
-		instantcast = true
+		activationtime = 0.0,
+		icon = "Static Shot"
 	},
 }
 -- Additionally available:
@@ -217,7 +216,7 @@ harpoon.skills_luacode = {
 	},
 	[6073] = {
 		slot = GW2.SKILLBARSLOT.Slot_2,
-		activationtime = 0,
+		activationtime = 0.0,
 		icon = "Detonate Mines",
 		parent = 6147,
 		instantcast = true
@@ -239,7 +238,7 @@ harpoon.skills_luacode = {
 	},
 	[6074] = {
 		slot = GW2.SKILLBARSLOT.Slot_5,
-		activationtime = 0,
+		activationtime = 0.0,
 		icon = "Deploy Net Wall",
 		parent = 6145,
 		instantcast = true
@@ -1505,7 +1504,7 @@ engineer.skills_luacode = {
 	 },
 	 [30777] = {
 		 slot = GW2.SKILLBARSLOT.Slot_8,
-		 activationtime = 0.75,
+		 activationtime = 0.0,
 		 instantcast = true,
 		 icon = 'Purge Gyro Self-Destruct',
 		 parent = 29739,

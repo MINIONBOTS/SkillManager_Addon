@@ -206,12 +206,12 @@ dagger_mh.icon = "Dagger"
 dagger_mh.skills_luacode = {
 	[10702] = {
 		slot = GW2.SKILLBARSLOT.Slot_1,
-		activationtime = 0,
+		activationtime = 0.0,
 		icon = 'Necrotic Slash',
 	},
 	[10703] = {
 		slot = GW2.SKILLBARSLOT.Slot_1,
-		activationtime = 0,
+		activationtime = 0.0,
 		icon = 'Necrotic Stab',
 		parent = 10702,
 	},
@@ -553,7 +553,7 @@ lichform.skills_luacode = {
 	},
 	[10635] = {
 		slot = GW2.SKILLBARSLOT.Slot_2,
-		activationtime = 0,
+		activationtime = 0.0,
 		icon = 'Lich\'s Gaze',
 		instantcast = true
 	},
@@ -653,7 +653,7 @@ reaperShroud.skills_luacode = {
 	},
 	[30961] = {
 		slot = GW2.SKILLBARSLOT.Slot_13,
-		activationtime = 0,
+		activationtime = 0.0,
 		icon = 'Exit Reapers Shroud',
 	},
 }
@@ -702,7 +702,7 @@ deathShroud.skills_luacode = {
 	},
 	[10588] = {
 		slot = GW2.SKILLBARSLOT.Slot_3,
-		activationtime = 0,
+		activationtime = 0.0,
 		icon = 'Doom',
 		instantcast = true
 	},
@@ -718,7 +718,7 @@ deathShroud.skills_luacode = {
 	},
 	[10585] = {
 		slot = GW2.SKILLBARSLOT.Slot_13,
-		activationtime = 0,
+		activationtime = 0.0,
 		icon = 'End Death Shroud',
 	},
 }
@@ -891,31 +891,31 @@ necromancer.skills_luacode = {
 	 },
 	[40813] = {
 		 slot = GW2.SKILLBARSLOT.Slot_14,
-		 activationtime = 0,
+		 activationtime = 0.0,
 		 icon = 'Nefarious Favor',
 		 instantcast = true
 	},
 	[43448] = {
 		 slot = GW2.SKILLBARSLOT.Slot_15,
-		 activationtime = 0,
+		 activationtime = 0.0,
 		 icon = 'Sand Cascade',
 		 instantcast = true
 	},
 	[44428] = {
 		 slot = GW2.SKILLBARSLOT.Slot_16,
-		 activationtime = 0,
+		 activationtime = 0.0,
 		 icon = 'Garish Pillar',
 		 instantcast = true
 	},
 	[44663] = {
 		 slot = GW2.SKILLBARSLOT.Slot_17,
-		 activationtime = 0,
+		 activationtime = 0.0,
 		 icon = 'Desert Shroud',
 		 instantcast = true
 	},
 	[46058] = {
 		 slot = GW2.SKILLBARSLOT.Slot_17,
-		 activationtime = 0,
+		 activationtime = 0.0,
 		 icon = 'Desert Shroud',
 		 instantcast = true
 	 },
@@ -984,13 +984,13 @@ necromancer.skills_luacode = {
 	},
 	[29414] = {
 		slot = GW2.SKILLBARSLOT.Slot_7,
-		activationtime = 0,
+		activationtime = 0.0,
 		icon = 'You Are All Weaklings!',
 		instantcast = true
 	},
 	[30670] = {
 		slot = GW2.SKILLBARSLOT.Slot_7,
-		activationtime = 0,
+		activationtime = 0.0,
 		icon = 'Suffer!',
 		instantcast = true
 	},
@@ -1001,7 +1001,7 @@ necromancer.skills_luacode = {
 	},
 	[30772] = {
 		slot = GW2.SKILLBARSLOT.Slot_8,
-		activationtime = 0,
+		activationtime = 0.0,
 		icon = 'Rise!',
 		instantcast = true
 	},
@@ -1037,7 +1037,7 @@ necromancer.skills_luacode = {
 	},
 	[10583] = {
 		slot = GW2.SKILLBARSLOT.Slot_7,
-		activationtime = 0,
+		activationtime = 0.0,
 		icon = 'Spectral Armor',
 		instantcast = true
 	},
@@ -1053,13 +1053,13 @@ necromancer.skills_luacode = {
 	},
 	[10685] = {
 		slot = GW2.SKILLBARSLOT.Slot_7,
-		activationtime = 0,
+		activationtime = 0.0,
 		icon = 'Spectral Walk',
 		instantcast = true
 	},
 	[10687] = {
 		slot = GW2.SKILLBARSLOT.Slot_7,
-		activationtime = 0,
+		activationtime = 0.0,
 		icon = 'Spectral Recall',
 		instantcast = true,
 		parent = 10685,
@@ -1076,7 +1076,7 @@ necromancer.skills_luacode = {
 	},
 	[10562] = {
 		slot = GW2.SKILLBARSLOT.Slot_7,
-		activationtime = 0,
+		activationtime = 0.0,
 		icon = 'Plague Signet',
 		instantcast = true
 	},
@@ -1092,7 +1092,7 @@ necromancer.skills_luacode = {
 	},
 	[10540] = {
 		slot = GW2.SKILLBARSLOT.Slot_7,
-		activationtime = 0,
+		activationtime = 0.0,
 		icon = 'Putrid Explosion',
 		instantcast = true,
 		parent = 10541,
@@ -1104,7 +1104,7 @@ necromancer.skills_luacode = {
 	},
 	[10570] = {
 		slot = GW2.SKILLBARSLOT.Slot_7,
-		activationtime = 0,
+		activationtime = 0.0,
 		icon = 'Rigor Mortis',
 		instantcast = true,
 		parent = 10533,
@@ -1116,7 +1116,7 @@ necromancer.skills_luacode = {
 	},
 	[10590] = {
 		slot = GW2.SKILLBARSLOT.Slot_7,
-		activationtime = 0,
+		activationtime = 0.0,
 		icon = 'Haunt',
 		instantcast = true,
 		parent = 10589,
@@ -1129,7 +1129,7 @@ necromancer.skills_luacode = {
 	},
 	[10600] = {
 		slot = GW2.SKILLBARSLOT.Slot_7,
-		activationtime = 0,
+		activationtime = 0.0,
 		icon = 'Necrotic Traversal',
 		instantcast = true,
 		parent = 10543,
@@ -1156,22 +1156,22 @@ necromancer.skills_luacode = {
 	},
 	[10574] = {
 		slot = GW2.SKILLBARSLOT.Slot_13,
-		activationtime = 0,
+		activationtime = 0.0,
 		icon = 'Death Shroud',
 	},
 	-- [10585] = {
 		-- slot = GW2.SKILLBARSLOT.Slot_13,
-		-- activationtime = 0,
+		-- activationtime = 0.0,
 		-- icon = 'End Death Shroud',
 	-- },
 	[30792] = {
 		slot = GW2.SKILLBARSLOT.Slot_13,
-		activationtime = 0,
+		activationtime = 0.0,
 		icon = 'Reapers Shroud',
 	},
 	-- [30961] = {
 		-- slot = GW2.SKILLBARSLOT.Slot_13,
-		-- activationtime = 0,
+		-- activationtime = 0.0,
 		-- icon = 'Exit Reapers Shroud',
 	-- },
 

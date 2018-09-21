@@ -396,7 +396,7 @@ set.skills_luacode = {
 	},
 	[28797] = {
 		slot = GW2.SKILLBARSLOT.Slot_3,
-		activationtime = 0.5,
+		activationtime = 0.0,
 		icon = "Frigid Discharge",
 		instantcast = true,
 		parent = 28827
@@ -549,14 +549,14 @@ set.id = 28141
 set.skills_luacode = {
 	[29148] = {
 		slot = GW2.SKILLBARSLOT.Slot_6,
-		activationtime = 0.5,
+		activationtime = 0.0,
 		icon = "Project Tranquility",
 		instantcast = true,
 		nounderwater = true
 	},
 	[28427] = {
 		slot = GW2.SKILLBARSLOT.Slot_6,
-		activationtime = 0.5,
+		activationtime = 0.0,
 		icon = "Ventari\'s Will",
 		instantcast = true,
 		nounderwater = true,
@@ -564,14 +564,14 @@ set.skills_luacode = {
 	},
 	[26821] = {
 		slot = GW2.SKILLBARSLOT.Slot_7,
-		activationtime = 0.5,
+		activationtime = 0.0,
 		icon = "Protective Solace",
 		instantcast = true,
 		nounderwater = true
 	},
 	[27628] = {
 		slot = GW2.SKILLBARSLOT.Slot_7,
-		activationtime = 0.5,
+		activationtime = 0.0,
 		icon = "Diminish Solace",
 		parent = 26821,
 		instantcast = true,
@@ -579,21 +579,21 @@ set.skills_luacode = {
 	},
 	[27025] = {
 		slot = GW2.SKILLBARSLOT.Slot_8,
-		activationtime = 0.5,
+		activationtime = 0.0,
 		icon = "Natural Harmony",
 		instantcast = true,
 		nounderwater = true
 	},
 	[27715] = {
 		slot = GW2.SKILLBARSLOT.Slot_9,
-		activationtime = 0.5,
+		activationtime = 0.0,
 		icon = "Purifying Essence",
 		instantcast = true,
 		nounderwater = true
 	},
 	[27356] = {
 		slot = GW2.SKILLBARSLOT.Slot_10,
-		activationtime = 0.5,
+		activationtime = 0.0,
 		icon = "Energy Expulsion",
 		instantcast = true,
 		nounderwater = true
@@ -656,7 +656,7 @@ set.skills_luacode = {
 	},
 	[26693] = {
 		slot = GW2.SKILLBARSLOT.Slot_10,
-		activationtime = 0.5,
+		activationtime = 0.0,
 		icon = "Resist the Darkness",
 		instantcast = true,
 		parent = 28287
@@ -699,7 +699,7 @@ set.skills_luacode = {
 	},
 	[29209] = {
 		slot = GW2.SKILLBARSLOT.Slot_7,
-		activationtime = 0.5,
+		activationtime = 0.0,
 		icon = "Riposting Shadows",
 		instantcast = true
 	},
@@ -710,13 +710,13 @@ set.skills_luacode = {
 	},
 	[27107] = {
 		slot = GW2.SKILLBARSLOT.Slot_9,
-		activationtime = 0.5,
+		activationtime = 0.0,
 		icon = "Impossible Odds",
 		instantcast = true
 	},
 	[28382] = {
 		slot = GW2.SKILLBARSLOT.Slot_9,
-		activationtime = 0.5,
+		activationtime = 0.0,
 		icon = "Relinquish Power",
 		instantcast = true,
 		parent = 27107
@@ -765,28 +765,28 @@ set.skills_luacode = {
 	},
 	[27228] = {
 		slot = GW2.SKILLBARSLOT.Slot_6,
-		activationtime = 0.5,
+		activationtime = 0.0,
 		icon = "Infuse Light",
 		parent = 27220,
 		instantcast = true
 	},
 	[28379] = {
 		slot = GW2.SKILLBARSLOT.Slot_7,
-		activationtime = 0.5,
+		activationtime = 0.0,
 		icon = "Facet of Darkness",
 		nounderwater = true,
 		instantcast = true
 	},
 	[27080] = {
 		slot = GW2.SKILLBARSLOT.Slot_7,
-		activationtime = 0.5,
+		activationtime = 0.0,
 		icon = "Gaze of Darkness",
 		parent = 28379,
 		instantcast = true
 	},
 	[27014] = {
 		slot = GW2.SKILLBARSLOT.Slot_8,
-		activationtime = 0.5,
+		activationtime = 0.0,
 		icon = "Facet of Elements",
 		nounderwater = true,
 		instantcast = true
@@ -799,7 +799,7 @@ set.skills_luacode = {
 	},
 	[26644] = {
 		slot = GW2.SKILLBARSLOT.Slot_9,
-		activationtime = 0.5,
+		activationtime = 0.0,
 		icon = "Facet of Strength",
 		nounderwater = true,
 		instantcast = true
@@ -812,7 +812,7 @@ set.skills_luacode = {
 	},
 	[27760] = {
 		slot = GW2.SKILLBARSLOT.Slot_10,
-		activationtime = 0.5,
+		activationtime = 0.0,
 		icon = "Facet of Chaos",
 		nounderwater = true,
 		instantcast = true
@@ -886,7 +886,7 @@ set.skills_luacode = {
 	},
 	[42752] = {
 		slot = GW2.SKILLBARSLOT.Slot_10,
-		activationtime = 0.5,
+		activationtime = 0.0,
 		icon = "Dismiss Lieutenant Soulcleave",
 		instantcast = true
 	},
@@ -928,7 +928,7 @@ set.skills_luacode = {
 	},
 	[29371] = {
 		slot = GW2.SKILLBARSLOT.Slot_14,
-		activationtime = 0.5,
+		activationtime = 0.0,
 		icon = "Facet of Nature",
 		instantcast = true
 	},
@@ -944,7 +944,7 @@ set.skills_luacode = {
 	},
 	[45537] = {
 		slot = GW2.SKILLBARSLOT.Slot_16,
-		activationtime = 0.5,
+		activationtime = 0.0,
 		icon = "Orders from Above",
 		instantcast = true
 	},

@@ -2004,7 +2004,7 @@ set.skills_luacode = {
 	},
 	[34736] = {
 		slot = GW2.SKILLBARSLOT.Slot_7,
-		activationtime = 0.5,
+		activationtime = 0.0,
 		icon = "Glyph of Elemental Power",
 		instantcast = true
 	},
@@ -2028,7 +2028,7 @@ set.skills_luacode = {
 	},
 	[34772] = {
 		slot = GW2.SKILLBARSLOT.Slot_7,
-		activationtime = 0.5,
+		activationtime = 0.0,
 		icon = "Glyph of Elemental Power",
 		instantcast = true
 	},
@@ -2052,7 +2052,7 @@ set.skills_luacode = {
 	},
 	[34637] = {
 		slot = GW2.SKILLBARSLOT.Slot_7,
-		activationtime = 0.5,
+		activationtime = 0.0,
 		icon = "Glyph of Elemental Power",
 		instantcast = true
 	},
