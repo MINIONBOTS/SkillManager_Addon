@@ -1,5 +1,5 @@
-local set = SkillManager:CreateSkillPalette("Staff_Fire")
-set.uid = "Elementalist_Staff_Fire"
+local set = SkillManager:CreateSkillPalette("Staff_Fire_1")
+set.uid = "Elementalist_Staff_Fire_1"
 set.profession = GW2.CHARCLASS.Elementalist
 set.icon = "Staff"
 set.skills_luacode = {
@@ -18,7 +18,38 @@ set.skills_luacode = {
 		slot = GW2.SKILLBARSLOT.Slot_3,
 		activationtime = 0.5,
 		icon = "Flame Burst"
-	},
+	}
+}
+function set:IsActive(context)
+	return context.player.alive and context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil and
+		context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 5491
+end
+function set:CanActivate(context)
+	return context.player.alive and context.player.swimming == GW2.SWIMSTATE.NotInWater and
+		context.player.mainhand == GW2.WEAPONTYPE.Staff and
+		context.player.weaponset == 4 and
+		context.skillbar ~= nil and
+		context.skillbar[GW2.SKILLBARSLOT.Slot_13] ~= nil and
+		context.skillbar[GW2.SKILLBARSLOT.Slot_13].id == 5492 and
+		context.skillbar[GW2.SKILLBARSLOT.Slot_13].cancast
+end
+function set:Activate(context)
+	if (context.skillbar ~= nil) then
+		if (context.skillbar[GW2.SKILLBARSLOT.Slot_13] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_13].id == 5492) then
+			Player:CastSpell(GW2.SKILLBARSLOT.Slot_13)
+		end
+	end
+end
+function set:Deactivate(context)
+	return false
+end
+SkillManager:AddSkillPalette(set)
+
+local set = SkillManager:CreateSkillPalette("Staff_Fire_2")
+set.uid = "Elementalist_Staff_Fire_2"
+set.profession = GW2.CHARCLASS.Elementalist
+set.icon = "Staff"
+set.skills_luacode = {
 	[5680] = {
 		slot = GW2.SKILLBARSLOT.Slot_4,
 		activationtime = 0.0,
@@ -32,10 +63,8 @@ set.skills_luacode = {
 	}
 }
 function set:IsActive(context)
-	return context.player.alive and context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil and
-		context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 5491 and
-		context.player.transformid == 1 and
-		not context.player.isweaver
+	return context.player.alive and context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_4] ~= nil and
+		context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 5680
 end
 function set:CanActivate(context)
 	return context.player.alive and not context.player.isweaver and context.player.swimming == GW2.SWIMSTATE.NotInWater and
@@ -58,8 +87,8 @@ function set:Deactivate(context)
 end
 SkillManager:AddSkillPalette(set)
 
-local set = SkillManager:CreateSkillPalette("Staff_Water")
-set.uid = "Elementalist_Staff_Water"
+local set = SkillManager:CreateSkillPalette("Staff_Water_1")
+set.uid = "Elementalist_Staff_Water_1"
 set.profession = GW2.CHARCLASS.Elementalist
 set.icon = "Staff"
 set.skills_luacode = {
@@ -77,7 +106,38 @@ set.skills_luacode = {
 		slot = GW2.SKILLBARSLOT.Slot_3,
 		activationtime = 0.75,
 		icon = "Geyser"
-	},
+	}
+}
+function set:IsActive(context)
+	return context.player.alive and context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil and
+		context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 5549
+end
+function set:CanActivate(context)
+	return context.player.alive and context.player.swimming == GW2.SWIMSTATE.NotInWater and
+		context.player.mainhand == GW2.WEAPONTYPE.Staff and
+		context.player.weaponset == 4 and
+		context.skillbar ~= nil and
+		context.skillbar[GW2.SKILLBARSLOT.Slot_14] ~= nil and
+		context.skillbar[GW2.SKILLBARSLOT.Slot_14].id == 5493 and
+		context.skillbar[GW2.SKILLBARSLOT.Slot_14].cancast
+end
+function set:Activate(context)
+	if (context.skillbar ~= nil) then
+		if (context.skillbar[GW2.SKILLBARSLOT.Slot_14] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_14].id == 5493) then
+			Player:CastSpell(GW2.SKILLBARSLOT.Slot_14)
+		end
+	end
+end
+function set:Deactivate(context)
+	return false
+end
+SkillManager:AddSkillPalette(set)
+
+local set = SkillManager:CreateSkillPalette("Staff_Water_2")
+set.uid = "Elementalist_Staff_Water_2"
+set.profession = GW2.CHARCLASS.Elementalist
+set.icon = "Staff"
+set.skills_luacode = {
 	[5515] = {
 		slot = GW2.SKILLBARSLOT.Slot_4,
 		activationtime = 0.0,
@@ -91,10 +151,8 @@ set.skills_luacode = {
 	}
 }
 function set:IsActive(context)
-	return context.player.alive and context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil and
-		context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 5549 and
-		context.player.transformid == 2 and
-		not context.player.isweaver
+	return context.player.alive and context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_4] ~= nil and
+		context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 5515
 end
 function set:CanActivate(context)
 	return context.player.alive and not context.player.isweaver and context.player.swimming == GW2.SWIMSTATE.NotInWater and
@@ -117,8 +175,8 @@ function set:Deactivate(context)
 end
 SkillManager:AddSkillPalette(set)
 
-local set = SkillManager:CreateSkillPalette("Staff_Air")
-set.uid = "Elementalist_Staff_Air"
+local set = SkillManager:CreateSkillPalette("Staff_Air_1")
+set.uid = "Elementalist_Staff_Air_1"
 set.profession = GW2.CHARCLASS.Elementalist
 set.icon = "Staff"
 set.skills_luacode = {
@@ -136,7 +194,38 @@ set.skills_luacode = {
 		slot = GW2.SKILLBARSLOT.Slot_3,
 		activationtime = 0.25,
 		icon = "Gust"
-	},
+	}
+}
+function set:IsActive(context)
+	return context.player.alive and context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil and
+		context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 5518
+end
+function set:CanActivate(context)
+	return context.player.alive and context.player.swimming == GW2.SWIMSTATE.NotInWater and
+		context.player.mainhand == GW2.WEAPONTYPE.Staff and
+		context.player.weaponset == 4 and
+		context.skillbar ~= nil and
+		context.skillbar[GW2.SKILLBARSLOT.Slot_15] ~= nil and
+		context.skillbar[GW2.SKILLBARSLOT.Slot_15].id == 5494 and
+		context.skillbar[GW2.SKILLBARSLOT.Slot_15].cancast
+end
+function set:Activate(context)
+	if (context.skillbar ~= nil) then
+		if (context.skillbar[GW2.SKILLBARSLOT.Slot_15] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_15].id == 5494) then
+			Player:CastSpell(GW2.SKILLBARSLOT.Slot_15)
+		end
+	end
+end
+function set:Deactivate(context)
+	return false
+end
+SkillManager:AddSkillPalette(set)
+
+local set = SkillManager:CreateSkillPalette("Staff_Air_2")
+set.uid = "Elementalist_Staff_Air_2"
+set.profession = GW2.CHARCLASS.Elementalist
+set.icon = "Staff"
+set.skills_luacode = {
 	[5682] = {
 		slot = GW2.SKILLBARSLOT.Slot_4,
 		activationtime = 0.25,
@@ -149,10 +238,8 @@ set.skills_luacode = {
 	}
 }
 function set:IsActive(context)
-	return context.player.alive and context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil and
-		context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 5518 and
-		context.player.transformid == 3 and
-		not context.player.isweaver
+	return context.player.alive and context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_4] ~= nil and
+		context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 5682
 end
 function set:CanActivate(context)
 	return context.player.alive and not context.player.isweaver and context.player.swimming == GW2.SWIMSTATE.NotInWater and
@@ -175,8 +262,8 @@ function set:Deactivate(context)
 end
 SkillManager:AddSkillPalette(set)
 
-local set = SkillManager:CreateSkillPalette("Staff_Earth")
-set.uid = "Elementalist_Staff_Earth"
+local set = SkillManager:CreateSkillPalette("Staff_Earth_1")
+set.uid = "Elementalist_Staff_Earth_1"
 set.profession = GW2.CHARCLASS.Elementalist
 set.icon = "Staff"
 set.skills_luacode = {
@@ -201,7 +288,38 @@ set.skills_luacode = {
 		activationtime = 0.5,
 		icon = "Transmute Earth",
 		parent = 5685
-	},
+	}
+}
+function set:IsActive(context)
+	return context.player.alive and context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil and
+		context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 5519
+end
+function set:CanActivate(context)
+	return context.player.alive and context.player.swimming == GW2.SWIMSTATE.NotInWater and
+		context.player.mainhand == GW2.WEAPONTYPE.Staff and
+		context.player.weaponset == 4 and
+		context.skillbar ~= nil and
+		context.skillbar[GW2.SKILLBARSLOT.Slot_16] ~= nil and
+		context.skillbar[GW2.SKILLBARSLOT.Slot_16].id == 5495 and
+		context.skillbar[GW2.SKILLBARSLOT.Slot_16].cancast
+end
+function set:Activate(context)
+	if (context.skillbar ~= nil) then
+		if (context.skillbar[GW2.SKILLBARSLOT.Slot_16] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_16].id == 5495) then
+			Player:CastSpell(GW2.SKILLBARSLOT.Slot_16)
+		end
+	end
+end
+function set:Deactivate(context)
+	return false
+end
+SkillManager:AddSkillPalette(set)
+
+local set = SkillManager:CreateSkillPalette("Staff_Earth_2")
+set.uid = "Elementalist_Staff_Earth_2"
+set.profession = GW2.CHARCLASS.Elementalist
+set.icon = "Staff"
+set.skills_luacode = {
 	[5683] = {
 		slot = GW2.SKILLBARSLOT.Slot_4,
 		activationtime = 0.25,
@@ -214,10 +332,8 @@ set.skills_luacode = {
 	}
 }
 function set:IsActive(context)
-	return context.player.alive and context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil and
-		context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 5519 and
-		context.player.transformid == 4 and
-		not context.player.isweaver
+	return context.player.alive and context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_4] ~= nil and
+		context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 5683
 end
 function set:CanActivate(context)
 	return context.player.alive and not context.player.isweaver and context.player.swimming == GW2.SWIMSTATE.NotInWater and
@@ -263,9 +379,7 @@ set.skills_luacode = {
 }
 function set:IsActive(context)
 	return context.player.alive and context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil and
-		context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 5508 and
-		context.player.transformid == 1 and
-		not context.player.isweaver
+		context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 5508
 end
 function set:CanActivate(context)
 	return context.player.alive and not context.player.isweaver and context.player.swimming == GW2.SWIMSTATE.NotInWater and
@@ -287,6 +401,7 @@ function set:Deactivate(context)
 	return false
 end
 SkillManager:AddSkillPalette(set)
+
 
 local set = SkillManager:CreateSkillPalette("Scepter_Water")
 set.uid = "Elementalist_Scepter_Water"
@@ -311,9 +426,7 @@ set.skills_luacode = {
 }
 function set:IsActive(context)
 	return context.player.alive and context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil and
-		context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 5693 and
-		context.player.transformid == 2 and
-		not context.player.isweaver
+		context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 5693
 end
 function set:CanActivate(context)
 	return context.player.alive and not context.player.isweaver and context.player.swimming == GW2.SWIMSTATE.NotInWater and
@@ -361,9 +474,7 @@ set.skills_luacode = {
 }
 function set:IsActive(context)
 	return context.player.alive and context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil and
-		context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 5526 and
-		context.player.transformid == 3 and
-		not context.player.isweaver
+		context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 5526
 end
 function set:CanActivate(context)
 	return context.player.alive and not context.player.isweaver and context.player.swimming == GW2.SWIMSTATE.NotInWater and
@@ -417,9 +528,7 @@ set.skills_luacode = {
 }
 function set:IsActive(context)
 	return context.player.alive and context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil and
-		context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 5500 and
-		context.player.transformid == 4 and
-		not context.player.isweaver
+		context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 5500
 end
 function set:CanActivate(context)
 	return context.player.alive and not context.player.isweaver and context.player.swimming == GW2.SWIMSTATE.NotInWater and
@@ -465,9 +574,7 @@ set.skills_luacode = {
 }
 function set:IsActive(context)
 	return context.player.alive and context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil and
-		context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 15718 and
-		context.player.transformid == 1 and
-		not context.player.isweaver
+		context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 15718
 end
 function set:CanActivate(context)
 	return context.player.alive and not context.player.isweaver and context.player.swimming == GW2.SWIMSTATE.NotInWater and
@@ -513,9 +620,7 @@ set.skills_luacode = {
 }
 function set:IsActive(context)
 	return context.player.alive and context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil and
-		context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 15716 and
-		context.player.transformid == 2 and
-		not context.player.isweaver
+		context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 15716
 end
 function set:CanActivate(context)
 	return context.player.alive and not context.player.isweaver and context.player.swimming == GW2.SWIMSTATE.NotInWater and
@@ -568,9 +673,7 @@ set.skills_luacode = {
 }
 function set:IsActive(context)
 	return context.player.alive and context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil and
-		context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 5489 and
-		context.player.transformid == 3 and
-		not context.player.isweaver
+		context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 5489
 end
 function set:CanActivate(context)
 	return context.player.alive and not context.player.isweaver and context.player.swimming == GW2.SWIMSTATE.NotInWater and
@@ -616,9 +719,7 @@ set.skills_luacode = {
 }
 function set:IsActive(context)
 	return context.player.alive and context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil and
-		context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 15717 and
-		context.player.transformid == 4 and
-		not context.player.isweaver
+		context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 15717
 end
 function set:CanActivate(context)
 	return context.player.alive and not context.player.isweaver and context.player.swimming == GW2.SWIMSTATE.NotInWater and
@@ -659,9 +760,7 @@ set.skills_luacode = {
 }
 function set:IsActive(context)
 	return context.player.alive and context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_4] ~= nil and
-		context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 5691 and
-		context.player.transformid == 1 and
-		not context.player.isweaver
+		context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 5691
 end
 function set:CanActivate(context)
 	return context.player.alive and not context.player.isweaver and context.player.swimming == GW2.SWIMSTATE.NotInWater and
@@ -709,9 +808,7 @@ set.skills_luacode = {
 }
 function set:IsActive(context)
 	return context.player.alive and context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_4] ~= nil and
-		(context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 5520 or context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 51646) and
-		context.player.transformid == 2 and
-		not context.player.isweaver
+		(context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 5520 or context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 51646)
 end
 function set:CanActivate(context)
 	return context.player.alive and not context.player.isweaver and context.player.swimming == GW2.SWIMSTATE.NotInWater and
@@ -742,21 +839,17 @@ set.skills_luacode = {
 	[5529] = {
 		slot = GW2.SKILLBARSLOT.Slot_4,
 		activationtime = 0.0,
-		icon = "Ride the Lightning",
-		instantcast = true
+		icon = "Ride the Lightning"
 	},
 	[5687] = {
 		slot = GW2.SKILLBARSLOT.Slot_5,
 		activationtime = 0.0,
-		icon = "Updraft",
-		instantcast = true
+		icon = "Updraft"
 	}
 }
 function set:IsActive(context)
 	return context.player.alive and context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_4] ~= nil and
-		context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 5529 and
-		context.player.transformid == 3 and
-		not context.player.isweaver
+		context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 5529
 end
 function set:CanActivate(context)
 	return context.player.alive and not context.player.isweaver and context.player.swimming == GW2.SWIMSTATE.NotInWater and
@@ -797,9 +890,7 @@ set.skills_luacode = {
 }
 function set:IsActive(context)
 	return context.player.alive and context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_4] ~= nil and
-		context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 5690 and
-		context.player.transformid == 4 and
-		not context.player.isweaver
+		context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 5690
 end
 function set:CanActivate(context)
 	return context.player.alive and not context.player.isweaver and context.player.swimming == GW2.SWIMSTATE.NotInWater and
@@ -847,9 +938,7 @@ set.skills_luacode = {
 }
 function set:IsActive(context)
 	return context.player.alive and context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_4] ~= nil and
-		context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 5497 and
-		context.player.transformid == 1 and
-		not context.player.isweaver
+		context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 5497
 end
 function set:CanActivate(context)
 	return context.player.alive and not context.player.isweaver and context.player.swimming == GW2.SWIMSTATE.NotInWater and
@@ -890,9 +979,7 @@ set.skills_luacode = {
 }
 function set:IsActive(context)
 	return context.player.alive and context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_4] ~= nil and
-		context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 5556 and
-		context.player.transformid == 2 and
-		not context.player.isweaver
+		context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 5556
 end
 function set:CanActivate(context)
 	return context.player.alive and not context.player.isweaver and context.player.swimming == GW2.SWIMSTATE.NotInWater and
@@ -933,9 +1020,7 @@ set.skills_luacode = {
 }
 function set:IsActive(context)
 	return context.player.alive and context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_4] ~= nil and
-		context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 5530 and
-		context.player.transformid == 3 and
-		not context.player.isweaver
+		context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 5530
 end
 function set:CanActivate(context)
 	return context.player.alive and not context.player.isweaver and context.player.swimming == GW2.SWIMSTATE.NotInWater and
@@ -978,9 +1063,7 @@ set.skills_luacode = {
 }
 function set:IsActive(context)
 	return context.player.alive and context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_4] ~= nil and
-		context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 5555 and
-		context.player.transformid == 4 and
-		not context.player.isweaver
+		context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 5555
 end
 function set:CanActivate(context)
 	return context.player.alive and not context.player.isweaver and context.player.swimming == GW2.SWIMSTATE.NotInWater and
@@ -1021,9 +1104,7 @@ set.skills_luacode = {
 }
 function set:IsActive(context)
 	return context.player.alive and context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_4] ~= nil and
-		context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 29548 and
-		context.player.transformid == 1 and
-		not context.player.isweaver
+		context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 29548
 end
 function set:CanActivate(context)
 	return context.player.alive and not context.player.isweaver and context.player.swimming == GW2.SWIMSTATE.NotInWater and
@@ -1064,9 +1145,7 @@ set.skills_luacode = {
 }
 function set:IsActive(context)
 	return context.player.alive and context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_4] ~= nil and
-		context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 30864 and
-		context.player.transformid == 2 and
-		not context.player.isweaver
+		context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 30864
 end
 function set:CanActivate(context)
 	return context.player.alive and not context.player.isweaver and context.player.swimming == GW2.SWIMSTATE.NotInWater and
@@ -1107,9 +1186,7 @@ set.skills_luacode = {
 }
 function set:IsActive(context)
 	return context.player.alive and context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_4] ~= nil and
-		context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 30008 and
-		context.player.transformid == 3 and
-		not context.player.isweaver
+		context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 30008
 end
 function set:CanActivate(context)
 	return context.player.alive and not context.player.isweaver and context.player.swimming == GW2.SWIMSTATE.NotInWater and
@@ -1150,9 +1227,7 @@ set.skills_luacode = {
 }
 function set:IsActive(context)
 	return context.player.alive and context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_4] ~= nil and
-		context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 29453 and
-		context.player.transformid == 4 and
-		not context.player.isweaver
+		context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 29453
 end
 function set:CanActivate(context)
 	return context.player.alive and not context.player.isweaver and context.player.swimming == GW2.SWIMSTATE.NotInWater and
@@ -1387,8 +1462,8 @@ set.skills_luacode = {
 }
 function set:IsActive(context)
 	return context.player.alive and context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_2] ~= nil and
-		context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 40709 and
-		context.player.lasttransformid and context.player.transformid == 4
+		context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 40709
+		and context.player.transformid == 4
 end
 function set:CanActivate(context)
 	return context.player.alive and context.player.swimming == GW2.SWIMSTATE.NotInWater and
@@ -1411,8 +1486,8 @@ function set:Deactivate(context)
 end
 SkillManager:AddSkillPalette(set)
 
-local set = SkillManager:CreateSkillPalette("Trident_Fire")
-set.uid = "Elementalist_Trident_Fire"
+local set = SkillManager:CreateSkillPalette("Trident_Fire_1")
+set.uid = "Elementalist_Trident_Fire_1"
 set.profession = GW2.CHARCLASS.Elementalist
 set.icon = "Trident"
 set.skills_luacode = {
@@ -1430,16 +1505,6 @@ set.skills_luacode = {
 		slot = GW2.SKILLBARSLOT.Slot_3,
 		activationtime = 0.5,
 		icon = "Steam"
-	},
-	[5599] = {
-		slot = GW2.SKILLBARSLOT.Slot_4,
-		activationtime = 0.5,
-		icon = "Lava Chains"
-	},
-	[5600] = {
-		slot = GW2.SKILLBARSLOT.Slot_5,
-		activationtime = 1.0,
-		icon = "Heat Wave"
 	}
 }
 function set:IsActive(context)
@@ -1468,8 +1533,49 @@ function set:Deactivate(context)
 end
 SkillManager:AddSkillPalette(set)
 
-local set = SkillManager:CreateSkillPalette("Trident_Water")
-set.uid = "Elementalist_Trident_Water"
+local set = SkillManager:CreateSkillPalette("Trident_Fire_2")
+set.uid = "Elementalist_Trident_Fire_2"
+set.profession = GW2.CHARCLASS.Elementalist
+set.icon = "Trident"
+set.skills_luacode = {
+	[5599] = {
+		slot = GW2.SKILLBARSLOT.Slot_4,
+		activationtime = 0.5,
+		icon = "Lava Chains"
+	},
+	[5600] = {
+		slot = GW2.SKILLBARSLOT.Slot_5,
+		activationtime = 1.0,
+		icon = "Heat Wave"
+	}
+}
+function set:IsActive(context)
+	return context.player.alive and context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_4] ~= nil and
+		context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 5599
+end
+function set:CanActivate(context)
+	return context.player.alive and not context.player.isweaver and context.player.swimming == GW2.SWIMSTATE.Diving and
+		context.player.aquatic == GW2.WEAPONTYPE.Trident and
+		context.player.weaponset == 0 and
+		context.skillbar ~= nil and
+		context.skillbar[GW2.SKILLBARSLOT.Slot_13] ~= nil and
+		context.skillbar[GW2.SKILLBARSLOT.Slot_13].id == 5492 and
+		context.skillbar[GW2.SKILLBARSLOT.Slot_13].cancast
+end
+function set:Activate(context)
+	if (context.skillbar ~= nil) then
+		if (context.skillbar[GW2.SKILLBARSLOT.Slot_13] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_13].id == 5492) then
+			Player:CastSpell(GW2.SKILLBARSLOT.Slot_13)
+		end
+	end
+end
+function set:Deactivate(context)
+	return false
+end
+SkillManager:AddSkillPalette(set)
+
+local set = SkillManager:CreateSkillPalette("Trident_Water_1")
+set.uid = "Elementalist_Trident_Water_1"
 set.profession = GW2.CHARCLASS.Elementalist
 set.icon = "Trident"
 set.skills_luacode = {
@@ -1487,16 +1593,6 @@ set.skills_luacode = {
 		slot = GW2.SKILLBARSLOT.Slot_3,
 		activationtime = 0.5,
 		icon = "Ice Wall"
-	},
-	[5748] = {
-		slot = GW2.SKILLBARSLOT.Slot_4,
-		activationtime = 1.25,
-		icon = "Undercurrent"
-	},
-	[5607] = {
-		slot = GW2.SKILLBARSLOT.Slot_5,
-		activationtime = 1.75,
-		icon = "Tidal Wave"
 	}
 }
 function set:IsActive(context)
@@ -1525,8 +1621,49 @@ function set:Deactivate(context)
 end
 SkillManager:AddSkillPalette(set)
 
-local set = SkillManager:CreateSkillPalette("Trident_Air")
-set.uid = "Elementalist_Trident_Air"
+local set = SkillManager:CreateSkillPalette("Trident_Water_2")
+set.uid = "Elementalist_Trident_Water_2"
+set.profession = GW2.CHARCLASS.Elementalist
+set.icon = "Trident"
+set.skills_luacode = {
+	[5748] = {
+		slot = GW2.SKILLBARSLOT.Slot_4,
+		activationtime = 0.75,
+		icon = "Undercurrent"
+	},
+	[5607] = {
+		slot = GW2.SKILLBARSLOT.Slot_5,
+		activationtime = 1.75,
+		icon = "Tidal Wave"
+	}
+}
+function set:IsActive(context)
+	return context.player.alive and context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_4] ~= nil and
+		context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 5748
+end
+function set:CanActivate(context)
+	return context.player.alive and not context.player.isweaver and context.player.swimming == GW2.SWIMSTATE.Diving and
+		context.player.aquatic == GW2.WEAPONTYPE.Trident and
+		context.player.weaponset == 0 and
+		context.skillbar ~= nil and
+		context.skillbar[GW2.SKILLBARSLOT.Slot_14] ~= nil and
+		context.skillbar[GW2.SKILLBARSLOT.Slot_14].id == 5493 and
+		context.skillbar[GW2.SKILLBARSLOT.Slot_14].cancast
+end
+function set:Activate(context)
+	if (context.skillbar ~= nil) then
+		if (context.skillbar[GW2.SKILLBARSLOT.Slot_14] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_14].id == 5493) then
+			Player:CastSpell(GW2.SKILLBARSLOT.Slot_14)
+		end
+	end
+end
+function set:Deactivate(context)
+	return false
+end
+SkillManager:AddSkillPalette(set)
+
+local set = SkillManager:CreateSkillPalette("Trident_Air_1")
+set.uid = "Elementalist_Trident_Air_1"
 set.profession = GW2.CHARCLASS.Elementalist
 set.icon = "Trident"
 set.skills_luacode = {
@@ -1545,15 +1682,12 @@ set.skills_luacode = {
 		activationtime = 0.5,
 		icon = "Air Pocket"
 	},
-	[5648] = {
-		slot = GW2.SKILLBARSLOT.Slot_4,
-		activationtime = 1.0,
-		icon = "Air Bubble"
-	},
-	[5650] = {
-		slot = GW2.SKILLBARSLOT.Slot_5,
-		activationtime = 0.5,
-		icon = "Lightning Cage"
+	[5653] = {
+		slot = GW2.SKILLBARSLOT.Slot_3,
+		activationtime = 0.0,
+		icon = "Vacuum",
+		instantcast = true,
+		parent = 5652
 	}
 }
 function set:IsActive(context)
@@ -1582,8 +1716,49 @@ function set:Deactivate(context)
 end
 SkillManager:AddSkillPalette(set)
 
-local set = SkillManager:CreateSkillPalette("Trident_Earth")
-set.uid = "Elementalist_Trident_Earth"
+local set = SkillManager:CreateSkillPalette("Trident_Air_2")
+set.uid = "Elementalist_Trident_Air_2"
+set.profession = GW2.CHARCLASS.Elementalist
+set.icon = "Trident"
+set.skills_luacode = {
+	[5648] = {
+		slot = GW2.SKILLBARSLOT.Slot_4,
+		activationtime = 1.0,
+		icon = "Air Bubble"
+	},
+	[5650] = {
+		slot = GW2.SKILLBARSLOT.Slot_5,
+		activationtime = 0.5,
+		icon = "Lightning Cage"
+	}
+}
+function set:IsActive(context)
+	return context.player.alive and context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_4] ~= nil and
+		context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 5648
+end
+function set:CanActivate(context)
+	return context.player.alive and not context.player.isweaver and context.player.swimming == GW2.SWIMSTATE.Diving and
+		context.player.aquatic == GW2.WEAPONTYPE.Trident and
+		context.player.weaponset == 0 and
+		context.skillbar ~= nil and
+		context.skillbar[GW2.SKILLBARSLOT.Slot_15] ~= nil and
+		context.skillbar[GW2.SKILLBARSLOT.Slot_15].id == 5494 and
+		context.skillbar[GW2.SKILLBARSLOT.Slot_15].cancast
+end
+function set:Activate(context)
+	if (context.skillbar ~= nil) then
+		if (context.skillbar[GW2.SKILLBARSLOT.Slot_15] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_15].id == 5494) then
+			Player:CastSpell(GW2.SKILLBARSLOT.Slot_15)
+		end
+	end
+end
+function set:Deactivate(context)
+	return false
+end
+SkillManager:AddSkillPalette(set)
+
+local set = SkillManager:CreateSkillPalette("Trident_Earth_1")
+set.uid = "Elementalist_Trident_Earth_1"
 set.profession = GW2.CHARCLASS.Elementalist
 set.icon = "Trident"
 set.skills_luacode = {
@@ -1601,7 +1776,39 @@ set.skills_luacode = {
 		slot = GW2.SKILLBARSLOT.Slot_3,
 		activationtime = 0.5,
 		icon = "Magnetic Current"
-	},
+	}
+}
+function set:IsActive(context)
+	return context.player.alive and context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_2] ~= nil and
+		context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 5658 and
+		context.player.transformid == 4
+end
+function set:CanActivate(context)
+	return context.player.alive and context.player.swimming == GW2.SWIMSTATE.Diving and
+		context.player.aquatic == GW2.WEAPONTYPE.Trident and
+		context.player.weaponset == 0 and
+		context.skillbar ~= nil and
+		context.skillbar[GW2.SKILLBARSLOT.Slot_16] ~= nil and
+		context.skillbar[GW2.SKILLBARSLOT.Slot_16].id == 5495 and
+		context.skillbar[GW2.SKILLBARSLOT.Slot_16].cancast
+end
+function set:Activate(context)
+	if (context.skillbar ~= nil) then
+		if (context.skillbar[GW2.SKILLBARSLOT.Slot_16] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_16].id == 5495) then
+			Player:CastSpell(GW2.SKILLBARSLOT.Slot_16)
+		end
+	end
+end
+function set:Deactivate(context)
+	return false
+end
+SkillManager:AddSkillPalette(set)
+
+local set = SkillManager:CreateSkillPalette("Trident_Earth_2")
+set.uid = "Elementalist_Trident_Earth_2"
+set.profession = GW2.CHARCLASS.Elementalist
+set.icon = "Trident"
+set.skills_luacode = {
 	[5659] = {
 		slot = GW2.SKILLBARSLOT.Slot_4,
 		activationtime = 1.0,
@@ -1614,9 +1821,8 @@ set.skills_luacode = {
 	}
 }
 function set:IsActive(context)
-	return context.player.alive and context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_2] ~= nil and
-		context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 5658 and
-		context.player.transformid == 4
+	return context.player.alive and context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_4] ~= nil and
+		context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 5659
 end
 function set:CanActivate(context)
 	return context.player.alive and context.player.swimming == GW2.SWIMSTATE.Diving and
@@ -2217,6 +2423,36 @@ set.skills_luacode = {
 		slot = GW2.SKILLBARSLOT.Slot_3,
 		activationtime = 0.75,
 		icon = "Steam Surge"
+	},
+	[41712] = {
+		slot = GW2.SKILLBARSLOT.Slot_3,
+		activationtime = 0.5,
+		icon = "Plasmic Strike"
+	},
+	[46185] = {
+		slot = GW2.SKILLBARSLOT.Slot_3,
+		activationtime = 0.75,
+		icon = "Molten Burst"
+	},
+	[40378] = {
+		slot = GW2.SKILLBARSLOT.Slot_3,
+		activationtime = 1.0,
+		icon = "Hydrothermal Vent"
+	},
+	[46360] = {
+		slot = GW2.SKILLBARSLOT.Slot_3,
+		activationtime = 0.5,
+		icon = "Absolute Zero"
+	},
+	[41001] = {
+		slot = GW2.SKILLBARSLOT.Slot_3,
+		activationtime = 1.0,
+		icon = "Elemental Compression"
+	},
+	[39981] = {
+		slot = GW2.SKILLBARSLOT.Slot_3,
+		activationtime = 0.5,
+		icon = "Sodden Swath"
 	}
 }
 
