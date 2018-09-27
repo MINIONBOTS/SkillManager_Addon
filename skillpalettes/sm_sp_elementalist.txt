@@ -1628,7 +1628,7 @@ set.icon = "Trident"
 set.skills_luacode = {
 	[5748] = {
 		slot = GW2.SKILLBARSLOT.Slot_4,
-		activationtime = 1.25,
+		activationtime = 0.75,
 		icon = "Undercurrent"
 	},
 	[5607] = {
@@ -1681,6 +1681,13 @@ set.skills_luacode = {
 		slot = GW2.SKILLBARSLOT.Slot_3,
 		activationtime = 0.5,
 		icon = "Air Pocket"
+	},
+	[5653] = {
+		slot = GW2.SKILLBARSLOT.Slot_3,
+		activationtime = 0.0,
+		icon = "Vacuum",
+		instantcast = true,
+		parent = 5652
 	}
 }
 function set:IsActive(context)
@@ -2416,6 +2423,36 @@ set.skills_luacode = {
 		slot = GW2.SKILLBARSLOT.Slot_3,
 		activationtime = 0.75,
 		icon = "Steam Surge"
+	},
+	[41712] = {
+		slot = GW2.SKILLBARSLOT.Slot_3,
+		activationtime = 0.5,
+		icon = "Plasmic Strike"
+	},
+	[46185] = {
+		slot = GW2.SKILLBARSLOT.Slot_3,
+		activationtime = 0.75,
+		icon = "Molten Burst"
+	},
+	[40378] = {
+		slot = GW2.SKILLBARSLOT.Slot_3,
+		activationtime = 1.0,
+		icon = "Hydrothermal Vent"
+	},
+	[46360] = {
+		slot = GW2.SKILLBARSLOT.Slot_3,
+		activationtime = 0.5,
+		icon = "Absolute Zero"
+	},
+	[41001] = {
+		slot = GW2.SKILLBARSLOT.Slot_3,
+		activationtime = 1.0,
+		icon = "Elemental Compression"
+	},
+	[39981] = {
+		slot = GW2.SKILLBARSLOT.Slot_3,
+		activationtime = 0.5,
+		icon = "Sodden Swath"
 	}
 }
 
