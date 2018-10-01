@@ -1925,6 +1925,108 @@ function drowning:Deactivate(context)
 end
 SkillManager:AddSkillPalette(drowning)
 
+local set = SkillManager:CreateSkillPalette("Conjured_Lightning_Hammer")
+set.uid = "Elementalist_Conjured_Lightning_Hammer"
+set.profession = GW2.CHARCLASS.Elementalist
+set.icon = "Conjure Lightning Hammer"
+set.skills_luacode = {
+	[5726] = {
+		slot = GW2.SKILLBARSLOT.Slot_1,
+		activationtime = 0.5,
+		icon = "Lightning Swing",
+	},
+	[5727] = {
+		slot = GW2.SKILLBARSLOT.Slot_1,
+		activationtime = 0.5,
+		icon = "Static Swing",
+		parent = 5726
+	},
+	[5728] = {
+		slot = GW2.SKILLBARSLOT.Slot_1,
+		activationtime = 0.5,
+		icon = "Thunderclap",
+		parent = 5726
+	},
+	[5625] = {
+		slot = GW2.SKILLBARSLOT.Slot_2,
+		activationtime = 0.75,
+		icon = "Lightning Leap"
+	},
+	[5733] = {
+		slot = GW2.SKILLBARSLOT.Slot_3,
+		activationtime = 1.0,
+		icon = "Wind Blast"
+	},
+	[5725] = {
+		slot = GW2.SKILLBARSLOT.Slot_4,
+		activationtime = 1.25,
+		icon = "Invoke Lightning"
+	},
+	[5671] = {
+		slot = GW2.SKILLBARSLOT.Slot_5,
+		activationtime = 0.75,
+		icon = "Static Field"
+	},
+}
+function set:IsActive(context)
+	return context.player.alive and context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_2] ~= nil and
+		context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 5625
+end
+function set:CanActivate(context)
+	return false
+end
+function set:Activate(context)
+end
+function set:Deactivate(context)
+	return false
+end
+SkillManager:AddSkillPalette(set)
+
+local set = SkillManager:CreateSkillPalette("Conjured_Fiery_Greatsword")
+set.uid = "Elementalist_Conjured_Fiery_Greatsword"
+set.profession = GW2.CHARCLASS.Elementalist
+set.icon = "Conjure Fiery Greatsword"
+set.skills_luacode = {
+	[5532] = {
+		slot = GW2.SKILLBARSLOT.Slot_1,
+		activationtime = 2.75,
+		icon = "Flame Wave",
+	},
+	[5533] = {
+		slot = GW2.SKILLBARSLOT.Slot_2,
+		activationtime = 1.25,
+		icon = "Fiery Eruption"
+	},
+	[5697] = {
+		slot = GW2.SKILLBARSLOT.Slot_3,
+		activationtime = 0.25,
+		icon = "Fiery Whirl"
+	},
+	[5517] = {
+		slot = GW2.SKILLBARSLOT.Slot_4,
+		activationtime = 0.0,
+		icon = "Fiery Rush"
+	},
+	[5531] = {
+		slot = GW2.SKILLBARSLOT.Slot_5,
+		activationtime = 0.75,
+		icon = "Firestorm"
+	},
+}
+function set:IsActive(context)
+	return context.player.alive and context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil and
+		context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 5532
+end
+function set:CanActivate(context)
+	return false
+end
+function set:Activate(context)
+end
+function set:Deactivate(context)
+	return false
+end
+SkillManager:AddSkillPalette(set)
+
 -- ALL the skills which do not belong to a set
 local set = SkillManager:CreateSkillPalette("Elementalist")
 set.uid = "Elementalist"
