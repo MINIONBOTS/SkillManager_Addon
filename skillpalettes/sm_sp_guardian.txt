@@ -400,6 +400,11 @@ set.skills_luacode = {
 		 activationtime = 0.5, 
 		 icon = 'Shield of Judgment',  
 	 },
+	 [9087] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_4, 
+		 activationtime = 0.5, 
+		 icon = 'Shield of Judgment',
+	 }
 	 [9091] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_5, 
 		 activationtime = 4.0, 
@@ -414,7 +419,7 @@ set.skills_luacode = {
 	 },
 }
 function set:IsActive(context)
-	return context.player.alive and (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 15834)	
+	return context.player.alive and (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4]~=nil  and (context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 15834 || context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 9087))	
 end
 function set:CanActivate(context)
 	return context.player.alive and context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.offhand == GW2.WEAPONTYPE.Shield or context.player.offhand_alt == GW2.WEAPONTYPE.Shield) and (context.player.weaponset == 4 or context.player.weaponset == 5) and context.player.transformid == 0

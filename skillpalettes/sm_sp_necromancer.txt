@@ -374,6 +374,11 @@ scepter.skills_luacode = {
 		activationtime = 0.75,
 		icon = 'Feast of Corruption',
 	},
+	[51647] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_3, 
+		 activationtime = 0.75, 
+		 icon = 'Devouring Darkness',
+	},
 }
 function scepter:IsActive(context)
 	return context.player.alive and (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 10532)
