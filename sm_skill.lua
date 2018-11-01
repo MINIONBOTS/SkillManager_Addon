@@ -71,9 +71,10 @@ function sm_skill:Save()
 	copy.id = self.id
 	copy.skillpaletteuid = self.skillpaletteuid
 	copy.setsattackrange = self.setsattackrange
-	copy.requireslos = self.requireslos-- or true
+	copy.requireslos = self.requireslos -- or true
 	copy.activationtime = self.activationtime
 	copy.instantcast = self.instantcast
+	copy.stopsmovement = self.stopsmovement
 	copy.condition_luacode = self.condition_luacode
 	copy.conditions = {}
 	local gidx = 0
@@ -152,13 +153,18 @@ function sm_skill:RenderSkillPaletteEditor()
 				GUI:BeginChild("##spe_setskills",0,y - 25, true)					
 					self.temp.currentskillid = sm_mgr.skillpalettes[sm_mgr.GetPlayerProfession()][self.temp.currentskillset]:RenderSkills(self.temp.currentskillid)
 				GUI:EndChild()
+			else
+				GUI:SameLine()
+				local _,y = GUI:GetContentRegionAvail()
+				GUI:Dummy(0, y - 25)
 			end
 			
+			local x,y = GUI:GetWindowSize()
+			GUI:SetCursorPos(self.temp.currentskillid and x - 250 or x - 200, y-27)
 			-- Render Skill Details
 			if( self.temp.currentskillid ) then
-				local x,y = GUI:GetWindowSize()
-				GUI:SetCursorPos(x-200, y-27)
-				if ( GUI:Button(GetString("Select Skill")) ) then
+
+				if ( GUI:Button(GetString("Select Skill"), 100, 0) ) then
 					-- copy the skillset data of the skill we picked into the action of ours					
 					local data = sm_mgr.skillpalettes[sm_mgr.GetPlayerProfession()][self.temp.currentskillset]:GetSkillData(self.temp.currentskillid)
 					local tmpnext = self.skill_next
@@ -181,16 +187,31 @@ function sm_skill:RenderSkillPaletteEditor()
 					end
 					sm_mgr.profile.temp.modified = true
 				end
+				GUI:SameLine()
+			end
+
+			if(GUI:Button(GetString("Cancel"), 100, 0)) then
+				if(not self.temp.oldid) then
+					sm_mgr.profile.actionlist[sm_mgr.profile.temp.selectedactionidx] = nil
+				else
+					self:CloseSkillPaletteEditor()
+				end
+				sm_mgr.profile.temp.selectedactionidx = nil
+				sm_mgr.profile.temp.selectedaction = nil
 			end
 			GUI:PopStyleVar()
 		end
 	else
 		-- someone pressed the X to close"
-		if ( not self.id and self.temp.oldid ) then self.id = self.temp.oldid end
-		self.temp.oldid = nil
-		self.temp.deleteaction = nil		
+		self:CloseSkillPaletteEditor()
 	end	
 	GUI:End()
+end
+
+function sm_skill:CloseSkillPaletteEditor()	
+	if ( not self.id and self.temp.oldid ) then self.id = self.temp.oldid end
+	self.temp.oldid = nil
+	self.temp.deleteaction = nil	
 end
 
 -- Renders skill information and condition editor
@@ -366,8 +387,17 @@ function sm_skill:RenderHardcodedSkillDetails()
 	GUI:SameLine(300)
 	local changed
 	if ( self.instantcast == nil ) then self.instantcast = false end
-	GUI:Text(GetString("Instant Cast:")) GUI:SameLine(425) self.instantcast, changed = GUI:Checkbox("##instantcast", self.instantcast) if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("If this is Enabled, the Skill can be cast instantly 'without interrupting' the currently cast Skill." )) end			
+	GUI:Text(GetString("Instant Cast:")) GUI:SameLine(425) self.instantcast, changed = GUI:Checkbox("##instantcast", self.instantcast)
+	if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("If this is Enabled, the Skill can be cast instantly 'without interrupting' the currently cast Skill." )) end			
 	if ( changed ) then sm_mgr.profile.temp.modified = true end
+	
+	GUI:PushItemWidth(150)
+	if ( self.stopsmovement == nil ) then self.stopsmovement = false end
+	GUI:Text(GetString("Stops movement:")) GUI:SameLine(125) self.stopsmovement, changed = GUI:Checkbox("##stopsmovement" , self.stopsmovement or false)
+	if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("If Enabled, the bot will try not to move while casting the skill." ).."\n"..GetString("Needs to be enabled for skills that root the player in place. Like meteor shower or flurry")) end			
+	if ( changed ) then sm_mgr.profile.temp.modified = true end
+	
+	GUI:PopItemWidth()
 	
 	GUI:PopStyleVar(2)
 end

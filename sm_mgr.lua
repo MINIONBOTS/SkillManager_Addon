@@ -462,6 +462,12 @@ function SkillManager:SelectProfile(name)
 	end	
 end
 
+function SkillManager:SkillStopsMovement()
+	if(table.valid(sm_mgr.profile)) then
+		return sm_mgr.profile:SkillStopsMovement()
+	end
+	return false
+end
 
 -- auto generating default profiles, leaving it here for future changes I guess
 function sm_mgr:GenetateDefaultProfile()

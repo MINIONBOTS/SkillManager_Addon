@@ -77,7 +77,7 @@ function sm_profile:UpdateContext()
 	-- reset range
 	self.temp.activemaxattackrange = 154
 	self.temp.maxattackrange = 154
-
+	self.temp.skillstopsmovement = false
 	self.temp.context.actionlist = self.actionlist
 	local allskills = Player:GetCompleteSpellInfo()
 	if ( allskills ) then
@@ -306,6 +306,11 @@ function sm_profile:SetTargets(attacktargetid, healtargetid)
 	self.temp.heal_target_lastupdate = ml_global_information.Now
 end
 
+-- Current skill does not allow any movement during cast
+function sm_profile:SkillStopsMovement()
+	return self.temp.skillstopsmovement == true
+end
+
 -- The actual casting part
 local gw2_common_functions = _G.gw2_common_functions -- set this here. wont ever change and setting it each 'Cast()' call is insanity.
 function sm_profile:Cast()
@@ -369,6 +374,8 @@ function sm_profile:Cast()
 					end
 				end
 				if ( not action ) then action = a end
+				
+				self.temp.skillstopsmovement = (action.stopsmovement and not action.instantcast)
 
 				ml_global_information.Player_CastInfo = Player.castinfo
 				if ( action.temp.cancast and ((ml_global_information.Player_CastInfo.id ~= action.id  and not skipnoneinstantactions ) or action.instantcast )) then  -- .cancast includes Cooldown, Power and "Do we have that set and skill at all" checks
@@ -477,19 +484,22 @@ function sm_profile:Cast()
 			-- Evade
 			local evaded
 			if( ml_global_information.Player_HealthState == GW2.HEALTHSTATE.Alive ) then
-				if ( ml_global_information.Player_InCombat and ml_global_information.Player_CastInfo and (ml_global_information.Player_CastInfo.slot == GW2.SKILLBARSLOT.None or ml_global_information.Player_CastInfo.slot == GW2.SKILLBARSLOT.Slot_1 )) then
+				if ( not self:SkillStopsMovement() and ml_global_information.Player_InCombat and ml_global_information.Player_CastInfo and (ml_global_information.Player_CastInfo.slot == GW2.SKILLBARSLOT.None or ml_global_information.Player_CastInfo.slot == GW2.SKILLBARSLOT.Slot_1 )) then
 					evaded = gw2_common_functions.Evade(self.temp.context.attack_target == nil and 3 or nil) -- if we dont have a target, evade forward. (3 == forward)
 				end
 
 				-- Combatmovement
 				if ( not evaded and Settings.GW2Minion.combatmovement ) then
-					gw2_common_functions:DoCombatMovement(self.temp.context.attack_target)
+					if(self:SkillStopsMovement()) then
+						gw2_combat_movement:PreventCombatMovement()
+					end
+					gw2_combat_movement:DoCombatMovement(self.temp.context.attack_target)
 				end
 			end
 
 		else
 			-- Call combatmovement without a target to stop all combatmovement related movement.
-			gw2_common_functions:DoCombatMovement()
+			gw2_combat_movement:DoCombatMovement()
 
 			-- Handling that the player is Interacting / finishing / stuff
 			if ( self.temp.interactionstart and ml_global_information.Player_CastInfo) then
@@ -576,15 +586,21 @@ function sm_profile:Render()
 		if ( changed ) then self.temp.modified = true end
 		GUI:TreePop()
 	else
-		x = 280
+		x = 400
 	end
 	if(self.temp.wndMaxSizeY) then y = self.temp.wndMaxSizeY	end
-	GUI:SetWindowSize(x, y)
+	
+	local padding_y = 10 -- No double scrollbars please
+	local style = GUI:GetStyle()
+	if(table.valid(style) and table.valid(style.windowpadding) and type(style.windowpadding.y) == "number") then
+		padding_y = style.windowpadding.y
+	end
+	GUI:SetWindowSize(x, y+padding_y)
 	GUI:Separator()
 
 
 	-- Action List Rendering
-	GUI:BeginChild("##skilllistgrp",0,self.temp.skilllistgrpheight or 100)
+	GUI:BeginChild("##skilllistgrp",0,self.temp.skilllistgrpheight or 200)
 	self.temp.skillfilter = GUI:InputText(GetString("Filter").."##skfilter1",self.temp.skillfilter or "") if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("'To filter the List of Skills below. You cannot drag / drop / sort the list while this filter is active!")) end
 	local _,height = GUI:GetCursorPos()
 	if ( self.actionlist ) then
@@ -592,7 +608,7 @@ function sm_profile:Render()
 		GUI:PushStyleVar(GUI.StyleVar_FramePadding, 2, 2)
 
 		for i,a in pairs (self.actionlist) do
-			if(self.temp.skillfilter == "" or string.contains(string.lower(a.name), string.lower(self.temp.skillfilter)))then
+			if(self.temp.skillfilter == "" or (string.valid(a.name) and string.contains(string.lower(a.name), string.lower(self.temp.skillfilter))))then
 				local clicked, dragged, released = a:RenderActionButton(self.temp.selectedaction, self.temp.draggedaction,i)
 				if (clicked) then
 					self.temp.selectedactionidx = i
@@ -649,7 +665,7 @@ function sm_profile:Render()
 		self.temp.selectedaction = self.actionlist[#self.actionlist]
 	end
 	local _,endheight = GUI:GetCursorPos()
-	self.temp.skilllistgrpheight = endheight - height
+	self.temp.skilllistgrpheight = (endheight - height) + 50
 	local _,sm = GUI:GetScreenSize()
 	if ( self.temp.skilllistgrpheight > (sm*3/5)) then
 		self.temp.skilllistgrpheight = (sm*3/5) - height
