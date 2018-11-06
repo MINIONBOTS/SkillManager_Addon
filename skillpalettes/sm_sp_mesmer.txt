@@ -425,8 +425,12 @@ scepter.skills_luacode = {
 }
 function scepter:IsActive(context)
 	return context.player.alive and
-		(context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_3] ~= nil and
-			context.skillbar[GW2.SKILLBARSLOT.Slot_3].id == 10168)
+		(context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil) and
+		(
+			context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 10289 or
+			context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 10290 or
+			context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 10291
+		)
 end
 function scepter:CanActivate(context)
 	return context.player.alive and context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and
