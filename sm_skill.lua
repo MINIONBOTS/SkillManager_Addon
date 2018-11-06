@@ -789,7 +789,7 @@ function sm_skill:IsEquipped()
 			end		
 		else
 			-- Weapon skill 1-5 : only return true for NONE-Flip-skills if they are on our current bar
-			if ( not self.parent or (self.skillpalette:IsActive(self.temp.context) and self.temp.context.skillbar[self.slot].id == self.id))then 			
+			if ( not self.parent or (self.skillpalette:IsActive(self.temp.context) and self.temp.context.skillbar[self.slot] and self.temp.context.skillbar[self.slot].id == self.id))then 			
 				return true
 			end
 		end
