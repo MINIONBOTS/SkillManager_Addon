@@ -597,12 +597,15 @@ function sm_profile:Render()
 		padding_y = style.windowpadding.y
 	end
 	GUI:SetWindowSize(x, y+padding_y)
+	
 	GUI:Separator()
 
-
+	self.temp.skillfilter = GUI:InputText(GetString("Filter").."##skfilter1",self.temp.skillfilter or "") if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("'To filter the List of Skills below. You cannot drag / drop / sort the list while this filter is active!")) end
+	
+	GUI:Separator()
+	
 	-- Action List Rendering
 	GUI:BeginChild("##skilllistgrp",0,self.temp.skilllistgrpheight or 200)
-	self.temp.skillfilter = GUI:InputText(GetString("Filter").."##skfilter1",self.temp.skillfilter or "") if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("'To filter the List of Skills below. You cannot drag / drop / sort the list while this filter is active!")) end
 	local _,height = GUI:GetCursorPos()
 	if ( self.actionlist ) then
 		--GUI:PushStyleVar(GUI.StyleVar_ItemSpacing, 2, 4)
@@ -616,11 +619,14 @@ function sm_profile:Render()
 					self.temp.selectedaction = a
 					self.temp.draggedaction = nil
 					self.temp.draggedactionidx = nil
-
+					self.temp.draggedcounter = nil
 				elseif(self.temp.skillfilter == "" and dragged) then
-					self.temp.draggedaction = a
-					self.temp.draggedactionidx = i
-
+					-- a few ms delay to avoid bouncy buttons
+					self.temp.draggedcounter = self.temp.draggedcounter and self.temp.draggedcounter + 1 or 1
+					if(self.temp.draggedcounter > 5) then
+						self.temp.draggedaction = a
+						self.temp.draggedactionidx = i
+					end
 				elseif(self.temp.skillfilter == "" and released) then
 					if ( self.temp.draggedactionidx ) then -- sometimes nil
 						if( self.temp.draggedaction and self.temp.draggedaction ~= a and self.temp.draggedactionidx ~= i)then
@@ -635,6 +641,7 @@ function sm_profile:Render()
 					end
 					self.temp.draggedaction = nil
 					self.temp.draggedactionidx = nil
+					self.temp.draggedcounter = nil
 					break
 				end
 			end

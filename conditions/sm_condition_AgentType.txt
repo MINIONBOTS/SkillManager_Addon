@@ -14,7 +14,12 @@ function sm_condition_agenttype:Save()
 	return data
 end
 function sm_condition_agenttype:Evaluate(skill,context)
-	local target = (self.target == 1 and context.attack_target or context.heal_target)
+	local target
+	if(self.target == 1) then
+		target = context.attack_target
+	elseif(self.target == 2) then
+		target = context.heal_target
+	end
 	
 	if(target) then
 		if(self.operator == 1) then

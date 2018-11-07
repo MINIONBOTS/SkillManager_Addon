@@ -290,13 +290,22 @@ function sm_mgr.DrawMenu(event,ticks)
 			end
 			if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("Create New Profile")) end
 			
-			if ( sm_mgr.profile and sm_mgr.profile.temp.modified ) then
-				GUI:PushStyleColor(GUI.Col_Button,1.0,0.39,0.0,0.6)
-				GUI:PushStyleColor(GUI.Col_ButtonHovered,1.0,0.39,0.0,0.8)
-				GUI:PushStyleColor(GUI.Col_ButtonActive,1.0,0.39,0.0,0.9)
+			if ( sm_mgr.profile) then
+				if(sm_mgr.profile.temp.modified) then
+					GUI:PushStyleColor(GUI.Col_Button,1.0,0.39,0.0,0.6)
+					GUI:PushStyleColor(GUI.Col_ButtonHovered,1.0,0.39,0.0,0.8)
+					GUI:PushStyleColor(GUI.Col_ButtonActive,1.0,0.39,0.0,0.9)
+				else
+					GUI:PushStyleColor(GUI.Col_Button,0.19,0.19,0.19,0.6)
+					GUI:PushStyleColor(GUI.Col_ButtonHovered,0.19,0.19,0.19,0.6)
+					GUI:PushStyleColor(GUI.Col_ButtonActive,0.19,0.19,0.19,0.6)					
+				end
 				local maxx,_ = GUI:GetContentRegionAvail()
-				if ( GUI:Button(GetString("Save Changes"),maxx,20) ) then
-					sm_mgr.profile:Save()
+				local btnstr = sm_mgr.profile.temp.modified and GetString("Save Changes") or GetString("No Changes")
+				if ( GUI:Button(btnstr,maxx,20) ) then
+					if(sm_mgr.profile.temp.modified) then
+						sm_mgr.profile:Save()
+					end
 				end				
 				GUI:PopStyleColor(3)
 			end
