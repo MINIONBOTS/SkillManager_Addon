@@ -24,7 +24,8 @@ sword_mh.skills_luacode = {
 	[10334] = {
 		slot = GW2.SKILLBARSLOT.Slot_2,
 		activationtime = 1.0,
-		icon = "Blurred Frenzy"
+		icon = "Blurred Frenzy",
+		stopsmovement = true
 	},
 	[10173] = {
 		slot = GW2.SKILLBARSLOT.Slot_3,
@@ -71,7 +72,8 @@ sword_ambush_mh.skills_luacode = {
 	[10334] = {
 		slot = GW2.SKILLBARSLOT.Slot_2,
 		activationtime = 1.0,
-		icon = "Blurred Frenzy"
+		icon = "Blurred Frenzy",
+		stopsmovement = true
 	},
 	[10173] = {
 		slot = GW2.SKILLBARSLOT.Slot_3,

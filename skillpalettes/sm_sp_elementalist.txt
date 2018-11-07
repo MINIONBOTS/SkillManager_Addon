@@ -59,7 +59,8 @@ set.skills_luacode = {
 	[5501] = {
 		slot = GW2.SKILLBARSLOT.Slot_5,
 		activationtime = 3.75,
-		icon = "Meteor Shower"
+		icon = "Meteor Shower",
+		stopsmovement = true
 	}
 }
 function set:IsActive(context)
@@ -880,12 +881,14 @@ set.skills_luacode = {
 	[5690] = {
 		slot = GW2.SKILLBARSLOT.Slot_4,
 		activationtime = 0.5,
-		icon = "Earthquake"
+		icon = "Earthquake",
+		stopsmovement = true
 	},
 	[5522] = {
 		slot = GW2.SKILLBARSLOT.Slot_5,
 		activationtime = 0.5,
-		icon = "Churning Earth"
+		icon = "Churning Earth",
+		stopsmovement = true
 	}
 }
 function set:IsActive(context)
@@ -1094,7 +1097,8 @@ set.skills_luacode = {
 	[29548] = {
 		slot = GW2.SKILLBARSLOT.Slot_4,
 		activationtime = 0.75,
-		icon = "Heat Sync"
+		icon = "Heat Sync",
+		stopsmovement = true
 	},
 	[29533] = {
 		slot = GW2.SKILLBARSLOT.Slot_5,
@@ -2387,7 +2391,7 @@ set.skills_luacode = {
 	[42867] = {
 		slot = GW2.SKILLBARSLOT.Slot_3,
 		activationtime = 0.5,
-		icon = "Shearing Edge"
+		icon = "Shearing Edge",
 	},
 	[46295] = {
 		slot = GW2.SKILLBARSLOT.Slot_3,

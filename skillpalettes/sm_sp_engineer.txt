@@ -838,11 +838,13 @@ hammer.skills_luacode = {
 	 slot = GW2.SKILLBARSLOT.Slot_2,
 	 activationtime = 1.0,
 	 icon = 'Electro-whirl',
+	 stopsmovement = true
  },
 [30665] = {
 	 slot = GW2.SKILLBARSLOT.Slot_3,
 	 activationtime = 1.75,
 	 icon = 'Rocket Charge',
+	 stopsmovement = true
  },
 [29840] = {
 	 slot = GW2.SKILLBARSLOT.Slot_4,
@@ -960,6 +962,7 @@ photonforge.skills_luacode = {
 	 slot = GW2.SKILLBARSLOT.Slot_5,
 	 activationtime = 0.75,
 	 icon = 'Holographic Shockwave',
+	 stopsmovement = true
  },
 }
 function photonforge:IsActive(context)

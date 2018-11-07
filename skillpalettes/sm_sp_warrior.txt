@@ -23,7 +23,8 @@ set.skills_luacode = {
 	[14554] = {
 		slot = GW2.SKILLBARSLOT.Slot_2,
 		activationtime = 3.5,
-		icon = "Hundred Blades"
+		icon = "Hundred Blades",
+		stopsmovement = true
 	},
 	[14447] = {
 		slot = GW2.SKILLBARSLOT.Slot_3,
@@ -798,7 +799,8 @@ set.skills_luacode = {
 	[14480] = {
 		slot = GW2.SKILLBARSLOT.Slot_5,
 		activationtime = 2.75,
-		icon = "Tsunami Slash"
+		icon = "Tsunami Slash",
+		stopsmovement = true
 	}
 }
 function set:IsActive(context)
@@ -1049,22 +1051,26 @@ set.skills_luacode = {
 	[14396] = {
 		slot = GW2.SKILLBARSLOT.Slot_13,
 		activationtime = 1.25,
-		icon = "Kill Shot"
+		icon = "Kill Shot",
+		stopsmovement = true
 	},
 	[14473] = {
 		slot = GW2.SKILLBARSLOT.Slot_13,
 		activationtime = 1.25,
-		icon = "Kill Shot"
+		icon = "Kill Shot",
+		stopsmovement = true
 	},
 	[14474] = {
 		slot = GW2.SKILLBARSLOT.Slot_13,
 		activationtime = 1.25,
-		icon = "Kill Shot"
+		icon = "Kill Shot",
+		stopsmovement = true
 	},
 	[14475] = {
 		slot = GW2.SKILLBARSLOT.Slot_13,
 		activationtime = 1.25,
-		icon = "Kill Shot"
+		icon = "Kill Shot",
+		stopsmovement = true
 	},
 	[14353] = {
 		slot = GW2.SKILLBARSLOT.Slot_13,
@@ -1109,22 +1115,26 @@ set.skills_luacode = {
 	[14367] = {
 		slot = GW2.SKILLBARSLOT.Slot_13,
 		activationtime = 3.0,
-		icon = "Flurry"
+		icon = "Flurry",
+		stopsmovement = true
 	},
 	[14430] = {
 		slot = GW2.SKILLBARSLOT.Slot_13,
 		activationtime = 3.0,
-		icon = "Flurry"
+		icon = "Flurry",
+		stopsmovement = true
 	},
 	[14428] = {
 		slot = GW2.SKILLBARSLOT.Slot_13,
 		activationtime = 3.0,
-		icon = "Flurry"
+		icon = "Flurry",
+		stopsmovement = true
 	},
 	[14429] = {
 		slot = GW2.SKILLBARSLOT.Slot_13,
 		activationtime = 3.0,
-		icon = "Flurry"
+		icon = "Flurry",
+		stopsmovement = true
 	},
 	[14544] = {
 		slot = GW2.SKILLBARSLOT.Slot_13,
@@ -1189,39 +1199,46 @@ set.skills_luacode = {
 	[14528] = {
 		slot = GW2.SKILLBARSLOT.Slot_7,
 		activationtime = 1.0,
-		icon = "Banner of Defense"
+		icon = "Banner of Defense",
+		stopsmovement = true
 	},
 	[14407] = {
 		slot = GW2.SKILLBARSLOT.Slot_8,
 		activationtime = 1.0,
-		icon = "Banner of Discipline"
+		icon = "Banner of Discipline",
+		stopsmovement = true
 	},
 	[14405] = {
 		slot = GW2.SKILLBARSLOT.Slot_9,
 		activationtime = 1.0,
-		icon = "Banner of Strength"
+		icon = "Banner of Strength",
+		stopsmovement = true
 	},
 	[14419] = {
 		slot = GW2.SKILLBARSLOT.Slot_10,
 		activationtime = 2.0,
-		icon = "Battle Standard"
+		icon = "Battle Standard",
+		stopsmovement = true
 	},
 	[14408] = {
 		slot = GW2.SKILLBARSLOT.Slot_7,
 		activationtime = 1.0,
-		icon = "Banner of Tactics"
+		icon = "Banner of Tactics",
+		stopsmovement = true
 	},
 	[14516] = {
 		slot = GW2.SKILLBARSLOT.Slot_8,
 		activationtime = 1.0,
 		icon = "Bulls Charge",
-		nounderwater = true
+		nounderwater = true,
+		stopsmovement = true
 	},
 	[14502] = {
 		slot = GW2.SKILLBARSLOT.Slot_9,
 		activationtime = 0.5,
 		icon = "Kick",
-		nounderwater = true
+		nounderwater = true,
+		stopsmovement = true
 	},
 	[14355] = {
 		slot = GW2.SKILLBARSLOT.Slot_10,
@@ -1244,7 +1261,8 @@ set.skills_luacode = {
 		slot = GW2.SKILLBARSLOT.Slot_10,
 		activationtime = 1.0,
 		icon = "Rampage",
-		nounderwater = true
+		nounderwater = true,
+		stopsmovement = true
 	},
 	[14403] = {
 		slot = GW2.SKILLBARSLOT.Slot_7,
@@ -1387,7 +1405,8 @@ set.skills_luacode = {
 		slot = GW2.SKILLBARSLOT.Slot_8,
 		activationtime = 0.5,
 		icon = "Shattering Blow",
-		nounderwater = true
+		nounderwater = true,
+		stopsmovement = true
 	},
 	[29613] = {
 		slot = GW2.SKILLBARSLOT.Slot_9,
@@ -1399,13 +1418,15 @@ set.skills_luacode = {
 		slot = GW2.SKILLBARSLOT.Slot_10,
 		activationtime = 0.75,
 		icon = "Head Butt",
-		nounderwater = true
+		nounderwater = true,
+		stopsmovement = true
 	},
 	[29941] = {
 		slot = GW2.SKILLBARSLOT.Slot_7,
 		activationtime = 0.75,
 		icon = "Wild Blow",
-		nounderwater = true
+		nounderwater = true,
+		stopsmovement = true
 	},
 	[41100] = {
 		slot = GW2.SKILLBARSLOT.Slot_6,

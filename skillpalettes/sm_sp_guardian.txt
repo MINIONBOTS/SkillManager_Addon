@@ -80,6 +80,7 @@ set.skills_luacode = {
 		 slot = GW2.SKILLBARSLOT.Slot_4, 
 		 activationtime = 0.5, 
 		 icon = 'Symbol of Wrath',  
+		 stopsmovement = true
 	 },
 	 [9147] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_5, 
@@ -134,6 +135,7 @@ set.skills_luacode = {
 		 slot = GW2.SKILLBARSLOT.Slot_2, 
 		 activationtime = 0.75, 
 		 icon = 'Mighty Blow',  
+		 stopsmovement = true
 	 },
 	 [9260] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_3, 
@@ -149,6 +151,7 @@ set.skills_luacode = {
 		 slot = GW2.SKILLBARSLOT.Slot_5, 
 		 activationtime = 0.75, 
 		 icon = 'Ring of Warding',  
+		 stopsmovement = true
 	 },
 }
 function set:IsActive(context)
@@ -196,7 +199,8 @@ set.skills_luacode = {
 	 [9265] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_4, 
 		 activationtime = 2.5, 
-		 icon = 'Empower',  
+		 icon = 'Empower', 
+		 stopsmovement = true
 	 },
 	 [9144] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_5, 
@@ -246,6 +250,7 @@ set.skills_luacode = {
 		 slot = GW2.SKILLBARSLOT.Slot_2, 
 		 activationtime = 1.25, 
 		 icon = 'Symbol of Faith',  
+		 stopsmovement = true
 	 },
 	 [9086] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_3, 
@@ -409,6 +414,7 @@ set.skills_luacode = {
 		 slot = GW2.SKILLBARSLOT.Slot_5, 
 		 activationtime = 4.0, 
 		 icon = 'Shield of Absorption',  
+		 stopsmovement = true
 	 },
 	  [9224] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_5, 
@@ -416,6 +422,7 @@ set.skills_luacode = {
 		 instantcast = true,
 		 icon = 'Shield of Absorption',  
 		 parent = 9091,
+		 stopsmovement = true
 	 },
 }
 function set:IsActive(context)
@@ -674,6 +681,7 @@ set.skills_luacode = {
 		 slot = GW2.SKILLBARSLOT.Slot_5, 
 		 activationtime = 2.75, 
 		 icon = 'Hunters Ward',  
+		 stopsmovement = true
 	 },
 }
 function set:IsActive(context)
@@ -717,6 +725,7 @@ set.skills_luacode = {
 		 slot = GW2.SKILLBARSLOT.Slot_2, 
 		 activationtime = 1.0, 
 		 icon = 'Symbol of Vengeance',  
+		 stopsmovement = true
 	 },
 	 [45402] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_3, 
@@ -968,7 +977,8 @@ set.skills_luacode = {
 	 [9128] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_9, 
 		 activationtime = 1.0, 
-		 icon = 'Sanctuary',  
+		 icon = 'Sanctuary', 
+		 stopsmovement = true
 	 },
 	  [9251] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_7, 

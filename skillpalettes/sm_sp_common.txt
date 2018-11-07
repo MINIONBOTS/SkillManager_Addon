@@ -540,6 +540,7 @@ set.skills_luacode = {
 	 slot = GW2.SKILLBARSLOT.Slot_4, 
 	 activationtime = 2.75, 
 	 icon = 'Ice Storm',  
+	 stopsmovement = true
  },
  [5721] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_5, 
@@ -648,6 +649,7 @@ set.skills_luacode = {
 	 slot = GW2.SKILLBARSLOT.Slot_5, 
 	 activationtime = 3.0, 
 	 icon = 'Fortify',  
+	 stopsmovement = true
  },
 }
 function set:IsActive(context)
@@ -732,19 +734,22 @@ set.iconurl = "https://render.guildwars2.com/file/B45865C5B4955BAD3098A54CE7FAF9
 set.skills_luacode = {
 	-- slot 1.
 	 [14617] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_1, 
-		 activationtime = 0.5, 
-		 icon = 'Fire',  
+		slot = GW2.SKILLBARSLOT.Slot_1, 
+		activationtime = 0.5, 
+		icon = 'Fire',  
+		stopsmovement = true
 	 },
 	 [14652] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_2, 
-		 activationtime = 0.5, 
-		 icon = 'Fire Crippling Arrows',  
+		slot = GW2.SKILLBARSLOT.Slot_2, 
+		activationtime = 0.5, 
+		icon = 'Fire Crippling Arrows', 
+		stopsmovement = true 
 	 },
 	 [14653] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_3, 
 		 activationtime = 0.5, 
 		 icon = 'Fire Barbed Arrows',  
+		 stopsmovement = true
 	 },
 }
 function set:IsActive(context)
@@ -770,19 +775,22 @@ set.iconurl = "https://render.guildwars2.com/file/B45865C5B4955BAD3098A54CE7FAF9
 -- set.id = 18852
 set.skills_luacode = {
 	 [18852] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_1, 
-		 activationtime = 0.5, 
-		 icon = 'Fire Improved Arrows',  
+		slot = GW2.SKILLBARSLOT.Slot_1, 
+		activationtime = 0.5, 
+		icon = 'Fire Improved Arrows',  
+		stopsmovement = true
 	 },
 	 [18854] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_2, 
-		 activationtime = 0.5, 
-		 icon = 'Fire Improved Crippling Arrows',  
+		slot = GW2.SKILLBARSLOT.Slot_2, 
+		activationtime = 0.5, 
+		icon = 'Fire Improved Crippling Arrows',  
+		stopsmovement = true
 	 },
 	 [18856] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_3, 
-		 activationtime = 0.5, 
-		 icon = 'Fire Improved Barbed Arrows',  
+		slot = GW2.SKILLBARSLOT.Slot_3, 
+		activationtime = 0.5, 
+		icon = 'Fire Improved Barbed Arrows', 
+		stopsmovement = true 
 	 },
 }
 function set:IsActive(context)
@@ -811,16 +819,19 @@ set.skills_luacode = {
 		 slot = GW2.SKILLBARSLOT.Slot_1, 
 		 activationtime = 0.5, 
 		 icon = 'Fire Distant Volley',  
+		 stopsmovement = true
 	 },
 	 [18847] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_2, 
 		 activationtime = 0.5, 
 		 icon = 'Fire Reaping Arrows',  
+		 stopsmovement = true
 	 },
 	 [18845] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_3, 
 		 activationtime = 0.5, 
 		 icon = 'Fire Penetrating Sniper Arrows',  
+		 stopsmovement = true
 	 },
 }
 function set:IsActive(context)
@@ -849,16 +860,19 @@ set.skills_luacode = {
 		 slot = GW2.SKILLBARSLOT.Slot_1, 
 		 activationtime = 0.5, 
 		 icon = 'Fire Distant Volley',  
+		 stopsmovement = true
 	 },
 	 [18861] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_2, 
 		 activationtime = 0.5, 
 		 icon = 'Fire Staggering Arrows',  
+		 stopsmovement = true
 	 },
 	 [18859] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_3, 
 		 activationtime = 0.5, 
 		 icon = 'Fire Exsanguinating Arrows',  
+		 stopsmovement = true
 	 },
 }
 function set:IsActive(context)
@@ -887,16 +901,19 @@ set.skills_luacode = {
 		 slot = GW2.SKILLBARSLOT.Slot_1, 
 		 activationtime = 0.5, 
 		 icon = 'Fire Devastating Arrows',  
+		 stopsmovement = true
 	 },
 	 [18864] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_2, 
 		 activationtime = 0.5, 
 		 icon = 'Fire Suffering Arrows',  
+		 stopsmovement = true
 	 },
 	 [18868] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_3, 
 		 activationtime = 0.5, 
 		 icon = 'Fire Merciless Arrows',  
+		 stopsmovement = true
 	 },
 }
 function set:IsActive(context)
@@ -925,26 +942,31 @@ set.skills_luacode = {
 		 slot = GW2.SKILLBARSLOT.Slot_1, 
 		 activationtime = 0.5, 
 		 icon = 'Fire Devastating Arrows',  
+		 stopsmovement = true
 	 },
 	 [18864] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_2, 
 		 activationtime = 0.5, 
 		 icon = 'Fire Suffering Arrows',  
+		 stopsmovement = true
 	 },
 	 [18868] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_3, 
 		 activationtime = 0.5, 
 		 icon = 'Fire Merciless Arrows',  
+		 stopsmovement = true
 	 },
 	 [18871] = { -- 1 skill, 2 id's on wiki, need feedback.
 		 slot = GW2.SKILLBARSLOT.Slot_4, 
 		 activationtime = 0.5, 
 		 icon = 'Toxic Unveiling Volley',  
+		 stopsmovement = true
 	 },
 	 [19632] = { -- 1 skill, 2 id's on wiki, need feedback.
 		 slot = GW2.SKILLBARSLOT.Slot_4, 
 		 activationtime = 0.5, 
 		 icon = 'Toxic Unveiling Volley',  
+		 stopsmovement = true
 	 },
 }
 function set:IsActive(context)
@@ -975,16 +997,19 @@ set.skills_luacode = {
 		 slot = GW2.SKILLBARSLOT.Slot_1, 
 		 activationtime = 0.5, 
 		 icon = 'Fire',  
+		 stopsmovement = true
 	 },
 	 [14656] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_2, 
 		 activationtime = 0.5, 
 		 icon = 'Fire Shattering Bolt',  
+		 stopsmovement = true
 	 },
 	 [14657] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_3, 
 		 activationtime = 0.5, 
 		 icon = 'Fire Reinforced Shot',  
+		 stopsmovement = true
 	 },
 }
 function set:IsActive(context)
@@ -1013,21 +1038,25 @@ set.skills_luacode = {
 		 slot = GW2.SKILLBARSLOT.Slot_1, 
 		 activationtime = 0.5, 
 		 icon = 'Fire',  
+		 stopsmovement = true
 	 },
 	 [14656] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_2, 
 		 activationtime = 0.5, 
 		 icon = 'Fire Shattering Bolt',  
+		 stopsmovement = true
 	 },
 	 [14657] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_3, 
 		 activationtime = 0.5, 
 		 icon = 'Fire Reinforced Shot',  
+		 stopsmovement = true
 	 },
 	 [17055] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_4, 
 		 activationtime = 0.5, 
 		 icon = 'Spread Shot',  
+		 stopsmovement = true
 	 },
 }
 function set:IsActive(context)
@@ -1056,21 +1085,25 @@ set.skills_luacode = {
 		 slot = GW2.SKILLBARSLOT.Slot_1, 
 		 activationtime = 0.5, 
 		 icon = 'Improved Ballista Shot',  
+		 stopsmovement = true
 	 },
 	 [18567] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_2, 
 		 activationtime = 0.5, 
 		 icon = 'Improved Shattering Bolt',  
+		 stopsmovement = true
 	 },
 	 [18563] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_3, 
 		 activationtime = 0.5, 
 		 icon = 'Improved Reinforced Shot',  
+		 stopsmovement = true
 	 },
 	 [18561] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_4, 
 		 activationtime = 0.5, 
 		 icon = 'Improved Spread Shot',  
+		 stopsmovement = true
 	 },
 }
 function set:IsActive(context)
@@ -1099,21 +1132,25 @@ set.skills_luacode = {
 		 slot = GW2.SKILLBARSLOT.Slot_1, 
 		 activationtime = 0.5, 
 		 icon = 'Swift Bolt',  
+		 stopsmovement = true
 	 },
 	 [18567] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_2, 
 		 activationtime = 0.5, 
 		 icon = 'Improved Shattering Bolt',  
+		 stopsmovement = true
 	 },
 	 [18563] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_3, 
 		 activationtime = 0.5, 
 		 icon = 'Improved Reinforced Shot',  
+		 stopsmovement = true
 	 },
 	 [18561] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_4, 
 		 activationtime = 0.5, 
 		 icon = 'Improved Spread Shot',  
+		 stopsmovement = true
 	 },
 }
 function set:IsActive(context)
@@ -1142,21 +1179,25 @@ set.skills_luacode = {
 		 slot = GW2.SKILLBARSLOT.Slot_1, 
 		 activationtime = 0.5, 
 		 icon = 'Sniper Bolt',  
+		 stopsmovement = true
 	 },
 	 [18577] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_2, 
 		 activationtime = 0.5, 
 		 icon = 'Greater Shattering Bolt',  
+		 stopsmovement = true
 	 },
 	 [18575] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_3, 
 		 activationtime = 0.5, 
 		 icon = 'Greater Reinforced Shot',  
+		 stopsmovement = true
 	 },
 	 [18571] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_4, 
 		 activationtime = 0.5, 
 		 icon = 'Greater Spread Shot',  
+		 stopsmovement = true
 	 },
 }
 function set:IsActive(context)
@@ -1185,21 +1226,25 @@ set.skills_luacode = {
 		 slot = GW2.SKILLBARSLOT.Slot_1, 
 		 activationtime = 0.5, 
 		 icon = 'Sniper Bolt',  
+		 stopsmovement = true
 	 },
 	 [18579] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_2, 
 		 activationtime = 0.5, 
 		 icon = 'Devastating Shattering Shot',  
+		 stopsmovement = true
 	 },
 	 [18575] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_3, 
 		 activationtime = 0.5, 
 		 icon = 'Greater Reinforced Shot',  
+		 stopsmovement = true
 	 },
 	 [18571] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_4, 
 		 activationtime = 0.5, 
 		 icon = 'Greater Spread Shot',  
+		 stopsmovement = true
 	 },
 }
 function set:IsActive(context)
@@ -1230,16 +1275,19 @@ set.skills_luacode = {
 		 slot = GW2.SKILLBARSLOT.Slot_1, 
 		 activationtime = 0.5, 
 		 icon = 'Fire',  
+		 stopsmovement = true
 	 },
 	 [14660] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_2, 
 		 activationtime = 0.5, 
 		 icon = 'Fire Grapeshot',  
+		 stopsmovement = true
 	 },
 	 [14661] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_3, 
 		 activationtime = 0.5, 
 		 icon = 'Ice Shot',  
+		 stopsmovement = true
 	 },
 }
 function set:IsActive(context)
@@ -1268,16 +1316,19 @@ set.skills_luacode = {
 		 slot = GW2.SKILLBARSLOT.Slot_1, 
 		 activationtime = 0.5, 
 		 icon = 'Improved Shot',  
+		 stopsmovement = true
 	 },
 	 [14660] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_2, 
 		 activationtime = 0.5, 
 		 icon = 'Fire Grapeshot',  
+		 stopsmovement = true
 	 },
 	 [14661] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_3, 
 		 activationtime = 0.5, 
 		 icon = 'Ice Shot',  
+		 stopsmovement = true
 	 },
 }
 function set:IsActive(context)
@@ -1306,16 +1357,19 @@ set.skills_luacode = {
 		 slot = GW2.SKILLBARSLOT.Slot_1, 
 		 activationtime = 0.5, 
 		 icon = 'Disheartening Shot',  
+		 stopsmovement = true
 	 },
 	 [18528] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_2, 
 		 activationtime = 0.5, 
 		 icon = 'Improved Grapeshot',  
+		 stopsmovement = true
 	 },
 	 [18538] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_3, 
 		 activationtime = 0.5, 
 		 icon = 'Improved Ice Shot',  
+		 stopsmovement = true
 	 },
 }
 function set:IsActive(context)
@@ -1344,16 +1398,19 @@ set.skills_luacode = {
 		 slot = GW2.SKILLBARSLOT.Slot_1, 
 		 activationtime = 0.5, 
 		 icon = 'Disheartening Shot',  
+		 stopsmovement = true
 	 },
 	 [18532] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_2, 
 		 activationtime = 0.5, 
 		 icon = 'Piercing Grapeshot',  
+		 stopsmovement = true
 	 },
 	 [18538] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_3, 
-		 activationtime = 0.5, 
-		 icon = 'Improved Ice Shot',  
+		slot = GW2.SKILLBARSLOT.Slot_3, 
+		activationtime = 0.5, 
+		icon = 'Improved Ice Shot',
+		stopsmovement = true  
 	 },
 }
 function set:IsActive(context)
@@ -1382,16 +1439,19 @@ set.skills_luacode = {
 		 slot = GW2.SKILLBARSLOT.Slot_1, 
 		 activationtime = 0.5, 
 		 icon = 'Devastating Shot',  
+		 stopsmovement = true
 	 },
 	 [18530] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_2, 
 		 activationtime = 0.5, 
 		 icon = 'Shredding Grapeshot',  
+		 stopsmovement = true
 	 },
 	 [18540] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_3, 
 		 activationtime = 0.5, 
 		 icon = 'Debilitating Ice Shot',  
+		 stopsmovement = true
 	 },
 }
 function set:IsActive(context)
@@ -1420,16 +1480,19 @@ set.skills_luacode = {
 		 slot = GW2.SKILLBARSLOT.Slot_1, 
 		 activationtime = 0.5, 
 		 icon = 'Devastating Shot',  
+		 stopsmovement = true
 	 },
 	 [18530] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_2, 
 		 activationtime = 0.5, 
 		 icon = 'Shredding Grapeshot',  
+		 stopsmovement = true
 	 },
 	 [18542] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_3, 
 		 activationtime = 0.5, 
 		 icon = 'Bone-shattering Ice Shot',  
+		 stopsmovement = true
 	 },
 }
 function set:IsActive(context)

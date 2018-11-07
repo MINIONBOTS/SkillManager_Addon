@@ -108,11 +108,13 @@ set.skills_luacode = {
 	 slot = GW2.SKILLBARSLOT.Slot_4, 
 	 activationtime = 0.5, 
 	 icon = 'Point Blank Shot',  
+	 stopsmovement = true
  },
  [12469] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_5, 
 	 activationtime = 2.25, 
-	 icon = 'Barrage',  
+	 icon = 'Barrage',
+	 stopsmovement = true
  },
 }
 function set:IsActive(context)

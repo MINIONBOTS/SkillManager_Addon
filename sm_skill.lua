@@ -19,7 +19,7 @@ function sm_skill:initialize(data)
 			if(freshdata) then
 				if ( freshdata ~= nil ) then
 					for i,k in pairs(freshdata) do
-						if (( i ~= "activationtime" or self.activationtime == nil) and (i ~= "instantcast" or self.instantcast == nil)) then
+						if (( i ~= "activationtime" or self.activationtime == nil) and (i ~= "instantcast" or self.instantcast == nil) and (i ~= "stopsmovement" or self.stopsmovement == nil)) then
 							self[i] = k
 						end
 					end
