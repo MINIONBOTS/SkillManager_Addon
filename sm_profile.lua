@@ -1,7 +1,8 @@
 -- Profile class for the Skill Manager. Renders Skills and handles casting etc.
-
+local table = _G["table"]
+local string = _G["string"]
 sm_profile = class('sm_profile')
-
+sm_profile.gw2_combat_movement = _G["gw2_combat_movement"]
 -- this function is automatically called when a new "instance" of the class('..') is created with sm_profile:new(...)
 function sm_profile:initialize(profiledata)
 	local default_profiles = {
@@ -491,15 +492,15 @@ function sm_profile:Cast()
 				-- Combatmovement
 				if ( not evaded and Settings.GW2Minion.combatmovement ) then
 					if(self:SkillStopsMovement()) then
-						gw2_combat_movement:PreventCombatMovement()
+						sm_profile.gw2_combat_movement:PreventCombatMovement()
 					end
-					gw2_combat_movement:DoCombatMovement(self.temp.context.attack_target)
+					sm_profile.gw2_combat_movement:DoCombatMovement(self.temp.context.attack_target)
 				end
 			end
 
 		else
 			-- Call combatmovement without a target to stop all combatmovement related movement.
-			gw2_combat_movement:DoCombatMovement()
+			sm_profile.gw2_combat_movement:DoCombatMovement()
 
 			-- Handling that the player is Interacting / finishing / stuff
 			if ( self.temp.interactionstart and ml_global_information.Player_CastInfo) then

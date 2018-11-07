@@ -1,5 +1,6 @@
 ﻿-- Skill class for the Skill Manager Profile, holding info for a single skill. Responsible for rendering the initial selection of a skill ID and the condition editor.
-
+local table = _G["table"]
+local string = _G["string"]
 sm_skill = class('sm_skill')
 
 -- this function is automatically called when a new "instance" of the class('..') is created with sm_skill:new(...)

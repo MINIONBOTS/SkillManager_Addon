@@ -1,3 +1,5 @@
+local table = _G["table"]
+local string = _G["string"]
 sm_mgr = {}
 sm_mgr.open = false
 sm_mgr.luamodspath = GetLuaModsPath()
@@ -463,7 +465,7 @@ function SkillManager:SelectProfile(name)
 end
 
 function SkillManager:SkillStopsMovement()
-	if(table.valid(sm_mgr.profile)) then
+	if(sm_mgr.profile and type(sm_mgr.profile) == "table") then
 		return sm_mgr.profile:SkillStopsMovement()
 	end
 	return false
