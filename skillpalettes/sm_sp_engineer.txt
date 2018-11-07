@@ -1557,6 +1557,7 @@ engineer.skills_luacode = {
 		 activationtime = 1.25,
 		 nounderwater = true,
 		 icon = 'Prime Light Beam',
+		 stopsmovement = true
 	 },
 	 [5812] = {
 		 slot = GW2.SKILLBARSLOT.Slot_7,
