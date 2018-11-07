@@ -625,6 +625,7 @@ function sm_profile:Render()
 					if ( self.temp.draggedactionidx ) then -- sometimes nil
 						if( self.temp.draggedaction and self.temp.draggedaction ~= a and self.temp.draggedactionidx ~= i)then
 							table.insert(self.actionlist,i,table.remove(self.actionlist, self.temp.draggedactionidx))
+							self.temp.modified = true
 						end
 						local tmp = self.actionlist
 						self.actionlist = {}
