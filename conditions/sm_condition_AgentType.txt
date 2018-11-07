@@ -1,0 +1,46 @@
+-- CombatState check condition
+local sm_condition_agenttype = class('AgentType', sm_condition)
+sm_condition_agenttype.uid = "Target type"
+sm_condition_agenttype.targets = { [1] = GetString("Target"), [2] = GetString("Friend"), }
+sm_condition_agenttype.operators = { [1] = GetString("is NPC"), [2] = GetString("is Gadget") }
+function sm_condition_agenttype:initialize(data)
+	self.operator = data.operator or 1
+	self.target = data.target or 1
+end
+function sm_condition_agenttype:Save()
+	local data = {}
+	data.operator = self.operator
+	data.target = self.target
+	return data
+end
+function sm_condition_agenttype:Evaluate(skill,context)
+	local target = (self.target == 1 and context.attack_target or context.heal_target)
+	
+	if(target) then
+		if(self.operator == 1) then
+			return target.ischaracter
+		elseif(self.operator == 2) then
+			return target.isgadget
+		end
+	end
+
+	return false
+end
+-- Renders the condition data into UI, for "presentation" in the SkillManager's Condition Builder. Returns "true" when stuff changed, for saving
+function sm_condition_agenttype:Render(id) -- need to pass an index value here, for the unique IDs used by imgui	
+	local modified
+	local changed
+	GUI:PushItemWidth(100)
+	self.target, changed = GUI:Combo("##sm_condition_agennttype"..tostring(id),self.target, self.targets)
+	if ( changed ) then modified = true end
+	GUI:PopItemWidth()
+
+	GUI:PushItemWidth(150)
+	GUI:SameLine()
+	self.operator, changed = GUI:Combo("##sm_condition_agennttype2"..tostring(id), self.operator, self.operators)
+	if ( changed ) then modified = true end
+	GUI:PopItemWidth()
+	
+	return modified
+end
+SkillManager:AddCondition(sm_condition_agenttype)
