@@ -16,14 +16,12 @@ function sm_skill:initialize(data)
 		-- Get the most recent data from the skillIDs from skillpalette and c++
 		if ( sm_mgr.skillpalettes[sm_mgr.GetPlayerProfession()][data.skillpaletteuid] ) then
 			local freshdata = sm_mgr.skillpalettes[sm_mgr.GetPlayerProfession()][data.skillpaletteuid]:GetSkillData(data.id)
-			if(freshdata) then
-				if ( freshdata ~= nil ) then
-					for i,k in pairs(freshdata) do
-						if(i == "activationtime" or i == "instantcast" or i == "stopsmovement") then
-							if(self[i] == nil) then self[i] = k end
-						else
-							self[i] = k
-						end
+			if(table.valid(freshdata)) then
+				for i,k in pairs(freshdata) do
+					if(i == "activationtime" or i == "instantcast" or i == "stopsmovement") then
+						if(self[i] == nil) then self[i] = k end
+					else
+						self[i] = k
 					end
 				end
 			else
