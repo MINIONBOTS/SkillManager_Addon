@@ -926,44 +926,61 @@ photonforge.profession = GW2.CHARCLASS.Engineer
 photonforge.icon = "Photon Forge"
 photonforge.id = 42938
 photonforge.skills_luacode = {
-[44588] = {
-	 slot = GW2.SKILLBARSLOT.Slot_1,
-	 activationtime = 0.0,
-	 icon = 'Light Strike',
- },
- [45756] = {
-	 slot = GW2.SKILLBARSLOT.Slot_1,
-	 activationtime = 0.5,
-	 icon = 'Bright Slash',
-	 parent = 44588,
- },
- [45890] = {
-	 slot = GW2.SKILLBARSLOT.Slot_1,
-	 activationtime = 0.5,
-	 icon = 'Flash Cutter',
-	 parent = 45756,
- },
-[42965] = {
-	 slot = GW2.SKILLBARSLOT.Slot_2,
-	 activationtime = 0.75,
-	 icon = 'Holo Leap',
- },
-[44530] = {
-	 slot = GW2.SKILLBARSLOT.Slot_3,
-	 activationtime = 0.5,
-	 icon = 'Corona Burst',
- },
-[45783] = {
-	 slot = GW2.SKILLBARSLOT.Slot_4,
-	 activationtime = 1.5,
-	 icon = 'Photon Blitz',
- },
-[42521] = {
-	 slot = GW2.SKILLBARSLOT.Slot_5,
-	 activationtime = 0.75,
-	 icon = 'Holographic Shockwave',
-	 stopsmovement = true
- },
+	[44588] = {
+		slot = GW2.SKILLBARSLOT.Slot_1,
+		activationtime = 0.0,
+		icon = 'Light Strike',
+	},
+	[45756] = {
+		slot = GW2.SKILLBARSLOT.Slot_1,
+		activationtime = 0.5,
+		icon = 'Bright Slash',
+		parent = 44588,
+	},
+	[45890] = {
+		slot = GW2.SKILLBARSLOT.Slot_1,
+		activationtime = 0.5,
+		icon = 'Flash Cutter',
+		parent = 45756,
+	},
+	[44260] = {
+		slot = GW2.SKILLBARSLOT.Slot_1,
+		activationtime = 0.5,
+		icon = 'Light Strike - Storm',
+	},
+	[42475] = {
+		slot = GW2.SKILLBARSLOT.Slot_1,
+		activationtime = 0.5,
+		icon = 'Bright Slash - Storm',
+		parent = 44260
+	},
+	[41684] = {
+		slot = GW2.SKILLBARSLOT.Slot_1,
+		activationtime = 0.5,
+		icon = 'Flash Cutter - Storm',
+		parent = 44260,
+	},
+	[42965] = {
+		slot = GW2.SKILLBARSLOT.Slot_2,
+		activationtime = 0.75,
+		icon = 'Holo Leap',
+	},
+	[44530] = {
+		slot = GW2.SKILLBARSLOT.Slot_3,
+		activationtime = 0.5,
+		icon = 'Corona Burst',
+	},
+	[45783] = {
+		slot = GW2.SKILLBARSLOT.Slot_4,
+		activationtime = 1.5,
+		icon = 'Photon Blitz',
+	},
+	[42521] = {
+		slot = GW2.SKILLBARSLOT.Slot_5,
+		activationtime = 0.75,
+		icon = 'Holographic Shockwave',
+		stopsmovement = true
+	},
 }
 function photonforge:IsActive(context)
 	return context.player.alive and context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_17]~=nil and (context.skillbar[GW2.SKILLBARSLOT.Slot_17].id == 41123	or context.skillbar[GW2.SKILLBARSLOT.Slot_17].id == 45219)-- Disable photon forge skill ID
