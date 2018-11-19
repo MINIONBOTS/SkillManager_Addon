@@ -177,19 +177,22 @@ set.skills_luacode = {
 	[9122] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_1, 
 		 activationtime = 0.5, 
-		 icon = 'Wave of Wrath',  
+		 icon = 'Bolt of Wrath',  
+	 },
+	[51660] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_1, 
+		 activationtime = 0.5, 
+		 icon = 'Searing Light',  
+	 },
+	[51645] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_1, 
+		 activationtime = 0.5, 
+		 icon = 'Seeking Judgment',  
 	 },
 	 [9140] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_2, 
 		 activationtime = 0.5, 
-		 icon = 'Orb of Light',  
-	 },
-	  [9141] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_2, 
-		 activationtime = 0.0, 
-		 icon = 'Detonate Orb of Light',
-		 instantcast = true,
-		 parent = 9140,
+		 icon = 'Holy Strike',  
 	 },
 	 [9143] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_3, 
@@ -1264,6 +1267,12 @@ set.skills_luacode = {
 	 },
 	 [9118] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_15, 
+		 activationtime = 0.0, 
+		 icon = 'Virtue of Courage',
+		 instantcast = true,
+	 },
+	 [9268] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_3, 
 		 activationtime = 0.0, 
 		 icon = 'Virtue of Courage',
 		 instantcast = true,
