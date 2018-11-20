@@ -1223,6 +1223,11 @@ instantcast = true,
      activationtime = 0.5, 
      icon = 'Forage',
  },
+ [12756] = { 
+     slot = GW2.SKILLBARSLOT.Slot_12, 
+     activationtime = 0.5, 
+     icon = 'Forage',
+ },
  [12658] = { 
      slot = GW2.SKILLBARSLOT.Slot_12, 
      activationtime = 0.5, 
@@ -1262,6 +1267,11 @@ instantcast = true,
 	 slot = GW2.SKILLBARSLOT.Slot_10, 
 	 activationtime = 0.5, 
 	 icon = 'Avatar of Melandru',  
+ },
+ [12721] = { 
+     slot = GW2.SKILLBARSLOT.Slot_12, 
+     activationtime = 0.5, 
+     icon = 'Chilling Slash',
  },
  
 [10800] = { 
