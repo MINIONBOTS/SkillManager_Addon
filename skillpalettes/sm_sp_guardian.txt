@@ -183,11 +183,13 @@ set.skills_luacode = {
 		 slot = GW2.SKILLBARSLOT.Slot_1, 
 		 activationtime = 0.5, 
 		 icon = 'Searing Light',  
+		 parent = 9122,
 	 },
 	[51645] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_1, 
 		 activationtime = 0.5, 
 		 icon = 'Seeking Judgment',  
+		 parent = 51660,
 	 },
 	 [9140] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_2, 
@@ -781,6 +783,11 @@ set.skills_luacode = {
 		 activationtime = 0.75, 
 		 icon = 'Epilogue: Ashes of the Just',  
 	 },
+	 [41380] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_12, 
+		 activationtime = 0.0, 
+		 icon = 'Stow Tome',  
+	 },
 }
 function set:IsActive(context)
 	return context.player.alive and (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 41258)	
@@ -832,6 +839,11 @@ set.skills_luacode = {
 		 activationtime = 0.75, 
 		 icon = 'Epilogue: Eternal Oasis',  
 	 },
+	 [41380] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_13, 
+		 activationtime = 0.0, 
+		 icon = 'Stow Tome',  
+	 },
 }
 function set:IsActive(context)
 	return context.player.alive and (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 45022)	
@@ -882,6 +894,11 @@ set.skills_luacode = {
 		 slot = GW2.SKILLBARSLOT.Slot_5, 
 		 activationtime = 0.75, 
 		 icon = 'Epilogue: Unbroken Lines',  
+	 },
+	 [41380] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_14, 
+		 activationtime = 0.0, 
+		 icon = 'Stow Tome',  
 	 },
 }
 function set:IsActive(context)
