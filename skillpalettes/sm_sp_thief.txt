@@ -424,11 +424,11 @@ sword.skills_luacode = {
 		 activationtime = 0.5,
 		 icon = 'Flanking Strike',
 	 },
-	 [13112] = {
+	 [13007] = {
 		 slot = GW2.SKILLBARSLOT.Slot_3,
 		 activationtime = 0.5,
 		 icon = 'Larcenous Strike',
-		 parent = 13007,
+		 parent = 13016,
 	 },
 	 [13031] = {
 		 slot = GW2.SKILLBARSLOT.Slot_3,
