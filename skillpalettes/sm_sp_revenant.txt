@@ -926,6 +926,36 @@ set.skills_luacode = {
 		activationtime = 0.25,
 		icon = "One with Nature"
 	},
+	[51667] = {
+		slot = GW2.SKILLBARSLOT.Slot_14,
+		activationtime = 0.0,
+		icon = "Facet of Nature",
+		instantcast = true
+	},
+		[51713] = {
+		slot = GW2.SKILLBARSLOT.Slot_14,
+		activationtime = 0.0,
+		icon = "Facet of Nature",
+		instantcast = true
+	},
+		[51714] = {
+		slot = GW2.SKILLBARSLOT.Slot_14,
+		activationtime = 0.0,
+		icon = "Facet of Nature",
+		instantcast = true
+	},
+		[51696] = {
+		slot = GW2.SKILLBARSLOT.Slot_14,
+		activationtime = 0.0,
+		icon = "Facet of Nature",
+		instantcast = true
+	},
+		[51675] = {
+		slot = GW2.SKILLBARSLOT.Slot_14,
+		activationtime = 0.0,
+		icon = "Facet of Nature",
+		instantcast = true
+	},
 	[29371] = {
 		slot = GW2.SKILLBARSLOT.Slot_14,
 		activationtime = 0.0,
@@ -1020,6 +1050,11 @@ set.skills_luacode = {
 		icon = "Legendary Renegade Stance",
 		instantcast = true
 	},
+	[51696] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_14, 
+		 activationtime = 0.5, 
+		 icon = 'True Nature',
+	 },
 }
 
 function set:IsActive(context)
