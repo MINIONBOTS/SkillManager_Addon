@@ -929,31 +929,31 @@ set.skills_luacode = {
 	[51667] = {
 		slot = GW2.SKILLBARSLOT.Slot_14,
 		activationtime = 0.0,
-		icon = "Facet of Nature",
+		icon = "True Nature",
 		instantcast = true
 	},
 		[51713] = {
 		slot = GW2.SKILLBARSLOT.Slot_14,
 		activationtime = 0.0,
-		icon = "Facet of Nature",
+		icon = "True Nature",
 		instantcast = true
 	},
 		[51714] = {
 		slot = GW2.SKILLBARSLOT.Slot_14,
 		activationtime = 0.0,
-		icon = "Facet of Nature",
+		icon = "True Nature",
 		instantcast = true
 	},
 		[51696] = {
 		slot = GW2.SKILLBARSLOT.Slot_14,
 		activationtime = 0.0,
-		icon = "Facet of Nature",
+		icon = "True Nature",
 		instantcast = true
 	},
 		[51675] = {
 		slot = GW2.SKILLBARSLOT.Slot_14,
 		activationtime = 0.0,
-		icon = "Facet of Nature",
+		icon = "True Nature",
 		instantcast = true
 	},
 	[29371] = {

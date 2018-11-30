@@ -1464,6 +1464,26 @@ thief.skills_luacode = {
 		 activationtime = 0,
 		 icon = 'Devourer Venom',
 	 },
+	 [16458] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_1, 
+		 activationtime = 0.5, 
+		 icon = 'Throw Feathers',
+	},
+	[16482] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_1, 
+		 activationtime = 0.5, 
+		 icon = 'Blinding Tuft',
+	 },
+	[16482] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_1, 
+		 activationtime = 0.5, 
+		 icon = 'Blinding Tuft',
+	 },
+	[16456] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_1, 
+		 activationtime = 0.5, 
+		 icon = 'Consume Plasma',
+	 },
 
 -- END UTILITY.
 }
