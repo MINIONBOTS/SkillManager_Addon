@@ -39,7 +39,7 @@ function sm_condition_entitycount:Evaluate(skill,context)
 		
 		local inrange = 0		
 		for i,k in pairs(list) do
-			if( math.distance3d(sourcepos,k.pos) < self.distance and not CharacterList:Get(i).dead ) then
+			if( math.distance3d(sourcepos,k.pos) < self.distance and not k.dead ) then
 				inrange = inrange + 1
 			end
 		end
