@@ -151,7 +151,9 @@ function sm_skill:RenderSkillPaletteEditor()
 			if ( self.temp.currentskillset ) then
 				GUI:SameLine()
 				local _,y = GUI:GetContentRegionAvail()
-				GUI:BeginChild("##spe_setskills",0,y - 25, true)					
+				GUI:BeginChild("##spe_setskills",0,y - 25, true)
+					local title = string.gsub(self.temp.currentskillset, "_", " ")
+					GUI:Text(title)
 					self.temp.currentskillid = sm_mgr.skillpalettes[sm_mgr.GetPlayerProfession()][self.temp.currentskillset]:RenderSkills(self.temp.currentskillid)
 				GUI:EndChild()
 			else
