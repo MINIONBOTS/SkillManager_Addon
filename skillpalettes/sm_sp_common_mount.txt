@@ -95,6 +95,17 @@ function set:IsActive(context)
 	return false
 end
 
+function set:CanCast(context,skillid)
+	if(context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil) then
+		local skillslot = context.skillbar[GW2.SKILLBARSLOT.Slot_1]
+		if(skillslot.id == skillid) then
+			return true
+		end
+	end
+	
+	return false
+end
+
 function set:CanActivate(context)
 	return false
 end

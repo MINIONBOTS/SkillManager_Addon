@@ -814,6 +814,10 @@ function sm_skill:CanCast()
 			return false
 		end
 		
+		if(self.skillpalette.CanCast and not self.skillpalette:CanCast(self.temp.context,self.id)) then
+			return false
+		end
+		
 		-- At least ONE of the condition groups needs to be true for the skill to be castable
 		self.temp.casttarget = 1
 		for i,grp in pairs( self.conditions ) do
