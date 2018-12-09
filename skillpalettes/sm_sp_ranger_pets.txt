@@ -6,7 +6,7 @@ set.skills_luacode = {
 	[31367] = { 
 		slot = GW2.SKILLBARSLOT.Slot_12, 
 		icon = 'Spike Barrage',
-		activationtime = 0
+		activationtime = 2
 	},				
 			
 	[12729] = { 
@@ -18,85 +18,85 @@ set.skills_luacode = {
 	[12713] = { 
 		slot = GW2.SKILLBARSLOT.Slot_12, 
 		icon = 'Protecting Screech',
-		activationtime = 0
+		activationtime = 1
 	},				
 			
 	[16426] = { 
 		slot = GW2.SKILLBARSLOT.Slot_12, 
 		icon = 'Sonic Shriek',
-		activationtime = 0
+		activationtime = 1.5
 	},				
 			
 	[12723] = { 
 		slot = GW2.SKILLBARSLOT.Slot_12, 
 		icon = 'Blinding Slash',
-		activationtime = 0
+		activationtime = 0.5
 	},				
 			
 	[12712] = { 
 		slot = GW2.SKILLBARSLOT.Slot_12, 
 		icon = 'Furious Screech',
-		activationtime = 0
+		activationtime = 1
 	},				
 			
 	[12722] = { 
 		slot = GW2.SKILLBARSLOT.Slot_12, 
 		icon = 'Lacerating Slash',
-		activationtime = 0
+		activationtime = 0.5
 	},				
 			
 	[12711] = { 
 		slot = GW2.SKILLBARSLOT.Slot_12, 
 		icon = 'Icy Screech',
-		activationtime = 0
+		activationtime = 1
 	},				
 			
 	[42180] = { 
 		slot = GW2.SKILLBARSLOT.Slot_12, 
 		icon = 'Blinding Roar',
-		activationtime = 0
+		activationtime = 1.5
 	},				
 			
 	[12721] = { 
 		slot = GW2.SKILLBARSLOT.Slot_12, 
 		icon = 'Chilling Slash',
-		activationtime = 0
+		activationtime = 0.5
 	},				
 			
 	[12709] = { 
 		slot = GW2.SKILLBARSLOT.Slot_12, 
 		icon = 'Dazing Screech',
-		activationtime = 0
+		activationtime = 1
 	},				
 			
 	[12718] = { 
 		slot = GW2.SKILLBARSLOT.Slot_12, 
 		icon = 'Howl of the Pack',
-		activationtime = 0
+		activationtime = 1.5
 	},				
 			
 	[12708] = { 
 		slot = GW2.SKILLBARSLOT.Slot_12, 
 		icon = 'Dazing Screech',
-		activationtime = 0
+		activationtime = 1
 	},				
 			
 	[12717] = { 
 		slot = GW2.SKILLBARSLOT.Slot_12, 
 		icon = 'Regenerate',
-		activationtime = 0
+		activationtime = 1.5
 	},				
 			
 	[31568] = { 
 		slot = GW2.SKILLBARSLOT.Slot_12, 
 		icon = 'Smoke Cloud',
-		activationtime = 0
+		activationtime = 0.75
 	},				
 			
 	[12716] = { 
 		slot = GW2.SKILLBARSLOT.Slot_12, 
 		icon = 'Chilling Howl',
-		activationtime = 0
+		activationtime = 1.5
 	},				
 			
 	[12703] = { 
@@ -114,13 +114,13 @@ set.skills_luacode = {
 	[31451] = { 
 		slot = GW2.SKILLBARSLOT.Slot_12, 
 		icon = 'Furious Pounce',
-		activationtime = 0
+		activationtime = 1.5
 	},				
 			
 	[12701] = { 
 		slot = GW2.SKILLBARSLOT.Slot_12, 
 		icon = 'Insect Swarm',
-		activationtime = 0
+		activationtime = 1.5
 	},				
 			
 	[12700] = { 
@@ -138,7 +138,7 @@ set.skills_luacode = {
 	[44980] = { 
 		slot = GW2.SKILLBARSLOT.Slot_12, 
 		icon = 'Jacarandas Embrace',
-		activationtime = 0
+		activationtime = 1
 	},				
 			
 	[12689] = { 
@@ -150,25 +150,25 @@ set.skills_luacode = {
 	[42963] = { 
 		slot = GW2.SKILLBARSLOT.Slot_12, 
 		icon = 'Savannah Strike',
-		activationtime = 0
+		activationtime = 0.75
 	},				
 			
 	[12698] = { 
 		slot = GW2.SKILLBARSLOT.Slot_12, 
 		icon = 'Lightning Breath',
-		activationtime = 0
+		activationtime = 1.5
 	},				
 			
 	[12688] = { 
 		slot = GW2.SKILLBARSLOT.Slot_12, 
 		icon = 'Enfeebling Maul',
-		activationtime = 0
+		activationtime = 1.5
 	},				
 			
 	[31459] = { 
 		slot = GW2.SKILLBARSLOT.Slot_12, 
 		icon = 'Consuming Flame',
-		activationtime = 0
+		activationtime = 2.5
 	},				
 			
 	[12697] = { 
@@ -180,13 +180,13 @@ set.skills_luacode = {
 	[12687] = { 
 		slot = GW2.SKILLBARSLOT.Slot_12, 
 		icon = 'Poison Cloud',
-		activationtime = 0
+		activationtime = 1.25
 	},				
 			
 	[12696] = { 
 		slot = GW2.SKILLBARSLOT.Slot_12, 
 		icon = 'Frost Breath',
-		activationtime = 0
+		activationtime = 1.5
 	},				
 			
 	[12681] = { 
@@ -204,7 +204,7 @@ set.skills_luacode = {
 	[12680] = { 
 		slot = GW2.SKILLBARSLOT.Slot_12, 
 		icon = 'Rending Pounce',
-		activationtime = 0
+		activationtime = 1.5
 	},				
 			
 	[16427] = { 
@@ -216,13 +216,13 @@ set.skills_luacode = {
 	[12693] = { 
 		slot = GW2.SKILLBARSLOT.Slot_12, 
 		icon = 'Icy Pounce',
-		activationtime = 0
+		activationtime = 1.5
 	},				
 			
 	[12679] = { 
 		slot = GW2.SKILLBARSLOT.Slot_12, 
 		icon = 'Rending Barbs',
-		activationtime = 0
+		activationtime = 4
 	},				
 			
 	[12691] = { 
@@ -234,37 +234,37 @@ set.skills_luacode = {
 	[12675] = { 
 		slot = GW2.SKILLBARSLOT.Slot_12, 
 		icon = 'Poisonous Cloud',
-		activationtime = 0
+		activationtime = 1
 	},				
 			
 	[41156] = { 
 		slot = GW2.SKILLBARSLOT.Slot_12, 
 		icon = 'Fang Grapple',
-		activationtime = 0
+		activationtime = 1
 	},				
 			
 	[12690] = { 
 		slot = GW2.SKILLBARSLOT.Slot_12, 
 		icon = 'Poisonous Maul',
-		activationtime = 0
+		activationtime = 1.5
 	},				
 			
 	[12674] = { 
 		slot = GW2.SKILLBARSLOT.Slot_12, 
 		icon = 'Poison Barbs',
-		activationtime = 0
+		activationtime = 2.5
 	},				
 			
 	[12670] = { 
 		slot = GW2.SKILLBARSLOT.Slot_12, 
 		icon = 'Fire Breath',
-		activationtime = 0
+		activationtime = 1.5
 	},				
 			
 	[12667] = { 
 		slot = GW2.SKILLBARSLOT.Slot_12, 
 		icon = 'Icy Roar',
-		activationtime = 0
+		activationtime = 1.25
 	},				
 			
 	[31639] = { 
@@ -282,79 +282,79 @@ set.skills_luacode = {
 	[12664] = { 
 		slot = GW2.SKILLBARSLOT.Slot_12, 
 		icon = 'Rending Maul',
-		activationtime = 0
+		activationtime = 1.75
 	},				
 			
 	[20975] = { 
 		slot = GW2.SKILLBARSLOT.Slot_12, 
 		icon = 'Lacerating Slash',
-		activationtime = 0
+		activationtime = 0.5
 	},				
 			
 	[12756] = { 
 		slot = GW2.SKILLBARSLOT.Slot_12, 
 		icon = 'Forage',
-		activationtime = 0
+		activationtime = 1
 	},				
 			
 	[12658] = { 
 		slot = GW2.SKILLBARSLOT.Slot_12, 
 		icon = 'Mighty Roar',
-		activationtime = 0
+		activationtime = 3
 	},				
 			
 	[12755] = { 
 		slot = GW2.SKILLBARSLOT.Slot_12, 
 		icon = 'Forage',
-		activationtime = 0
+		activationtime = 1
 	},				
 			
 	[12656] = { 
 		slot = GW2.SKILLBARSLOT.Slot_12, 
 		icon = 'Icy Bite',
-		activationtime = 0
+		activationtime = 0.25
 	},				
 			
 	[12754] = { 
 		slot = GW2.SKILLBARSLOT.Slot_12, 
 		icon = 'Forage',
-		activationtime = 0
+		activationtime = 1
 	},				
 			
 	[43636] = { 
 		slot = GW2.SKILLBARSLOT.Slot_12, 
 		icon = 'Head Toss',
-		activationtime = 0
+		activationtime = 0.75
 	},				
 			
 	[12749] = { 
 		slot = GW2.SKILLBARSLOT.Slot_12, 
 		icon = 'Immobilizing Whirl',
-		activationtime = 0
+		activationtime = 2.75
 	},				
 			
 	[12748] = { 
 		slot = GW2.SKILLBARSLOT.Slot_12, 
 		icon = 'Chilling Whirl',
-		activationtime = 0
+		activationtime = 2.75
 	},				
 			
 	[12685] = { 
 		slot = GW2.SKILLBARSLOT.Slot_12, 
 		icon = 'Enfeebling Roar',
-		activationtime = 0
+		activationtime = 1.25
 	},				
 			
 	[12744] = { 
 		slot = GW2.SKILLBARSLOT.Slot_12, 
 		icon = 'Stunning Rush',
-		activationtime = 0
+		activationtime = 2.75
 	},				
 			
 	[12732] = { 
 		slot = GW2.SKILLBARSLOT.Slot_12, 
 		icon = 'Forage',
-		activationtime = 0
+		activationtime = 1
 	},				
 			
 	[12731] = { 
@@ -366,7 +366,7 @@ set.skills_luacode = {
 	[12715] = { 
 		slot = GW2.SKILLBARSLOT.Slot_12, 
 		icon = 'Intimidating Howl',
-		activationtime = 0
+		activationtime = 1.5
 	},				
 			
 	[12730] = { 
@@ -384,13 +384,13 @@ set.skills_luacode = {
 	[12666] = { 
 		slot = GW2.SKILLBARSLOT.Slot_12, 
 		icon = 'Shake It Off',
-		activationtime = 0
+		activationtime = 0.5
 	},				
 			
 	[12714] = { 
 		slot = GW2.SKILLBARSLOT.Slot_12, 
 		icon = 'Terrifying Howl',
-		activationtime = 0
+		activationtime = 1.5
 	},
 }
 function set:IsActive(context)
