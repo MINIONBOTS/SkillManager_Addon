@@ -637,7 +637,39 @@ function sm_skill:RenderCustomConditionEditor()
 		local x,y = GUI:GetCursorPos()
 		GUI:SetCursorPos(maxy-25,y-20)		
 		GUI:ImageButton( "##ccinfobtn", sm_mgr.texturepath.."\\bt_selector_success_.png", 15, 15)
-		if ( GUI:IsItemHovered() ) then GUI:SetTooltip(GetString("Use the 'skill' and 'context' table which are available here: skill.cooldown etc. for this skill's data. \n context.player.pos instead of Player.pos, to save performance. \n Also available: \n context.player.party \n context.player.squad \n context.player.specs \n context.player.buffs \n context.player.transformid \n context.player.lasttransformid \n context.player.weaponset \n context.player.canswapweaponset \n context.player.mainhand \n context.player.mainhand_alt \n context.player.offhand\n context.player.offhand_alt  \n context.player.friends_nearby \n context.player.enemies_nearby \n context.skillbar \n context.actionlist \n context.casttarget (Result from the Condition Group above that evaluated to 'true'. Overwrite this if you need (1=Enemy, 2=Player, 3=Friend) \n context.attack_targetid (CAN BE NIL) \n context.attack_target (CAN BE NIL)  \n context.attack_targetid_alt (To override)  \n context.heal_targetid (CAN BE NIL) \n context.heal_target (CAN BE NIL)  \n context.heal_targetid_alt (To override )")) end
+
+		if ( GUI:IsItemHovered() ) then 
+			local tooltip = string.gsub([[
+				Use the 'skill' and 'context' table which are available here: skill.cooldown etc. for this skill's data.
+				context.player.pos instead of Player.pos, to save performance.
+				Also available:
+				context.player.party
+				context.player.squad
+				context.player.specs
+				context.player.buffs
+				context.player.transformid
+				context.player.lasttransformid
+				context.player.weaponset
+				context.player.canswapweaponset
+				context.player.mainhand
+				context.player.mainhand_alt
+				context.player.offhand
+				context.player.offhand_alt
+				context.player.friends_nearby
+				context.player.enemies_nearby
+				context.skillbar
+				context.actionlist
+				context.casttarget (Result from the Condition Group above that evaluated to 'true'. Overwrite this if you need (1=Enemy, 2=Player, 3=Friend)
+				context.attack_targetid (CAN BE NIL) 
+				context.attack_target (CAN BE NIL)
+				context.attack_targetid_alt (To override)
+				context.heal_targetid (CAN BE NIL)
+				context.heal_target (CAN BE NIL)
+				context.heal_targetid_alt (To override )
+			]], "\t", "")
+				
+			GUI:SetTooltip(GetString(tooltip)) 
+		end
 		GUI:SetCursorPos(x,y)
 		local maxx,_ = GUI:GetContentRegionAvail()
 		local changed = false
