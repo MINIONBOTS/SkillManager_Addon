@@ -241,7 +241,7 @@ function sm_mgr.DrawMenu(event,ticks)
 	-- SkillManager Main Window
 	if (sm_mgr.open) then
 		GUI:SetNextWindowSize(280,150,GUI.SetCond_Once)
-		GUI:SetNextWindowPosCenter(GUI.SetCond_Once)
+		--GUI:SetNextWindowPosCenter(GUI.SetCond_Once)
 		sm_mgr.visible, sm_mgr.open = GUI:Begin(GetString("Skill Manager").."##smmgr", sm_mgr.open,GUI.WindowFlags_NoResize)
 		if (sm_mgr.visible) then
 			GUI:BulletText(GetString("Current Profile:"))

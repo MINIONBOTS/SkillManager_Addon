@@ -118,7 +118,7 @@ end
 -- Renders all SkillPalettes / skill sets, to pick a skill from
 function sm_skill:RenderSkillPaletteEditor()	
 	GUI:SetNextWindowSize(400,600,GUI.SetCond_Always)
-	GUI:SetNextWindowPosCenter(GUI.SetCond_Once)
+	--GUI:SetNextWindowPosCenter(GUI.SetCond_Once)
 	self.temp.editorvisible, self.temp.editoropen = GUI:Begin(GetString("Skill Set Editor").."##smpeditor", self.temp.editoropen or true,GUI.WindowFlags_NoResize)
 	if (self.temp.editoropen) then
 		if (self.temp.editorvisible) then -- unfolded
@@ -220,8 +220,8 @@ end
 -- Renders skill information and condition editor
 function sm_skill:RenderSkillEditor()
 	GUI:SetNextWindowSize(600,600,GUI.SetCond_Always)
-	GUI:SetNextWindowPosCenter(GUI.SetCond_Once)
-	self.temp.editorvisible, self.temp.editoropen = GUI:Begin(GetString("Skill Editor").."##smpeditor", self.temp.editoropen or true,GUI.WindowFlags_NoSavedSettings)
+	--GUI:SetNextWindowPosCenter(GUI.SetCond_Once)
+	self.temp.editorvisible, self.temp.editoropen = GUI:Begin(GetString("Skill Editor").."##smpeditor", self.temp.editoropen or true,GUI.WindowFlags_NoResize)
 	if (self.temp.editoropen) then
 		if (self.temp.editorvisible) then -- unfolded
 			
