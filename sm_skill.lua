@@ -633,7 +633,7 @@ function sm_skill:RenderCustomConditionEditor()
 	end
 	if ( GUI:TreeNode(GetString("CUSTOM CONDITION LUA CODE EDITOR").."##"..tostring(self.id) )) then
 		self.temp.customcodeeditoropen = true
-		if ( GUI:IsItemHovered() ) then GUI:SetTooltip(GetString("Additional Lua Code, when to allow this spell to be cast. Must return 'true' or 'false'!")) end
+
 		local x,y = GUI:GetCursorPos()
 		GUI:SetCursorPos(maxy-25,y-20)		
 		GUI:ImageButton( "##ccinfobtn", sm_mgr.texturepath.."\\bt_selector_success_.png", 15, 15)
@@ -681,6 +681,9 @@ function sm_skill:RenderCustomConditionEditor()
 		GUI:TreePop()
 	else
 		self.temp.customcodeeditoropen = nil
+	end
+	if ( not self.temp.customcodeeditoropen and GUI:IsItemHovered() ) then
+		GUI:SetTooltip(GetString("Additional Lua Code, when to allow this spell to be cast. Must return 'true' or 'false'!"))
 	end
 end
 
