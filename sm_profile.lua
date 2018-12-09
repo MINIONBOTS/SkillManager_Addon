@@ -526,7 +526,9 @@ function sm_profile:Render()
 
 	GUI:PushItemWidth(120)
 	GUI:AlignFirstTextHeightToWidgets()
-	GUI:Text(GetString("Fight Range:")) if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("'Dynamic'- Adjusts the range depending on the available spells. 'Custom'-Tries to stay at that range during fights.")) end
+	GUI:BeginGroup()
+	GUI:Text(GetString("Fight Range:")) 
+
 	GUI:SameLine(150)
 	if (self.temp.isdefaultprofile) then
 		Settings.SkillManager.fightrangetype, changed = GUI:Combo("##smfightrangetype",Settings.SkillManager.fightrangetype or 1, { [1] = GetString("Dynamic"), [2] = GetString("Custom"), })
@@ -536,18 +538,28 @@ function sm_profile:Render()
 		self.temp.fightrangetype = self.fightrangetype
 	end
 	if ( changed ) then self.temp.modified = true end
-
+	GUI:EndGroup()
+	if (GUI:IsItemHovered()) then 
+		GUI:SetTooltip( GetString("'Dynamic' - Adjusts the range depending on the available spells.") .. "\n" .. GetString("'Custom' - Tries to stay at that range during fights."))
+	end
+	
+	GUI:BeginGroup()
 	if ( self.temp.fightrangetype == 2 ) then
 		GUI:AlignFirstTextHeightToWidgets()
-		GUI:Text(GetString("Fight Distance:")) if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("While fighting, the bot tries to stay at this distance to the target.")) end
+		GUI:Text(GetString("Fight Distance:")) 
 		GUI:SameLine(150)
 		self.fixedfightrange, changed = GUI:InputInt("##smfightdistance", self.fixedfightrange or ml_global_information.AttackRange or 154, 1, 10, GUI.InputTextFlags_CharsDecimal+GUI.InputTextFlags_CharsNoBlank)
 		if ( changed ) then self.temp.modified = true end
 		if ( self.fixedfightrange <= 154 ) then self.fixedfightrange = 154 end
+	end	
+	GUI:EndGroup()
+	if (GUI:IsItemHovered()) then
+		GUI:SetTooltip( GetString("While fighting, the bot tries to stay at this distance to the target."))
 	end
-
+	
+	GUI:BeginGroup()
 	GUI:AlignFirstTextHeightToWidgets()
-	GUI:Text(GetString("Swap Weapons:")) if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("'Automatic'- Automatically switches Weapons/Kits/Stances. 'Manual'-You switch Weapons/Kits/Stances.")) end
+	GUI:Text(GetString("Swap Weapons:"))
 	GUI:SameLine(150)
 	if (self.temp.isdefaultprofile) then
 		Settings.SkillManager.weaponswapmode, changed = GUI:Combo("##smweaponswapmode",Settings.SkillManager.weaponswapmode or 1, { [1] = GetString("Automatic"), [2] = GetString("Manual"), })
@@ -557,9 +569,14 @@ function sm_profile:Render()
 		self.temp.weaponswapmode = self.weaponswapmode
 	end
 	if ( changed ) then self.temp.modified = true end
-
+	GUI:EndGroup()
+	if (GUI:IsItemHovered()) then
+		GUI:SetTooltip(GetString("'Automatic' - Automatically switches Weapons/Kits/Stances.").."\n"..GetString("'Manual' - You switch Weapons/Kits/Stances."))
+	end
+	
+	GUI:BeginGroup()
 	GUI:AlignFirstTextHeightToWidgets()
-	GUI:Text(GetString("Network Latency:")) if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("'This value (in ms) is added to the duration of each Skill that is cast. If you have a high Ping / network latency, increasing this will reduce the Bot from interrupting Skills.")) end
+	GUI:Text(GetString("Network Latency:"))
 	GUI:SameLine(150)
 	if (self.temp.isdefaultprofile) then
 		Settings.SkillManager.networklatency, changed = GUI:SliderInt("##swnetworklatency", Settings.SkillManager.networklatency or 0, 0, 1000)
@@ -569,6 +586,11 @@ function sm_profile:Render()
 		self.temp.networklatency = self.networklatency
 	end
 	if ( changed ) then self.temp.modified = true end
+	GUI:EndGroup()
+	 if (GUI:IsItemHovered()) then
+		GUI:SetTooltip( GetString("This value (in ms) is added to the duration of each skill that is cast.") .. "\n" .. GetString("If you have a high ping or network latency, increasing this will try to prevent the bot from interrupting skills."))
+	 end
+	
 	GUI:PopItemWidth()
 	GUI:Separator()
 
