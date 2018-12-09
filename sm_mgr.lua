@@ -242,7 +242,7 @@ function sm_mgr.DrawMenu(event,ticks)
 	if (sm_mgr.open) then
 		GUI:SetNextWindowSize(280,150,GUI.SetCond_Once)
 		GUI:SetNextWindowPosCenter(GUI.SetCond_Once)
-		sm_mgr.visible, sm_mgr.open = GUI:Begin(GetString("Skill Manager").."##smmgr", sm_mgr.open,GUI.WindowFlags_NoSavedSettings)
+		sm_mgr.visible, sm_mgr.open = GUI:Begin(GetString("Skill Manager").."##smmgr", sm_mgr.open,GUI.WindowFlags_NoResize)
 		if (sm_mgr.visible) then
 			GUI:BulletText(GetString("Current Profile:"))
 			
@@ -286,7 +286,7 @@ function sm_mgr.DrawMenu(event,ticks)
 			if (GUI:ImageButton("##smnew",sm_mgr.texturepath.."\\addon.png",14,14)) then
 				sm_mgr.newfilename  = ""
 				sm_mgr.newfilepath  = sm_mgr.profilepath
-				GUI:OpenPopup(GetString("NewSMProfile"))
+				GUI:OpenPopup(GetString("New SkillManager Profile"))
 			end
 			if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("Create New Profile")) end
 			
@@ -311,7 +311,7 @@ function sm_mgr.DrawMenu(event,ticks)
 			end
 					
 	-- Popup Handler NEW window
-			if (GUI:BeginPopupModal(GetString("NewSMProfile"))) then
+			if (GUI:BeginPopupModal(GetString("New SkillManager Profile"))) then
 				local valid = true
 				GUI:SetWindowSize(600,230)
 				GUI:Spacing()

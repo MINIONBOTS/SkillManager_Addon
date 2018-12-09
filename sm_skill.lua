@@ -119,7 +119,7 @@ end
 function sm_skill:RenderSkillPaletteEditor()	
 	GUI:SetNextWindowSize(400,600,GUI.SetCond_Always)
 	GUI:SetNextWindowPosCenter(GUI.SetCond_Once)
-	self.temp.editorvisible, self.temp.editoropen = GUI:Begin(GetString("Skill Set Editor").."##smpeditor", self.temp.editoropen or true,GUI.WindowFlags_NoSavedSettings)
+	self.temp.editorvisible, self.temp.editoropen = GUI:Begin(GetString("Skill Set Editor").."##smpeditor", self.temp.editoropen or true,GUI.WindowFlags_NoResize)
 	if (self.temp.editoropen) then
 		if (self.temp.editorvisible) then -- unfolded
 			GUI:PushStyleVar(GUI.StyleVar_FramePadding, 2, 2)
