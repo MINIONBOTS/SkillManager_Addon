@@ -115,3 +115,6 @@ function sm_skillpalette:Activate()
 end
 function sm_skillpalette:Deactivate()
 end
+function sm_skillpalette:CanCast()
+	return true
+end
