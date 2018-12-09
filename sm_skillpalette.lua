@@ -66,7 +66,7 @@ function sm_skillpalette:RenderSkills(currentselectedid)
 				end
 				if ( selected ) then currentselectedid = s.id end
 				if ( highlighted ) then GUI:PopStyleColor(4) end
-				if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString(s.icon)) end
+				if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString(s.icon) .. " - id: " .. s.id) end
 				GUI:SameLine()
 				local x,y = GUI:GetCursorPos()
 				GUI:SetCursorPos(x,y+10)
