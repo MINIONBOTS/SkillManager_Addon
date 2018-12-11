@@ -20,7 +20,7 @@ function sm_movementprediction:Update(target,activationtime)
 	
 	if(target) then
 		local pos = target.pos
-		gw2_gui_manager.AddMarker("target pos", {pos = pos, color = {r = 0, g = 0, b = 1, a = 1}})
+		--gw2_gui_manager.AddMarker("target pos", {pos = pos, color = {r = 0, g = 0, b = 1, a = 1}})
 		if(self.enabled and target.alive and target.movementstate ~= 1) then
 			if(self.currenttarget.id == target.id and table.valid(self.currenttarget.lastpos)) then
 
@@ -42,7 +42,7 @@ function sm_movementprediction:Update(target,activationtime)
 					if(not hit) then
 						pos = newpos
 					end
-					gw2_gui_manager.AddMarker("predicted pos", {pos = newpos, color = {r = 1, g = 0, b = 1, a = 1}})
+					--gw2_gui_manager.AddMarker("predicted pos", {pos = newpos, color = {r = 1, g = 0, b = 1, a = 1}})
 				end	
 			end
 		end
