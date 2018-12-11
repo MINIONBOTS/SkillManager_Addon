@@ -43,6 +43,9 @@ function sm_profile:initialize(profiledata)
 	self.temp.weaponswapmode = self.temp.isdefaultprofile and Settings.SkillManager.weaponswapmode or self.weaponswapmode
 	self.temp.fightrangetype = self.temp.isdefaultprofile and Settings.SkillManager.fightrangetype or self.fightrangetype
 	self.temp.networklatency = self.temp.isdefaultprofile and Settings.SkillManager.networklatency or self.networklatency
+	self.temp.simpleprediction = self.temp.isdefaultprofile and Settings.SkillManager.simpleprediction or self.simpleprediction
+	
+	sm_movementprediction:Enabled(self.temp.simpleprediction)
 end
 
 function sm_profile:Save()
@@ -102,7 +105,8 @@ function sm_profile:UpdateContext()
 	self.temp.context.player.party = Player:GetParty()
 	self.temp.context.player.specs = Player:GetSpecs()
 	self.temp.context.player.buffs = Player.buffs
-
+	self.temp.context.player.pet = Player:GetPet()
+	
 	local item = Inventory:GetEquippedItemBySlot(GW2.EQUIPMENTSLOT.MainHandWeapon)
 	if ( item ) then
 		self.temp.context.player.mainhand = item.weapontype
@@ -231,6 +235,9 @@ function sm_profile:UpdateContext()
 							end})
 			self.temp.context.attack_targetid = self.temp.attack_targetid
 			attacktargetvalid = true
+											
+			sm_movementprediction:Update(self.temp.attack_target)
+								
 		end
 	end
 	if ( not attacktargetvalid ) then
@@ -412,14 +419,17 @@ function sm_profile:Cast()
 							end
 
 						else
+
 							if ( ml_global_information.Player_CastInfo.id ~= action.id ) then
 								local dbug = { [1] = "Enemy", [2] = "Player", [3] = "Friend"}
 								local ttlc = self.temp.lastcast and (ml_global_information.Now-self.temp.lastcast )or 0
 								local target = action:GetCastTarget()
-
+								
+								sm_movementprediction:Update(target,action.activationtime)
+								
 								if (target) then
 									local castresult
-									local pos = target.pos
+									local pos,distance = sm_movementprediction:GetPosDistance(target)
 									-- check for slot 555 first, fictional slot for non skill skills.
 									-- needed for things like dodge and swap, maybe others too.
 									if (action.slot == 555) then
@@ -427,12 +437,14 @@ function sm_profile:Cast()
 											Player:Evade(3)
 										elseif (action.id == 20) then -- id 20 == swap weaponset.
 											Player:SwapWeaponSet()
+										elseif (action.id == 30) then -- id 30 == switch pet
+											Player:SwitchPet()
 										end
 									elseif ( action.isgroundtargeted ) then
 										if (target.isgadget) then
 											castresult = Player:CastSpell(action.slot , pos.x, pos.y, (pos.z - target.height)) -- need to cast at the top of the gadget, else no los errors on larger things
 										else
-											castresult = Player:CastSpell(action.slot , pos.x, pos.y, pos.z)
+											castresult = Player:CastSpell(action.slot, pos.x, pos.y, pos.z)
 										end
 
 									else
@@ -583,12 +595,34 @@ function sm_profile:Render()
 		self.temp.networklatency = Settings.SkillManager.networklatency
 	else
 		self.networklatency, changed = GUI:SliderInt("##swnetworklatency", self.networklatency or 0, 0, 1000)
-		self.temp.networklatency = self.networklatency
+		self.temp.networklatency = self.networklatency	
 	end
 	if ( changed ) then self.temp.modified = true end
 	GUI:EndGroup()
 	 if (GUI:IsItemHovered()) then
 		GUI:SetTooltip( GetString("This value (in ms) is added to the duration of each skill that is cast.") .. "\n" .. GetString("If you have a high ping or network latency, increasing this will try to prevent the bot from interrupting skills."))
+	 end
+	
+	
+	GUI:BeginGroup()
+	GUI:AlignFirstTextHeightToWidgets()
+	GUI:Text(GetString("Movement prediciton:"))
+	GUI:SameLine(150)
+	if (self.temp.isdefaultprofile) then
+		Settings.SkillManager.simpleprediction, changed = GUI:Checkbox("##swsimpleprediction", Settings.SkillManager.simpleprediction or false)
+		self.temp.simpleprediction = Settings.SkillManager.simpleprediction
+	else
+		self.simpleprediction, changed = GUI:Checkbox("##simpleprediction", self.simpleprediction or false)
+		self.temp.simpleprediction = self.simpleprediction
+	end
+	if ( changed ) then
+		self.temp.modified = true
+		sm_movementprediction:Enabled(self.temp.simpleprediction)
+	end
+	
+	GUI:EndGroup()
+	 if (GUI:IsItemHovered()) then
+		GUI:SetTooltip( GetString("The bot will try to look a small amount of time into the future."))
 	 end
 	
 	GUI:PopItemWidth()

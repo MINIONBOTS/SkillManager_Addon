@@ -480,6 +480,10 @@ function SkillManager:SkillStopsMovement()
 	return false
 end
 
+function SkillManager:PredictedPositionAndDistance(target)
+	return sm_movementprediction:GetPosDistance(target)
+end
+
 -- auto generating default profiles, leaving it here for future changes I guess
 function sm_mgr:GenetateDefaultProfile()
 	--Gettting all skill infos and sorting the shit a bit + adding a "distance" condition to each

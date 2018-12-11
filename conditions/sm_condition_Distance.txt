@@ -35,8 +35,9 @@ function sm_condition_distance:Evaluate(skill,context)
 		t = context.heal_target
 	end
 	if ( t ) then
+		local pos,bb = SkillManager:PredictedPositionAndDistance(t)
 		local radius = t.radius
-		local bb = t.distance
+
 		if ( self.operator == 1 ) then return (bb - radius) < self.value
 		elseif ( self.operator == 2 ) then return (bb - radius) <= self.value
 		elseif ( self.operator == 3 ) then return (bb - radius) == self.value

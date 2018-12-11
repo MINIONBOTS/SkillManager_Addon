@@ -658,6 +658,7 @@ function sm_skill:RenderCustomConditionEditor()
 				context.player.offhand_alt
 				context.player.friends_nearby
 				context.player.enemies_nearby
+				context.player.pet
 				context.skillbar
 				context.actionlist
 				context.casttarget (Result from the Condition Group above that evaluated to 'true'. Overwrite this if you need (1=Enemy, 2=Player, 3=Friend)

@@ -427,3 +427,29 @@ function set:Deactivate(context)
 end
 SkillManager:AddSkillPalette( set )
 
+local set = SkillManager:CreateSkillPalette('Ranger Pet Skills Misc')
+set.uid = "Ranger Pet Skills Misc"
+set.profession = GW2.CHARCLASS.Ranger
+set.icon = "Ranger"
+--set.iconurl = ""
+-- set.id = 
+set.skills_luacode = {
+	 [30] = {
+		 slot = 555, 
+		 activationtime = 250, 
+		 icon = 'Swap Pet',
+		 name = 'Swap Pet'
+	 },
+}
+function set:IsActive(context)
+	return context.player.pet and Player:CanSwitchPet()
+end
+function set:CanActivate(context)
+	return false
+end
+function set:Activate(context)
+end
+function set:Deactivate(context)
+	return false
+end
+SkillManager:AddSkillPalette( set )
