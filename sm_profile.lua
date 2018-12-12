@@ -425,7 +425,7 @@ function sm_profile:Cast()
 								local ttlc = self.temp.lastcast and (ml_global_information.Now-self.temp.lastcast )or 0
 								local target = action:GetCastTarget()
 								
-								sm_movementprediction:Update(target,action.activationtime)
+								sm_movementprediction:SetActivationTime(target,action.activationtime)
 								
 								if (target) then
 									local castresult
