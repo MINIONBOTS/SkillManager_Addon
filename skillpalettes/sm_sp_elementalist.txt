@@ -2059,11 +2059,7 @@ set.skills_luacode = {
 		icon = "Glyph of Elemental Power",
 		instantcast = true
 	},
-	[25497] = {
-		slot = GW2.SKILLBARSLOT.Slot_7,
-		activationtime = 1.25,
-		icon = "Glyph of Lesser Elementals"
-	},
+
 	[5761] = {
 		slot = GW2.SKILLBARSLOT.Slot_8,
 		activationtime = 3.25,
@@ -2224,12 +2220,6 @@ set.skills_luacode = {
 		icon = "Firestorm",
 		nounderwater = true
 	},
-	[25486] = {
-		slot = GW2.SKILLBARSLOT.Slot_9,
-		activationtime = 1.25,
-		icon = "Glyph of Lesser Elementals",
-		nounderwater = true
-	},
 	[25488] = {
 		slot = GW2.SKILLBARSLOT.Slot_10,
 		activationtime = 1.2,
@@ -2248,12 +2238,6 @@ set.skills_luacode = {
 		icon = "Ice Storm",
 		nounderwater = true
 	},
-	[25487] = {
-		slot = GW2.SKILLBARSLOT.Slot_9,
-		activationtime = 1.25,
-		icon = "Glyph of Lesser Elementals",
-		nounderwater = true
-	},
 	[25491] = {
 		slot = GW2.SKILLBARSLOT.Slot_10,
 		activationtime = 1.25,
@@ -2270,12 +2254,6 @@ set.skills_luacode = {
 		slot = GW2.SKILLBARSLOT.Slot_8,
 		activationtime = 1.25,
 		icon = "Lightning Storm",
-		nounderwater = true
-	},
-	[25495] = {
-		slot = GW2.SKILLBARSLOT.Slot_9,
-		activationtime = 1.25,
-		icon = "Glyph of Lesser Elementals",
 		nounderwater = true
 	},
 	[25490] = {
@@ -2306,6 +2284,55 @@ set.skills_luacode = {
 		activationtime = 0.5,
 		icon = "Stomp",
 		nounderwater = true
+	},
+	-- Glyph of lesser elementals skills 
+	[25497] = {
+		slot = GW2.SKILLBARSLOT.Slot_7,
+		activationtime = 1.25,
+		icon = "Glyph of Lesser Elementals",
+		nounderwater = true
+	},
+	[25486] = {
+		slot = GW2.SKILLBARSLOT.Slot_9,
+		activationtime = 1.25,
+		icon = "Glyph of Lesser Elementals",
+		nounderwater = true
+	},
+	[25487] = {
+		slot = GW2.SKILLBARSLOT.Slot_9,
+		activationtime = 1.25,
+		icon = "Glyph of Lesser Elementals",
+		nounderwater = true
+	},
+	[25495] = {
+		slot = GW2.SKILLBARSLOT.Slot_9,
+		activationtime = 1.25,
+		icon = "Glyph of Lesser Elementals",
+		nounderwater = true
+	},
+	[25500] = {
+		slot = GW2.SKILLBARSLOT.Slot_9,
+		activationtime = 0.25,
+		icon = "Glyph of Lesser Elementals - Flame Burst",
+		iconurl = "https://render.guildwars2.com/file/1C34FEC97F2E0607A7273E9CAEE8610DF5CF1805/867447.png"
+	},
+	[25476] = {
+		slot = GW2.SKILLBARSLOT.Slot_9,
+		activationtime = 0.25,
+		icon = "Glyph of Lesser Elementals - Frozen Ground",
+		iconurl = "https://render.guildwars2.com/file/B71A26B3F4E3C49A2F1E5BFC054566EFD1AB1591/867432.png"
+	},
+	[25478] = {
+		slot = GW2.SKILLBARSLOT.Slot_9,
+		activationtime = 0.25,
+		icon = "Glyph of Lesser Elementals - Windborne Speed",
+		iconurl = "https://render.guildwars2.com/file/29F143024D45DA7E06296E987F59EDD5B13BC85F/867433.png"
+	},
+	[25494] = {
+		slot = GW2.SKILLBARSLOT.Slot_9,
+		activationtime = 0.25,
+		icon = "Glyph of Lesser Elementals - Enervating Punch",
+		iconurl = "https://render.guildwars2.com/file/2A9799E66BCB017B15F8030852E40C535D2DC5A6/867442.png"
 	},
 	-- WEAVER SKILLS HERE, I cannot put them in "proper", that would mean having to add a gazillion different "sets", so I'll just put em here...for now
 	[43074] = {
