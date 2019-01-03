@@ -283,6 +283,11 @@ downed.skills_luacode = {
 		activationtime = 0,
 		icon = "Bandage",
 	},
+	[37873] = {
+		slot = GW2.SKILLBARSLOT.Slot_5,
+		activationtime = 3,
+		icon = "Signet of Agony"
+	}
 }
 function downed:IsActive(context)
 	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 5820)
