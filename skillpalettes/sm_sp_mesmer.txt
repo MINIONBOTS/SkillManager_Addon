@@ -735,6 +735,11 @@ trident.skills_luacode = {
 		activationtime = 0.5,
 		icon = "Siren's Call"
 	},
+	[39959] = {
+		slot = GW2.SKILLBARSLOT.Slot_1,
+		activationtime = 0.5,
+		icon = "Wave of Panic"
+	},
 	[10259] = {
 		slot = GW2.SKILLBARSLOT.Slot_2,
 		activationtime = 0.5,
@@ -758,8 +763,13 @@ trident.skills_luacode = {
 }
 function trident:IsActive(context)
 	return context.player.alive and
-		(context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil and
-			context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 10258)
+	(
+		context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil and
+		(
+			context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 10258 or
+			context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 39959
+		)
+	)
 end
 function trident:CanActivate(context)
 	return context.player.alive and context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.Diving and
