@@ -808,6 +808,11 @@ spear.skills_luacode = {
 		parent = 10316,
 		icon = "Evasive Strike"
 	},
+	[44864] = {
+		slot = GW2.SKILLBARSLOT.Slot_1,
+		activationtime = 1.25,
+		icon = "Ambush Assault"
+	},
 	[10318] = {
 		slot = GW2.SKILLBARSLOT.Slot_2,
 		activationtime = 1.75,
