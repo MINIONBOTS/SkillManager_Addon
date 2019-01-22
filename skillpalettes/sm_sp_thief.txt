@@ -227,7 +227,7 @@ dagger_oh.skills_luacode = {
 		 activationtime = 0.25,
 		 icon = 'Dancing Dagger',
 	 },
-	 [13013] = {
+	 [16432] = {
 		 slot = GW2.SKILLBARSLOT.Slot_5,
 		 activationtime = 0.5,
 		 icon = 'Cloak and Dagger',
