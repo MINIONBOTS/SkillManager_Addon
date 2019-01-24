@@ -1307,7 +1307,7 @@ set.skills_luacode = {
 		 instantcast = true,
 	 },
 	 [9268] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_3, 
+		 slot = GW2.SKILLBARSLOT.Slot_15, 
 		 activationtime = 0.0, 
 		 icon = 'Virtue of Courage',
 		 instantcast = true,
