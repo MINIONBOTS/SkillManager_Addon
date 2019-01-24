@@ -593,6 +593,14 @@ function SkillManager:ToggleHelper()
 	sm_mgr.sethelper.open = not sm_mgr.sethelper.open
 end
 
+function SkillManager:API_ProfileList()
+    local smlist = {}
+    for i,p in pairs(sm_mgr.profiles) do
+        table.insert(smlist, p.temp.filename)
+    end
+    return smlist
+end
+
 
 -- some little helper window to update/see the skill data needed to build the hardcoded skill sets
 sm_mgr.sethelper = {}
