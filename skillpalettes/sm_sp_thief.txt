@@ -1294,6 +1294,11 @@ thief.skills_luacode = {
 -- END ELITE.
 
 -- UTILITY.
+	 [55031] = {
+         slot = GW2.SKILLBARSLOT.Slot_13,
+         activationtime = 0,
+         icon = 'Swipe',
+     	 },
 	 [46335] = {
 		 slot = GW2.SKILLBARSLOT.Slot_7,
 		 activationtime = 0.5,
