@@ -1117,6 +1117,11 @@ set.skills_luacode = {
 		activationtime = 0.5,
 		icon = "Skull Crack"
 	},
+	[41110] = {
+		slot = GW2.SKILLBARSLOT.Slot_13,
+		activationtime = 0.5,
+		icon = "Skull Crack"
+	},
 	[14367] = {
 		slot = GW2.SKILLBARSLOT.Slot_13,
 		activationtime = 3.0,
@@ -1177,6 +1182,11 @@ set.skills_luacode = {
 		icon = "Whirling Strike"
 	},
 	[14551] = {
+		slot = GW2.SKILLBARSLOT.Slot_13,
+		activationtime = 0.75,
+		icon = "Whirling Strike"
+	},
+	[41746] = {
 		slot = GW2.SKILLBARSLOT.Slot_13,
 		activationtime = 0.75,
 		icon = "Whirling Strike"
