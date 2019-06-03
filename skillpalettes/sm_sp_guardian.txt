@@ -1093,7 +1093,17 @@ set.skills_luacode = {
 		 activationtime = 0.5, 
 		 icon = 'Bow of Truth',  
 	 },
+	 [43565] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_8, 
+		 activationtime = 0.5, 
+		 icon = 'Bow of Truth',  
+	 },
 	 [9125] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_9, 
+		 activationtime = 0.5, 
+		 icon = 'Hammer of Wisdom',  
+	 },
+	 [46170] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_9, 
 		 activationtime = 0.5, 
 		 icon = 'Hammer of Wisdom',  
@@ -1103,7 +1113,17 @@ set.skills_luacode = {
 		 activationtime = 0.5, 
 		 icon = 'Shield of the Avenger',  
 	 },
+	 [41571] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_7, 
+		 activationtime = 0.5, 
+		 icon = 'Shield of the Avenger',  
+	 },
 	 [9168] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_8, 
+		 activationtime = 0.5, 
+		 icon = 'Sword of Justice',  
+	 },
+	 [44846] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_8, 
 		 activationtime = 0.5, 
 		 icon = 'Sword of Justice',  
