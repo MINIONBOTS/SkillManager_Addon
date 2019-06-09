@@ -401,7 +401,7 @@ focus.profession = GW2.CHARCLASS.Necromancer
 focus.icon = "Focus"
 -- focus.id =   --> set a skill ID if you want it to download an icon for this skillset
 focus.skills_luacode = {
-	[10707] = {
+	[55050] = {
 		slot = GW2.SKILLBARSLOT.Slot_4,
 		activationtime = 0.75,
 		icon = 'Reapers Touch',
@@ -413,7 +413,7 @@ focus.skills_luacode = {
 	},
 }
 function focus:IsActive(context)
-	return context.player.alive and (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 10707)
+	return context.player.alive and (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 55050)
 end
 function focus:CanActivate(context)
 	return context.player.alive and context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.offhand == GW2.WEAPONTYPE.Focus or context.player.offhand_alt == GW2.WEAPONTYPE.Focus) and (context.player.weaponset == 4 or context.player.weaponset == 5)-- and context.player.transformid == 0
