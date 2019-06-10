@@ -406,6 +406,11 @@ focus.skills_luacode = {
 		activationtime = 0.75,
 		icon = 'Reapers Touch',
 	},
+	[55050] = {
+		slot = GW2.SKILLBARSLOT.Slot_4,
+		activationtime = 0.5,
+		icon = 'Soul Grasp',
+	},
 	[10555] = {
 		slot = GW2.SKILLBARSLOT.Slot_5,
 		activationtime = 1.0,
@@ -413,7 +418,7 @@ focus.skills_luacode = {
 	},
 }
 function focus:IsActive(context)
-	return context.player.alive and (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 10707)
+	return context.player.alive and (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_5] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_5].id == 10555)
 end
 function focus:CanActivate(context)
 	return context.player.alive and context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.offhand == GW2.WEAPONTYPE.Focus or context.player.offhand_alt == GW2.WEAPONTYPE.Focus) and (context.player.weaponset == 4 or context.player.weaponset == 5)-- and context.player.transformid == 0
