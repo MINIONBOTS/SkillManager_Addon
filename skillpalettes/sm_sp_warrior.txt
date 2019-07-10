@@ -286,7 +286,7 @@ set.skills_luacode = {
 	[44004] = {
 		slot = GW2.SKILLBARSLOT.Slot_4,
 		activationtime = 0.5,
-		icon = "Wastrel\'s Ruin"
+		icon = "Wastrel's Ruin"
 	},
 	[45160] = {
 		slot = GW2.SKILLBARSLOT.Slot_5,
@@ -1167,6 +1167,11 @@ set.skills_luacode = {
 		icon = "Forceful Shot"
 	},
 	[14471] = {
+		slot = GW2.SKILLBARSLOT.Slot_13,
+		activationtime = 1.75,
+		icon = "Forceful Shot"
+	},
+	[41330] = {
 		slot = GW2.SKILLBARSLOT.Slot_13,
 		activationtime = 1.75,
 		icon = "Forceful Shot"
