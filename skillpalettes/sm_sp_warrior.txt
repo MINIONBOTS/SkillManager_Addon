@@ -948,6 +948,11 @@ set.skills_luacode = {
 		activationtime = 0.75,
 		icon = "Seismic Leap"
 	}
+	[10700] = {
+		slot = GW2.SKILLBARSLOT.Slot_10,
+		activationtime = 0.25,
+		icon = "Swap-Weapon"
+	},	
 }
 function set:IsActive(context)
 	return context.player.alive and
