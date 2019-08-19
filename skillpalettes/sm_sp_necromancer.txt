@@ -934,6 +934,12 @@ necromancer.skills_luacode = {
 		 icon = 'Desert Shroud',
 		 instantcast = true
 	 },
+	 [54870] = {
+		 slot = GW2.SKILLBARSLOT.Slot_16,
+		 activationtime = 0.0,
+		 icon = 'Harbinger Shroud',
+		 instantcast = true
+	 },
 
 -- END F-Keys.
 
