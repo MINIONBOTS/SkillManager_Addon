@@ -1643,7 +1643,7 @@ set.skills_luacode = {
 	-- END Story.
 	
 	-- Player versus Player.
-	 [36256] = { 
+	 [36548] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_18, 
 		 activationtime = 0, 
 		 icon = 'Rally the Crowd',  
