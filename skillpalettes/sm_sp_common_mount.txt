@@ -80,7 +80,7 @@ set.skills_luacode = {
 		activationtime = 0.5, 
 		icon = 'Roll Out (roller beetle)',  
 		iconurl = 'https://wiki.guildwars2.com/images/1/12/Roll_Out_%28Engage_skill%29.png'
-	}
+	},
 
 	-- Skyskale
 	[55536] = { 
