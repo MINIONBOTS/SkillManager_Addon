@@ -17,7 +17,7 @@ set.skills_luacode = {
 		icon = 'Tail Spin (raptor)',
 		iconurl = 'https://wiki.guildwars2.com/images/f/f2/Tail_Spin.png'
 	},
-	
+
 	-- Springer
 	[41993] = { 
 		slot = GW2.SKILLBARSLOT.Slot_1, 
@@ -31,7 +31,7 @@ set.skills_luacode = {
 		icon = 'Cannonball (springer)', 
 		iconurl = 'https://wiki.guildwars2.com/images/f/f2/Cannonball_%28skill%29.png'
 	},
-	
+
 	-- Skimmer
 	[41253] = { 
 		slot = GW2.SKILLBARSLOT.Slot_1, 
@@ -45,7 +45,7 @@ set.skills_luacode = {
 		icon = 'Barrel Roll (skimmer)', 
 		iconurl = 'https://wiki.guildwars2.com/images/4/4b/Barrel_Roll.png' 
 	},
-	
+
 	-- Jackal
 	[46089] = { 
 		slot = GW2.SKILLBARSLOT.Slot_1, 
@@ -67,7 +67,7 @@ set.skills_luacode = {
 		icon = 'Swoop (griffon)',
 		iconurl = 'https://wiki.guildwars2.com/images/9/94/Swoop_%28griffon%29.png'
 	},
-	
+
 	-- Roller Beetle
 	[51040] = { 
 		slot = GW2.SKILLBARSLOT.Slot_1, 
@@ -81,6 +81,42 @@ set.skills_luacode = {
 		icon = 'Roll Out (roller beetle)',  
 		iconurl = 'https://wiki.guildwars2.com/images/1/12/Roll_Out_%28Engage_skill%29.png'
 	}
+
+	-- Skyskale
+	[55536] = { 
+		slot = GW2.SKILLBARSLOT.Slot_1, 
+		activationtime = 0.5, 
+		icon = 'Blast (skyskale)',
+		iconurl = 'https://wiki.guildwars2.com/images/e/e7/Blast.png'
+	},
+
+	-- Warclaw
+	[54912] = { 
+		slot = GW2.SKILLBARSLOT.Slot_1, 
+		activationtime = 0.5, 
+		icon = 'Battle Maul (warclaw)',
+		iconurl = 'https://wiki.guildwars2.com/images/f/f8/Battle_Maul.png'
+	},
+
+	-- Mastery
+	[49128] = { 
+		slot = GW2.SKILLBARSLOT.Slot_1, 
+		activationtime = 0.5, 
+		icon = 'Bond of Life',
+		iconurl = 'https://wiki.guildwars2.com/images/2/23/Bond_of_Life.png'
+	},
+	[52571] = { 
+		slot = GW2.SKILLBARSLOT.Slot_1, 
+		activationtime = 0.5, 
+		icon = 'Bond of Vigor',
+		iconurl = 'https://wiki.guildwars2.com/images/6/60/Bond_of_Vigor.png'
+	},
+	[54032] = { 
+		slot = GW2.SKILLBARSLOT.Slot_1, 
+		activationtime = 0.5, 
+		icon = 'Bond of Faith',
+		iconurl = 'https://wiki.guildwars2.com/images/c/c7/Bond_of_Faith.png'
+	},
 }
 
 function set:IsActive(context)
