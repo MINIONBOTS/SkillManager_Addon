@@ -610,7 +610,7 @@ function sm_mgr.sethelper.DrawMenu(event,ticks)
 
 	if (sm_mgr.sethelper.open) then
 		GUI:SetNextWindowSize(300,500,GUI.SetCond_Once)
-		GUI:SetNextWindowPosCenter(GUI.SetCond_Once)
+		GUI:SetNextWindowPosCenter(GUI.SetCond_FirstUseEver)
 		sm_mgr.sethelper.visible, sm_mgr.sethelper.open = GUI:Begin(GetString("Skill Set Helper").."##smhelper", sm_mgr.sethelper.open,GUI.WindowFlags_NoSavedSettings)
 		if (sm_mgr.sethelper.visible) then
 			local shitlist = { 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16, }
