@@ -874,6 +874,12 @@ instantcast = true,
 	 icon = 'Natures Renewal',  
 	 instantcast = true,
  },
+ [55046] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_10, 
+	 activationtime = 0.0, 
+	 icon = 'Glyph of The Stars',  
+	 nounderwater = true,
+ },
  [31819] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_6, 
 	 activationtime = 0.5, 
