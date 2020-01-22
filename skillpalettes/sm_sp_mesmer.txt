@@ -910,20 +910,37 @@ mesmer.skills_luacode = {
 		 activationtime = 0.5, 
 		 icon = 'Mind Wrack',
 	 },
-	[10191] = { 
+	 [10191] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_13, 
 		 activationtime = 0, 
 		 icon = 'Mind Wrack',  
-	 },
-	 [10190] = { 
+	 },	 
+	 [56930] = { 
+	 	slot = GW2.SKILLBARSLOT.Slot_13, 
+	 	activationtime = 0.5, 
+	 	icon = 'Split Second',  
+ 	},
+	[10190] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_14, 
 		 activationtime = 0, 
-		 icon = 'Cry of Frustration',  
+		 icon = 'Cry of Frustration', 
+	 },
+	 [56928] = { 
+	 	slot = GW2.SKILLBARSLOT.Slot_14, 
+	 	activationtime = 0.5, 
+	 	icon = 'Rewinder',  
+ 
 	 },
 	 [10287] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_15, 
 		 activationtime = 0, 
 		 icon = 'Diversion',  
+	 },
+	 [56873] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_15, 
+	 activationtime = 0.5, 
+	 icon = 'Time Sink',  
+
 	 },
 	 [10192] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_16, 
