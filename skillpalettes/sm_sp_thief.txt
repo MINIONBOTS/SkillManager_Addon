@@ -1373,6 +1373,26 @@ thief.skills_luacode = {
 		 activationtime = 0,
 		 icon = 'Blinding Powder',
 	 },
+	 [56880] = { 
+	 	slot = GW2.SKILLBARSLOT.Slot_7, 
+	 	activationtime = 0.5, 
+	 	icon = 'Pitfall', 
+	 },
+	 [13057] = { 
+	 	slot = GW2.SKILLBARSLOT.Slot_7, 
+	 	activationtime = 0.5, 
+	 	icon = 'Prepare Pitfall',
+	 },
+	 [13056] = { 
+	 	slot = GW2.SKILLBARSLOT.Slot_7, 
+	 	activationtime = 0.5, 
+	 	icon = 'Prepare Seal Area', 
+	 },
+	 [13099] = { 
+	 	slot = GW2.SKILLBARSLOT.Slot_7, 
+	 	activationtime = 0.5, 
+	 	icon = 'Seal Area', 
+	 },
 	 [13065] = {
 		 slot = GW2.SKILLBARSLOT.Slot_7,
 		 activationtime = 0.5,
@@ -1473,6 +1493,26 @@ thief.skills_luacode = {
 		 slot = GW2.SKILLBARSLOT.Slot_7,
 		 activationtime = 0,
 		 icon = 'Devourer Venom',
+	 },
+	 [13026] = { 
+	 	slot = GW2.SKILLBARSLOT.Slot_8, 
+	 	activationtime = 0.5, 
+	 	icon = 'Prepare Thousand Needles',
+	 },
+	 [56898] = { 
+	 	slot = GW2.SKILLBARSLOT.Slot_8, 
+	 	activationtime = 0.5, 
+	 	icon = 'Thousand Needles', 
+	 },
+	 [13038] = { 
+	 	slot = GW2.SKILLBARSLOT.Slot_9, 
+	 	activationtime = 0.5, 
+	 	icon = 'Prepare Shadow Portal', 
+	 },
+	 [16435] = { 
+	 	slot = GW2.SKILLBARSLOT.Slot_9, 
+	 	activationtime = 0.5, 
+	 	icon = 'Shadow Portal', 
 	 },
 	 [16458] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_1, 
