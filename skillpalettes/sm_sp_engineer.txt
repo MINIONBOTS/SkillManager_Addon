@@ -1636,6 +1636,11 @@ engineer.skills_luacode = {
 		 activationtime = 0.25,
 		 icon = 'Deactivate Photon Forge',
 	 },
+	 [56920] = {
+		slot = GW2.SKILLBARSLOT.Slot_17,
+		activationtime = 0.5,
+		icon = 'Function Gyro',
+	 },
 }
 function engineer:IsActive(context)
 	return context.player.alive and (context.player.transformid == 0 or context.player.transformid == 5)
