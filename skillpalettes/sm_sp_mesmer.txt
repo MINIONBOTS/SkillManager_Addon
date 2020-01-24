@@ -1011,6 +1011,21 @@ mesmer.skills_luacode = {
 		icon = "Cry of Frustration",
 		instantcast = true
 	},
+	[56930] = {
+		slot = GW2.SKILLBARSLOT.Slot_13,
+		activationtime = 0.5,
+		icon = 'Split Second',
+	},
+	[56928] = {
+		slot = GW2.SKILLBARSLOT.Slot_14,
+		activationtime = 0.5,
+		icon = 'Rewinder',
+	},
+	[56873] = {
+		slot = GW2.SKILLBARSLOT.Slot_15,
+		activationtime = 0.5,
+		icon = 'Time Sink',
+	},
 	[10287] = {
 		slot = GW2.SKILLBARSLOT.Slot_15,
 		activationtime = 0.0,
