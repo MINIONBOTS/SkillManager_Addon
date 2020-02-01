@@ -41,6 +41,11 @@ set.skills_luacode = {
 	 activationtime = 3.0, 
 	 icon = 'Counterattack',  
  },
+ [12523] = {
+	slot = GW2.SKILLBARSLOT.Slot_4,
+	activationtime = 0.5,
+	icon = 'Counterattack Kick',
+ },
   [12624] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_4, 
 	 activationtime = 0.75, 
