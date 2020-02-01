@@ -466,7 +466,7 @@ function sm_skill:UpdateData(context, iscombo)
 				self.ammo = skilldata.ammo
 				self.ammomax = skilldata.ammomax
 				self.ammocooldown = skilldata.ammocooldown
-				self.cancast = skilldata.cancast
+				self.cancast = skilldata.cancast and skilldata.slot ~= -1
 				-- static ones, would only have to get updated once...how ?
 				-- this string valid check should make it only set this static data once. ^^
 				if (not string.valid(self.name)) then
