@@ -466,7 +466,20 @@ function sm_skill:UpdateData(context, iscombo)
 				self.ammo = skilldata.ammo
 				self.ammomax = skilldata.ammomax
 				self.ammocooldown = skilldata.ammocooldown
-				self.cancast = skilldata.cancast and skilldata.slot ~= -1
+				--self.cancast = skilldata.cancast				
+			
+				if (Player.level < 2 and self.slot == GW2.SKILLBARSLOT.Slot_2 and not table.valid(context.skillbar[self.slot])) or
+					(Player.level < 4 and self.slot == GW2.SKILLBARSLOT.Slot_3 and not table.valid(context.skillbar[self.slot])) or
+					(Player.level < 6 and self.slot == GW2.SKILLBARSLOT.Slot_4 and not table.valid(context.skillbar[self.slot])) or
+					(Player.level < 8 and self.slot == GW2.SKILLBARSLOT.Slot_5 and not table.valid(context.skillbar[self.slot])) or 
+					(Player.level < 11 and self.slot == GW2.SKILLBARSLOT.Slot_7 and not table.valid(context.skillbar[self.slot])) or 
+					(Player.level < 15 and self.slot == GW2.SKILLBARSLOT.Slot_8 and not table.valid(context.skillbar[self.slot])) or 
+					(Player.level < 19 and self.slot == GW2.SKILLBARSLOT.Slot_9 and not table.valid(context.skillbar[self.slot])) or 
+					(Player.level < 31 and self.slot == GW2.SKILLBARSLOT.Slot_10 and not table.valid(context.skillbar[self.slot])) then
+					self.cancast = false
+				else
+					self.cancast = skilldata.cancast
+				end					
 				-- static ones, would only have to get updated once...how ?
 				-- this string valid check should make it only set this static data once. ^^
 				if (not string.valid(self.name)) then
