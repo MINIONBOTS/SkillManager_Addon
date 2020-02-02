@@ -1376,6 +1376,7 @@ thief.skills_luacode = {
 	 [56880] = { 
 	 	slot = GW2.SKILLBARSLOT.Slot_7, 
 	 	activationtime = 0.5, 
+		parent = 13057,
 	 	icon = 'Pitfall', 
 	 },
 	 [13057] = { 
@@ -1391,6 +1392,7 @@ thief.skills_luacode = {
 	 [13099] = { 
 	 	slot = GW2.SKILLBARSLOT.Slot_7, 
 	 	activationtime = 0.5, 
+		parent = 13056,
 	 	icon = 'Seal Area', 
 	 },
 	 [13065] = {
@@ -1442,37 +1444,12 @@ thief.skills_luacode = {
 		 slot = GW2.SKILLBARSLOT.Slot_7,
 		 activationtime = 0,
 		 icon = 'Signet of Shadows',
-	 },[13057] = {
-		 slot = GW2.SKILLBARSLOT.Slot_7,
-		 activationtime = 0.5,
-		 icon = 'Tripwire',
-	 },
-	 [13026] = {
-		 slot = GW2.SKILLBARSLOT.Slot_7,
-		 activationtime = 0.5,
-		 icon = 'Needle Trap',
-	 },
-	 [13038] = {
-		 slot = GW2.SKILLBARSLOT.Slot_7,
-		 activationtime = 0.5,
-		 icon = 'Shadow Trap',
-	 },
-	 [16435] = {
-		 slot = GW2.SKILLBARSLOT.Slot_7,
-		 activationtime = 1.5,
-		 parent = 13038,
-		 icon = 'Destroy Shadow Trap',
 	 },
 	 [16436] = {
 		 slot = GW2.SKILLBARSLOT.Slot_7,
 		 activationtime = 0,
 		 parent = 13038,
 		 icon = 'Shadow Pursuit',
-	 },
-	 [13056] = {
-		 slot = GW2.SKILLBARSLOT.Slot_7,
-		 activationtime = 0.5,
-		 icon = 'Ambush',
 	 },
 	 [13037] = {
 		 slot = GW2.SKILLBARSLOT.Slot_7,
@@ -1502,6 +1479,7 @@ thief.skills_luacode = {
 	 [56898] = { 
 	 	slot = GW2.SKILLBARSLOT.Slot_8, 
 	 	activationtime = 0.5, 
+		parent = 13026,
 	 	icon = 'Thousand Needles', 
 	 },
 	 [13038] = { 
