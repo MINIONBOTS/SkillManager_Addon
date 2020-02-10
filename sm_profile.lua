@@ -85,6 +85,11 @@ function sm_profile:UpdateContext()
 	self.temp.context.actionlist = self.actionlist
 	local allskills = Player:GetCompleteSpellInfo()
 	if ( allskills ) then
+		if ( Player.profession == GW2.CHARCLASS.Ranger
+			and allskills[GW2.SKILLBARSLOT.Slot_12] == nil) then
+			-- TODO: Temporary fix pet skills, remove when Player:GetCompleteSpellInfo() contains it!
+			allskills[GW2.SKILLBARSLOT.Slot_12] = Player:GetSpellInfo(GW2.SKILLBARSLOT.Slot_12)
+		end
 		self.temp.context.skillbar = allskills
 	end
 
