@@ -486,6 +486,10 @@ function SkillManager:SelectProfile(name, force)
 	end
 end
 
+function SkillManager:GetCurrentProfileName()
+	return sm_mgr.profile.temp.filename
+end
+
 function SkillManager:SkillStopsMovement()
 	if(sm_mgr.profile and type(sm_mgr.profile) == "table") then
 		return sm_mgr.profile:SkillStopsMovement()
