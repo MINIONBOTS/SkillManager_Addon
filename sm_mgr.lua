@@ -454,7 +454,7 @@ function SkillManager:Use(targetid) --- old fucntion, backwardcompa
 		sm_mgr.profile:SetTargets(targetid, nil)
 	end
 end
-function SkillManager:SelectProfile(name)
+function SkillManager:SelectProfile(name, force)
 	local profile
 	for i,p in pairs(sm_mgr.profiles) do
 		if ( p.temp.filename == name) then
@@ -462,6 +462,19 @@ function SkillManager:SelectProfile(name)
 			break
 		end
 	end
+
+	if force and not profile then
+		profile = FileLoad(sm_mgr.luamodspath .. [[\GW2Minion\SkillManagerProfiles\]] .. name)
+		if table.valid(profile) then
+			profile.temp = { filename = name, folderpath = sm_mgr.luamodspath .. [[\GW2Minion\SkillManagerProfiles\]] }
+			table.insert(sm_mgr.profiles, profile)
+
+			sm_mgr.profile = sm_profile:new(profile)
+			d("[SkillManager] - Switched forcefully to Profile: ".. sm_mgr.profile.temp.filename)
+			return
+		end
+	end
+
 	if ( profile ) then
 		sm_mgr.profile = sm_profile:new(profile)
 		Settings.SkillManager.lastProfiles[sm_mgr.GetPlayerProfession()] = sm_mgr.profile.temp.filename
@@ -470,7 +483,7 @@ function SkillManager:SelectProfile(name)
 		d("[SkillManager] - Switched to Profile: ".. sm_mgr.profile.temp.filename)
 	else
 		d("[SkillManager] - Could not find Profile: ".. name)
-	end	
+	end
 end
 
 function SkillManager:SkillStopsMovement()
