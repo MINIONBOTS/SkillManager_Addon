@@ -487,7 +487,23 @@ function SkillManager:SelectProfile(name, force)
 end
 
 function SkillManager:GetCurrentProfileName()
-	return sm_mgr.profile.temp.filename
+	if table.valid(sm_mgr.profile) and table.valid(sm_mgr.profile.temp) then
+		return sm_mgr.profile.temp.filename
+	end
+
+	return ""
+end
+
+function SkillManager:HasSkillID(id)
+	if table.valid(sm_mgr.profile) and table.valid(sm_mgr.profile.actionlist) then
+		for _,v in pairs(sm_mgr.profile.actionlist) do
+			if v.id == id then
+				return true
+			end
+		end
+	end
+
+	return false
 end
 
 function SkillManager:SkillStopsMovement()
