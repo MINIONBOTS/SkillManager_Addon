@@ -374,6 +374,56 @@ function set:Deactivate(context)
 end
 SkillManager:AddSkillPalette(set)
 
+local set = SkillManager:CreateSkillPalette("Trident")
+set.uid = "Revenant_Trident"
+set.profession = GW2.CHARCLASS.Revenant
+set.icon = "Trident"
+set.skills_luacode = {
+	[50395] = {
+		slot = GW2.SKILLBARSLOT.Slot_1,
+		activationtime = 0.5,
+		icon = "Mistsfire"
+	},
+	[50456] = {
+		slot = GW2.SKILLBARSLOT.Slot_2,
+		activationtime = 1.25,
+		icon = "Portal Fire"
+	},
+	[50390] = {
+		slot = GW2.SKILLBARSLOT.Slot_3,
+		activationtime = 0.75,
+		icon = "Rift of Pain"
+	},
+	[50410] = {
+		slot = GW2.SKILLBARSLOT.Slot_4,
+		activationtime = 1.0,
+		icon = "Reckoning Blast"
+	},
+	[50483] = {
+		slot = GW2.SKILLBARSLOT.Slot_5,
+		activationtime = 2.0,
+		icon = "Torrential Mists"
+	}
+}
+function set:IsActive(context)
+	return context.player.alive and
+		(context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil and
+			context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 50395)
+end
+function set:CanActivate(context)
+	return context.player.alive and context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.Diving and
+		(context.player.aquatic == GW2.WEAPONTYPE.Trident or context.player.aquatic_alt == GW2.WEAPONTYPE.Trident) and
+		(context.player.weaponset == 0 or context.player.weaponset == 1) and
+		(context.player.transformid >= 13 or context.player.transformid <= 18)
+end
+function set:Activate(context)
+	Player:SwapWeaponSet()
+end
+function set:Deactivate(context)
+	return false
+end
+SkillManager:AddSkillPalette(set)
+
 local set = SkillManager:CreateSkillPalette("Spear")
 set.uid = "Revenant_Spear"
 set.profession = GW2.CHARCLASS.Revenant
