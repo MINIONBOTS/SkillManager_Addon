@@ -17,6 +17,12 @@ set.skills_luacode = {
  },
  [12488] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_1, 
+	 activationtime = 0.5, 
+	 icon = 'Enduring Swing',  
+	 parent = 12487,
+ },
+ [12488] = { 
+	 slot = GW2.SKILLBARSLOT.Slot_1, 
 	 activationtime = 0.75, 
 	 icon = 'Power Stab',  
 	 parent = 12487,
@@ -46,31 +52,10 @@ set.skills_luacode = {
 	activationtime = 0.5,
 	icon = 'Counterattack Kick',
  },
-  [12624] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_4, 
-	 activationtime = 0.75, 
-	 icon = 'Crippling Throw',  
-	 parent = 12522,
- },
  [12475] = { 
 	 slot = GW2.SKILLBARSLOT.Slot_5, 
 	 activationtime = 0.5, 
 	 icon = 'Hilt Bash',  
- },
- [12450] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_10, 
-	 activationtime = 0.5, 
-	 icon = 'Summon Sylvan Hound',  
- },
- [12447] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_10, 
-	 activationtime = 0.5, 
-	 icon = 'Summon Druid Spirit',  
- },
- [12457] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_10, 
-	 activationtime = 0.5, 
-	 icon = 'Take Root',  
  },
 }
 function set:IsActive(context)
@@ -1322,4 +1307,3 @@ function set:Deactivate(context)
 	return false
 end
 SkillManager:AddSkillPalette( set )
-
