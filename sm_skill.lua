@@ -649,7 +649,6 @@ function sm_skill:RenderCustomConditionEditor()
 
 		local x,y = GUI:GetCursorPos()
 		GUI:SetCursorPos(maxy-25,y-20)		
-		GUI:ImageButton( "##ccinfobtn", sm_mgr.texturepath.."\\bt_selector_success_.png", 15, 15)
 
 		if ( GUI:IsItemHovered() ) then 
 			local tooltip = string.gsub([[
