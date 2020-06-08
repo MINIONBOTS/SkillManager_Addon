@@ -653,7 +653,7 @@ function sm_skill:RenderCustomConditionEditor()
 		if ( GUI:IsItemHovered() ) then 
 			local tooltip = string.gsub([[
 				Additional Lua Code, when to allow this spell to be cast. Must return 'true' or 'false'!
-				Use the 'skill' and 'context' table which are available here: skill.cooldown etc. for this skill's data.
+				Use the 'self' and 'context' table which are available here: 'self.cooldown' etc. for this skill's data.
 				context.player.pos instead of Player.pos, to save performance.
 				Also available:
 				context.player.party
