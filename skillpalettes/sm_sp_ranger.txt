@@ -1296,7 +1296,7 @@ instantcast = true,
  },
 }
 function set:IsActive(context)
-	return context.player.alive and context.player.transformid == 0 or context.player.transformid == 10 or context.player.transformid == 11 or context.player.transformid == 12
+	return context.player.alive and context.player.transformid == 0 or context.player.transformid == 10 or context.player.transformid == 11 or context.player.transformid == 12 or context.player.transformid == 13
 end
 function set:CanActivate(context)
 	return false
