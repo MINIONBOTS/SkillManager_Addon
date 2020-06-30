@@ -485,8 +485,8 @@ SkillManager:AddSkillPalette( set )
 
 
 
-local set = SkillManager:CreateSkillPalette('Terrestrial')
-set.uid = "Ranger_Terrestrial"
+local set = SkillManager:CreateSkillPalette('Celestial Avatar')
+set.uid = "Celestial Avatar"
 set.profession = GW2.CHARCLASS.Ranger
 set.icon = "Cosmic Ray"
 set.skills_luacode = {
