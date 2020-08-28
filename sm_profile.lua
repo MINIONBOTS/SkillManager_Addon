@@ -225,7 +225,7 @@ function sm_profile:UpdateContext()
    -- Check if we (still) have an active target to attack and update that. Make sure it is not our player.
    local attacktargetvalid = false
    if (self.temp.attack_targetid) then
-      self.temp.attack_target = CharacterList:Get(self.temp.attack_targetid) or GadgetList:Get(self.temp.attack_targetid) --or AgentList:Get(self.targetid)
+      self.temp.attack_target = CharacterList:Get(self.temp.attack_targetid) or GadgetList:Get(self.temp.attack_targetid) or AgentList:Get(self.targetid)
       if (self.temp.attack_target and (self.temp.attack_target_lastupdate and ml_global_information.Now - self.temp.attack_target_lastupdate < 1000) and not self.temp.attack_target.dead and (self.temp.attack_target.attackable or (self.temp.attack_target.isentity and self.temp.attack_target.attitude == GW2.ATTITUDE.Hostile and not self.temp.attack_target.isgadget and not self.temp.attack_target.ischaracter and not self.temp.attack_target.health))) then
          self.temp.context.attack_target = setmetatable({}, {
             __index = function(self, key)
