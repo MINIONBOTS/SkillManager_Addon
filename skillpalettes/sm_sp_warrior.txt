@@ -1510,7 +1510,7 @@ set.skills_luacode = {
 function set:IsActive(context)
    return context.player.alive and
            (context.player.transformid == 0 or context.player.transformid == 7 or context.player.transformid == 8 or
-                   context.player.transformid == 9)
+                   context.player.transformid == 9 or context.player.transformid == 10)
 end
 function set:CanActivate(context)
    return false
