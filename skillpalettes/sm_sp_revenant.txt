@@ -73,13 +73,7 @@ set.skills_luacode = {
 	[29145] = {
 		slot = GW2.SKILLBARSLOT.Slot_2,
 		activationtime = 0.75,
-		icon = "Punishing Sweep"
-	},
-	[28948] = {
-		slot = GW2.SKILLBARSLOT.Slot_2,
-		activationtime = 0.75,
-		icon = "Debilitating Slam",
-		parent = 29145
+		icon = "Mender\'s Rebuke"
 	},
 	[29288] = {
 		slot = GW2.SKILLBARSLOT.Slot_3,
@@ -141,7 +135,7 @@ set.skills_luacode = {
 	[29233] = {
 		slot = GW2.SKILLBARSLOT.Slot_2,
 		activationtime = 0.5,
-		icon = "Precision Strike"
+		icon = "Chilling Isolation"
 	},
 	[26699] = {
 		slot = GW2.SKILLBARSLOT.Slot_3,
@@ -175,7 +169,7 @@ set.icon = "Sword"
 set.skills_luacode = {
 	[28472] = {
 		slot = GW2.SKILLBARSLOT.Slot_4,
-		activationtime = 0.5,
+		activationtime = 1.0,
 		icon = "Shackling Wave"
 	},
 	[27074] = {
@@ -341,12 +335,12 @@ set.skills_luacode = {
 	},
 	[41829] = {
 		slot = GW2.SKILLBARSLOT.Slot_3,
-		activationtime = 0.75,
+		activationtime = 0.5,
 		icon = "Sevenshot"
 	},
 	[43993] = {
 		slot = GW2.SKILLBARSLOT.Slot_4,
-		activationtime = 0.75,
+		activationtime = 0.5,
 		icon = "Spiritcrush"
 	},
 	[41820] = {
@@ -624,6 +618,13 @@ set.skills_luacode = {
 		instantcast = true,
 		nounderwater = true
 	},
+	[29310] = {
+		slot = GW2.SKILLBARSLOT.Slot_7,
+		activationtime = 0.0,
+		icon = "Protective Solace",
+		instantcast = true,
+		nounderwater = true
+	},
 	[27628] = {
 		slot = GW2.SKILLBARSLOT.Slot_7,
 		activationtime = 0.0,
@@ -639,6 +640,13 @@ set.skills_luacode = {
 		instantcast = true,
 		nounderwater = true
 	},
+	[29082] = {
+		slot = GW2.SKILLBARSLOT.Slot_8,
+		activationtime = 0.0,
+		icon = "Natural Harmony",
+		instantcast = true,
+		nounderwater = true
+	},
 	[27715] = {
 		slot = GW2.SKILLBARSLOT.Slot_9,
 		activationtime = 0.0,
@@ -646,7 +654,21 @@ set.skills_luacode = {
 		instantcast = true,
 		nounderwater = true
 	},
+	[29197] = {
+		slot = GW2.SKILLBARSLOT.Slot_9,
+		activationtime = 0.0,
+		icon = "Purifying Essence",
+		instantcast = true,
+		nounderwater = true
+	},
 	[27356] = {
+		slot = GW2.SKILLBARSLOT.Slot_10,
+		activationtime = 0.0,
+		icon = "Energy Expulsion",
+		instantcast = true,
+		nounderwater = true
+	},
+	[29114] = {
 		slot = GW2.SKILLBARSLOT.Slot_10,
 		activationtime = 0.0,
 		icon = "Energy Expulsion",
@@ -702,7 +724,12 @@ set.skills_luacode = {
 	[27917] = {
 		slot = GW2.SKILLBARSLOT.Slot_9,
 		activationtime = 0.75,
-		icon = "Unyielding Anguish"
+		icon = "Call to Anguish"
+	},
+	[31100] = {
+		slot = GW2.SKILLBARSLOT.Slot_9,
+		activationtime = 0.75,
+		icon = "Call to Anguish"
 	},
 	[28287] = {
 		slot = GW2.SKILLBARSLOT.Slot_10,
@@ -777,6 +804,11 @@ set.skills_luacode = {
 		parent = 27107
 	},
 	[28406] = {
+		slot = GW2.SKILLBARSLOT.Slot_10,
+		activationtime = 1.0,
+		icon = "Jade Winds"
+	},
+	[31294] = {
 		slot = GW2.SKILLBARSLOT.Slot_10,
 		activationtime = 1.0,
 		icon = "Jade Winds"
@@ -912,25 +944,25 @@ set.skills_luacode = {
 	[45686] = {
 		slot = GW2.SKILLBARSLOT.Slot_6,
 		activationtime = 0.75,
-		icon = "Breakrazors Bastion",
+		icon = "Breakrazor\'s Bastion",
 		nounderwater = true
 	},
 	[42949] = {
 		slot = GW2.SKILLBARSLOT.Slot_7,
 		activationtime = 0.5,
-		icon = "Razorclaws Rage",
+		icon = "Razorclaw\'s Rage",
 		nounderwater = true
 	},
 	[40485] = {
 		slot = GW2.SKILLBARSLOT.Slot_8,
 		activationtime = 0.5,
-		icon = "Icerazors Ire",
+		icon = "Icerazor\'s Ire",
 		nounderwater = true
 	},
 	[41220] = {
 		slot = GW2.SKILLBARSLOT.Slot_9,
 		activationtime = 0.5,
-		icon = "Darkrazors Daring",
+		icon = "Darkrazor\'s Daring",
 		nounderwater = true
 	},
 	[45773] = {
@@ -983,33 +1015,28 @@ set.skills_luacode = {
 	},
 	[51667] = {
 		slot = GW2.SKILLBARSLOT.Slot_14,
-		activationtime = 0.0,
-		icon = "True Nature",
-		instantcast = true
+		activationtime = 0.25,
+		icon = "True Nature"
 	},
-		[51713] = {
+	[51713] = {
 		slot = GW2.SKILLBARSLOT.Slot_14,
-		activationtime = 0.0,
-		icon = "True Nature",
-		instantcast = true
+		activationtime = 0.25,
+		icon = "True Nature"
 	},
-		[51714] = {
+	[51714] = {
 		slot = GW2.SKILLBARSLOT.Slot_14,
-		activationtime = 0.0,
-		icon = "True Nature",
-		instantcast = true
+		activationtime = 0.25,
+		icon = "True Nature"
 	},
-		[51696] = {
+	[51696] = {
 		slot = GW2.SKILLBARSLOT.Slot_14,
-		activationtime = 0.0,
-		icon = "True Nature",
-		instantcast = true
+		activationtime = 0.25,
+		icon = "True Nature"
 	},
-		[51675] = {
+	[51675] = {
 		slot = GW2.SKILLBARSLOT.Slot_14,
-		activationtime = 0.0,
-		icon = "True Nature",
-		instantcast = true
+		activationtime = 0.25,
+		icon = "True Nature"
 	},
 	[29371] = {
 		slot = GW2.SKILLBARSLOT.Slot_14,
@@ -1105,11 +1132,6 @@ set.skills_luacode = {
 		icon = "Legendary Renegade Stance",
 		instantcast = true
 	},
-	[51696] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_14, 
-		 activationtime = 0.5, 
-		 icon = 'True Nature',
-	 },
 }
 
 function set:IsActive(context)
