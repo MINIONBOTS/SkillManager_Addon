@@ -369,7 +369,7 @@ set.skills_luacode = {
 	},
 	[5692] = {
 		slot = GW2.SKILLBARSLOT.Slot_2,
-		activationtime = 1.0,
+		activationtime = 0.75,
 		icon = "Dragon\'s Tooth"
 	},
 	[5675] = {
@@ -560,12 +560,12 @@ set.skills_luacode = {
 	[15718] = {
 		slot = GW2.SKILLBARSLOT.Slot_1,
 		activationtime = 0.5,
-		icon = "Dragons Claw"
+		icon = "Dragon\'s Claw"
 	},
 	[5496] = {
 		slot = GW2.SKILLBARSLOT.Slot_2,
 		activationtime = 2.25,
-		icon = "Drakes Breath"
+		icon = "Drake\'s Breath"
 	},
 	[5644] = {
 		slot = GW2.SKILLBARSLOT.Slot_3,
@@ -656,8 +656,8 @@ set.skills_luacode = {
 	},
 	[5646] = {
 		slot = GW2.SKILLBARSLOT.Slot_2,
-		activationtime = 0.75,
-		icon = "Lightning Touch"
+		activationtime = 0.5,
+		icon = "Convergence"
 	},
 	[5527] = {
 		slot = GW2.SKILLBARSLOT.Slot_3,
@@ -709,13 +709,13 @@ set.skills_luacode = {
 	},
 	[5525] = {
 		slot = GW2.SKILLBARSLOT.Slot_2,
-		activationtime = 0.75,
+		activationtime = 1.0,
 		icon = "Ring of Earth"
 	},
 	[5559] = {
 		slot = GW2.SKILLBARSLOT.Slot_3,
 		activationtime = 0.5,
-		icon = "Magnetic Grasp"
+		icon = "Earthen Rush"
 	}
 }
 function set:IsActive(context)
@@ -880,13 +880,13 @@ set.icon = "Dagger"
 set.skills_luacode = {
 	[5690] = {
 		slot = GW2.SKILLBARSLOT.Slot_4,
-		activationtime = 0.5,
+		activationtime = 0.75,
 		icon = "Earthquake",
 		stopsmovement = true
 	},
 	[5522] = {
 		slot = GW2.SKILLBARSLOT.Slot_5,
-		activationtime = 0.5,
+		activationtime = 2.0,
 		icon = "Churning Earth",
 		stopsmovement = true
 	}
@@ -1059,9 +1059,8 @@ set.skills_luacode = {
 	},
 	[5521] = {
 		slot = GW2.SKILLBARSLOT.Slot_5,
-		activationtime = 0.0,
-		icon = "Obsidian Flesh",
-		instantcast = true
+		activationtime = 3.0,
+		icon = "Obsidian Flesh"
 	}
 }
 function set:IsActive(context)
@@ -1325,7 +1324,7 @@ set.skills_luacode = {
 	},
 	[45983] = {
 		slot = GW2.SKILLBARSLOT.Slot_1,
-		activationtime = 0.75,
+		activationtime = 0.5,
 		icon = "Clapotis",
 		parent = 41052
 	},
@@ -1993,12 +1992,24 @@ set.skills_luacode = {
 		icon = "Arcane Shield",
 		instantcast = true
 	},
+	[5703] = {
+		slot = GW2.SKILLBARSLOT.Slot_9,
+		activationtime = 0.0,
+		icon = "Arcane Shield",
+		instantcast = true
+	},
 	[25489] = {
 		slot = GW2.SKILLBARSLOT.Slot_10,
 		activationtime = 1.25,
 		icon = "Glyph of Elementals"
 	},
 	[5638] = {
+		slot = GW2.SKILLBARSLOT.Slot_7,
+		activationtime = 0.0,
+		icon = "Arcane Wave",
+		instantcast = true
+	},
+	[22572] = {
 		slot = GW2.SKILLBARSLOT.Slot_7,
 		activationtime = 0.0,
 		icon = "Arcane Wave",
@@ -2030,8 +2041,12 @@ set.skills_luacode = {
 	[5554] = {
 		slot = GW2.SKILLBARSLOT.Slot_7,
 		activationtime = 0.0,
-		icon = "Mist Form",
-		instantcast = true
+		icon = "Mist Form"
+	},
+	[15795] = {
+		slot = GW2.SKILLBARSLOT.Slot_7,
+		activationtime = 0.0,
+		icon = "Mist Form"
 	},
 	[5546] = {
 		slot = GW2.SKILLBARSLOT.Slot_8,
@@ -2064,10 +2079,14 @@ set.skills_luacode = {
 		icon = "Glyph of Elemental Power",
 		instantcast = true
 	},
-
 	[5761] = {
 		slot = GW2.SKILLBARSLOT.Slot_8,
-		activationtime = 3.25,
+		activationtime = 2.0,
+		icon = "Renewal of Earth"
+	},
+	[24411] = {
+		slot = GW2.SKILLBARSLOT.Slot_8,
+		activationtime = 2.0,
 		icon = "Renewal of Earth"
 	},
 	[5738] = {
@@ -2269,25 +2288,30 @@ set.skills_luacode = {
 	},
 	[25499] = {
 		slot = GW2.SKILLBARSLOT.Slot_10,
-		activationtime = 0.25,
+		activationtime = 0.0,
 		icon = "Flame Barrage",
+		instantcast = true,
 		nounderwater = true
 	},
 	[25492] = {
 		slot = GW2.SKILLBARSLOT.Slot_10,
-		activationtime = 0.25,
-		icon = "Crashing Waves"
+		activationtime = 0.0,
+		icon = "Crashing Waves",
+		instantcast = true,
+		nounderwater = true
 	},
 	[25480] = {
 		slot = GW2.SKILLBARSLOT.Slot_10,
-		activationtime = 0.5,
+		activationtime = 0.0,
 		icon = "Shocking Bolt",
+		instantcast = true,
 		nounderwater = true
 	},
 	[25498] = {
 		slot = GW2.SKILLBARSLOT.Slot_10,
-		activationtime = 0.5,
+		activationtime = 0.0,
 		icon = "Stomp",
+		instantcast = true,
 		nounderwater = true
 	},
 	-- Glyph of lesser elementals skills 
@@ -2317,27 +2341,35 @@ set.skills_luacode = {
 	},
 	[25500] = {
 		slot = GW2.SKILLBARSLOT.Slot_9,
-		activationtime = 0.25,
+		activationtime = 0.0,
 		icon = "Glyph of Lesser Elementals - Flame Burst",
-		iconurl = "https://render.guildwars2.com/file/1C34FEC97F2E0607A7273E9CAEE8610DF5CF1805/867447.png"
+		iconurl = "https://render.guildwars2.com/file/1C34FEC97F2E0607A7273E9CAEE8610DF5CF1805/867447.png",
+		instantcast = true,
+		nounderwater = true
 	},
 	[25476] = {
 		slot = GW2.SKILLBARSLOT.Slot_9,
-		activationtime = 0.25,
+		activationtime = 0.0,
 		icon = "Glyph of Lesser Elementals - Frozen Ground",
-		iconurl = "https://render.guildwars2.com/file/B71A26B3F4E3C49A2F1E5BFC054566EFD1AB1591/867432.png"
+		iconurl = "https://render.guildwars2.com/file/B71A26B3F4E3C49A2F1E5BFC054566EFD1AB1591/867432.png",
+		instantcast = true,
+		nounderwater = true
 	},
 	[25478] = {
 		slot = GW2.SKILLBARSLOT.Slot_9,
-		activationtime = 0.25,
+		activationtime = 0.0,
 		icon = "Glyph of Lesser Elementals - Windborne Speed",
-		iconurl = "https://render.guildwars2.com/file/29F143024D45DA7E06296E987F59EDD5B13BC85F/867433.png"
+		iconurl = "https://render.guildwars2.com/file/29F143024D45DA7E06296E987F59EDD5B13BC85F/867433.png",
+		instantcast = true,
+		nounderwater = true
 	},
 	[25494] = {
 		slot = GW2.SKILLBARSLOT.Slot_9,
-		activationtime = 0.25,
+		activationtime = 0.0,
 		icon = "Glyph of Lesser Elementals - Enervating Punch",
-		iconurl = "https://render.guildwars2.com/file/2A9799E66BCB017B15F8030852E40C535D2DC5A6/867442.png"
+		iconurl = "https://render.guildwars2.com/file/2A9799E66BCB017B15F8030852E40C535D2DC5A6/867442.png",
+		instantcast = true,
+		nounderwater = true
 	},
 	-- WEAVER SKILLS HERE, I cannot put them in "proper", that would mean having to add a gazillion different "sets", so I'll just put em here...for now
 	[43074] = {
@@ -2357,7 +2389,7 @@ set.skills_luacode = {
 	},
 	[42181] = {
 		slot = GW2.SKILLBARSLOT.Slot_3,
-		activationtime = 0.5,
+		activationtime = 0.75,
 		icon = "Fiery Frost"
 	},
 	[45742] = {
@@ -2442,8 +2474,9 @@ set.skills_luacode = {
 	},
 	[46140] = {
 		slot = GW2.SKILLBARSLOT.Slot_3,
-		activationtime = 0.25,
-		icon = "Katabatic Wind"
+		activationtime = 0.0,
+		icon = "Katabatic Wind",
+		instantcast = true
 	},
 	[42379] = {
 		slot = GW2.SKILLBARSLOT.Slot_3,

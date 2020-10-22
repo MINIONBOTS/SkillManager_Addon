@@ -263,19 +263,19 @@ pistol_mh.skills_luacode = {
 	 [13008] = {
 		 slot = GW2.SKILLBARSLOT.Slot_2,
 		 activationtime = 0.5,
-		 icon = 'Body Shot',
-	 },
-	 [13111] = {
-		 slot = GW2.SKILLBARSLOT.Slot_3,
-		 activationtime = 1.75,
-		 icon = 'Repeater',
+		 icon = 'Bola Shot',
 	 },
 	 [13010] = {  -- dagger offhand combo.
 		 slot = GW2.SKILLBARSLOT.Slot_3,
 		 activationtime = 0,
-		 parent = 13019, -- dagger_oh skill slot_4.
 		 icon = 'Shadow Strike',
 	 },
+     [13111] = { -- dagger offhand combo
+         slot = GW2.SKILLBARSLOT.Slot_3,
+         activationtime = 1.25,
+         icon = 'Repeater',
+         parent = 13010, -- Shadow Strike
+     },
 	 [13011] = { -- pistol offhand combo.
 		 slot = GW2.SKILLBARSLOT.Slot_3,
 		 activationtime = 1.5,
@@ -410,7 +410,7 @@ sword.skills_luacode = {
 	 },
 	 [13128] = {
 		 slot = GW2.SKILLBARSLOT.Slot_2,
-		 activationtime = 0.5,
+		 activationtime = 0.25,
 		 icon = 'Infiltrator\'s Return',
 		 parent = 13015,
 	 },
@@ -659,7 +659,7 @@ rifle_kneel.skills_luacode = {
 	},
 	[40436] = {
 	 slot = GW2.SKILLBARSLOT.Slot_4,
-	 activationtime = 0.75,
+	 activationtime = 0.25,
 	 icon = 'Sniper\'s Cover',
 	},
 	[41068] = {
@@ -1055,7 +1055,7 @@ thief.skills_luacode = {
 -- F-Keys.
 	[13014] = { -- TODO: This will get a random skill. We need a way to just fire whatever we get right away. (F1>steal,F2>stolen skill)
 		 slot = GW2.SKILLBARSLOT.Slot_13,
-		 activationtime = 0.5,
+		 activationtime = 0.0,
 		 icon = 'Steal',
 	 },
 	 [43390] = {
@@ -1065,47 +1065,47 @@ thief.skills_luacode = {
 	 },
 	 [39960] = {
 		 slot = GW2.SKILLBARSLOT.Slot_14,
-		 activationtime = 0.5,
+		 activationtime = 0.25,
 		 icon = 'Steal Warmth',
 	 },
 	 [40133] = {
 		 slot = GW2.SKILLBARSLOT.Slot_14,
-		 activationtime = 0.5,
+		 activationtime = 0.25,
 		 icon = 'Steal Resistance',
 	 },
 	 [42863] = {
 		 slot = GW2.SKILLBARSLOT.Slot_14,
-		 activationtime = 0.5,
+		 activationtime = 0.25,
 		 icon = 'Steal Time',
 	 },
 	 [40904] = {
 		 slot = GW2.SKILLBARSLOT.Slot_14,
-		 activationtime = 0.5,
+		 activationtime = 0.25,
 		 icon = 'Steal Strength',
 	 },
 	 [44526] = {
 		 slot = GW2.SKILLBARSLOT.Slot_14,
-		 activationtime = 0.5,
+		 activationtime = 0.25,
 		 icon = 'Steal Mobility',
 	 },
 	 [43768] = {
 		 slot = GW2.SKILLBARSLOT.Slot_14,
-		 activationtime = 0.5,
+		 activationtime = 0.25,
 		 icon = 'Steal Defenses',
 	 },
 	 [43373] = {
 		 slot = GW2.SKILLBARSLOT.Slot_14,
-		 activationtime = 0.5,
+		 activationtime = 0.25,
 		 icon = 'Steal Durability',
 	 },
 	 [40903] = {
 		 slot = GW2.SKILLBARSLOT.Slot_14,
-		 activationtime = 0.5,
+		 activationtime = 0.25,
 		 icon = 'Steal Health',
 	 },
 	 [40888] = {
 		 slot = GW2.SKILLBARSLOT.Slot_14,
-		 activationtime = 0.5,
+		 activationtime = 0.25,
 		 icon = 'Steal Precision',
 	 },
 	 [1148] = {
@@ -1135,7 +1135,7 @@ thief.skills_luacode = {
 	 },
 	 [1116] = {
 		 slot = GW2.SKILLBARSLOT.Slot_14,
-		 activationtime = 1,
+		 activationtime = 0.5,
 		 icon = 'Drink',
 	 },
 	 [1125] = {
@@ -1145,7 +1145,7 @@ thief.skills_luacode = {
 	 },
 	 [31438] = {
 		 slot = GW2.SKILLBARSLOT.Slot_14,
-		 activationtime = 0.5,
+		 activationtime = 0.25,
 		 icon = 'Essence Sap',
 	 },
 	 [1149] = {
@@ -1155,7 +1155,7 @@ thief.skills_luacode = {
 	 },
 	 [1139] = {
 		 slot = GW2.SKILLBARSLOT.Slot_14,
-		 activationtime = 0.5,
+		 activationtime = 1.0,
 		 icon = 'Healing Seed',
 	 },
 	 [1129] = {
@@ -1180,7 +1180,7 @@ thief.skills_luacode = {
 	 },
 	 [1141] = {
 		 slot = GW2.SKILLBARSLOT.Slot_14,
-		 activationtime = 1.25,
+		 activationtime = 0.5,
 		 icon = 'Skull Fear',
 	 },
 	 [1120] = {
@@ -1255,7 +1255,7 @@ thief.skills_luacode = {
 -- ELITE.
 	 [13085] = {
 		 slot = GW2.SKILLBARSLOT.Slot_10,
-		 activationtime = 4,
+		 activationtime = 4.0, -- activation is 2.75, but duration is 4.0
 		 icon = 'Dagger Storm',
 	 },
 	 [13082] = {
@@ -1275,7 +1275,7 @@ thief.skills_luacode = {
 	 },
 	 [30077] = {
 		 slot = GW2.SKILLBARSLOT.Slot_10,
-		 activationtime = 0.75,
+		 activationtime = 1.0,
 		 parent = 29516,
 		 icon = 'Uppercut',
 	 },
@@ -1370,7 +1370,7 @@ thief.skills_luacode = {
 	 },
 	 [13044] = {
 		 slot = GW2.SKILLBARSLOT.Slot_7,
-		 activationtime = 0,
+		 activationtime = 0.25,
 		 icon = 'Blinding Powder',
 	 },
 	 [56880] = { 
