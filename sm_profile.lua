@@ -277,11 +277,10 @@ function sm_profile:UpdateContext()
    local ppos = self.temp.context.player.pos
    self.temp.context.player.friends_nearby = {}
    self.temp.context.player.enemies_nearby = {}
-   local cache = {} -- not hammering c++ 6 times, making a local cache here ..hopefully this is faster !?
+
    for i, k in pairs(clist) do
       local cpos = k.pos
       local att = k.attitude
-      cache[i] = { attitude = att, pos = cpos }
       if (att < 3) then
          if (att == 0) then
             -- Friendly
