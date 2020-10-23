@@ -174,7 +174,7 @@ shield.skills_luacode = {
 	[6126] = {
 		slot = GW2.SKILLBARSLOT.Slot_4,
 		activationtime = 0.0,
-		icon = "Magnetic Inversion", -- instantcast?
+		icon = "Magnetic Inversion",
 		parent = 6053,
 	},
 	[6054] = {
@@ -544,12 +544,13 @@ flamethrower.skills_luacode = {
 [5929] = {
 	 slot = GW2.SKILLBARSLOT.Slot_4,
 	 activationtime = 0.0,
-	 icon = 'Napalm',  -- instantcast?
+	 icon = 'Napalm',
  },
 [6159] = {
 	 slot = GW2.SKILLBARSLOT.Slot_5,
 	 activationtime = 0.0,
-	 icon = 'Smoke Vent', -- instantcast?
+	 instantcast = true,
+	 icon = 'Smoke Vent',
  },
 }
 function flamethrower:IsActive(context)
