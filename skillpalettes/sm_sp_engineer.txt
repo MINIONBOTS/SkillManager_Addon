@@ -135,6 +135,11 @@ rifle.skills_luacode = {
 		activationtime = 0.0,
 		icon = "Overcharged Shot",
 	},
+	[5817] = {
+		slot = GW2.SKILLBARSLOT.Slot_5,
+		activationtime = 1.0,
+		icon = "Jump Shot",
+	},
 	[6005] = {
 		slot = GW2.SKILLBARSLOT.Slot_5,
 		activationtime = 1.0,
@@ -168,13 +173,13 @@ shield.skills_luacode = {
 	},
 	[6126] = {
 		slot = GW2.SKILLBARSLOT.Slot_4,
-		activationtime = 0.5,
-		icon = "Magnetic Inversion",
+		activationtime = 0.0,
+		icon = "Magnetic Inversion", -- instantcast?
 		parent = 6053,
 	},
 	[6054] = {
 		slot = GW2.SKILLBARSLOT.Slot_5,
-		activationtime = 2.0,
+		activationtime = 2.5,
 		icon = "Static Shield",
 	},
 	[6057] = {
@@ -482,6 +487,11 @@ elixiergun.skills_luacode = {
 		 activationtime = 0.5,
 		 icon = 'Super Elixir',
 	 },
+	[6102] = {
+		slot = GW2.SKILLBARSLOT.Slot_5,
+		activationtime = 0.5,
+		icon = 'Super Elixir',
+	},
 }
 function elixiergun:IsActive(context)
 	return context.player.alive and context.skillbar~=nil  and (
@@ -526,13 +536,6 @@ flamethrower.skills_luacode = {
 	 activationtime = 0.5,
 	 icon = 'Flame Blast',
  },
- [17260] = {
-	 slot = GW2.SKILLBARSLOT.Slot_2,
-	 activationtime = 0.0,
-	 instantcast = true,
-	 icon = 'Detonate Flame Blast',
-	 parent = 5931,
- },
 [5930] = {
 	 slot = GW2.SKILLBARSLOT.Slot_3,
 	 activationtime = 0.5,
@@ -541,12 +544,12 @@ flamethrower.skills_luacode = {
 [5929] = {
 	 slot = GW2.SKILLBARSLOT.Slot_4,
 	 activationtime = 0.0,
-	 icon = 'Napalm',
+	 icon = 'Napalm',  -- instantcast?
  },
 [6159] = {
 	 slot = GW2.SKILLBARSLOT.Slot_5,
 	 activationtime = 0.0,
-	 icon = 'Smoke Vent',
+	 icon = 'Smoke Vent', -- instantcast?
  },
 }
 function flamethrower:IsActive(context)
@@ -631,65 +634,6 @@ function grenadekit:Deactivate(context)
 	return true
 end
 SkillManager:AddSkillPalette( grenadekit )
-
-
-local grenadekit = SkillManager:CreateSkillPalette('Grenade Kit Water')
-grenadekit.uid = "Engi_Grenade Kit Water"
-grenadekit.profession = GW2.CHARCLASS.Engineer
-grenadekit.icon = "Grenade Kit"
-grenadekit.id = 5805
-grenadekit.skills_luacode = {
-[6171] = {
-	 slot = GW2.SKILLBARSLOT.Slot_1,
-	 activationtime = 0.5,
-	 icon = 'Grenade',
- },
- [6170] = {
-	 slot = GW2.SKILLBARSLOT.Slot_2,
-	 activationtime = 0.5,
-	 icon = 'Shrapnel Grenade',
- },
- [6169] = {
-	 slot = GW2.SKILLBARSLOT.Slot_3,
-	 activationtime = 0.5,
-	 icon = 'Flash Grenade',
- },
- [6168] = {
-	 slot = GW2.SKILLBARSLOT.Slot_4,
-	 activationtime = 0.5,
-	 icon = 'Freeze Grenade',
- },
- [6167] = {
-	 slot = GW2.SKILLBARSLOT.Slot_5,
-	 activationtime = 0.5,
-	 icon = 'Poison Grenade',
- },
-}
-function grenadekit:IsActive(context)
-	return context.player.swimming == GW2.SWIMSTATE.Diving and context.player.alive and context.skillbar~=nil  and (
-	(context.skillbar[GW2.SKILLBARSLOT.Slot_7]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_7].id == 6110) or
-	(context.skillbar[GW2.SKILLBARSLOT.Slot_8]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_8].id == 6110) or
-	(context.skillbar[GW2.SKILLBARSLOT.Slot_9]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_9].id == 6110))
-end
-function grenadekit:CanActivate(context)
-	return context.player.swimming == GW2.SWIMSTATE.Diving and context.player.alive and (context.player.transformid == 0 or context.player.transformid == 5) and context.skillbar~=nil  and (
-	(context.skillbar[GW2.SKILLBARSLOT.Slot_7]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_7].id == 5805) or
-	(context.skillbar[GW2.SKILLBARSLOT.Slot_8]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_8].id == 5805) or
-	(context.skillbar[GW2.SKILLBARSLOT.Slot_9]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_9].id == 5805))
-end
-function grenadekit:Activate(context)
-	if ( context.skillbar~=nil ) then
-		if (context.skillbar[GW2.SKILLBARSLOT.Slot_7]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_7].id == 5805) then Player:CastSpell(GW2.SKILLBARSLOT.Slot_7) end
-		if (context.skillbar[GW2.SKILLBARSLOT.Slot_8]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_8].id == 5805) then Player:CastSpell(GW2.SKILLBARSLOT.Slot_8) end
-		if (context.skillbar[GW2.SKILLBARSLOT.Slot_9]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_9].id == 5805) then Player:CastSpell(GW2.SKILLBARSLOT.Slot_9) end
-	end
-end
-function grenadekit:Deactivate(context)
-	Player:SwapWeaponSet()
-	return true
-end
-SkillManager:AddSkillPalette( grenadekit )
-
 
 
 local medkit = SkillManager:CreateSkillPalette('Med Kit')
@@ -950,7 +894,7 @@ photonforge.skills_luacode = {
 	},
 	[44260] = {
 		slot = GW2.SKILLBARSLOT.Slot_1,
-		activationtime = 0.5,
+		activationtime = 0.0,
 		icon = 'Light Strike - Storm',
 	},
 	[42475] = {
@@ -1133,16 +1077,26 @@ engineer.skills_luacode = {
 		 activationtime = 0.5,
 		 icon = 'Toss Elixir B',
 	 },
+	 [6092] = {
+		slot = GW2.SKILLBARSLOT.Slot_14,
+		activationtime = 0.5,
+		icon = 'Toss Elixir B',
+	 },
 	 [6082] = {
 		 slot = GW2.SKILLBARSLOT.Slot_14,
 		 activationtime = 0.0,
-		instantcast = true,
+		 instantcast = true,
 		 icon = 'Detonate Elixir B',
 	 },
 	 [5969] = {
 		 slot = GW2.SKILLBARSLOT.Slot_14,
 		 activationtime = 0.5,
 		 icon = 'Toss Elixir C',
+	 },
+	 [6077] = {
+		slot = GW2.SKILLBARSLOT.Slot_14,
+		activationtime = 0.5,
+		icon = 'Toss Elixir C',
 	 },
 	 [6078] = {
 		 slot = GW2.SKILLBARSLOT.Slot_14,
@@ -1155,6 +1109,11 @@ engineer.skills_luacode = {
 		 activationtime = 0.25,
 		 icon = 'Toss Elixir R',
 	 },
+	 [6091] = {
+		slot = GW2.SKILLBARSLOT.Slot_14,
+		activationtime = 0.25,
+		icon = 'Toss Elixir R',
+	 },
 	 [6086] = {
 		 slot = GW2.SKILLBARSLOT.Slot_14,
 		 activationtime = 0.0,
@@ -1165,6 +1124,11 @@ engineer.skills_luacode = {
 		 slot = GW2.SKILLBARSLOT.Slot_14,
 		 activationtime = 0.5,
 		 icon = 'Toss Elixir S',
+	 },
+	 [6090] = {
+		slot = GW2.SKILLBARSLOT.Slot_14,
+		activationtime = 0.5,
+		icon = 'Toss Elixir S',
 	 },
 	 [6084] = {
 		 slot = GW2.SKILLBARSLOT.Slot_14,
@@ -1216,11 +1180,10 @@ engineer.skills_luacode = {
 		 icon = 'Detonate Mine Field',
 		 parent = 6164,
 	 },
-	 [5975] = {
+	 [30262] = {
 		 slot = GW2.SKILLBARSLOT.Slot_14,
-		 activationtime = 0.0,
-		 instantcast = true,
-		 icon = 'Analyze',
+		 activationtime = 0.5,
+		 icon = 'Detection Pulse',
 	 },
 	 [6181] = {
 		 slot = GW2.SKILLBARSLOT.Slot_14,
@@ -1273,14 +1236,9 @@ engineer.skills_luacode = {
 		 activationtime = 0.75,
 		 icon = 'Orbital Strike',
 	 },
-	 [30262] = {
-		 slot = GW2.SKILLBARSLOT.Slot_17,
-		 activationtime = 0.75,
-		 icon = 'Detection Pulse',
-	 },
 	 [29665] = {
 		 slot = GW2.SKILLBARSLOT.Slot_14,
-		 activationtime = 0.5,
+		 activationtime = 0.0,
 		 icon = 'Bypass Coating',
 	 },
 	 [30027] = {
@@ -1307,7 +1265,6 @@ engineer.skills_luacode = {
 	 [45732] = {
 		 slot = GW2.SKILLBARSLOT.Slot_14,
 		 activationtime = 0.0,
-		 instantcast = true,
 		 icon = 'Particle Accelerator',
 	 },
 	 [42163] = {
@@ -1358,25 +1315,46 @@ engineer.skills_luacode = {
 	 },
 	 [5811] = {
 		 slot = GW2.SKILLBARSLOT.Slot_7,
-		 activationtime = 0.5,
+		 activationtime = 0.25,
 		 icon = 'Personal Battering Ram',
 	 },
+	[29991] = {
+		slot = GW2.SKILLBARSLOT.Slot_7,
+		activationtime = 0.25,
+		icon = 'Personal Battering Ram',
+	},
 	 [5910] = {
 		 slot = GW2.SKILLBARSLOT.Slot_7,
 		 activationtime = 0.75,
 		 icon = 'Rocket Boots',
 	 },
+	[29522] = {
+		slot = GW2.SKILLBARSLOT.Slot_7,
+		activationtime = 0.75,
+		icon = 'Rocket Boots',
+	},
 	 [5825] = {
 		 slot = GW2.SKILLBARSLOT.Slot_7,
 		 activationtime = 0.0,
 		 instantcast = true,
 		 icon = 'Slick Shoes',
 	 },
+	[30828] = {
+		slot = GW2.SKILLBARSLOT.Slot_7,
+		activationtime = 0.0,
+		instantcast = true,
+		icon = 'Slick Shoes',
+	},
 	 [6161] = {
 		 slot = GW2.SKILLBARSLOT.Slot_7,
 		 activationtime = 0.5,
 		 icon = 'Throw Mine',
 	 },
+	[30337] = {
+		slot = GW2.SKILLBARSLOT.Slot_7,
+		activationtime = 0.5,
+		icon = 'Throw Mine',
+	},
 	 [6162] = {
 		 slot = GW2.SKILLBARSLOT.Slot_7,
 		 activationtime = 0.0,
@@ -1390,6 +1368,12 @@ engineer.skills_luacode = {
 		 instantcast = true,
 		 icon = 'Utility Goggles',
 	 },
+	[29591] = {
+		slot = GW2.SKILLBARSLOT.Slot_7,
+		activationtime = 0.0,
+		instantcast = true,
+		icon = 'Utility Goggles',
+	},
 	 [5836] = {
 		 slot = GW2.SKILLBARSLOT.Slot_7,
 		 activationtime = 0.5,
@@ -1495,16 +1479,9 @@ engineer.skills_luacode = {
 	 },
 	 [31248] = {
 		 slot = GW2.SKILLBARSLOT.Slot_7,
-		 activationtime = 0.5,
+		 activationtime = 0.25,
 		 nounderwater = true,
-		 icon = 'Blast Gyro Tag',
-	 },
-	 [31264] = {
-		 slot = GW2.SKILLBARSLOT.Slot_7,
-		 activationtime = 0.0,
-		 instantcast = true,
-		 icon = 'Blast Gyro Self-Destruct',
-		 parent = 31248,
+		 icon = 'Blast Gyro',
 	 },
 	 [30101] = {
 		 slot = GW2.SKILLBARSLOT.Slot_7,
@@ -1513,13 +1490,6 @@ engineer.skills_luacode = {
 		 instantcast = true,
 		 icon = 'Bulwark Gyro',
 	 },
-	 [29697] = {
-		 slot = GW2.SKILLBARSLOT.Slot_7,
-		 activationtime = 0.75,
-		 instantcast = true,
-		 icon = 'Bulwark Gyro Self-Destruct',
-		 parent = 30101,
-	 },
 	 [29739] = {
 		 slot = GW2.SKILLBARSLOT.Slot_8,
 		 activationtime = 0.0,
@@ -1527,25 +1497,11 @@ engineer.skills_luacode = {
 		 instantcast = true,
 		 icon = 'Purge Gyro',
 	 },
-	 [30777] = {
-		 slot = GW2.SKILLBARSLOT.Slot_8,
-		 activationtime = 0.0,
-		 instantcast = true,
-		 icon = 'Purge Gyro Self-Destruct',
-		 parent = 29739,
-	 },
 	 [29921] = {
 		 slot = GW2.SKILLBARSLOT.Slot_7,
 		 activationtime = 0.75,
 		 nounderwater = true,
 		 icon = 'Shredder Gyro',
-	 },
-	 [30112] = {
-		 slot = GW2.SKILLBARSLOT.Slot_7,
-		 activationtime = 0.0,
-		 instantcast = true,
-		 icon = 'Shredder Gyro Self-Destruct',
-		 parent = 29921,
 	 },
 	 [43739] = {
 		 slot = GW2.SKILLBARSLOT.Slot_7,
@@ -1638,7 +1594,7 @@ engineer.skills_luacode = {
 	 },
 	 [56920] = {
 		slot = GW2.SKILLBARSLOT.Slot_17,
-		activationtime = 0.5,
+		activationtime = 0.0,
 		icon = 'Function Gyro',
 	 },
 }
