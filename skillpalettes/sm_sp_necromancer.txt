@@ -904,6 +904,11 @@ necromancer.skills_luacode = {
 		 activationtime = 0.5,
 		 icon = 'Manifest Sand Shade',
 	 },
+	[46474] = {
+		 slot = GW2.SKILLBARSLOT.Slot_13,
+		 activationtime = 0.5,
+		 icon = 'Manifest Sand Shade',
+     	},
 	[40813] = {
 		 slot = GW2.SKILLBARSLOT.Slot_14,
 		 activationtime = 0.0,
