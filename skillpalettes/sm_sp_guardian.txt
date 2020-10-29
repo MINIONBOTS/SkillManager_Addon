@@ -1,34 +1,34 @@
 -- Hardcoded Skill Palettes for the Guardian Profession.
-	--[[self.temp.context.player.weaponset = {
-		[0] = "Aqua1",
-		[1] = "Aqua2",
-		[2] = "Kit/Astral",
-		[3] = "LichForm, Moa, mini, tornado ",
-		[4] = "Weapon1",
-		[5] = "Weapon2",
-	},
-	
-	self.temp.context.player.transformid = {
-		0	NONE,
-		1	ELE_FIRE, Kits, bundles , pickup weapons
-		2	ELE_WATER,
-		3	ELE_AIR,
-		4	ELE_EARTH,
-		5	UNKNOWN1,
-		6	NECRO_SHROUD,
-		7	WAR_ADREN1,
-		8	WAR_ADREN2,
-		9	WAR_ADREN3,
-		10	RANGER_DRUID,
-		11	RANGER_ASTRAL,
-		12	UNKNOWN2,
-		13	REV_DRAGON,
-		14	REV_ASSASSIN,
-		15	REV_DWARF,
-		16	REV_DEMON,
-		17	UNKNOWN3,
-		18	REV_CENTAUR	
-	},]]
+--[[self.temp.context.player.weaponset = {
+    [0] = "Aqua1",
+    [1] = "Aqua2",
+    [2] = "Kit/Astral",
+    [3] = "LichForm, Moa, mini, tornado ",
+    [4] = "Weapon1",
+    [5] = "Weapon2",
+},
+
+self.temp.context.player.transformid = {
+    0	NONE,
+    1	ELE_FIRE, Kits, bundles , pickup weapons
+    2	ELE_WATER,
+    3	ELE_AIR,
+    4	ELE_EARTH,
+    5	UNKNOWN1,
+    6	NECRO_SHROUD,
+    7	WAR_ADREN1,
+    8	WAR_ADREN2,
+    9	WAR_ADREN3,
+    10	RANGER_DRUID,
+    11	RANGER_ASTRAL,
+    12	UNKNOWN2,
+    13	REV_DRAGON,
+    14	REV_ASSASSIN,
+    15	REV_DWARF,
+    16	REV_DEMON,
+    17	UNKNOWN3,
+    18	REV_CENTAUR
+},]]
 
 -- Additionally available:
 -- context.player
@@ -49,894 +49,881 @@ set.uid = "Guardian_GreatSword"
 set.profession = GW2.CHARCLASS.Guardian
 set.icon = "GreatSword"
 set.skills_luacode = {
-	[9137] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_1, 
-		 activationtime = 0.5, 
-		 icon = 'Strike',  
-	 },
-	 [9138] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_1, 
-		 activationtime = 0.5, 
-		 icon = 'Vengeful Strike', 
-		 parent = 9137,
-	 },
-	 [9139] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_1, 
-		 activationtime = 0.5, 
-		 icon = 'Wrathful Strike',  
-		 parent = 9138,
-	 },
-	 [9081] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_2, 
-		 activationtime = 2.0, 
-		 icon = 'Whirling Wrath',  
-	 },
-	 [9080] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_3, 
-		 activationtime = 0.5, 
-		 icon = 'Leap of Faith',  
-	 },
-	 [9146] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_4, 
-		 activationtime = 0.5, 
-		 icon = 'Symbol of Wrath',  
-		 stopsmovement = true
-	 },
-	 [9147] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_5, 
-		 activationtime = 0.75, 
-		 icon = 'Binding Blade',  
-	 },
-	  [9226] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_5, 
-		 activationtime = 0.75, 
-		 icon = 'Pull',  
-		 parent = 9147,
-	 },
+    [9137] = {
+        slot = GW2.SKILLBARSLOT.Slot_1,
+        activationtime = 0.5,
+        icon = 'Strike',
+    },
+    [9138] = {
+        slot = GW2.SKILLBARSLOT.Slot_1,
+        activationtime = 0.5,
+        icon = 'Vengeful Strike',
+        parent = 9137,
+    },
+    [9139] = {
+        slot = GW2.SKILLBARSLOT.Slot_1,
+        activationtime = 0.5,
+        icon = 'Wrathful Strike',
+        parent = 9138,
+    },
+    [9081] = {
+        slot = GW2.SKILLBARSLOT.Slot_2,
+        activationtime = 0.75,
+        icon = 'Whirling Wrath',
+    },
+    [9080] = {
+        slot = GW2.SKILLBARSLOT.Slot_3,
+        activationtime = 0.5,
+        icon = 'Leap of Faith',
+    },
+    [9146] = {
+        slot = GW2.SKILLBARSLOT.Slot_4,
+        activationtime = 0.25,
+        icon = 'Symbol of Wrath',
+        stopsmovement = true
+    },
+    [9147] = {
+        slot = GW2.SKILLBARSLOT.Slot_5,
+        activationtime = 0.75,
+        icon = 'Binding Blade',
+    },
+    [9226] = {
+        slot = GW2.SKILLBARSLOT.Slot_5,
+        activationtime = 0.75,
+        icon = 'Pull',
+        parent = 9147,
+    },
 }
 function set:IsActive(context)
-	return context.player.alive and (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 9081)	
+    return context.player.alive and (context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_2] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 9081)
 end
 function set:CanActivate(context)
-	return context.player.alive and context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.mainhand == GW2.WEAPONTYPE.Greatsword or context.player.mainhand_alt == GW2.WEAPONTYPE.Greatsword) and (context.player.weaponset == 4 or context.player.weaponset == 5) and context.player.transformid == 0
+    return context.player.alive and context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.mainhand == GW2.WEAPONTYPE.Greatsword or context.player.mainhand_alt == GW2.WEAPONTYPE.Greatsword) and (context.player.weaponset == 4 or context.player.weaponset == 5) and context.player.transformid == 0
 end
 function set:Activate(context)
-	Player:SwapWeaponSet()
+    Player:SwapWeaponSet()
 end
 function set:Deactivate(context)
-	return false
+    return false
 end
-SkillManager:AddSkillPalette( set )
-
+SkillManager:AddSkillPalette(set)
 
 local set = SkillManager:CreateSkillPalette('Hammer')
 set.uid = "Guardian_Hammer"
 set.profession = GW2.CHARCLASS.Guardian
 set.icon = "Hammer"
 set.skills_luacode = {
-	[9159] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_1, 
-		 activationtime = 0.5, 
-		 icon = 'Hammer Swing',  
-	 },
-	 [9160] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_1, 
-		 activationtime = 0.5, 
-		 icon = 'Hammer Bash',  
-		 parent = 9159,
-	 },
-	 [9161] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_1, 
-		 activationtime = 1.25, 
-		 icon = 'Symbol of Protection',  
-		 parent = 9160,
-	 },
-	 [9194] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_2, 
-		 activationtime = 0.75, 
-		 icon = 'Mighty Blow',  
-		 stopsmovement = true
-	 },
-	 [53482] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_2, 
-		 activationtime = 0.75,
-		 icon = 'Glacial Blow',
-		 stopsmovement = true
-	 },
-	 [9260] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_3, 
-		 activationtime = 1.0, 
-		 icon = 'Zealots Embrace',  
-	 },
-	 [9124] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_4, 
-		 activationtime = 1.0, 
-		 icon = 'Banish',  
-	 },
-	 [9195] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_5, 
-		 activationtime = 0.75, 
-		 icon = 'Ring of Warding',  
-		 stopsmovement = true
-	 },
+    [9159] = {
+        slot = GW2.SKILLBARSLOT.Slot_1,
+        activationtime = 0.5,
+        icon = 'Hammer Swing',
+    },
+    [9160] = {
+        slot = GW2.SKILLBARSLOT.Slot_1,
+        activationtime = 0.5,
+        icon = 'Hammer Bash',
+        parent = 9159,
+    },
+    [9161] = {
+        slot = GW2.SKILLBARSLOT.Slot_1,
+        activationtime = 1.25,
+        icon = 'Symbol of Protection',
+        parent = 9160,
+    },
+    [9194] = {
+        slot = GW2.SKILLBARSLOT.Slot_2,
+        activationtime = 0.75,
+        icon = 'Mighty Blow',
+        stopsmovement = true
+    },
+    [53482] = {
+        slot = GW2.SKILLBARSLOT.Slot_2,
+        activationtime = 0.75,
+        icon = 'Glacial Blow',
+        stopsmovement = true
+    },
+    [9260] = {
+        slot = GW2.SKILLBARSLOT.Slot_3,
+        activationtime = 1.0,
+        icon = 'Zealots Embrace',
+    },
+    [9124] = {
+        slot = GW2.SKILLBARSLOT.Slot_4,
+        activationtime = 1.0,
+        icon = 'Banish',
+    },
+    [9195] = {
+        slot = GW2.SKILLBARSLOT.Slot_5,
+        activationtime = 0.75,
+        icon = 'Ring of Warding',
+        stopsmovement = true
+    },
 }
 function set:IsActive(context)
-	return context.player.alive and (
-		context.skillbar~=nil and
-		context.skillbar[GW2.SKILLBARSLOT.Slot_2]~=nil and
-		(
-			context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 9194 or
-			context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 53482
-		)
-	)	
+    return context.player.alive and (
+            context.skillbar ~= nil and
+                    context.skillbar[GW2.SKILLBARSLOT.Slot_2] ~= nil and
+                    (
+                            context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 9194 or
+                                    context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 53482
+                    )
+    )
 end
 function set:CanActivate(context)
-	return context.player.alive and context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.mainhand == GW2.WEAPONTYPE.Hammer or context.player.mainhand_alt == GW2.WEAPONTYPE.Hammer) and (context.player.weaponset == 4 or context.player.weaponset == 5) and context.player.transformid == 0
+    return context.player.alive and context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.mainhand == GW2.WEAPONTYPE.Hammer or context.player.mainhand_alt == GW2.WEAPONTYPE.Hammer) and (context.player.weaponset == 4 or context.player.weaponset == 5) and context.player.transformid == 0
 end
 function set:Activate(context)
-	Player:SwapWeaponSet()
+    Player:SwapWeaponSet()
 end
 function set:Deactivate(context)
-	return false
+    return false
 end
-SkillManager:AddSkillPalette( set )
-
+SkillManager:AddSkillPalette(set)
 
 local set = SkillManager:CreateSkillPalette('Staff')
 set.uid = "Guardian_Staff"
 set.profession = GW2.CHARCLASS.Guardian
 set.icon = "Staff"
 set.skills_luacode = {
-	[9122] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_1, 
-		 activationtime = 0.5, 
-		 icon = 'Bolt of Wrath',  
-	 },
-	[51660] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_1, 
-		 activationtime = 0.5, 
-		 icon = 'Searing Light',  
-		 parent = 9122,
-	 },
-	[51645] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_1, 
-		 activationtime = 0.5, 
-		 icon = 'Seeking Judgment',  
-		 parent = 51660,
-	 },
-	 [9140] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_2, 
-		 activationtime = 0.5, 
-		 icon = 'Holy Strike',  
-	 },
-	 [9143] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_3, 
-		 activationtime = 0.75, 
-		 icon = 'Symbol of Swiftness',  
-	 },
-	 [9265] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_4, 
-		 activationtime = 2.5, 
-		 icon = 'Empower', 
-		 stopsmovement = true
-	 },
-	 [9144] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_5, 
-		 activationtime = 1.0, 
-		 icon = 'Line of Warding',  
-	 },
+    [9122] = {
+        slot = GW2.SKILLBARSLOT.Slot_1,
+        activationtime = 0.5,
+        icon = 'Bolt of Wrath',
+    },
+    [51660] = {
+        slot = GW2.SKILLBARSLOT.Slot_1,
+        activationtime = 0.5,
+        icon = 'Searing Light',
+        parent = 9122,
+    },
+    [51645] = {
+        slot = GW2.SKILLBARSLOT.Slot_1,
+        activationtime = 0.5,
+        icon = 'Seeking Judgment',
+        parent = 51660,
+    },
+    [9140] = {
+        slot = GW2.SKILLBARSLOT.Slot_2,
+        activationtime = 0.5,
+        icon = 'Holy Strike',
+    },
+    [9143] = {
+        slot = GW2.SKILLBARSLOT.Slot_3,
+        activationtime = 0.75,
+        icon = 'Symbol of Swiftness',
+    },
+    [9265] = {
+        slot = GW2.SKILLBARSLOT.Slot_4,
+        activationtime = 2.5,
+        icon = 'Empower',
+        stopsmovement = true
+    },
+    [9144] = {
+        slot = GW2.SKILLBARSLOT.Slot_5,
+        activationtime = 1.0,
+        icon = 'Line of Warding',
+    },
 }
 function set:IsActive(context)
-	return context.player.alive and (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 9122)	
+    return context.player.alive and (context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 9122)
 end
 function set:CanActivate(context)
-	return context.player.alive and context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.mainhand == GW2.WEAPONTYPE.Staff or context.player.mainhand_alt == GW2.WEAPONTYPE.Staff) and (context.player.weaponset == 4 or context.player.weaponset == 5) and context.player.transformid == 0
+    return context.player.alive and context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.mainhand == GW2.WEAPONTYPE.Staff or context.player.mainhand_alt == GW2.WEAPONTYPE.Staff) and (context.player.weaponset == 4 or context.player.weaponset == 5) and context.player.transformid == 0
 end
 function set:Activate(context)
-	Player:SwapWeaponSet()
+    Player:SwapWeaponSet()
 end
 function set:Deactivate(context)
-	return false
+    return false
 end
-SkillManager:AddSkillPalette( set )
-
-
+SkillManager:AddSkillPalette(set)
 
 local set = SkillManager:CreateSkillPalette('Mace')
 set.uid = "Guardian_Mace"
 set.profession = GW2.CHARCLASS.Guardian
 set.icon = "Mace"
 set.skills_luacode = {
-	[9109] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_1, 
-		 activationtime = 0.5, 
-		 icon = 'True Strike',  
-	 },
-	 [9110] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_1, 
-		 activationtime = 0.5, 
-		 icon = 'Pure Strike',  
-		 parent = 9109,
-	 },
-	 [9108] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_1, 
-		 activationtime = 1.0, 
-		 icon = 'Faithful Strike',  
-		 parent = 9110,
-	 },
-	 [9111] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_2, 
-		 activationtime = 1.25, 
-		 icon = 'Symbol of Faith',  
-		 stopsmovement = true
-	 },
-	 [9086] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_3, 
-		 activationtime = 3.75, 
-		 icon = 'Protectors Strike',  
-	 },
+    [9109] = {
+        slot = GW2.SKILLBARSLOT.Slot_1,
+        activationtime = 0.5,
+        icon = 'True Strike',
+    },
+    [9110] = {
+        slot = GW2.SKILLBARSLOT.Slot_1,
+        activationtime = 0.5,
+        icon = 'Pure Strike',
+        parent = 9109,
+    },
+    [9108] = {
+        slot = GW2.SKILLBARSLOT.Slot_1,
+        activationtime = 1.0,
+        icon = 'Faithful Strike',
+        parent = 9110,
+    },
+    [9111] = {
+        slot = GW2.SKILLBARSLOT.Slot_2,
+        activationtime = 1.25,
+        icon = 'Symbol of Faith',
+        stopsmovement = true
+    },
+    [9086] = {
+        slot = GW2.SKILLBARSLOT.Slot_3,
+        activationtime = 3.75,
+        icon = 'Protectors Strike',
+    },
 }
 function set:IsActive(context)
-	return context.player.alive and (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 9111)	
+    return context.player.alive and (context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_2] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 9111)
 end
 function set:CanActivate(context)
-	return context.player.alive and context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.mainhand == GW2.WEAPONTYPE.Mace or context.player.mainhand_alt == GW2.WEAPONTYPE.Mace) and (context.player.weaponset == 4 or context.player.weaponset == 5) and context.player.transformid == 0
+    return context.player.alive and context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.mainhand == GW2.WEAPONTYPE.Mace or context.player.mainhand_alt == GW2.WEAPONTYPE.Mace) and (context.player.weaponset == 4 or context.player.weaponset == 5) and context.player.transformid == 0
 end
 function set:Activate(context)
-	Player:SwapWeaponSet()
+    Player:SwapWeaponSet()
 end
 function set:Deactivate(context)
-	return false
+    return false
 end
-SkillManager:AddSkillPalette( set )
-
+SkillManager:AddSkillPalette(set)
 
 local set = SkillManager:CreateSkillPalette('Scepter')
 set.uid = "Guardian_Scepter"
 set.profession = GW2.CHARCLASS.Guardian
 set.icon = "Scepter"
 set.skills_luacode = {
-	[9098] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_1, 
-		 activationtime = 0.5, 
-		 icon = 'Orb of Wrath',  
-	 },
-	 [9090] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_2, 
-		 activationtime = 0.25, 
-		 icon = 'Symbol of Punishment',  
-	 },
-	 [9099] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_3, 
-		 activationtime = 0.5, 
-		 icon = 'Chains of Light',  
-	 },
+    [9098] = {
+        slot = GW2.SKILLBARSLOT.Slot_1,
+        activationtime = 0.5,
+        icon = 'Orb of Wrath',
+    },
+    [9090] = {
+        slot = GW2.SKILLBARSLOT.Slot_2,
+        activationtime = 0.25,
+        icon = 'Symbol of Punishment',
+    },
+    [9099] = {
+        slot = GW2.SKILLBARSLOT.Slot_3,
+        activationtime = 0.5,
+        icon = 'Chains of Light',
+    },
 }
 function set:IsActive(context)
-	return context.player.alive and (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 9098)	
+    return context.player.alive and (context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 9098)
 end
 function set:CanActivate(context)
-	return context.player.alive and context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.mainhand == GW2.WEAPONTYPE.Scepter or context.player.mainhand_alt == GW2.WEAPONTYPE.Scepter) and (context.player.weaponset == 4 or context.player.weaponset == 5) and context.player.transformid == 0
+    return context.player.alive and context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.mainhand == GW2.WEAPONTYPE.Scepter or context.player.mainhand_alt == GW2.WEAPONTYPE.Scepter) and (context.player.weaponset == 4 or context.player.weaponset == 5) and context.player.transformid == 0
 end
 function set:Activate(context)
-	Player:SwapWeaponSet()
+    Player:SwapWeaponSet()
 end
 function set:Deactivate(context)
-	return false
+    return false
 end
-SkillManager:AddSkillPalette( set )
-
+SkillManager:AddSkillPalette(set)
 
 local set = SkillManager:CreateSkillPalette('Sword')
 set.uid = "Guardian_Sword"
 set.profession = GW2.CHARCLASS.Guardian
 set.icon = "Sword"
 set.skills_luacode = {
-	[9105] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_1, 
-		 activationtime = 0.5, 
-		 icon = 'Sword of Wrath',  
-	 },
-	 [9106] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_1, 
-		 activationtime = 0.5, 
-		 icon = 'Sword Arc', 
-		 parent = 9105,
-	 },
-	 [9227] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_1, 
-		 activationtime = 0.5, 
-		 icon = 'Sword Wave',
-		 parent = 9106,
-	 },
-	 [9097] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_2, 
-		 activationtime = 0.5, 
-		 icon = 'Symbol of Blades',  
-	 },
-	 [9107] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_3, 
-		 activationtime = 0.5, 
-		 icon = 'Zealots Defense',  
-	 },
+    [9105] = {
+        slot = GW2.SKILLBARSLOT.Slot_1,
+        activationtime = 0.5,
+        icon = 'Sword of Wrath',
+    },
+    [9106] = {
+        slot = GW2.SKILLBARSLOT.Slot_1,
+        activationtime = 0.5,
+        icon = 'Sword Arc',
+        parent = 9105,
+    },
+    [9227] = {
+        slot = GW2.SKILLBARSLOT.Slot_1,
+        activationtime = 0.5,
+        icon = 'Sword Wave',
+        parent = 9106,
+    },
+    [9097] = {
+        slot = GW2.SKILLBARSLOT.Slot_2,
+        activationtime = 0.0,
+        icon = 'Symbol of Blades',
+    },
+    [9107] = {
+        slot = GW2.SKILLBARSLOT.Slot_3,
+        activationtime = 0.5,
+        icon = 'Zealots Defense',
+    },
 }
 function set:IsActive(context)
-	return context.player.alive and (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 9097)	
+    return context.player.alive and (context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_2] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 9097)
 end
 function set:CanActivate(context)
-	return context.player.alive and context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.mainhand == GW2.WEAPONTYPE.Sword or context.player.mainhand_alt == GW2.WEAPONTYPE.Sword) and (context.player.weaponset == 4 or context.player.weaponset == 5) and context.player.transformid == 0
+    return context.player.alive and context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.mainhand == GW2.WEAPONTYPE.Sword or context.player.mainhand_alt == GW2.WEAPONTYPE.Sword) and (context.player.weaponset == 4 or context.player.weaponset == 5) and context.player.transformid == 0
 end
 function set:Activate(context)
-	Player:SwapWeaponSet()
+    Player:SwapWeaponSet()
 end
 function set:Deactivate(context)
-	return false
+    return false
 end
-SkillManager:AddSkillPalette( set )
-
+SkillManager:AddSkillPalette(set)
 
 local set = SkillManager:CreateSkillPalette('Torch')
 set.uid = "Guardian_Torch"
 set.profession = GW2.CHARCLASS.Guardian
 set.icon = "Torch"
 set.skills_luacode = {
-	 [9104] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_4, 
-		 activationtime = 0.0,
-		 instantcast = true,
-		 icon = 'Zealots Flame',  
-	 },
-	  [9089] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_4, 
-		 activationtime = 0.75, 
-		 icon = 'Zealots Fire',  
-		 parent = 9104,
-	 },
-	 [9088] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_5, 
-		 activationtime = 3.25, 
-		 icon = 'Cleansing Flame',  
-	 },
+    [9104] = {
+        slot = GW2.SKILLBARSLOT.Slot_4,
+        activationtime = 0.0,
+        instantcast = true,
+        icon = 'Zealot\'s Flame',
+    },
+    [9089] = {
+        slot = GW2.SKILLBARSLOT.Slot_4,
+        activationtime = 0.75,
+        icon = 'Zealot\'s Fire',
+        parent = 9104,
+    },
+    [9088] = {
+        slot = GW2.SKILLBARSLOT.Slot_5,
+        activationtime = 3.25,
+        icon = 'Cleansing Flame',
+    },
 }
 function set:IsActive(context)
-	return context.player.alive and (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_5]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_5].id == 9088)	
+    return context.player.alive and (context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_5] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_5].id == 9088)
 end
 function set:CanActivate(context)
-	return context.player.alive and context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.offhand == GW2.WEAPONTYPE.Torch or context.player.offhand_alt == GW2.WEAPONTYPE.Torch) and (context.player.weaponset == 4 or context.player.weaponset == 5) and context.player.transformid == 0
+    return context.player.alive and context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.offhand == GW2.WEAPONTYPE.Torch or context.player.offhand_alt == GW2.WEAPONTYPE.Torch) and (context.player.weaponset == 4 or context.player.weaponset == 5) and context.player.transformid == 0
 end
 function set:Activate(context)
-	Player:SwapWeaponSet()
+    Player:SwapWeaponSet()
 end
 function set:Deactivate(context)
-	return false
+    return false
 end
-SkillManager:AddSkillPalette( set )
-
+SkillManager:AddSkillPalette(set)
 
 local set = SkillManager:CreateSkillPalette('Shield')
 set.uid = "Guardian_Shield"
 set.profession = GW2.CHARCLASS.Guardian
 set.icon = "Shield"
 set.skills_luacode = {
-	 [15834] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_4, 
-		 activationtime = 0.5, 
-		 icon = 'Shield of Judgment',  
-	 },
-	 [9087] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_4, 
-		 activationtime = 0.5, 
-		 icon = 'Shield of Judgment',
-	 },
-	 [9091] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_5, 
-		 activationtime = 4.0, 
-		 icon = 'Shield of Absorption',  
-		 stopsmovement = true
-	 },
-	  [9224] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_5, 
-		 activationtime = 0.0, 
-		 instantcast = true,
-		 icon = 'Shield of Absorption',  
-		 parent = 9091,
-		 stopsmovement = true
-	 },
+    [9087] = {
+        slot = GW2.SKILLBARSLOT.Slot_4,
+        activationtime = 0.5,
+        icon = 'Shield of Judgment',
+    },
+    [9091] = {
+        slot = GW2.SKILLBARSLOT.Slot_5,
+        activationtime = 4.0,
+        icon = 'Shield of Absorption',
+        stopsmovement = true
+    },
+    [9224] = {
+        slot = GW2.SKILLBARSLOT.Slot_5,
+        activationtime = 0.0,
+        instantcast = true,
+        icon = 'Shield of Absorption',
+        parent = 9091,
+        stopsmovement = true
+    },
 }
 function set:IsActive(context)
-	return context.player.alive and (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4]~=nil  and (context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 15834 or context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 9087))	
+    return context.player.alive and (context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_4] ~= nil and (context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 15834 or context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 9087))
 end
 function set:CanActivate(context)
-	return context.player.alive and context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.offhand == GW2.WEAPONTYPE.Shield or context.player.offhand_alt == GW2.WEAPONTYPE.Shield) and (context.player.weaponset == 4 or context.player.weaponset == 5) and context.player.transformid == 0
+    return context.player.alive and context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.offhand == GW2.WEAPONTYPE.Shield or context.player.offhand_alt == GW2.WEAPONTYPE.Shield) and (context.player.weaponset == 4 or context.player.weaponset == 5) and context.player.transformid == 0
 end
 function set:Activate(context)
-	Player:SwapWeaponSet()
+    Player:SwapWeaponSet()
 end
 function set:Deactivate(context)
-	return false
+    return false
 end
-SkillManager:AddSkillPalette( set )
-
-
+SkillManager:AddSkillPalette(set)
 
 local set = SkillManager:CreateSkillPalette('Focus')
 set.uid = "Guardian_Focus"
 set.profession = GW2.CHARCLASS.Guardian
 set.icon = "Focus"
 set.skills_luacode = {
-	 [9112] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_4, 
-		 activationtime = 0.75, 
-		 icon = 'Ray of Judgment',  
-	 },
-	 [9082] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_5, 
-		 activationtime = 0.5, 
-		 icon = 'Shield of Wrath',  
-	 },
+    [9112] = {
+        slot = GW2.SKILLBARSLOT.Slot_4,
+        activationtime = 0.75,
+        icon = 'Ray of Judgment',
+    },
+    [9082] = {
+        slot = GW2.SKILLBARSLOT.Slot_5,
+        activationtime = 0.0,
+        icon = 'Shield of Wrath',
+    },
 }
 function set:IsActive(context)
-	return context.player.alive and (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 9112)	
+    return context.player.alive and (context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_4] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 9112)
 end
 function set:CanActivate(context)
-	return context.player.alive and context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.offhand == GW2.WEAPONTYPE.Focus or context.player.offhand_alt == GW2.WEAPONTYPE.Focus) and (context.player.weaponset == 4 or context.player.weaponset == 5) and context.player.transformid == 0
+    return context.player.alive and context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.offhand == GW2.WEAPONTYPE.Focus or context.player.offhand_alt == GW2.WEAPONTYPE.Focus) and (context.player.weaponset == 4 or context.player.weaponset == 5) and context.player.transformid == 0
 end
 function set:Activate(context)
-	Player:SwapWeaponSet()
+    Player:SwapWeaponSet()
 end
 function set:Deactivate(context)
-	return false
+    return false
 end
-SkillManager:AddSkillPalette( set )
-
+SkillManager:AddSkillPalette(set)
 
 local set = SkillManager:CreateSkillPalette('Trident')
 set.uid = "Guardian_Trident"
 set.profession = GW2.CHARCLASS.Guardian
 set.icon = "Trident"
 set.skills_luacode = {
-	[9205] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_1, 
-		 activationtime = 0.5, 
-		 icon = 'Light of Judgment',  
-	 },
-	 [9207] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_2, 
-		 activationtime = 0.5, 
-		 icon = 'Purify',  
-	 },
-	  [9234] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_2, 
-		 activationtime = 0.0, 
-		 icon = 'Purifying Blast',
-		 parent = 9207,
-		 instantcast = true,
-	 },
-	 [9208] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_3, 
-		 activationtime = 0.5, 
-		 icon = 'Pillar of Light',  
-	 },
-	 [9209] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_4, 
-		 activationtime = 0.5, 
-		 icon = 'Refraction',  
-	 },
-	 [9206] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_5, 
-		 activationtime = 1.0, 
-		 icon = 'Weight of Justice',  
-	 },
+    [9205] = {
+        slot = GW2.SKILLBARSLOT.Slot_1,
+        activationtime = 0.5,
+        icon = 'Light of Judgment',
+    },
+    [9207] = {
+        slot = GW2.SKILLBARSLOT.Slot_2,
+        activationtime = 0.5,
+        icon = 'Purify',
+    },
+    [9234] = {
+        slot = GW2.SKILLBARSLOT.Slot_2,
+        activationtime = 0.0,
+        icon = 'Purifying Blast',
+        parent = 9207,
+        instantcast = true,
+    },
+    [9208] = {
+        slot = GW2.SKILLBARSLOT.Slot_3,
+        activationtime = 0.5,
+        icon = 'Pillar of Light',
+    },
+    [9209] = {
+        slot = GW2.SKILLBARSLOT.Slot_4,
+        activationtime = 0.5,
+        icon = 'Refraction',
+    },
+    [9206] = {
+        slot = GW2.SKILLBARSLOT.Slot_5,
+        activationtime = 1.0,
+        icon = 'Weight of Justice',
+    },
 }
 function set:IsActive(context)
-	return context.player.alive and (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 9205)	
+    return context.player.alive and (context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 9205)
 end
 function set:CanActivate(context)
-	return context.player.alive and context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.Diving and (context.player.aquatic == GW2.WEAPONTYPE.Trident or context.player.aquatic_alt == GW2.WEAPONTYPE.Trident) and (context.player.weaponset == 0 or context.player.weaponset == 1) and context.player.transformid == 0
+    return context.player.alive and context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.Diving and (context.player.aquatic == GW2.WEAPONTYPE.Trident or context.player.aquatic_alt == GW2.WEAPONTYPE.Trident) and (context.player.weaponset == 0 or context.player.weaponset == 1) and context.player.transformid == 0
 end
 function set:Activate(context)
-	Player:SwapWeaponSet()
+    Player:SwapWeaponSet()
 end
 function set:Deactivate(context)
-	return false
+    return false
 end
-SkillManager:AddSkillPalette( set )
-
+SkillManager:AddSkillPalette(set)
 
 local set = SkillManager:CreateSkillPalette('Spear')
 set.uid = "Guardian_Spear"
 set.profession = GW2.CHARCLASS.Guardian
 set.icon = "Spear"
 set.skills_luacode = {
-	[9189] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_1, 
-		 activationtime = 0.5, 
-		 icon = 'Spear of Light',  
-	 },
-	 [9190] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_2, 
-		 activationtime = 1.25, 
-		 icon = 'Zealots Flurry',  
-	 },
-	 [9191] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_3, 
-		 activationtime = 0.75, 
-		 icon = 'Brilliance',  
-	 },
-	 [9192] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_4, 
-		 activationtime = 0.5, 
-		 icon = 'Spear Wall',  
-	 },
-	 [9193] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_5, 
-		 activationtime = 0.5, 
-		 icon = 'Wrathful Grasp',  
-	 },
+    [9189] = {
+        slot = GW2.SKILLBARSLOT.Slot_1,
+        activationtime = 0.5,
+        icon = 'Spear of Light',
+    },
+    [9190] = {
+        slot = GW2.SKILLBARSLOT.Slot_2,
+        activationtime = 1.25,
+        icon = 'Zealots Flurry',
+    },
+    [9191] = {
+        slot = GW2.SKILLBARSLOT.Slot_3,
+        activationtime = 0.75,
+        icon = 'Brilliance',
+    },
+    [9192] = {
+        slot = GW2.SKILLBARSLOT.Slot_4,
+        activationtime = 0.5,
+        icon = 'Spear Wall',
+    },
+    [9193] = {
+        slot = GW2.SKILLBARSLOT.Slot_5,
+        activationtime = 0.5,
+        icon = 'Wrathful Grasp',
+    },
 }
 function set:IsActive(context)
-	return context.player.alive and (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 9189)	
+    return context.player.alive and (context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 9189)
 end
 function set:CanActivate(context)
-	return context.player.alive and context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.Diving and (context.player.aquatic == GW2.WEAPONTYPE.Spear or context.player.aquatic_alt == GW2.WEAPONTYPE.Spear) and (context.player.weaponset == 0 or context.player.weaponset == 1) and context.player.transformid == 0
+    return context.player.alive and context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.Diving and (context.player.aquatic == GW2.WEAPONTYPE.Spear or context.player.aquatic_alt == GW2.WEAPONTYPE.Spear) and (context.player.weaponset == 0 or context.player.weaponset == 1) and context.player.transformid == 0
 end
 function set:Activate(context)
-	Player:SwapWeaponSet()
+    Player:SwapWeaponSet()
 end
 function set:Deactivate(context)
-	return false
+    return false
 end
-SkillManager:AddSkillPalette( set )
-
+SkillManager:AddSkillPalette(set)
 
 local downed = SkillManager:CreateSkillPalette('Downed')
 downed.uid = "Guardian_Downed"
 downed.profession = GW2.CHARCLASS.Guardian
 downed.icon = "Bandage"
 downed.skills_luacode = {
-	[9149] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_1, 
-		 activationtime = 3.0, 
-		 icon = 'Wrath',  
-	},
-	[9096] = { 
-		slot = GW2.SKILLBARSLOT.Slot_2, 
-		activationtime = 0.5, 
-		icon = 'Wave of Light',  
-	},
-	[9095] = { 
-		slot = GW2.SKILLBARSLOT.Slot_3, 
-		activationtime = 0.5, 
-		icon = 'Symbol of Judgment',  
-	},
-	[1175] = { 
-		slot = GW2.SKILLBARSLOT.Slot_4, 
-		activationtime = 1.0, 
-		icon = 'Bandage',  
-	},
-	[37873] = {
-		slot = GW2.SKILLBARSLOT.Slot_5,
-		activationtime = 3,
-		icon = "Signet of Agony"
-	}
+    [9149] = {
+        slot = GW2.SKILLBARSLOT.Slot_1,
+        activationtime = 3.0,
+        icon = 'Wrath',
+    },
+    [9096] = {
+        slot = GW2.SKILLBARSLOT.Slot_2,
+        activationtime = 0.5,
+        icon = 'Wave of Light',
+    },
+    [9095] = {
+        slot = GW2.SKILLBARSLOT.Slot_3,
+        activationtime = 0.5,
+        icon = 'Symbol of Judgment',
+    },
+    [1175] = {
+        slot = GW2.SKILLBARSLOT.Slot_4,
+        activationtime = 1.0,
+        icon = 'Bandage',
+    },
+    [37873] = {
+        slot = GW2.SKILLBARSLOT.Slot_5,
+        activationtime = 3,
+        icon = "Signet of Agony"
+    }
 }
 function downed:IsActive(context)
-	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 9149)	
+    return (context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 9149)
 end
 function downed:CanActivate(context)
-	return false
+    return false
 end
 function downed:Activate(context)
 end
-function downed:Deactivate(context)	
-	return false
+function downed:Deactivate(context)
+    return false
 end
-SkillManager:AddSkillPalette( downed )
-
+SkillManager:AddSkillPalette(downed)
 
 local drowning = SkillManager:CreateSkillPalette('Drowning')
 drowning.uid = "Guardian_Drowning"
 drowning.profession = GW2.CHARCLASS.Guardian
 drowning.icon = "Shackle"
 drowning.skills_luacode = {
-	[9212] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_1, 
-		 activationtime = 0.5, 
-		 icon = 'Shackle',  
-	 },
-	 [9211] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_2, 
-		 activationtime = 2.0, 
-		 icon = 'Reveal the Depths',  
-	 },
-	 [9210] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_3, 
-		 activationtime = 0.5, 
-		 icon = 'Renewing Current',  
-	 },
-	 [1175] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_4, 
-		 activationtime = 1.0, 
-		 icon = 'Bandage',  
-	 },
+    [9212] = {
+        slot = GW2.SKILLBARSLOT.Slot_1,
+        activationtime = 0.5,
+        icon = 'Shackle',
+    },
+    [9211] = {
+        slot = GW2.SKILLBARSLOT.Slot_2,
+        activationtime = 2.0,
+        icon = 'Reveal the Depths',
+    },
+    [9210] = {
+        slot = GW2.SKILLBARSLOT.Slot_3,
+        activationtime = 0.5,
+        icon = 'Renewing Current',
+    },
+    [1175] = {
+        slot = GW2.SKILLBARSLOT.Slot_4,
+        activationtime = 1.0,
+        icon = 'Bandage',
+    },
 }
 function drowning:IsActive(context)
-	return (context.skillbar~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 9212)	
+    return (context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 9212)
 end
 function drowning:CanActivate(context)
-	return false
+    return false
 end
 function drowning:Activate(context)
 end
 function drowning:Deactivate(context)
-	return false
+    return false
 end
-SkillManager:AddSkillPalette( drowning )
-
-
+SkillManager:AddSkillPalette(drowning)
 
 local set = SkillManager:CreateSkillPalette('Longbow')
 set.uid = "Guardian_Longbow"
 set.profession = GW2.CHARCLASS.Guardian
 set.icon = "Longbow"
 set.skills_luacode = {
-	[30471] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_1, 
-		 activationtime = 0.75, 
-		 icon = 'Puncture Shot',  
-	 },
-	 [30229] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_2, 
-		 activationtime = 0.75, 
-		 icon = 'True Shot',  
-	 },
-	 [29630] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_3, 
-		 activationtime = 0.25, 
-		 icon = 'Deflecting Shot',  
-	 },
-	 [29789] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_4, 
-		 activationtime = 0.75, 
-		 icon = 'Symbol of Energy',  
-	 },
-	 [30628] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_5, 
-		 activationtime = 2.75, 
-		 icon = 'Hunters Ward',  
-		 stopsmovement = true
-	 },
+    [30471] = {
+        slot = GW2.SKILLBARSLOT.Slot_1,
+        activationtime = 0.75,
+        icon = 'Puncture Shot',
+    },
+    [30229] = {
+        slot = GW2.SKILLBARSLOT.Slot_2,
+        activationtime = 0.75,
+        icon = 'True Shot',
+    },
+    [29630] = {
+        slot = GW2.SKILLBARSLOT.Slot_3,
+        activationtime = 0.25,
+        icon = 'Deflecting Shot',
+    },
+    [29789] = {
+        slot = GW2.SKILLBARSLOT.Slot_4,
+        activationtime = 0.75,
+        icon = 'Symbol of Energy',
+    },
+    [30628] = {
+        slot = GW2.SKILLBARSLOT.Slot_5,
+        activationtime = 2.75,
+        icon = 'Hunter\'s Ward',
+        stopsmovement = true
+    },
 }
 function set:IsActive(context)
-	return context.player.alive and (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 30471)	
+    return context.player.alive and (context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 30471)
 end
 function set:CanActivate(context)
-	return context.player.alive and context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.mainhand == GW2.WEAPONTYPE.Longbow or context.player.mainhand_alt == GW2.WEAPONTYPE.Longbow) and (context.player.weaponset == 4 or context.player.weaponset == 5) and context.player.transformid == 0
+    return context.player.alive and context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.mainhand == GW2.WEAPONTYPE.Longbow or context.player.mainhand_alt == GW2.WEAPONTYPE.Longbow) and (context.player.weaponset == 4 or context.player.weaponset == 5) and context.player.transformid == 0
 end
 function set:Activate(context)
-	Player:SwapWeaponSet()
+    Player:SwapWeaponSet()
 end
 function set:Deactivate(context)
-	return false
+    return false
 end
-SkillManager:AddSkillPalette( set )
-
+SkillManager:AddSkillPalette(set)
 
 local set = SkillManager:CreateSkillPalette('Axe')
 set.uid = "Guardian_Axe"
 set.profession = GW2.CHARCLASS.Guardian
 set.icon = "Axe"
 set.skills_luacode = {
-	[45047] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_1, 
-		 activationtime = 0.5, 
-		 icon = 'Core Cleave',  
-	 },
-	 [44602] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_1, 
-		 activationtime = 0.5, 
-		 icon = 'Bleeding Edge',
-		 parent = 45047,
-	 },
-	 [43826] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_1, 
-		 activationtime = 0.5, 
-		 icon = 'Searing Slash',
-		 parent = 44602,
-	 },
-	 [40624] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_2, 
-		 activationtime = 1.0, 
-		 icon = 'Symbol of Vengeance',  
-		 stopsmovement = true
-	 },
-	 [45402] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_3, 
-		 activationtime = 0.75, 
-		 icon = 'Blazing Edge',  
-	 },
+    [45047] = {
+        slot = GW2.SKILLBARSLOT.Slot_1,
+        activationtime = 0.5,
+        icon = 'Core Cleave',
+    },
+    [44602] = {
+        slot = GW2.SKILLBARSLOT.Slot_1,
+        activationtime = 0.5,
+        icon = 'Bleeding Edge',
+        parent = 45047,
+    },
+    [43826] = {
+        slot = GW2.SKILLBARSLOT.Slot_1,
+        activationtime = 0.5,
+        icon = 'Searing Slash',
+        parent = 44602,
+    },
+    [40624] = {
+        slot = GW2.SKILLBARSLOT.Slot_2,
+        activationtime = 1.0,
+        icon = 'Symbol of Vengeance',
+        stopsmovement = true
+    },
+    [45402] = {
+        slot = GW2.SKILLBARSLOT.Slot_3,
+        activationtime = 0.75,
+        icon = 'Blazing Edge',
+    },
 }
 function set:IsActive(context)
-	return context.player.alive and (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 40624)	
+    return context.player.alive and (context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_2] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 40624)
 end
 function set:CanActivate(context)
-	return context.player.alive and context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.mainhand == GW2.WEAPONTYPE.Axe or context.player.mainhand_alt == GW2.WEAPONTYPE.Axe) and (context.player.weaponset == 4 or context.player.weaponset == 5) and context.player.transformid == 0
+    return context.player.alive and context.player.canswapweaponset and context.player.swimming == GW2.SWIMSTATE.NotInWater and (context.player.mainhand == GW2.WEAPONTYPE.Axe or context.player.mainhand_alt == GW2.WEAPONTYPE.Axe) and (context.player.weaponset == 4 or context.player.weaponset == 5) and context.player.transformid == 0
 end
 function set:Activate(context)
-	Player:SwapWeaponSet()
+    Player:SwapWeaponSet()
 end
 function set:Deactivate(context)
-	return false
+    return false
 end
-SkillManager:AddSkillPalette( set )
-
+SkillManager:AddSkillPalette(set)
 
 local set = SkillManager:CreateSkillPalette('Tome of Justice')
 set.uid = "Guardian_Tome of Justice"
 set.profession = GW2.CHARCLASS.Guardian
 set.icon = "Tome of Justice"
 set.skills_luacode = {
-	[41258] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_1, 
-		 activationtime = 0.5, 
-		 icon = 'Chapter 1: Searing Spell',  
-	 },
-	 [40635] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_2, 
-		 activationtime = 0.75, 
-		 icon = 'Chapter 2: Igniting Burst',  
-	 },
-	 [42449] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_3, 
-		 activationtime = 0.75, 
-		 icon = 'Chapter 3: Heated Rebuke',  
-	 },
-	 [40015] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_4, 
-		 activationtime = 1.25, 
-		 icon = 'Chapter 4: Scorched Aftermath',  
-	 },
-	 [42898] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_5, 
-		 activationtime = 0.75, 
-		 icon = 'Epilogue: Ashes of the Just',  
-	 },
-	 [41380] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_12, 
-		 activationtime = 0.0, 
-		 icon = 'Stow Tome',  
-	 },
+    [41258] = {
+        slot = GW2.SKILLBARSLOT.Slot_1,
+        activationtime = 0.5,
+        icon = 'Chapter 1: Searing Spell',
+    },
+    [40635] = {
+        slot = GW2.SKILLBARSLOT.Slot_2,
+        activationtime = 0.75,
+        icon = 'Chapter 2: Igniting Burst',
+    },
+    [42449] = {
+        slot = GW2.SKILLBARSLOT.Slot_3,
+        activationtime = 0.75,
+        icon = 'Chapter 3: Heated Rebuke',
+    },
+    [40015] = {
+        slot = GW2.SKILLBARSLOT.Slot_4,
+        activationtime = 0.5,
+        icon = 'Chapter 4: Scorched Aftermath',
+    },
+    [42898] = {
+        slot = GW2.SKILLBARSLOT.Slot_5,
+        activationtime = 0.75,
+        icon = 'Epilogue: Ashes of the Just',
+    },
+    [41380] = {
+        slot = GW2.SKILLBARSLOT.Slot_12,
+        activationtime = 0.0,
+        icon = 'Stow Tome',
+    },
 }
 function set:IsActive(context)
-	return context.player.alive and (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 41258)	
+    return context.player.alive and (context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 41258)
 end
 function set:CanActivate(context)
-	return context.player.alive and context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_13]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_13].id == 44364 and context.skillbar[GW2.SKILLBARSLOT.Slot_13].cancast and context.player.transformid == 0
+    return context.player.alive and context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_13] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_13].id == 44364 and context.skillbar[GW2.SKILLBARSLOT.Slot_13].cancast and context.player.transformid == 0
 end
 function set:Activate(context)
-	if ( context.skillbar~=nil ) then
-		if (context.skillbar[GW2.SKILLBARSLOT.Slot_13]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_13].id == 44364) then Player:CastSpell(GW2.SKILLBARSLOT.Slot_13) end
-	end
+    if (context.skillbar ~= nil) then
+        if (context.skillbar[GW2.SKILLBARSLOT.Slot_13] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_13].id == 44364) then
+            Player:CastSpell(GW2.SKILLBARSLOT.Slot_13)
+        end
+    end
 end
 function set:Deactivate(context)
-	if ( context.skillbar~=nil ) then
-		if (context.skillbar[GW2.SKILLBARSLOT.Slot_13]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_13].id == 41380) then Player:CastSpell(GW2.SKILLBARSLOT.Slot_13) end
-		return true
-	end
+    if (context.skillbar ~= nil) then
+        if (context.skillbar[GW2.SKILLBARSLOT.Slot_13] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_13].id == 41380) then
+            Player:CastSpell(GW2.SKILLBARSLOT.Slot_13)
+        end
+        return true
+    end
 end
-SkillManager:AddSkillPalette( set )
-
+SkillManager:AddSkillPalette(set)
 
 local set = SkillManager:CreateSkillPalette('Tome of Resolve')
 set.uid = "Guardian_Tome_of_Resolve"
 set.profession = GW2.CHARCLASS.Guardian
 set.icon = "Tome of Resolve"
 set.skills_luacode = {
-	[45022] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_1, 
-		 activationtime = 0.5, 
-		 icon = 'Chapter 1: Desert Bloom',  
-	 },
-	 [40679] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_2, 
-		 activationtime = 1.0, 
-		 icon = 'Chapter 2: Radiant Recovery',  
-	 },
-	 [45128] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_3, 
-		 activationtime = 0.75, 
-		 icon = 'Chapter 3: Azure Sun',  
-	 },
-	 [42008] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_4, 
-		 activationtime = 0.75, 
-		 icon = 'Chapter 4: Shining River',  
-	 },
-	 [42925] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_5, 
-		 activationtime = 0.75, 
-		 icon = 'Epilogue: Eternal Oasis',  
-	 },
-	 [41380] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_13, 
-		 activationtime = 0.0, 
-		 icon = 'Stow Tome',  
-	 },
+    [45022] = {
+        slot = GW2.SKILLBARSLOT.Slot_1,
+        activationtime = 0.5,
+        icon = 'Chapter 1: Desert Bloom',
+    },
+    [40679] = {
+        slot = GW2.SKILLBARSLOT.Slot_2,
+        activationtime = 0.75,
+        icon = 'Chapter 2: Radiant Recovery',
+    },
+    [45128] = {
+        slot = GW2.SKILLBARSLOT.Slot_3,
+        activationtime = 0.75,
+        icon = 'Chapter 3: Azure Sun',
+    },
+    [42008] = {
+        slot = GW2.SKILLBARSLOT.Slot_4,
+        activationtime = 0.75,
+        icon = 'Chapter 4: Shining River',
+    },
+    [42925] = {
+        slot = GW2.SKILLBARSLOT.Slot_5,
+        activationtime = 0.75,
+        icon = 'Epilogue: Eternal Oasis',
+    },
+    [41380] = {
+        slot = GW2.SKILLBARSLOT.Slot_13,
+        activationtime = 0.0,
+        icon = 'Stow Tome',
+    },
 }
 function set:IsActive(context)
-	return context.player.alive and (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 45022)	
+    return context.player.alive and (context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 45022)
 end
 function set:CanActivate(context)
-	return context.player.alive and context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_14]~=nil  and ( context.skillbar[GW2.SKILLBARSLOT.Slot_14].id == 41780 or context.skillbar[GW2.SKILLBARSLOT.Slot_14].id == 45023 ) and context.skillbar[GW2.SKILLBARSLOT.Slot_14].cancast and context.player.transformid == 0
+    return context.player.alive and context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_14] ~= nil and (context.skillbar[GW2.SKILLBARSLOT.Slot_14].id == 41780 or context.skillbar[GW2.SKILLBARSLOT.Slot_14].id == 45023) and context.skillbar[GW2.SKILLBARSLOT.Slot_14].cancast and context.player.transformid == 0
 end
 function set:Activate(context)
-	if ( context.skillbar~=nil ) then
-		if (context.skillbar[GW2.SKILLBARSLOT.Slot_14]~=nil and ( context.skillbar[GW2.SKILLBARSLOT.Slot_14].id == 41780 or context.skillbar[GW2.SKILLBARSLOT.Slot_14].id == 45023)) then Player:CastSpell(GW2.SKILLBARSLOT.Slot_14) end
-	end
+    if (context.skillbar ~= nil) then
+        if (context.skillbar[GW2.SKILLBARSLOT.Slot_14] ~= nil and (context.skillbar[GW2.SKILLBARSLOT.Slot_14].id == 41780 or context.skillbar[GW2.SKILLBARSLOT.Slot_14].id == 45023)) then
+            Player:CastSpell(GW2.SKILLBARSLOT.Slot_14)
+        end
+    end
 end
 function set:Deactivate(context)
-	if ( context.skillbar~=nil ) then
-		if (context.skillbar[GW2.SKILLBARSLOT.Slot_14]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_14].id == 41380) then Player:CastSpell(GW2.SKILLBARSLOT.Slot_14) end
-		return true
-	end
+    if (context.skillbar ~= nil) then
+        if (context.skillbar[GW2.SKILLBARSLOT.Slot_14] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_14].id == 41380) then
+            Player:CastSpell(GW2.SKILLBARSLOT.Slot_14)
+        end
+        return true
+    end
 end
-SkillManager:AddSkillPalette( set )
-
+SkillManager:AddSkillPalette(set)
 
 local set = SkillManager:CreateSkillPalette('Tome of Courage')
 set.uid = "Guardian_Tome_of_Courage"
 set.profession = GW2.CHARCLASS.Guardian
 set.icon = "Tome of Courage"
 set.skills_luacode = {
-	[42986] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_1, 
-		 activationtime = 0.5, 
-		 icon = 'Chapter 1: Unflinching Charge',  
-	 },
-	 [41968] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_2, 
-		 activationtime = 0.25, 
-		 icon = 'Chapter 2: Daring Challenge',  
-	 },
-	 [41836] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_3, 
-		 activationtime = 0.75, 
-		 icon = 'Chapter 3: Valiant Bulwark',  
-	 },
-	 [40988] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_4, 
-		 activationtime = 0.25, 
-		 icon = 'Chapter 4: Stalwart Stand',  
-	 },
-	 [44455] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_5, 
-		 activationtime = 0.75, 
-		 icon = 'Epilogue: Unbroken Lines',  
-	 },
-	 [41380] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_14, 
-		 activationtime = 0.0, 
-		 icon = 'Stow Tome',  
-	 },
+    [42986] = {
+        slot = GW2.SKILLBARSLOT.Slot_1,
+        activationtime = 0.5,
+        icon = 'Chapter 1: Unflinching Charge',
+    },
+    [41968] = {
+        slot = GW2.SKILLBARSLOT.Slot_2,
+        activationtime = 0.25,
+        icon = 'Chapter 2: Daring Challenge',
+    },
+    [41836] = {
+        slot = GW2.SKILLBARSLOT.Slot_3,
+        activationtime = 0.75,
+        icon = 'Chapter 3: Valiant Bulwark',
+    },
+    [40988] = {
+        slot = GW2.SKILLBARSLOT.Slot_4,
+        activationtime = 0.25,
+        icon = 'Chapter 4: Stalwart Stand',
+    },
+    [44455] = {
+        slot = GW2.SKILLBARSLOT.Slot_5,
+        activationtime = 0.75,
+        icon = 'Epilogue: Unbroken Lines',
+    },
+    [41380] = {
+        slot = GW2.SKILLBARSLOT.Slot_14,
+        activationtime = 0.0,
+        icon = 'Stow Tome',
+    },
 }
 function set:IsActive(context)
-	return context.player.alive and (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 42986)	
+    return context.player.alive and (context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 42986)
 end
 function set:CanActivate(context)
-	return context.player.alive and context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_15]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_15].id == 42259 and context.skillbar[GW2.SKILLBARSLOT.Slot_15].cancast and context.player.transformid == 0
+    return context.player.alive and context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_15] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_15].id == 42259 and context.skillbar[GW2.SKILLBARSLOT.Slot_15].cancast and context.player.transformid == 0
 end
 function set:Activate(context)
-	if ( context.skillbar~=nil ) then
-		if (context.skillbar[GW2.SKILLBARSLOT.Slot_15]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_15].id == 42259) then Player:CastSpell(GW2.SKILLBARSLOT.Slot_15) end
-	end
+    if (context.skillbar ~= nil) then
+        if (context.skillbar[GW2.SKILLBARSLOT.Slot_15] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_15].id == 42259) then
+            Player:CastSpell(GW2.SKILLBARSLOT.Slot_15)
+        end
+    end
 end
 function set:Deactivate(context)
-	if ( context.skillbar~=nil ) then
-		if (context.skillbar[GW2.SKILLBARSLOT.Slot_15]~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_15].id == 41380) then Player:CastSpell(GW2.SKILLBARSLOT.Slot_15) end
-		return true
-	end
+    if (context.skillbar ~= nil) then
+        if (context.skillbar[GW2.SKILLBARSLOT.Slot_15] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_15].id == 41380) then
+            Player:CastSpell(GW2.SKILLBARSLOT.Slot_15)
+        end
+        return true
+    end
 end
-SkillManager:AddSkillPalette( set )
+SkillManager:AddSkillPalette(set)
 
 
 -- ALL the skills which do not belong to a set
@@ -945,430 +932,446 @@ set.uid = "Guardian"
 set.profession = GW2.CHARCLASS.Guardian
 set.icon = "Guardian"
 set.skills_luacode = {
--- HEALING
-	[9158] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_6, 
-		 activationtime = 1.0, 
-		 icon = 'Signet of Resolve',  
-	 },
-		[30025] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_6, 
-		 activationtime = 0.75, 
-		 icon = 'Purification',  
-	 },
-		[9102] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_6, 
-		 activationtime = 1.25, 
-		 icon = 'Shelter',  
-	 },
-	 [9083] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_6, 
-		 activationtime = 2.25,
-		 nounderwater = true,
-		 icon = 'Receive the Light!',  
-	 },
-	 [21664] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_6, 
-		 activationtime = 0.25, 
-		 icon = 'Litany of Wrath',  
-	 },
-	 [30025] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_6, 
-		 activationtime = 0.75, 
-		 icon = 'Purification', 
-		 nounderwater = true,
-	 },
-	 [41714] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_6, 
-		 activationtime = 0.0, 
-		 icon = 'Mantra of Solace',  
-	 },
-	 [41475] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_6, 
-		 activationtime = 0.0, 
-		 icon = 'Restoring Reprieve',
-		 instantcast = true,
-		 parent = 41714,
-	 },
-	 [42960] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_6, 
-		 activationtime = 0.0, 
-		 icon = 'Rejuvenating Respite',
-		 instantcast = true,
-		 parent = 41475,
-	 },
--- END HEALING.
+    -- HEALING
+    [9158] = {
+        slot = GW2.SKILLBARSLOT.Slot_6,
+        activationtime = 1.0,
+        icon = 'Signet of Resolve',
+    },
+    [30025] = {
+        slot = GW2.SKILLBARSLOT.Slot_6,
+        activationtime = 0.75,
+        icon = 'Purification',
+    },
+    [9102] = {
+        slot = GW2.SKILLBARSLOT.Slot_6,
+        activationtime = 1.25,
+        icon = 'Shelter',
+    },
+    [9083] = {
+        slot = GW2.SKILLBARSLOT.Slot_6,
+        activationtime = 2.25,
+        nounderwater = true,
+        icon = 'Receive the Light!',
+    },
+    [21664] = {
+        slot = GW2.SKILLBARSLOT.Slot_6,
+        activationtime = 0.25,
+        icon = 'Litany of Wrath',
+    },
+    [30025] = {
+        slot = GW2.SKILLBARSLOT.Slot_6,
+        activationtime = 0.75,
+        icon = 'Purification',
+        nounderwater = true,
+    },
+    [41714] = {
+        slot = GW2.SKILLBARSLOT.Slot_6,
+        activationtime = 2.75,
+        icon = 'Mantra of Solace',
+    },
+    [41475] = {
+        slot = GW2.SKILLBARSLOT.Slot_6,
+        activationtime = 0.0,
+        icon = 'Restoring Reprieve',
+        instantcast = true,
+        parent = 41714,
+    },
+    [42960] = {
+        slot = GW2.SKILLBARSLOT.Slot_6,
+        activationtime = 0.0,
+        icon = 'Rejuvenating Respite',
+        instantcast = true,
+        parent = 41475,
+    },
+    -- END HEALING.
 
 
--- UTILITY.
-	  [9253] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_7, 
-		 activationtime = 1.0, 
-		 icon = 'Hallowed Ground',  
-		 nounderwater = true,
-	 },
-	 [9187] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_8, 
-		 activationtime = 0.75, 
-		 icon = 'Purging Flames',  
-	 },
-	 [9128] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_9, 
-		 activationtime = 1.0, 
-		 icon = 'Sanctuary', 
-		 stopsmovement = true
-	 },
-	  [9251] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_7, 
-		 activationtime = 0.5, 
-		 icon = 'Wall of Reflection',  
-		 nounderwater = true,
-	 },
-	 [9248] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_8, 
-		 activationtime = 0.5, 
-		 icon = 'Contemplation of Purity',  
-	 },
-	 [9247] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_9, 
-		 activationtime = 0.5, 
-		 icon = 'Judges Intervention',  
-	 },
-	  [9246] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_7, 
-		 activationtime = 0.5, 
-		 icon = 'Merciful Intervention',  
-	 },
-	 [9245] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_8, 
-		 activationtime = 0.5, 
-		 icon = 'Smite Condition',  
-	 },
-	 [9152] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_9, 
-		 activationtime = 0.0, 
-		 instantcast = true,
-		 icon = 'Hold the Line!',  
-	 },
-	  [9084] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_7, 
-		 activationtime = 0.0, 
-		 instantcast = true,
-		 icon = 'Retreat!',  
-	 },
-	 [9085] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_8, 
-		 activationtime = 0.0, 
-		 instantcast = true,
-		 icon = 'Save Yourselves!',  
-	 },
-	 [9153] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_9, 
-		 activationtime = 0.0, 
-		 instantcast = true,
-		 icon = 'Stand Your Ground!',  
-	 },
-	  [9093] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_7, 
-		 activationtime = 0.75, 
-		 icon = 'Bane Signet',  
-	 },
-	 [9150] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_8, 
-		 activationtime = 0.5, 
-		 icon = 'Signet of Judgment',  
-	 },
-	 [9163] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_9, 
-		 activationtime = 2.0, 
-		 icon = 'Signet of Mercy',  
-	 },
-	  [9151] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_7, 
-		 activationtime = 0.75, 
-		 icon = 'Signet of Wrath',  
-	 },
-	 [9175] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_8, 
-		 activationtime = 0.5, 
-		 icon = 'Bow of Truth',  
-	 },
-	 [43565] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_8, 
-		 activationtime = 0.5, 
-		 icon = 'Bow of Truth',  
-	 },
-	 [9125] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_9, 
-		 activationtime = 0.5, 
-		 icon = 'Hammer of Wisdom',  
-	 },
-	 [46170] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_9, 
-		 activationtime = 0.5, 
-		 icon = 'Hammer of Wisdom',  
-	 },
-	  [9182] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_7, 
-		 activationtime = 0.5, 
-		 icon = 'Shield of the Avenger',  
-	 },
-	 [41571] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_7, 
-		 activationtime = 0.5, 
-		 icon = 'Shield of the Avenger',  
-	 },
-	 [9168] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_8, 
-		 activationtime = 0.5, 
-		 icon = 'Sword of Justice',  
-	 },
-	 [44846] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_8, 
-		 activationtime = 0.5, 
-		 icon = 'Sword of Justice',  
-	 },
-	  [29965] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_10, 
-		 activationtime = 0.25, 
-		 icon = 'Feel My Wrath!',  
-	 },
-	  [9154] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_10, 
-		 activationtime = 2.0, 
-		 icon = 'Renewed Focus',  
-	 },
-	  [30461] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_10, 
-		 activationtime = 2.25, 
-		 icon = 'Signet of Courage',  
-	 },
-	  [30553] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_7, 
-		 activationtime = 0.0, 
-		 icon = 'Fragments of Faith',  
-		 instantcast = true,
-		 nounderwater = true,
-	 },
-	 [30871] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_8, 
-		 activationtime = 0.5, 
-		 icon = 'Lights Judgment',
-		 nounderwater = true,	 
-	 },
-	 [29786] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_9, 
-		 activationtime = 0.0, 
-		 icon = 'Test of Faith',  
-		 instantcast = true,
-		 nounderwater = true,
-	 },
-	 [30273] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_10, 
-		 activationtime = 0.5, 
-		 icon = 'Dragons Maw',  
-		 nounderwater = true,
-	 },
-	  [30364] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_7, 
-		 activationtime = 0.5, 
-		 icon = 'Procession of Blades',  
-	 },
-	 [45082] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_7, 
-		 activationtime = 0.0, 
-		 icon = 'Flame Rush',  
-	 },
-	  [46148] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_7, 
-		 activationtime = 2.75, 
-		 icon = 'Mantra of Flame',
-		 instantcast = true,
-		 parent = 45082,	 
-	 },
-	  [42924] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_7, 
-		 activationtime = 0.0, 
-		 icon = 'Flame Surge', 
-		 instantcast = true,
-		 parent = 46148,	
-	 },
-	 [45460] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_8, 
-		 activationtime = 2.75, 
-		 icon = 'Mantra of Lore',  
-	 },
-	  [42864] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_8, 
-		 activationtime = 0.0, 
-		 icon = 'Opening Passage', 
-		 instantcast = true,
-		 parent = 45460,	 
-	 },
-	  [44248] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_8, 
-		 activationtime = 0.0, 
-		 icon = 'Clarified Conclusion', 
-		 instantcast = true,
-		 parent = 42864,
-	 }, 
-	 [44080] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_9, 
-		 activationtime = 2.75, 
-		 icon = 'Mantra of Truth',  
-	 },
-	  [42360] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_9, 
-		 activationtime = 0.0, 
-		 icon = 'Echo of Truth',
-	instantcast = true,
-		 parent = 44080,	 
-	 },
-	  [44008] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_9, 
-		 activationtime = 0.0, 
-		 icon = 'Voice of Truth',  
-		 instantcast = true,
-		 parent = 42360,
-	 },
-	 [43357] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_10, 
-		 activationtime = 2.75, 
-		 icon = 'Mantra of Liberation',  
-	 },
-	  [40114] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_10, 
-		 activationtime = 0.0, 
-		 icon = 'Portent of Freedom',
-		 instantcast = true,
-		 parent = 43357,	 
-	 },
-	  [41328] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_10, 
-		 activationtime = 0.0, 
-		 icon = 'Unhindered Delivery',
-		 instantcast = true,
-		 parent = 40114,	 
-	 },
-	  [40915] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_9, 
-		 activationtime = 2.75, 
-		 icon = 'Mantra of Potence',  
-	 },
-	  [42983] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_9, 
-		 activationtime = 0.0, 
-		 icon = 'Potent Haste',
-		 parent = 40915,
-		 instantcast = true,
-	 },
-	  [41988] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_9, 
-		 activationtime = 0.0, 
-		 icon = 'Overwhelming Celerity',
-		 parent = 41988,
-		 instantcast = true,
-	 },
--- END UTILITY.
+    -- UTILITY.
+    [9253] = {
+        slot = GW2.SKILLBARSLOT.Slot_7,
+        activationtime = 1.0,
+        icon = 'Hallowed Ground',
+        nounderwater = true,
+    },
+    [9187] = {
+        slot = GW2.SKILLBARSLOT.Slot_8,
+        activationtime = 0.75,
+        icon = 'Purging Flames',
+    },
+    [9128] = {
+        slot = GW2.SKILLBARSLOT.Slot_9,
+        activationtime = 1.0,
+        icon = 'Sanctuary',
+        stopsmovement = true
+    },
+    [9251] = {
+        slot = GW2.SKILLBARSLOT.Slot_7,
+        activationtime = 0.0,
+        icon = 'Wall of Reflection',
+        nounderwater = true,
+    },
+    [9248] = {
+        slot = GW2.SKILLBARSLOT.Slot_8,
+        activationtime = 0.0,
+        instantcast = true,
+        icon = 'Contemplation of Purity',
+    },
+    [9247] = {
+        slot = GW2.SKILLBARSLOT.Slot_9,
+        activationtime = 0.0,
+        instantcast = true,
+        icon = 'Judges Intervention',
+    },
+    [9246] = {
+        slot = GW2.SKILLBARSLOT.Slot_7,
+        activationtime = 0.0,
+        instantcast = true,
+        icon = 'Merciful Intervention',
+    },
+    [9245] = {
+        slot = GW2.SKILLBARSLOT.Slot_8,
+        activationtime = 0.0,
+        instantcast = true,
+        icon = 'Smite Condition',
+    },
+    [9152] = {
+        slot = GW2.SKILLBARSLOT.Slot_9,
+        activationtime = 0.0,
+        instantcast = true,
+        icon = 'Hold the Line!',
+    },
+    [9084] = {
+        slot = GW2.SKILLBARSLOT.Slot_7,
+        activationtime = 0.0,
+        instantcast = true,
+        icon = 'Retreat!',
+    },
+    [9085] = {
+        slot = GW2.SKILLBARSLOT.Slot_8,
+        activationtime = 0.0,
+        instantcast = true,
+        icon = 'Save Yourselves!',
+    },
+    [9153] = {
+        slot = GW2.SKILLBARSLOT.Slot_9,
+        activationtime = 0.0,
+        instantcast = true,
+        icon = 'Stand Your Ground!',
+    },
+    [9093] = {
+        slot = GW2.SKILLBARSLOT.Slot_7,
+        activationtime = 0.75,
+        icon = 'Bane Signet',
+    },
+    [9241] = {
+        slot = GW2.SKILLBARSLOT.Slot_7,
+        activationtime = 0.75,
+        icon = 'Bane Signet',
+    },
+    [9150] = {
+        slot = GW2.SKILLBARSLOT.Slot_8,
+        activationtime = 0.0,
+        instantcast = true,
+        icon = 'Signet of Judgment',
+    },
+    [9242] = {
+        slot = GW2.SKILLBARSLOT.Slot_8,
+        activationtime = 0.0,
+        instantcast = true,
+        icon = 'Signet of Judgment',
+    },
+    [9163] = {
+        slot = GW2.SKILLBARSLOT.Slot_9,
+        activationtime = 2.0,
+        icon = 'Signet of Mercy',
+    },
+    [9243] = {
+        slot = GW2.SKILLBARSLOT.Slot_9,
+        activationtime = 2.0,
+        icon = 'Signet of Mercy',
+    },
+    [9151] = {
+        slot = GW2.SKILLBARSLOT.Slot_7,
+        activationtime = 0.75,
+        icon = 'Signet of Wrath',
+    },
+    [9244] = {
+        slot = GW2.SKILLBARSLOT.Slot_7,
+        activationtime = 0.75,
+        icon = 'Signet of Wrath',
+    },
+    [9175] = {
+        slot = GW2.SKILLBARSLOT.Slot_8,
+        activationtime = 0.5,
+        icon = 'Bow of Truth',
+    },
+    [43565] = {
+        slot = GW2.SKILLBARSLOT.Slot_8,
+        activationtime = 0.5,
+        icon = 'Bow of Truth',
+    },
+    [9125] = {
+        slot = GW2.SKILLBARSLOT.Slot_9,
+        activationtime = 0.5,
+        icon = 'Hammer of Wisdom',
+    },
+    [46170] = {
+        slot = GW2.SKILLBARSLOT.Slot_9,
+        activationtime = 0.5,
+        icon = 'Hammer of Wisdom',
+    },
+    [9182] = {
+        slot = GW2.SKILLBARSLOT.Slot_7,
+        activationtime = 0.5,
+        icon = 'Shield of the Avenger',
+    },
+    [41571] = {
+        slot = GW2.SKILLBARSLOT.Slot_7,
+        activationtime = 0.5,
+        icon = 'Shield of the Avenger',
+    },
+    [9168] = {
+        slot = GW2.SKILLBARSLOT.Slot_8,
+        activationtime = 0.5,
+        icon = 'Sword of Justice',
+    },
+    [44846] = {
+        slot = GW2.SKILLBARSLOT.Slot_8,
+        activationtime = 0.5,
+        icon = 'Sword of Justice',
+    },
+    [29965] = {
+        slot = GW2.SKILLBARSLOT.Slot_10,
+        activationtime = 0.25,
+        icon = 'Feel My Wrath!',
+    },
+    [9154] = {
+        slot = GW2.SKILLBARSLOT.Slot_10,
+        activationtime = 2.0,
+        icon = 'Renewed Focus',
+    },
+    [30461] = {
+        slot = GW2.SKILLBARSLOT.Slot_10,
+        activationtime = 2.5,
+        icon = 'Signet of Courage',
+    },
+    [30553] = {
+        slot = GW2.SKILLBARSLOT.Slot_7,
+        activationtime = 0.0,
+        icon = 'Fragments of Faith',
+        instantcast = true,
+        nounderwater = true,
+    },
+    [30871] = {
+        slot = GW2.SKILLBARSLOT.Slot_8,
+        activationtime = 0.5,
+        icon = 'Lights Judgment',
+        nounderwater = true,
+    },
+    [29786] = {
+        slot = GW2.SKILLBARSLOT.Slot_9,
+        activationtime = 0.0,
+        icon = 'Test of Faith',
+        instantcast = true,
+        nounderwater = true,
+    },
+    [30273] = {
+        slot = GW2.SKILLBARSLOT.Slot_10,
+        activationtime = 0.5,
+        icon = 'Dragons Maw',
+        nounderwater = true,
+    },
+    [30364] = {
+        slot = GW2.SKILLBARSLOT.Slot_7,
+        activationtime = 0.5,
+        icon = 'Procession of Blades',
+    },
+    [45082] = {
+        slot = GW2.SKILLBARSLOT.Slot_7,
+        activationtime = 2.0, -- skill activation is 0, but duration is 2 seconds
+        icon = 'Flame Rush',
+        parent = 46148,
+    },
+    [46148] = {
+        slot = GW2.SKILLBARSLOT.Slot_7,
+        activationtime = 2.75,
+        icon = 'Mantra of Flame',
+        instantcast = true,
+    },
+    [42924] = {
+        slot = GW2.SKILLBARSLOT.Slot_7,
+        activationtime = 0.0,
+        icon = 'Flame Surge',
+        parent = 45082,
+    },
+    [45460] = {
+        slot = GW2.SKILLBARSLOT.Slot_8,
+        activationtime = 2.75,
+        icon = 'Mantra of Lore',
+    },
+    [42864] = {
+        slot = GW2.SKILLBARSLOT.Slot_8,
+        activationtime = 0.0,
+        icon = 'Opening Passage',
+        instantcast = true,
+        parent = 45460,
+    },
+    [44248] = {
+        slot = GW2.SKILLBARSLOT.Slot_8,
+        activationtime = 0.0,
+        icon = 'Clarified Conclusion',
+        instantcast = true,
+        parent = 42864,
+    },
+    [44080] = {
+        slot = GW2.SKILLBARSLOT.Slot_9,
+        activationtime = 2.75,
+        icon = 'Mantra of Truth',
+    },
+    [42360] = {
+        slot = GW2.SKILLBARSLOT.Slot_9,
+        activationtime = 2.0, -- skill activation is 0, but duration is 2 seconds
+        icon = 'Echo of Truth',
+        parent = 44080,
+    },
+    [44008] = {
+        slot = GW2.SKILLBARSLOT.Slot_9,
+        activationtime = 0.0,
+        icon = 'Voice of Truth',
+        parent = 42360,
+    },
+    [43357] = {
+        slot = GW2.SKILLBARSLOT.Slot_10,
+        activationtime = 2.75,
+        icon = 'Mantra of Liberation',
+    },
+    [40114] = {
+        slot = GW2.SKILLBARSLOT.Slot_10,
+        activationtime = 0.0,
+        icon = 'Portent of Freedom',
+        instantcast = true,
+        parent = 43357,
+    },
+    [41328] = {
+        slot = GW2.SKILLBARSLOT.Slot_10,
+        activationtime = 0.0,
+        icon = 'Unhindered Delivery',
+        instantcast = true,
+        parent = 40114,
+    },
+    [40915] = {
+        slot = GW2.SKILLBARSLOT.Slot_9,
+        activationtime = 2.75,
+        icon = 'Mantra of Potence',
+    },
+    [42983] = {
+        slot = GW2.SKILLBARSLOT.Slot_9,
+        activationtime = 0.0,
+        icon = 'Potent Haste',
+        parent = 40915,
+        instantcast = true,
+    },
+    [41988] = {
+        slot = GW2.SKILLBARSLOT.Slot_9,
+        activationtime = 0.0,
+        icon = 'Overwhelming Celerity',
+        parent = 41988,
+        instantcast = true,
+    },
+    -- END UTILITY.
 
 
--- F-Keys.
-	 [29887] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_13, 
-		 activationtime = 0.0, 
-		 icon = 'Spear of Justice',  
-		 instantcast = true,
-	 },
-	 [30783] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_14, 
-		 activationtime = 0.0, 
-		 icon = 'Wings of Resolve',  
-		 instantcast = true,
-	 },
-	 [30029] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_15, 
-		 activationtime = 0.0, 
-		 icon = 'Shield of Courage',  
-		 instantcast = true,
-	 },
-	 [30225] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_14, 
-		 activationtime = 0.0, 
-		 icon = 'Wings of Resolve',  
-		 instantcast = true,
-	 },
-	 [30039] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_15, 
-		 activationtime = 0.0, 
-		 icon = 'Shield of Courage',  
-		 instantcast = true,
-	 },
-	 [9115] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_13, 
-		 activationtime = 0.0, 
-		 icon = 'Virtue of Justice', 
-		instantcast = true,	 
-	 },
-	 [9120] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_14, 
-		 activationtime = 0.0, 
-		 icon = 'Virtue of Resolve',
-		 instantcast = true,
-	 },
-	 [9250] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_14, 
-		 activationtime = 0.0, 
-		 icon = 'Virtue of Resolve',  
-	 },
-	 [9118] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_15, 
-		 activationtime = 0.0, 
-		 icon = 'Virtue of Courage',
-		 instantcast = true,
-	 },
-	 [9268] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_15, 
-		 activationtime = 0.0, 
-		 icon = 'Virtue of Courage',
-		 instantcast = true,
-	 },
-	 [44364] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_13, 
-		 activationtime = 0.75, 
-		 icon = 'Tome of Justice',  
-	 },
-	 [41780] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_14, 
-		 activationtime = 0.5, 
-		 icon = 'Tome of Resolve',  
-	 },
-	 [42259] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_15, 
-		 activationtime = 0.25, 
-		 icon = 'Tome of Courage',  
-	 },
-	 [42371] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_15, 
-		 activationtime = 0.25, 
-		 icon = 'Tome of Courage',  
-	 },
-	 [33134] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_13, 
-		 activationtime = 0.5, 
-		 icon = 'Hunters Verdict',  
-	 },
--- END F KEYS.
+    -- F-Keys.
+    [29887] = {
+        slot = GW2.SKILLBARSLOT.Slot_13,
+        activationtime = 0.75,
+        icon = 'Spear of Justice',
+    },
+    [30783] = {
+        slot = GW2.SKILLBARSLOT.Slot_14,
+        activationtime = 1.0,
+        icon = 'Wings of Resolve',
+    },
+    [30029] = {
+        slot = GW2.SKILLBARSLOT.Slot_15,
+        activationtime = 0.0,
+        icon = 'Shield of Courage',
+        instantcast = true,
+    },
+    [30225] = {
+        slot = GW2.SKILLBARSLOT.Slot_14,
+        activationtime = 1.0,
+        icon = 'Wings of Resolve',
+    },
+    [30039] = {
+        slot = GW2.SKILLBARSLOT.Slot_15,
+        activationtime = 0.0,
+        icon = 'Shield of Courage',
+        instantcast = true,
+    },
+    [9115] = {
+        slot = GW2.SKILLBARSLOT.Slot_13,
+        activationtime = 0.0,
+        icon = 'Virtue of Justice',
+        instantcast = true,
+    },
+    [9120] = {
+        slot = GW2.SKILLBARSLOT.Slot_14,
+        activationtime = 0.0,
+        icon = 'Virtue of Resolve',
+        instantcast = true,
+    },
+    [9250] = {
+        slot = GW2.SKILLBARSLOT.Slot_14,
+        activationtime = 0.0,
+        icon = 'Virtue of Resolve',
+        instantcast = true,
+    },
+    [9118] = {
+        slot = GW2.SKILLBARSLOT.Slot_15,
+        activationtime = 0.0,
+        icon = 'Virtue of Courage',
+        instantcast = true,
+    },
+    [9268] = {
+        slot = GW2.SKILLBARSLOT.Slot_15,
+        activationtime = 0.0,
+        icon = 'Virtue of Courage',
+        instantcast = true,
+    },
+    [44364] = {
+        slot = GW2.SKILLBARSLOT.Slot_13,
+        activationtime = 0.25,
+        icon = 'Tome of Justice',
+    },
+    [41780] = {
+        slot = GW2.SKILLBARSLOT.Slot_14,
+        activationtime = 0.5,
+        icon = 'Tome of Resolve',
+    },
+    [42259] = {
+        slot = GW2.SKILLBARSLOT.Slot_15,
+        activationtime = 0.25,
+        icon = 'Tome of Courage',
+    },
+    [33134] = {
+        slot = GW2.SKILLBARSLOT.Slot_13,
+        activationtime = 0.5,
+        icon = 'Hunters Verdict',
+    },
+    -- END F KEYS.
 }
 function set:IsActive(context)
-	return context.player.alive and context.player.transformid == 0
+    return context.player.alive and context.player.transformid == 0
 end
 function set:CanActivate(context)
-	return false
+    return false
 end
 function set:Activate(context)
 end
 function set:Deactivate(context)
-	return false
+    return false
 end
-SkillManager:AddSkillPalette( set )
+SkillManager:AddSkillPalette(set)
 
