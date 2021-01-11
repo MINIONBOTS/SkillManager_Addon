@@ -870,6 +870,11 @@ necromancer.skills_luacode = {
 		activationtime = 1,
 		icon = 'Well of Blood',
 	},
+	[10670] = {
+		slot = GW2.SKILLBARSLOT.Slot_6,
+		activationtime = 1,
+		icon = 'Well of Blood',
+	},
 	[21762] = {
 		slot = GW2.SKILLBARSLOT.Slot_6,
 		activationtime = 1.25,
@@ -1183,6 +1188,26 @@ necromancer.skills_luacode = {
 	[10607] = {
 		slot = GW2.SKILLBARSLOT.Slot_7,
 		activationtime = 0.25,
+		icon = 'Well of Darkness',
+	},
+	[10674] = {
+		slot = GW2.SKILLBARSLOT.Slot_7,
+		activationtime = 0.5,
+		icon = 'Well of Suffering',
+	},
+	[10671] = {
+		slot = GW2.SKILLBARSLOT.Slot_7,
+		activationtime = 0.5,
+		icon = 'Well of Corruption',
+	},
+	[10673] = {
+		slot = GW2.SKILLBARSLOT.Slot_7,
+		activationtime = 0.5,
+		icon = 'Well of Power',
+	},
+	[10672] = {
+		slot = GW2.SKILLBARSLOT.Slot_7,
+		activationtime = 0.5,
 		icon = 'Well of Darkness',
 	},
 	[10574] = {
