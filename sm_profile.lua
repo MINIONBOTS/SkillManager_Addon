@@ -281,14 +281,16 @@ function sm_profile:UpdateContext()
    for i, k in pairs(clist) do
       local cpos = k.pos
       local att = k.attitude
-      if (att < 3) then
-         if (att == 0) then
-            -- Friendly
-            self.temp.context.player.friends_nearby[i] = { pos = cpos } -- leaving this to be a table, maybe other shit is needed later on
-         else
-            self.temp.context.player.enemies_nearby[i] = { pos = cpos }
-         end
-      end
+	  if k.alive == true or k.downed == true then
+			if (att < 3) then
+				if (att == 0) then
+				-- Friendly
+					self.temp.context.player.friends_nearby[i] = { pos = cpos } -- leaving this to be a table, maybe other shit is needed later on
+				else
+					self.temp.context.player.enemies_nearby[i] = { pos = cpos }
+				end
+			end
+		end
    end
 
 
