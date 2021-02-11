@@ -281,7 +281,7 @@ function sm_profile:UpdateContext()
    for i, k in pairs(clist) do
       local cpos = k.pos
       local att = k.attitude
-	  if k.alive == true or k.downed == true then
+	  if k.dead == false and k.attackable == true then
 			if (att < 3) then
 				if (att == 0) then
 				-- Friendly
