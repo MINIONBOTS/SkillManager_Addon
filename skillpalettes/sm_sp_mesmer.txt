@@ -952,46 +952,51 @@ mesmer.uid = "Mesmer_Mesmer"
 mesmer.profession = GW2.CHARCLASS.Mesmer
 mesmer.icon = "mesmer"
 mesmer.skills_luacode = {
-	-- HEALING
-	[40200] = {
-		slot = GW2.SKILLBARSLOT.Slot_6,
-		activationtime = 0.75,
-		icon = "False Oasis"
-	},
-	[30305] = {
-		slot = GW2.SKILLBARSLOT.Slot_6,
-		activationtime = 0.25,
-		icon = "Well of Eternity"
-	},
-	[10176] = {
-		slot = GW2.SKILLBARSLOT.Slot_6,
-		activationtime = 1,
-		icon = "Ether Feast"
-	},
-	[10177] = {
-		slot = GW2.SKILLBARSLOT.Slot_6,
-		activationtime = 1.25,
-		icon = "Mirror"
-	},
-	[10213] = {
-		slot = GW2.SKILLBARSLOT.Slot_6,
-		activationtime = 2.25,
-		icon = "Mantra of Recovery"
-	},
-	[10214] = {
-		slot = GW2.SKILLBARSLOT.Slot_6,
-		activationtime = 0,
-		parent = 10213,
-		icon = "Power Return"
-	},
-	[21750] = {
-		slot = GW2.SKILLBARSLOT.Slot_6,
-		activationtime = 1,
-		icon = "Signet of the Ether"
-	},
-	-- END HEALING.
+-- HEALING
+	[40200] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_6, 
+		 activationtime = 0.75, 
+		 icon = 'False Oasis',  
+	 },
+	[30305] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_6, 
+		 activationtime = 0.5, 
+		 icon = 'Well of Eternity',  
+	 },
+	 [10176] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_6, 
+		 activationtime = 1, 
+		 icon = 'Ether Feast',  
+	 },
+	 [10177] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_6, 
+		 activationtime = 1.25, 
+		 icon = 'Mirror',  
+	 },
+	 [10213] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_6, 
+		 activationtime = 2.25, 
+		 icon = 'Mantra of Recovery',  
+	 },
+	 [10214] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_6, 
+		 activationtime = 0, 
+		 parent = 10213,
+		 icon = 'Power Return',  
+	 },
+	 [21750] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_6, 
+		 activationtime = 1, 
+		 icon = 'Signet of the Ether',  
+	 },
+-- END HEALING.
 
-	-- F-Keys.
+-- F-Keys.
+	 [10287] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_15, 
+		 activationtime = 0, 
+		 icon = 'Diversion',  
+	 },
 	[10191] = {
 		slot = GW2.SKILLBARSLOT.Slot_13,
 		activationtime = 0.0,
