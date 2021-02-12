@@ -66,7 +66,7 @@ function sm_skillpalette:RenderSkills(currentselectedid)
 				end
 				if ( selected ) then currentselectedid = s.id end
 				if ( highlighted ) then GUI:PopStyleColor(4) end
-				if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString(s.icon)) end
+				if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString(s.icon) .. " - id: " .. s.id) end
 				GUI:SameLine()
 				local x,y = GUI:GetCursorPos()
 				GUI:SetCursorPos(x,y+10)
@@ -102,16 +102,19 @@ function sm_skillpalette:GetSkillData( id )
 	end
 end
 
-function sm_skillpalette:IsActive()
-	ml_error("Implement a 'function sm_skillpalette:IsActive()' in your SkillPalette : "..tostring(self.uid))
+function sm_skillpalette:IsActive(context)
+	ml_error("Implement a 'function sm_skillpalette:IsActive(context)' in your SkillPalette : "..tostring(self.uid))
 	return false
 end
-function sm_skillpalette:CanActivate()
-	ml_error("Implement a 'function sm_skillpalette:CanActivate()' in your SkillPalette : "..tostring(self.uid))
+function sm_skillpalette:CanActivate(context)
+	ml_error("Implement a 'function sm_skillpalette:CanActivate(context)' in your SkillPalette : "..tostring(self.uid))
 	return false
 end
-function sm_skillpalette:Activate()
-	ml_error("Implement a 'function sm_skillpalette:Activate()' in your SkillPalette : "..tostring(self.uid))
+function sm_skillpalette:Activate(context)
+	ml_error("Implement a 'function sm_skillpalette:Activate(context)' in your SkillPalette : "..tostring(self.uid))
 end
-function sm_skillpalette:Deactivate()
+function sm_skillpalette:Deactivate(context)
+end
+function sm_skillpalette:CanCast(context,skillid)
+	return true
 end

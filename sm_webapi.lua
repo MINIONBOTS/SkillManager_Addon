@@ -16,7 +16,7 @@ end
 -- Update even handler.
 function sm_webapi.Update(Event, ticks)
 	if (GetGameState() == GW2.GAMESTATE.GAMEPLAY ) then
-		if (sm_webapi.ready == true and not sm_webapi.lasttick or ticks - sm_webapi.lasttick > 2000) then
+		if (sm_webapi.ready == true and (not sm_webapi.lasttick or ticks - sm_webapi.lasttick > 2000)) then
 			sm_webapi.lasttick = ticks
 			local count = 0
 			local idstring = ""

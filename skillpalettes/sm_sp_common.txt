@@ -1,379 +1,378 @@
-
 local set = SkillManager:CreateSkillPalette('Experimental')
 set.uid = "zExperimental"
 set.profession = 0
 set.icon = "Ranger"
 set.id = 9907
 set.skills_luacode = {
-[8752] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_1, 
-	 activationtime = 0.5, 
-	 icon = 'Fireball',  
- },
- [8753] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_2, 
-	 activationtime = 0.5, 
-	 icon = 'Ice Spray',  
- },
- [8754] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_3, 
-	 activationtime = 0.5, 
-	 icon = 'Arc Lightning',  
- },
- [8755] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_4, 
-	 activationtime = 0.5, 
-	 icon = 'Arcane Beam',  
- },
- [8756] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_5, 
-	 activationtime = 0.5, 
-	 icon = 'Eject Coolant',  
- },
+   [8752] = {
+      slot = GW2.SKILLBARSLOT.Slot_1,
+      activationtime = 0.5,
+      icon = 'Fireball',
+   },
+   [8753] = {
+      slot = GW2.SKILLBARSLOT.Slot_2,
+      activationtime = 0.5,
+      icon = 'Ice Spray',
+   },
+   [8754] = {
+      slot = GW2.SKILLBARSLOT.Slot_3,
+      activationtime = 0.5,
+      icon = 'Arc Lightning',
+   },
+   [8755] = {
+      slot = GW2.SKILLBARSLOT.Slot_4,
+      activationtime = 0.5,
+      icon = 'Arcane Beam',
+   },
+   [8756] = {
+      slot = GW2.SKILLBARSLOT.Slot_5,
+      activationtime = 0.5,
+      icon = 'Eject Coolant',
+   },
 }
 function set:IsActive(context)
-	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 8752)	
+   return (context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 8752)
 end
 function set:CanActivate(context)
-	return false
+   return false
 end
 function set:Activate(context)
 end
 function set:Deactivate(context)
-	return false
+   return false
 end
-SkillManager:AddSkillPalette( set )
+SkillManager:AddSkillPalette(set)
 local set = SkillManager:CreateSkillPalette('Bird')
 set.uid = "zBird"
 set.profession = 0
 set.icon = "Ranger"
 set.id = 9906
 set.skills_luacode = {
-[8764] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_1, 
-	 activationtime = 0.5, 
-	 icon = 'Peck',  
- },
- [8762] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_2, 
-	 activationtime = 0.5, 
-	 icon = 'Deadly Kick',  
- },
- [8761] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_3, 
-	 activationtime = 0.5, 
-	 icon = 'Frenzied Peck',  
- },
- [8763] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_4, 
-	 activationtime = 0.5, 
-	 icon = 'Screech',  
- },
- [8765] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_5, 
-	 activationtime = 0.5, 
-	 icon = 'Return',  
- },
+   [8764] = {
+      slot = GW2.SKILLBARSLOT.Slot_1,
+      activationtime = 0.5,
+      icon = 'Peck',
+   },
+   [8762] = {
+      slot = GW2.SKILLBARSLOT.Slot_2,
+      activationtime = 0.5,
+      icon = 'Deadly Kick',
+   },
+   [8761] = {
+      slot = GW2.SKILLBARSLOT.Slot_3,
+      activationtime = 0.5,
+      icon = 'Frenzied Peck',
+   },
+   [8763] = {
+      slot = GW2.SKILLBARSLOT.Slot_4,
+      activationtime = 0.5,
+      icon = 'Screech',
+   },
+   [8765] = {
+      slot = GW2.SKILLBARSLOT.Slot_5,
+      activationtime = 0.5,
+      icon = 'Return',
+   },
 }
 function set:IsActive(context)
-	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 8764)	
+   return (context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 8764)
 end
 function set:CanActivate(context)
-	return false
+   return false
 end
 function set:Activate(context)
 end
 function set:Deactivate(context)
-	return false
+   return false
 end
-SkillManager:AddSkillPalette( set )
+SkillManager:AddSkillPalette(set)
 local set = SkillManager:CreateSkillPalette('Flamethrower')
 set.uid = "zFlamethrower"
 set.profession = 0
 set.icon = "Ranger"
 set.id = 9906
 set.skills_luacode = {
-[8721] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_1, 
-	 activationtime = 0.5, 
-	 icon = 'Flame Jet',  
- },
- [8722] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_2, 
-	 activationtime = 0.5, 
-	 icon = 'Red Button',  
- },
+   [8721] = {
+      slot = GW2.SKILLBARSLOT.Slot_1,
+      activationtime = 0.5,
+      icon = 'Flame Jet',
+   },
+   [8722] = {
+      slot = GW2.SKILLBARSLOT.Slot_2,
+      activationtime = 0.5,
+      icon = 'Red Button',
+   },
 }
 function set:IsActive(context)
-	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 8721)	
+   return (context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 8721)
 end
 function set:CanActivate(context)
-	return false
+   return false
 end
 function set:Activate(context)
 end
 function set:Deactivate(context)
-	return false
+   return false
 end
-SkillManager:AddSkillPalette( set )
+SkillManager:AddSkillPalette(set)
 local set = SkillManager:CreateSkillPalette('Drink')
 set.uid = "zDrink"
 set.profession = 0
 set.icon = "Ranger"
 set.id = 9905
 set.skills_luacode = {
-[7024] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_1, 
-	 activationtime = 0.5, 
-	 icon = 'Drink',  
- },
+   [7024] = {
+      slot = GW2.SKILLBARSLOT.Slot_1,
+      activationtime = 0.5,
+      icon = 'Drink',
+   },
 }
 function set:IsActive(context)
-	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 7024)	
+   return (context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 7024)
 end
 function set:CanActivate(context)
-	return false
+   return false
 end
 function set:Activate(context)
 end
 function set:Deactivate(context)
-	return false
+   return false
 end
-SkillManager:AddSkillPalette( set )
+SkillManager:AddSkillPalette(set)
 local set = SkillManager:CreateSkillPalette('Branch')
 set.uid = "zBranch"
 set.profession = 0
 set.icon = "Ranger"
 set.id = 9905
 set.skills_luacode = {
-[991] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_1, 
-	 activationtime = 0.5, 
-	 icon = 'Bash',  
- },
- [993] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_2, 
-	 activationtime = 0.5, 
-	 icon = 'Smash',  
- },
+   [991] = {
+      slot = GW2.SKILLBARSLOT.Slot_1,
+      activationtime = 0.5,
+      icon = 'Bash',
+   },
+   [993] = {
+      slot = GW2.SKILLBARSLOT.Slot_2,
+      activationtime = 0.5,
+      icon = 'Smash',
+   },
 }
 function set:IsActive(context)
-	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 991)	
+   return (context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 991)
 end
 function set:CanActivate(context)
-	return false
+   return false
 end
 function set:Activate(context)
 end
 function set:Deactivate(context)
-	return false
+   return false
 end
-SkillManager:AddSkillPalette( set )
+SkillManager:AddSkillPalette(set)
 local set = SkillManager:CreateSkillPalette('Raven')
 set.uid = "zRaven"
 set.profession = 0
 set.icon = "Ranger"
 set.id = 9904
 set.skills_luacode = {
-[12410] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_1, 
-	 activationtime = 0.5, 
-	 icon = 'Wind Blast',  
- },
- [12406] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_2, 
-	 activationtime = 0.5, 
-	 icon = 'Wind Blast',  
- },
- [12409] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_3, 
-	 activationtime = 0.5, 
-	 icon = 'Swoop',  
- },
- [12408] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_4, 
-	 activationtime = 0.5, 
-	 icon = 'Wind Blast',  
- },
- [12407] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_5, 
-	 activationtime = 0.5, 
-	 icon = 'Wind Blast',  
- },
+   [12410] = {
+      slot = GW2.SKILLBARSLOT.Slot_1,
+      activationtime = 0.5,
+      icon = 'Wind Blast',
+   },
+   [12406] = {
+      slot = GW2.SKILLBARSLOT.Slot_2,
+      activationtime = 0.5,
+      icon = 'Wind Blast',
+   },
+   [12409] = {
+      slot = GW2.SKILLBARSLOT.Slot_3,
+      activationtime = 0.5,
+      icon = 'Swoop',
+   },
+   [12408] = {
+      slot = GW2.SKILLBARSLOT.Slot_4,
+      activationtime = 0.5,
+      icon = 'Wind Blast',
+   },
+   [12407] = {
+      slot = GW2.SKILLBARSLOT.Slot_5,
+      activationtime = 0.5,
+      icon = 'Wind Blast',
+   },
 }
 function set:IsActive(context)
-	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 12410)	
+   return (context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 12410)
 end
 function set:CanActivate(context)
-	return false
+   return false
 end
 function set:Activate(context)
 end
 function set:Deactivate(context)
-	return false
+   return false
 end
-SkillManager:AddSkillPalette( set )
+SkillManager:AddSkillPalette(set)
 local set = SkillManager:CreateSkillPalette('ImpGun')
 set.uid = "zImpGun"
 set.profession = 0
 set.icon = "Ranger"
 set.id = 9903
 set.skills_luacode = {
-[6763] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_1, 
-	 activationtime = 0.5, 
-	 icon = 'Coagulation Shot',  
- },
- [6762] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_2, 
-	 activationtime = 0.5, 
-	 icon = 'Coagulation Blast',  
- },
- [6765] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_3, 
-	 activationtime = 0.5, 
-	 icon = 'Coagulation Touch',  
- },
- [6764] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_4, 
-	 activationtime = 0.5, 
-	 icon = 'Rifle Butt',  
- },
+   [6763] = {
+      slot = GW2.SKILLBARSLOT.Slot_1,
+      activationtime = 0.5,
+      icon = 'Coagulation Shot',
+   },
+   [6762] = {
+      slot = GW2.SKILLBARSLOT.Slot_2,
+      activationtime = 0.5,
+      icon = 'Coagulation Blast',
+   },
+   [6765] = {
+      slot = GW2.SKILLBARSLOT.Slot_3,
+      activationtime = 0.5,
+      icon = 'Coagulation Touch',
+   },
+   [6764] = {
+      slot = GW2.SKILLBARSLOT.Slot_4,
+      activationtime = 0.5,
+      icon = 'Rifle Butt',
+   },
 }
 function set:IsActive(context)
-	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 6763)	
+   return (context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 6763)
 end
 function set:CanActivate(context)
-	return false
+   return false
 end
 function set:Activate(context)
 end
 function set:Deactivate(context)
-	return false
+   return false
 end
-SkillManager:AddSkillPalette( set )
+SkillManager:AddSkillPalette(set)
 local set = SkillManager:CreateSkillPalette('BugSpray')
 set.uid = "zBugSpray"
 set.profession = 0
 set.icon = "Ranger"
 set.id = 9902
 set.skills_luacode = {
-[6478] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_1, 
-	 activationtime = 0.5, 
-	 icon = 'Poison Cloud',  
- },
- [6480] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_2, 
-	 activationtime = 0.5, 
-	 icon = 'Dart Volley',  
- },
- [6479] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_3, 
-	 activationtime = 0.5, 
-	 icon = 'Sedative Dart',  
- },
+   [6478] = {
+      slot = GW2.SKILLBARSLOT.Slot_1,
+      activationtime = 0.5,
+      icon = 'Poison Cloud',
+   },
+   [6480] = {
+      slot = GW2.SKILLBARSLOT.Slot_2,
+      activationtime = 0.5,
+      icon = 'Dart Volley',
+   },
+   [6479] = {
+      slot = GW2.SKILLBARSLOT.Slot_3,
+      activationtime = 0.5,
+      icon = 'Sedative Dart',
+   },
 }
 function set:IsActive(context)
-	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 6478)	
+   return (context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 6478)
 end
 function set:CanActivate(context)
-	return false
+   return false
 end
 function set:Activate(context)
 end
 function set:Deactivate(context)
-	return false
+   return false
 end
-SkillManager:AddSkillPalette( set )
+SkillManager:AddSkillPalette(set)
 local set = SkillManager:CreateSkillPalette('Leopard')
 set.uid = "zLeopard"
 set.profession = 0
 set.icon = "Ranger"
 set.id = 9901
 set.skills_luacode = {
- [6655] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_1, 
-	 activationtime = 0.5, 
-	 icon = 'Slash',  
- },
- [6654] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_2, 
-	 activationtime = 0.5, 
-	 icon = 'Pounce',  
- },
- [6652] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_3, 
-	 activationtime = 0.5, 
-	 icon = 'Maul',  
- },
- [6656] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_4, 
-	 activationtime = 0.5, 
-	 icon = 'Snarl',  
- },
- [14349] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_5, 
-	 activationtime = 0.5, 
-	 icon = 'Return',  
- },
+   [6655] = {
+      slot = GW2.SKILLBARSLOT.Slot_1,
+      activationtime = 0.5,
+      icon = 'Slash',
+   },
+   [6654] = {
+      slot = GW2.SKILLBARSLOT.Slot_2,
+      activationtime = 0.5,
+      icon = 'Pounce',
+   },
+   [6652] = {
+      slot = GW2.SKILLBARSLOT.Slot_3,
+      activationtime = 0.5,
+      icon = 'Maul',
+   },
+   [6656] = {
+      slot = GW2.SKILLBARSLOT.Slot_4,
+      activationtime = 0.5,
+      icon = 'Snarl',
+   },
+   [14349] = {
+      slot = GW2.SKILLBARSLOT.Slot_5,
+      activationtime = 0.5,
+      icon = 'Return',
+   },
 }
 function set:IsActive(context)
-	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 6655)	
+   return (context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 6655)
 end
 function set:CanActivate(context)
-	return false
+   return false
 end
 function set:Activate(context)
 end
 function set:Deactivate(context)
-	return false
+   return false
 end
-SkillManager:AddSkillPalette( set )
+SkillManager:AddSkillPalette(set)
 local set = SkillManager:CreateSkillPalette('Common_Tornado')
 set.uid = "zCommon_Tornado"
 set.profession = 0
 set.icon = "Tornado"
 set.id = 5534
 set.skills_luacode = {
- [5752] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_1, 
-	 activationtime = 0.5, 
-	 icon = 'Electrified Tornado',  
- },
- [5753] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_2, 
-	 activationtime = 0.5, 
-	 icon = 'Dust Tornado',  
- },
- [5754] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_3, 
-	 activationtime = 0.5, 
-	 icon = 'Debris Tornado',  
- },
- [35224] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_4, 
-	 activationtime = 0.5, 
-	 icon = 'Elemental Requiem',  
- },
- [35304] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_5, 
-	 activationtime = 1.25, 
-	 icon = 'Dust Charge',  
- },
+   [5752] = {
+      slot = GW2.SKILLBARSLOT.Slot_1,
+      activationtime = 0.5,
+      icon = 'Electrified Tornado',
+   },
+   [5753] = {
+      slot = GW2.SKILLBARSLOT.Slot_2,
+      activationtime = 0.5,
+      icon = 'Dust Tornado',
+   },
+   [5754] = {
+      slot = GW2.SKILLBARSLOT.Slot_3,
+      activationtime = 0.5,
+      icon = 'Debris Tornado',
+   },
+   [35224] = {
+      slot = GW2.SKILLBARSLOT.Slot_4,
+      activationtime = 0.5,
+      icon = 'Elemental Requiem',
+   },
+   [35304] = {
+      slot = GW2.SKILLBARSLOT.Slot_5,
+      activationtime = 1.25,
+      icon = 'Dust Charge',
+   },
 }
 function set:IsActive(context)
-	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 5752)	
+   return (context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 5752)
 end
 function set:CanActivate(context)
-	return false
+   return false
 end
 function set:Activate(context)
 end
 function set:Deactivate(context)
-	return false
+   return false
 end
-SkillManager:AddSkillPalette( set )
+SkillManager:AddSkillPalette(set)
 
 local set = SkillManager:CreateSkillPalette('Common_Trebuchet')
 set.uid = "zCommon_Trebuchet"
@@ -381,34 +380,34 @@ set.profession = 0
 set.icon = "Trebuchet"
 set.id = 1233
 set.skills_luacode = {
-[1231] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_1, 
-	 activationtime = 0.5, 
-	 icon = 'Turn Left',  
- },
- [1233] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_2, 
-	 activationtime = 0.5, 
-	 icon = 'Fire',  
- },
- [1232] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_3, 
-	 activationtime = 0.5, 
-	 icon = 'Turn Right',  
- },
+   [1231] = {
+      slot = GW2.SKILLBARSLOT.Slot_1,
+      activationtime = 0.5,
+      icon = 'Turn Left',
+   },
+   [1233] = {
+      slot = GW2.SKILLBARSLOT.Slot_2,
+      activationtime = 0.5,
+      icon = 'Fire',
+   },
+   [1232] = {
+      slot = GW2.SKILLBARSLOT.Slot_3,
+      activationtime = 0.5,
+      icon = 'Turn Right',
+   },
 }
 function set:IsActive(context)
-	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 1231)	
+   return (context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 1231)
 end
 function set:CanActivate(context)
-	return false
+   return false
 end
 function set:Activate(context)
 end
 function set:Deactivate(context)
-	return Player:SwapWeaponSet()
+   return Player:SwapWeaponSet()
 end
-SkillManager:AddSkillPalette( set )
+SkillManager:AddSkillPalette(set)
 
 
 
@@ -419,56 +418,55 @@ set.profession = 0
 set.icon = "Rampage"
 set.id = 14617
 set.skills_luacode = {
-[14485] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_1, 
-	 activationtime = 0.5, 
-	 icon = 'Smash',  
- },
- [14486] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_1, 
-	 activationtime = 0.5, 
-	 icon = 'Bash', 
-	 parent = 14485,
- },
- [14487] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_1, 
-	 activationtime = 0.5, 
-	 icon = 'Uppercut',
-	 parent = 14486,
- },
- [14488] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_2, 
-	 activationtime = 0.5, 
-	 icon = 'Kick',  
- },
- [14489] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_3, 
-	 activationtime = 0.75, 
-	 icon = 'Dash',  
- },
- [14556] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_4, 
-	 activationtime = 1.0, 
-	 icon = 'Throw Boulder',  
- },
- [14490] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_5, 
-	 activationtime = 0.75, 
-	 icon = 'Seismic Leap',  
- },
+   [14485] = {
+      slot = GW2.SKILLBARSLOT.Slot_1,
+      activationtime = 0.5,
+      icon = 'Smash',
+   },
+   [14486] = {
+      slot = GW2.SKILLBARSLOT.Slot_1,
+      activationtime = 0.5,
+      icon = 'Bash',
+      parent = 14485,
+   },
+   [14487] = {
+      slot = GW2.SKILLBARSLOT.Slot_1,
+      activationtime = 0.5,
+      icon = 'Uppercut',
+      parent = 14486,
+   },
+   [14488] = {
+      slot = GW2.SKILLBARSLOT.Slot_2,
+      activationtime = 0.5,
+      icon = 'Kick',
+   },
+   [14489] = {
+      slot = GW2.SKILLBARSLOT.Slot_3,
+      activationtime = 0.75,
+      icon = 'Dash',
+   },
+   [14556] = {
+      slot = GW2.SKILLBARSLOT.Slot_4,
+      activationtime = 1.0,
+      icon = 'Throw Boulder',
+   },
+   [14490] = {
+      slot = GW2.SKILLBARSLOT.Slot_5,
+      activationtime = 0.75,
+      icon = 'Seismic Leap',
+   },
 }
 function set:IsActive(context)
-	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 14488)	
+   return (context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_2] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 14488)
 end
 function set:CanActivate(context)
-	return false
+   return false
 end
 function set:Activate(context)
 end
 function set:Deactivate(context)
 end
-SkillManager:AddSkillPalette( set )
-
+SkillManager:AddSkillPalette(set)
 
 local set = SkillManager:CreateSkillPalette('zFiery Greatsword')
 set.uid = "zFiery Greatsword"
@@ -476,44 +474,43 @@ set.profession = 0
 set.icon = "Fiery Greatsword"
 set.id = 5516
 set.skills_luacode = {
-[5532] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_1, 
-	 activationtime = 2.75, 
-	 icon = 'Flame Wave',  
- },
- [5533] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_2, 
-	 activationtime = 1.25, 
-	 icon = 'Fiery Eruption',  
- },
- [5697] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_3, 
-	 activationtime = 0.25, 
-	 icon = 'Fiery Whirl',  
- },
- [5517] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_4, 
-	 activationtime = 0.25, 
-	 icon = 'Fiery Rush',  
- },
- [5531] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_5, 
-	 activationtime = 0.75, 
-	 icon = 'Firestorm',  
- },
+   [5532] = {
+      slot = GW2.SKILLBARSLOT.Slot_1,
+      activationtime = 2.75,
+      icon = 'Flame Wave',
+   },
+   [5533] = {
+      slot = GW2.SKILLBARSLOT.Slot_2,
+      activationtime = 1.25,
+      icon = 'Fiery Eruption',
+   },
+   [5697] = {
+      slot = GW2.SKILLBARSLOT.Slot_3,
+      activationtime = 0.25,
+      icon = 'Fiery Whirl',
+   },
+   [5517] = {
+      slot = GW2.SKILLBARSLOT.Slot_4,
+      activationtime = 0.25,
+      icon = 'Fiery Rush',
+   },
+   [5531] = {
+      slot = GW2.SKILLBARSLOT.Slot_5,
+      activationtime = 0.75,
+      icon = 'Firestorm',
+   },
 }
 function set:IsActive(context)
-	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 5533)	
+   return (context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_2] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 5533)
 end
 function set:CanActivate(context)
-	return false
+   return false
 end
 function set:Activate(context)
 end
 function set:Deactivate(context)
 end
-SkillManager:AddSkillPalette( set )
-
+SkillManager:AddSkillPalette(set)
 
 local set = SkillManager:CreateSkillPalette('zFrost Bow')
 set.uid = "zFrost Bow"
@@ -521,44 +518,44 @@ set.profession = 0
 set.icon = "Frost Bow"
 set.id = 5567
 set.skills_luacode = {
-[5595] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_1, 
-	 activationtime = 0.75, 
-	 icon = 'Water Arrow',  
- },
- [5720] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_2, 
-	 activationtime = 2.0, 
-	 icon = 'Frost Volley',  
- },
- [5568] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_3, 
-	 activationtime = 0.25, 
-	 icon = 'Frost Fan',  
- },
- [5723] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_4, 
-	 activationtime = 2.75, 
-	 icon = 'Ice Storm',  
- },
- [5721] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_5, 
-	 activationtime = 1.5, 
-	 icon = 'Deep Freeze',  
- },
+   [5595] = {
+      slot = GW2.SKILLBARSLOT.Slot_1,
+      activationtime = 0.75,
+      icon = 'Water Arrow',
+   },
+   [5720] = {
+      slot = GW2.SKILLBARSLOT.Slot_2,
+      activationtime = 2.0,
+      icon = 'Frost Volley',
+   },
+   [5568] = {
+      slot = GW2.SKILLBARSLOT.Slot_3,
+      activationtime = 0.25,
+      icon = 'Frost Fan',
+   },
+   [5723] = {
+      slot = GW2.SKILLBARSLOT.Slot_4,
+      activationtime = 2.75,
+      icon = 'Ice Storm',
+      stopsmovement = true
+   },
+   [5721] = {
+      slot = GW2.SKILLBARSLOT.Slot_5,
+      activationtime = 1.5,
+      icon = 'Deep Freeze',
+   },
 }
 function set:IsActive(context)
-	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 5720)	
+   return (context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_2] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 5720)
 end
 function set:CanActivate(context)
-	return false
+   return false
 end
 function set:Activate(context)
 end
 function set:Deactivate(context)
 end
-SkillManager:AddSkillPalette( set )
-
+SkillManager:AddSkillPalette(set)
 
 local set = SkillManager:CreateSkillPalette('zFlame Axe')
 set.uid = "zFlame Axe"
@@ -566,45 +563,43 @@ set.profession = 0
 set.icon = "Flame Axe"
 set.id = 5540
 set.skills_luacode = {
-[5541] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_1, 
-	 activationtime = 0.5, 
-	 icon = 'Lava Axe',  
- },
- [5593] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_2, 
-	 activationtime = 0.5, 
-	 icon = 'Explosive Lava Axe',  
- },
- [5717] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_3, 
-	 activationtime = 0.5, 
-	 icon = 'Burning Retreat',  
- },
- [5718] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_4, 
-	 activationtime = 0.5, 
-	 icon = 'Ring of Fire',  
- },
- [5719] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_5, 
-	 activationtime = 0.5, 
-	 icon = 'Flame Leap',  
- },
+   [5541] = {
+      slot = GW2.SKILLBARSLOT.Slot_1,
+      activationtime = 0.5,
+      icon = 'Lava Axe',
+   },
+   [5593] = {
+      slot = GW2.SKILLBARSLOT.Slot_2,
+      activationtime = 0.5,
+      icon = 'Explosive Lava Axe',
+   },
+   [5717] = {
+      slot = GW2.SKILLBARSLOT.Slot_3,
+      activationtime = 0.5,
+      icon = 'Burning Retreat',
+   },
+   [5718] = {
+      slot = GW2.SKILLBARSLOT.Slot_4,
+      activationtime = 0.5,
+      icon = 'Ring of Fire',
+   },
+   [5719] = {
+      slot = GW2.SKILLBARSLOT.Slot_5,
+      activationtime = 0.5,
+      icon = 'Flame Leap',
+   },
 }
 function set:IsActive(context)
-	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 5593)	
+   return (context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_2] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 5593)
 end
 function set:CanActivate(context)
-	return false
+   return false
 end
 function set:Activate(context)
 end
 function set:Deactivate(context)
 end
-SkillManager:AddSkillPalette( set )
-
-
+SkillManager:AddSkillPalette(set)
 
 local set = SkillManager:CreateSkillPalette('zEarth Shield')
 set.uid = "zEarth Shield"
@@ -612,57 +607,56 @@ set.profession = 0
 set.icon = "Earth Shield"
 set.id = 5546
 set.skills_luacode = {
-[5621] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_1, 
-	 activationtime = 0.5, 
-	 icon = 'Shield Smack',  
- },
- [21646] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_1, 
-	 activationtime = 0.75, 
-	 icon = 'Shield Smash',  
-	 parent = 5621,
- },
- [5746] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_1, 
-	 activationtime = 0.75, 
-	 icon = 'Crippling Shield',
-	 parent = 21646,
- },
- [21647] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_2, 
-	 activationtime = 2.25, 
-	 icon = 'Stone Sheath',  
- },
- [5547] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_3, 
-	 activationtime = 0.75, 
-	 icon = 'Magnetic Surge',  
- },
- [5747] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_4, 
-	 activationtime = 1.5, 
-	 icon = 'Magnetic Shield',  
- },
- [5623] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_5, 
-	 activationtime = 3.0, 
-	 icon = 'Fortify',  
- },
+   [5621] = {
+      slot = GW2.SKILLBARSLOT.Slot_1,
+      activationtime = 0.5,
+      icon = 'Shield Smack',
+   },
+   [21646] = {
+      slot = GW2.SKILLBARSLOT.Slot_1,
+      activationtime = 0.75,
+      icon = 'Shield Smash',
+      parent = 5621,
+   },
+   [5746] = {
+      slot = GW2.SKILLBARSLOT.Slot_1,
+      activationtime = 0.75,
+      icon = 'Crippling Shield',
+      parent = 21646,
+   },
+   [21647] = {
+      slot = GW2.SKILLBARSLOT.Slot_2,
+      activationtime = 2.25,
+      icon = 'Stone Sheath',
+   },
+   [5547] = {
+      slot = GW2.SKILLBARSLOT.Slot_3,
+      activationtime = 0.75,
+      icon = 'Magnetic Surge',
+   },
+   [5747] = {
+      slot = GW2.SKILLBARSLOT.Slot_4,
+      activationtime = 1.5,
+      icon = 'Magnetic Shield',
+   },
+   [5623] = {
+      slot = GW2.SKILLBARSLOT.Slot_5,
+      activationtime = 3.0,
+      icon = 'Fortify',
+      stopsmovement = true
+   },
 }
 function set:IsActive(context)
-	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 21647)	
+   return (context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_2] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 21647)
 end
 function set:CanActivate(context)
-	return false
+   return false
 end
 function set:Activate(context)
 end
 function set:Deactivate(context)
 end
-SkillManager:AddSkillPalette( set )
-
-
+SkillManager:AddSkillPalette(set)
 
 local set = SkillManager:CreateSkillPalette('zLightning Hammer')
 set.uid = "zLightning Hammer"
@@ -670,55 +664,55 @@ set.profession = 0
 set.icon = "Lightning Hammer"
 set.id = 5624
 set.skills_luacode = {
-[5726] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_1, 
-	 activationtime = 0.5, 
-	 icon = 'Lightning Swing',  
- },
- [5727] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_1, 
-	 activationtime = 0.5, 
-	 icon = 'Static Swing',
-	 parent = 5726,
- },
- [5728] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_1, 
-	 activationtime = 0.5, 
-	 icon = 'Thunderclap',  
-	 parent = 5727,
- },
- [5625] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_2, 
-	 activationtime = 0.75, 
-	 icon = 'Lightning Leap',  
- },
- [5733] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_3, 
-	 activationtime = 1.0, 
-	 icon = 'Wind Blast',  
- },
- [5725] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_4, 
-	 activationtime = 1.25, 
-	 icon = 'Lightning Storm',  
- },
- [5732] = { 
-	 slot = GW2.SKILLBARSLOT.Slot_5, 
-	 activationtime = 0.75, 
-	 icon = 'Static Field',  
- },
+   [5726] = {
+      slot = GW2.SKILLBARSLOT.Slot_1,
+      activationtime = 0.5,
+      icon = 'Lightning Swing',
+   },
+   [5727] = {
+      slot = GW2.SKILLBARSLOT.Slot_1,
+      activationtime = 0.5,
+      icon = 'Static Swing',
+      parent = 5726,
+   },
+   [5728] = {
+      slot = GW2.SKILLBARSLOT.Slot_1,
+      activationtime = 0.5,
+      icon = 'Thunderclap',
+      parent = 5727,
+   },
+   [5625] = {
+      slot = GW2.SKILLBARSLOT.Slot_2,
+      activationtime = 0.75,
+      icon = 'Lightning Leap',
+   },
+   [5733] = {
+      slot = GW2.SKILLBARSLOT.Slot_3,
+      activationtime = 1.0,
+      icon = 'Wind Blast',
+   },
+   [5725] = {
+      slot = GW2.SKILLBARSLOT.Slot_4,
+      activationtime = 1.25,
+      icon = 'Lightning Storm',
+   },
+   [5732] = {
+      slot = GW2.SKILLBARSLOT.Slot_5,
+      activationtime = 0.75,
+      icon = 'Static Field',
+   },
 }
 function set:IsActive(context)
-	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 5625)	
+   return (context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_2] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 5625)
 end
 function set:CanActivate(context)
-	return false
+   return false
 end
 function set:Activate(context)
 end
 function set:Deactivate(context)
 end
-SkillManager:AddSkillPalette( set )
+SkillManager:AddSkillPalette(set)
 
 
 
@@ -730,37 +724,38 @@ set.icon = "ArrowCart"
 set.iconurl = "https://render.guildwars2.com/file/B45865C5B4955BAD3098A54CE7FAF95CD6B3A828/575721.png"
 -- set.id = 14617
 set.skills_luacode = {
-	-- slot 1.
-	 [14617] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_1, 
-		 activationtime = 0.5, 
-		 icon = 'Fire',  
-	 },
-	 [14652] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_2, 
-		 activationtime = 0.5, 
-		 icon = 'Fire Crippling Arrows',  
-	 },
-	 [14653] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_3, 
-		 activationtime = 0.5, 
-		 icon = 'Fire Barbed Arrows',  
-	 },
+   -- slot 1.
+   [14617] = {
+      slot = GW2.SKILLBARSLOT.Slot_1,
+      activationtime = 0.5,
+      icon = 'Fire',
+      stopsmovement = true
+   },
+   [14652] = {
+      slot = GW2.SKILLBARSLOT.Slot_2,
+      activationtime = 0.5,
+      icon = 'Fire Crippling Arrows',
+      stopsmovement = true
+   },
+   [14653] = {
+      slot = GW2.SKILLBARSLOT.Slot_3,
+      activationtime = 0.5,
+      icon = 'Fire Barbed Arrows',
+      stopsmovement = true
+   },
 }
 function set:IsActive(context)
-	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 14617)
+   return (context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 14617)
 end
 function set:CanActivate(context)
-	return false
+   return false
 end
 function set:Activate(context)
 end
 function set:Deactivate(context)
-	return Player:SwapWeaponSet()
+   return Player:SwapWeaponSet()
 end
-SkillManager:AddSkillPalette( set )
-
-
+SkillManager:AddSkillPalette(set)
 
 local set = SkillManager:CreateSkillPalette('Common_ArrowCart')
 set.uid = "zCommon_ArrowCart_Level_1"
@@ -769,36 +764,37 @@ set.icon = "ArrowCart"
 set.iconurl = "https://render.guildwars2.com/file/B45865C5B4955BAD3098A54CE7FAF95CD6B3A828/575721.png"
 -- set.id = 18852
 set.skills_luacode = {
-	 [18852] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_1, 
-		 activationtime = 0.5, 
-		 icon = 'Fire Improved Arrows',  
-	 },
-	 [18854] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_2, 
-		 activationtime = 0.5, 
-		 icon = 'Fire Improved Crippling Arrows',  
-	 },
-	 [18856] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_3, 
-		 activationtime = 0.5, 
-		 icon = 'Fire Improved Barbed Arrows',  
-	 },
+   [18852] = {
+      slot = GW2.SKILLBARSLOT.Slot_1,
+      activationtime = 0.5,
+      icon = 'Fire Improved Arrows',
+      stopsmovement = true
+   },
+   [18854] = {
+      slot = GW2.SKILLBARSLOT.Slot_2,
+      activationtime = 0.5,
+      icon = 'Fire Improved Crippling Arrows',
+      stopsmovement = true
+   },
+   [18856] = {
+      slot = GW2.SKILLBARSLOT.Slot_3,
+      activationtime = 0.5,
+      icon = 'Fire Improved Barbed Arrows',
+      stopsmovement = true
+   },
 }
 function set:IsActive(context)
-	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 18852)
+   return (context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 18852)
 end
 function set:CanActivate(context)
-	return false
+   return false
 end
 function set:Activate(context)
 end
 function set:Deactivate(context)
-	return Player:SwapWeaponSet()
+   return Player:SwapWeaponSet()
 end
-SkillManager:AddSkillPalette( set )
-
-
+SkillManager:AddSkillPalette(set)
 
 local set = SkillManager:CreateSkillPalette('Common_ArrowCart')
 set.uid = "zCommon_ArrowCart_Level_2"
@@ -807,36 +803,37 @@ set.icon = "ArrowCart"
 set.iconurl = "https://render.guildwars2.com/file/B45865C5B4955BAD3098A54CE7FAF95CD6B3A828/575721.png"
 -- set.id = 18849
 set.skills_luacode = {
-	 [18849] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_1, 
-		 activationtime = 0.5, 
-		 icon = 'Fire Distant Volley',  
-	 },
-	 [18847] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_2, 
-		 activationtime = 0.5, 
-		 icon = 'Fire Reaping Arrows',  
-	 },
-	 [18845] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_3, 
-		 activationtime = 0.5, 
-		 icon = 'Fire Penetrating Sniper Arrows',  
-	 },
+   [18849] = {
+      slot = GW2.SKILLBARSLOT.Slot_1,
+      activationtime = 0.5,
+      icon = 'Fire Distant Volley',
+      stopsmovement = true
+   },
+   [18847] = {
+      slot = GW2.SKILLBARSLOT.Slot_2,
+      activationtime = 0.5,
+      icon = 'Fire Reaping Arrows',
+      stopsmovement = true
+   },
+   [18845] = {
+      slot = GW2.SKILLBARSLOT.Slot_3,
+      activationtime = 0.5,
+      icon = 'Fire Penetrating Sniper Arrows',
+      stopsmovement = true
+   },
 }
 function set:IsActive(context)
-	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 18849)
+   return (context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 18849)
 end
 function set:CanActivate(context)
-	return false
+   return false
 end
 function set:Activate(context)
 end
 function set:Deactivate(context)
-	return Player:SwapWeaponSet()
+   return Player:SwapWeaponSet()
 end
-SkillManager:AddSkillPalette( set )
-
-
+SkillManager:AddSkillPalette(set)
 
 local set = SkillManager:CreateSkillPalette('Common_ArrowCart')
 set.uid = "zCommon_ArrowCart_Level_3"
@@ -845,36 +842,37 @@ set.icon = "ArrowCart"
 set.iconurl = "https://render.guildwars2.com/file/B45865C5B4955BAD3098A54CE7FAF95CD6B3A828/575721.png"
 -- set.id = 18849
 set.skills_luacode = {
-	 [18849] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_1, 
-		 activationtime = 0.5, 
-		 icon = 'Fire Distant Volley',  
-	 },
-	 [18861] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_2, 
-		 activationtime = 0.5, 
-		 icon = 'Fire Staggering Arrows',  
-	 },
-	 [18859] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_3, 
-		 activationtime = 0.5, 
-		 icon = 'Fire Exsanguinating Arrows',  
-	 },
+   [18849] = {
+      slot = GW2.SKILLBARSLOT.Slot_1,
+      activationtime = 0.5,
+      icon = 'Fire Distant Volley',
+      stopsmovement = true
+   },
+   [18861] = {
+      slot = GW2.SKILLBARSLOT.Slot_2,
+      activationtime = 0.5,
+      icon = 'Fire Staggering Arrows',
+      stopsmovement = true
+   },
+   [18859] = {
+      slot = GW2.SKILLBARSLOT.Slot_3,
+      activationtime = 0.5,
+      icon = 'Fire Exsanguinating Arrows',
+      stopsmovement = true
+   },
 }
 function set:IsActive(context)
-	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 18849)
+   return (context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 18849)
 end
 function set:CanActivate(context)
-	return false
+   return false
 end
 function set:Activate(context)
 end
 function set:Deactivate(context)
-	return Player:SwapWeaponSet()
+   return Player:SwapWeaponSet()
 end
-SkillManager:AddSkillPalette( set )
-
-
+SkillManager:AddSkillPalette(set)
 
 local set = SkillManager:CreateSkillPalette('Common_ArrowCart')
 set.uid = "zCommon_ArrowCart_Level_4"
@@ -883,36 +881,37 @@ set.icon = "ArrowCart"
 set.iconurl = "https://render.guildwars2.com/file/B45865C5B4955BAD3098A54CE7FAF95CD6B3A828/575721.png"
 -- set.id = 18866
 set.skills_luacode = {
-	 [18866] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_1, 
-		 activationtime = 0.5, 
-		 icon = 'Fire Devastating Arrows',  
-	 },
-	 [18864] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_2, 
-		 activationtime = 0.5, 
-		 icon = 'Fire Suffering Arrows',  
-	 },
-	 [18868] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_3, 
-		 activationtime = 0.5, 
-		 icon = 'Fire Merciless Arrows',  
-	 },
+   [18866] = {
+      slot = GW2.SKILLBARSLOT.Slot_1,
+      activationtime = 0.5,
+      icon = 'Fire Devastating Arrows',
+      stopsmovement = true
+   },
+   [18864] = {
+      slot = GW2.SKILLBARSLOT.Slot_2,
+      activationtime = 0.5,
+      icon = 'Fire Suffering Arrows',
+      stopsmovement = true
+   },
+   [18868] = {
+      slot = GW2.SKILLBARSLOT.Slot_3,
+      activationtime = 0.5,
+      icon = 'Fire Merciless Arrows',
+      stopsmovement = true
+   },
 }
 function set:IsActive(context)
-	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 18866)
+   return (context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 18866)
 end
 function set:CanActivate(context)
-	return false
+   return false
 end
 function set:Activate(context)
 end
 function set:Deactivate(context)
-	return Player:SwapWeaponSet()
+   return Player:SwapWeaponSet()
 end
-SkillManager:AddSkillPalette( set )
-
-
+SkillManager:AddSkillPalette(set)
 
 local set = SkillManager:CreateSkillPalette('Common_ArrowCart')
 set.uid = "zCommon_ArrowCart_Level_5"
@@ -921,44 +920,49 @@ set.icon = "ArrowCart"
 set.iconurl = "https://render.guildwars2.com/file/B45865C5B4955BAD3098A54CE7FAF95CD6B3A828/575721.png"
 -- set.id = 18866
 set.skills_luacode = {
-	 [18866] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_1, 
-		 activationtime = 0.5, 
-		 icon = 'Fire Devastating Arrows',  
-	 },
-	 [18864] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_2, 
-		 activationtime = 0.5, 
-		 icon = 'Fire Suffering Arrows',  
-	 },
-	 [18868] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_3, 
-		 activationtime = 0.5, 
-		 icon = 'Fire Merciless Arrows',  
-	 },
-	 [18871] = { -- 1 skill, 2 id's on wiki, need feedback.
-		 slot = GW2.SKILLBARSLOT.Slot_4, 
-		 activationtime = 0.5, 
-		 icon = 'Toxic Unveiling Volley',  
-	 },
-	 [19632] = { -- 1 skill, 2 id's on wiki, need feedback.
-		 slot = GW2.SKILLBARSLOT.Slot_4, 
-		 activationtime = 0.5, 
-		 icon = 'Toxic Unveiling Volley',  
-	 },
+   [18866] = {
+      slot = GW2.SKILLBARSLOT.Slot_1,
+      activationtime = 0.5,
+      icon = 'Fire Devastating Arrows',
+      stopsmovement = true
+   },
+   [18864] = {
+      slot = GW2.SKILLBARSLOT.Slot_2,
+      activationtime = 0.5,
+      icon = 'Fire Suffering Arrows',
+      stopsmovement = true
+   },
+   [18868] = {
+      slot = GW2.SKILLBARSLOT.Slot_3,
+      activationtime = 0.5,
+      icon = 'Fire Merciless Arrows',
+      stopsmovement = true
+   },
+   [18871] = { -- 1 skill, 2 id's on wiki, need feedback.
+      slot = GW2.SKILLBARSLOT.Slot_4,
+      activationtime = 0.5,
+      icon = 'Toxic Unveiling Volley',
+      stopsmovement = true
+   },
+   [19632] = { -- 1 skill, 2 id's on wiki, need feedback.
+      slot = GW2.SKILLBARSLOT.Slot_4,
+      activationtime = 0.5,
+      icon = 'Toxic Unveiling Volley',
+      stopsmovement = true
+   },
 }
 function set:IsActive(context)
-	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4]~=nil  and (context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 18871 or context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 19632))
+   return (context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_4] ~= nil and (context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 18871 or context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 19632))
 end
 function set:CanActivate(context)
-	return false
+   return false
 end
 function set:Activate(context)
 end
 function set:Deactivate(context)
-	return Player:SwapWeaponSet()
+   return Player:SwapWeaponSet()
 end
-SkillManager:AddSkillPalette( set )
+SkillManager:AddSkillPalette(set)
 -- END Arrow Cart.
 
 
@@ -971,36 +975,37 @@ set.icon = "Ballista"
 set.iconurl = "https://render.guildwars2.com/file/A8976E2E0A69085CF1435E71CB805EBFC557FDA1/563938.png"
 -- set.id = 14621
 set.skills_luacode = {
-	 [14621] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_1, 
-		 activationtime = 0.5, 
-		 icon = 'Fire',  
-	 },
-	 [14656] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_2, 
-		 activationtime = 0.5, 
-		 icon = 'Fire Shattering Bolt',  
-	 },
-	 [14657] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_3, 
-		 activationtime = 0.5, 
-		 icon = 'Fire Reinforced Shot',  
-	 },
+   [14621] = {
+      slot = GW2.SKILLBARSLOT.Slot_1,
+      activationtime = 0.5,
+      icon = 'Fire',
+      stopsmovement = true
+   },
+   [14656] = {
+      slot = GW2.SKILLBARSLOT.Slot_2,
+      activationtime = 0.5,
+      icon = 'Fire Shattering Bolt',
+      stopsmovement = true
+   },
+   [14657] = {
+      slot = GW2.SKILLBARSLOT.Slot_3,
+      activationtime = 0.5,
+      icon = 'Fire Reinforced Shot',
+      stopsmovement = true
+   },
 }
 function set:IsActive(context)
-	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 14621)
+   return (context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 14621)
 end
 function set:CanActivate(context)
-	return false
+   return false
 end
 function set:Activate(context)
 end
 function set:Deactivate(context)
-	return Player:SwapWeaponSet()
+   return Player:SwapWeaponSet()
 end
-SkillManager:AddSkillPalette( set )
-
-
+SkillManager:AddSkillPalette(set)
 
 local set = SkillManager:CreateSkillPalette('Common_Ballista')
 set.uid = "zCommon_Ballista_Level_1"
@@ -1009,41 +1014,43 @@ set.icon = "Ballista"
 set.iconurl = "https://render.guildwars2.com/file/A8976E2E0A69085CF1435E71CB805EBFC557FDA1/563938.png"
 -- set.id = 14621
 set.skills_luacode = {
-	 [14621] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_1, 
-		 activationtime = 0.5, 
-		 icon = 'Fire',  
-	 },
-	 [14656] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_2, 
-		 activationtime = 0.5, 
-		 icon = 'Fire Shattering Bolt',  
-	 },
-	 [14657] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_3, 
-		 activationtime = 0.5, 
-		 icon = 'Fire Reinforced Shot',  
-	 },
-	 [17055] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_4, 
-		 activationtime = 0.5, 
-		 icon = 'Spread Shot',  
-	 },
+   [14621] = {
+      slot = GW2.SKILLBARSLOT.Slot_1,
+      activationtime = 0.5,
+      icon = 'Fire',
+      stopsmovement = true
+   },
+   [14656] = {
+      slot = GW2.SKILLBARSLOT.Slot_2,
+      activationtime = 0.5,
+      icon = 'Fire Shattering Bolt',
+      stopsmovement = true
+   },
+   [14657] = {
+      slot = GW2.SKILLBARSLOT.Slot_3,
+      activationtime = 0.5,
+      icon = 'Fire Reinforced Shot',
+      stopsmovement = true
+   },
+   [17055] = {
+      slot = GW2.SKILLBARSLOT.Slot_4,
+      activationtime = 0.5,
+      icon = 'Spread Shot',
+      stopsmovement = true
+   },
 }
 function set:IsActive(context)
-	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 17055)
+   return (context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_4] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_4].id == 17055)
 end
 function set:CanActivate(context)
-	return false
+   return false
 end
 function set:Activate(context)
 end
 function set:Deactivate(context)
-	return Player:SwapWeaponSet()
+   return Player:SwapWeaponSet()
 end
-SkillManager:AddSkillPalette( set )
-
-
+SkillManager:AddSkillPalette(set)
 
 local set = SkillManager:CreateSkillPalette('Common_Ballista')
 set.uid = "zCommon_Ballista_Level_2"
@@ -1052,41 +1059,43 @@ set.icon = "Ballista"
 set.iconurl = "https://render.guildwars2.com/file/A8976E2E0A69085CF1435E71CB805EBFC557FDA1/563938.png"
 -- set.id = 18565
 set.skills_luacode = {
-	 [18565] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_1, 
-		 activationtime = 0.5, 
-		 icon = 'Improved Ballista Shot',  
-	 },
-	 [18567] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_2, 
-		 activationtime = 0.5, 
-		 icon = 'Improved Shattering Bolt',  
-	 },
-	 [18563] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_3, 
-		 activationtime = 0.5, 
-		 icon = 'Improved Reinforced Shot',  
-	 },
-	 [18561] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_4, 
-		 activationtime = 0.5, 
-		 icon = 'Improved Spread Shot',  
-	 },
+   [18565] = {
+      slot = GW2.SKILLBARSLOT.Slot_1,
+      activationtime = 0.5,
+      icon = 'Improved Ballista Shot',
+      stopsmovement = true
+   },
+   [18567] = {
+      slot = GW2.SKILLBARSLOT.Slot_2,
+      activationtime = 0.5,
+      icon = 'Improved Shattering Bolt',
+      stopsmovement = true
+   },
+   [18563] = {
+      slot = GW2.SKILLBARSLOT.Slot_3,
+      activationtime = 0.5,
+      icon = 'Improved Reinforced Shot',
+      stopsmovement = true
+   },
+   [18561] = {
+      slot = GW2.SKILLBARSLOT.Slot_4,
+      activationtime = 0.5,
+      icon = 'Improved Spread Shot',
+      stopsmovement = true
+   },
 }
 function set:IsActive(context)
-	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 18565)
+   return (context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 18565)
 end
 function set:CanActivate(context)
-	return false
+   return false
 end
 function set:Activate(context)
 end
 function set:Deactivate(context)
-	return Player:SwapWeaponSet()
+   return Player:SwapWeaponSet()
 end
-SkillManager:AddSkillPalette( set )
-
-
+SkillManager:AddSkillPalette(set)
 
 local set = SkillManager:CreateSkillPalette('Common_Ballista')
 set.uid = "zCommon_Ballista_Level_3"
@@ -1095,41 +1104,43 @@ set.icon = "Ballista"
 set.iconurl = "https://render.guildwars2.com/file/A8976E2E0A69085CF1435E71CB805EBFC557FDA1/563938.png"
 -- set.id = 18569
 set.skills_luacode = {
-	 [18569] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_1, 
-		 activationtime = 0.5, 
-		 icon = 'Swift Bolt',  
-	 },
-	 [18567] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_2, 
-		 activationtime = 0.5, 
-		 icon = 'Improved Shattering Bolt',  
-	 },
-	 [18563] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_3, 
-		 activationtime = 0.5, 
-		 icon = 'Improved Reinforced Shot',  
-	 },
-	 [18561] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_4, 
-		 activationtime = 0.5, 
-		 icon = 'Improved Spread Shot',  
-	 },
+   [18569] = {
+      slot = GW2.SKILLBARSLOT.Slot_1,
+      activationtime = 0.5,
+      icon = 'Swift Bolt',
+      stopsmovement = true
+   },
+   [18567] = {
+      slot = GW2.SKILLBARSLOT.Slot_2,
+      activationtime = 0.5,
+      icon = 'Improved Shattering Bolt',
+      stopsmovement = true
+   },
+   [18563] = {
+      slot = GW2.SKILLBARSLOT.Slot_3,
+      activationtime = 0.5,
+      icon = 'Improved Reinforced Shot',
+      stopsmovement = true
+   },
+   [18561] = {
+      slot = GW2.SKILLBARSLOT.Slot_4,
+      activationtime = 0.5,
+      icon = 'Improved Spread Shot',
+      stopsmovement = true
+   },
 }
 function set:IsActive(context)
-	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 18569)
+   return (context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 18569)
 end
 function set:CanActivate(context)
-	return false
+   return false
 end
 function set:Activate(context)
 end
 function set:Deactivate(context)
-	return Player:SwapWeaponSet()
+   return Player:SwapWeaponSet()
 end
-SkillManager:AddSkillPalette( set )
-
-
+SkillManager:AddSkillPalette(set)
 
 local set = SkillManager:CreateSkillPalette('Common_Ballista')
 set.uid = "zCommon_Ballista_Level_4"
@@ -1138,41 +1149,43 @@ set.icon = "Ballista"
 set.iconurl = "https://render.guildwars2.com/file/A8976E2E0A69085CF1435E71CB805EBFC557FDA1/563938.png"
 -- set.id = 18573
 set.skills_luacode = {
-	 [18573] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_1, 
-		 activationtime = 0.5, 
-		 icon = 'Sniper Bolt',  
-	 },
-	 [18577] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_2, 
-		 activationtime = 0.5, 
-		 icon = 'Greater Shattering Bolt',  
-	 },
-	 [18575] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_3, 
-		 activationtime = 0.5, 
-		 icon = 'Greater Reinforced Shot',  
-	 },
-	 [18571] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_4, 
-		 activationtime = 0.5, 
-		 icon = 'Greater Spread Shot',  
-	 },
+   [18573] = {
+      slot = GW2.SKILLBARSLOT.Slot_1,
+      activationtime = 0.5,
+      icon = 'Sniper Bolt',
+      stopsmovement = true
+   },
+   [18577] = {
+      slot = GW2.SKILLBARSLOT.Slot_2,
+      activationtime = 0.5,
+      icon = 'Greater Shattering Bolt',
+      stopsmovement = true
+   },
+   [18575] = {
+      slot = GW2.SKILLBARSLOT.Slot_3,
+      activationtime = 0.5,
+      icon = 'Greater Reinforced Shot',
+      stopsmovement = true
+   },
+   [18571] = {
+      slot = GW2.SKILLBARSLOT.Slot_4,
+      activationtime = 0.5,
+      icon = 'Greater Spread Shot',
+      stopsmovement = true
+   },
 }
 function set:IsActive(context)
-	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 18573)
+   return (context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 18573)
 end
 function set:CanActivate(context)
-	return false
+   return false
 end
 function set:Activate(context)
 end
 function set:Deactivate(context)
-	return Player:SwapWeaponSet()
+   return Player:SwapWeaponSet()
 end
-SkillManager:AddSkillPalette( set )
-
-
+SkillManager:AddSkillPalette(set)
 
 local set = SkillManager:CreateSkillPalette('Common_Ballista')
 set.uid = "zCommon_Ballista_Level_5"
@@ -1181,39 +1194,43 @@ set.icon = "Ballista"
 set.iconurl = "https://render.guildwars2.com/file/A8976E2E0A69085CF1435E71CB805EBFC557FDA1/563938.png"
 -- set.id = 18579
 set.skills_luacode = {
-	 [18573] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_1, 
-		 activationtime = 0.5, 
-		 icon = 'Sniper Bolt',  
-	 },
-	 [18579] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_2, 
-		 activationtime = 0.5, 
-		 icon = 'Devastating Shattering Shot',  
-	 },
-	 [18575] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_3, 
-		 activationtime = 0.5, 
-		 icon = 'Greater Reinforced Shot',  
-	 },
-	 [18571] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_4, 
-		 activationtime = 0.5, 
-		 icon = 'Greater Spread Shot',  
-	 },
+   [18573] = {
+      slot = GW2.SKILLBARSLOT.Slot_1,
+      activationtime = 0.5,
+      icon = 'Sniper Bolt',
+      stopsmovement = true
+   },
+   [18579] = {
+      slot = GW2.SKILLBARSLOT.Slot_2,
+      activationtime = 0.5,
+      icon = 'Devastating Shattering Shot',
+      stopsmovement = true
+   },
+   [18575] = {
+      slot = GW2.SKILLBARSLOT.Slot_3,
+      activationtime = 0.5,
+      icon = 'Greater Reinforced Shot',
+      stopsmovement = true
+   },
+   [18571] = {
+      slot = GW2.SKILLBARSLOT.Slot_4,
+      activationtime = 0.5,
+      icon = 'Greater Spread Shot',
+      stopsmovement = true
+   },
 }
 function set:IsActive(context)
-	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 18579)
+   return (context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_2] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 18579)
 end
 function set:CanActivate(context)
-	return false
+   return false
 end
 function set:Activate(context)
 end
 function set:Deactivate(context)
-	return Player:SwapWeaponSet()
+   return Player:SwapWeaponSet()
 end
-SkillManager:AddSkillPalette( set )
+SkillManager:AddSkillPalette(set)
 -- END Ballista.
 
 
@@ -1226,36 +1243,37 @@ set.icon = "Cannon"
 set.iconurl = "https://render.guildwars2.com/file/9E9ACBCE363F1BBA0F3B7DA9B51CDE1564C03429/563937.png"
 -- set.id = 14625
 set.skills_luacode = {
-	 [14625] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_1, 
-		 activationtime = 0.5, 
-		 icon = 'Fire',  
-	 },
-	 [14660] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_2, 
-		 activationtime = 0.5, 
-		 icon = 'Fire Grapeshot',  
-	 },
-	 [14661] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_3, 
-		 activationtime = 0.5, 
-		 icon = 'Ice Shot',  
-	 },
+   [14625] = {
+      slot = GW2.SKILLBARSLOT.Slot_1,
+      activationtime = 0.5,
+      icon = 'Fire',
+      stopsmovement = true
+   },
+   [14660] = {
+      slot = GW2.SKILLBARSLOT.Slot_2,
+      activationtime = 0.5,
+      icon = 'Fire Grapeshot',
+      stopsmovement = true
+   },
+   [14661] = {
+      slot = GW2.SKILLBARSLOT.Slot_3,
+      activationtime = 0.5,
+      icon = 'Ice Shot',
+      stopsmovement = true
+   },
 }
 function set:IsActive(context)
-	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 14625)
+   return (context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 14625)
 end
 function set:CanActivate(context)
-	return false
+   return false
 end
 function set:Activate(context)
 end
 function set:Deactivate(context)
-	return Player:SwapWeaponSet()
+   return Player:SwapWeaponSet()
 end
-SkillManager:AddSkillPalette( set )
-
-
+SkillManager:AddSkillPalette(set)
 
 local set = SkillManager:CreateSkillPalette('Common_Cannon')
 set.uid = "zCommon_Cannon_Level_1"
@@ -1264,36 +1282,37 @@ set.icon = "Cannon"
 set.iconurl = "https://render.guildwars2.com/file/9E9ACBCE363F1BBA0F3B7DA9B51CDE1564C03429/563937.png"
 -- set.id = 18525
 set.skills_luacode = {
-	 [18525] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_1, 
-		 activationtime = 0.5, 
-		 icon = 'Improved Shot',  
-	 },
-	 [14660] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_2, 
-		 activationtime = 0.5, 
-		 icon = 'Fire Grapeshot',  
-	 },
-	 [14661] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_3, 
-		 activationtime = 0.5, 
-		 icon = 'Ice Shot',  
-	 },
+   [18525] = {
+      slot = GW2.SKILLBARSLOT.Slot_1,
+      activationtime = 0.5,
+      icon = 'Improved Shot',
+      stopsmovement = true
+   },
+   [14660] = {
+      slot = GW2.SKILLBARSLOT.Slot_2,
+      activationtime = 0.5,
+      icon = 'Fire Grapeshot',
+      stopsmovement = true
+   },
+   [14661] = {
+      slot = GW2.SKILLBARSLOT.Slot_3,
+      activationtime = 0.5,
+      icon = 'Ice Shot',
+      stopsmovement = true
+   },
 }
 function set:IsActive(context)
-	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 18525)
+   return (context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 18525)
 end
 function set:CanActivate(context)
-	return false
+   return false
 end
 function set:Activate(context)
 end
 function set:Deactivate(context)
-	return Player:SwapWeaponSet()
+   return Player:SwapWeaponSet()
 end
-SkillManager:AddSkillPalette( set )
-
-
+SkillManager:AddSkillPalette(set)
 
 local set = SkillManager:CreateSkillPalette('Common_Cannon')
 set.uid = "zCommon_Cannon_Level_2"
@@ -1302,36 +1321,37 @@ set.icon = "Cannon"
 set.iconurl = "https://render.guildwars2.com/file/9E9ACBCE363F1BBA0F3B7DA9B51CDE1564C03429/563937.png"
 -- set.id = 18536
 set.skills_luacode = {
-	 [18536] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_1, 
-		 activationtime = 0.5, 
-		 icon = 'Disheartening Shot',  
-	 },
-	 [18528] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_2, 
-		 activationtime = 0.5, 
-		 icon = 'Improved Grapeshot',  
-	 },
-	 [18538] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_3, 
-		 activationtime = 0.5, 
-		 icon = 'Improved Ice Shot',  
-	 },
+   [18536] = {
+      slot = GW2.SKILLBARSLOT.Slot_1,
+      activationtime = 0.5,
+      icon = 'Disheartening Shot',
+      stopsmovement = true
+   },
+   [18528] = {
+      slot = GW2.SKILLBARSLOT.Slot_2,
+      activationtime = 0.5,
+      icon = 'Improved Grapeshot',
+      stopsmovement = true
+   },
+   [18538] = {
+      slot = GW2.SKILLBARSLOT.Slot_3,
+      activationtime = 0.5,
+      icon = 'Improved Ice Shot',
+      stopsmovement = true
+   },
 }
 function set:IsActive(context)
-	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 18536)
+   return (context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 18536)
 end
 function set:CanActivate(context)
-	return false
+   return false
 end
 function set:Activate(context)
 end
 function set:Deactivate(context)
-	return Player:SwapWeaponSet()
+   return Player:SwapWeaponSet()
 end
-SkillManager:AddSkillPalette( set )
-
-
+SkillManager:AddSkillPalette(set)
 
 local set = SkillManager:CreateSkillPalette('Common_Cannon')
 set.uid = "zCommon_Cannon_Level_3"
@@ -1340,36 +1360,37 @@ set.icon = "Cannon"
 set.iconurl = "https://render.guildwars2.com/file/9E9ACBCE363F1BBA0F3B7DA9B51CDE1564C03429/563937.png"
 -- set.id = 18536
 set.skills_luacode = {
-	 [18536] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_1, 
-		 activationtime = 0.5, 
-		 icon = 'Disheartening Shot',  
-	 },
-	 [18532] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_2, 
-		 activationtime = 0.5, 
-		 icon = 'Piercing Grapeshot',  
-	 },
-	 [18538] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_3, 
-		 activationtime = 0.5, 
-		 icon = 'Improved Ice Shot',  
-	 },
+   [18536] = {
+      slot = GW2.SKILLBARSLOT.Slot_1,
+      activationtime = 0.5,
+      icon = 'Disheartening Shot',
+      stopsmovement = true
+   },
+   [18532] = {
+      slot = GW2.SKILLBARSLOT.Slot_2,
+      activationtime = 0.5,
+      icon = 'Piercing Grapeshot',
+      stopsmovement = true
+   },
+   [18538] = {
+      slot = GW2.SKILLBARSLOT.Slot_3,
+      activationtime = 0.5,
+      icon = 'Improved Ice Shot',
+      stopsmovement = true
+   },
 }
 function set:IsActive(context)
-	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 18532)
+   return (context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_2] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 18532)
 end
 function set:CanActivate(context)
-	return false
+   return false
 end
 function set:Activate(context)
 end
 function set:Deactivate(context)
-	return Player:SwapWeaponSet()
+   return Player:SwapWeaponSet()
 end
-SkillManager:AddSkillPalette( set )
-
-
+SkillManager:AddSkillPalette(set)
 
 local set = SkillManager:CreateSkillPalette('Common_Cannon')
 set.uid = "zCommon_Cannon_Level_4"
@@ -1378,36 +1399,37 @@ set.icon = "Cannon"
 set.iconurl = "https://render.guildwars2.com/file/9E9ACBCE363F1BBA0F3B7DA9B51CDE1564C03429/563937.png"
 -- set.id = 18534
 set.skills_luacode = {
-	 [18534] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_1, 
-		 activationtime = 0.5, 
-		 icon = 'Devastating Shot',  
-	 },
-	 [18530] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_2, 
-		 activationtime = 0.5, 
-		 icon = 'Shredding Grapeshot',  
-	 },
-	 [18540] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_3, 
-		 activationtime = 0.5, 
-		 icon = 'Debilitating Ice Shot',  
-	 },
+   [18534] = {
+      slot = GW2.SKILLBARSLOT.Slot_1,
+      activationtime = 0.5,
+      icon = 'Devastating Shot',
+      stopsmovement = true
+   },
+   [18530] = {
+      slot = GW2.SKILLBARSLOT.Slot_2,
+      activationtime = 0.5,
+      icon = 'Shredding Grapeshot',
+      stopsmovement = true
+   },
+   [18540] = {
+      slot = GW2.SKILLBARSLOT.Slot_3,
+      activationtime = 0.5,
+      icon = 'Debilitating Ice Shot',
+      stopsmovement = true
+   },
 }
 function set:IsActive(context)
-	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 18534)
+   return (context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 18534)
 end
 function set:CanActivate(context)
-	return false
+   return false
 end
 function set:Activate(context)
 end
 function set:Deactivate(context)
-	return Player:SwapWeaponSet()
+   return Player:SwapWeaponSet()
 end
-SkillManager:AddSkillPalette( set )
-
-
+SkillManager:AddSkillPalette(set)
 
 local set = SkillManager:CreateSkillPalette('Common_Cannon')
 set.uid = "zCommon_Cannon_Level_5"
@@ -1416,34 +1438,37 @@ set.icon = "Cannon"
 set.iconurl = "https://render.guildwars2.com/file/9E9ACBCE363F1BBA0F3B7DA9B51CDE1564C03429/563937.png"
 -- set.id = 18534
 set.skills_luacode = {
-	 [18534] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_1, 
-		 activationtime = 0.5, 
-		 icon = 'Devastating Shot',  
-	 },
-	 [18530] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_2, 
-		 activationtime = 0.5, 
-		 icon = 'Shredding Grapeshot',  
-	 },
-	 [18542] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_3, 
-		 activationtime = 0.5, 
-		 icon = 'Bone-shattering Ice Shot',  
-	 },
+   [18534] = {
+      slot = GW2.SKILLBARSLOT.Slot_1,
+      activationtime = 0.5,
+      icon = 'Devastating Shot',
+      stopsmovement = true
+   },
+   [18530] = {
+      slot = GW2.SKILLBARSLOT.Slot_2,
+      activationtime = 0.5,
+      icon = 'Shredding Grapeshot',
+      stopsmovement = true
+   },
+   [18542] = {
+      slot = GW2.SKILLBARSLOT.Slot_3,
+      activationtime = 0.5,
+      icon = 'Bone-shattering Ice Shot',
+      stopsmovement = true
+   },
 }
 function set:IsActive(context)
-	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1]~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 18534)
+   return (context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 18534)
 end
 function set:CanActivate(context)
-	return false
+   return false
 end
 function set:Activate(context)
 end
 function set:Deactivate(context)
-	return Player:SwapWeaponSet()
+   return Player:SwapWeaponSet()
 end
-SkillManager:AddSkillPalette( set )
+SkillManager:AddSkillPalette(set)
 -- END Cannon.
 
 
@@ -1453,234 +1478,234 @@ local set = SkillManager:CreateSkillPalette('Special_action_skills')
 set.uid = "ZSpecial_action_skills"
 set.profession = 0
 set.icon = "Special_action_skills"
--- set.id = 
+-- set.id =
 set.skills_luacode = {
-	-- Raids.
-	 [37924] = { -- Only while moving to first encounter of Bastion of the Penitent.
-		 slot = GW2.SKILLBARSLOT.Slot_18, 
-		 activationtime = 1.25, 
-		 icon = 'Celestial Dash',  
-	 },
-	 [38234] = { -- Only after the Mursaat Overseer.
-		 slot = GW2.SKILLBARSLOT.Slot_18, 
-		 activationtime = 0, 
-		 icon = 'Claim',  
-	 },
-	 [37904] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_18, 
-		 activationtime = 0, 
-		 icon = 'Dispel',  
-	 },
-	 [34903] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_18, 
-		 activationtime = 0, 
-		 icon = 'Over Here!',  
-	 },
-	 [35061] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_18, 
-		 activationtime = 0, 
-		 icon = 'Intervention',  
-	 },
-	 [38022] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_18, 
-		 activationtime = 0, 
-		 icon = 'Protect',  
-	 },
-	 [34599] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_18, 
-		 activationtime = 0, 
-		 icon = 'Purge',  
-	 },
-	 [34495] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_18, 
-		 activationtime = 0, 
-		 icon = 'Purge',  
-	 },
-	 [31501] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_18, 
-		 activationtime = 0, 
-		 icon = 'Rebel',  
-	 },
-	 [31488] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_18, 
-		 activationtime = 0, 
-		 icon = 'Sapper Bomb',  
-	 },
-	-- END Raids.
-	
-	-- Fractals of the Mists
-	 [35238] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_18, 
-		 activationtime = 0, 
-		 icon = 'Flickering Flame',  
-	 },
-	 [37704] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_18, 
-		 activationtime = 0, 
-		 icon = 'Hex Shield',  
-	 },
-	 [39157] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_18, 
-		 activationtime = 0, 
-		 icon = 'Hypernova Launch',  
-	 },
-	 [16259] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_18, 
-		 activationtime = 0, 
-		 icon = 'Ignite',  
-	 },
-	 [38961] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_18, 
-		 activationtime = 0, 
-		 icon = 'Nova Dash',  
-	 },
-	 [39843] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_18, 
-		 activationtime = 0, 
-		 icon = 'Nova Launch',  
-	 },
-	 [39193] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_18, 
-		 activationtime = 0, 
-		 icon = 'Nova Launch',  
-	 },
-	-- END Fractals of the Mists
-	
-	-- Story.
-	 [38988] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_18, 
-		 activationtime = 0, 
-		 icon = 'Minor Breakthrough',  
-	 },
-	 [38030] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_18, 
-		 activationtime = 0, 
-		 icon = 'Communicator Ping',  
-	 },
-	 [36886] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_18, 
-		 activationtime = 0, 
-		 icon = 'Coordinated Attack',  
-	 },
-	 [39165] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_18, 
-		 activationtime = 0, 
-		 icon = 'Triage',  
-	 },
-	 [36464] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_18, 
-		 activationtime = 0, 
-		 icon = 'Spectral Smite',  
-	 },
-	 [38642] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_18, 
-		 activationtime = 0, 
-		 icon = 'Scan',  
-	 },
-	-- END Story.
-	
-	-- Player versus Player.
-	 [36256] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_18, 
-		 activationtime = 0, 
-		 icon = 'Rally the Crowd',  
-	 },
-	-- END Player versus Player.
-	
-	-- Central Tyria.
-	 [35263] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_18, 
-		 activationtime = 0, 
-		 icon = 'Return to Sender',  
-	 },
-	 [36116] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_18, 
-		 activationtime = 0, 
-		 icon = 'Sensor Tracking',  
-	 },
-	-- END Central Tyria.
-	
-	-- Heart of Maguuma.
-	 [39461] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_18, 
-		 activationtime = 0, 
-		 icon = 'Return to Checkpoint',  
-	 },
-	 [38677] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_18, 
-		 activationtime = 0, 
-		 icon = 'Return to Checkpoint',  
-	 },
-	 [38608] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_18, 
-		 activationtime = 0, 
-		 icon = 'Scan',  
-	 },
-	 [35576] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_18, 
-		 activationtime = 0, 
-		 icon = 'Counter Magic',  
-	 },
-	 [39041] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_18, 
-		 activationtime = 0, 
-		 icon = 'Dirge of Balthazar',  
-	 },
-	 [39248] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_18, 
-		 activationtime = 0, 
-		 icon = 'Dirge of Dwayna',  
-	 },
-	 [39172] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_18, 
-		 activationtime = 0, 
-		 icon = 'Dirge of Grenth',  
-	 },
-	 [39757] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_18, 
-		 activationtime = 0, 
-		 icon = 'Dirge of Lyssa',  
-	 },
-	 [38936] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_18, 
-		 activationtime = 0, 
-		 icon = 'Dirge of Melandru',  
-	 },
-	-- END Heart of Maguuma.
-	
-	-- Crystal Desert.
-	 [42796] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_18, 
-		 activationtime = 0, 
-		 icon = 'Threaten',  
-	 },
-	 -- [] = { -- TODO: no wiki or api data on skill, no id.
-		 -- slot = GW2.SKILLBARSLOT.Slot_18, 
-		 -- activationtime = 0, 
-		 -- icon = 'Warp',  
-	 -- },
-	-- END Crystal Desert.
-	
-	-- Other.
-	 [36772] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_18, 
-		 activationtime = 0, 
-		 icon = 'Feline Communication',  
-	 },
-	-- END Other.
+   -- Raids.
+   [37924] = { -- Only while moving to first encounter of Bastion of the Penitent.
+      slot = GW2.SKILLBARSLOT.Slot_18,
+      activationtime = 1.25,
+      icon = 'Celestial Dash',
+   },
+   [38234] = { -- Only after the Mursaat Overseer.
+      slot = GW2.SKILLBARSLOT.Slot_18,
+      activationtime = 0,
+      icon = 'Claim',
+   },
+   [37904] = {
+      slot = GW2.SKILLBARSLOT.Slot_18,
+      activationtime = 0,
+      icon = 'Dispel',
+   },
+   [34903] = {
+      slot = GW2.SKILLBARSLOT.Slot_18,
+      activationtime = 0,
+      icon = 'Over Here!',
+   },
+   [35061] = {
+      slot = GW2.SKILLBARSLOT.Slot_18,
+      activationtime = 0,
+      icon = 'Intervention',
+   },
+   [38022] = {
+      slot = GW2.SKILLBARSLOT.Slot_18,
+      activationtime = 0,
+      icon = 'Protect',
+   },
+   [34599] = {
+      slot = GW2.SKILLBARSLOT.Slot_18,
+      activationtime = 0,
+      icon = 'Purge',
+   },
+   [34495] = {
+      slot = GW2.SKILLBARSLOT.Slot_18,
+      activationtime = 0,
+      icon = 'Purge',
+   },
+   [31501] = {
+      slot = GW2.SKILLBARSLOT.Slot_18,
+      activationtime = 0,
+      icon = 'Rebel',
+   },
+   [31488] = {
+      slot = GW2.SKILLBARSLOT.Slot_18,
+      activationtime = 0,
+      icon = 'Sapper Bomb',
+   },
+   -- END Raids.
+
+   -- Fractals of the Mists
+   [35238] = {
+      slot = GW2.SKILLBARSLOT.Slot_18,
+      activationtime = 0,
+      icon = 'Flickering Flame',
+   },
+   [37704] = {
+      slot = GW2.SKILLBARSLOT.Slot_18,
+      activationtime = 0,
+      icon = 'Hex Shield',
+   },
+   [39157] = {
+      slot = GW2.SKILLBARSLOT.Slot_18,
+      activationtime = 0,
+      icon = 'Hypernova Launch',
+   },
+   [16259] = {
+      slot = GW2.SKILLBARSLOT.Slot_18,
+      activationtime = 0,
+      icon = 'Ignite',
+   },
+   [38961] = {
+      slot = GW2.SKILLBARSLOT.Slot_18,
+      activationtime = 0,
+      icon = 'Nova Dash',
+   },
+   [39843] = {
+      slot = GW2.SKILLBARSLOT.Slot_18,
+      activationtime = 0,
+      icon = 'Nova Launch',
+   },
+   [39193] = {
+      slot = GW2.SKILLBARSLOT.Slot_18,
+      activationtime = 0,
+      icon = 'Nova Launch',
+   },
+   -- END Fractals of the Mists
+
+   -- Story.
+   [38988] = {
+      slot = GW2.SKILLBARSLOT.Slot_18,
+      activationtime = 0,
+      icon = 'Minor Breakthrough',
+   },
+   [38030] = {
+      slot = GW2.SKILLBARSLOT.Slot_18,
+      activationtime = 0,
+      icon = 'Communicator Ping',
+   },
+   [36886] = {
+      slot = GW2.SKILLBARSLOT.Slot_18,
+      activationtime = 0,
+      icon = 'Coordinated Attack',
+   },
+   [39165] = {
+      slot = GW2.SKILLBARSLOT.Slot_18,
+      activationtime = 0,
+      icon = 'Triage',
+   },
+   [36464] = {
+      slot = GW2.SKILLBARSLOT.Slot_18,
+      activationtime = 0,
+      icon = 'Spectral Smite',
+   },
+   [38642] = {
+      slot = GW2.SKILLBARSLOT.Slot_18,
+      activationtime = 0,
+      icon = 'Scan',
+   },
+   -- END Story.
+
+   -- Player versus Player.
+   [36548] = {
+      slot = GW2.SKILLBARSLOT.Slot_18,
+      activationtime = 0,
+      icon = 'Rally the Crowd',
+   },
+   -- END Player versus Player.
+
+   -- Central Tyria.
+   [35263] = {
+      slot = GW2.SKILLBARSLOT.Slot_18,
+      activationtime = 0,
+      icon = 'Return to Sender',
+   },
+   [36116] = {
+      slot = GW2.SKILLBARSLOT.Slot_18,
+      activationtime = 0,
+      icon = 'Sensor Tracking',
+   },
+   -- END Central Tyria.
+
+   -- Heart of Maguuma.
+   [39461] = {
+      slot = GW2.SKILLBARSLOT.Slot_18,
+      activationtime = 0,
+      icon = 'Return to Checkpoint',
+   },
+   [38677] = {
+      slot = GW2.SKILLBARSLOT.Slot_18,
+      activationtime = 0,
+      icon = 'Return to Checkpoint',
+   },
+   [38608] = {
+      slot = GW2.SKILLBARSLOT.Slot_18,
+      activationtime = 0,
+      icon = 'Scan',
+   },
+   [35576] = {
+      slot = GW2.SKILLBARSLOT.Slot_18,
+      activationtime = 0,
+      icon = 'Counter Magic',
+   },
+   [39041] = {
+      slot = GW2.SKILLBARSLOT.Slot_18,
+      activationtime = 0,
+      icon = 'Dirge of Balthazar',
+   },
+   [39248] = {
+      slot = GW2.SKILLBARSLOT.Slot_18,
+      activationtime = 0,
+      icon = 'Dirge of Dwayna',
+   },
+   [39172] = {
+      slot = GW2.SKILLBARSLOT.Slot_18,
+      activationtime = 0,
+      icon = 'Dirge of Grenth',
+   },
+   [39757] = {
+      slot = GW2.SKILLBARSLOT.Slot_18,
+      activationtime = 0,
+      icon = 'Dirge of Lyssa',
+   },
+   [38936] = {
+      slot = GW2.SKILLBARSLOT.Slot_18,
+      activationtime = 0,
+      icon = 'Dirge of Melandru',
+   },
+   -- END Heart of Maguuma.
+
+   -- Crystal Desert.
+   [42796] = {
+      slot = GW2.SKILLBARSLOT.Slot_18,
+      activationtime = 0,
+      icon = 'Threaten',
+   },
+   -- [] = { -- TODO: no wiki or api data on skill, no id.
+   -- slot = GW2.SKILLBARSLOT.Slot_18,
+   -- activationtime = 0,
+   -- icon = 'Warp',
+   -- },
+   -- END Crystal Desert.
+
+   -- Other.
+   [36772] = {
+      slot = GW2.SKILLBARSLOT.Slot_18,
+      activationtime = 0,
+      icon = 'Feline Communication',
+   },
+   -- END Other.
 }
 function set:IsActive(context)
-	return true
+   return true
 end
 function set:CanActivate(context)
-	return false
+   return false
 end
 function set:Activate(context)
 end
 function set:Deactivate(context)
-	return Player:SwapWeaponSet()
+   return Player:SwapWeaponSet()
 end
-SkillManager:AddSkillPalette( set )
+SkillManager:AddSkillPalette(set)
 -- END special action skills.
 
 
@@ -1691,32 +1716,32 @@ set.uid = "Z1-Dodge_skills"
 set.profession = 0
 set.icon = "Dodge_skills"
 set.iconurl = "https://wiki.guildwars2.com/images/b/b2/Dodge.png"
--- set.id = 
+-- set.id =
 set.skills_luacode = {
-	 [10] = {
-		 slot = 555, 
-		 activationtime = 0, 
-		 icon = 'Dodge', 
-		 iconurl = "https://wiki.guildwars2.com/images/b/b2/Dodge.png"
-	 },
-	 -- [11] = { -- TODO: add dodge-roll skill? (make sure it all works first.)
-		 -- slot = 555, 
-		 -- activationtime = 0, 
-		 -- icon = 'Dodge-Roll', 
-	 -- },
+   [10] = {
+      slot = 555,
+      activationtime = 0,
+      icon = 'Dodge',
+      iconurl = "https://wiki.guildwars2.com/images/b/b2/Dodge.png"
+   },
+   -- [11] = { -- TODO: add dodge-roll skill? (make sure it all works first.)
+   -- slot = 555,
+   -- activationtime = 0,
+   -- icon = 'Dodge-Roll',
+   -- },
 }
 function set:IsActive(context)
-	return context.player.alive and context.player.endurance >= 50 and (context.player.movementstate ~= GW2.MOVEMENTSTATE.AboveWaterMoving or context.player.movementstate ~= GW2.MOVEMENTSTATE.AboveWaterNotMoving or context.player.movementstate ~= GW2.MOVEMENTSTATE.Falling or context.player.movementstate ~= GW2.MOVEMENTSTATE.Jumping)
+   return context.player.alive and context.player.endurance >= 50 and (context.player.movementstate ~= GW2.MOVEMENTSTATE.AboveWaterMoving or context.player.movementstate ~= GW2.MOVEMENTSTATE.AboveWaterNotMoving or context.player.movementstate ~= GW2.MOVEMENTSTATE.Falling or context.player.movementstate ~= GW2.MOVEMENTSTATE.Jumping)
 end
 function set:CanActivate(context)
-	return false
+   return false
 end
 function set:Activate(context)
 end
 function set:Deactivate(context)
-	return false
+   return false
 end
-SkillManager:AddSkillPalette( set )
+SkillManager:AddSkillPalette(set)
 -- END Dodge Skill.
 
 
@@ -1727,24 +1752,826 @@ set.uid = "Z1-Swap_Skills"
 set.profession = 0
 set.icon = "Swap_Skills"
 -- set.iconurl = ""
--- set.id = 
+-- set.id =
 set.skills_luacode = {
-	 [20] = {
-		 slot = 555, 
-		 activationtime = 0, 
-		 icon = 'Swap-Weapon',  
-	 },
+   [20] = {
+      slot = 555,
+      activationtime = 0,
+      icon = 'Swap-Weapon',
+   },
 }
 function set:IsActive(context)
-	return context.player.alive and context.player.canswapweaponset
+   return context.player.alive and context.player.canswapweaponset
 end
 function set:CanActivate(context)
-	return false
+   return false
 end
 function set:Activate(context)
 end
 function set:Deactivate(context)
-	return false
+   return false
 end
-SkillManager:AddSkillPalette( set )
+SkillManager:AddSkillPalette(set)
 -- END Swap Skill.
+
+-- zPvE_Seanans_Bandit_Disguise Skill.
+local set = SkillManager:CreateSkillPalette('zPvE_Seanans_Bandit_Disguise')
+set.uid = "zPvE_Seanans_Bandit_Disguise"
+set.profession = 0
+set.icon = "frenkeyLogo"
+-- set.iconurl = ""
+-- set.id =
+set.skills_luacode = {
+   [8801] = {
+      slot = GW2.SKILLBARSLOT.Slot_1,
+      activationtime = 0.5,
+      icon = 'Stab',
+   },
+   [8800] = {
+      slot = GW2.SKILLBARSLOT.Slot_2,
+      activationtime = 0.5,
+      icon = 'Backstab',
+   },
+   [8803] = {
+      slot = GW2.SKILLBARSLOT.Slot_3,
+      activationtime = 1.25,
+      icon = 'Tactical Strike',
+   },
+   [8799] = {
+      slot = GW2.SKILLBARSLOT.Slot_4,
+      activationtime = 0.5,
+      icon = 'Baneberry Poison',
+   },
+
+}
+function set:IsActive(context)
+   if context.skillbar ~= nil then
+      if table.valid(context.skillbar[GW2.SKILLBARSLOT.Slot_1]) then
+         if context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 8801 then
+            return true
+         end
+      end
+   end
+   return false
+end
+function set:CanActivate(context)
+   return false
+end
+function set:Activate(context)
+end
+function set:Deactivate(context)
+   return false
+end
+SkillManager:AddSkillPalette(set)
+
+-- zPvE_Pig_form Skill.
+local set = SkillManager:CreateSkillPalette('zPvE_Pig_form')
+set.uid = "zPvE_Pig_form"
+set.profession = 0
+set.icon = "frenkeyLogo"
+-- set.iconurl = ""
+-- set.id =
+set.skills_luacode = {
+   [7926] = {
+      slot = GW2.SKILLBARSLOT.Slot_1,
+      activationtime = 0.5,
+      icon = 'Smell',
+   },
+   [7924] = {
+      slot = GW2.SKILLBARSLOT.Slot_2,
+      activationtime = 4.75,
+      icon = 'Forage',
+   },
+   [7922] = {
+      slot = GW2.SKILLBARSLOT.Slot_3,
+      activationtime = 0.5,
+      icon = 'Bite',
+   },
+   [7923] = {
+      slot = GW2.SKILLBARSLOT.Slot_4,
+      activationtime = 0.5,
+      icon = 'Run',
+   },
+   [7925] = {
+      slot = GW2.SKILLBARSLOT.Slot_5,
+      activationtime = 0.5,
+      icon = 'Shake Off',
+   },
+
+}
+function set:IsActive(context)
+   if context.skillbar ~= nil then
+      if table.valid(context.skillbar[GW2.SKILLBARSLOT.Slot_1]) then
+         if context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 7926 then
+            return true
+         end
+      end
+   end
+   return false
+end
+function set:CanActivate(context)
+   return false
+end
+function set:Activate(context)
+end
+function set:Deactivate(context)
+   return false
+end
+SkillManager:AddSkillPalette(set)
+
+-- Seraph Skills.
+local set = SkillManager:CreateSkillPalette('zPvE_SeraphWeapons')
+set.uid = "zPvE_SeraphWeapons"
+set.profession = 0
+set.icon = "frenkeyLogo"
+-- set.iconurl = ""
+-- set.id =
+set.skills_luacode = {
+   [8204] = {
+      slot = GW2.SKILLBARSLOT.Slot_1,
+      activationtime = 0.5,
+      icon = 'Stab',
+   },
+
+   [8252] = {
+      slot = GW2.SKILLBARSLOT.Slot_2,
+      activationtime = 0.5,
+      icon = 'Retire',
+   },
+
+   [8210] = {
+      slot = GW2.SKILLBARSLOT.Slot_1,
+      activationtime = 0.5,
+      icon = 'Shoot Training Rifle',
+   },
+
+   [8207] = {
+      slot = GW2.SKILLBARSLOT.Slot_1,
+      activationtime = 0.5,
+      icon = 'Block',
+   },
+}
+function set:IsActive(context)
+   if context.skillbar ~= nil then
+      if table.valid(context.skillbar[GW2.SKILLBARSLOT.Slot_1]) then
+         if (context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 8204) or (context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 8207) or (context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 8210) then
+            return true
+         end
+      end
+   end
+   return false
+end
+function set:CanActivate(context)
+   return false
+end
+function set:Activate(context)
+end
+function set:Deactivate(context)
+   return false
+end
+SkillManager:AddSkillPalette(set)
+
+-- zPvE_Mossheart_Form Skills.
+local set = SkillManager:CreateSkillPalette('zPvE_Mossheart_Form')
+set.uid = "zPvE_Mossheart_Form"
+set.profession = 0
+set.icon = "frenkeyLogo"
+-- set.iconurl = ""
+-- set.id =
+set.skills_luacode = {
+   [8471] = {
+      slot = GW2.SKILLBARSLOT.Slot_1,
+      activationtime = 0.5,
+      icon = 'Punch',
+   },
+
+   [8470] = {
+      slot = GW2.SKILLBARSLOT.Slot_2,
+      activationtime = 0.5,
+      icon = 'Thump',
+   },
+
+   [8489] = {
+      slot = GW2.SKILLBARSLOT.Slot_3,
+      activationtime = 0.5,
+      icon = 'Vine Pull',
+   },
+
+   [8469] = {
+      slot = GW2.SKILLBARSLOT.Slot_4,
+      activationtime = 0.5,
+      icon = 'Spread Pollen',
+   },
+
+   [8473] = {
+      slot = GW2.SKILLBARSLOT.Slot_5,
+      activationtime = 0.5,
+      icon = 'Return',
+   },
+}
+function set:IsActive(context)
+   if context.skillbar ~= nil then
+      if table.valid(context.skillbar[GW2.SKILLBARSLOT.Slot_1]) then
+         if (context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 8471) then
+            return true
+         end
+      end
+   end
+   return false
+end
+function set:CanActivate(context)
+   return false
+end
+function set:Activate(context)
+end
+function set:Deactivate(context)
+   return false
+end
+SkillManager:AddSkillPalette(set)
+
+-- Essence Coagulator Skills.
+local set = SkillManager:CreateSkillPalette('zPvE_Essence_Coagulator')
+set.uid = "zPvE_Essence_Coagulator"
+set.profession = 0
+set.icon = "frenkeyLogo"
+-- set.iconurl = ""
+-- set.id =
+set.skills_luacode = {
+   [6763] = {
+      slot = GW2.SKILLBARSLOT.Slot_1,
+      activationtime = 0.5,
+      icon = 'Coagulation Shot',
+   },
+
+   [6762] = {
+      slot = GW2.SKILLBARSLOT.Slot_2,
+      activationtime = 0.5,
+      icon = 'Coagulation Blast',
+   },
+
+   [6765] = {
+      slot = GW2.SKILLBARSLOT.Slot_3,
+      activationtime = 0.5,
+      icon = 'Coagulation Touch',
+   },
+
+   [6764] = {
+      slot = GW2.SKILLBARSLOT.Slot_4,
+      activationtime = 0.5,
+      icon = 'Rifle Butt',
+   },
+}
+function set:IsActive(context)
+   if context.skillbar ~= nil then
+      if table.valid(context.skillbar[GW2.SKILLBARSLOT.Slot_1]) then
+         if (context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 6763) then
+            return true
+         end
+      end
+   end
+   return false
+end
+function set:CanActivate(context)
+   return false
+end
+function set:Activate(context)
+end
+function set:Deactivate(context)
+   return false
+end
+SkillManager:AddSkillPalette(set)
+
+-- zPvE_Paenulas_Rifle
+local set = SkillManager:CreateSkillPalette('zPvE_Paenulas_Rifle')
+set.uid = "zPvE_Paenulas_Rifle"
+set.profession = 0
+set.icon = "frenkeyLogo"
+-- set.iconurl = ""
+-- set.id =
+set.skills_luacode = {
+   [7078] = {
+      slot = GW2.SKILLBARSLOT.Slot_1,
+      activationtime = 0.5,
+      icon = 'Bleeding Shot',
+   },
+
+   [7079] = {
+      slot = GW2.SKILLBARSLOT.Slot_2,
+      activationtime = 0.5,
+      icon = 'Blunderbuss',
+   },
+
+   [7080] = {
+      slot = GW2.SKILLBARSLOT.Slot_3,
+      activationtime = 0.5,
+      icon = 'Rifle Butt',
+   },
+
+   [7076] = {
+      slot = GW2.SKILLBARSLOT.Slot_4,
+      activationtime = 0.5,
+      icon = 'Net Shot',
+   },
+
+   [7081] = {
+      slot = GW2.SKILLBARSLOT.Slot_5,
+      activationtime = 0.5,
+      icon = 'Jump Shot',
+   },
+}
+function set:IsActive(context)
+   if context.skillbar ~= nil then
+      if table.valid(context.skillbar[GW2.SKILLBARSLOT.Slot_1]) then
+         if (context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 7078) then
+            return true
+         end
+      end
+   end
+   return false
+end
+function set:CanActivate(context)
+   return false
+end
+function set:Activate(context)
+end
+function set:Deactivate(context)
+   return false
+end
+SkillManager:AddSkillPalette(set)
+
+-- zPvE_Headsplitter_Grenades
+local set = SkillManager:CreateSkillPalette('zPvE_Headsplitter_Grenades')
+set.uid = "zPvE_Headsplitter_Grenades"
+set.profession = 0
+set.icon = "frenkeyLogo"
+-- set.iconurl = ""
+-- set.id =
+set.skills_luacode = {
+   [7055] = {
+      slot = GW2.SKILLBARSLOT.Slot_1,
+      activationtime = 0.5,
+      icon = 'Grenade',
+   },
+
+   [7056] = {
+      slot = GW2.SKILLBARSLOT.Slot_2,
+      activationtime = 0.5,
+      icon = 'Oil Grenade',
+   },
+
+   [7058] = {
+      slot = GW2.SKILLBARSLOT.Slot_3,
+      activationtime = 0.5,
+      icon = 'Flame Grenade',
+   },
+
+   [7057] = {
+      slot = GW2.SKILLBARSLOT.Slot_4,
+      activationtime = 0.5,
+      icon = 'Concussion Grenade',
+   },
+}
+function set:IsActive(context)
+   if context.skillbar ~= nil then
+      if table.valid(context.skillbar[GW2.SKILLBARSLOT.Slot_1]) then
+         if (context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 7055) then
+            return true
+         end
+      end
+   end
+   return false
+end
+function set:CanActivate(context)
+   return false
+end
+function set:Activate(context)
+end
+function set:Deactivate(context)
+   return false
+end
+SkillManager:AddSkillPalette(set)
+
+-- zPvE_Mining_Suit
+local set = SkillManager:CreateSkillPalette('zPvE_Mining_Suit')
+set.uid = "zPvE_Mining_Suit"
+set.profession = 0
+set.icon = "frenkeyLogo"
+-- set.iconurl = ""
+-- set.id =
+set.skills_luacode = {
+   [6600] = {
+      slot = GW2.SKILLBARSLOT.Slot_1,
+      activationtime = 1,
+      icon = 'Slash',
+   },
+
+   [6597] = {
+      slot = GW2.SKILLBARSLOT.Slot_2,
+      activationtime = 1.25,
+      icon = 'Double Strike',
+   },
+
+   [6598] = {
+      slot = GW2.SKILLBARSLOT.Slot_3,
+      activationtime = 1.5,
+      icon = 'Pummel',
+   },
+
+   [6601] = {
+      slot = GW2.SKILLBARSLOT.Slot_4,
+      activationtime = 1.25,
+      icon = 'Sonic Shout',
+   },
+
+   [6596] = {
+      slot = GW2.SKILLBARSLOT.Slot_5,
+      activationtime = 1.25,
+      icon = 'Inspire',
+   },
+
+   [6599] = {
+      slot = GW2.SKILLBARSLOT.Slot_6,
+      activationtime = 3.25,
+      icon = 'Repair',
+   },
+
+   [6592] = {
+      slot = GW2.SKILLBARSLOT.Slot_8,
+      activationtime = 0.5,
+      icon = 'Open Communications',
+   },
+
+   [6594] = {
+      slot = GW2.SKILLBARSLOT.Slot_10,
+      activationtime = 0.5,
+      icon = 'Exit Suit',
+   },
+}
+function set:IsActive(context)
+   if context.skillbar ~= nil then
+      if table.valid(context.skillbar[GW2.SKILLBARSLOT.Slot_1]) then
+         if (context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 6600) then
+            return true
+         end
+      end
+   end
+   return false
+end
+function set:CanActivate(context)
+   return false
+end
+function set:Activate(context)
+end
+function set:Deactivate(context)
+   return false
+end
+SkillManager:AddSkillPalette(set)
+
+-- zPvE_Tactican_Lyan_Grenades
+local set = SkillManager:CreateSkillPalette('zPvE_Tactican_Lyan_Grenades')
+set.uid = "zPvE_Tactican_Lyan_Grenades"
+set.profession = 0
+set.icon = "frenkeyLogo"
+-- set.iconurl = ""
+-- set.id =
+set.skills_luacode = {
+   [7164] = {
+      slot = GW2.SKILLBARSLOT.Slot_1,
+      activationtime = 0.5,
+      icon = 'Grenade',
+   },
+
+   [7058] = {
+      slot = GW2.SKILLBARSLOT.Slot_2,
+      activationtime = 0.5,
+      icon = 'Flame Grenade',
+   },
+
+   [7165] = {
+      slot = GW2.SKILLBARSLOT.Slot_3,
+      activationtime = 0.5,
+      icon = 'Fear Grenade',
+   },
+
+   [7163] = {
+      slot = GW2.SKILLBARSLOT.Slot_4,
+      activationtime = 0.5,
+      icon = 'Glue Grenade',
+   },
+
+   [7162] = {
+      slot = GW2.SKILLBARSLOT.Slot_5,
+      activationtime = 0.5,
+      icon = 'Concussion Grenade',
+   },
+}
+
+function set:IsActive(context)
+   if context.skillbar ~= nil then
+      if table.valid(context.skillbar[GW2.SKILLBARSLOT.Slot_1]) then
+         if (context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 7164) then
+            return true
+         end
+      end
+   end
+   return false
+end
+function set:CanActivate(context)
+   return false
+end
+function set:Activate(context)
+end
+function set:Deactivate(context)
+   return false
+end
+SkillManager:AddSkillPalette(set)
+
+-- zPvE_Tactican_Lyan_Grenades
+local set = SkillManager:CreateSkillPalette('zPvE_Vannas_Enviromental_Cleaning_Gear')
+set.uid = "zPvE_Vannas_Enviromental_Cleaning_Gear"
+set.profession = 0
+set.icon = "frenkeyLogo"
+-- set.iconurl = ""
+-- set.id =
+set.skills_luacode = {
+   [8657] = {
+      slot = GW2.SKILLBARSLOT.Slot_1,
+      activationtime = 0.5,
+      icon = 'Magic-Extinguishing Spray',
+   },
+
+   [7058] = {
+      slot = GW2.SKILLBARSLOT.Slot_2,
+      activationtime = 0.5,
+      icon = 'Vent Magic',
+   },
+
+   [8684] = {
+      slot = GW2.SKILLBARSLOT.Slot_3,
+      activationtime = 0.5,
+      icon = 'Rifle Butt',
+   },
+}
+
+function set:IsActive(context)
+   if context.skillbar ~= nil then
+      if table.valid(context.skillbar[GW2.SKILLBARSLOT.Slot_1]) then
+         if (context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 8657) then
+            return true
+         end
+      end
+   end
+   return false
+end
+function set:CanActivate(context)
+   return false
+end
+function set:Activate(context)
+end
+function set:Deactivate(context)
+   return false
+end
+SkillManager:AddSkillPalette(set)
+
+-- zPvE_Experimental_Weapon_Rack
+local set = SkillManager:CreateSkillPalette('zPvE_Experimental_Weapon_Rack')
+set.uid = "zPvE_Experimental_Weapon_Rack"
+set.profession = 0
+set.icon = "frenkeyLogo"
+-- set.iconurl = ""
+-- set.id =
+set.skills_luacode = {
+   [8667] = {
+      slot = GW2.SKILLBARSLOT.Slot_1,
+      activationtime = 0.5,
+      icon = 'Asura Ice Wave',
+   },
+
+   [8668] = {
+      slot = GW2.SKILLBARSLOT.Slot_2,
+      activationtime = 0.5,
+      icon = 'Flash Freeze',
+   },
+
+   [8669] = {
+      slot = GW2.SKILLBARSLOT.Slot_3,
+      activationtime = 0.5,
+      icon = 'Sonic Blast',
+   },
+}
+
+function set:IsActive(context)
+   if context.skillbar ~= nil then
+      if table.valid(context.skillbar[GW2.SKILLBARSLOT.Slot_1]) then
+         if (context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 8667) then
+            return true
+         end
+      end
+   end
+   return false
+end
+function set:CanActivate(context)
+   return false
+end
+function set:Activate(context)
+end
+function set:Deactivate(context)
+   return false
+end
+SkillManager:AddSkillPalette(set)
+
+local set = SkillManager:CreateSkillPalette('zPvE_Kammas_Experimental_Weapon')
+set.uid = "zPvE_Kammas_Experimental_Weapon"
+set.profession = 0
+set.icon = "frenkeyLogo"
+set.id = 9907
+set.skills_luacode = {
+   [8752] = {
+      slot = GW2.SKILLBARSLOT.Slot_1,
+      activationtime = 1,
+      icon = 'Fireball',
+   },
+   [8753] = {
+      slot = GW2.SKILLBARSLOT.Slot_2,
+      activationtime = 2,
+      icon = 'Ice Spray',
+   },
+   [8754] = {
+      slot = GW2.SKILLBARSLOT.Slot_3,
+      activationtime = 2,
+      icon = 'Arc Lightning',
+   },
+   [8755] = {
+      slot = GW2.SKILLBARSLOT.Slot_4,
+      activationtime = 0.5,
+      icon = 'Arcane Beam',
+   },
+   [8756] = {
+      slot = GW2.SKILLBARSLOT.Slot_5,
+      activationtime = 0.5,
+      icon = 'Eject Coolant',
+   },
+}
+function set:IsActive(context)
+   return (context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 8752)
+end
+function set:CanActivate(context)
+   return false
+end
+function set:Activate(context)
+end
+function set:Deactivate(context)
+   return false
+end
+SkillManager:AddSkillPalette(set)
+
+local set = SkillManager:CreateSkillPalette('zPvE_Admiral_Clarinda_Moa')
+set.uid = "zPvE_Admiral_Clarinda_Moa"
+set.profession = 0
+set.icon = "frenkeyLogo"
+--set.id = 9907
+set.skills_luacode = {
+   [8764] = {
+      slot = GW2.SKILLBARSLOT.Slot_1,
+      activationtime = 0.5,
+      icon = 'Peck',
+   },
+   [8762] = {
+      slot = GW2.SKILLBARSLOT.Slot_2,
+      activationtime = 1,
+      icon = 'Deadly Kick',
+   },
+   [8761] = {
+      slot = GW2.SKILLBARSLOT.Slot_3,
+      activationtime = 1,
+      icon = 'Frenzied Peck',
+   },
+   [8763] = {
+      slot = GW2.SKILLBARSLOT.Slot_4,
+      activationtime = 3,
+      icon = 'Screech',
+   },
+   [8765] = {
+      slot = GW2.SKILLBARSLOT.Slot_5,
+      activationtime = 0.5,
+      icon = 'Return',
+   },
+}
+function set:IsActive(context)
+   return (context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 8764)
+end
+function set:CanActivate(context)
+   return false
+end
+function set:Activate(context)
+end
+function set:Deactivate(context)
+   return false
+end
+SkillManager:AddSkillPalette(set)
+
+SkillManager:AddSkillPalette(set)
+local set = SkillManager:CreateSkillPalette('zPvE_Scholar_Olenn_Raven')
+set.uid = "zPvE_Scholar_Olenn_Raven"
+set.profession = 0
+set.icon = "frenkeyLogo"
+--set.id = 9904
+set.skills_luacode = {
+   [12410] = {
+      slot = GW2.SKILLBARSLOT.Slot_1,
+      activationtime = 0.5,
+      icon = 'Swipe',
+   },
+   [12421] = {
+      slot = GW2.SKILLBARSLOT.Slot_1,
+      activationtime = 0.5,
+      icon = 'Crippling Swipe',
+   },
+   [12406] = {
+      slot = GW2.SKILLBARSLOT.Slot_2,
+      activationtime = 0.5,
+      icon = 'Wind Blast',
+   },
+   [12409] = {
+      slot = GW2.SKILLBARSLOT.Slot_3,
+      activationtime = 0.5,
+      icon = 'Swoop',
+   },
+   [12408] = {
+      slot = GW2.SKILLBARSLOT.Slot_4,
+      activationtime = 0.5,
+      icon = 'Shriek',
+   },
+   [12407] = {
+      slot = GW2.SKILLBARSLOT.Slot_5,
+      activationtime = 0.5,
+      icon = 'Rending Talons',
+   },
+   [10700] = {
+      slot = GW2.SKILLBARSLOT.Slot_10,
+      activationtime = 0.5,
+      icon = 'Leave Transform',
+   },
+}
+function set:IsActive(context)
+   return (context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_2] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 12406)
+end
+function set:CanActivate(context)
+   return false
+end
+function set:Activate(context)
+end
+function set:Deactivate(context)
+   return false
+end
+SkillManager:AddSkillPalette(set)
+
+local set = SkillManager:CreateSkillPalette('zPvE_Leopard')
+set.uid = "zPvE_Leopard"
+set.profession = 0
+set.icon = "frenkeyLogo"
+set.id = 9901
+set.skills_luacode = {
+   [6655] = {
+      slot = GW2.SKILLBARSLOT.Slot_1,
+      activationtime = 0.5,
+      icon = 'Slash',
+   },
+   [6653] = {
+      slot = GW2.SKILLBARSLOT.Slot_1,
+      activationtime = 0.5,
+      icon = 'Bite',
+   },
+   [6654] = {
+      slot = GW2.SKILLBARSLOT.Slot_2,
+      activationtime = 0.5,
+      icon = 'Pounce',
+   },
+   [6652] = {
+      slot = GW2.SKILLBARSLOT.Slot_3,
+      activationtime = 0.5,
+      icon = 'Maul',
+   },
+   [6656] = {
+      slot = GW2.SKILLBARSLOT.Slot_4,
+      activationtime = 0.5,
+      icon = 'Snarl',
+   },
+   [14349] = {
+      slot = GW2.SKILLBARSLOT.Slot_5,
+      activationtime = 0.5,
+      icon = 'Return',
+   },
+}
+function set:IsActive(context)
+   return (context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_2] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 6654)
+end
+function set:CanActivate(context)
+   return false
+end
+function set:Activate(context)
+end
+function set:Deactivate(context)
+   return false
+end
+SkillManager:AddSkillPalette(set)

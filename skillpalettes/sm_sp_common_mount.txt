@@ -1,0 +1,153 @@
+local set = SkillManager:CreateSkillPalette('Mount Skills')
+set.uid = "zMount Skills"
+set.profession = 0
+--set.icon = "Ranger"
+--set.id = 9907
+set.skills_luacode = {
+	-- Raptor
+	[40409] = { 
+		slot = GW2.SKILLBARSLOT.Slot_1, 
+		activationtime = 0.5, 
+		icon = 'Tail Spin (raptor)',
+		iconurl = 'https://wiki.guildwars2.com/images/f/f2/Tail_Spin.png'
+	},
+	[42133] = { 
+		slot = GW2.SKILLBARSLOT.Slot_1, 
+		activationtime = 0.5, 
+		icon = 'Tail Spin (raptor)',
+		iconurl = 'https://wiki.guildwars2.com/images/f/f2/Tail_Spin.png'
+	},
+
+	-- Springer
+	[41993] = { 
+		slot = GW2.SKILLBARSLOT.Slot_1, 
+		activationtime = 0.5, 
+		icon = 'Cannonball (springer)', 
+		iconurl = 'https://wiki.guildwars2.com/images/f/f2/Cannonball_%28skill%29.png'
+	},
+	[45994] = { 
+		slot = GW2.SKILLBARSLOT.Slot_1, 
+		activationtime = 0.5, 
+		icon = 'Cannonball (springer)', 
+		iconurl = 'https://wiki.guildwars2.com/images/f/f2/Cannonball_%28skill%29.png'
+	},
+
+	-- Skimmer
+	[41253] = { 
+		slot = GW2.SKILLBARSLOT.Slot_1, 
+		activationtime = 0.5, 
+		icon = 'Barrel Roll (skimmer)',  
+		iconurl = 'https://wiki.guildwars2.com/images/4/4b/Barrel_Roll.png'
+	},
+	[45515] = { 
+		slot = GW2.SKILLBARSLOT.Slot_1, 
+		activationtime = 0.5, 
+		icon = 'Barrel Roll (skimmer)', 
+		iconurl = 'https://wiki.guildwars2.com/images/4/4b/Barrel_Roll.png' 
+	},
+
+	-- Jackal
+	[46089] = { 
+		slot = GW2.SKILLBARSLOT.Slot_1, 
+		activationtime = 0.5, 
+		icon = 'Pounce (jackal)',
+		iconurl = 'https://wiki.guildwars2.com/images/9/97/Pounce_%28Jackal%29.png'  
+	},
+	[41698] = { 
+		slot = GW2.SKILLBARSLOT.Slot_1, 
+		activationtime = 0.5, 
+		icon = 'Pounce (jackal)',
+		iconurl = 'https://wiki.guildwars2.com/images/9/97/Pounce_%28Jackal%29.png'
+	},
+
+	-- Griffon
+	[40576] = { 
+		slot = GW2.SKILLBARSLOT.Slot_1, 
+		activationtime = 0.5, 
+		icon = 'Swoop (griffon)',
+		iconurl = 'https://wiki.guildwars2.com/images/9/94/Swoop_%28griffon%29.png'
+	},
+
+	-- Roller Beetle
+	[51040] = { 
+		slot = GW2.SKILLBARSLOT.Slot_1, 
+		activationtime = 0.5, 
+		icon = 'Roll Out (roller beetle)',  
+		iconurl = 'https://wiki.guildwars2.com/images/1/12/Roll_Out_%28Engage_skill%29.png'
+	},
+	[50913] = {
+		slot = GW2.SKILLBARSLOT.Slot_1, 
+		activationtime = 0.5, 
+		icon = 'Roll Out (roller beetle)',  
+		iconurl = 'https://wiki.guildwars2.com/images/1/12/Roll_Out_%28Engage_skill%29.png'
+	},
+
+	-- Skyskale
+	[55536] = { 
+		slot = GW2.SKILLBARSLOT.Slot_1, 
+		activationtime = 0.5, 
+		icon = 'Blast (skyskale)',
+		iconurl = 'https://wiki.guildwars2.com/images/e/e7/Blast.png'
+	},
+
+	-- Warclaw
+	[54912] = { 
+		slot = GW2.SKILLBARSLOT.Slot_1, 
+		activationtime = 0.5, 
+		icon = 'Battle Maul (warclaw)',
+		iconurl = 'https://wiki.guildwars2.com/images/f/f8/Battle_Maul.png'
+	},
+
+	-- Mastery
+	[49128] = { 
+		slot = GW2.SKILLBARSLOT.Slot_1, 
+		activationtime = 0.5, 
+		icon = 'Bond of Life',
+		iconurl = 'https://wiki.guildwars2.com/images/2/23/Bond_of_Life.png'
+	},
+	[52571] = { 
+		slot = GW2.SKILLBARSLOT.Slot_1, 
+		activationtime = 0.5, 
+		icon = 'Bond of Vigor',
+		iconurl = 'https://wiki.guildwars2.com/images/6/60/Bond_of_Vigor.png'
+	},
+	[54032] = { 
+		slot = GW2.SKILLBARSLOT.Slot_1, 
+		activationtime = 0.5, 
+		icon = 'Bond of Faith',
+		iconurl = 'https://wiki.guildwars2.com/images/c/c7/Bond_of_Faith.png'
+	},
+}
+
+function set:IsActive(context)
+	if(context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil) then
+		local skillslot = context.skillbar[GW2.SKILLBARSLOT.Slot_1]
+		
+		if(skillslot.id and self.skills_luacode[skillslot.id] ~= nil) then
+			return true
+		end
+	end
+	
+	return false
+end
+
+function set:CanCast(context,skillid)
+	if(context.skillbar ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil) then
+		local skillslot = context.skillbar[GW2.SKILLBARSLOT.Slot_1]
+		if(skillslot.id == skillid) then
+			return true
+		end
+	end
+	
+	return false
+end
+
+function set:CanActivate(context)
+	return false
+end
+function set:Activate(context)
+end
+function set:Deactivate(context)
+	return false
+end
+SkillManager:AddSkillPalette( set )

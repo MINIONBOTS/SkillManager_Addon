@@ -1,8 +1,10 @@
+local table = _G["table"]
+local string = _G["string"]
 sm_mgr = {}
 sm_mgr.open = false
 sm_mgr.luamodspath = GetLuaModsPath()
 sm_mgr.texturepath = GetStartupPath() .. "\\GUI\\UI_Textures"
-sm_mgr.iconpath = sm_mgr.luamodspath .. "\\SkillManager\\iconcache"
+sm_mgr.iconpath = sm_mgr.luamodspath .. "SkillManager\\iconcache"
 sm_mgr.profiles = {}				-- SM profiles
 sm_mgr.conditions = {}		-- SM condition "classes" which are used in the condition builder/editor for the "cast if ..." check per skill
 sm_mgr.skillpalettes = {}		-- For each Profession, a different set of palettes are "hardcoded" and available in here. These include the functions to swap to the palette in order to cast the spell on it
@@ -239,8 +241,8 @@ function sm_mgr.DrawMenu(event,ticks)
 	-- SkillManager Main Window
 	if (sm_mgr.open) then
 		GUI:SetNextWindowSize(280,150,GUI.SetCond_Once)
-		GUI:SetNextWindowPosCenter(GUI.SetCond_Once)
-		sm_mgr.visible, sm_mgr.open = GUI:Begin(GetString("Skill Manager").."##smmgr", sm_mgr.open,GUI.WindowFlags_NoSavedSettings)
+		--GUI:SetNextWindowPosCenter(GUI.SetCond_Once)
+		sm_mgr.visible, sm_mgr.open = GUI:Begin(GetString("Skill Manager").."##smmgr", sm_mgr.open,GUI.WindowFlags_NoResize)
 		if (sm_mgr.visible) then
 			GUI:BulletText(GetString("Current Profile:"))
 			
@@ -284,23 +286,32 @@ function sm_mgr.DrawMenu(event,ticks)
 			if (GUI:ImageButton("##smnew",sm_mgr.texturepath.."\\addon.png",14,14)) then
 				sm_mgr.newfilename  = ""
 				sm_mgr.newfilepath  = sm_mgr.profilepath
-				GUI:OpenPopup(GetString("NewSMProfile"))
+				GUI:OpenPopup(GetString("New SkillManager Profile"))
 			end
 			if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("Create New Profile")) end
 			
-			if ( sm_mgr.profile and sm_mgr.profile.temp.modified ) then
-				GUI:PushStyleColor(GUI.Col_Button,1.0,0.39,0.0,0.6)
-				GUI:PushStyleColor(GUI.Col_ButtonHovered,1.0,0.39,0.0,0.8)
-				GUI:PushStyleColor(GUI.Col_ButtonActive,1.0,0.39,0.0,0.9)
+			if ( sm_mgr.profile) then
+				if(sm_mgr.profile.temp.modified) then
+					GUI:PushStyleColor(GUI.Col_Button,1.0,0.39,0.0,0.6)
+					GUI:PushStyleColor(GUI.Col_ButtonHovered,1.0,0.39,0.0,0.8)
+					GUI:PushStyleColor(GUI.Col_ButtonActive,1.0,0.39,0.0,0.9)
+				else
+					GUI:PushStyleColor(GUI.Col_Button,0.19,0.19,0.19,0.6)
+					GUI:PushStyleColor(GUI.Col_ButtonHovered,0.19,0.19,0.19,0.6)
+					GUI:PushStyleColor(GUI.Col_ButtonActive,0.19,0.19,0.19,0.6)					
+				end
 				local maxx,_ = GUI:GetContentRegionAvail()
-				if ( GUI:Button(GetString("Save Changes"),maxx,20) ) then
-					sm_mgr.profile:Save()
+				local btnstr = sm_mgr.profile.temp.modified and GetString("Save Changes") or GetString("No Changes")
+				if ( GUI:Button(btnstr,maxx,20) ) then
+					if(sm_mgr.profile.temp.modified) then
+						sm_mgr.profile:Save()
+					end
 				end				
 				GUI:PopStyleColor(3)
 			end
 					
 	-- Popup Handler NEW window
-			if (GUI:BeginPopupModal(GetString("NewSMProfile"))) then
+			if (GUI:BeginPopupModal(GetString("New SkillManager Profile"))) then
 				local valid = true
 				GUI:SetWindowSize(600,230)
 				GUI:Spacing()
@@ -443,7 +454,7 @@ function SkillManager:Use(targetid) --- old fucntion, backwardcompa
 		sm_mgr.profile:SetTargets(targetid, nil)
 	end
 end
-function SkillManager:SelectProfile(name)
+function SkillManager:SelectProfile(name, force)
 	local profile
 	for i,p in pairs(sm_mgr.profiles) do
 		if ( p.temp.filename == name) then
@@ -451,6 +462,19 @@ function SkillManager:SelectProfile(name)
 			break
 		end
 	end
+
+	if force and not profile then
+		profile = FileLoad(sm_mgr.luamodspath .. [[\GW2Minion\SkillManagerProfiles\]] .. name)
+		if table.valid(profile) then
+			profile.temp = { filename = name, folderpath = sm_mgr.luamodspath .. [[\GW2Minion\SkillManagerProfiles\]] }
+			table.insert(sm_mgr.profiles, profile)
+
+			sm_mgr.profile = sm_profile:new(profile)
+			d("[SkillManager] - Switched forcefully to Profile: ".. sm_mgr.profile.temp.filename)
+			return
+		end
+	end
+
 	if ( profile ) then
 		sm_mgr.profile = sm_profile:new(profile)
 		Settings.SkillManager.lastProfiles[sm_mgr.GetPlayerProfession()] = sm_mgr.profile.temp.filename
@@ -459,9 +483,39 @@ function SkillManager:SelectProfile(name)
 		d("[SkillManager] - Switched to Profile: ".. sm_mgr.profile.temp.filename)
 	else
 		d("[SkillManager] - Could not find Profile: ".. name)
-	end	
+	end
 end
 
+function SkillManager:GetCurrentProfileName()
+	if table.valid(sm_mgr.profile) and table.valid(sm_mgr.profile.temp) then
+		return sm_mgr.profile.temp.filename
+	end
+
+	return ""
+end
+
+function SkillManager:HasSkillID(id)
+	if table.valid(sm_mgr.profile) and table.valid(sm_mgr.profile.actionlist) then
+		for _,v in pairs(sm_mgr.profile.actionlist) do
+			if v.id == id then
+				return true
+			end
+		end
+	end
+
+	return false
+end
+
+function SkillManager:SkillStopsMovement()
+	if(sm_mgr.profile and type(sm_mgr.profile) == "table") then
+		return sm_mgr.profile:SkillStopsMovement()
+	end
+	return false
+end
+
+function SkillManager:PredictedPositionAndDistance(target)
+	return sm_movementprediction:GetPosDistance(target)
+end
 
 -- auto generating default profiles, leaving it here for future changes I guess
 function sm_mgr:GenetateDefaultProfile()
@@ -572,6 +626,14 @@ function SkillManager:ToggleHelper()
 	sm_mgr.sethelper.open = not sm_mgr.sethelper.open
 end
 
+function SkillManager:API_ProfileList()
+    local smlist = {}
+    for i,p in pairs(sm_mgr.profiles) do
+        table.insert(smlist, p.temp.filename)
+    end
+    return smlist
+end
+
 
 -- some little helper window to update/see the skill data needed to build the hardcoded skill sets
 sm_mgr.sethelper = {}
@@ -581,7 +643,7 @@ function sm_mgr.sethelper.DrawMenu(event,ticks)
 
 	if (sm_mgr.sethelper.open) then
 		GUI:SetNextWindowSize(300,500,GUI.SetCond_Once)
-		GUI:SetNextWindowPosCenter(GUI.SetCond_Once)
+		GUI:SetNextWindowPosCenter(GUI.SetCond_FirstUseEver)
 		sm_mgr.sethelper.visible, sm_mgr.sethelper.open = GUI:Begin(GetString("Skill Set Helper").."##smhelper", sm_mgr.sethelper.open,GUI.WindowFlags_NoSavedSettings)
 		if (sm_mgr.sethelper.visible) then
 			local shitlist = { 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16, }

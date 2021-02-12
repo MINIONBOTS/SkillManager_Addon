@@ -3,44 +3,38 @@ local shortbow = SkillManager:CreateSkillPalette('shortbow')
 shortbow.uid = "Thief_shortbow"
 shortbow.profession = GW2.CHARCLASS.Thief
 shortbow.icon = "shortbow"
--- shortbow.id =   --> set a skill ID if you want it to download an icon for this skillset 
+-- shortbow.id =   --> set a skill ID if you want it to download an icon for this skillset
 shortbow.skills_luacode = {
-	[13022] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_1, 
-		 activationtime = 0.25, 
-		 icon = 'Trick Shot',  
+	[13022] = {
+		 slot = GW2.SKILLBARSLOT.Slot_1,
+		 activationtime = 0.25,
+		 icon = 'Trick Shot',
 	 },
-	 [13129] = {  -- Only with buff:13017 (stealth)
-		 slot = GW2.SKILLBARSLOT.Slot_1, 
-		 activationtime = 0.25, 
-		 parent = 1, -- will this work?
-		 icon = 'Surprise Shot',  
+	 [13041] = {
+		 slot = GW2.SKILLBARSLOT.Slot_2,
+		 activationtime = 0.5,
+		 icon = 'Cluster Bomb',
 	 },
-	 [13041] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_2, 
-		 activationtime = 0.5, 
-		 icon = 'Cluster Bomb',  
-	 },
-	 [13043] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_2, 
-		 activationtime = 1, 
+	 [13043] = {
+		 slot = GW2.SKILLBARSLOT.Slot_2,
+		 activationtime = 1,
 		 parent = 13041,
-		 icon = 'Detonate Cluster',  
+		 icon = 'Detonate Cluster',
 	 },
-	 [13083] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_3, 
-		 activationtime = 0.25, 
-		 icon = 'Disabling Shot',  
+	 [13083] = {
+		 slot = GW2.SKILLBARSLOT.Slot_3,
+		 activationtime = 0.25,
+		 icon = 'Disabling Shot',
 	 },
-	 [13024] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_4, 
-		 activationtime = 0.5, 
-		 icon = 'Choking Gas',  
+	 [13024] = {
+		 slot = GW2.SKILLBARSLOT.Slot_4,
+		 activationtime = 0.5,
+		 icon = 'Choking Gas',
 	 },
-	 [13025] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_5, 
-		 activationtime = 0, 
-		 icon = 'Infiltrator\'s Arrow',  
+	 [13025] = {
+		 slot = GW2.SKILLBARSLOT.Slot_5,
+		 activationtime = 0,
+		 icon = 'Infiltrator\'s Arrow',
 	 },
 }
 function shortbow:IsActive(context)
@@ -59,56 +53,101 @@ SkillManager:AddSkillPalette( shortbow )
 
 
 
+local shortbow_stealth = SkillManager:CreateSkillPalette('shortbow_stealth')
+shortbow_stealth.uid = "Thief_shortbow_stealth"
+shortbow_stealth.profession = GW2.CHARCLASS.Thief
+shortbow_stealth.icon = "shortbow"
+shortbow_stealth.skills_luacode = {
+	[13129] = {
+		slot = GW2.SKILLBARSLOT.Slot_1,
+		activationtime = 0.25,
+		icon = 'Surprise Shot'
+	}
+}
+function shortbow_stealth:IsActive(context)
+	return context.player.alive and context.skillbar~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 13129
+end
+function shortbow_stealth:CanActivate(context)
+  return false
+end
+function shortbow_stealth:Activate(context)
+end
+function shortbow_stealth:Deactivate(context)
+	return false
+end
+SkillManager:AddSkillPalette( shortbow_stealth )
+
+
+local deadeye_shortbow_stealth = SkillManager:CreateSkillPalette('deadeye_shortbow_stealth')
+deadeye_shortbow_stealth.uid = "Thief_deadeye_shortbow_stealth"
+deadeye_shortbow_stealth.profession = GW2.CHARCLASS.Thief
+deadeye_shortbow_stealth.icon = "shortbow"
+deadeye_shortbow_stealth.skills_luacode = {
+	[50451] = {
+		slot = GW2.SKILLBARSLOT.Slot_1,
+		activationtime = 0.25,
+		icon = 'Malicious Surprise Shot'
+	}
+}
+function deadeye_shortbow_stealth:IsActive(context)
+	return context.player.alive and context.skillbar~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 50451
+end
+function deadeye_shortbow_stealth:CanActivate(context)
+  return false
+end
+function deadeye_shortbow_stealth:Activate(context)
+end
+function deadeye_shortbow_stealth:Deactivate(context)
+	return false
+end
+SkillManager:AddSkillPalette( deadeye_shortbow_stealth )
+
+
+
 local dagger_mh = SkillManager:CreateSkillPalette('dagger_mh')
 dagger_mh.uid = "Thief_dagger_mh"
 dagger_mh.profession = GW2.CHARCLASS.Thief
 dagger_mh.icon = "dagger"
--- dagger_mh.id =   --> set a skill ID if you want it to download an icon for this skillset 
+-- dagger_mh.id =   --> set a skill ID if you want it to download an icon for this skillset
 dagger_mh.skills_luacode = {
-	[13004] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_1, 
-		 activationtime = 0, 
-		 icon = 'Double Strike',  
+	[13004] = {
+		 slot = GW2.SKILLBARSLOT.Slot_1,
+		 activationtime = 0,
+		 icon = 'Double Strike',
 	 },
-	 [13087] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_1, 
-		 activationtime = 0, 
+	 [13087] = {
+		 slot = GW2.SKILLBARSLOT.Slot_1,
+		 activationtime = 0,
 		 parent = 13004,
-		 icon = 'Wild Strike',  
+		 icon = 'Wild Strike',
 	 },
-	 [13108] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_1, 
-		 activationtime = 0.25, 
+	 [13108] = {
+		 slot = GW2.SKILLBARSLOT.Slot_1,
+		 activationtime = 0.25,
 		 parent = 13087,
-		 icon = 'Lotus Strike',  
+		 icon = 'Lotus Strike',
 	 },
-	 [13005] = {  -- Only with buff:13017 (stealth)
-		 slot = GW2.SKILLBARSLOT.Slot_1, 
-		 activationtime = 0.25, 
-		 parent = 1,
-		 icon = 'Backstab',  
+	 [13097] = {
+		 slot = GW2.SKILLBARSLOT.Slot_2,
+		 activationtime = 0.75,
+		 icon = 'Heartseeker',
 	 },
-	 [13097] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_2, 
-		 activationtime = 0.75, 
-		 icon = 'Heartseeker',  
-	 },
-	 [13110] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_3, 
-		 activationtime = 0.5, 
-		 icon = 'Twisting Fangs',  
+	 [13110] = {
+		 slot = GW2.SKILLBARSLOT.Slot_3,
+		 activationtime = 0.5,
+		 icon = 'Twisting Fangs',
 	 },
 	 [13006] = { -- dagger offhand combo.
-		 slot = GW2.SKILLBARSLOT.Slot_3, 
-		 activationtime = 0.5, 
+		 slot = GW2.SKILLBARSLOT.Slot_3,
+		 activationtime = 0.5,
 		 parent = 13019, -- dagger_oh skill slot_4.
-		 icon = 'Death Blossom',  
+		 icon = 'Death Blossom',
 	 },
 	 [13040] = { -- pistol offhand combo.
-		 slot = GW2.SKILLBARSLOT.Slot_3, 
-		 activationtime = 0, 
+		 slot = GW2.SKILLBARSLOT.Slot_3,
+		 activationtime = 0,
 		 parent = 13012, -- pistol_oh skill slot_4.
-		 icon = 'Shadow Shot',  
+		 icon = 'Shadow Shot',
 	 },
 }
 function dagger_mh:IsActive(context)
@@ -126,22 +165,72 @@ end
 SkillManager:AddSkillPalette( dagger_mh )
 
 
+local dagger_stealth = SkillManager:CreateSkillPalette('dagger_stealth')
+dagger_stealth.uid = "Thief_dagger_stealth"
+dagger_stealth.profession = GW2.CHARCLASS.Thief
+dagger_stealth.icon = "dagger"
+dagger_stealth.skills_luacode = {
+	[13005] = {
+		slot = GW2.SKILLBARSLOT.Slot_1,
+		activationtime = 0.25,
+		icon = 'Backstab',
+	}
+}
+function dagger_stealth:IsActive(context)
+	return context.player.alive and context.skillbar~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 13005
+end
+function dagger_stealth:CanActivate(context)
+  return false
+end
+function dagger_stealth:Activate(context)
+end
+function dagger_stealth:Deactivate(context)
+	return false
+end
+SkillManager:AddSkillPalette( dagger_stealth )
+
+
+local deadeye_dagger_stealth = SkillManager:CreateSkillPalette('deadeye_dagger_stealth')
+deadeye_dagger_stealth.uid = "Thief_deadeye_dagger_stealth"
+deadeye_dagger_stealth.profession = GW2.CHARCLASS.Thief
+deadeye_dagger_stealth.icon = "dagger"
+deadeye_dagger_stealth.skills_luacode = {
+	[50481] = {
+		slot = GW2.SKILLBARSLOT.Slot_1,
+		activationtime = 0.25,
+		icon = 'Malicious Backstab'
+	}
+}
+function deadeye_dagger_stealth:IsActive(context)
+	return context.player.alive and context.skillbar~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 50481
+end
+function deadeye_dagger_stealth:CanActivate(context)
+  return false
+end
+function deadeye_dagger_stealth:Activate(context)
+end
+function deadeye_dagger_stealth:Deactivate(context)
+	return false
+end
+SkillManager:AddSkillPalette( deadeye_dagger_stealth )
+
+
 
 local dagger_oh = SkillManager:CreateSkillPalette('dagger_oh')
 dagger_oh.uid = "Thief_dagger_oh"
 dagger_oh.profession = GW2.CHARCLASS.Thief
 dagger_oh.icon = "dagger"
--- dagger_oh.id =   --> set a skill ID if you want it to download an icon for this skillset 
+-- dagger_oh.id =   --> set a skill ID if you want it to download an icon for this skillset
 dagger_oh.skills_luacode = {
-	[13019] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_4, 
-		 activationtime = 0.25, 
-		 icon = 'Dancing Dagger',  
+	[13019] = {
+		 slot = GW2.SKILLBARSLOT.Slot_4,
+		 activationtime = 0.25,
+		 icon = 'Dancing Dagger',
 	 },
-	 [13013] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_5, 
-		 activationtime = 0.5, 
-		 icon = 'Cloak and Dagger',  
+	 [16432] = {
+		 slot = GW2.SKILLBARSLOT.Slot_5,
+		 activationtime = 0.5,
+		 icon = 'Cloak and Dagger',
 	 },
 }
 function dagger_oh:IsActive(context)
@@ -164,40 +253,34 @@ local pistol_mh = SkillManager:CreateSkillPalette('pistol_mh')
 pistol_mh.uid = "Thief_pistol_mh"
 pistol_mh.profession = GW2.CHARCLASS.Thief
 pistol_mh.icon = "pistol"
--- pistol_mh.id =   --> set a skill ID if you want it to download an icon for this skillset 
+-- pistol_mh.id =   --> set a skill ID if you want it to download an icon for this skillset
 pistol_mh.skills_luacode = {
-	[13084] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_1, 
-		 activationtime = 0.5, 
-		 icon = 'Vital Shot',  
+	[13084] = {
+		 slot = GW2.SKILLBARSLOT.Slot_1,
+		 activationtime = 0.5,
+		 icon = 'Vital Shot',
 	 },
-	 [13115] = {  -- Only with buff:13017 (stealth)
-		 slot = GW2.SKILLBARSLOT.Slot_1, 
-		 activationtime = 1, 
-		 parent = 1,
-		 icon = 'Sneak Attack',  
-	 },
-	 [13008] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_2, 
-		 activationtime = 0.5, 
-		 icon = 'Body Shot',  
-	 },
-	 [13111] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_3, 
-		 activationtime = 1.75, 
-		 icon = 'Repeater',  
+	 [13008] = {
+		 slot = GW2.SKILLBARSLOT.Slot_2,
+		 activationtime = 0.5,
+		 icon = 'Bola Shot',
 	 },
 	 [13010] = {  -- dagger offhand combo.
-		 slot = GW2.SKILLBARSLOT.Slot_3, 
-		 activationtime = 0, 
-		 parent = 13019, -- dagger_oh skill slot_4.
-		 icon = 'Shadow Strike',  
+		 slot = GW2.SKILLBARSLOT.Slot_3,
+		 activationtime = 0,
+		 icon = 'Shadow Strike',
 	 },
+     [13111] = { -- dagger offhand combo
+         slot = GW2.SKILLBARSLOT.Slot_3,
+         activationtime = 1.25,
+         icon = 'Repeater',
+         parent = 13010, -- Shadow Strike
+     },
 	 [13011] = { -- pistol offhand combo.
-		 slot = GW2.SKILLBARSLOT.Slot_3, 
-		 activationtime = 1.5, 
+		 slot = GW2.SKILLBARSLOT.Slot_3,
+		 activationtime = 1.5,
 		 parent = 13012, -- pistol_oh skill slot_4.
-		 icon = 'Unload',  
+		 icon = 'Unload',
 	 },
 }
 function pistol_mh:IsActive(context)
@@ -215,22 +298,70 @@ end
 SkillManager:AddSkillPalette( pistol_mh )
 
 
+local pistol_stealth = SkillManager:CreateSkillPalette('pistol_stealth')
+pistol_stealth.uid = "Thief_pistol_stealth"
+pistol_stealth.profession = GW2.CHARCLASS.Thief
+pistol_stealth.icon = "pistol"
+pistol_stealth.skills_luacode = {
+	[13115] = {
+		slot = GW2.SKILLBARSLOT.Slot_1,
+		activationtime = 1,
+		icon = 'Sneak Attack'
+	}
+}
+function pistol_stealth:IsActive(context)
+	return context.player.alive and context.skillbar~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 13115
+end
+function pistol_stealth:CanActivate(context)
+  return false
+end
+function pistol_stealth:Activate(context)
+end
+function pistol_stealth:Deactivate(context)
+	return false
+end
+SkillManager:AddSkillPalette( pistol_stealth )
+
+local deadeye_pistol_stealth = SkillManager:CreateSkillPalette('deadeye_pistol_stealth')
+deadeye_pistol_stealth.uid = "Thief_deadeye_pistol_stealth"
+deadeye_pistol_stealth.profession = GW2.CHARCLASS.Thief
+deadeye_pistol_stealth.icon = "pistol"
+deadeye_pistol_stealth.skills_luacode = {
+	[50466] = {
+		slot = GW2.SKILLBARSLOT.Slot_1,
+		activationtime = 1,
+		icon = 'Malicious Sneak Attack'
+	}
+}
+function deadeye_pistol_stealth:IsActive(context)
+	return context.player.alive and context.skillbar~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 50466
+end
+function deadeye_pistol_stealth:CanActivate(context)
+  return false
+end
+function deadeye_pistol_stealth:Activate(context)
+end
+function deadeye_pistol_stealth:Deactivate(context)
+	return false
+end
+SkillManager:AddSkillPalette( deadeye_pistol_stealth )
+
 
 local pistol_oh = SkillManager:CreateSkillPalette('pistol_oh')
 pistol_oh.uid = "Thief_pistol_oh"
 pistol_oh.profession = GW2.CHARCLASS.Thief
 pistol_oh.icon = "pistol"
--- pistol_oh.id =   --> set a skill ID if you want it to download an icon for this skillset 
+-- pistol_oh.id =   --> set a skill ID if you want it to download an icon for this skillset
 pistol_oh.skills_luacode = {
-	[13012] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_4, 
-		 activationtime = 0, 
-		 icon = 'Head Shot',  
+	[13012] = {
+		 slot = GW2.SKILLBARSLOT.Slot_4,
+		 activationtime = 0,
+		 icon = 'Head Shot',
 	 },
-	 [13113] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_5, 
-		 activationtime = 0.5, 
-		 icon = 'Black Powder',  
+	 [13113] = {
+		 slot = GW2.SKILLBARSLOT.Slot_5,
+		 activationtime = 0.5,
+		 icon = 'Black Powder',
 	 },
 }
 function pistol_oh:IsActive(context)
@@ -253,63 +384,57 @@ local sword = SkillManager:CreateSkillPalette('sword')
 sword.uid = "Thief_sword"
 sword.profession = GW2.CHARCLASS.Thief
 sword.icon = "sword"
--- sword.id =   --> set a skill ID if you want it to download an icon for this skillset 
+-- sword.id =   --> set a skill ID if you want it to download an icon for this skillset
 sword.skills_luacode = {
-	[13009] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_1, 
-		 activationtime = 0.5, 
-		 icon = 'Slice',  
+	[13009] = {
+		 slot = GW2.SKILLBARSLOT.Slot_1,
+		 activationtime = 0.5,
+		 icon = 'Slice',
 	 },
-	 [13088] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_1, 
-		 activationtime = 0.5, 
+	 [13088] = {
+		 slot = GW2.SKILLBARSLOT.Slot_1,
+		 activationtime = 0.5,
 		 parent = 13009,
-		 icon = 'Slash',  
+		 icon = 'Slash',
 	 },
-	 [13116] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_1, 
-		 activationtime = 0.5, 
+	 [13116] = {
+		 slot = GW2.SKILLBARSLOT.Slot_1,
+		 activationtime = 0.5,
 		 parent = 13088,
-		 icon = 'Crippling Strike',  
+		 icon = 'Crippling Strike',
 	 },
-	 [13114] = { -- Only with buff:13017 (stealth)
-		 slot = GW2.SKILLBARSLOT.Slot_1, 
-		 activationtime = 1, 
-		 parent = 1,
-		 icon = 'Tactical Strike',  
+	 [13015] = {
+		 slot = GW2.SKILLBARSLOT.Slot_2,
+		 activationtime = 0,
+		 icon = 'Infiltrator\'s Strike',
 	 },
-	 [13015] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_2, 
-		 activationtime = 0, 
-		 icon = 'Infiltrator\'s Strike',  
-	 },
-	 [13128] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_2, 
-		 activationtime = 0.5, 
+	 [13128] = {
+		 slot = GW2.SKILLBARSLOT.Slot_2,
+		 activationtime = 0.25,
 		 icon = 'Infiltrator\'s Return',
 		 parent = 13015,
 	 },
-	 [13112] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_3, 
-		 activationtime = 0.5, 
-		 icon = 'Stab',  
+	 [13112] = {
+		 slot = GW2.SKILLBARSLOT.Slot_3,
+		 activationtime = 0.5,
+		 icon = 'Stab',
 	 },
-	 [13016] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_3, 
-		 activationtime = 0.5, 
-		 icon = 'Flanking Strike',  
+	 [13016] = {
+		 slot = GW2.SKILLBARSLOT.Slot_3,
+		 activationtime = 0.5,
+		 icon = 'Flanking Strike',
 	 },
-	 [13112] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_3, 
-		 activationtime = 0.5, 
+	 [13007] = {
+		 slot = GW2.SKILLBARSLOT.Slot_3,
+		 activationtime = 0.5,
 		 icon = 'Larcenous Strike',
-		 parent = 13007,
-	 },	 
-	 [13031] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_3, 
-		 activationtime = 0.5, 
-		 icon = 'Pistol Whip',  
-	 }, 
+		 parent = 13016,
+	 },
+	 [13031] = {
+		 slot = GW2.SKILLBARSLOT.Slot_3,
+		 activationtime = 0.5,
+		 icon = 'Pistol Whip',
+	 },
 }
 function sword:IsActive(context)
 	return context.player.alive and (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2] ~= nil  and (context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 13015 or context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 13128))
@@ -326,55 +451,98 @@ end
 SkillManager:AddSkillPalette( sword )
 
 
+local sword_stealth = SkillManager:CreateSkillPalette('sword_stealth')
+sword_stealth.uid = "Thief_sword_stealth"
+sword_stealth.profession = GW2.CHARCLASS.Thief
+sword_stealth.icon = "sword"
+sword_stealth.skills_luacode = {
+	[13114] = {
+		slot = GW2.SKILLBARSLOT.Slot_1,
+		activationtime = 1,
+		icon = 'Tactical Strike',
+	}
+}
+function sword_stealth:IsActive(context)
+	return context.player.alive and context.skillbar~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 13114
+end
+function sword_stealth:CanActivate(context)
+  return false
+end
+function sword_stealth:Activate(context)
+end
+function sword_stealth:Deactivate(context)
+	return false
+end
+SkillManager:AddSkillPalette( sword_stealth )
+
+
+local deadeye_sword_stealth = SkillManager:CreateSkillPalette('deadeye_sword_stealth')
+deadeye_sword_stealth.uid = "Thief_deadeye_sword_stealth"
+deadeye_sword_stealth.profession = GW2.CHARCLASS.Thief
+deadeye_sword_stealth.icon = "sword"
+deadeye_sword_stealth.skills_luacode = {
+	[50484] = {
+		slot = GW2.SKILLBARSLOT.Slot_1,
+		activationtime = 1,
+		icon = 'Malicious Tactical Strike'
+	}
+}
+function deadeye_sword_stealth:IsActive(context)
+	return context.player.alive and context.skillbar~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 50484
+end
+function deadeye_sword_stealth:CanActivate(context)
+  return false
+end
+function deadeye_sword_stealth:Activate(context)
+end
+function deadeye_sword_stealth:Deactivate(context)
+	return false
+end
+SkillManager:AddSkillPalette( deadeye_sword_stealth )
+
 
 local staff = SkillManager:CreateSkillPalette('staff')
 staff.uid = "Thief_staff"
 staff.profession = GW2.CHARCLASS.Thief
 staff.icon = "staff"
--- staff.id =   --> set a skill ID if you want it to download an icon for this skillset 
+-- staff.id =   --> set a skill ID if you want it to download an icon for this skillset
 staff.skills_luacode = {
-	[30614] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_1, 
-		 activationtime = 0.5, 
-		 icon = 'Staff Strike',  
+	[30614] = {
+		 slot = GW2.SKILLBARSLOT.Slot_1,
+		 activationtime = 0.5,
+		 icon = 'Staff Strike',
 	 },
-	 [30135] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_1, 
-		 activationtime = 0.5, 
+	 [30135] = {
+		 slot = GW2.SKILLBARSLOT.Slot_1,
+		 activationtime = 0.5,
 		 parent = 30614,
-		 icon = 'Staff Bash',  
+		 icon = 'Staff Bash',
 	 },
-	 [30434] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_1, 
-		 activationtime = 1, 
+	 [30434] = {
+		 slot = GW2.SKILLBARSLOT.Slot_1,
+		 activationtime = 1,
 		 parent = 30135,
-		 icon = 'Punishing Strikes',  
+		 icon = 'Punishing Strikes',
 	 },
-	 [30210] = {  -- Only with buff:13017 (stealth)
-		 slot = GW2.SKILLBARSLOT.Slot_1, 
-		 activationtime = 0.5, 
-		 parent = 1,
-		 icon = 'Hook Strike',  
+	 [29911] = {
+		 slot = GW2.SKILLBARSLOT.Slot_2,
+		 activationtime = 0.5,
+		 icon = 'Weakening Charge',
 	 },
-	 [29911] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_2, 
-		 activationtime = 0.5, 
-		 icon = 'Weakening Charge',  
+	 [30520] = {
+		 slot = GW2.SKILLBARSLOT.Slot_3,
+		 activationtime = 0	,
+		 icon = 'Debilitating Arc',
 	 },
-	 [30520] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_3, 
-		 activationtime = 0	, 
-		 icon = 'Debilitating Arc',  
+	 [30775] = {
+		 slot = GW2.SKILLBARSLOT.Slot_4,
+		 activationtime = 0.75,
+		 icon = 'Dust Strike',
 	 },
-	 [30775] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_4, 
-		 activationtime = 0.25, 
-		 icon = 'Dust Strike',  
-	 },
-	 [30597] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_5, 
-		 activationtime = 0.75, 
-		 icon = 'Vault',  
+	 [30597] = {
+		 slot = GW2.SKILLBARSLOT.Slot_5,
+		 activationtime = 0.75,
+		 icon = 'Vault',
 	 },
 }
 function staff:IsActive(context)
@@ -392,49 +560,62 @@ end
 SkillManager:AddSkillPalette( staff )
 
 
+local staff_stealth = SkillManager:CreateSkillPalette('staff_stealth')
+staff_stealth.uid = "Thief_staff_stealth"
+staff_stealth.profession = GW2.CHARCLASS.Thief
+staff_stealth.icon = "staff"
+staff_stealth.skills_luacode = {
+	[30210] = {
+		slot = GW2.SKILLBARSLOT.Slot_1,
+		activationtime = 0.75,
+		icon = 'Hook Strike'
+	}
+}
+function staff_stealth:IsActive(context)
+	return context.player.alive and context.skillbar~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 30210
+end
+function staff_stealth:CanActivate(context)
+  return false
+end
+function staff_stealth:Activate(context)
+end
+function staff_stealth:Deactivate(context)
+	return false
+end
+SkillManager:AddSkillPalette( staff_stealth )
+
 
 local rifle_freeaction = SkillManager:CreateSkillPalette('rifle_freeaction')
 rifle_freeaction.uid = "Thief_rifle_freeaction"
 rifle_freeaction.profession = GW2.CHARCLASS.Thief
 rifle_freeaction.icon = "rifle"
--- rifle_freeaction.id =   --> set a skill ID if you want it to download an icon for this skillset 
+-- rifle_freeaction.id =   --> set a skill ID if you want it to download an icon for this skillset
 rifle_freeaction.skills_luacode = {
-	[41422] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_1, 
-		 activationtime = 0.75, 
-		 icon = 'Brutal Aim',  
-	 },
-	 [44087] = {  -- Only with buff:13017 (stealth)
-		 slot = GW2.SKILLBARSLOT.Slot_1, 
-		 activationtime = 0.75, 
-		 parent = 1,
-		 icon = 'Cursed Bullet',  
-	 },
-	 [41494] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_2, 
-		 activationtime = 0.5, 
-		 icon = 'Skirmisher\'s Shot',  
-	 },
-	 [43916] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_3, 
-		 activationtime = 0.75, 
-		 icon = 'Double Tap',  
-	 },
-	 [41937] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_4, 
-		 activationtime = 0.25, 
-		 icon = 'Death\'s Retreat',  
-	 },
-	 [40600] = { 
-		  slot = GW2.SKILLBARSLOT.Slot_5, 
-		  activationtime = 0.5, 
-		  icon = 'Kneel',  
-	  },
-	  -- [45218] = { 
-		-- slot = GW2.SKILLBARSLOT.Slot_5, 
-		-- activationtime = 0.5, 
-		 -- icon = 'Sniper's Cover',  
-	--},
+	[41422] = {
+		 slot = GW2.SKILLBARSLOT.Slot_1,
+		 activationtime = 0.75,
+		 icon = 'Brutal Aim',
+	},
+	[41494] = {
+	 slot = GW2.SKILLBARSLOT.Slot_2,
+	 activationtime = 0.5,
+	 icon = 'Skirmisher\'s Shot',
+	},
+	[43916] = {
+	 slot = GW2.SKILLBARSLOT.Slot_3,
+	 activationtime = 0.75,
+	 icon = 'Double Tap',
+	},
+	[41937] = {
+	 slot = GW2.SKILLBARSLOT.Slot_4,
+	 activationtime = 0.25,
+	 icon = 'Death\'s Retreat',
+	},
+	[40600] = {
+	  slot = GW2.SKILLBARSLOT.Slot_5,
+	  activationtime = 0.5,
+	  icon = 'Kneel',
+	}
 }
 function rifle_freeaction:IsActive(context)
 	return context.player.alive and (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_2].id == 41494)
@@ -455,43 +636,36 @@ end
 SkillManager:AddSkillPalette( rifle_freeaction )
 
 
-
 local rifle_kneel = SkillManager:CreateSkillPalette('rifle_kneel')
 rifle_kneel.uid = "Thief_rifle_kneel"
 rifle_kneel.profession = GW2.CHARCLASS.Thief
 rifle_kneel.icon = "rifle"
--- rifle_kneel.id =   --> set a skill ID if you want it to download an icon for this skillset 
+-- rifle_kneel.id =   --> set a skill ID if you want it to download an icon for this skillset
 rifle_kneel.skills_luacode = {
-	[40710] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_1, 
-		 activationtime = 0.75, 
-		 icon = 'Deadly Aim',  
-	 },
-	 [44087] = {  -- Only with buff:13017 (stealth)
-		 slot = GW2.SKILLBARSLOT.Slot_1, 
-		 activationtime = 0.75, 
-		 parent = 1,
-		 icon = 'Cursed Bullet',  
-	 },
-	 [44591] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_2, 
-		 activationtime = 0.75, 
-		 icon = 'Spotter\'s Shot',  
-	 },
-	 [44695] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_3, 
-		 activationtime = 1, 
-		 icon = 'Three Round Burst',  
-	 },
-	 [40436] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_4, 
-		 activationtime = 0.75, 
-		 icon = 'Death\'s Judgment',  
-	 },
-	  [41068] = { 
-		  slot = GW2.SKILLBARSLOT.Slot_5, 
-		  activationtime = 0, 
-		  icon = 'Free Action',  
+	[40710] = {
+		 slot = GW2.SKILLBARSLOT.Slot_1,
+		 activationtime = 0.75,
+		 icon = 'Deadly Aim',
+	},
+	[44591] = {
+	 slot = GW2.SKILLBARSLOT.Slot_2,
+	 activationtime = 0.75,
+	 icon = 'Spotter\'s Shot',
+	},
+	[44695] = {
+	 slot = GW2.SKILLBARSLOT.Slot_3,
+	 activationtime = 1,
+	 icon = 'Three Round Burst',
+	},
+	[40436] = {
+	 slot = GW2.SKILLBARSLOT.Slot_4,
+	 activationtime = 0.25,
+	 icon = 'Sniper\'s Cover',
+	},
+	[41068] = {
+	 slot = GW2.SKILLBARSLOT.Slot_5,
+	 activationtime = 0,
+	 icon = 'Free Action',
 	},
 }
 function rifle_kneel:IsActive(context)
@@ -511,49 +685,68 @@ end
 SkillManager:AddSkillPalette( rifle_kneel )
 
 
+local rifle_stealth = SkillManager:CreateSkillPalette('rifle_stealth')
+rifle_stealth.uid = "Thief_rifle_stealth"
+rifle_stealth.profession = GW2.CHARCLASS.Thief
+rifle_stealth.icon = "rifle"
+-- rifle_stealth.id = 44087
+rifle_stealth.skills_luacode = {
+	[44087] = {
+	 slot = GW2.SKILLBARSLOT.Slot_1,
+	 activationtime = 0.5,
+	 icon = 'Death\'s Judgment',
+	}
+}
+function rifle_stealth:IsActive(context)
+	return context.player.alive and context.skillbar~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 44087
+end
+function rifle_stealth:CanActivate(context)
+  return false
+end
+function rifle_stealth:Activate(context)
+end
+function rifle_stealth:Deactivate(context)
+	return false
+end
+SkillManager:AddSkillPalette( rifle_stealth )
+
 
 local harpoongun = SkillManager:CreateSkillPalette('harpoongun')
 harpoongun.uid = "Thief_harpoongun"
 harpoongun.profession = GW2.CHARCLASS.Thief
 harpoongun.icon = "Harpoongun"
--- harpoongun.id =   --> set a skill ID if you want it to download an icon for this skillset 
+-- harpoongun.id =   --> set a skill ID if you want it to download an icon for this skillset
 harpoongun.skills_luacode = {
-	[13072] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_1, 
-		 activationtime = 0.25, 
-		 icon = 'Piercing Shot',  
+	[13072] = {
+		 slot = GW2.SKILLBARSLOT.Slot_1,
+		 activationtime = 0.25,
+		 icon = 'Piercing Shot',
 	 },
-	 [13126] = {  -- Only with buff:13017 (stealth)
-		 slot = GW2.SKILLBARSLOT.Slot_1, 
-		 activationtime = 0.5, 
-		 parent = 1,
-		 icon = 'The Ripper',  
+	 [13073] = {
+		 slot = GW2.SKILLBARSLOT.Slot_2,
+		 activationtime = 1.25,
+		 icon = 'Deluge',
 	 },
-	 [13073] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_2, 
-		 activationtime = 1.25, 
-		 icon = 'Deluge',  
+	 [13074] = {
+		 slot = GW2.SKILLBARSLOT.Slot_3,
+		 activationtime = 0.5,
+		 icon = 'Escape',
 	 },
-	 [13074] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_3, 
-		 activationtime = 0.5, 
-		 icon = 'Escape',  
+	 [13075] = {
+		 slot = GW2.SKILLBARSLOT.Slot_4,
+		 activationtime = 1,
+		 icon = 'Disabling Shot',
 	 },
-	 [13075] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_4, 
-		 activationtime = 1, 
-		 icon = 'Disabling Shot',  
+	 [13076] = {
+		 slot = GW2.SKILLBARSLOT.Slot_5,
+		 activationtime = 0.25,
+		 icon = 'Ink Shot',
 	 },
-	 [13076] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_5, 
-		 activationtime = 0.25, 
-		 icon = 'Ink Shot',  
-	 },
-	 [13078] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_5, 
-		 activationtime = 0.5, 
+	 [13078] = {
+		 slot = GW2.SKILLBARSLOT.Slot_5,
+		 activationtime = 0.5,
 		 parent = 13076,
-		 icon = 'Smoke Trail',  
+		 icon = 'Smoke Trail',
 	 },
 }
 function harpoongun:IsActive(context)
@@ -571,55 +764,98 @@ end
 SkillManager:AddSkillPalette( harpoongun )
 
 
+local harpoongun_stealth = SkillManager:CreateSkillPalette('harpoongun_stealth')
+harpoongun_stealth.uid = "Thief_harpoongun_stealth"
+harpoongun_stealth.profession = GW2.CHARCLASS.Thief
+harpoongun_stealth.icon = "harpoongun"
+harpoongun_stealth.skills_luacode = {
+	[13126] = {
+		slot = GW2.SKILLBARSLOT.Slot_1,
+		activationtime = 0.5,
+		icon = 'The Ripper',
+	}
+}
+function harpoongun_stealth:IsActive(context)
+	return context.player.alive and context.skillbar~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 13126
+end
+function harpoongun_stealth:CanActivate(context)
+  return false
+end
+function harpoongun_stealth:Activate(context)
+end
+function harpoongun_stealth:Deactivate(context)
+	return false
+end
+SkillManager:AddSkillPalette( harpoongun_stealth )
+
+
+local deadeye_harpoongun_stealth = SkillManager:CreateSkillPalette('deadeye_harpoongun_stealth')
+deadeye_harpoongun_stealth.uid = "Thief_deadeye_harpoongun_stealth"
+deadeye_harpoongun_stealth.profession = GW2.CHARCLASS.Thief
+deadeye_harpoongun_stealth.icon = "harpoongun"
+deadeye_harpoongun_stealth.skills_luacode = {
+	[50449] = {
+		slot = GW2.SKILLBARSLOT.Slot_1,
+		activationtime = 1,
+		icon = 'Malicious Ripper'
+	}
+}
+function deadeye_harpoongun_stealth:IsActive(context)
+	return context.player.alive and context.skillbar~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 50449
+end
+function deadeye_harpoongun_stealth:CanActivate(context)
+  return false
+end
+function deadeye_harpoongun_stealth:Activate(context)
+end
+function deadeye_harpoongun_stealth:Deactivate(context)
+	return false
+end
+SkillManager:AddSkillPalette( deadeye_harpoongun_stealth )
+
 
 local spear = SkillManager:CreateSkillPalette('spear')
 spear.uid = "Thief_spear"
 spear.profession = GW2.CHARCLASS.Thief
 spear.icon = "spear"
--- spear.id =   --> set a skill ID if you want it to download an icon for this skillset 
+-- spear.id =   --> set a skill ID if you want it to download an icon for this skillset
 spear.skills_luacode = {
-	[13119] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_1, 
-		 activationtime = 0.5, 
-		 icon = 'Stab',  
+	[13119] = {
+		 slot = GW2.SKILLBARSLOT.Slot_1,
+		 activationtime = 0.5,
+		 icon = 'Stab',
 	 },
-	 [13120] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_1, 
-		 activationtime = 0.75, 
+	 [13120] = {
+		 slot = GW2.SKILLBARSLOT.Slot_1,
+		 activationtime = 0.75,
 		 parent = 13119,
-		 icon = 'Jab',  
+		 icon = 'Jab',
 	 },
-	 [13121] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_1, 
-		 activationtime = 0.75, 
+	 [13121] = {
+		 slot = GW2.SKILLBARSLOT.Slot_1,
+		 activationtime = 0.75,
 		 parent = 13120,
-		 icon = 'Poison Tip Strike',  
+		 icon = 'Poison Tip Strike',
 	 },
-	 [13125] = {  -- Only with buff:13017 (stealth)
-		 slot = GW2.SKILLBARSLOT.Slot_1, 
-		 activationtime = 0.5, 
-		 parent = 1,
-		 icon = 'Deadly Strike',  
+	 [13069] = {
+		 slot = GW2.SKILLBARSLOT.Slot_2,
+		 activationtime = 0.75,
+		 icon = 'Flanking Dive',
 	 },
-	 [13069] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_2, 
-		 activationtime = 0.75, 
-		 icon = 'Flanking Dive',  
+	 [13122] = {
+		 slot = GW2.SKILLBARSLOT.Slot_3,
+		 activationtime = 1.5,
+		 icon = 'Nine-Tailed Strike',
 	 },
-	 [13122] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_3, 
-		 activationtime = 1.5, 
-		 icon = 'Nine-Tailed Strike',  
+	 [13070] = {
+		 slot = GW2.SKILLBARSLOT.Slot_4,
+		 activationtime = 0.5,
+		 icon = 'Tow Line',
 	 },
-	 [13070] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_4, 
-		 activationtime = 0.5, 
-		 icon = 'Tow Line',  
-	 },
-	 [13068] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_5, 
-		 activationtime = 2.5, 
-		 icon = 'Shadow Assault',  
+	 [13068] = {
+		 slot = GW2.SKILLBARSLOT.Slot_5,
+		 activationtime = 2.5,
+		 icon = 'Shadow Assault',
 	 },
 }
 function spear:IsActive(context)
@@ -636,37 +872,91 @@ function spear:Deactivate(context)
 end
 SkillManager:AddSkillPalette( spear )
 
+local spear_stealth = SkillManager:CreateSkillPalette('spear_stealth')
+spear_stealth.uid = "Thief_spear_stealth"
+spear_stealth.profession = GW2.CHARCLASS.Thief
+spear_stealth.icon = "spear"
+spear_stealth.skills_luacode = {
+	[13125] = {
+		slot = GW2.SKILLBARSLOT.Slot_1,
+		activationtime = 0.5,
+		icon = 'Deadly Strike',
+	}
+}
+function spear_stealth:IsActive(context)
+	return context.player.alive and context.skillbar~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 13125
+end
+function spear_stealth:CanActivate(context)
+  return false
+end
+function spear_stealth:Activate(context)
+end
+function spear_stealth:Deactivate(context)
+	return false
+end
+SkillManager:AddSkillPalette( spear_stealth )
+
+
+local deadeye_spear_stealth = SkillManager:CreateSkillPalette('deadeye_spear_stealth')
+deadeye_spear_stealth.uid = "Thief_deadeye_spear_stealth"
+deadeye_spear_stealth.profession = GW2.CHARCLASS.Thief
+deadeye_spear_stealth.icon = "spear"
+deadeye_spear_stealth.skills_luacode = {
+	[50417] = {
+		slot = GW2.SKILLBARSLOT.Slot_1,
+		activationtime = 1,
+		icon = 'Malicious Deadly Strike'
+	}
+}
+function deadeye_spear_stealth:IsActive(context)
+	return context.player.alive and context.skillbar~=nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 50417
+end
+function deadeye_spear_stealth:CanActivate(context)
+  return false
+end
+function deadeye_spear_stealth:Activate(context)
+end
+function deadeye_spear_stealth:Deactivate(context)
+	return false
+end
+SkillManager:AddSkillPalette( deadeye_spear_stealth )
+
 
 
 local downed = SkillManager:CreateSkillPalette('downed')
 downed.uid = "Thief_downed"
 downed.profession = GW2.CHARCLASS.Thief
 downed.icon = "downed"
-downed.id = 13003  --> set a skill ID if you want it to download an icon for this skillset 
+downed.id = 13003  --> set a skill ID if you want it to download an icon for this skillset
 downed.skills_luacode = {
-	[13003] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_1, 
-		 activationtime = 0.25, 
-		 icon = 'Trail of Knives',  
-	 },
-	 [13140] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_2, 
-		 activationtime = 0, 
-		 icon = 'Shadow Escape',  
-	 },
-	 [13033] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_3, 
-		 activationtime = 0.5, 
-		 icon = 'Smoke Bomb',  
-	 },
-	 [1175] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_4, 
-		 activationtime = 0, 
-		 icon = 'Bandage',  
-	 },
+	[13003] = {
+		slot = GW2.SKILLBARSLOT.Slot_1,
+		activationtime = 0.25,
+		icon = 'Trail of Knives',
+	},
+	[13140] = {
+		slot = GW2.SKILLBARSLOT.Slot_2,
+		activationtime = 0,
+		icon = 'Shadow Escape',
+	},
+	[13033] = {
+		slot = GW2.SKILLBARSLOT.Slot_3,
+		activationtime = 0.5,
+		icon = 'Smoke Bomb',
+	},
+	[1175] = {
+		slot = GW2.SKILLBARSLOT.Slot_4,
+		activationtime = 0,
+		icon = 'Bandage',
+	},
+	[37873] = {
+		slot = GW2.SKILLBARSLOT.Slot_5,
+		activationtime = 3,
+		icon = "Signet of Agony"
+	}
 }
 function downed:IsActive(context)
-	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 13079)
+	return (context.skillbar~=nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1] ~= nil  and context.skillbar[GW2.SKILLBARSLOT.Slot_1].id == 13003)
 end
 function downed:CanActivate(context)
 	return false
@@ -684,27 +974,27 @@ local drowning = SkillManager:CreateSkillPalette('drowning')
 drowning.uid = "Thief_drowning"
 drowning.profession = GW2.CHARCLASS.Thief
 drowning.icon = "drowning"
-drowning.id = 13079  --> set a skill ID if you want it to download an icon for this skillset 
+drowning.id = 13079  --> set a skill ID if you want it to download an icon for this skillset
 drowning.skills_luacode = {
-	[13079] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_1, 
-		 activationtime = 0.5, 
-		 icon = 'Diving Knife',  
+	[13079] = {
+		 slot = GW2.SKILLBARSLOT.Slot_1,
+		 activationtime = 0.5,
+		 icon = 'Diving Knife',
 	 },
-	 [13081] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_2, 
-		 activationtime = 0.75, 
-		 icon = 'Cheap Shot',  
+	 [13081] = {
+		 slot = GW2.SKILLBARSLOT.Slot_2,
+		 activationtime = 0.75,
+		 icon = 'Cheap Shot',
 	 },
-	 [13080] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_3, 
-		 activationtime = 1, 
-		 icon = 'Vanish in the Deep',  
+	 [13080] = {
+		 slot = GW2.SKILLBARSLOT.Slot_3,
+		 activationtime = 1,
+		 icon = 'Vanish in the Deep',
 	 },
-	 [1175] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_4, 
-		 activationtime = 0, 
-		 icon = 'Bandage',  
+	 [1175] = {
+		 slot = GW2.SKILLBARSLOT.Slot_4,
+		 activationtime = 0,
+		 icon = 'Bandage',
 	 },
 }
 function drowning:IsActive(context)
@@ -729,455 +1019,498 @@ thief.profession = GW2.CHARCLASS.Thief
 thief.icon = "thief"
 thief.skills_luacode = {
 -- HEALING
-	[13027] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_6, 
-		 activationtime = 1, 
-		 icon = 'Hide in Shadows',  
+	[13027] = {
+		 slot = GW2.SKILLBARSLOT.Slot_6,
+		 activationtime = 1,
+		 icon = 'Hide in Shadows',
 	 },
-	 [13021] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_6, 
-		 activationtime = 0, 
-		 icon = 'Withdraw',  
+	 [13021] = {
+		 slot = GW2.SKILLBARSLOT.Slot_6,
+		 activationtime = 0,
+		 icon = 'Withdraw',
 	 },
-	 [21778] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_6, 
-		 activationtime = 1, 
-		 icon = 'Skelk Venom',  
+	 [21778] = {
+		 slot = GW2.SKILLBARSLOT.Slot_6,
+		 activationtime = 1,
+		 icon = 'Skelk Venom',
 	 },
-	 [13050] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_6, 
-		 activationtime = 1.25, 
-		 icon = 'Signet of Malice',  
+	 [13050] = {
+		 slot = GW2.SKILLBARSLOT.Slot_6,
+		 activationtime = 1.25,
+		 icon = 'Signet of Malice',
 	 },
-	 [30400] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_6, 
-		 activationtime = 0.75, 
-		 icon = 'Channeled Vigor',  
+	 [30400] = {
+		 slot = GW2.SKILLBARSLOT.Slot_6,
+		 activationtime = 0.75,
+		 icon = 'Channeled Vigor',
 	 },
-	 [45088] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_6, 
-		 activationtime = 0.75, 
-		 icon = 'Malicious Restoration',  
+	 [45088] = {
+		 slot = GW2.SKILLBARSLOT.Slot_6,
+		 activationtime = 0.75,
+		 icon = 'Malicious Restoration',
 	 },
 
 -- END HEALING.
 
 -- F-Keys.
 	[13014] = { -- TODO: This will get a random skill. We need a way to just fire whatever we get right away. (F1>steal,F2>stolen skill)
-		 slot = GW2.SKILLBARSLOT.Slot_13, 
-		 activationtime = 0.5, 
-		 icon = 'Steal',  
+		 slot = GW2.SKILLBARSLOT.Slot_13,
+		 activationtime = 0.0,
+		 icon = 'Steal',
 	 },
-	 [43390] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_13, 
-		 activationtime = 0.5, 
-		 icon = 'Deadeye\'s Mark',  
+	 [43390] = {
+		 slot = GW2.SKILLBARSLOT.Slot_13,
+		 activationtime = 0.5,
+		 icon = 'Deadeye\'s Mark',
 	 },
-	 [39960] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_14, 
-		 activationtime = 0.5, 
-		 icon = 'Steal Warmth',  
+	 [39960] = {
+		 slot = GW2.SKILLBARSLOT.Slot_14,
+		 activationtime = 0.25,
+		 icon = 'Steal Warmth',
 	 },
-	 [40133] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_14, 
-		 activationtime = 0.5, 
-		 icon = 'Steal Resistance',  
+	 [40133] = {
+		 slot = GW2.SKILLBARSLOT.Slot_14,
+		 activationtime = 0.25,
+		 icon = 'Steal Resistance',
 	 },
-	 [42863] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_14, 
-		 activationtime = 0.5, 
-		 icon = 'Steal Time',  
+	 [42863] = {
+		 slot = GW2.SKILLBARSLOT.Slot_14,
+		 activationtime = 0.25,
+		 icon = 'Steal Time',
 	 },
-	 [40904] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_14, 
-		 activationtime = 0.5, 
-		 icon = 'Steal Strength',  
+	 [40904] = {
+		 slot = GW2.SKILLBARSLOT.Slot_14,
+		 activationtime = 0.25,
+		 icon = 'Steal Strength',
 	 },
-	 [44526] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_14, 
-		 activationtime = 0.5, 
-		 icon = 'Steal Mobility',  
+	 [44526] = {
+		 slot = GW2.SKILLBARSLOT.Slot_14,
+		 activationtime = 0.25,
+		 icon = 'Steal Mobility',
 	 },
-	 [43768] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_14, 
-		 activationtime = 0.5, 
-		 icon = 'Steal Defenses',  
+	 [43768] = {
+		 slot = GW2.SKILLBARSLOT.Slot_14,
+		 activationtime = 0.25,
+		 icon = 'Steal Defenses',
 	 },
-	 [43373] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_14, 
-		 activationtime = 0.5, 
-		 icon = 'Steal Durability',  
+	 [43373] = {
+		 slot = GW2.SKILLBARSLOT.Slot_14,
+		 activationtime = 0.25,
+		 icon = 'Steal Durability',
 	 },
-	 [40903] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_14, 
-		 activationtime = 0.5, 
-		 icon = 'Steal Health',  
+	 [40903] = {
+		 slot = GW2.SKILLBARSLOT.Slot_14,
+		 activationtime = 0.25,
+		 icon = 'Steal Health',
 	 },
-	 [40888] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_14, 
-		 activationtime = 0.5, 
-		 icon = 'Steal Precision',  
+	 [40888] = {
+		 slot = GW2.SKILLBARSLOT.Slot_14,
+		 activationtime = 0.25,
+		 icon = 'Steal Precision',
 	 },
-	 [1148] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_14, 
-		 activationtime = 0.5, 
-		 icon = 'Blinding Tuft',  
+	 [1148] = {
+		 slot = GW2.SKILLBARSLOT.Slot_14,
+		 activationtime = 0.5,
+		 icon = 'Blinding Tuft',
 	 },
-	 [1113] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_14, 
-		 activationtime = 0.25, 
-		 icon = 'Bone Crack',  
+	 [1113] = {
+		 slot = GW2.SKILLBARSLOT.Slot_14,
+		 activationtime = 0.25,
+		 icon = 'Bone Crack',
 	 },
-	 [1114] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_14, 
-		 activationtime = 0.5, 
-		 icon = 'Branch Bash',  
+	 [1114] = {
+		 slot = GW2.SKILLBARSLOT.Slot_14,
+		 activationtime = 0.5,
+		 icon = 'Branch Bash',
 	 },
-	 [1119] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_14, 
-		 activationtime = 0.75, 
-		 icon = 'Club Shock Wave',  
+	 [1119] = {
+		 slot = GW2.SKILLBARSLOT.Slot_14,
+		 activationtime = 0.75,
+		 icon = 'Club Shock Wave',
 	 },
-	 [1123] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_14, 
-		 activationtime = 1, 
-		 icon = 'Consume Plasma',  
+	 [1123] = {
+		 slot = GW2.SKILLBARSLOT.Slot_14,
+		 activationtime = 1,
+		 icon = 'Consume Plasma',
 	 },
-	 [1116] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_14, 
-		 activationtime = 1, 
-		 icon = 'Drink',  
+	 [1116] = {
+		 slot = GW2.SKILLBARSLOT.Slot_14,
+		 activationtime = 0.5,
+		 icon = 'Drink',
 	 },
-	 [1125] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_14, 
-		 activationtime = 1, 
-		 icon = 'Eat Egg',  
+	 [1125] = {
+		 slot = GW2.SKILLBARSLOT.Slot_14,
+		 activationtime = 1,
+		 icon = 'Eat Egg',
 	 },
-	 [31438] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_14, 
-		 activationtime = 0.5, 
-		 icon = 'Essence Sap',  
+	 [31438] = {
+		 slot = GW2.SKILLBARSLOT.Slot_14,
+		 activationtime = 0.25,
+		 icon = 'Essence Sap',
 	 },
-	 [1149] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_14, 
-		 activationtime = 0.5, 
-		 icon = 'Exploding Venom Sack',  
+	 [1149] = {
+		 slot = GW2.SKILLBARSLOT.Slot_14,
+		 activationtime = 0.5,
+		 icon = 'Exploding Venom Sack',
 	 },
-	 [1139] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_14, 
-		 activationtime = 0.5, 
-		 icon = 'Healing Seed',  
+	 [1139] = {
+		 slot = GW2.SKILLBARSLOT.Slot_14,
+		 activationtime = 1.0,
+		 icon = 'Healing Seed',
 	 },
-	 [1129] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_14, 
-		 activationtime = 0, 
-		 icon = 'Ice Shard Stab',  
+	 [1129] = {
+		 slot = GW2.SKILLBARSLOT.Slot_14,
+		 activationtime = 0,
+		 icon = 'Ice Shard Stab',
 	 },
-	 [1131] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_14, 
-		 activationtime = 0.25, 
-		 icon = 'Mace Head Crack',  
+	 [1131] = {
+		 slot = GW2.SKILLBARSLOT.Slot_14,
+		 activationtime = 0.25,
+		 icon = 'Mace Head Crack',
 	 },
-	 [1134] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_14, 
-		 activationtime = 0, 
-		 icon = 'Rusty Scrap Strike',  
+	 [1134] = {
+		 slot = GW2.SKILLBARSLOT.Slot_14,
+		 activationtime = 0,
+		 icon = 'Rusty Scrap Strike',
 	 },
-	 [1132] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_14, 
-		 activationtime = 0, 
-		 icon = 'Shoot Rifle',  
+	 [1132] = {
+		 slot = GW2.SKILLBARSLOT.Slot_14,
+		 activationtime = 0,
+		 icon = 'Shoot Rifle',
 	 },
-	 [1141] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_14, 
-		 activationtime = 1.25, 
-		 icon = 'Skull Fear',  
+	 [1141] = {
+		 slot = GW2.SKILLBARSLOT.Slot_14,
+		 activationtime = 0.5,
+		 icon = 'Skull Fear',
 	 },
-	 [1120] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_14, 
-		 activationtime = 0.75, 
-		 icon = 'Throw Coral Shard',  
+	 [1120] = {
+		 slot = GW2.SKILLBARSLOT.Slot_14,
+		 activationtime = 0.75,
+		 icon = 'Throw Coral Shard',
 	 },
-	 [1121] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_14, 
-		 activationtime = 0.5, 
-		 icon = 'Throw Crystal Shard',  
+	 [1121] = {
+		 slot = GW2.SKILLBARSLOT.Slot_14,
+		 activationtime = 0.5,
+		 icon = 'Throw Crystal Shard',
 	 },
-	 [1126] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_14, 
-		 activationtime = 0.5, 
-		 icon = 'Throw Feathers',  
+	 [1126] = {
+		 slot = GW2.SKILLBARSLOT.Slot_14,
+		 activationtime = 0.5,
+		 icon = 'Throw Feathers',
 	 },
-	 [1127] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_14, 
-		 activationtime = 1, 
-		 icon = 'Throw Gear',  
+	 [1127] = {
+		 slot = GW2.SKILLBARSLOT.Slot_14,
+		 activationtime = 1,
+		 icon = 'Throw Gear',
 	 },
-	 [1110] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_14, 
-		 activationtime = 0.5, 
-		 icon = 'Throw Gunk',  
+	 [1110] = {
+		 slot = GW2.SKILLBARSLOT.Slot_14,
+		 activationtime = 0.5,
+		 icon = 'Throw Gunk',
 	 },
-	 [1130] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_14, 
-		 activationtime = 0.5, 
-		 icon = 'Throw Lava Rock',  
+	 [1130] = {
+		 slot = GW2.SKILLBARSLOT.Slot_14,
+		 activationtime = 0.5,
+		 icon = 'Throw Lava Rock',
 	 },
-	 [16484] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_14, 
-		 activationtime = 0.5, 
-		 icon = 'Throw Net',  
+	 [16484] = {
+		 slot = GW2.SKILLBARSLOT.Slot_14,
+		 activationtime = 0.5,
+		 icon = 'Throw Net',
 	 },
-	 [1133] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_14, 
-		 activationtime = 1, 
-		 icon = 'Throw Rock',  
+	 [1133] = {
+		 slot = GW2.SKILLBARSLOT.Slot_14,
+		 activationtime = 1,
+		 icon = 'Throw Rock',
 	 },
-	 [1135] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_14, 
-		 activationtime = 0.5, 
-		 icon = 'Throw Scale',  
+	 [1135] = {
+		 slot = GW2.SKILLBARSLOT.Slot_14,
+		 activationtime = 0.5,
+		 icon = 'Throw Scale',
 	 },
-	 [1146] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_14, 
-		 activationtime = 0, 
-		 icon = 'Tooth Stab',  
+	 [1146] = {
+		 slot = GW2.SKILLBARSLOT.Slot_14,
+		 activationtime = 0,
+		 icon = 'Tooth Stab',
 	 },
-	 [1138] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_14, 
-		 activationtime = 0, 
-		 icon = 'Use Scepter',  
+	 [1138] = {
+		 slot = GW2.SKILLBARSLOT.Slot_14,
+		 activationtime = 0,
+		 icon = 'Use Scepter',
 	 },
-	 [1144] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_14, 
-		 activationtime = 0, 
-		 icon = 'Use Staff',  
+	 [1144] = {
+		 slot = GW2.SKILLBARSLOT.Slot_14,
+		 activationtime = 0,
+		 icon = 'Use Staff',
 	 },
-	 [1162] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_14, 
-		 activationtime = 3.25, 
-		 icon = 'Whirling Axe',  
+	 [1162] = {
+		 slot = GW2.SKILLBARSLOT.Slot_14,
+		 activationtime = 3.25,
+		 icon = 'Whirling Axe',
 	 },
-	 
+
 
 -- END F-Keys.
 
 -- ELITE.
-	 [13085] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_10, 
-		 activationtime = 4, 
-		 icon = 'Dagger Storm',  
+	 [13085] = {
+		 slot = GW2.SKILLBARSLOT.Slot_10,
+		 activationtime = 4.0, -- activation is 2.75, but duration is 4.0
+		 icon = 'Dagger Storm',
 	 },
-	 [13082] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_10, 
-		 activationtime = 1.5, 
-		 icon = 'Thieves Guild',  
+	 [13082] = {
+		 slot = GW2.SKILLBARSLOT.Slot_10,
+		 activationtime = 1.5,
+		 icon = 'Thieves Guild',
 	 },
-	 [13132] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_10, 
-		 activationtime = 1, 
-		 icon = 'Basilisk Venom',  
+	 [13132] = {
+		 slot = GW2.SKILLBARSLOT.Slot_10,
+		 activationtime = 1,
+		 icon = 'Basilisk Venom',
 	 },
-	 [29516] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_10, 
-		 activationtime = 0.5, 
-		 icon = 'Impact Strike',  
+	 [29516] = {
+		 slot = GW2.SKILLBARSLOT.Slot_10,
+		 activationtime = 0.5,
+		 icon = 'Impact Strike',
 	 },
-	 [30077] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_10, 
-		 activationtime = 0.75, 
+	 [30077] = {
+		 slot = GW2.SKILLBARSLOT.Slot_10,
+		 activationtime = 1.0,
 		 parent = 29516,
-		 icon = 'Uppercut',  
+		 icon = 'Uppercut',
 	 },
-	 [29639] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_10, 
-		 activationtime = 1.5, 
+	 [29639] = {
+		 slot = GW2.SKILLBARSLOT.Slot_10,
+		 activationtime = 1.5,
 		 parent = 30077,
-		 icon = 'Finishing Blow',  
+		 icon = 'Finishing Blow',
 	 },
-	 [45508] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_10, 
-		 activationtime = 0.5, 
-		 icon = 'Shadow Meld',  
+	 [45508] = {
+		 slot = GW2.SKILLBARSLOT.Slot_10,
+		 activationtime = 0.5,
+		 icon = 'Shadow Meld',
 	 },
 
 -- END ELITE.
 
 -- UTILITY.
-	 [46335] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_7, 
-		 activationtime = 0.5, 
-		 icon = 'Shadow Gust',  
+	 [55031] = {
+         slot = GW2.SKILLBARSLOT.Slot_13,
+         activationtime = 0,
+         icon = 'Swipe',
+     	 },
+	 [46335] = {
+		 slot = GW2.SKILLBARSLOT.Slot_7,
+		 activationtime = 0.5,
+		 icon = 'Shadow Gust',
 	 },
-	 [41205] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_8, 
-		 activationtime = 0.75, 
-		 icon = 'Binding Shadow',  
+	 [41205] = {
+		 slot = GW2.SKILLBARSLOT.Slot_8,
+		 activationtime = 0.75,
+		 icon = 'Binding Shadow',
 	 },
-	 [41372] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_9, 
-		 activationtime = 0, 
-		 icon = 'Mercy',  
+	 [41372] = {
+		 slot = GW2.SKILLBARSLOT.Slot_9,
+		 activationtime = 0,
+		 icon = 'Mercy',
 	 },
-	 [41158] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_7, 
-		 activationtime = 0.75, 
-		 icon = 'Shadow Flare',  
+	 [41158] = {
+		 slot = GW2.SKILLBARSLOT.Slot_7,
+		 activationtime = 0.75,
+		 icon = 'Shadow Flare',
 	 },
-	 [45672] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_7, 
-		 activationtime = 0, 
+	 [45672] = {
+		 slot = GW2.SKILLBARSLOT.Slot_7,
+		 activationtime = 0,
 		 parent = 41158,
-		 icon = 'Shadow Swap',  
+		 icon = 'Shadow Swap',
 	 },
-	[30868] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_7, 
-		 activationtime = 1, 
-		 icon = 'Fist Flurry',  
+	[30868] = {
+		 slot = GW2.SKILLBARSLOT.Slot_7,
+		 activationtime = 1,
+		 icon = 'Fist Flurry',
 	 },
-	 [30693] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_7, 
-		 activationtime = 0.5, 
+	 [30693] = {
+		 slot = GW2.SKILLBARSLOT.Slot_7,
+		 activationtime = 0.5,
 		 parent = 30868,
-		 icon = 'Palm Strike',  
+		 icon = 'Palm Strike',
 	 },
-	 [30568] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_7, 
-		 activationtime = 1, 
-		 icon = 'Distracting Daggers',  
+	 [30568] = {
+		 slot = GW2.SKILLBARSLOT.Slot_7,
+		 activationtime = 1,
+		 icon = 'Distracting Daggers',
 	 },
-	 [30661] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_7, 
-		 activationtime = 1.5, 
-		 icon = 'Bandit\'s Defense',  
+	 [30661] = {
+		 slot = GW2.SKILLBARSLOT.Slot_7,
+		 activationtime = 1.5,
+		 icon = 'Bandit\'s Defense',
 	 },
-	 [30519] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_7, 
-		 activationtime = 0.5, 
+	 [30519] = {
+		 slot = GW2.SKILLBARSLOT.Slot_7,
+		 activationtime = 0.5,
 		 parent = 30661,
-		 icon = 'Reflexive Strike',  
+		 icon = 'Reflexive Strike',
 	 },
-	 [30369] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_7, 
-		 activationtime = 0.5, 
-		 icon = 'Impairing Daggers',  
+	 [30369] = {
+		 slot = GW2.SKILLBARSLOT.Slot_7,
+		 activationtime = 0.5,
+		 icon = 'Impairing Daggers',
 	 },
-	[13002] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_7, 
-		 activationtime = 0, 
-		 icon = 'Shadowstep',  
+	[13002] = {
+		 slot = GW2.SKILLBARSLOT.Slot_7,
+		 activationtime = 0,
+		 icon = 'Shadowstep',
 	 },
-	 [13106] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_7, 
-		 activationtime = 0, 
+	 [13106] = {
+		 slot = GW2.SKILLBARSLOT.Slot_7,
+		 activationtime = 0,
 		 parent = 13002,
-		 icon = 'Shadow Return',  
+		 icon = 'Shadow Return',
 	 },
-	 [13044] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_7, 
-		 activationtime = 0, 
-		 icon = 'Blinding Powder',  
+	 [13044] = {
+		 slot = GW2.SKILLBARSLOT.Slot_7,
+		 activationtime = 0.25,
+		 icon = 'Blinding Powder',
 	 },
-	 [13065] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_7, 
-		 activationtime = 0.5, 
-		 icon = 'Smoke Screen',  
+	 [56880] = { 
+	 	slot = GW2.SKILLBARSLOT.Slot_7, 
+	 	activationtime = 0.5, 
+		parent = 13057,
+	 	icon = 'Pitfall', 
 	 },
-	 [13117] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_7, 
-		 activationtime = 0.25, 
-		 icon = 'Shadow Refuge',  
-	 },
-	 [13020] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_7, 
-		 activationtime = 0.5, 
-		 icon = 'Scorpion Wire',  
-	 },
-	 [13035] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_7, 
-		 activationtime = 0, 
-		 icon = 'Roll for Initiative',  
-	 },
-	 [13066] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_7, 
-		 activationtime = 0, 
-		 icon = 'Haste',  
-	 },
-	 [13028] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_7, 
-		 activationtime = 1, 
-		 icon = 'Caltrops',  
-	 },
-	 [13046] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_7, 
-		 activationtime = 0, 
-		 icon = 'Assassin\'s Signet',  
-	 },
-	 [13064] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_7, 
-		 activationtime = 0, 
-		 icon = 'Infiltrator\'s Signet',  
-	 },
-	 [13062] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_7, 
-		 activationtime = 0, 
-		 icon = 'Signet of Agility',  
-	 },
-	 [13060] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_7, 
-		 activationtime = 0, 
-		 icon = 'Signet of Shadows',  
-	 },[13057] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_7, 
-		 activationtime = 0.5, 
-		 icon = 'Tripwire',  
-	 },
-	 [13026] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_7, 
-		 activationtime = 0.5, 
-		 icon = 'Needle Trap',  
-	 },
-	 [13038] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_7, 
-		 activationtime = 0.5, 
-		 icon = 'Shadow Trap',  
-	 },
-	 [16435] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_7, 
-		 activationtime = 1.5, 
-		 parent = 13038,
-		 icon = 'Destroy Shadow Trap',  
-	 },
-	 [16436] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_7, 
-		 activationtime = 0, 
-		 parent = 13038,
-		 icon = 'Shadow Pursuit',  
+	 [13057] = { 
+	 	slot = GW2.SKILLBARSLOT.Slot_7, 
+	 	activationtime = 0.5, 
+	 	icon = 'Prepare Pitfall',
 	 },
 	 [13056] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_7, 
+	 	slot = GW2.SKILLBARSLOT.Slot_7, 
+	 	activationtime = 0.5, 
+	 	icon = 'Prepare Seal Area', 
+	 },
+	 [13099] = { 
+	 	slot = GW2.SKILLBARSLOT.Slot_7, 
+	 	activationtime = 0.5, 
+		parent = 13056,
+	 	icon = 'Seal Area', 
+	 },
+	 [13065] = {
+		 slot = GW2.SKILLBARSLOT.Slot_7,
+		 activationtime = 0.5,
+		 icon = 'Smoke Screen',
+	 },
+	 [13117] = {
+		 slot = GW2.SKILLBARSLOT.Slot_7,
+		 activationtime = 0.25,
+		 icon = 'Shadow Refuge',
+	 },
+	 [13020] = {
+		 slot = GW2.SKILLBARSLOT.Slot_7,
+		 activationtime = 0.5,
+		 icon = 'Scorpion Wire',
+	 },
+	 [13035] = {
+		 slot = GW2.SKILLBARSLOT.Slot_7,
+		 activationtime = 0,
+		 icon = 'Roll for Initiative',
+	 },
+	 [13066] = {
+		 slot = GW2.SKILLBARSLOT.Slot_7,
+		 activationtime = 0,
+		 icon = 'Haste',
+	 },
+	 [13028] = {
+		 slot = GW2.SKILLBARSLOT.Slot_7,
+		 activationtime = 1,
+		 icon = 'Caltrops',
+	 },
+	 [13046] = {
+		 slot = GW2.SKILLBARSLOT.Slot_7,
+		 activationtime = 0,
+		 icon = 'Assassin\'s Signet',
+	 },
+	 [13064] = {
+		 slot = GW2.SKILLBARSLOT.Slot_7,
+		 activationtime = 0,
+		 icon = 'Infiltrator\'s Signet',
+	 },
+	 [13062] = {
+		 slot = GW2.SKILLBARSLOT.Slot_7,
+		 activationtime = 0,
+		 icon = 'Signet of Agility',
+	 },
+	 [13060] = {
+		 slot = GW2.SKILLBARSLOT.Slot_7,
+		 activationtime = 0,
+		 icon = 'Signet of Shadows',
+	 },
+	 [16436] = {
+		 slot = GW2.SKILLBARSLOT.Slot_7,
+		 activationtime = 0,
+		 parent = 13038,
+		 icon = 'Shadow Pursuit',
+	 },
+	 [13037] = {
+		 slot = GW2.SKILLBARSLOT.Slot_7,
+		 activationtime = 0,
+		 icon = 'Spider Venom',
+	 },
+	 [13055] = {
+		 slot = GW2.SKILLBARSLOT.Slot_7,
+		 activationtime = 0,
+		 icon = 'Skale Venom',
+	 },
+	 [13096] = {
+		 slot = GW2.SKILLBARSLOT.Slot_7,
+		 activationtime = 0,
+		 icon = 'Ice Drake Venom',
+	 },
+	 [13093] = {
+		 slot = GW2.SKILLBARSLOT.Slot_7,
+		 activationtime = 0,
+		 icon = 'Devourer Venom',
+	 },
+	 [13026] = { 
+	 	slot = GW2.SKILLBARSLOT.Slot_8, 
+	 	activationtime = 0.5, 
+	 	icon = 'Prepare Thousand Needles',
+	 },
+	 [56898] = { 
+	 	slot = GW2.SKILLBARSLOT.Slot_8, 
+	 	activationtime = 0.5, 
+		parent = 13026,
+	 	icon = 'Thousand Needles', 
+	 },
+	 [13038] = { 
+	 	slot = GW2.SKILLBARSLOT.Slot_9, 
+	 	activationtime = 0.5, 
+	 	icon = 'Prepare Shadow Portal', 
+	 },
+	 [16435] = { 
+	 	slot = GW2.SKILLBARSLOT.Slot_9, 
+	 	activationtime = 0.5, 
+	 	icon = 'Shadow Portal', 
+	 },
+	 [16458] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_1, 
 		 activationtime = 0.5, 
-		 icon = 'Ambush',  
+		 icon = 'Throw Feathers',
+	},
+	[16482] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_1, 
+		 activationtime = 0.5, 
+		 icon = 'Blinding Tuft',
 	 },
-	 [13037] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_7, 
-		 activationtime = 0, 
-		 icon = 'Spider Venom',  
+	[16482] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_1, 
+		 activationtime = 0.5, 
+		 icon = 'Blinding Tuft',
 	 },
-	 [13055] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_7, 
-		 activationtime = 0, 
-		 icon = 'Skale Venom',  
-	 },
-	 [13096] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_7, 
-		 activationtime = 0, 
-		 icon = 'Ice Drake Venom',  
-	 },
-	 [13093] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_7, 
-		 activationtime = 0, 
-		 icon = 'Devourer Venom',  
+	[16456] = { 
+		 slot = GW2.SKILLBARSLOT.Slot_1, 
+		 activationtime = 0.5, 
+		 icon = 'Consume Plasma',
 	 },
 
 -- END UTILITY.

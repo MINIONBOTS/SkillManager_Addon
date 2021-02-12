@@ -1,5 +1,6 @@
 ﻿-- Skill class for the Skill Manager Profile, holding info for a single skill. Responsible for rendering the initial selection of a skill ID and the condition editor.
-
+local table = _G["table"]
+local string = _G["string"]
 sm_skill = class('sm_skill')
 
 -- this function is automatically called when a new "instance" of the class('..') is created with sm_skill:new(...)
@@ -15,12 +16,12 @@ function sm_skill:initialize(data)
 		-- Get the most recent data from the skillIDs from skillpalette and c++
 		if ( sm_mgr.skillpalettes[sm_mgr.GetPlayerProfession()][data.skillpaletteuid] ) then
 			local freshdata = sm_mgr.skillpalettes[sm_mgr.GetPlayerProfession()][data.skillpaletteuid]:GetSkillData(data.id)
-			if(freshdata) then
-				if ( freshdata ~= nil ) then
-					for i,k in pairs(freshdata) do
-						if (( i ~= "activationtime" or self.activationtime == nil) and (i ~= "instantcast" or self.instantcast == nil)) then
-							self[i] = k
-						end
+			if(table.valid(freshdata)) then
+				for i,k in pairs(freshdata) do
+					if(i == "activationtime" or i == "instantcast" or i == "stopsmovement") then
+						if(self[i] == nil) then self[i] = k end
+					else
+						self[i] = k
 					end
 				end
 			else
@@ -71,9 +72,10 @@ function sm_skill:Save()
 	copy.id = self.id
 	copy.skillpaletteuid = self.skillpaletteuid
 	copy.setsattackrange = self.setsattackrange
-	copy.requireslos = self.requireslos-- or true
+	copy.requireslos = self.requireslos -- or true
 	copy.activationtime = self.activationtime
 	copy.instantcast = self.instantcast
+	copy.stopsmovement = self.stopsmovement
 	copy.condition_luacode = self.condition_luacode
 	copy.conditions = {}
 	local gidx = 0
@@ -115,9 +117,9 @@ end
 
 -- Renders all SkillPalettes / skill sets, to pick a skill from
 function sm_skill:RenderSkillPaletteEditor()	
-	GUI:SetNextWindowSize(400,600,GUI.SetCond_Always)
-	GUI:SetNextWindowPosCenter(GUI.SetCond_Once)
-	self.temp.editorvisible, self.temp.editoropen = GUI:Begin(GetString("Skill Set Editor").."##smpeditor", self.temp.editoropen or true,GUI.WindowFlags_NoSavedSettings)
+	GUI:SetNextWindowSize(500,600,GUI.SetCond_Always)
+	--GUI:SetNextWindowPosCenter(GUI.SetCond_Once)
+	self.temp.editorvisible, self.temp.editoropen = GUI:Begin(GetString("Skill Set Editor").."##smpeditor", self.temp.editoropen or true,GUI.WindowFlags_NoResize)
 	if (self.temp.editoropen) then
 		if (self.temp.editorvisible) then -- unfolded
 			GUI:PushStyleVar(GUI.StyleVar_FramePadding, 2, 2)
@@ -149,16 +151,23 @@ function sm_skill:RenderSkillPaletteEditor()
 			if ( self.temp.currentskillset ) then
 				GUI:SameLine()
 				local _,y = GUI:GetContentRegionAvail()
-				GUI:BeginChild("##spe_setskills",0,y - 25, true)					
+				GUI:BeginChild("##spe_setskills",0,y - 25, true)
+					local title = string.gsub(self.temp.currentskillset, "_", " ")
+					GUI:Text(title)
 					self.temp.currentskillid = sm_mgr.skillpalettes[sm_mgr.GetPlayerProfession()][self.temp.currentskillset]:RenderSkills(self.temp.currentskillid)
 				GUI:EndChild()
+			else
+				GUI:SameLine()
+				local _,y = GUI:GetContentRegionAvail()
+				GUI:Dummy(0, y - 25)
 			end
 			
+			local x,y = GUI:GetWindowSize()
+			GUI:SetCursorPos(self.temp.currentskillid and x - 250 or x - 200, y-27)
 			-- Render Skill Details
 			if( self.temp.currentskillid ) then
-				local x,y = GUI:GetWindowSize()
-				GUI:SetCursorPos(x-200, y-27)
-				if ( GUI:Button(GetString("Select Skill")) ) then
+
+				if ( GUI:Button(GetString("Select Skill"), 100, 0) ) then
 					-- copy the skillset data of the skill we picked into the action of ours					
 					local data = sm_mgr.skillpalettes[sm_mgr.GetPlayerProfession()][self.temp.currentskillset]:GetSkillData(self.temp.currentskillid)
 					local tmpnext = self.skill_next
@@ -181,23 +190,38 @@ function sm_skill:RenderSkillPaletteEditor()
 					end
 					sm_mgr.profile.temp.modified = true
 				end
+				GUI:SameLine()
+			end
+
+			if(GUI:Button(GetString("Cancel"), 100, 0)) then
+				if(not self.temp.oldid) then
+					sm_mgr.profile.actionlist[sm_mgr.profile.temp.selectedactionidx] = nil
+				else
+					self:CloseSkillPaletteEditor()
+				end
+				sm_mgr.profile.temp.selectedactionidx = nil
+				sm_mgr.profile.temp.selectedaction = nil
 			end
 			GUI:PopStyleVar()
 		end
 	else
 		-- someone pressed the X to close"
-		if ( not self.id and self.temp.oldid ) then self.id = self.temp.oldid end
-		self.temp.oldid = nil
-		self.temp.deleteaction = nil		
+		self:CloseSkillPaletteEditor()
 	end	
 	GUI:End()
+end
+
+function sm_skill:CloseSkillPaletteEditor()	
+	if ( not self.id and self.temp.oldid ) then self.id = self.temp.oldid end
+	self.temp.oldid = nil
+	self.temp.deleteaction = nil	
 end
 
 -- Renders skill information and condition editor
 function sm_skill:RenderSkillEditor()
 	GUI:SetNextWindowSize(600,600,GUI.SetCond_Always)
-	GUI:SetNextWindowPosCenter(GUI.SetCond_Once)
-	self.temp.editorvisible, self.temp.editoropen = GUI:Begin(GetString("Skill Editor").."##smpeditor", self.temp.editoropen or true,GUI.WindowFlags_NoSavedSettings)
+	--GUI:SetNextWindowPosCenter(GUI.SetCond_Once)
+	self.temp.editorvisible, self.temp.editoropen = GUI:Begin(GetString("Skill Editor").."##smpeditor", self.temp.editoropen or true,GUI.WindowFlags_NoResize)
 	if (self.temp.editoropen) then
 		if (self.temp.editorvisible) then -- unfolded
 			
@@ -366,8 +390,17 @@ function sm_skill:RenderHardcodedSkillDetails()
 	GUI:SameLine(300)
 	local changed
 	if ( self.instantcast == nil ) then self.instantcast = false end
-	GUI:Text(GetString("Instant Cast:")) GUI:SameLine(425) self.instantcast, changed = GUI:Checkbox("##instantcast", self.instantcast) if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("If this is Enabled, the Skill can be cast instantly 'without interrupting' the currently cast Skill." )) end			
+	GUI:Text(GetString("Instant Cast:")) GUI:SameLine(425) self.instantcast, changed = GUI:Checkbox("##instantcast", self.instantcast)
+	if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("If this is Enabled, the Skill can be cast instantly 'without interrupting' the currently cast Skill." )) end			
 	if ( changed ) then sm_mgr.profile.temp.modified = true end
+	
+	GUI:PushItemWidth(150)
+	if ( self.stopsmovement == nil ) then self.stopsmovement = false end
+	GUI:Text(GetString("Stops movement:")) GUI:SameLine(125) self.stopsmovement, changed = GUI:Checkbox("##stopsmovement" , self.stopsmovement or false)
+	if (GUI:IsItemHovered()) then GUI:SetTooltip( GetString("If Enabled, the bot will try not to move while casting the skill." ).."\n"..GetString("Needs to be enabled for skills that root the player in place. Like meteor shower or flurry")) end			
+	if ( changed ) then sm_mgr.profile.temp.modified = true end
+	
+	GUI:PopItemWidth()
 	
 	GUI:PopStyleVar(2)
 end
@@ -434,6 +467,19 @@ function sm_skill:UpdateData(context, iscombo)
 				self.ammomax = skilldata.ammomax
 				self.ammocooldown = skilldata.ammocooldown
 				self.cancast = skilldata.cancast
+				
+				local playerLvl = Player.level
+				if (playerLvl < 2 and self.slot == GW2.SKILLBARSLOT.Slot_2 and not table.valid(context.skillbar[self.slot])) or
+					(playerLvl < 4 and self.slot == GW2.SKILLBARSLOT.Slot_3 and not table.valid(context.skillbar[self.slot])) or
+					(playerLvl < 6 and self.slot == GW2.SKILLBARSLOT.Slot_4 and not table.valid(context.skillbar[self.slot])) or
+					(playerLvl < 8 and self.slot == GW2.SKILLBARSLOT.Slot_5 and not table.valid(context.skillbar[self.slot])) or 
+					(playerLvl < 11 and self.slot == GW2.SKILLBARSLOT.Slot_7 and not table.valid(context.skillbar[self.slot])) or 
+					(playerLvl < 15 and self.slot == GW2.SKILLBARSLOT.Slot_8 and not table.valid(context.skillbar[self.slot])) or 
+					(playerLvl < 19 and self.slot == GW2.SKILLBARSLOT.Slot_9 and not table.valid(context.skillbar[self.slot])) or 
+					(playerLvl < 31 and self.slot == GW2.SKILLBARSLOT.Slot_10 and not table.valid(context.skillbar[self.slot])) then
+					self.cancast = false
+				end
+
 				-- static ones, would only have to get updated once...how ?
 				-- this string valid check should make it only set this static data once. ^^
 				if (not string.valid(self.name)) then
@@ -600,11 +646,44 @@ function sm_skill:RenderCustomConditionEditor()
 	end
 	if ( GUI:TreeNode(GetString("CUSTOM CONDITION LUA CODE EDITOR").."##"..tostring(self.id) )) then
 		self.temp.customcodeeditoropen = true
-		if ( GUI:IsItemHovered() ) then GUI:SetTooltip(GetString("Additional Lua Code, when to allow this spell to be cast. Must return 'true' or 'false'!")) end
+
 		local x,y = GUI:GetCursorPos()
 		GUI:SetCursorPos(maxy-25,y-20)		
-		GUI:ImageButton( "##ccinfobtn", sm_mgr.texturepath.."\\bt_selector_success_.png", 15, 15)
-		if ( GUI:IsItemHovered() ) then GUI:SetTooltip(GetString("Use the 'skill' and 'context' table which are available here: skill.cooldown etc. for this skill's data. \n context.player.pos instead of Player.pos, to save performance. \n Also available: \n context.player.party \n context.player.squad \n context.player.specs \n context.player.buffs \n context.player.transformid \n context.player.lasttransformid \n context.player.weaponset \n context.player.canswapweaponset \n context.player.mainhand \n context.player.mainhand_alt \n context.player.offhand\n context.player.offhand_alt  \n context.player.friends_nearby \n context.player.enemies_nearby \n context.skillbar \n context.actionlist \n context.casttarget (Result from the Condition Group above that evaluated to 'true'. Overwrite this if you need (1=Enemy, 2=Player, 3=Friend) \n context.attack_targetid (CAN BE NIL) \n context.attack_target (CAN BE NIL)  \n context.attack_targetid_alt (To override)  \n context.heal_targetid (CAN BE NIL) \n context.heal_target (CAN BE NIL)  \n context.heal_targetid_alt (To override )")) end
+
+		if ( GUI:IsItemHovered() ) then 
+			local tooltip = string.gsub([[
+				Additional Lua Code, when to allow this spell to be cast. Must return 'true' or 'false'!
+				Use the 'self' and 'context' table which are available here: 'self.cooldown' etc. for this skill's data.
+				context.player.pos instead of Player.pos, to save performance.
+				Also available:
+				context.player.party
+				context.player.squad
+				context.player.specs
+				context.player.buffs
+				context.player.transformid
+				context.player.lasttransformid
+				context.player.weaponset
+				context.player.canswapweaponset
+				context.player.mainhand
+				context.player.mainhand_alt
+				context.player.offhand
+				context.player.offhand_alt
+				context.player.friends_nearby
+				context.player.enemies_nearby
+				context.player.pet
+				context.skillbar
+				context.actionlist
+				context.casttarget (Result from the Condition Group above that evaluated to 'true'. Overwrite this if you need (1=Enemy, 2=Player, 3=Friend)
+				context.attack_targetid (CAN BE NIL) 
+				context.attack_target (CAN BE NIL)
+				context.attack_targetid_alt (To override)
+				context.heal_targetid (CAN BE NIL)
+				context.heal_target (CAN BE NIL)
+				context.heal_targetid_alt (To override )
+			]], "\t", "")
+				
+			GUI:SetTooltip(GetString(tooltip)) 
+		end
 		GUI:SetCursorPos(x,y)
 		local maxx,_ = GUI:GetContentRegionAvail()
 		local changed = false
@@ -616,6 +695,9 @@ function sm_skill:RenderCustomConditionEditor()
 		GUI:TreePop()
 	else
 		self.temp.customcodeeditoropen = nil
+	end
+	if ( not self.temp.customcodeeditoropen and GUI:IsItemHovered() ) then
+		GUI:SetTooltip(GetString("Additional Lua Code, when to allow this spell to be cast. Must return 'true' or 'false'!"))
 	end
 end
 
@@ -759,7 +841,7 @@ function sm_skill:IsEquipped()
 			end		
 		else
 			-- Weapon skill 1-5 : only return true for NONE-Flip-skills if they are on our current bar
-			if ( not self.parent or (self.skillpalette:IsActive(self.temp.context) and self.temp.context.skillbar[self.slot].id == self.id))then 			
+			if ( not self.parent or (self.skillpalette:IsActive(self.temp.context) and self.temp.context.skillbar[self.slot] and self.temp.context.skillbar[self.slot].id == self.id))then 			
 				return true
 			end
 		end
@@ -778,6 +860,10 @@ function sm_skill:CanCast()
 		
 		-- Skills which cannot be used underwater
 		if (self.nounderwater and self.temp.context.player.swimming == GW2.SWIMSTATE.Diving) then
+			return false
+		end
+		
+		if(self.skillpalette.CanCast and not self.skillpalette:CanCast(self.temp.context,self.id)) then
 			return false
 		end
 		
