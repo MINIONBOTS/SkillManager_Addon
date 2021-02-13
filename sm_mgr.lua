@@ -19,6 +19,10 @@ function sm_mgr.ModuleInit()
 	_G["ml_gui"].ui_mgr:AddMember({ id = "GW2MINION##SKILLMANAGER", name = "SkillManager", onClick = function() sm_mgr.open = not sm_mgr.open end, tooltip = GetString("Open the \"Skill Manager\" window."), texture = GetStartupPath().."\\GUI\\UI_Textures\\sword.png"},"GW2MINION##MENU_HEADER")	
 	sm_mgr.CheckImageFiles()
 	sm_mgr.RefreshSkillPalettes()
+
+	if Settings.SkillManager.auto_mount_engage == nil then
+		Settings.SkillManager.auto_mount_engage = true
+	end
 end
 RegisterEventHandler("Module.Initalize",sm_mgr.ModuleInit,"sm_mgr.ModuleInit")
 
