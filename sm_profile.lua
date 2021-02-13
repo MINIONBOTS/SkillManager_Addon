@@ -375,6 +375,17 @@ function sm_profile:Cast()
       if (BehaviorManager:Running() and ml_global_information.Player_HealthState ~= GW2.HEALTHSTATE.Dead and not self.temp.interactionstart) then
 
          local skipnoneinstantactions
+         if self.temp.attack_target then
+            if Settings.SkillManager.auto_mount_engage and self.temp.attack_target and self.temp.attack_target.distance < 600 and ml_global_information.Player_IsMounted then
+               if self.temp.context.skillbar and self.temp.context.skillbar[GW2.SKILLBARSLOT.Slot_1] and not SkillManager:HasSkillID(self.temp.context.skillbar[GW2.SKILLBARSLOT.Slot_1].id) then
+                  if (ml_global_information.Player_CastInfo.skillid ~= self.temp.context.skillbar[GW2.SKILLBARSLOT.Slot_1].id) then
+                     Player:CastSpell(GW2.SKILLBARSLOT.Slot_1, self.temp.attack_targetid)
+                     d("[SkillManager]: Skillprofile does not contain conditions for the current engage skill. Using it to dismount with style.")
+                     return
+                  end
+               end
+            end
+         end
 
          for i, a in pairs(self.actionlist) do
             local action
@@ -395,7 +406,7 @@ function sm_profile:Cast()
             self.temp.skillstopsmovement = (action.stopsmovement and not action.instantcast)
 
             ml_global_information.Player_CastInfo = Player.castinfo
-            if (action.temp.cancast and ((ml_global_information.Player_CastInfo.id ~= action.id and not skipnoneinstantactions) or action.instantcast)) then
+            if (action.temp.cancast and ((ml_global_information.Player_CastInfo.skillid ~= action.id and not skipnoneinstantactions) or action.instantcast)) then
                -- .cancast includes Cooldown, Power and "Do we have that set and skill at all" checks
 
                local cancastnormal = (not self.temp.nextcast or ml_global_information.Now - self.temp.nextcast > 0)
@@ -430,7 +441,7 @@ function sm_profile:Cast()
 
                   else
 
-                     if (ml_global_information.Player_CastInfo.id ~= action.id) then
+                     if (ml_global_information.Player_CastInfo.skillid ~= action.id) then
                         local dbug = { [1] = "Enemy", [2] = "Player", [3] = "Friend" }
                         local ttlc = self.temp.lastcast and (ml_global_information.Now - self.temp.lastcast) or 0
                         local target = action:GetCastTarget()
@@ -551,7 +562,7 @@ end
 
 -- Renders elements into the SM Main Window
 function sm_profile:Render()
-
+   local content
    GUI:PushItemWidth(120)
    GUI:AlignFirstTextHeightToWidgets()
    GUI:BeginGroup()
@@ -627,6 +638,19 @@ function sm_profile:Render()
    GUI:EndGroup()
    if (GUI:IsItemHovered()) then
       GUI:SetTooltip(GetString("This value (in ms) is added to the duration of each skill that is cast.") .. "\n" .. GetString("If you have a high ping or network latency, increasing this will try to prevent the bot from interrupting skills."))
+   end
+
+   GUI:BeginGroup()
+   GUI:AlignFirstTextHeightToWidgets()
+   GUI:Text(GetString("Auto Mount Engage:"))
+   GUI:SameLine(150)
+   content, changed = GUI:Checkbox("##MountEngage", Settings.SkillManager.auto_mount_engage or false)
+   if (changed) then
+      Settings.SkillManager.auto_mount_engage = content
+   end
+   GUI:EndGroup()
+   if (GUI:IsItemHovered()) then
+      GUI:SetTooltip(GetString("When your current Skillprofile does not contain the\ncurrent mounts engage skill SkillManager will use it automatically."))
    end
 
    GUI:BeginGroup()
