@@ -40,7 +40,7 @@ function sm_condition_entitycount:Evaluate(skill,context)
 		local inrange = 0		
 		if table.valid(list) then
 			for i,k in pairs(list) do
-				if table.valid(sourcepos) and table.valid(k.pos) then
+				if table.valid(sourcepos) and table.valid(k.pos) and table.valid(self.distance) then
 					if( math.distance3d(sourcepos,k.pos) < self.distance and not k.dead ) then
 						inrange = inrange + 1
 					end
