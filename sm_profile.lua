@@ -445,6 +445,7 @@ function sm_profile:Cast()
                         local dbug = { [1] = "Enemy", [2] = "Player", [3] = "Friend" }
                         local ttlc = self.temp.lastcast and (ml_global_information.Now - self.temp.lastcast) or 0
                         local target = action:GetCastTarget()
+                        local ppos = self.temp.context.player.pos
 
                         sm_movementprediction:SetActivationTime(target, action.activationtime)
 
@@ -465,8 +466,94 @@ function sm_profile:Cast()
                                  Player:SwitchPet()
                               end
                            elseif (action.isgroundtargeted) then
-                              if (target.isgadget) then
-                                 castresult = Player:CastSpell(action.slot, pos.x, pos.y, (pos.z - target.height)) -- need to cast at the top of the gadget, else no los errors on larger things
+                              if not target.ischaracter and not target.isgadget then
+                                 local RC = {}
+                                 local fallback = true
+                                 for i=pos.z, pos.z - target.height, -target.height/5 do
+                                    RC.hit, RC.x, RC.y, RC.z = RayCast(ppos.x,ppos.y,ppos.z-35,pos.x,pos.y,i)
+                                    if RC.hit and RC.x ~= 0 and RC.y ~=0 and RC.z ~= 0 then
+                                       local distxy = math.distance2d(RC,pos)
+                                       if distxy <= target.radius and RC.z <= pos.z and RC.z >= pos.z - target.height then
+                                          local mag = math.distance3d(RC,ppos)
+                                          local raddif = target.radius - math.distance2d(RC,pos)
+                                          local hx1 = raddif*(RC.x - ppos.x)/mag
+                                          local hy1 = raddif*(RC.y - ppos.y)/mag
+                                          local player_to_target = math.distance2d(pos,ppos)
+                                          local castloc_to_target = math.distance2d(RC.x-hx1, RC.y-hy1, pos.x, pos.y)
+                                          if player_to_target-24 < castloc_to_target and ppos.z < pos.z and ppos.z > pos.z - target.height then
+                                             local hx1 = 24*(pos.x - ppos.x)/player_to_target
+                                             local hy1 = 24*(pos.y - ppos.y)/player_to_target
+                                             castresult = Player:CastSpell(action.slot, ppos.x+hx1, ppos.y+hy1, ppos.z)
+                                          else
+                                             castresult = Player:CastSpell(action.slot, RC.x-hx1, RC.y-hy1, RC.z)
+                                          end
+                                          fallback = false
+                                          break
+                                       end
+                                    end
+                                 end
+                                 if fallback then
+                                    RC.hit, RC.x, RC.y, RC.z = RayCast(pos.x,pos.y,pos.z,pos.x,pos.y,pos.z+100)
+
+                                    if RC.hit then
+                                       local newz  = RC.z
+                                       for i=newz, pos.z, (pos.z - newz)/5 do
+                                          RC.hit, RC.x, RC.y, RC.z = RayCast(ppos.x,ppos.y,ppos.z-35,pos.x,pos.y,i)
+                                          if RC.hit and RC.x ~= 0 and RC.y ~=0 and RC.z ~= 0 then
+                                             local distxy = math.distance2d(RC,pos)
+                                             if distxy <= target.radius and RC.z <= pos.z and RC.z >= pos.z - target.height then
+                                                local mag = math.distance3d(RC,ppos)
+                                                local raddif = target.radius - math.distance2d(RC,pos)
+                                                local hx1 = raddif*(RC.x - ppos.x)/mag
+                                                local hy1 = raddif*(RC.y - ppos.y)/mag
+                                                local player_to_target = math.distance2d(pos,ppos)
+                                                local castloc_to_target = math.distance2d(RC.x-hx1, RC.y-hy1, pos.x, pos.y)
+                                                if player_to_target-24 < castloc_to_target and ppos.z < pos.z and ppos.z > pos.z - target.height then
+                                                   local hx1 = 24*(pos.x - ppos.x)/player_to_target
+                                                   local hy1 = 24*(pos.y - ppos.y)/player_to_target
+                                                   castresult = Player:CastSpell(action.slot, ppos.x+hx1, ppos.y+hy1, ppos.z)
+                                                else
+                                                   castresult = Player:CastSpell(action.slot, RC.x-hx1, RC.y-hy1, RC.z)
+                                                end
+                                                fallback = false
+                                                break
+                                             end
+                                          end
+                                       end
+                                    end
+                                    if fallback then
+                                       castresult = Player:CastSpell(action.slot, pos.x, pos.y, (pos.z-target.height))
+                                    end
+                                 end
+                              elseif target.isgadget then
+                                 local RC = {}
+                                 local fallback = true
+                                 for i=pos.z, pos.z - target.height, -target.height/5 do
+                                    RC.hit, RC.x, RC.y, RC.z = RayCast(ppos.x,ppos.y,ppos.z-35,pos.x,pos.y,i)
+                                    if RC.hit and RC.x ~= 0 and RC.y ~=0 and RC.z ~= 0 then
+                                       local distxy = math.distance2d(RC,pos)
+                                       if distxy <= target.radius and RC.z <= pos.z and RC.z >= pos.z - target.height then
+                                          local mag = math.distance3d(RC,ppos)
+                                          local raddif = target.radius - math.distance2d(RC,pos)
+                                          local hx1 = raddif*(RC.x - ppos.x)/mag
+                                          local hy1 = raddif*(RC.y - ppos.y)/mag
+                                          local player_to_target = math.distance2d(pos,ppos)
+                                          local castloc_to_target = math.distance2d(RC.x-hx1, RC.y-hy1, pos.x, pos.y)
+                                          if player_to_target-24 < castloc_to_target and ppos.z < pos.z and ppos.z > pos.z - target.height then
+                                             local hx1 = 24*(pos.x - ppos.x)/player_to_target
+                                             local hy1 = 24*(pos.y - ppos.y)/player_to_target
+                                             castresult = Player:CastSpell(action.slot, ppos.x+hx1, ppos.y+hy1, ppos.z)
+                                          else
+                                             castresult = Player:CastSpell(action.slot, RC.x-hx1, RC.y-hy1, RC.z)
+                                          end
+                                          fallback = false
+                                          break
+                                       end
+                                    end
+                                 end
+                                 if fallback then
+                                    castresult = Player:CastSpell(action.slot, pos.x, pos.y, (pos.z-target.height))
+                                 end
                               else
                                  castresult = Player:CastSpell(action.slot, pos.x, pos.y, pos.z)
                               end
