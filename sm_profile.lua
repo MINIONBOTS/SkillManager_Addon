@@ -446,6 +446,7 @@ function sm_profile:Cast()
                            local dbug = { [1] = "Enemy", [2] = "Player", [3] = "Friend" }
                            local ttlc = self.temp.lastcast and (ml_global_information.Now - self.temp.lastcast) or 0
                            local target = action:GetCastTarget()
+                           local ppos = ml_global_information.Player_Position
 
                            sm_movementprediction:SetActivationTime(target, action.activationtime)
 
