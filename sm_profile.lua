@@ -1,6 +1,7 @@
 -- Profile class for the Skill Manager. Renders Skills and handles casting etc.
 local table = _G["table"]
 local string = _G["string"]
+local math = _G["math"]
 sm_profile = class('sm_profile')
 sm_profile.gw2_combat_movement = _G["gw2_combat_movement"]
 -- this function is automatically called when a new "instance" of the class('..') is created with sm_profile:new(...)
