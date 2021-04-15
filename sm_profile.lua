@@ -408,12 +408,13 @@ function sm_profile:Cast()
                self.temp.skillstopsmovement = (action.stopsmovement and not action.instantcast)
 
                ml_global_information.Player_CastInfo = Player.castinfo
-               if (action.temp.cancast and ((ml_global_information.Player_CastInfo.skillid ~= action.id and not skipnoneinstantactions) or action.instantcast)) then
+               if (action.temp.cancast and ((ml_global_information.Player_CastInfo.skillid ~= action.id  and not skipnoneinstantactions) or action.instantcast or action.slot == GW2.SKILLBARSLOT.Slot_1)) then
                   -- .cancast includes Cooldown, Power and "Do we have that set and skill at all" checks
 
                   local cancastnormal = (not self.temp.nextcast or ml_global_information.Now - self.temp.nextcast > 0)
 
                   if ((cancastnormal or action.instantcast) and action:IsCastTargetValid()) then
+
                      if (not action.skillpalette:IsActive(self.temp.context)) then
 
                         if (self.temp.weaponswapmode and self.temp.weaponswapmode == 1) then
@@ -443,7 +444,7 @@ function sm_profile:Cast()
 
                      else
 
-                        if (ml_global_information.Player_CastInfo.skillid ~= action.id) then
+                        if (ml_global_information.Player_CastInfo.skillid ~= action.id or action.slot == GW2.SKILLBARSLOT.Slot_1) then
                            local dbug = { [1] = "Enemy", [2] = "Player", [3] = "Friend" }
                            local ttlc = self.temp.lastcast and (ml_global_information.Now - self.temp.lastcast) or 0
                            local target = action:GetCastTarget()
