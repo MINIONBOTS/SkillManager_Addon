@@ -462,21 +462,21 @@ function sm_profile:Cast()
                               if (action.slot == 555) then
                                  if (action.id == 10) then
                                     -- id 10 == normal dodge forward. (todo, need some directional stuff?)
-                                    Player:Evade(3)
+                                    castresult =  Player:Evade(3)
                                  elseif (action.id == 11) then
-                                    Player:Evade(0)
+                                    castresult = Player:Evade(0)
                                  elseif (action.id == 12) then
-                                    Player:Evade(1)
+                                    castresult = Player:Evade(1)
                                  elseif (action.id == 13) then
-                                    Player:Evade(2)
+                                    castresult = Player:Evade(2)
                                  elseif (action.id == 14) then
-                                    Player:Evade(4)
+                                    castresult = Player:Evade(4)
                                  elseif (action.id == 15) then
-                                    Player:Evade(5)
+                                    castresult =  Player:Evade(5)
                                  elseif (action.id == 16) then
-                                    Player:Evade(6)
+                                    castresult =  Player:Evade(6)
                                  elseif (action.id == 17) then
-                                    Player:Evade(7)
+                                    castresult =  Player:Evade(7)
                                  elseif (action.id == 20) then
                                     -- id 20 == swap weaponset.
                                     Player:SwapWeaponSet()
