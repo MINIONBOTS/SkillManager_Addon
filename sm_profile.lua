@@ -407,7 +407,7 @@ function sm_profile:Cast()
 
                self.temp.skillstopsmovement = (action.stopsmovement and not action.instantcast)
                local thief_weapon_skills = false
-               if (self.temp.context.player and self.temp.context.player.profession == 5 and action.slot >= 6 and action.slot <= 9) then
+               if (self.temp.context.player and self.temp.context.player.profession == 5 and action.slot and action.slot >= 6 and action.slot <= 9) then
                   thief_weapon_skills = true
                end
                ml_global_information.Player_CastInfo = Player.castinfo
