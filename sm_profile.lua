@@ -406,16 +406,18 @@ function sm_profile:Cast()
                end
 
                self.temp.skillstopsmovement = (action.stopsmovement and not action.instantcast)
-
+               local thief_weapon_skills = false
+               if (self.temp.context.player and self.temp.context.player.profession == 5 and action.slot >= 6 and action.slot <= 9) then
+                  thief_weapon_skills = true
+               end
                ml_global_information.Player_CastInfo = Player.castinfo
-               if (action.temp.cancast and ((ml_global_information.Player_CastInfo.skillid ~= action.id and not skipnoneinstantactions) or action.instantcast)) then
+               if (action.temp.cancast and ((ml_global_information.Player_CastInfo.skillid ~= action.id  and not skipnoneinstantactions) or action.instantcast or action.slot == GW2.SKILLBARSLOT.Slot_1 or thief_weapon_skills)) then
                   -- .cancast includes Cooldown, Power and "Do we have that set and skill at all" checks
 
                   local cancastnormal = (not self.temp.nextcast or ml_global_information.Now - self.temp.nextcast > 0)
 
                   if ((cancastnormal or action.instantcast) and action:IsCastTargetValid()) then
                      if (not action.skillpalette:IsActive(self.temp.context)) then
-
                         if (self.temp.weaponswapmode and self.temp.weaponswapmode == 1) then
                            local deactivated
                            for uid, sp in pairs(sm_mgr.profile.temp.activeskillpalettes) do
@@ -443,7 +445,8 @@ function sm_profile:Cast()
 
                      else
 
-                        if (ml_global_information.Player_CastInfo.skillid ~= action.id) then
+                        if (ml_global_information.Player_CastInfo.skillid ~= action.id or action.slot == GW2.SKILLBARSLOT.Slot_1 or thief_weapon_skills) then
+
                            local dbug = { [1] = "Enemy", [2] = "Player", [3] = "Friend" }
                            local ttlc = self.temp.lastcast and (ml_global_information.Now - self.temp.lastcast) or 0
                            local target = action:GetCastTarget()
@@ -460,6 +463,20 @@ function sm_profile:Cast()
                                  if (action.id == 10) then
                                     -- id 10 == normal dodge forward. (todo, need some directional stuff?)
                                     Player:Evade(3)
+                                 elseif (action.id == 11) then
+                                    Player:Evade(0)
+                                 elseif (action.id == 12) then
+                                    Player:Evade(1)
+                                 elseif (action.id == 13) then
+                                    Player:Evade(2)
+                                 elseif (action.id == 14) then
+                                    Player:Evade(4)
+                                 elseif (action.id == 15) then
+                                    Player:Evade(5)
+                                 elseif (action.id == 16) then
+                                    Player:Evade(6)
+                                 elseif (action.id == 17) then
+                                    Player:Evade(7)
                                  elseif (action.id == 20) then
                                     -- id 20 == swap weaponset.
                                     Player:SwapWeaponSet()
@@ -485,9 +502,17 @@ function sm_profile:Cast()
                                              if player_to_target-24 < castloc_to_target and ppos.z < pos.z and ppos.z > pos.z - target.height then
                                                 local hx1 = 24*(pos.x - ppos.x)/player_to_target
                                                 local hy1 = 24*(pos.y - ppos.y)/player_to_target
-                                                castresult = Player:CastSpell(action.slot, ppos.x+hx1, ppos.y+hy1, ppos.z)
+                                                if action.slot == GW2.SKILLBARSLOT.Slot_1 or action.instantcast or thief_weapon_skills then
+                                                   castresult = Player:CastSpellNoChecks(action.slot, ppos.x+hx1, ppos.y+hy1, ppos.z)
+                                                else
+                                                   castresult = Player:CastSpell(action.slot, ppos.x+hx1, ppos.y+hy1, ppos.z)
+                                                end
                                              else
-                                                castresult = Player:CastSpell(action.slot, RC.x-hx1, RC.y-hy1, RC.z)
+                                                if action.slot == GW2.SKILLBARSLOT.Slot_1 or action.instantcast or thief_weapon_skills then
+                                                   castresult = Player:CastSpellNoChecks(action.slot, RC.x-hx1, RC.y-hy1, RC.z)
+                                                else
+                                                   castresult = Player:CastSpell(action.slot, RC.x-hx1, RC.y-hy1, RC.z)
+                                                end
                                              end
                                              fallback = false
                                              break
@@ -513,9 +538,17 @@ function sm_profile:Cast()
                                                    if player_to_target-24 < castloc_to_target and ppos.z < pos.z and ppos.z > pos.z - target.height then
                                                       local hx1 = 24*(pos.x - ppos.x)/player_to_target
                                                       local hy1 = 24*(pos.y - ppos.y)/player_to_target
-                                                      castresult = Player:CastSpell(action.slot, ppos.x+hx1, ppos.y+hy1, ppos.z)
+                                                      if action.slot == GW2.SKILLBARSLOT.Slot_1 or action.instantcast or thief_weapon_skills then
+                                                         castresult = Player:CastSpellNoChecks(action.slot, ppos.x+hx1, ppos.y+hy1, ppos.z)
+                                                      else
+                                                         castresult = Player:CastSpell(action.slot, ppos.x+hx1, ppos.y+hy1, ppos.z)
+                                                      end
                                                    else
-                                                      castresult = Player:CastSpell(action.slot, RC.x-hx1, RC.y-hy1, RC.z)
+                                                      if action.slot == GW2.SKILLBARSLOT.Slot_1 or action.instantcast or thief_weapon_skills then
+                                                         castresult = Player:CastSpellNoChecks(action.slot, RC.x-hx1, RC.y-hy1, RC.z)
+                                                      else
+                                                         castresult = Player:CastSpell(action.slot, RC.x-hx1, RC.y-hy1, RC.z)
+                                                      end
                                                    end
                                                    fallback = false
                                                    break
@@ -524,7 +557,12 @@ function sm_profile:Cast()
                                           end
                                        end
                                        if fallback then
-                                          castresult = Player:CastSpell(action.slot, pos.x, pos.y, (pos.z-target.height))
+                                          if action.slot == GW2.SKILLBARSLOT.Slot_1 or action.instantcast or thief_weapon_skills then
+                                             castresult = Player:CastSpellNoChecks(action.slot, pos.x, pos.y, (pos.z-target.height))
+                                          else
+                                             castresult = Player:CastSpell(action.slot, pos.x, pos.y, (pos.z-target.height))
+                                          end
+
                                        end
                                     end
                                  elseif target.isgadget then
@@ -544,9 +582,17 @@ function sm_profile:Cast()
                                              if player_to_target-24 < castloc_to_target and ppos.z < pos.z and ppos.z > pos.z - target.height then
                                                 local hx1 = 24*(pos.x - ppos.x)/player_to_target
                                                 local hy1 = 24*(pos.y - ppos.y)/player_to_target
-                                                castresult = Player:CastSpell(action.slot, ppos.x+hx1, ppos.y+hy1, ppos.z)
+                                                if action.slot == GW2.SKILLBARSLOT.Slot_1 or action.instantcast or thief_weapon_skills then
+                                                   castresult = Player:CastSpellNoChecks(action.slot, ppos.x+hx1, ppos.y+hy1, ppos.z)
+                                                else
+                                                   castresult = Player:CastSpell(action.slot, ppos.x+hx1, ppos.y+hy1, ppos.z)
+                                                end
                                              else
-                                                castresult = Player:CastSpell(action.slot, RC.x-hx1, RC.y-hy1, RC.z)
+                                                if action.slot == GW2.SKILLBARSLOT.Slot_1 or action.instantcast or thief_weapon_skills then
+                                                   castresult = Player:CastSpellNoChecks(action.slot, RC.x-hx1, RC.y-hy1, RC.z)
+                                                else
+                                                   castresult = Player:CastSpell(action.slot, RC.x-hx1, RC.y-hy1, RC.z)
+                                                end
                                              end
                                              fallback = false
                                              break
@@ -554,10 +600,19 @@ function sm_profile:Cast()
                                        end
                                     end
                                     if fallback then
-                                       castresult = Player:CastSpell(action.slot, pos.x, pos.y, (pos.z-target.height))
+                                       if action.slot == GW2.SKILLBARSLOT.Slot_1 or action.instantcast or thief_weapon_skills then
+                                          castresult = Player:CastSpellNoChecks(action.slot, pos.x, pos.y, (pos.z-target.height))
+                                       else
+                                          castresult = Player:CastSpell(action.slot, pos.x, pos.y, (pos.z-target.height))
+                                       end
+
                                     end
                                  else
-                                    castresult = Player:CastSpell(action.slot, pos.x, pos.y, pos.z)
+                                    if action.slot == GW2.SKILLBARSLOT.Slot_1 or action.instantcast or thief_weapon_skills then
+                                       castresult = Player:CastSpellNoChecks(action.slot, pos.x, pos.y, pos.z)
+                                    else
+                                       castresult = Player:CastSpell(action.slot, pos.x, pos.y, pos.z)
+                                    end
                                  end
 
                               else
@@ -568,7 +623,8 @@ function sm_profile:Cast()
                                  --end
                                  if (action.slot == GW2.SKILLBARSLOT.Slot_1 or action.instantcast) then
                                     castresult = Player:CastSpellNoChecks(action.slot, target.id)
-
+                                 elseif thief_weapon_skills then
+                                    castresult = Player:CastSpellNoChecks(action.slot, target.id)
                                  else
                                     castresult = Player:CastSpell(action.slot, target.id)
                                  end
