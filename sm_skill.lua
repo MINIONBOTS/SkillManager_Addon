@@ -426,7 +426,15 @@ function sm_skill:UpdateData(context, iscombo)
 					ammocooldown = 0,
 					cancast = true,
 					
-					name = (self.id == 10 and GetString("Dodge") or self.id == 20 and GetString("Swap Weaponset")),
+					name = (self.id == 10 and GetString("Dodge Forward")
+							or self.id == 11 and GetString("Dodge Backward")
+							or self.id == 12 and GetString("Dodge Back-Left")
+							or self.id == 13 and GetString("Dodge Back-Right")
+							or self.id == 14 and GetString("Dodge Front-Left")
+							or self.id == 15 and GetString("Dodge Front-Right")
+							or self.id == 16 and GetString("Dodge Left")
+							or self.id == 17 and GetString("Dodge Right")
+							or self.id == 20 and GetString("Swap Weaponset")),
 					cooldownmax = 0,
 					ammocooldownmax = 0,
 					minrange = 0,
@@ -789,11 +797,11 @@ end
 -- Checks if the Target of the Condition group which evaluated to "true"  is actually valid right now
 function sm_skill:IsCastTargetValid()
 	if (self.temp.casttarget == 1) then
-		return self.temp.context.attack_target ~= nil
+	return self.temp.context.attack_target ~= nil
 	elseif (self.temp.casttarget == 2) then
-		return self.temp.context.player ~= nil
+	return self.temp.context.player ~= nil
 	elseif (self.temp.casttarget == 3) then
-		return self.temp.context.heal_target	~= nil
+	return self.temp.context.heal_target	~= nil
 	end
 end
 

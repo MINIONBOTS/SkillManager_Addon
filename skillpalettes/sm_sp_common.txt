@@ -1721,7 +1721,49 @@ set.skills_luacode = {
    [10] = {
       slot = 555,
       activationtime = 0,
-      icon = 'Dodge',
+      icon = 'Dodge_Front',
+      iconurl = "https://wiki.guildwars2.com/images/b/b2/Dodge.png"
+   },
+    [11] = {
+      slot = 555,
+      activationtime = 0,
+      icon = 'Dodge_Back',
+      iconurl = "https://wiki.guildwars2.com/images/b/b2/Dodge.png"
+   },
+    [12] = {
+      slot = 555,
+      activationtime = 0,
+      icon = 'Dodge_BackLeft',
+      iconurl = "https://wiki.guildwars2.com/images/b/b2/Dodge.png"
+   },
+    [13] = {
+      slot = 555,
+      activationtime = 0,
+      icon = 'Dodge_BackRight',
+      iconurl = "https://wiki.guildwars2.com/images/b/b2/Dodge.png"
+   },
+    [14] = {
+      slot = 555,
+      activationtime = 0,
+      icon = 'Dodge_FrontLeft',
+      iconurl = "https://wiki.guildwars2.com/images/b/b2/Dodge.png"
+   },
+    [15] = {
+      slot = 555,
+      activationtime = 0,
+      icon = 'Dodge_FrontRight',
+      iconurl = "https://wiki.guildwars2.com/images/b/b2/Dodge.png"
+   },
+    [16] = {
+      slot = 555,
+      activationtime = 0,
+      icon = 'Dodge_Left',
+      iconurl = "https://wiki.guildwars2.com/images/b/b2/Dodge.png"
+   },
+    [17] = {
+      slot = 555,
+      activationtime = 0,
+      icon = 'Dodge_Right',
       iconurl = "https://wiki.guildwars2.com/images/b/b2/Dodge.png"
    },
    -- [11] = { -- TODO: add dodge-roll skill? (make sure it all works first.)
