@@ -1021,6 +1021,11 @@ mesmer.skills_luacode = {
 		activationtime = 0.5,
 		icon = 'Split Second',
 	},
+	[56925] = {
+		slot = GW2.SKILLBARSLOT.Slot_13,
+		activationtime = 0.5,
+		icon = 'Split Second',
+	},
 	[56928] = {
 		slot = GW2.SKILLBARSLOT.Slot_14,
 		activationtime = 0.5,
