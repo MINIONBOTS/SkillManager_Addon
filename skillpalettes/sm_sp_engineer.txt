@@ -1039,6 +1039,11 @@ engineer.skills_luacode = {
         activationtime = 0.0,
         icon = 'Med Kit',
     },
+    [6109] = {
+        slot = GW2.SKILLBARSLOT.Slot_6,
+        activationtime = 0.0,
+        icon = 'Stow Med Kit',
+    },
     [30357] = {
         slot = GW2.SKILLBARSLOT.Slot_6,
         activationtime = 0.5,
@@ -1564,7 +1569,7 @@ engineer.skills_luacode = {
     [6111] = {
         slot = GW2.SKILLBARSLOT.Slot_7,
         activationtime = 0,
-        icon = 'Stow Grenade Kit',
+        icon = 'Stow Bomb Kit',
     },
     [30800] = {
         slot = GW2.SKILLBARSLOT.Slot_10,
@@ -1572,19 +1577,9 @@ engineer.skills_luacode = {
         icon = 'Elite Mortar Kit',
     },
     [29905] = {
-        slot = GW2.SKILLBARSLOT.Slot_7,
+        slot = GW2.SKILLBARSLOT.Slot_10,
         activationtime = 0,
         icon = 'Stow Mortar Kit',
-    },
-    [5802] = {
-        slot = GW2.SKILLBARSLOT.Slot_7,
-        activationtime = 0.25,
-        icon = 'Med Kit',
-    },
-    [6109] = {
-        slot = GW2.SKILLBARSLOT.Slot_7,
-        activationtime = 0,
-        icon = 'Stow Med Kit',
     },
     [5904] = {
         slot = GW2.SKILLBARSLOT.Slot_7,
