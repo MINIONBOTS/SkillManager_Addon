@@ -967,22 +967,9 @@ set.skills_luacode = {
     },
     [41714] = {
         slot = GW2.SKILLBARSLOT.Slot_6,
-        activationtime = 2.75,
+        activationtime = 0,
         icon = 'Mantra of Solace',
-    },
-    [41475] = {
-        slot = GW2.SKILLBARSLOT.Slot_6,
-        activationtime = 0.0,
-        icon = 'Restoring Reprieve',
         instantcast = true,
-        parent = 41714,
-    },
-    [42960] = {
-        slot = GW2.SKILLBARSLOT.Slot_6,
-        activationtime = 0.0,
-        icon = 'Rejuvenating Respite',
-        instantcast = true,
-        parent = 41475,
     },
     -- END HEALING.
 
@@ -1187,96 +1174,34 @@ set.skills_luacode = {
         activationtime = 0.5,
         icon = 'Procession of Blades',
     },
-    [45082] = {
-        slot = GW2.SKILLBARSLOT.Slot_7,
-        activationtime = 2.0, -- skill activation is 0, but duration is 2 seconds
-        icon = 'Flame Rush',
-        parent = 46148,
-    },
     [46148] = {
         slot = GW2.SKILLBARSLOT.Slot_7,
-        activationtime = 2.75,
+        activationtime = 0,
         icon = 'Mantra of Flame',
         instantcast = true,
-    },
-    [42924] = {
-        slot = GW2.SKILLBARSLOT.Slot_7,
-        activationtime = 0.0,
-        icon = 'Flame Surge',
-        parent = 45082,
     },
     [45460] = {
         slot = GW2.SKILLBARSLOT.Slot_8,
         activationtime = 2.75,
         icon = 'Mantra of Lore',
-    },
-    [42864] = {
-        slot = GW2.SKILLBARSLOT.Slot_8,
-        activationtime = 0.0,
-        icon = 'Opening Passage',
         instantcast = true,
-        parent = 45460,
-    },
-    [44248] = {
-        slot = GW2.SKILLBARSLOT.Slot_8,
-        activationtime = 0.0,
-        icon = 'Clarified Conclusion',
-        instantcast = true,
-        parent = 42864,
     },
     [44080] = {
         slot = GW2.SKILLBARSLOT.Slot_9,
-        activationtime = 2.75,
+        activationtime = 0,
         icon = 'Mantra of Truth',
-    },
-    [42360] = {
-        slot = GW2.SKILLBARSLOT.Slot_9,
-        activationtime = 2.0, -- skill activation is 0, but duration is 2 seconds
-        icon = 'Echo of Truth',
-        parent = 44080,
-    },
-    [44008] = {
-        slot = GW2.SKILLBARSLOT.Slot_9,
-        activationtime = 0.0,
-        icon = 'Voice of Truth',
-        parent = 42360,
+        instantcast = true,
     },
     [43357] = {
         slot = GW2.SKILLBARSLOT.Slot_10,
-        activationtime = 2.75,
+        activationtime = 0,
         icon = 'Mantra of Liberation',
-    },
-    [40114] = {
-        slot = GW2.SKILLBARSLOT.Slot_10,
-        activationtime = 0.0,
-        icon = 'Portent of Freedom',
         instantcast = true,
-        parent = 43357,
-    },
-    [41328] = {
-        slot = GW2.SKILLBARSLOT.Slot_10,
-        activationtime = 0.0,
-        icon = 'Unhindered Delivery',
-        instantcast = true,
-        parent = 40114,
     },
     [40915] = {
         slot = GW2.SKILLBARSLOT.Slot_9,
-        activationtime = 2.75,
+        activationtime = 0,
         icon = 'Mantra of Potence',
-    },
-    [42983] = {
-        slot = GW2.SKILLBARSLOT.Slot_9,
-        activationtime = 0.0,
-        icon = 'Potent Haste',
-        parent = 40915,
-        instantcast = true,
-    },
-    [41988] = {
-        slot = GW2.SKILLBARSLOT.Slot_9,
-        activationtime = 0.0,
-        icon = 'Overwhelming Celerity',
-        parent = 41988,
         instantcast = true,
     },
     -- END UTILITY.
