@@ -1194,25 +1194,25 @@ mesmer.skills_luacode = {
 	[10211] = {
 		slot = GW2.SKILLBARSLOT.Slot_7,
 		activationtime = 0,
-		icon = "Mantra of Pain"
+		icon = "Mantra of Pain",
 		instantcast = true
 	},
 	[10204] = {
 		slot = GW2.SKILLBARSLOT.Slot_7,
 		activationtime = 0,
-		icon = "Mantra of Distraction"
+		icon = "Mantra of Distraction",
 		instantcast = true
 	},
 	[10207] = {
 		slot = GW2.SKILLBARSLOT.Slot_7,
 		activationtime = 0,
-		icon = "Mantra of Resolve"
+		icon = "Mantra of Resolve",
 		instantcast = true
 	},
 	[10237] = {
 		slot = GW2.SKILLBARSLOT.Slot_7,
 		activationtime = 0,
-		icon = "Mantra of Concentration"
+		icon = "Mantra of Concentration",
 		instantcast = true
 	},
 	[10236] = {
