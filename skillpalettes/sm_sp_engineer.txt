@@ -1039,6 +1039,11 @@ engineer.skills_luacode = {
         activationtime = 0.0,
         icon = 'Med Kit',
     },
+    [6109] = {
+        slot = GW2.SKILLBARSLOT.Slot_6,
+        activationtime = 0.0,
+        icon = 'Stow Med Kit',
+    },
     [30357] = {
         slot = GW2.SKILLBARSLOT.Slot_6,
         activationtime = 0.5,
@@ -1561,35 +1566,60 @@ engineer.skills_luacode = {
         activationtime = 0.25,
         icon = 'Bomb Kit',
     },
+    [6111] = {
+        slot = GW2.SKILLBARSLOT.Slot_7,
+        activationtime = 0,
+        icon = 'Stow Bomb Kit',
+    },
     [30800] = {
         slot = GW2.SKILLBARSLOT.Slot_10,
         activationtime = 0.25,
         icon = 'Elite Mortar Kit',
     },
-    [5802] = {
-        slot = GW2.SKILLBARSLOT.Slot_7,
-        activationtime = 0.25,
-        icon = 'Med Kit',
+    [29905] = {
+        slot = GW2.SKILLBARSLOT.Slot_10,
+        activationtime = 0,
+        icon = 'Stow Mortar Kit',
     },
     [5904] = {
         slot = GW2.SKILLBARSLOT.Slot_7,
         activationtime = 0.25,
         icon = 'Tool Kit',
     },
+    [6113] = {
+        slot = GW2.SKILLBARSLOT.Slot_7,
+        activationtime = 0,
+        icon = 'Stow Tool Kit',
+    },
     [5927] = {
         slot = GW2.SKILLBARSLOT.Slot_7,
         activationtime = 0.25,
         icon = 'Flamethrower',
+    },
+    [6114] = {
+        slot = GW2.SKILLBARSLOT.Slot_7,
+        activationtime = 0,
+        icon = 'Stow Flamethrower',
     },
     [5933] = {
         slot = GW2.SKILLBARSLOT.Slot_7,
         activationtime = 0.25,
         icon = 'Elixir Gun',
     },
+    [6115] = {
+        slot = GW2.SKILLBARSLOT.Slot_7,
+        activationtime = 0,
+        icon = 'Stow Elixir Gun',
+    },
     [5805] = {
         slot = GW2.SKILLBARSLOT.Slot_7,
         activationtime = 0.25,
         icon = 'Grenade Kit',
+    },
+    [6110] = {
+        slot = GW2.SKILLBARSLOT.Slot_7,
+        activationtime = 0,
+        icon = 'Stow Grenade Kit',
     },
     [6020] = {
         slot = GW2.SKILLBARSLOT.Slot_7,
