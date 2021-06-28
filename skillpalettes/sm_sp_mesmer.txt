@@ -975,14 +975,9 @@ mesmer.skills_luacode = {
 	 },
 	 [10213] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_6, 
-		 activationtime = 2.25, 
-		 icon = 'Mantra of Recovery',  
-	 },
-	 [10214] = { 
-		 slot = GW2.SKILLBARSLOT.Slot_6, 
 		 activationtime = 0, 
-		 parent = 10213,
-		 icon = 'Power Return',  
+		 icon = 'Mantra of Recovery',  
+		instantcast = true
 	 },
 	 [21750] = { 
 		 slot = GW2.SKILLBARSLOT.Slot_6, 
@@ -1017,11 +1012,6 @@ mesmer.skills_luacode = {
 		instantcast = true
 	},
 	[56930] = {
-		slot = GW2.SKILLBARSLOT.Slot_13,
-		activationtime = 0.5,
-		icon = 'Split Second',
-	},
-	[56925] = {
 		slot = GW2.SKILLBARSLOT.Slot_13,
 		activationtime = 0.5,
 		icon = 'Split Second',
@@ -1203,47 +1193,27 @@ mesmer.skills_luacode = {
 	},
 	[10211] = {
 		slot = GW2.SKILLBARSLOT.Slot_7,
-		activationtime = 2.25,
-		icon = "Mantra of Pain"
-	},
-	[10212] = {
-		slot = GW2.SKILLBARSLOT.Slot_7,
 		activationtime = 0,
-		parent = 10211,
-		icon = "Power Spike"
+		icon = "Mantra of Pain"
+		instantcast = true
 	},
 	[10204] = {
 		slot = GW2.SKILLBARSLOT.Slot_7,
-		activationtime = 2.25,
-		icon = "Mantra of Distraction"
-	},
-	[10206] = {
-		slot = GW2.SKILLBARSLOT.Slot_7,
 		activationtime = 0,
-		parent = 10204,
-		icon = "Power Lock"
+		icon = "Mantra of Distraction"
+		instantcast = true
 	},
 	[10207] = {
 		slot = GW2.SKILLBARSLOT.Slot_7,
-		activationtime = 2.25,
-		icon = "Mantra of Resolve"
-	},
-	[10209] = {
-		slot = GW2.SKILLBARSLOT.Slot_7,
 		activationtime = 0,
-		parent = 10207,
-		icon = "Power Cleanse"
+		icon = "Mantra of Resolve"
+		instantcast = true
 	},
 	[10237] = {
 		slot = GW2.SKILLBARSLOT.Slot_7,
-		activationtime = 2.25,
-		icon = "Mantra of Concentration"
-	},
-	[10238] = {
-		slot = GW2.SKILLBARSLOT.Slot_7,
 		activationtime = 0,
-		parent = 10237,
-		icon = "Power Break"
+		icon = "Mantra of Concentration"
+		instantcast = true
 	},
 	[10236] = {
 		slot = GW2.SKILLBARSLOT.Slot_7,
