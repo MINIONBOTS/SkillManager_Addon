@@ -72,7 +72,7 @@ function sm_mgr.RefreshSkillPalettes()
 			end
 		end
 	else
-		 local fileinfo = FolderList(sm_mgr.luamodspath .. [[\SkillManager\skillpalettes\]],[[.*txt]])
+		 local fileinfo = FolderList(sm_mgr.luamodspath .. [[\SkillManager\skillpalettes\]],[[.*lua]])
         for _,profileName in pairs(fileinfo) do			
             local fileFunction, errorMessage  = loadfile(sm_mgr.luamodspath .. [[\SkillManager\skillpalettes\]] .. profileName)
             if (fileFunction) then
@@ -162,7 +162,7 @@ function sm_mgr.RefreshConditions()
 			end
 		end
 	else
-		 local fileinfo = FolderList(sm_mgr.luamodspath .. [[\SkillManager\conditions\]],[[.*txt]])
+		 local fileinfo = FolderList(sm_mgr.luamodspath .. [[\SkillManager\conditions\]],[[.*lua]])
         for _,profileName in pairs(fileinfo) do
             local fileFunction, errorMessage  = loadfile(sm_mgr.luamodspath .. [[\SkillManager\conditions\]] .. profileName)
             if (fileFunction) then
